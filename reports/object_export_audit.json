@@ -1,0 +1,11 @@
+{
+  "status": "pass",
+  "latest_report_sha256": "d2b4b4210fc404e7a0bb25486cdb88abb044dd7de0b06684c75ca1120a9edc11",
+  "compiled_text_definition_count": 368,
+  "duplicate_text_definitions": {},
+  "unmapped_text_definitions": [],
+  "complete_object_text_partition_verified": true,
+  "duplicate_initialized_exports": {},
+  "unmapped_initialized_exports": [],
+  "compiled_named_initialized_definition_count": 207
+}

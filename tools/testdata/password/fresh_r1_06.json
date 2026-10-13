@@ -1,0 +1,13 @@
+{
+  "functions": {
+    "f_471d0": {
+      "address": "0x800471d0",
+      "size": 564
+    }
+  },
+  "symbols": {},
+  "sections": {
+    ".rdata": "0x800129e0"
+  },
+  "gp": "0x8008cd74"
+}

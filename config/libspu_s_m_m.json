@@ -1,0 +1,19 @@
+{
+  "gp": "0x8008cd74",
+  "functions": {
+    "SpuMalloc": {
+      "address": "0x8005caa4",
+      "size": 716
+    }
+  },
+  "symbols": {
+    "_spu_mem_mode_plus": "0x80073cb8",
+    "_spu_AllocBlockNum": "0x80073ce4",
+    "_spu_AllocLastNum": "0x80073ce8",
+    "_spu_memList": "0x80073cec",
+    "_spu_rev_reserve_wa": "0x80073d00",
+    "_spu_rev_offsetaddr": "0x80073d18",
+    "_spu_gcSPU": "0x8005cdc0"
+  },
+  "static_data": {}
+}

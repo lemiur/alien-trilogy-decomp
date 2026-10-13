@@ -1,0 +1,21 @@
+{
+  "gp": "0x8008cd74",
+  "functions": {
+    "f_5ba48": {
+      "address": "0x8005ba48",
+      "size": 920
+    },
+    "f_5bde0": {
+      "address": "0x8005bde0",
+      "size": 300
+    },
+    "f_5bf0c": {
+      "address": "0x8005bf0c",
+      "size": 72
+    }
+  },
+  "symbols": {
+    "_spu_RXX": "0x80073c90",
+    "_spu_mem_mode_plus": "0x80073cb8"
+  }
+}

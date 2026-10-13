@@ -1,0 +1,1025 @@
+{
+  "status": "pass",
+  "latest_report_sha256": "d2b4b4210fc404e7a0bb25486cdb88abb044dd7de0b06684c75ca1120a9edc11",
+  "runtime_data_report_sha256": "2e0b0bdaaa4cb34325c59eeeb751394ee7b1933f2993ffa5776c2b28fef49be5",
+  "payload_partition_complete": true,
+  "progress_and_link_plan_agree": true,
+  "covered_union_bytes": 173255,
+  "cases": [
+    {
+      "case": "failed_check_flag",
+      "result": "rejected",
+      "reason": "latest report all_selected_checks_pass is not true"
+    },
+    {
+      "case": "bad_source_hash",
+      "result": "rejected",
+      "reason": "current source hash differs from latest check for f_13a1c: E:\\Compiler Identification\\alien_decomp\\src\\seeds.c"
+    },
+    {
+      "case": "bad_whole_object_hash",
+      "result": "rejected",
+      "reason": "object file hash differs from latest check for f_13a1c"
+    },
+    {
+      "case": "bad_data_only_source_hash",
+      "result": "rejected",
+      "reason": "current source hash differs from latest check for game_constants: E:\\Compiler Identification\\alien_decomp\\src\\game_constants.c"
+    },
+    {
+      "case": "bad_data_only_map_hash",
+      "result": "rejected",
+      "reason": "current symbol-map hash differs from latest check for game_constants: E:\\Compiler Identification\\alien_decomp\\config\\game_constants.json"
+    },
+    {
+      "case": "bad_data_only_object_hash",
+      "result": "rejected",
+      "reason": "object file hash differs from latest check for game_constants"
+    },
+    {
+      "case": "bad_data_manifest_hash",
+      "result": "rejected",
+      "reason": "data manifest hash differs from latest report"
+    },
+    {
+      "case": "bad_runtime_data_count",
+      "result": "rejected",
+      "reason": "runtime data report differs from replay at counts"
+    },
+    {
+      "case": "bad_runtime_data_status",
+      "result": "rejected",
+      "reason": "runtime data report differs from replay at section_results"
+    },
+    {
+      "case": "bad_runtime_data_hash",
+      "result": "rejected",
+      "reason": "runtime data report differs from replay at inputs"
+    }
+  ],
+  "initialized_reference_sites_checked": [
+    {
+      "definition": "g_sound_volume_entry",
+      "address": "0x8006c2d0",
+      "target": "0x800114a8"
+    },
+    {
+      "definition": "g_sound_volume_entry",
+      "address": "0x8006c2d8",
+      "target": "0x80016910"
+    },
+    {
+      "definition": "g_sound_volume_entry",
+      "address": "0x8006c2dc",
+      "target": "0x80017604"
+    },
+    {
+      "definition": "g_sound_volume_entry",
+      "address": "0x8006c2e0",
+      "target": "0x800176d8"
+    },
+    {
+      "definition": "g_music_volume_entry",
+      "address": "0x8006c2ec",
+      "target": "0x80011498"
+    },
+    {
+      "definition": "g_music_volume_entry",
+      "address": "0x8006c2f4",
+      "target": "0x80016910"
+    },
+    {
+      "definition": "g_music_volume_entry",
+      "address": "0x8006c2f8",
+      "target": "0x800175fc"
+    },
+    {
+      "definition": "g_music_volume_entry",
+      "address": "0x8006c2fc",
+      "target": "0x80017624"
+    },
+    {
+      "definition": "g_difficulty_entry",
+      "address": "0x8006c308",
+      "target": "0x80011488"
+    },
+    {
+      "definition": "g_difficulty_entry",
+      "address": "0x8006c30c",
+      "target": "0x8006c1d8"
+    },
+    {
+      "definition": "g_difficulty_entry",
+      "address": "0x8006c310",
+      "target": "0x80016994"
+    },
+    {
+      "definition": "g_menu_entry_6c550",
+      "address": "0x8006c55c",
+      "target": "0x80016a08"
+    },
+    {
+      "definition": "g_card_entry_a",
+      "address": "0x8006c5e0",
+      "target": "0x80011594"
+    },
+    {
+      "definition": "g_card_entry_a",
+      "address": "0x8006c5e4",
+      "target": "0x8006c268"
+    },
+    {
+      "definition": "g_card_entry_a",
+      "address": "0x8006c5e8",
+      "target": "0x80016b20"
+    },
+    {
+      "definition": "g_card_entry_a",
+      "address": "0x8006c5f0",
+      "target": "0x8001768c"
+    },
+    {
+      "definition": "g_card_entry_b",
+      "address": "0x8006c688",
+      "target": "0x80011594"
+    },
+    {
+      "definition": "g_card_entry_b",
+      "address": "0x8006c68c",
+      "target": "0x8006c268"
+    },
+    {
+      "definition": "g_card_entry_b",
+      "address": "0x8006c690",
+      "target": "0x80016b20"
+    },
+    {
+      "definition": "g_card_entry_b",
+      "address": "0x8006c698",
+      "target": "0x8001768c"
+    },
+    {
+      "definition": "g_video_mode_entry",
+      "address": "0x8006c420",
+      "target": "0x800114d0"
+    },
+    {
+      "definition": "g_video_mode_entry",
+      "address": "0x8006c424",
+      "target": "0x8006c274"
+    },
+    {
+      "definition": "g_video_mode_entry",
+      "address": "0x8006c428",
+      "target": "0x80016994"
+    },
+    {
+      "definition": "g_video_mode_entry",
+      "address": "0x8006c430",
+      "target": "0x80017508"
+    },
+    {
+      "definition": "g_difficulty_choices",
+      "address": "0x8006c1d8",
+      "target": "0x800113a8"
+    },
+    {
+      "definition": "g_difficulty_choices",
+      "address": "0x8006c1dc",
+      "target": "0x80011394"
+    },
+    {
+      "definition": "g_difficulty_choices",
+      "address": "0x8006c1e0",
+      "target": "0x80011384"
+    },
+    {
+      "definition": "g_card_choices",
+      "address": "0x8006c268",
+      "target": "0x800113f4"
+    },
+    {
+      "definition": "g_card_choices",
+      "address": "0x8006c26c",
+      "target": "0x8008cec0"
+    },
+    {
+      "definition": "g_card_choices",
+      "address": "0x8006c270",
+      "target": "0x8008ceb8"
+    },
+    {
+      "definition": "g_video_choices",
+      "address": "0x8006c274",
+      "target": "0x8008cecc"
+    },
+    {
+      "definition": "g_video_choices",
+      "address": "0x8006c278",
+      "target": "0x8008cec8"
+    },
+    {
+      "definition": "g_boolean_choices",
+      "address": "0x8006c1d0",
+      "target": "0x8008ce0c"
+    },
+    {
+      "definition": "g_boolean_choices",
+      "address": "0x8006c1d4",
+      "target": "0x8008ce08"
+    },
+    {
+      "definition": "g_controller_options_entry",
+      "address": "0x8006c324",
+      "target": "0x80011474"
+    },
+    {
+      "definition": "g_controller_options_entry",
+      "address": "0x8006c32c",
+      "target": "0x80015f60"
+    },
+    {
+      "definition": "g_controller_options_entry",
+      "address": "0x8006c330",
+      "target": "0x800174f0"
+    },
+    {
+      "definition": "g_password_entry",
+      "address": "0x8006c340",
+      "target": "0x80011464"
+    },
+    {
+      "definition": "g_password_entry",
+      "address": "0x8006c348",
+      "target": "0x80015f60"
+    },
+    {
+      "definition": "g_password_entry",
+      "address": "0x8006c34c",
+      "target": "0x800174b4"
+    },
+    {
+      "definition": "g_card_management_entry",
+      "address": "0x8006c35c",
+      "target": "0x8001144c"
+    },
+    {
+      "definition": "g_card_management_entry",
+      "address": "0x8006c364",
+      "target": "0x80015f60"
+    },
+    {
+      "definition": "g_card_management_entry",
+      "address": "0x8006c368",
+      "target": "0x800174c4"
+    },
+    {
+      "definition": "g_camera_sway_entry",
+      "address": "0x8006c378",
+      "target": "0x8001143c"
+    },
+    {
+      "definition": "g_camera_sway_entry",
+      "address": "0x8006c37c",
+      "target": "0x8006c1d0"
+    },
+    {
+      "definition": "g_camera_sway_entry",
+      "address": "0x8006c380",
+      "target": "0x80016994"
+    },
+    {
+      "definition": "g_credits_entry",
+      "address": "0x8006c394",
+      "target": "0x8001142c"
+    },
+    {
+      "definition": "g_credits_entry",
+      "address": "0x8006c39c",
+      "target": "0x80015f60"
+    },
+    {
+      "definition": "g_credits_entry",
+      "address": "0x8006c3a0",
+      "target": "0x80017a50"
+    },
+    {
+      "definition": "g_options_exit_entry",
+      "address": "0x8006c3b0",
+      "target": "0x8008cef0"
+    },
+    {
+      "definition": "g_options_exit_entry",
+      "address": "0x8006c3b8",
+      "target": "0x80015f60"
+    },
+    {
+      "definition": "g_options_exit_entry",
+      "address": "0x8006c3bc",
+      "target": "0x8001734c"
+    },
+    {
+      "definition": "g_indestructible_entry",
+      "address": "0x8006c3e8",
+      "target": "0x800114f8"
+    },
+    {
+      "definition": "g_indestructible_entry",
+      "address": "0x8006c3ec",
+      "target": "0x8006c1d0"
+    },
+    {
+      "definition": "g_indestructible_entry",
+      "address": "0x8006c3f0",
+      "target": "0x80016994"
+    },
+    {
+      "definition": "g_unlimited_ammunition_entry",
+      "address": "0x8006c404",
+      "target": "0x800114e0"
+    },
+    {
+      "definition": "g_unlimited_ammunition_entry",
+      "address": "0x8006c408",
+      "target": "0x8006c1d0"
+    },
+    {
+      "definition": "g_unlimited_ammunition_entry",
+      "address": "0x8006c40c",
+      "target": "0x80016994"
+    },
+    {
+      "definition": "g_weapons_entry",
+      "address": "0x8006c43c",
+      "target": "0x800114c0"
+    },
+    {
+      "definition": "g_weapons_entry",
+      "address": "0x8006c440",
+      "target": "0x8006c1d0"
+    },
+    {
+      "definition": "g_weapons_entry",
+      "address": "0x8006c444",
+      "target": "0x80016994"
+    },
+    {
+      "definition": "g_cheats_exit_entry",
+      "address": "0x8006c458",
+      "target": "0x8008cef0"
+    },
+    {
+      "definition": "g_cheats_exit_entry",
+      "address": "0x8006c460",
+      "target": "0x80015f60"
+    },
+    {
+      "definition": "g_cheats_exit_entry",
+      "address": "0x8006c464",
+      "target": "0x8001734c"
+    },
+    {
+      "definition": "g_start_game_entry",
+      "address": "0x8006c474",
+      "target": "0x80011510"
+    },
+    {
+      "definition": "g_start_game_entry",
+      "address": "0x8006c47c",
+      "target": "0x80015f60"
+    },
+    {
+      "definition": "g_start_game_entry",
+      "address": "0x8006c480",
+      "target": "0x800175c0"
+    },
+    {
+      "definition": "g_options_entry",
+      "address": "0x8006c490",
+      "target": "0x8008cf1c"
+    },
+    {
+      "definition": "g_options_entry",
+      "address": "0x8006c498",
+      "target": "0x80015f60"
+    },
+    {
+      "definition": "g_options_entry",
+      "address": "0x8006c49c",
+      "target": "0x8001737c"
+    },
+    {
+      "definition": "g_cheats_entry",
+      "address": "0x8006c4ac",
+      "target": "0x8008cf14"
+    },
+    {
+      "definition": "g_cheats_entry",
+      "address": "0x8006c4b4",
+      "target": "0x80015f60"
+    },
+    {
+      "definition": "g_cheats_entry",
+      "address": "0x8006c4b8",
+      "target": "0x8001749c"
+    },
+    {
+      "definition": "g_level_password_entry",
+      "address": "0x8006c4c8",
+      "target": "0x8001152c"
+    },
+    {
+      "definition": "g_level_password_entry",
+      "address": "0x8006c4d0",
+      "target": "0x80015f60"
+    },
+    {
+      "definition": "g_password_value_entry",
+      "address": "0x8006c4ec",
+      "target": "0x80016b6c"
+    },
+    {
+      "definition": "g_continue_game_entry",
+      "address": "0x8006c500",
+      "target": "0x8001151c"
+    },
+    {
+      "definition": "g_continue_game_entry",
+      "address": "0x8006c508",
+      "target": "0x80015f60"
+    },
+    {
+      "definition": "g_continue_game_entry",
+      "address": "0x8006c50c",
+      "target": "0x800175ec"
+    },
+    {
+      "definition": "g_main_card_management_entry",
+      "address": "0x8006c51c",
+      "target": "0x8001144c"
+    },
+    {
+      "definition": "g_main_card_management_entry",
+      "address": "0x8006c524",
+      "target": "0x80015f60"
+    },
+    {
+      "definition": "g_main_card_management_entry",
+      "address": "0x8006c528",
+      "target": "0x800174c4"
+    },
+    {
+      "definition": "g_control_method_entry",
+      "address": "0x8006c538",
+      "target": "0x8001153c"
+    },
+    {
+      "definition": "g_control_method_entry",
+      "address": "0x8006c540",
+      "target": "0x80015f60"
+    },
+    {
+      "definition": "g_centered_exit_entry",
+      "address": "0x8006c578",
+      "target": "0x8001687c"
+    },
+    {
+      "definition": "g_centered_exit_entry",
+      "address": "0x8006c57c",
+      "target": "0x8001737c"
+    },
+    {
+      "definition": "g_password_prompt_entry",
+      "address": "0x8006c58c",
+      "target": "0x80011464"
+    },
+    {
+      "definition": "g_password_prompt_entry",
+      "address": "0x8006c594",
+      "target": "0x80015f60"
+    },
+    {
+      "definition": "g_password_exit_entry",
+      "address": "0x8006c5a8",
+      "target": "0x8008cef0"
+    },
+    {
+      "definition": "g_password_exit_entry",
+      "address": "0x8006c5b0",
+      "target": "0x80015f60"
+    },
+    {
+      "definition": "g_password_exit_entry",
+      "address": "0x8006c5b4",
+      "target": "0x8001737c"
+    },
+    {
+      "definition": "g_save_card_options_entry",
+      "address": "0x8006c5c4",
+      "target": "0x800115ac"
+    },
+    {
+      "definition": "g_save_card_options_entry",
+      "address": "0x8006c5cc",
+      "target": "0x80015f60"
+    },
+    {
+      "definition": "g_save_game_entry",
+      "address": "0x8006c5fc",
+      "target": "0x80011588"
+    },
+    {
+      "definition": "g_save_game_entry",
+      "address": "0x8006c604",
+      "target": "0x80015f60"
+    },
+    {
+      "definition": "g_save_game_entry",
+      "address": "0x8006c608",
+      "target": "0x800173cc"
+    },
+    {
+      "definition": "g_save_delete_block_entry",
+      "address": "0x8006c618",
+      "target": "0x80011568"
+    },
+    {
+      "definition": "g_save_delete_block_entry",
+      "address": "0x8006c620",
+      "target": "0x80015f60"
+    },
+    {
+      "definition": "g_save_delete_block_entry",
+      "address": "0x8006c624",
+      "target": "0x800173ec"
+    },
+    {
+      "definition": "g_save_format_card_entry",
+      "address": "0x8006c634",
+      "target": "0x80011554"
+    },
+    {
+      "definition": "g_save_format_card_entry",
+      "address": "0x8006c63c",
+      "target": "0x80015f60"
+    },
+    {
+      "definition": "g_save_format_card_entry",
+      "address": "0x8006c640",
+      "target": "0x800173fc"
+    },
+    {
+      "definition": "g_save_card_exit_entry",
+      "address": "0x8006c650",
+      "target": "0x8008cef0"
+    },
+    {
+      "definition": "g_save_card_exit_entry",
+      "address": "0x8006c658",
+      "target": "0x80015f60"
+    },
+    {
+      "definition": "g_save_card_exit_entry",
+      "address": "0x8006c65c",
+      "target": "0x8001734c"
+    },
+    {
+      "definition": "g_load_card_options_entry",
+      "address": "0x8006c66c",
+      "target": "0x800115ac"
+    },
+    {
+      "definition": "g_load_card_options_entry",
+      "address": "0x8006c674",
+      "target": "0x80015f60"
+    },
+    {
+      "definition": "g_load_game_entry",
+      "address": "0x8006c6a4",
+      "target": "0x800115c0"
+    },
+    {
+      "definition": "g_load_game_entry",
+      "address": "0x8006c6ac",
+      "target": "0x80015f60"
+    },
+    {
+      "definition": "g_load_game_entry",
+      "address": "0x8006c6b0",
+      "target": "0x800173dc"
+    },
+    {
+      "definition": "g_load_delete_block_entry",
+      "address": "0x8006c6c0",
+      "target": "0x80011568"
+    },
+    {
+      "definition": "g_load_delete_block_entry",
+      "address": "0x8006c6c8",
+      "target": "0x80015f60"
+    },
+    {
+      "definition": "g_load_delete_block_entry",
+      "address": "0x8006c6cc",
+      "target": "0x800173ec"
+    },
+    {
+      "definition": "g_load_format_card_entry",
+      "address": "0x8006c6dc",
+      "target": "0x80011554"
+    },
+    {
+      "definition": "g_load_format_card_entry",
+      "address": "0x8006c6e4",
+      "target": "0x80015f60"
+    },
+    {
+      "definition": "g_load_format_card_entry",
+      "address": "0x8006c6e8",
+      "target": "0x800173fc"
+    },
+    {
+      "definition": "g_load_card_exit_entry",
+      "address": "0x8006c6f8",
+      "target": "0x8008cef0"
+    },
+    {
+      "definition": "g_load_card_exit_entry",
+      "address": "0x8006c700",
+      "target": "0x80015f60"
+    },
+    {
+      "definition": "g_load_card_exit_entry",
+      "address": "0x8006c704",
+      "target": "0x8001737c"
+    },
+    {
+      "definition": "g_sound_mode_choices",
+      "address": "0x8006c1c0",
+      "target": "0x8008ce04"
+    },
+    {
+      "definition": "g_sound_mode_choices",
+      "address": "0x8006c1c4",
+      "target": "0x8008cdfc"
+    },
+    {
+      "definition": "g_sound_mode_choices",
+      "address": "0x8006c1c8",
+      "target": "0x80011374"
+    },
+    {
+      "definition": "g_sound_mode_choices",
+      "address": "0x8006c1cc",
+      "target": "0x8008cdf4"
+    },
+    {
+      "definition": "g_sound_mode_entry",
+      "address": "0x8006c2b4",
+      "target": "0x8008cf04"
+    },
+    {
+      "definition": "g_sound_mode_entry",
+      "address": "0x8006c2b8",
+      "target": "0x8006c1c0"
+    },
+    {
+      "definition": "g_sound_mode_entry",
+      "address": "0x8006c2bc",
+      "target": "0x80016994"
+    },
+    {
+      "definition": "g_sound_mode_entry",
+      "address": "0x8006c2c4",
+      "target": "0x80017880"
+    },
+    {
+      "definition": "g_card_format_heading_entry",
+      "address": "0x8006c714",
+      "target": "0x800115cc"
+    },
+    {
+      "definition": "g_card_format_heading_entry",
+      "address": "0x8006c71c",
+      "target": "0x80015f60"
+    },
+    {
+      "definition": "g_card_format_slot_entry",
+      "address": "0x8006c738",
+      "target": "0x800161a0"
+    },
+    {
+      "definition": "g_card_format_yes_entry",
+      "address": "0x8006c74c",
+      "target": "0x8008cf28"
+    },
+    {
+      "definition": "g_card_format_yes_entry",
+      "address": "0x8006c754",
+      "target": "0x80015f60"
+    },
+    {
+      "definition": "g_card_format_yes_entry",
+      "address": "0x8006c758",
+      "target": "0x80017a78"
+    },
+    {
+      "definition": "g_card_format_no_entry",
+      "address": "0x8006c768",
+      "target": "0x8008cf24"
+    },
+    {
+      "definition": "g_card_format_no_entry",
+      "address": "0x8006c770",
+      "target": "0x80015f60"
+    },
+    {
+      "definition": "g_card_format_no_entry",
+      "address": "0x8006c774",
+      "target": "0x80017364"
+    },
+    {
+      "definition": "g_card_delete_heading_entry",
+      "address": "0x8006c784",
+      "target": "0x80011618"
+    },
+    {
+      "definition": "g_card_delete_heading_entry",
+      "address": "0x8006c78c",
+      "target": "0x80015f60"
+    },
+    {
+      "definition": "g_card_delete_slot_entry",
+      "address": "0x8006c7a4",
+      "target": "0x8009d68c"
+    },
+    {
+      "definition": "g_card_delete_slot_entry",
+      "address": "0x8006c7a8",
+      "target": "0x800168d0"
+    },
+    {
+      "definition": "g_card_delete_slot_entry",
+      "address": "0x8006c7ac",
+      "target": "0x80017410"
+    },
+    {
+      "definition": "g_card_delete_exit_entry",
+      "address": "0x8006c7bc",
+      "target": "0x8008cef0"
+    },
+    {
+      "definition": "g_card_delete_exit_entry",
+      "address": "0x8006c7c4",
+      "target": "0x80015f60"
+    },
+    {
+      "definition": "g_card_delete_exit_entry",
+      "address": "0x8006c7c8",
+      "target": "0x80017364"
+    },
+    {
+      "definition": "g_card_select_buttons_help_entry",
+      "address": "0x8006c7d8",
+      "target": "0x800115fc"
+    },
+    {
+      "definition": "g_card_select_buttons_help_entry",
+      "address": "0x8006c7e0",
+      "target": "0x80015f60"
+    },
+    {
+      "definition": "g_card_delete_button_help_entry",
+      "address": "0x8006c7f4",
+      "target": "0x800115e4"
+    },
+    {
+      "definition": "g_card_delete_button_help_entry",
+      "address": "0x8006c7fc",
+      "target": "0x80015f60"
+    },
+    {
+      "definition": "g_card_delete_file_heading_entry",
+      "address": "0x8006c810",
+      "target": "0x80011404"
+    },
+    {
+      "definition": "g_card_delete_file_heading_entry",
+      "address": "0x8006c818",
+      "target": "0x80015f60"
+    },
+    {
+      "definition": "g_card_delete_file_name_entry",
+      "address": "0x8006c834",
+      "target": "0x800168d0"
+    },
+    {
+      "definition": "g_card_delete_file_yes_entry",
+      "address": "0x8006c848",
+      "target": "0x8008cf28"
+    },
+    {
+      "definition": "g_card_delete_file_yes_entry",
+      "address": "0x8006c850",
+      "target": "0x80015f60"
+    },
+    {
+      "definition": "g_card_delete_file_yes_entry",
+      "address": "0x8006c854",
+      "target": "0x80017ad8"
+    },
+    {
+      "definition": "g_card_delete_file_no_entry",
+      "address": "0x8006c864",
+      "target": "0x8008cf24"
+    },
+    {
+      "definition": "g_card_delete_file_no_entry",
+      "address": "0x8006c86c",
+      "target": "0x80015f60"
+    },
+    {
+      "definition": "g_card_delete_file_no_entry",
+      "address": "0x8006c870",
+      "target": "0x800173ec"
+    },
+    {
+      "definition": "g_card_overwrite_heading_entry",
+      "address": "0x8006c880",
+      "target": "0x80011630"
+    },
+    {
+      "definition": "g_card_overwrite_heading_entry",
+      "address": "0x8006c888",
+      "target": "0x80015f60"
+    },
+    {
+      "definition": "g_card_overwrite_file_name_entry",
+      "address": "0x8006c8a4",
+      "target": "0x80017edc"
+    },
+    {
+      "definition": "g_card_overwrite_yes_entry",
+      "address": "0x8006c8b8",
+      "target": "0x8008cf28"
+    },
+    {
+      "definition": "g_card_overwrite_yes_entry",
+      "address": "0x8006c8c0",
+      "target": "0x80015f60"
+    },
+    {
+      "definition": "g_card_overwrite_yes_entry",
+      "address": "0x8006c8c4",
+      "target": "0x80018174"
+    },
+    {
+      "definition": "g_card_overwrite_no_entry",
+      "address": "0x8006c8d4",
+      "target": "0x8008cf24"
+    },
+    {
+      "definition": "g_card_overwrite_no_entry",
+      "address": "0x8006c8dc",
+      "target": "0x80015f60"
+    },
+    {
+      "definition": "g_card_overwrite_no_entry",
+      "address": "0x8006c8e0",
+      "target": "0x800173cc"
+    },
+    {
+      "definition": "g_card_load_heading_entry",
+      "address": "0x8006c8f0",
+      "target": "0x80011644"
+    },
+    {
+      "definition": "g_card_load_heading_entry",
+      "address": "0x8006c8f8",
+      "target": "0x80015f60"
+    },
+    {
+      "definition": "g_card_load_file0_entry",
+      "address": "0x8006c914",
+      "target": "0x80017e0c"
+    },
+    {
+      "definition": "g_card_load_file0_entry",
+      "address": "0x8006c918",
+      "target": "0x80017f10"
+    },
+    {
+      "definition": "g_card_load_file1_entry",
+      "address": "0x8006c930",
+      "target": "0x80017e40"
+    },
+    {
+      "definition": "g_card_load_file1_entry",
+      "address": "0x8006c934",
+      "target": "0x80017f30"
+    },
+    {
+      "definition": "g_card_load_file2_entry",
+      "address": "0x8006c94c",
+      "target": "0x80017e74"
+    },
+    {
+      "definition": "g_card_load_file2_entry",
+      "address": "0x8006c950",
+      "target": "0x80017f50"
+    },
+    {
+      "definition": "g_card_load_file3_entry",
+      "address": "0x8006c968",
+      "target": "0x80017ea8"
+    },
+    {
+      "definition": "g_card_load_file3_entry",
+      "address": "0x8006c96c",
+      "target": "0x80017f70"
+    },
+    {
+      "definition": "g_card_load_exit_entry",
+      "address": "0x8006c97c",
+      "target": "0x8008cef0"
+    },
+    {
+      "definition": "g_card_load_exit_entry",
+      "address": "0x8006c984",
+      "target": "0x80015f60"
+    },
+    {
+      "definition": "g_card_load_exit_entry",
+      "address": "0x8006c988",
+      "target": "0x80017364"
+    },
+    {
+      "definition": "g_card_save_position_heading_entry",
+      "address": "0x8006c998",
+      "target": "0x80011658"
+    },
+    {
+      "definition": "g_card_save_position_heading_entry",
+      "address": "0x8006c9a0",
+      "target": "0x80015f60"
+    },
+    {
+      "definition": "g_card_save_file0_entry",
+      "address": "0x8006c9bc",
+      "target": "0x80017e0c"
+    },
+    {
+      "definition": "g_card_save_file0_entry",
+      "address": "0x8006c9c0",
+      "target": "0x80017434"
+    },
+    {
+      "definition": "g_card_save_file1_entry",
+      "address": "0x8006c9d8",
+      "target": "0x80017e40"
+    },
+    {
+      "definition": "g_card_save_file1_entry",
+      "address": "0x8006c9dc",
+      "target": "0x80017434"
+    },
+    {
+      "definition": "g_card_save_file2_entry",
+      "address": "0x8006c9f4",
+      "target": "0x80017e74"
+    },
+    {
+      "definition": "g_card_save_file2_entry",
+      "address": "0x8006c9f8",
+      "target": "0x80017434"
+    },
+    {
+      "definition": "g_card_save_file3_entry",
+      "address": "0x8006ca10",
+      "target": "0x80017ea8"
+    },
+    {
+      "definition": "g_card_save_file3_entry",
+      "address": "0x8006ca14",
+      "target": "0x80017434"
+    },
+    {
+      "definition": "g_card_save_exit_entry",
+      "address": "0x8006ca24",
+      "target": "0x8008cef0"
+    },
+    {
+      "definition": "g_card_save_exit_entry",
+      "address": "0x8006ca2c",
+      "target": "0x80015f60"
+    },
+    {
+      "definition": "g_card_save_exit_entry",
+      "address": "0x8006ca30",
+      "target": "0x80017364"
+    }
+  ],
+  "all_cases_rejected": true,
+  "guarded_evidence_file_count": 696,
+  "evidence_unchanged_before_after": true
+}

@@ -1,0 +1,26 @@
+{
+  "gp": "0x8008cd74",
+  "sections": {
+    ".sbss": "0x8008d088"
+  },
+  "functions": {
+    "AddTASKToFree": {"address": "0x80015cb0", "size": 24, "static": true},
+    "TaskerInit": {"address": "0x80015cc8", "size": 96},
+    "TaskerAlloc": {"address": "0x80015d28", "size": 40},
+    "GetTASKFromFree": {"address": "0x80015d50", "size": 44, "static": true},
+    "AddTASKToInUse": {"address": "0x80015d7c", "size": 152, "static": true},
+    "RemoveTASKFromInUse": {"address": "0x80015e14", "size": 56, "static": true},
+    "TaskCreate": {"address": "0x80015e4c", "size": 88},
+    "TaskDie": {"address": "0x80015ea4", "size": 64},
+    "TaskDispatch": {"address": "0x80015ee4", "size": 72}
+  },
+  "symbols": {
+    "g_next_task": "0x8008d4f0",
+    "heap_alloc": "0x80014dfc"
+  },
+  "static_data": {
+    "TaskMEM": {"address": "0x8008d088", "size": 8, "section": ".sbss"},
+    "TaskFree": {"address": "0x8008d090", "size": 8, "section": ".sbss"},
+    "TaskUsed": {"address": "0x8008d098", "size": 8, "section": ".sbss"}
+  }
+}

@@ -1,0 +1,287 @@
+{
+  "gp": "0x8008cd74",
+  "sections": {
+    ".rdata": "0x80011a54",
+    ".sbss": "0x8008d128"
+  },
+  "functions": {
+    "particle_free": {
+      "address": "0x800246ac",
+      "size": 24
+    },
+    "particle_pool_init": {
+      "address": "0x800246c4",
+      "size": 164
+    },
+    "particle_pool_alloc": {
+      "address": "0x80024768",
+      "size": 40
+    },
+    "particle_alloc": {
+      "address": "0x80024790",
+      "size": 44
+    },
+    "particle_link": {
+      "address": "0x800247bc",
+      "size": 44
+    },
+    "particle_unlink": {
+      "address": "0x800247e8",
+      "size": 116
+    },
+    "explosion_spawn": {
+      "address": "0x8002485c",
+      "size": 148
+    },
+    "big_explosion_spawn": {
+      "address": "0x800248f0",
+      "size": 168
+    },
+    "impact_spray": {
+      "address": "0x80024998",
+      "size": 364
+    },
+    "shot_impact": {
+      "address": "0x80024b04",
+      "size": 96
+    },
+    "blood_splash": {
+      "address": "0x80024b64",
+      "size": 192
+    },
+    "blood_spray": {
+      "address": "0x80024c24",
+      "size": 348
+    },
+    "actor_bleed": {
+      "address": "0x80024d80",
+      "size": 128
+    },
+    "actor_fire_bullet": {
+      "address": "0x80024e00",
+      "size": 412
+    },
+    "jet_spray": {
+      "address": "0x80024f9c",
+      "size": 388
+    },
+    "actor_lob_grenade": {
+      "address": "0x80025120",
+      "size": 352
+    },
+    "eject_shell": {
+      "address": "0x80025280",
+      "size": 476
+    },
+    "fire_bullet": {
+      "address": "0x8002545c",
+      "size": 784
+    },
+    "pistol_fire": {
+      "address": "0x8002576c",
+      "size": 104
+    },
+    "shotgun_fire": {
+      "address": "0x800257d4",
+      "size": 136
+    },
+    "pulse_rifle_fire": {
+      "address": "0x8002585c",
+      "size": 156
+    },
+    "flame_launch": {
+      "address": "0x800258f8",
+      "size": 588
+    },
+    "flamethrower_fire": {
+      "address": "0x80025b44",
+      "size": 136
+    },
+    "collect_targets": {
+      "address": "0x80025bcc",
+      "size": 272
+    },
+    "smart_gun_fire": {
+      "address": "0x80025cdc",
+      "size": 864
+    },
+    "f_2603c": {
+      "address": "0x8002603c",
+      "size": 40
+    },
+    "pulse_grenade_launch": {
+      "address": "0x80026064",
+      "size": 376
+    },
+    "grenade_throw": {
+      "address": "0x800261dc",
+      "size": 304
+    },
+    "particle_draw_flame": {
+      "address": "0x8002630c",
+      "size": 580
+    },
+    "particle_draw_steam": {
+      "address": "0x80026550",
+      "size": 1020
+    },
+    "particle_draw_fire": {
+      "address": "0x8002694c",
+      "size": 960
+    },
+    "particle_draw_model": {
+      "address": "0x80026d0c",
+      "size": 464
+    },
+    "particle_draw_debris": {
+      "address": "0x80026edc",
+      "size": 476
+    },
+    "particle_draw_spark": {
+      "address": "0x800270b8",
+      "size": 416
+    },
+    "particle_draw_blood": {
+      "address": "0x80027258",
+      "size": 432
+    },
+    "particle_draw_tracer": {
+      "address": "0x80027408",
+      "size": 964
+    },
+    "particle_draw": {
+      "address": "0x800277cc",
+      "size": 588
+    },
+    "particles_task": {
+      "address": "0x80027a18",
+      "size": 3564
+    }
+  },
+  "symbols": {
+    "random": "0x80013a44",
+    "heap_alloc": "0x80014dfc",
+    "TaskCreate": "0x80015e4c",
+    "get_difficulty": "0x80017760",
+    "model_draw_mid_in_cell": "0x8001fc0c",
+    "rotate_vector": "0x8001fca8",
+    "rotate_vector_offset": "0x8001fd18",
+    "point_heading_xz": "0x8001fea0",
+    "point_distance_xz": "0x80020048",
+    "particle_hit_wall": "0x80024140",
+    "sound_play": "0x8003d5b4",
+    "sound_play_at": "0x8003d66c",
+    "acid_splash_task": "0x8003fc4c",
+    "blood_splash_task": "0x8003fcc0",
+    "synth_splash_task": "0x8003fd34",
+    "explosion_task": "0x80040138",
+    "big_explosion_task": "0x800401b0",
+    "panel_free": "0x8004555c",
+    "GetTPage": "0x80064ff8",
+    "AddPrim": "0x80065220",
+    "PushMatrix": "0x80066c6c",
+    "PopMatrix": "0x80066d0c",
+    "RotTransPers": "0x80066f10",
+    "DpqColor": "0x80066fdc",
+    "MulMatrix2": "0x8006756c",
+    "ApplyMatrix": "0x80067678",
+    "TransMatrix": "0x80067724",
+    "ScaleMatrix": "0x80067748",
+    "SetRotMatrix": "0x8006786c",
+    "SetTransMatrix": "0x800678fc",
+    "LoadAverageShort12": "0x800679c0",
+    "RotMatrix": "0x800684fc",
+    "g_far_draw_table": "0x8006d394",
+    "g_zero_vector": "0x8008cd9c",
+    "g_cheat_flags": "0x8008cda8",
+    "g_gte_interpolation": "0x8008d320",
+    "g_live_actors": "0x8008d330",
+    "g_frame_count": "0x8008d380",
+    "g_projected_depth": "0x8008d428",
+    "g_view_rotation": "0x8008d468",
+    "g_sprite_workspace": "0x8008d478",
+    "g_palette": "0x8008d490",
+    "g_transform_result": "0x8008d4a0",
+    "g_debris_uvs": "0x8008d4e0",
+    "g_render_buffer": "0x8008d4e8",
+    "g_visible_cell_mask": "0x8008d510",
+    "g_target_count": "0x8008d550",
+    "g_model_uvs": "0x8008d558",
+    "g_game_flags": "0x8008d560",
+    "g_gte_flag": "0x8008d570",
+    "g_view_position": "0x8008d5b8",
+    "g_relative_position": "0x8008d5c8",
+    "g_view_pitch": "0x8008d5f0",
+    "g_particle_positions": "0x8008e7b0",
+    "g_particle_velocities": "0x8008ebb0",
+    "g_level_map": "0x80096060",
+    "g_object_models": "0x80096be4",
+    "g_sprite_uvs": "0x80097fd4",
+    "g_player": "0x80099fd4",
+    "g_explosion_cluts": "0x8009a2b4",
+    "g_view_matrix": "0x8009a2c4",
+    "g_matrix_work": "0x8009a2e4",
+    "g_pickup_uvs": "0x8009b384",
+    "g_translation": "0x8009c5a4",
+    "g_explosion_uvs": "0x8009cbec",
+    "g_targets": "0x8009ce6c",
+    "gteMIMefunc": "0x80066e90",
+    "particle_step_back": "0x80023ef4",
+    "particle_hit_floor_or_ceiling": "0x80023fa8",
+    "particle_hit_actors": "0x80024380",
+    "particle_hit_player": "0x800245b4",
+    "shot_cell_trigger": "0x8003df88",
+    "enemy_shot_cell_trigger": "0x8003e224",
+    "explosion_damage": "0x80031144",
+    "floor_height": "0x80021144",
+    "g_level": "0x8008d378",
+    "g_next_task": "0x8008d4f0"
+  },
+  "static_data": {
+    "g_particle_pool": {
+      "address": "0x8008d128",
+      "size": 8,
+      "section": ".sbss"
+    },
+    "g_particle_free": {
+      "address": "0x8008d130",
+      "size": 8,
+      "section": ".sbss"
+    },
+    "g_live_particles": {
+      "address": "0x8008d138",
+      "size": 8,
+      "section": ".sbss"
+    },
+    "g_steam_lengths": {
+      "address": "0x80072338",
+      "size": 128,
+      "section": ".data"
+    },
+    "g_steam_widths": {
+      "address": "0x800723b8",
+      "size": 128,
+      "section": ".data"
+    },
+    "g_steam_frames": {
+      "address": "0x80072438",
+      "size": 72,
+      "section": ".data"
+    },
+    "g_fire_lengths": {
+      "address": "0x80072480",
+      "size": 128,
+      "section": ".data"
+    },
+    "g_fire_widths": {
+      "address": "0x80072500",
+      "size": 128,
+      "section": ".data"
+    },
+    "g_fire_frames": {
+      "address": "0x80072580",
+      "size": 72,
+      "section": ".data"
+    }
+  }
+}

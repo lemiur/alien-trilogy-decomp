@@ -1,0 +1,17 @@
+builds/
+__pycache__/
+*.pyc
+src/*.before.c
+
+# Proprietary or derived binaries are never committed (game, SDK, toolchain, build output).
+*.EXE
+*.exe
+*.OBJ
+*.obj
+*.elf
+*.bin
+*.object
+*.lib
+*.LIB
+!tools/testdata/asm_build/toolchain/A208/ASPSX.EXE
+archive/

@@ -1,0 +1,24 @@
+{
+  "units": {
+    "asm/lib/libgte_fog_00.s": {
+      "assembler": "A208",
+      "reason": "SetFogFar's signed division ends in the overflow trap tge zero, zero, 0x5d (retail 0x800684cc), the expansion of ASPSX 2.08's div macro; ASPSX 2.34 writes break 6 there"
+    },
+    "asm/lib/libgte_patchgte.s": {
+      "assembler": "GNU_AS",
+      "reason": "_patch_gte addresses its 16-byte .sbss block (retail 0x8008d304) absolutely with lui + sw / lui + lw; ASPSX (2.08 and 2.34) puts the block in .bss or addresses it $gp-relative"
+    },
+    "asm/lib/libspu_spu.s": {
+      "assembler": "A208",
+      "reason": "_spu_ioctl's three signed remainders end in the overflow trap tge zero, zero, 0x5d (retail 0x8005aeec, 0x8005af84, 0x8005b20c), the expansion of ASPSX 2.08's rem macro; ASPSX 2.34 writes break 6 there"
+    },
+    "asm/lib/libspu_s_srmp.s": {
+      "assembler": "A208",
+      "reason": "ASPSX 2.34 inserts a hazard nop before mult a1, a2 at 0x800595a8 (two instructions after an mfhi) even under .set noreorder; retail has none, and ASPSX 2.08 inserts none"
+    },
+    "asm/lib/libspu_s_n2p.s": {
+      "assembler": "A208",
+      "reason": "_spu_pitch2note's two signed divisions end in the overflow trap tge zero, zero, 0x5d (retail 0x800592b0, 0x80059314), the expansion of ASPSX 2.08's div macro; ASPSX 2.34 writes break 6 there"
+    }
+  }
+}

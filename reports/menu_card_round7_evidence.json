@@ -1,0 +1,908 @@
+{
+  "status": "pass",
+  "reference_sha256": "f424660920764ac70f697b5b909a42fe259a76e60acbf5b01c6ca3ee8c8f8e98",
+  "latest_report_sha256": "d2b4b4210fc404e7a0bb25486cdb88abb044dd7de0b06684c75ca1120a9edc11",
+  "input_hashes": {
+    "analysis\\menu_card_round7_evidence.py": "3e07c36acedfad813b50dd4d2b23d9e432a7e7f795bfdb2ca0c0070f643eb354",
+    "analysis\\menu_card_round7\\definitions.json": "65acca1cb2c8374d1523a46dc8e55ed528c109f4e8ef04020dca8796963e6cde",
+    "config\\data.json": "91d566ad4a1c9d94b7857c763148b522c1a6d42b5ea58e0dca7e9469fadeec3b",
+    "src\\menu_card_labels7.c": "b7647a6c93d7544e54ee30a949b8a198242ba39c3f2cf83e051de2805903dd45",
+    "config\\menu_card_labels7.json": "2fe8ecc13b6160aad74fb690f98454a21a276e406499a6b32e8c9fedfc71048a",
+    "src\\menu_card_records7.c": "68271dd7318eaa9090f88b66d8da34d0dcc0f145788b25b882ea154d04a86b6c",
+    "config\\menu_card_records7.json": "d15f6500840d2367e1592aabe0098b6759de57b42d609057c3f9e3ac1f03d340"
+  },
+  "groups": [
+    {
+      "call_setup": "0x800194e4",
+      "base": "0x8006c70c",
+      "count": 4,
+      "records": [
+        "g_card_format_heading_entry",
+        "g_card_format_slot_entry",
+        "g_card_format_yes_entry",
+        "g_card_format_no_entry"
+      ]
+    },
+    {
+      "call_setup": "0x8001952c",
+      "base": "0x8006c77c",
+      "count": 5,
+      "records": [
+        "g_card_delete_heading_entry",
+        "g_card_delete_slot_entry",
+        "g_card_delete_exit_entry",
+        "g_card_select_buttons_help_entry",
+        "g_card_delete_button_help_entry"
+      ]
+    },
+    {
+      "call_setup": "0x800194a0",
+      "base": "0x8006c808",
+      "count": 4,
+      "records": [
+        "g_card_delete_file_heading_entry",
+        "g_card_delete_file_name_entry",
+        "g_card_delete_file_yes_entry",
+        "g_card_delete_file_no_entry"
+      ]
+    },
+    {
+      "call_setup": "0x800193b0",
+      "base": "0x8006c878",
+      "count": 4,
+      "records": [
+        "g_card_overwrite_heading_entry",
+        "g_card_overwrite_file_name_entry",
+        "g_card_overwrite_yes_entry",
+        "g_card_overwrite_no_entry"
+      ]
+    },
+    {
+      "call_setup": "0x800193e0",
+      "base": "0x8006c8e8",
+      "count": 6,
+      "records": [
+        "g_card_load_heading_entry",
+        "g_card_load_file0_entry",
+        "g_card_load_file1_entry",
+        "g_card_load_file2_entry",
+        "g_card_load_file3_entry",
+        "g_card_load_exit_entry"
+      ]
+    },
+    {
+      "call_setup": "0x80019410",
+      "base": "0x8006c990",
+      "count": 6,
+      "records": [
+        "g_card_save_position_heading_entry",
+        "g_card_save_file0_entry",
+        "g_card_save_file1_entry",
+        "g_card_save_file2_entry",
+        "g_card_save_file3_entry",
+        "g_card_save_exit_entry"
+      ]
+    }
+  ],
+  "labels": [
+    [
+      "s_format_card_heading",
+      2147554764,
+      24,
+      "FORMAT MEMORY CARD IN"
+    ],
+    [
+      "s_card_delete_button_help",
+      2147554788,
+      24,
+      "Press \u00ff to delete block"
+    ],
+    [
+      "s_card_select_buttons_help",
+      2147554812,
+      28,
+      "Use \u00fe and \u00fd to select block"
+    ],
+    [
+      "s_card_delete_heading",
+      2147554840,
+      24,
+      "SELECT BLOCK TO DELETE"
+    ],
+    [
+      "s_card_overwrite_heading",
+      2147554864,
+      20,
+      "UPDATE SAVE GAME"
+    ],
+    [
+      "s_card_load_heading",
+      2147554884,
+      20,
+      "SELECT GAME TO LOAD"
+    ],
+    [
+      "s_card_save_position_heading",
+      2147554904,
+      28,
+      "SELECT GAME SAVE POSITION"
+    ],
+    [
+      "s_card_delete_file_heading",
+      2147554308,
+      12,
+      "DELETE FILE"
+    ],
+    [
+      "s_confirmation_no",
+      2148060964,
+      4,
+      "NO"
+    ],
+    [
+      "s_confirmation_yes",
+      2148060968,
+      4,
+      "YES"
+    ]
+  ],
+  "records": [
+    {
+      "symbol": "g_card_format_heading_entry",
+      "address": "0x8006c70c",
+      "flags": 3276810,
+      "value": 0,
+      "limit": 0,
+      "label": "s_format_card_heading",
+      "choices": "0",
+      "callbacks": [
+        "f_15f60",
+        "0",
+        "0"
+      ]
+    },
+    {
+      "symbol": "g_card_format_slot_entry",
+      "address": "0x8006c728",
+      "flags": 3276842,
+      "value": 0,
+      "limit": 4,
+      "label": "0",
+      "choices": "0",
+      "callbacks": [
+        "f_161a0",
+        "0",
+        "0"
+      ]
+    },
+    {
+      "symbol": "g_card_format_yes_entry",
+      "address": "0x8006c744",
+      "flags": 2621443,
+      "value": 0,
+      "limit": 0,
+      "label": "s_confirmation_yes",
+      "choices": "0",
+      "callbacks": [
+        "f_15f60",
+        "f_17a78",
+        "0"
+      ]
+    },
+    {
+      "symbol": "g_card_format_no_entry",
+      "address": "0x8006c760",
+      "flags": 3,
+      "value": 0,
+      "limit": 0,
+      "label": "s_confirmation_no",
+      "choices": "0",
+      "callbacks": [
+        "f_15f60",
+        "f_17364",
+        "0"
+      ]
+    },
+    {
+      "symbol": "g_card_delete_heading_entry",
+      "address": "0x8006c77c",
+      "flags": 3276874,
+      "value": 0,
+      "limit": 0,
+      "label": "s_card_delete_heading",
+      "choices": "0",
+      "callbacks": [
+        "f_15f60",
+        "0",
+        "0"
+      ]
+    },
+    {
+      "symbol": "g_card_delete_slot_entry",
+      "address": "0x8006c798",
+      "flags": 3,
+      "value": 0,
+      "limit": 0,
+      "label": "0",
+      "choices": "g_card_block_names",
+      "callbacks": [
+        "f_168d0",
+        "f_17410",
+        "0"
+      ]
+    },
+    {
+      "symbol": "g_card_delete_exit_entry",
+      "address": "0x8006c7b4",
+      "flags": 67,
+      "value": 0,
+      "limit": 0,
+      "label": "s_exit_label",
+      "choices": "0",
+      "callbacks": [
+        "f_15f60",
+        "f_17364",
+        "0"
+      ]
+    },
+    {
+      "symbol": "g_card_select_buttons_help_entry",
+      "address": "0x8006c7d0",
+      "flags": 2,
+      "value": 0,
+      "limit": 0,
+      "label": "s_card_select_buttons_help",
+      "choices": "0",
+      "callbacks": [
+        "f_15f60",
+        "0",
+        "0"
+      ]
+    },
+    {
+      "symbol": "g_card_delete_button_help_entry",
+      "address": "0x8006c7ec",
+      "flags": 2,
+      "value": 0,
+      "limit": 0,
+      "label": "s_card_delete_button_help",
+      "choices": "0",
+      "callbacks": [
+        "f_15f60",
+        "0",
+        "0"
+      ]
+    },
+    {
+      "symbol": "g_card_delete_file_heading_entry",
+      "address": "0x8006c808",
+      "flags": 3276874,
+      "value": 0,
+      "limit": 0,
+      "label": "s_card_delete_file_heading",
+      "choices": "0",
+      "callbacks": [
+        "f_15f60",
+        "0",
+        "0"
+      ]
+    },
+    {
+      "symbol": "g_card_delete_file_name_entry",
+      "address": "0x8006c824",
+      "flags": 3276842,
+      "value": 0,
+      "limit": 0,
+      "label": "0",
+      "choices": "0",
+      "callbacks": [
+        "f_168d0",
+        "0",
+        "0"
+      ]
+    },
+    {
+      "symbol": "g_card_delete_file_yes_entry",
+      "address": "0x8006c840",
+      "flags": 2621443,
+      "value": 0,
+      "limit": 0,
+      "label": "s_confirmation_yes",
+      "choices": "0",
+      "callbacks": [
+        "f_15f60",
+        "f_17ad8",
+        "0"
+      ]
+    },
+    {
+      "symbol": "g_card_delete_file_no_entry",
+      "address": "0x8006c85c",
+      "flags": 3,
+      "value": 0,
+      "limit": 0,
+      "label": "s_confirmation_no",
+      "choices": "0",
+      "callbacks": [
+        "f_15f60",
+        "f_173ec",
+        "0"
+      ]
+    },
+    {
+      "symbol": "g_card_overwrite_heading_entry",
+      "address": "0x8006c878",
+      "flags": 3276874,
+      "value": 0,
+      "limit": 0,
+      "label": "s_card_overwrite_heading",
+      "choices": "0",
+      "callbacks": [
+        "f_15f60",
+        "0",
+        "0"
+      ]
+    },
+    {
+      "symbol": "g_card_overwrite_file_name_entry",
+      "address": "0x8006c894",
+      "flags": 3276810,
+      "value": 0,
+      "limit": 0,
+      "label": "0",
+      "choices": "0",
+      "callbacks": [
+        "f_17edc",
+        "0",
+        "0"
+      ]
+    },
+    {
+      "symbol": "g_card_overwrite_yes_entry",
+      "address": "0x8006c8b0",
+      "flags": 2621443,
+      "value": 0,
+      "limit": 0,
+      "label": "s_confirmation_yes",
+      "choices": "0",
+      "callbacks": [
+        "f_15f60",
+        "f_18174",
+        "0"
+      ]
+    },
+    {
+      "symbol": "g_card_overwrite_no_entry",
+      "address": "0x8006c8cc",
+      "flags": 3,
+      "value": 0,
+      "limit": 0,
+      "label": "s_confirmation_no",
+      "choices": "0",
+      "callbacks": [
+        "f_15f60",
+        "f_173cc",
+        "0"
+      ]
+    },
+    {
+      "symbol": "g_card_load_heading_entry",
+      "address": "0x8006c8e8",
+      "flags": 3276842,
+      "value": 0,
+      "limit": 0,
+      "label": "s_card_load_heading",
+      "choices": "0",
+      "callbacks": [
+        "f_15f60",
+        "0",
+        "0"
+      ]
+    },
+    {
+      "symbol": "g_card_load_file0_entry",
+      "address": "0x8006c904",
+      "flags": 3,
+      "value": 0,
+      "limit": 0,
+      "label": "0",
+      "choices": "0",
+      "callbacks": [
+        "f_17e0c",
+        "f_17f10",
+        "0"
+      ]
+    },
+    {
+      "symbol": "g_card_load_file1_entry",
+      "address": "0x8006c920",
+      "flags": 3,
+      "value": 0,
+      "limit": 0,
+      "label": "0",
+      "choices": "0",
+      "callbacks": [
+        "f_17e40",
+        "f_17f30",
+        "0"
+      ]
+    },
+    {
+      "symbol": "g_card_load_file2_entry",
+      "address": "0x8006c93c",
+      "flags": 3,
+      "value": 0,
+      "limit": 0,
+      "label": "0",
+      "choices": "0",
+      "callbacks": [
+        "f_17e74",
+        "f_17f50",
+        "0"
+      ]
+    },
+    {
+      "symbol": "g_card_load_file3_entry",
+      "address": "0x8006c958",
+      "flags": 3,
+      "value": 0,
+      "limit": 0,
+      "label": "0",
+      "choices": "0",
+      "callbacks": [
+        "f_17ea8",
+        "f_17f70",
+        "0"
+      ]
+    },
+    {
+      "symbol": "g_card_load_exit_entry",
+      "address": "0x8006c974",
+      "flags": 3,
+      "value": 0,
+      "limit": 0,
+      "label": "s_exit_label",
+      "choices": "0",
+      "callbacks": [
+        "f_15f60",
+        "f_17364",
+        "0"
+      ]
+    },
+    {
+      "symbol": "g_card_save_position_heading_entry",
+      "address": "0x8006c990",
+      "flags": 3276842,
+      "value": 0,
+      "limit": 0,
+      "label": "s_card_save_position_heading",
+      "choices": "0",
+      "callbacks": [
+        "f_15f60",
+        "0",
+        "0"
+      ]
+    },
+    {
+      "symbol": "g_card_save_file0_entry",
+      "address": "0x8006c9ac",
+      "flags": 3,
+      "value": 0,
+      "limit": 0,
+      "label": "0",
+      "choices": "0",
+      "callbacks": [
+        "f_17e0c",
+        "f_17434",
+        "0"
+      ]
+    },
+    {
+      "symbol": "g_card_save_file1_entry",
+      "address": "0x8006c9c8",
+      "flags": 3,
+      "value": 0,
+      "limit": 0,
+      "label": "0",
+      "choices": "0",
+      "callbacks": [
+        "f_17e40",
+        "f_17434",
+        "0"
+      ]
+    },
+    {
+      "symbol": "g_card_save_file2_entry",
+      "address": "0x8006c9e4",
+      "flags": 3,
+      "value": 0,
+      "limit": 0,
+      "label": "0",
+      "choices": "0",
+      "callbacks": [
+        "f_17e74",
+        "f_17434",
+        "0"
+      ]
+    },
+    {
+      "symbol": "g_card_save_file3_entry",
+      "address": "0x8006ca00",
+      "flags": 3,
+      "value": 0,
+      "limit": 0,
+      "label": "0",
+      "choices": "0",
+      "callbacks": [
+        "f_17ea8",
+        "f_17434",
+        "0"
+      ]
+    },
+    {
+      "symbol": "g_card_save_exit_entry",
+      "address": "0x8006ca1c",
+      "flags": 3,
+      "value": 0,
+      "limit": 0,
+      "label": "s_exit_label",
+      "choices": "0",
+      "callbacks": [
+        "f_15f60",
+        "f_17364",
+        "0"
+      ]
+    }
+  ],
+  "pointer_sites_checked": 65,
+  "pointer_sites": [
+    {
+      "definition": "g_card_format_heading_entry",
+      "address": "0x8006c714",
+      "target": "0x800115cc"
+    },
+    {
+      "definition": "g_card_format_heading_entry",
+      "address": "0x8006c71c",
+      "target": "0x80015f60"
+    },
+    {
+      "definition": "g_card_format_slot_entry",
+      "address": "0x8006c738",
+      "target": "0x800161a0"
+    },
+    {
+      "definition": "g_card_format_yes_entry",
+      "address": "0x8006c74c",
+      "target": "0x8008cf28"
+    },
+    {
+      "definition": "g_card_format_yes_entry",
+      "address": "0x8006c754",
+      "target": "0x80015f60"
+    },
+    {
+      "definition": "g_card_format_yes_entry",
+      "address": "0x8006c758",
+      "target": "0x80017a78"
+    },
+    {
+      "definition": "g_card_format_no_entry",
+      "address": "0x8006c768",
+      "target": "0x8008cf24"
+    },
+    {
+      "definition": "g_card_format_no_entry",
+      "address": "0x8006c770",
+      "target": "0x80015f60"
+    },
+    {
+      "definition": "g_card_format_no_entry",
+      "address": "0x8006c774",
+      "target": "0x80017364"
+    },
+    {
+      "definition": "g_card_delete_heading_entry",
+      "address": "0x8006c784",
+      "target": "0x80011618"
+    },
+    {
+      "definition": "g_card_delete_heading_entry",
+      "address": "0x8006c78c",
+      "target": "0x80015f60"
+    },
+    {
+      "definition": "g_card_delete_slot_entry",
+      "address": "0x8006c7a4",
+      "target": "0x8009d68c"
+    },
+    {
+      "definition": "g_card_delete_slot_entry",
+      "address": "0x8006c7a8",
+      "target": "0x800168d0"
+    },
+    {
+      "definition": "g_card_delete_slot_entry",
+      "address": "0x8006c7ac",
+      "target": "0x80017410"
+    },
+    {
+      "definition": "g_card_delete_exit_entry",
+      "address": "0x8006c7bc",
+      "target": "0x8008cef0"
+    },
+    {
+      "definition": "g_card_delete_exit_entry",
+      "address": "0x8006c7c4",
+      "target": "0x80015f60"
+    },
+    {
+      "definition": "g_card_delete_exit_entry",
+      "address": "0x8006c7c8",
+      "target": "0x80017364"
+    },
+    {
+      "definition": "g_card_select_buttons_help_entry",
+      "address": "0x8006c7d8",
+      "target": "0x800115fc"
+    },
+    {
+      "definition": "g_card_select_buttons_help_entry",
+      "address": "0x8006c7e0",
+      "target": "0x80015f60"
+    },
+    {
+      "definition": "g_card_delete_button_help_entry",
+      "address": "0x8006c7f4",
+      "target": "0x800115e4"
+    },
+    {
+      "definition": "g_card_delete_button_help_entry",
+      "address": "0x8006c7fc",
+      "target": "0x80015f60"
+    },
+    {
+      "definition": "g_card_delete_file_heading_entry",
+      "address": "0x8006c810",
+      "target": "0x80011404"
+    },
+    {
+      "definition": "g_card_delete_file_heading_entry",
+      "address": "0x8006c818",
+      "target": "0x80015f60"
+    },
+    {
+      "definition": "g_card_delete_file_name_entry",
+      "address": "0x8006c834",
+      "target": "0x800168d0"
+    },
+    {
+      "definition": "g_card_delete_file_yes_entry",
+      "address": "0x8006c848",
+      "target": "0x8008cf28"
+    },
+    {
+      "definition": "g_card_delete_file_yes_entry",
+      "address": "0x8006c850",
+      "target": "0x80015f60"
+    },
+    {
+      "definition": "g_card_delete_file_yes_entry",
+      "address": "0x8006c854",
+      "target": "0x80017ad8"
+    },
+    {
+      "definition": "g_card_delete_file_no_entry",
+      "address": "0x8006c864",
+      "target": "0x8008cf24"
+    },
+    {
+      "definition": "g_card_delete_file_no_entry",
+      "address": "0x8006c86c",
+      "target": "0x80015f60"
+    },
+    {
+      "definition": "g_card_delete_file_no_entry",
+      "address": "0x8006c870",
+      "target": "0x800173ec"
+    },
+    {
+      "definition": "g_card_overwrite_heading_entry",
+      "address": "0x8006c880",
+      "target": "0x80011630"
+    },
+    {
+      "definition": "g_card_overwrite_heading_entry",
+      "address": "0x8006c888",
+      "target": "0x80015f60"
+    },
+    {
+      "definition": "g_card_overwrite_file_name_entry",
+      "address": "0x8006c8a4",
+      "target": "0x80017edc"
+    },
+    {
+      "definition": "g_card_overwrite_yes_entry",
+      "address": "0x8006c8b8",
+      "target": "0x8008cf28"
+    },
+    {
+      "definition": "g_card_overwrite_yes_entry",
+      "address": "0x8006c8c0",
+      "target": "0x80015f60"
+    },
+    {
+      "definition": "g_card_overwrite_yes_entry",
+      "address": "0x8006c8c4",
+      "target": "0x80018174"
+    },
+    {
+      "definition": "g_card_overwrite_no_entry",
+      "address": "0x8006c8d4",
+      "target": "0x8008cf24"
+    },
+    {
+      "definition": "g_card_overwrite_no_entry",
+      "address": "0x8006c8dc",
+      "target": "0x80015f60"
+    },
+    {
+      "definition": "g_card_overwrite_no_entry",
+      "address": "0x8006c8e0",
+      "target": "0x800173cc"
+    },
+    {
+      "definition": "g_card_load_heading_entry",
+      "address": "0x8006c8f0",
+      "target": "0x80011644"
+    },
+    {
+      "definition": "g_card_load_heading_entry",
+      "address": "0x8006c8f8",
+      "target": "0x80015f60"
+    },
+    {
+      "definition": "g_card_load_file0_entry",
+      "address": "0x8006c914",
+      "target": "0x80017e0c"
+    },
+    {
+      "definition": "g_card_load_file0_entry",
+      "address": "0x8006c918",
+      "target": "0x80017f10"
+    },
+    {
+      "definition": "g_card_load_file1_entry",
+      "address": "0x8006c930",
+      "target": "0x80017e40"
+    },
+    {
+      "definition": "g_card_load_file1_entry",
+      "address": "0x8006c934",
+      "target": "0x80017f30"
+    },
+    {
+      "definition": "g_card_load_file2_entry",
+      "address": "0x8006c94c",
+      "target": "0x80017e74"
+    },
+    {
+      "definition": "g_card_load_file2_entry",
+      "address": "0x8006c950",
+      "target": "0x80017f50"
+    },
+    {
+      "definition": "g_card_load_file3_entry",
+      "address": "0x8006c968",
+      "target": "0x80017ea8"
+    },
+    {
+      "definition": "g_card_load_file3_entry",
+      "address": "0x8006c96c",
+      "target": "0x80017f70"
+    },
+    {
+      "definition": "g_card_load_exit_entry",
+      "address": "0x8006c97c",
+      "target": "0x8008cef0"
+    },
+    {
+      "definition": "g_card_load_exit_entry",
+      "address": "0x8006c984",
+      "target": "0x80015f60"
+    },
+    {
+      "definition": "g_card_load_exit_entry",
+      "address": "0x8006c988",
+      "target": "0x80017364"
+    },
+    {
+      "definition": "g_card_save_position_heading_entry",
+      "address": "0x8006c998",
+      "target": "0x80011658"
+    },
+    {
+      "definition": "g_card_save_position_heading_entry",
+      "address": "0x8006c9a0",
+      "target": "0x80015f60"
+    },
+    {
+      "definition": "g_card_save_file0_entry",
+      "address": "0x8006c9bc",
+      "target": "0x80017e0c"
+    },
+    {
+      "definition": "g_card_save_file0_entry",
+      "address": "0x8006c9c0",
+      "target": "0x80017434"
+    },
+    {
+      "definition": "g_card_save_file1_entry",
+      "address": "0x8006c9d8",
+      "target": "0x80017e40"
+    },
+    {
+      "definition": "g_card_save_file1_entry",
+      "address": "0x8006c9dc",
+      "target": "0x80017434"
+    },
+    {
+      "definition": "g_card_save_file2_entry",
+      "address": "0x8006c9f4",
+      "target": "0x80017e74"
+    },
+    {
+      "definition": "g_card_save_file2_entry",
+      "address": "0x8006c9f8",
+      "target": "0x80017434"
+    },
+    {
+      "definition": "g_card_save_file3_entry",
+      "address": "0x8006ca10",
+      "target": "0x80017ea8"
+    },
+    {
+      "definition": "g_card_save_file3_entry",
+      "address": "0x8006ca14",
+      "target": "0x80017434"
+    },
+    {
+      "definition": "g_card_save_exit_entry",
+      "address": "0x8006ca24",
+      "target": "0x8008cef0"
+    },
+    {
+      "definition": "g_card_save_exit_entry",
+      "address": "0x8006ca2c",
+      "target": "0x80015f60"
+    },
+    {
+      "definition": "g_card_save_exit_entry",
+      "address": "0x8006ca30",
+      "target": "0x80017364"
+    }
+  ],
+  "matched_definitions": 39,
+  "matched_bytes": 1000,
+  "unallocated_import": {
+    "symbol": "g_card_block_names",
+    "address": "0x8009d68c",
+    "element": "string pointer read by f_168d0 before strcpy",
+    "coverage_credit": 0
+  },
+  "prototype_review": "Known callback declarations preserve registered return types and compatible tagged TextRecord/MenuCallbackRecord types; unrecovered callbacks retain unspecified parameter lists. Numeric first/second formatter contexts preserve current card_helpers declarations; their fuller semantic types remain unresolved.",
+  "unmatched_parent_formatter": {
+    "function": "f_168d0",
+    "reports": [
+      "analysis/menu_card_round7/formatter_check.json",
+      "analysis/menu_card_round7/formatter_check_v2.json"
+    ],
+    "status": "unmatched; draft remains outside certified sources"
+  },
+  "limitations": [
+    "Group bases/counts and 28-byte stride establish these complete record extents, not original section ordering.",
+    "The 9d68c pointer table BSS allocation extent is not established.",
+    "Observed high-byte glyphs in two help strings are retained as octal string escapes; their controller artwork is not recovered.",
+    "Data and relation replay does not independently earn coverage or certify unrecovered callback code."
+  ]
+}

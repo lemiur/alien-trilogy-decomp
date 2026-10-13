@@ -1,0 +1,1680 @@
+{
+  "status": "pass",
+  "reference_sha256": "f424660920764ac70f697b5b909a42fe259a76e60acbf5b01c6ca3ee8c8f8e98",
+  "startup_gp": "0x8008cd74",
+  "analyzer_sha256": "6b700b6ecd4de4f4daac82a6a85128ac73ef1a1569ae477c490e81e639c0745b",
+  "minimum_access_cells": [
+    {
+      "address": "0x8008cd74",
+      "end_exclusive": "0x8008cd76",
+      "minimum_access_width": 2,
+      "within_startup_clear": false,
+      "mapped_names": [
+        "g_idx"
+      ],
+      "sites": [
+        {
+          "unit": "seeds",
+          "function": "f_143f8",
+          "instruction_address": "0x800143f8",
+          "instruction": "lh",
+          "operation": "read",
+          "displacement": 0
+        },
+        {
+          "unit": "seeds",
+          "function": "f_143f8",
+          "instruction_address": "0x8001441c",
+          "instruction": "sh",
+          "operation": "write",
+          "displacement": 0
+        }
+      ]
+    },
+    {
+      "address": "0x8008cda4",
+      "end_exclusive": "0x8008cda6",
+      "minimum_access_width": 2,
+      "within_startup_clear": false,
+      "mapped_names": [
+        "g_action_index"
+      ],
+      "sites": [
+        {
+          "unit": "helpers",
+          "function": "f_13fc4",
+          "instruction_address": "0x80013fc4",
+          "instruction": "lh",
+          "operation": "read",
+          "displacement": 48
+        },
+        {
+          "unit": "helpers",
+          "function": "f_13fc4",
+          "instruction_address": "0x80013fec",
+          "instruction": "sh",
+          "operation": "write",
+          "displacement": 48
+        }
+      ]
+    },
+    {
+      "address": "0x8008d004",
+      "end_exclusive": "0x8008d006",
+      "minimum_access_width": 2,
+      "within_startup_clear": false,
+      "mapped_names": [
+        "g_audio_flags"
+      ],
+      "sites": [
+        {
+          "unit": "audio_control",
+          "function": "f_3d444",
+          "instruction_address": "0x8003d444",
+          "instruction": "lhu",
+          "operation": "read",
+          "displacement": 656
+        },
+        {
+          "unit": "audio_control",
+          "function": "f_3d444",
+          "instruction_address": "0x8003d450",
+          "instruction": "sh",
+          "operation": "write",
+          "displacement": 656
+        },
+        {
+          "unit": "audio_control",
+          "function": "f_3d45c",
+          "instruction_address": "0x8003d45c",
+          "instruction": "lhu",
+          "operation": "read",
+          "displacement": 656
+        },
+        {
+          "unit": "audio_control",
+          "function": "f_3d45c",
+          "instruction_address": "0x8003d468",
+          "instruction": "sh",
+          "operation": "write",
+          "displacement": 656
+        },
+        {
+          "unit": "audio_control",
+          "function": "f_3d474",
+          "instruction_address": "0x8003d474",
+          "instruction": "lhu",
+          "operation": "read",
+          "displacement": 656
+        },
+        {
+          "unit": "audio_control",
+          "function": "f_3d4a0",
+          "instruction_address": "0x8003d4a0",
+          "instruction": "lhu",
+          "operation": "read",
+          "displacement": 656
+        },
+        {
+          "unit": "audio_control",
+          "function": "f_3d4d4",
+          "instruction_address": "0x8003d4d4",
+          "instruction": "lhu",
+          "operation": "read",
+          "displacement": 656
+        },
+        {
+          "unit": "audio_control",
+          "function": "f_3d500",
+          "instruction_address": "0x8003d500",
+          "instruction": "lhu",
+          "operation": "read",
+          "displacement": 656
+        },
+        {
+          "unit": "audio_control",
+          "function": "f_3d52c",
+          "instruction_address": "0x8003d52c",
+          "instruction": "lhu",
+          "operation": "read",
+          "displacement": 656
+        },
+        {
+          "unit": "audio_control",
+          "function": "f_3d570",
+          "instruction_address": "0x8003d570",
+          "instruction": "lhu",
+          "operation": "read",
+          "displacement": 656
+        },
+        {
+          "unit": "audio_control",
+          "function": "f_3d034",
+          "instruction_address": "0x8003d050",
+          "instruction": "lhu",
+          "operation": "read",
+          "displacement": 656
+        },
+        {
+          "unit": "audio_control",
+          "function": "f_3d130",
+          "instruction_address": "0x8003d130",
+          "instruction": "lhu",
+          "operation": "read",
+          "displacement": 656
+        },
+        {
+          "unit": "audio_control",
+          "function": "f_3d814",
+          "instruction_address": "0x8003d814",
+          "instruction": "lhu",
+          "operation": "read",
+          "displacement": 656
+        },
+        {
+          "unit": "audio_control",
+          "function": "f_3d5b4",
+          "instruction_address": "0x8003d5b4",
+          "instruction": "lhu",
+          "operation": "read",
+          "displacement": 656
+        }
+      ]
+    },
+    {
+      "address": "0x8008d00c",
+      "end_exclusive": "0x8008d00e",
+      "minimum_access_width": 2,
+      "within_startup_clear": false,
+      "mapped_names": [
+        "g_music_flags"
+      ],
+      "sites": [
+        {
+          "unit": "music_control",
+          "function": "f_3f610",
+          "instruction_address": "0x8003f610",
+          "instruction": "lhu",
+          "operation": "read",
+          "displacement": 664
+        },
+        {
+          "unit": "music_control",
+          "function": "f_3f610",
+          "instruction_address": "0x8003f668",
+          "instruction": "lhu",
+          "operation": "read",
+          "displacement": 664
+        },
+        {
+          "unit": "music_control",
+          "function": "f_3f610",
+          "instruction_address": "0x8003f67c",
+          "instruction": "sh",
+          "operation": "write",
+          "displacement": 664
+        },
+        {
+          "unit": "music_control",
+          "function": "f_3f7a4",
+          "instruction_address": "0x8003f7a4",
+          "instruction": "lhu",
+          "operation": "read",
+          "displacement": 664
+        },
+        {
+          "unit": "music_control",
+          "function": "f_3f7a4",
+          "instruction_address": "0x8003f7b0",
+          "instruction": "sh",
+          "operation": "write",
+          "displacement": 664
+        },
+        {
+          "unit": "music_control",
+          "function": "f_3f7bc",
+          "instruction_address": "0x8003f7bc",
+          "instruction": "lhu",
+          "operation": "read",
+          "displacement": 664
+        },
+        {
+          "unit": "music_control",
+          "function": "f_3f7bc",
+          "instruction_address": "0x8003f7c8",
+          "instruction": "sh",
+          "operation": "write",
+          "displacement": 664
+        },
+        {
+          "unit": "music_control",
+          "function": "f_3f7d4",
+          "instruction_address": "0x8003f7d4",
+          "instruction": "lhu",
+          "operation": "read",
+          "displacement": 664
+        },
+        {
+          "unit": "music_control",
+          "function": "f_3f690",
+          "instruction_address": "0x8003f690",
+          "instruction": "lhu",
+          "operation": "read",
+          "displacement": 664
+        },
+        {
+          "unit": "music_control",
+          "function": "f_3f6dc",
+          "instruction_address": "0x8003f6dc",
+          "instruction": "lhu",
+          "operation": "read",
+          "displacement": 664
+        },
+        {
+          "unit": "music_control",
+          "function": "f_3f81c",
+          "instruction_address": "0x8003f81c",
+          "instruction": "lhu",
+          "operation": "read",
+          "displacement": 664
+        },
+        {
+          "unit": "music_control",
+          "function": "f_3f81c",
+          "instruction_address": "0x8003f870",
+          "instruction": "lhu",
+          "operation": "read",
+          "displacement": 664
+        },
+        {
+          "unit": "music_control",
+          "function": "f_3f81c",
+          "instruction_address": "0x8003f87c",
+          "instruction": "sh",
+          "operation": "write",
+          "displacement": 664
+        },
+        {
+          "unit": "music_control",
+          "function": "f_3f728",
+          "instruction_address": "0x8003f728",
+          "instruction": "lhu",
+          "operation": "read",
+          "displacement": 664
+        },
+        {
+          "unit": "music_control",
+          "function": "f_3f514",
+          "instruction_address": "0x8003f524",
+          "instruction": "lhu",
+          "operation": "read",
+          "displacement": 664
+        },
+        {
+          "unit": "music_control",
+          "function": "f_3f514",
+          "instruction_address": "0x8003f5dc",
+          "instruction": "lhu",
+          "operation": "read",
+          "displacement": 664
+        },
+        {
+          "unit": "music_control",
+          "function": "f_3f514",
+          "instruction_address": "0x8003f5f8",
+          "instruction": "sh",
+          "operation": "write",
+          "displacement": 664
+        }
+      ]
+    },
+    {
+      "address": "0x8008d00e",
+      "end_exclusive": "0x8008d010",
+      "minimum_access_width": 2,
+      "within_startup_clear": false,
+      "mapped_names": [
+        "g_music_result"
+      ],
+      "sites": [
+        {
+          "unit": "music_control",
+          "function": "f_3f610",
+          "instruction_address": "0x8003f620",
+          "instruction": "sh",
+          "operation": "write",
+          "displacement": 666
+        },
+        {
+          "unit": "music_control",
+          "function": "f_3f360",
+          "instruction_address": "0x8003f3a0",
+          "instruction": "lh",
+          "operation": "read",
+          "displacement": 666
+        },
+        {
+          "unit": "music_control",
+          "function": "f_3f81c",
+          "instruction_address": "0x8003f894",
+          "instruction": "lh",
+          "operation": "read",
+          "displacement": 666
+        },
+        {
+          "unit": "music_control",
+          "function": "f_3f514",
+          "instruction_address": "0x8003f5e0",
+          "instruction": "sh",
+          "operation": "write",
+          "displacement": 666
+        }
+      ]
+    },
+    {
+      "address": "0x8008d010",
+      "end_exclusive": "0x8008d012",
+      "minimum_access_width": 2,
+      "within_startup_clear": false,
+      "mapped_names": [
+        "g_music_callback_state"
+      ],
+      "sites": [
+        {
+          "unit": "music_control",
+          "function": "f_3f610",
+          "instruction_address": "0x8003f624",
+          "instruction": "sh",
+          "operation": "write",
+          "displacement": 668
+        },
+        {
+          "unit": "music_control",
+          "function": "f_3f514",
+          "instruction_address": "0x8003f5e4",
+          "instruction": "sh",
+          "operation": "write",
+          "displacement": 668
+        }
+      ]
+    },
+    {
+      "address": "0x8008d012",
+      "end_exclusive": "0x8008d014",
+      "minimum_access_width": 2,
+      "within_startup_clear": false,
+      "mapped_names": [
+        "g_music_timer"
+      ],
+      "sites": [
+        {
+          "unit": "music_control",
+          "function": "f_3f610",
+          "instruction_address": "0x8003f670",
+          "instruction": "sh",
+          "operation": "write",
+          "displacement": 670
+        },
+        {
+          "unit": "music_control",
+          "function": "f_3f81c",
+          "instruction_address": "0x8003f830",
+          "instruction": "lhu",
+          "operation": "read",
+          "displacement": 670
+        },
+        {
+          "unit": "music_control",
+          "function": "f_3f81c",
+          "instruction_address": "0x8003f83c",
+          "instruction": "sh",
+          "operation": "write",
+          "displacement": 670
+        },
+        {
+          "unit": "music_control",
+          "function": "f_3f81c",
+          "instruction_address": "0x8003f874",
+          "instruction": "sh",
+          "operation": "write",
+          "displacement": 670
+        },
+        {
+          "unit": "music_control",
+          "function": "f_3f81c",
+          "instruction_address": "0x8003f898",
+          "instruction": "sh",
+          "operation": "write",
+          "displacement": 670
+        },
+        {
+          "unit": "music_control",
+          "function": "f_3f514",
+          "instruction_address": "0x8003f5ec",
+          "instruction": "sh",
+          "operation": "write",
+          "displacement": 670
+        }
+      ]
+    },
+    {
+      "address": "0x8008cff8",
+      "end_exclusive": "0x8008cffa",
+      "minimum_access_width": 2,
+      "within_startup_clear": false,
+      "mapped_names": [
+        "g_mode_control"
+      ],
+      "sites": [
+        {
+          "unit": "mode_control",
+          "function": "f_396fc",
+          "instruction_address": "0x800396fc",
+          "instruction": "sh",
+          "operation": "write",
+          "displacement": 644
+        },
+        {
+          "unit": "mode_control",
+          "function": "f_39708",
+          "instruction_address": "0x80039708",
+          "instruction": "lh",
+          "operation": "read",
+          "displacement": 644
+        }
+      ]
+    },
+    {
+      "address": "0x8008cdb0",
+      "end_exclusive": "0x8008cdb2",
+      "minimum_access_width": 2,
+      "within_startup_clear": false,
+      "mapped_names": [
+        "g_heap_snapshot_current"
+      ],
+      "sites": [
+        {
+          "unit": "heap_setup",
+          "function": "f_14d34",
+          "instruction_address": "0x80014de8",
+          "instruction": "sh",
+          "operation": "write",
+          "displacement": 60
+        }
+      ]
+    },
+    {
+      "address": "0x8008cdd0",
+      "end_exclusive": "0x8008cdd2",
+      "minimum_access_width": 2,
+      "within_startup_clear": false,
+      "mapped_names": [
+        "g_display_status"
+      ],
+      "sites": [
+        {
+          "unit": "game_helpers2",
+          "function": "f_175c0",
+          "instruction_address": "0x800175c0",
+          "instruction": "lh",
+          "operation": "read",
+          "displacement": 92
+        },
+        {
+          "unit": "game_helpers2",
+          "function": "f_1b18c",
+          "instruction_address": "0x8001b1ec",
+          "instruction": "sh",
+          "operation": "write",
+          "displacement": 92
+        }
+      ]
+    },
+    {
+      "address": "0x8008cdd2",
+      "end_exclusive": "0x8008cdd4",
+      "minimum_access_width": 2,
+      "within_startup_clear": false,
+      "mapped_names": [
+        "g_display_action"
+      ],
+      "sites": [
+        {
+          "unit": "game_helpers2",
+          "function": "f_1768c",
+          "instruction_address": "0x8001768c",
+          "instruction": "lh",
+          "operation": "read",
+          "displacement": 94
+        },
+        {
+          "unit": "game_helpers2",
+          "function": "f_16b20",
+          "instruction_address": "0x80016b20",
+          "instruction": "lh",
+          "operation": "read",
+          "displacement": 94
+        },
+        {
+          "unit": "game_helpers2",
+          "function": "f_1737c",
+          "instruction_address": "0x800173a0",
+          "instruction": "sh",
+          "operation": "write",
+          "displacement": 94
+        },
+        {
+          "unit": "game_helpers2",
+          "function": "f_174c4",
+          "instruction_address": "0x800174c4",
+          "instruction": "lh",
+          "operation": "read",
+          "displacement": 94
+        },
+        {
+          "unit": "game_helpers2",
+          "function": "f_1b0d4",
+          "instruction_address": "0x8001b138",
+          "instruction": "sh",
+          "operation": "write",
+          "displacement": 94
+        }
+      ]
+    },
+    {
+      "address": "0x8008cdd6",
+      "end_exclusive": "0x8008cdd8",
+      "minimum_access_width": 2,
+      "within_startup_clear": false,
+      "mapped_names": [],
+      "sites": [
+        {
+          "unit": "game_helpers2",
+          "function": "f_18174",
+          "instruction_address": "0x80018174",
+          "instruction": "lh",
+          "operation": "read",
+          "displacement": 98
+        },
+        {
+          "unit": "game_helpers2",
+          "function": "f_17edc",
+          "instruction_address": "0x80017ef0",
+          "instruction": "lh",
+          "operation": "read",
+          "displacement": 98
+        },
+        {
+          "unit": "game_helpers2",
+          "function": "f_17434",
+          "instruction_address": "0x80017460",
+          "instruction": "sh",
+          "operation": "write",
+          "displacement": 98
+        },
+        {
+          "unit": "game_helpers2",
+          "function": "f_17410",
+          "instruction_address": "0x80017428",
+          "instruction": "sh",
+          "operation": "write",
+          "displacement": 98
+        },
+        {
+          "unit": "game_helpers2",
+          "function": "f_1b0d4",
+          "instruction_address": "0x8001b150",
+          "instruction": "sh",
+          "operation": "write",
+          "displacement": 98
+        }
+      ]
+    },
+    {
+      "address": "0x8008cdd8",
+      "end_exclusive": "0x8008cddc",
+      "minimum_access_width": 4,
+      "within_startup_clear": false,
+      "mapped_names": [
+        "g_8cdd8"
+      ],
+      "sites": [
+        {
+          "unit": "game_helpers2",
+          "function": "f_18174",
+          "instruction_address": "0x8001818c",
+          "instruction": "sw",
+          "operation": "write",
+          "displacement": 100
+        },
+        {
+          "unit": "game_helpers2",
+          "function": "f_1734c",
+          "instruction_address": "0x80017358",
+          "instruction": "sw",
+          "operation": "write",
+          "displacement": 100
+        },
+        {
+          "unit": "game_helpers2",
+          "function": "f_17364",
+          "instruction_address": "0x80017370",
+          "instruction": "sw",
+          "operation": "write",
+          "displacement": 100
+        },
+        {
+          "unit": "game_helpers2",
+          "function": "f_173b4",
+          "instruction_address": "0x800173c0",
+          "instruction": "sw",
+          "operation": "write",
+          "displacement": 100
+        },
+        {
+          "unit": "game_helpers2",
+          "function": "f_173cc",
+          "instruction_address": "0x800173d0",
+          "instruction": "sw",
+          "operation": "write",
+          "displacement": 100
+        },
+        {
+          "unit": "game_helpers2",
+          "function": "f_173dc",
+          "instruction_address": "0x800173e0",
+          "instruction": "sw",
+          "operation": "write",
+          "displacement": 100
+        },
+        {
+          "unit": "game_helpers2",
+          "function": "f_173ec",
+          "instruction_address": "0x800173f0",
+          "instruction": "sw",
+          "operation": "write",
+          "displacement": 100
+        },
+        {
+          "unit": "game_helpers2",
+          "function": "f_173fc",
+          "instruction_address": "0x80017400",
+          "instruction": "sw",
+          "operation": "write",
+          "displacement": 100
+        },
+        {
+          "unit": "game_helpers2",
+          "function": "f_1749c",
+          "instruction_address": "0x800174a8",
+          "instruction": "sw",
+          "operation": "write",
+          "displacement": 100
+        },
+        {
+          "unit": "game_helpers2",
+          "function": "f_174b4",
+          "instruction_address": "0x800174b8",
+          "instruction": "sw",
+          "operation": "write",
+          "displacement": 100
+        },
+        {
+          "unit": "game_helpers2",
+          "function": "f_174f0",
+          "instruction_address": "0x800174fc",
+          "instruction": "sw",
+          "operation": "write",
+          "displacement": 100
+        },
+        {
+          "unit": "game_helpers2",
+          "function": "f_175ec",
+          "instruction_address": "0x800175f0",
+          "instruction": "sw",
+          "operation": "write",
+          "displacement": 100
+        },
+        {
+          "unit": "game_helpers2",
+          "function": "f_1737c",
+          "instruction_address": "0x80017390",
+          "instruction": "sw",
+          "operation": "write",
+          "displacement": 100
+        },
+        {
+          "unit": "game_helpers2",
+          "function": "f_174c4",
+          "instruction_address": "0x800174e0",
+          "instruction": "sw",
+          "operation": "write",
+          "displacement": 100
+        },
+        {
+          "unit": "game_helpers2",
+          "function": "f_17a50",
+          "instruction_address": "0x80017a5c",
+          "instruction": "sw",
+          "operation": "write",
+          "displacement": 100
+        },
+        {
+          "unit": "game_helpers2",
+          "function": "f_17a78",
+          "instruction_address": "0x80017ac0",
+          "instruction": "sw",
+          "operation": "write",
+          "displacement": 100
+        },
+        {
+          "unit": "game_helpers2",
+          "function": "f_1b18c",
+          "instruction_address": "0x8001b1cc",
+          "instruction": "sw",
+          "operation": "write",
+          "displacement": 100
+        },
+        {
+          "unit": "game_helpers2",
+          "function": "f_1b200",
+          "instruction_address": "0x8001b23c",
+          "instruction": "sw",
+          "operation": "write",
+          "displacement": 100
+        },
+        {
+          "unit": "game_helpers2",
+          "function": "f_17434",
+          "instruction_address": "0x80017480",
+          "instruction": "sw",
+          "operation": "write",
+          "displacement": 100
+        },
+        {
+          "unit": "game_helpers2",
+          "function": "f_17548",
+          "instruction_address": "0x80017594",
+          "instruction": "sw",
+          "operation": "write",
+          "displacement": 100
+        },
+        {
+          "unit": "game_helpers2",
+          "function": "f_17410",
+          "instruction_address": "0x80017418",
+          "instruction": "sw",
+          "operation": "write",
+          "displacement": 100
+        },
+        {
+          "unit": "game_helpers2",
+          "function": "f_1bda0",
+          "instruction_address": "0x8001bdb8",
+          "instruction": "lw",
+          "operation": "read",
+          "displacement": 100
+        },
+        {
+          "unit": "game_helpers2",
+          "function": "f_1bda0",
+          "instruction_address": "0x8001bdec",
+          "instruction": "sw",
+          "operation": "write",
+          "displacement": 100
+        },
+        {
+          "unit": "game_helpers2",
+          "function": "f_1bcd4",
+          "instruction_address": "0x8001bcf8",
+          "instruction": "lw",
+          "operation": "read",
+          "displacement": 100
+        }
+      ]
+    },
+    {
+      "address": "0x8008cddc",
+      "end_exclusive": "0x8008cde0",
+      "minimum_access_width": 4,
+      "within_startup_clear": false,
+      "mapped_names": [
+        "g_8cddc"
+      ],
+      "sites": [
+        {
+          "unit": "game_helpers2",
+          "function": "f_18174",
+          "instruction_address": "0x80018190",
+          "instruction": "sw",
+          "operation": "write",
+          "displacement": 104
+        },
+        {
+          "unit": "game_helpers2",
+          "function": "f_17a78",
+          "instruction_address": "0x80017ac4",
+          "instruction": "sw",
+          "operation": "write",
+          "displacement": 104
+        }
+      ]
+    },
+    {
+      "address": "0x8008cde0",
+      "end_exclusive": "0x8008cde4",
+      "minimum_access_width": 4,
+      "within_startup_clear": false,
+      "mapped_names": [
+        "g_callback_src_6c"
+      ],
+      "sites": [
+        {
+          "unit": "game_helpers2",
+          "function": "f_1734c",
+          "instruction_address": "0x8001734c",
+          "instruction": "lw",
+          "operation": "read",
+          "displacement": 108
+        },
+        {
+          "unit": "game_helpers2",
+          "function": "f_1b18c",
+          "instruction_address": "0x8001b1d0",
+          "instruction": "sw",
+          "operation": "write",
+          "displacement": 108
+        },
+        {
+          "unit": "game_helpers2",
+          "function": "f_1b200",
+          "instruction_address": "0x8001b244",
+          "instruction": "sw",
+          "operation": "write",
+          "displacement": 108
+        }
+      ]
+    },
+    {
+      "address": "0x8008cde4",
+      "end_exclusive": "0x8008cde8",
+      "minimum_access_width": 4,
+      "within_startup_clear": false,
+      "mapped_names": [
+        "g_callback_src_70"
+      ],
+      "sites": [
+        {
+          "unit": "game_helpers2",
+          "function": "f_17364",
+          "instruction_address": "0x80017364",
+          "instruction": "lw",
+          "operation": "read",
+          "displacement": 112
+        },
+        {
+          "unit": "game_helpers2",
+          "function": "f_174c4",
+          "instruction_address": "0x800174d4",
+          "instruction": "lw",
+          "operation": "read",
+          "displacement": 112
+        },
+        {
+          "unit": "game_helpers2",
+          "function": "f_17a78",
+          "instruction_address": "0x80017ab8",
+          "instruction": "lw",
+          "operation": "read",
+          "displacement": 112
+        },
+        {
+          "unit": "game_helpers2",
+          "function": "f_1b18c",
+          "instruction_address": "0x8001b1d8",
+          "instruction": "sw",
+          "operation": "write",
+          "displacement": 112
+        },
+        {
+          "unit": "game_helpers2",
+          "function": "f_1b200",
+          "instruction_address": "0x8001b24c",
+          "instruction": "sw",
+          "operation": "write",
+          "displacement": 112
+        }
+      ]
+    },
+    {
+      "address": "0x8008cde8",
+      "end_exclusive": "0x8008cdea",
+      "minimum_access_width": 2,
+      "within_startup_clear": false,
+      "mapped_names": [
+        "g_task_mode"
+      ],
+      "sites": [
+        {
+          "unit": "game_helpers2",
+          "function": "f_1b18c",
+          "instruction_address": "0x8001b1dc",
+          "instruction": "sh",
+          "operation": "write",
+          "displacement": 116
+        },
+        {
+          "unit": "game_helpers2",
+          "function": "f_1b200",
+          "instruction_address": "0x8001b254",
+          "instruction": "sh",
+          "operation": "write",
+          "displacement": 116
+        },
+        {
+          "unit": "game_helpers2",
+          "function": "f_16144",
+          "instruction_address": "0x80016144",
+          "instruction": "lh",
+          "operation": "read",
+          "displacement": 116
+        }
+      ]
+    },
+    {
+      "address": "0x8008cdb8",
+      "end_exclusive": "0x8008cdbc",
+      "minimum_access_width": 4,
+      "within_startup_clear": false,
+      "mapped_names": [
+        "g_8cdb8"
+      ],
+      "sites": [
+        {
+          "unit": "game_helpers2",
+          "function": "f_1b0d4",
+          "instruction_address": "0x8001b100",
+          "instruction": "sw",
+          "operation": "write",
+          "displacement": 68
+        },
+        {
+          "unit": "game_helpers2",
+          "function": "f_1796c",
+          "instruction_address": "0x80017a30",
+          "instruction": "lw",
+          "operation": "read",
+          "displacement": 68
+        },
+        {
+          "unit": "game_helpers2",
+          "function": "f_178d4",
+          "instruction_address": "0x800178dc",
+          "instruction": "lw",
+          "operation": "read",
+          "displacement": 68
+        },
+        {
+          "unit": "game_helpers2",
+          "function": "f_1ba18",
+          "instruction_address": "0x8001ba30",
+          "instruction": "lw",
+          "operation": "read",
+          "displacement": 68
+        },
+        {
+          "unit": "game_helpers2",
+          "function": "f_1ba18",
+          "instruction_address": "0x8001bb40",
+          "instruction": "lw",
+          "operation": "read",
+          "displacement": 68
+        }
+      ]
+    },
+    {
+      "address": "0x8008cdbd",
+      "end_exclusive": "0x8008cdbe",
+      "minimum_access_width": 1,
+      "within_startup_clear": false,
+      "mapped_names": [],
+      "sites": [
+        {
+          "unit": "game_helpers2",
+          "function": "f_1b0d4",
+          "instruction_address": "0x8001b124",
+          "instruction": "sb",
+          "operation": "write",
+          "displacement": 73
+        }
+      ]
+    },
+    {
+      "address": "0x8008cdbc",
+      "end_exclusive": "0x8008cdbd",
+      "minimum_access_width": 1,
+      "within_startup_clear": false,
+      "mapped_names": [
+        "g_request_kind2_color"
+      ],
+      "sites": [
+        {
+          "unit": "game_helpers2",
+          "function": "f_1b0d4",
+          "instruction_address": "0x8001b12c",
+          "instruction": "sb",
+          "operation": "write",
+          "displacement": 72
+        }
+      ]
+    },
+    {
+      "address": "0x8008cdbe",
+      "end_exclusive": "0x8008cdbf",
+      "minimum_access_width": 1,
+      "within_startup_clear": false,
+      "mapped_names": [],
+      "sites": [
+        {
+          "unit": "game_helpers2",
+          "function": "f_1b0d4",
+          "instruction_address": "0x8001b130",
+          "instruction": "sb",
+          "operation": "write",
+          "displacement": 74
+        }
+      ]
+    },
+    {
+      "address": "0x8008cdd4",
+      "end_exclusive": "0x8008cdd6",
+      "minimum_access_width": 2,
+      "within_startup_clear": false,
+      "mapped_names": [
+        "g_state_modes"
+      ],
+      "sites": [
+        {
+          "unit": "game_helpers2",
+          "function": "f_1b0d4",
+          "instruction_address": "0x8001b140",
+          "instruction": "sh",
+          "operation": "write",
+          "displacement": 96
+        }
+      ]
+    },
+    {
+      "address": "0x8008cdec",
+      "end_exclusive": "0x8008cdee",
+      "minimum_access_width": 2,
+      "within_startup_clear": false,
+      "mapped_names": [
+        "g_8cdec"
+      ],
+      "sites": [
+        {
+          "unit": "game_helpers2",
+          "function": "f_1b0d4",
+          "instruction_address": "0x8001b154",
+          "instruction": "sh",
+          "operation": "write",
+          "displacement": 120
+        }
+      ]
+    },
+    {
+      "address": "0x8008cedc",
+      "end_exclusive": "0x8008cee0",
+      "minimum_access_width": 4,
+      "within_startup_clear": false,
+      "mapped_names": [
+        "g_8cedc"
+      ],
+      "sites": [
+        {
+          "unit": "game_helpers2",
+          "function": "f_1b0d4",
+          "instruction_address": "0x8001b160",
+          "instruction": "sw",
+          "operation": "write",
+          "displacement": 360
+        }
+      ]
+    },
+    {
+      "address": "0x8008ced8",
+      "end_exclusive": "0x8008cedc",
+      "minimum_access_width": 4,
+      "within_startup_clear": false,
+      "mapped_names": [
+        "g_8ced8",
+        "g_menu_buffers"
+      ],
+      "sites": [
+        {
+          "unit": "game_helpers2",
+          "function": "f_1b0d4",
+          "instruction_address": "0x8001b16c",
+          "instruction": "sw",
+          "operation": "write",
+          "displacement": 356
+        }
+      ]
+    },
+    {
+      "address": "0x8008cee0",
+      "end_exclusive": "0x8008cee4",
+      "minimum_access_width": 4,
+      "within_startup_clear": false,
+      "mapped_names": [
+        "g_8cee0"
+      ],
+      "sites": [
+        {
+          "unit": "game_helpers2",
+          "function": "f_1b0d4",
+          "instruction_address": "0x8001b178",
+          "instruction": "sw",
+          "operation": "write",
+          "displacement": 364
+        }
+      ]
+    },
+    {
+      "address": "0x8008ced4",
+      "end_exclusive": "0x8008ced8",
+      "minimum_access_width": 4,
+      "within_startup_clear": false,
+      "mapped_names": [
+        "g_menu_entry_head"
+      ],
+      "sites": [
+        {
+          "unit": "game_helpers2",
+          "function": "f_17bac",
+          "instruction_address": "0x80017bac",
+          "instruction": "lw",
+          "operation": "read",
+          "displacement": 352
+        },
+        {
+          "unit": "game_helpers2",
+          "function": "f_17bac",
+          "instruction_address": "0x80017bc0",
+          "instruction": "sw",
+          "operation": "write",
+          "displacement": 352
+        },
+        {
+          "unit": "game_helpers2",
+          "function": "f_17bcc",
+          "instruction_address": "0x80017c1c",
+          "instruction": "sw",
+          "operation": "write",
+          "displacement": 352
+        }
+      ]
+    },
+    {
+      "address": "0x8008cf00",
+      "end_exclusive": "0x8008cf02",
+      "minimum_access_width": 2,
+      "within_startup_clear": false,
+      "mapped_names": [
+        "g_8cf00"
+      ],
+      "sites": [
+        {
+          "unit": "game_text",
+          "function": "f_186d8",
+          "instruction_address": "0x800186d8",
+          "instruction": "sh",
+          "operation": "write",
+          "displacement": 396
+        }
+      ]
+    },
+    {
+      "address": "0x8008cfd0",
+      "end_exclusive": "0x8008cfd2",
+      "minimum_access_width": 2,
+      "within_startup_clear": false,
+      "mapped_names": [
+        "g_8cfd0"
+      ],
+      "sites": [
+        {
+          "unit": "game_helpers8",
+          "function": "f_37c78",
+          "instruction_address": "0x80037cd0",
+          "instruction": "sh",
+          "operation": "write",
+          "displacement": 604
+        },
+        {
+          "unit": "game_helpers8",
+          "function": "f_37b98",
+          "instruction_address": "0x80037c48",
+          "instruction": "lhu",
+          "operation": "read",
+          "displacement": 604
+        },
+        {
+          "unit": "game_helpers8",
+          "function": "f_37b98",
+          "instruction_address": "0x80037c60",
+          "instruction": "sh",
+          "operation": "write",
+          "displacement": 604
+        }
+      ]
+    },
+    {
+      "address": "0x8008cfcc",
+      "end_exclusive": "0x8008cfd0",
+      "minimum_access_width": 4,
+      "within_startup_clear": false,
+      "mapped_names": [
+        "g_8cfcc"
+      ],
+      "sites": [
+        {
+          "unit": "game_helpers8",
+          "function": "f_37c78",
+          "instruction_address": "0x80037cd4",
+          "instruction": "sw",
+          "operation": "write",
+          "displacement": 600
+        },
+        {
+          "unit": "game_helpers8",
+          "function": "f_37b98",
+          "instruction_address": "0x80037c0c",
+          "instruction": "lw",
+          "operation": "read",
+          "displacement": 600
+        },
+        {
+          "unit": "game_helpers8",
+          "function": "f_37b98",
+          "instruction_address": "0x80037c34",
+          "instruction": "sw",
+          "operation": "write",
+          "displacement": 600
+        }
+      ]
+    },
+    {
+      "address": "0x8008cf84",
+      "end_exclusive": "0x8008cf86",
+      "minimum_access_width": 2,
+      "within_startup_clear": false,
+      "mapped_names": [
+        "g_8cf84"
+      ],
+      "sites": [
+        {
+          "unit": "text_helpers4",
+          "function": "f_1cd54",
+          "instruction_address": "0x8001cd68",
+          "instruction": "lh",
+          "operation": "read",
+          "displacement": 528
+        },
+        {
+          "unit": "text_helpers4",
+          "function": "f_1cd54",
+          "instruction_address": "0x8001cda4",
+          "instruction": "sh",
+          "operation": "write",
+          "displacement": 528
+        }
+      ]
+    },
+    {
+      "address": "0x8008cd86",
+      "end_exclusive": "0x8008cd88",
+      "minimum_access_width": 2,
+      "within_startup_clear": false,
+      "mapped_names": [
+        "g_8cd86"
+      ],
+      "sites": [
+        {
+          "unit": "recovery_s7_01",
+          "function": "f_1380c",
+          "instruction_address": "0x80013850",
+          "instruction": "sh",
+          "operation": "write",
+          "displacement": 18
+        },
+        {
+          "unit": "recovery_s7_01",
+          "function": "f_1380c",
+          "instruction_address": "0x8001386c",
+          "instruction": "sh",
+          "operation": "write",
+          "displacement": 18
+        },
+        {
+          "unit": "recovery_s7_01",
+          "function": "f_1380c",
+          "instruction_address": "0x800138a8",
+          "instruction": "sh",
+          "operation": "write",
+          "displacement": 18
+        },
+        {
+          "unit": "recovery_s7_01",
+          "function": "f_1380c",
+          "instruction_address": "0x800138e4",
+          "instruction": "sh",
+          "operation": "write",
+          "displacement": 18
+        }
+      ]
+    },
+    {
+      "address": "0x8008cd84",
+      "end_exclusive": "0x8008cd86",
+      "minimum_access_width": 2,
+      "within_startup_clear": false,
+      "mapped_names": [
+        "g_8cd84"
+      ],
+      "sites": [
+        {
+          "unit": "recovery_s7_01",
+          "function": "f_1380c",
+          "instruction_address": "0x80013858",
+          "instruction": "sh",
+          "operation": "write",
+          "displacement": 16
+        },
+        {
+          "unit": "recovery_s7_01",
+          "function": "f_1380c",
+          "instruction_address": "0x80013874",
+          "instruction": "sh",
+          "operation": "write",
+          "displacement": 16
+        },
+        {
+          "unit": "recovery_s7_01",
+          "function": "f_1380c",
+          "instruction_address": "0x800138b0",
+          "instruction": "sh",
+          "operation": "write",
+          "displacement": 16
+        },
+        {
+          "unit": "recovery_s7_01",
+          "function": "f_1380c",
+          "instruction_address": "0x800138ec",
+          "instruction": "sh",
+          "operation": "write",
+          "displacement": 16
+        }
+      ]
+    },
+    {
+      "address": "0x8008cd88",
+      "end_exclusive": "0x8008cd8a",
+      "minimum_access_width": 2,
+      "within_startup_clear": false,
+      "mapped_names": [
+        "g_8cd88"
+      ],
+      "sites": [
+        {
+          "unit": "recovery_s7_01",
+          "function": "f_1380c",
+          "instruction_address": "0x80013860",
+          "instruction": "sh",
+          "operation": "write",
+          "displacement": 20
+        },
+        {
+          "unit": "recovery_s7_01",
+          "function": "f_1380c",
+          "instruction_address": "0x8001387c",
+          "instruction": "sh",
+          "operation": "write",
+          "displacement": 20
+        },
+        {
+          "unit": "recovery_s7_01",
+          "function": "f_1380c",
+          "instruction_address": "0x800138b8",
+          "instruction": "sh",
+          "operation": "write",
+          "displacement": 20
+        },
+        {
+          "unit": "recovery_s7_01",
+          "function": "f_1380c",
+          "instruction_address": "0x800138f4",
+          "instruction": "sh",
+          "operation": "write",
+          "displacement": 20
+        }
+      ]
+    },
+    {
+      "address": "0x8008cd9a",
+      "end_exclusive": "0x8008cd9c",
+      "minimum_access_width": 2,
+      "within_startup_clear": false,
+      "mapped_names": [
+        "g_8cd9a"
+      ],
+      "sites": [
+        {
+          "unit": "recovery_s7_01",
+          "function": "f_1380c",
+          "instruction_address": "0x80013884",
+          "instruction": "sh",
+          "operation": "write",
+          "displacement": 38
+        },
+        {
+          "unit": "recovery_s7_01",
+          "function": "f_1380c",
+          "instruction_address": "0x800138c0",
+          "instruction": "sh",
+          "operation": "write",
+          "displacement": 38
+        },
+        {
+          "unit": "recovery_s7_01",
+          "function": "f_1380c",
+          "instruction_address": "0x800138fc",
+          "instruction": "sh",
+          "operation": "write",
+          "displacement": 38
+        }
+      ]
+    },
+    {
+      "address": "0x8008cd96",
+      "end_exclusive": "0x8008cd98",
+      "minimum_access_width": 2,
+      "within_startup_clear": false,
+      "mapped_names": [
+        "g_8cd96"
+      ],
+      "sites": [
+        {
+          "unit": "recovery_s7_01",
+          "function": "f_1380c",
+          "instruction_address": "0x8001388c",
+          "instruction": "sh",
+          "operation": "write",
+          "displacement": 34
+        },
+        {
+          "unit": "recovery_s7_01",
+          "function": "f_1380c",
+          "instruction_address": "0x800138c8",
+          "instruction": "sh",
+          "operation": "write",
+          "displacement": 34
+        },
+        {
+          "unit": "recovery_s7_01",
+          "function": "f_1380c",
+          "instruction_address": "0x80013904",
+          "instruction": "sh",
+          "operation": "write",
+          "displacement": 34
+        }
+      ]
+    },
+    {
+      "address": "0x8008cd92",
+      "end_exclusive": "0x8008cd94",
+      "minimum_access_width": 2,
+      "within_startup_clear": false,
+      "mapped_names": [
+        "g_8cd92"
+      ],
+      "sites": [
+        {
+          "unit": "recovery_s7_01",
+          "function": "f_1380c",
+          "instruction_address": "0x80013894",
+          "instruction": "sh",
+          "operation": "write",
+          "displacement": 30
+        },
+        {
+          "unit": "recovery_s7_01",
+          "function": "f_1380c",
+          "instruction_address": "0x800138d0",
+          "instruction": "sh",
+          "operation": "write",
+          "displacement": 30
+        },
+        {
+          "unit": "recovery_s7_01",
+          "function": "f_1380c",
+          "instruction_address": "0x8001390c",
+          "instruction": "sh",
+          "operation": "write",
+          "displacement": 30
+        }
+      ]
+    },
+    {
+      "address": "0x8008cd98",
+      "end_exclusive": "0x8008cd9a",
+      "minimum_access_width": 2,
+      "within_startup_clear": false,
+      "mapped_names": [
+        "g_8cd98"
+      ],
+      "sites": [
+        {
+          "unit": "recovery_s7_01",
+          "function": "f_1380c",
+          "instruction_address": "0x8001389c",
+          "instruction": "sh",
+          "operation": "write",
+          "displacement": 36
+        },
+        {
+          "unit": "recovery_s7_01",
+          "function": "f_1380c",
+          "instruction_address": "0x800138d8",
+          "instruction": "sh",
+          "operation": "write",
+          "displacement": 36
+        },
+        {
+          "unit": "recovery_s7_01",
+          "function": "f_1380c",
+          "instruction_address": "0x80013914",
+          "instruction": "sh",
+          "operation": "write",
+          "displacement": 36
+        }
+      ]
+    },
+    {
+      "address": "0x8008cd94",
+      "end_exclusive": "0x8008cd96",
+      "minimum_access_width": 2,
+      "within_startup_clear": false,
+      "mapped_names": [
+        "g_8cd94"
+      ],
+      "sites": [
+        {
+          "unit": "recovery_s7_01",
+          "function": "f_1380c",
+          "instruction_address": "0x8001391c",
+          "instruction": "sh",
+          "operation": "write",
+          "displacement": 32
+        }
+      ]
+    },
+    {
+      "address": "0x8008cf02",
+      "end_exclusive": "0x8008cf04",
+      "minimum_access_width": 2,
+      "within_startup_clear": false,
+      "mapped_names": [
+        "g_8cf02"
+      ],
+      "sites": [
+        {
+          "unit": "recovery_s27_02",
+          "function": "f_177bc",
+          "instruction_address": "0x800177c8",
+          "instruction": "lh",
+          "operation": "read",
+          "displacement": 398
+        },
+        {
+          "unit": "recovery_s27_02",
+          "function": "f_177bc",
+          "instruction_address": "0x800177dc",
+          "instruction": "sh",
+          "operation": "write",
+          "displacement": 398
+        }
+      ]
+    }
+  ],
+  "cell_count": 40,
+  "access_site_count": 151,
+  "clear_interval_minimum_access_union_bytes": 0,
+  "clear_interval_minimum_access_union": [],
+  "certified_payload_bytes_added": 0,
+  "limitations": [
+    "Assumes the startup GP is preserved at these recovered function entries.",
+    "An access width is a lower bound, not a complete object extent.",
+    "No .sbss/.bss/COMMON/padding allocation or section ordering is established.",
+    "Non-GP accesses, address constructions and all unowned code are excluded."
+  ],
+  "latest_report_sha256": "d2b4b4210fc404e7a0bb25486cdb88abb044dd7de0b06684c75ca1120a9edc11",
+  "negative_checks": [
+    {
+      "case": "stale_source",
+      "status": "rejected",
+      "reason": "stale source evidence for f_13a1c"
+    },
+    {
+      "case": "changed_extent",
+      "status": "rejected",
+      "reason": "certified function reference extent or hash differs"
+    },
+    {
+      "case": "wrong_reference_hash",
+      "status": "rejected",
+      "reason": "reference hash differs from the pinned USA executable"
+    }
+  ]
+}

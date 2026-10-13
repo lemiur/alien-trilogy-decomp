@@ -1,0 +1,21 @@
+{
+  "gp": "0x8008cd74",
+  "sections": {
+    ".sdata": "0x8008cd74"
+  },
+  "functions": {
+    "f_15324": {
+      "address": "0x80015324",
+      "size": 60
+    }
+  },
+  "symbols": {
+    "CdControl": "0x8005d4b0",
+    "g_file_table": "0x8006a5f8"
+  },
+  "evidence": {
+    "gp": "Startup instructions at 0x80058944 and 0x80058948 set gp to 0x8008cd74; PS-X header gp is zero.",
+    "symbols": "Recovered from original instruction address operands, not inferred from function-name length.",
+    "sizes": "Original function control flow and return delay slots; find_free_texture_page ends at 0x800155ac even though the next inventory candidate is further away."
+  }
+}

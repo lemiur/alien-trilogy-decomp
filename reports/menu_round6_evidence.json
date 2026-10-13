@@ -1,0 +1,1321 @@
+{
+  "status": "pass",
+  "reference_sha256": "f424660920764ac70f697b5b909a42fe259a76e60acbf5b01c6ca3ee8c8f8e98",
+  "latest_report_sha256": "d2b4b4210fc404e7a0bb25486cdb88abb044dd7de0b06684c75ca1120a9edc11",
+  "input_hashes": {
+    "analysis\\menu_round6_evidence.py": "831f4580ff0fcba5ec830de39697c8d15e43720f2d4e432f9e820d98d62e03d8",
+    "analysis\\menu_round6\\definitions.json": "49b4e9b9d093a429674fdbba001e41e844b4b129cc01c2e2479c8643779c2ac6",
+    "config\\data.json": "91d566ad4a1c9d94b7857c763148b522c1a6d42b5ea58e0dca7e9469fadeec3b",
+    "src\\menu_labels6.c": "8d26e2ba53f2469c0f137736d32aea92d03b5b347c2f5afabfa5053be1857562",
+    "config\\menu_labels6.json": "bdc1df8663bcf42041f89f8c41bec58e1eb117aaf2f39d1be2de897b407daa02",
+    "builds\\job-il6l22ld\\INPUT.OBJ": "4710e10b1eb5f6f63fa46343efa7d8d8b8714b443951f4b9bd94c3f87d3b7835",
+    "src\\game_helpers2.c": "ed1d575f1fd6a8dfe9806cf102813ed4655bd4fc78be5e06b12e906dc4f54351",
+    "config\\game_helpers2.json": "44d7cd4894c29c31d3f48f7938c2d2849bf72110b21409124d46494a2bb37590",
+    "builds\\job-rdvskrit\\INPUT.OBJ": "df9615268c96e67b97590e3e7d941936014cbf7b9f54835e300ba04cb799b8d2",
+    "src\\menu_records6.c": "5995685ff3eab05adcc80978e25932924fc30158c5753ca80776dd29eb9a1bb8",
+    "config\\menu_records6.json": "4be57c9d22c60d8702a22a46d0932f5c0dd5233257e6f47764e08754ec38ebac",
+    "builds\\job-3ghbztmh\\INPUT.OBJ": "2f0149420a3814d21378c3cb878240c9f76b179bc7d1bc79a20e5729bff1f0aa",
+    "src\\menu_boolean_choices6.c": "f4ea428857516a0c07a2e53e8c087f1bc578d3a9692dff94db46b0ae35d6aa17",
+    "config\\menu_boolean_choices6.json": "2715d82aacce75f7cd8e089fa5dd64ecbc091e57f8cedca64eb5fb8ad0eee28c",
+    "builds\\job-vr87xxc3\\INPUT.OBJ": "58062af4e88f2d578bb05ff77b3702973b5f408ab787de74b3bb5eca448301fa"
+  },
+  "labels": [
+    {
+      "symbol": "s_credits_label",
+      "address": "0x8001142c",
+      "size": 16,
+      "text": "Display credits"
+    },
+    {
+      "symbol": "s_camera_sway_label",
+      "address": "0x8001143c",
+      "size": 16,
+      "text": "Camera sway "
+    },
+    {
+      "symbol": "s_card_management_label",
+      "address": "0x8001144c",
+      "size": 24,
+      "text": "Memory Card management"
+    },
+    {
+      "symbol": "s_password_label",
+      "address": "0x80011464",
+      "size": 16,
+      "text": "Enter password"
+    },
+    {
+      "symbol": "s_controller_options_label",
+      "address": "0x80011474",
+      "size": 20,
+      "text": "Controller options"
+    },
+    {
+      "symbol": "s_weapons_label",
+      "address": "0x800114c0",
+      "size": 16,
+      "text": "Gimme weapons: "
+    },
+    {
+      "symbol": "s_unlimited_ammunition_label",
+      "address": "0x800114e0",
+      "size": 24,
+      "text": "Unlimited ammunition: "
+    },
+    {
+      "symbol": "s_indestructible_label",
+      "address": "0x800114f8",
+      "size": 24,
+      "text": "Player indestructible: "
+    },
+    {
+      "symbol": "s_start_game_label",
+      "address": "0x80011510",
+      "size": 12,
+      "text": "Start game"
+    },
+    {
+      "symbol": "s_continue_game_label",
+      "address": "0x8001151c",
+      "size": 16,
+      "text": "Continue game"
+    },
+    {
+      "symbol": "s_level_password_heading",
+      "address": "0x8001152c",
+      "size": 16,
+      "text": "LEVEL PASSWORD"
+    },
+    {
+      "symbol": "s_control_method_heading",
+      "address": "0x8001153c",
+      "size": 24,
+      "text": "SELECT CONTROL METHOD"
+    },
+    {
+      "symbol": "s_format_card_label",
+      "address": "0x80011554",
+      "size": 20,
+      "text": "Format Memory Card"
+    },
+    {
+      "symbol": "s_delete_card_block_label",
+      "address": "0x80011568",
+      "size": 32,
+      "text": "Delete block from Memory Card"
+    },
+    {
+      "symbol": "s_save_game_label",
+      "address": "0x80011588",
+      "size": 12,
+      "text": "Save game"
+    },
+    {
+      "symbol": "s_card_options_heading",
+      "address": "0x800115ac",
+      "size": 20,
+      "text": "MEMORY CARD OPTIONS"
+    },
+    {
+      "symbol": "s_load_game_label",
+      "address": "0x800115c0",
+      "size": 12,
+      "text": "Load game"
+    },
+    {
+      "symbol": "s_cheats_label",
+      "address": "0x8008cf14",
+      "size": 8,
+      "text": "Cheats"
+    },
+    {
+      "symbol": "s_options_label",
+      "address": "0x8008cf1c",
+      "size": 8,
+      "text": "Options"
+    },
+    {
+      "symbol": "s_option_on",
+      "address": "0x8008ce08",
+      "size": 4,
+      "text": "ON"
+    },
+    {
+      "symbol": "s_option_off",
+      "address": "0x8008ce0c",
+      "size": 4,
+      "text": "OFF"
+    }
+  ],
+  "records": [
+    {
+      "symbol": "g_controller_options_entry",
+      "address": "0x8006c31c",
+      "size": 28,
+      "label": "s_controller_options_label",
+      "choices": "0",
+      "callback_symbols": [
+        "f_15f60",
+        "f_174f0",
+        "0"
+      ],
+      "pointer_sites": [
+        {
+          "address": "0x8006c324",
+          "target": "0x80011474"
+        },
+        {
+          "address": "0x8006c32c",
+          "target": "0x80015f60"
+        },
+        {
+          "address": "0x8006c330",
+          "target": "0x800174f0"
+        }
+      ]
+    },
+    {
+      "symbol": "g_password_entry",
+      "address": "0x8006c338",
+      "size": 28,
+      "label": "s_password_label",
+      "choices": "0",
+      "callback_symbols": [
+        "f_15f60",
+        "f_174b4",
+        "0"
+      ],
+      "pointer_sites": [
+        {
+          "address": "0x8006c340",
+          "target": "0x80011464"
+        },
+        {
+          "address": "0x8006c348",
+          "target": "0x80015f60"
+        },
+        {
+          "address": "0x8006c34c",
+          "target": "0x800174b4"
+        }
+      ]
+    },
+    {
+      "symbol": "g_card_management_entry",
+      "address": "0x8006c354",
+      "size": 28,
+      "label": "s_card_management_label",
+      "choices": "0",
+      "callback_symbols": [
+        "f_15f60",
+        "f_174c4",
+        "0"
+      ],
+      "pointer_sites": [
+        {
+          "address": "0x8006c35c",
+          "target": "0x8001144c"
+        },
+        {
+          "address": "0x8006c364",
+          "target": "0x80015f60"
+        },
+        {
+          "address": "0x8006c368",
+          "target": "0x800174c4"
+        }
+      ]
+    },
+    {
+      "symbol": "g_camera_sway_entry",
+      "address": "0x8006c370",
+      "size": 28,
+      "label": "s_camera_sway_label",
+      "choices": "g_boolean_choices",
+      "callback_symbols": [
+        "f_16994",
+        "0",
+        "0"
+      ],
+      "pointer_sites": [
+        {
+          "address": "0x8006c378",
+          "target": "0x8001143c"
+        },
+        {
+          "address": "0x8006c37c",
+          "target": "0x8006c1d0"
+        },
+        {
+          "address": "0x8006c380",
+          "target": "0x80016994"
+        }
+      ]
+    },
+    {
+      "symbol": "g_credits_entry",
+      "address": "0x8006c38c",
+      "size": 28,
+      "label": "s_credits_label",
+      "choices": "0",
+      "callback_symbols": [
+        "f_15f60",
+        "f_17a50",
+        "0"
+      ],
+      "pointer_sites": [
+        {
+          "address": "0x8006c394",
+          "target": "0x8001142c"
+        },
+        {
+          "address": "0x8006c39c",
+          "target": "0x80015f60"
+        },
+        {
+          "address": "0x8006c3a0",
+          "target": "0x80017a50"
+        }
+      ]
+    },
+    {
+      "symbol": "g_options_exit_entry",
+      "address": "0x8006c3a8",
+      "size": 28,
+      "label": "s_exit_label",
+      "choices": "0",
+      "callback_symbols": [
+        "f_15f60",
+        "f_1734c",
+        "0"
+      ],
+      "pointer_sites": [
+        {
+          "address": "0x8006c3b0",
+          "target": "0x8008cef0"
+        },
+        {
+          "address": "0x8006c3b8",
+          "target": "0x80015f60"
+        },
+        {
+          "address": "0x8006c3bc",
+          "target": "0x8001734c"
+        }
+      ]
+    },
+    {
+      "symbol": "g_indestructible_entry",
+      "address": "0x8006c3e0",
+      "size": 28,
+      "label": "s_indestructible_label",
+      "choices": "g_boolean_choices",
+      "callback_symbols": [
+        "f_16994",
+        "0",
+        "0"
+      ],
+      "pointer_sites": [
+        {
+          "address": "0x8006c3e8",
+          "target": "0x800114f8"
+        },
+        {
+          "address": "0x8006c3ec",
+          "target": "0x8006c1d0"
+        },
+        {
+          "address": "0x8006c3f0",
+          "target": "0x80016994"
+        }
+      ]
+    },
+    {
+      "symbol": "g_unlimited_ammunition_entry",
+      "address": "0x8006c3fc",
+      "size": 28,
+      "label": "s_unlimited_ammunition_label",
+      "choices": "g_boolean_choices",
+      "callback_symbols": [
+        "f_16994",
+        "0",
+        "0"
+      ],
+      "pointer_sites": [
+        {
+          "address": "0x8006c404",
+          "target": "0x800114e0"
+        },
+        {
+          "address": "0x8006c408",
+          "target": "0x8006c1d0"
+        },
+        {
+          "address": "0x8006c40c",
+          "target": "0x80016994"
+        }
+      ]
+    },
+    {
+      "symbol": "g_weapons_entry",
+      "address": "0x8006c434",
+      "size": 28,
+      "label": "s_weapons_label",
+      "choices": "g_boolean_choices",
+      "callback_symbols": [
+        "f_16994",
+        "0",
+        "0"
+      ],
+      "pointer_sites": [
+        {
+          "address": "0x8006c43c",
+          "target": "0x800114c0"
+        },
+        {
+          "address": "0x8006c440",
+          "target": "0x8006c1d0"
+        },
+        {
+          "address": "0x8006c444",
+          "target": "0x80016994"
+        }
+      ]
+    },
+    {
+      "symbol": "g_cheats_exit_entry",
+      "address": "0x8006c450",
+      "size": 28,
+      "label": "s_exit_label",
+      "choices": "0",
+      "callback_symbols": [
+        "f_15f60",
+        "f_1734c",
+        "0"
+      ],
+      "pointer_sites": [
+        {
+          "address": "0x8006c458",
+          "target": "0x8008cef0"
+        },
+        {
+          "address": "0x8006c460",
+          "target": "0x80015f60"
+        },
+        {
+          "address": "0x8006c464",
+          "target": "0x8001734c"
+        }
+      ]
+    },
+    {
+      "symbol": "g_start_game_entry",
+      "address": "0x8006c46c",
+      "size": 28,
+      "label": "s_start_game_label",
+      "choices": "0",
+      "callback_symbols": [
+        "f_15f60",
+        "f_175c0",
+        "0"
+      ],
+      "pointer_sites": [
+        {
+          "address": "0x8006c474",
+          "target": "0x80011510"
+        },
+        {
+          "address": "0x8006c47c",
+          "target": "0x80015f60"
+        },
+        {
+          "address": "0x8006c480",
+          "target": "0x800175c0"
+        }
+      ]
+    },
+    {
+      "symbol": "g_options_entry",
+      "address": "0x8006c488",
+      "size": 28,
+      "label": "s_options_label",
+      "choices": "0",
+      "callback_symbols": [
+        "f_15f60",
+        "f_1737c",
+        "0"
+      ],
+      "pointer_sites": [
+        {
+          "address": "0x8006c490",
+          "target": "0x8008cf1c"
+        },
+        {
+          "address": "0x8006c498",
+          "target": "0x80015f60"
+        },
+        {
+          "address": "0x8006c49c",
+          "target": "0x8001737c"
+        }
+      ]
+    },
+    {
+      "symbol": "g_cheats_entry",
+      "address": "0x8006c4a4",
+      "size": 28,
+      "label": "s_cheats_label",
+      "choices": "0",
+      "callback_symbols": [
+        "f_15f60",
+        "f_1749c",
+        "0"
+      ],
+      "pointer_sites": [
+        {
+          "address": "0x8006c4ac",
+          "target": "0x8008cf14"
+        },
+        {
+          "address": "0x8006c4b4",
+          "target": "0x80015f60"
+        },
+        {
+          "address": "0x8006c4b8",
+          "target": "0x8001749c"
+        }
+      ]
+    },
+    {
+      "symbol": "g_level_password_entry",
+      "address": "0x8006c4c0",
+      "size": 28,
+      "label": "s_level_password_heading",
+      "choices": "0",
+      "callback_symbols": [
+        "f_15f60",
+        "0",
+        "0"
+      ],
+      "pointer_sites": [
+        {
+          "address": "0x8006c4c8",
+          "target": "0x8001152c"
+        },
+        {
+          "address": "0x8006c4d0",
+          "target": "0x80015f60"
+        }
+      ]
+    },
+    {
+      "symbol": "g_password_value_entry",
+      "address": "0x8006c4dc",
+      "size": 28,
+      "label": "0",
+      "choices": "0",
+      "callback_symbols": [
+        "f_16b6c",
+        "0",
+        "0"
+      ],
+      "pointer_sites": [
+        {
+          "address": "0x8006c4ec",
+          "target": "0x80016b6c"
+        }
+      ]
+    },
+    {
+      "symbol": "g_continue_game_entry",
+      "address": "0x8006c4f8",
+      "size": 28,
+      "label": "s_continue_game_label",
+      "choices": "0",
+      "callback_symbols": [
+        "f_15f60",
+        "f_175ec",
+        "0"
+      ],
+      "pointer_sites": [
+        {
+          "address": "0x8006c500",
+          "target": "0x8001151c"
+        },
+        {
+          "address": "0x8006c508",
+          "target": "0x80015f60"
+        },
+        {
+          "address": "0x8006c50c",
+          "target": "0x800175ec"
+        }
+      ]
+    },
+    {
+      "symbol": "g_main_card_management_entry",
+      "address": "0x8006c514",
+      "size": 28,
+      "label": "s_card_management_label",
+      "choices": "0",
+      "callback_symbols": [
+        "f_15f60",
+        "f_174c4",
+        "0"
+      ],
+      "pointer_sites": [
+        {
+          "address": "0x8006c51c",
+          "target": "0x8001144c"
+        },
+        {
+          "address": "0x8006c524",
+          "target": "0x80015f60"
+        },
+        {
+          "address": "0x8006c528",
+          "target": "0x800174c4"
+        }
+      ]
+    },
+    {
+      "symbol": "g_control_method_entry",
+      "address": "0x8006c530",
+      "size": 28,
+      "label": "s_control_method_heading",
+      "choices": "0",
+      "callback_symbols": [
+        "f_15f60",
+        "0",
+        "0"
+      ],
+      "pointer_sites": [
+        {
+          "address": "0x8006c538",
+          "target": "0x8001153c"
+        },
+        {
+          "address": "0x8006c540",
+          "target": "0x80015f60"
+        }
+      ]
+    },
+    {
+      "symbol": "g_centered_exit_entry",
+      "address": "0x8006c568",
+      "size": 28,
+      "label": "0",
+      "choices": "0",
+      "callback_symbols": [
+        "f_1687c",
+        "f_1737c",
+        "0"
+      ],
+      "pointer_sites": [
+        {
+          "address": "0x8006c578",
+          "target": "0x8001687c"
+        },
+        {
+          "address": "0x8006c57c",
+          "target": "0x8001737c"
+        }
+      ]
+    },
+    {
+      "symbol": "g_password_prompt_entry",
+      "address": "0x8006c584",
+      "size": 28,
+      "label": "s_password_label",
+      "choices": "0",
+      "callback_symbols": [
+        "f_15f60",
+        "0",
+        "0"
+      ],
+      "pointer_sites": [
+        {
+          "address": "0x8006c58c",
+          "target": "0x80011464"
+        },
+        {
+          "address": "0x8006c594",
+          "target": "0x80015f60"
+        }
+      ]
+    },
+    {
+      "symbol": "g_password_exit_entry",
+      "address": "0x8006c5a0",
+      "size": 28,
+      "label": "s_exit_label",
+      "choices": "0",
+      "callback_symbols": [
+        "f_15f60",
+        "f_1737c",
+        "0"
+      ],
+      "pointer_sites": [
+        {
+          "address": "0x8006c5a8",
+          "target": "0x8008cef0"
+        },
+        {
+          "address": "0x8006c5b0",
+          "target": "0x80015f60"
+        },
+        {
+          "address": "0x8006c5b4",
+          "target": "0x8001737c"
+        }
+      ]
+    },
+    {
+      "symbol": "g_save_card_options_entry",
+      "address": "0x8006c5bc",
+      "size": 28,
+      "label": "s_card_options_heading",
+      "choices": "0",
+      "callback_symbols": [
+        "f_15f60",
+        "0",
+        "0"
+      ],
+      "pointer_sites": [
+        {
+          "address": "0x8006c5c4",
+          "target": "0x800115ac"
+        },
+        {
+          "address": "0x8006c5cc",
+          "target": "0x80015f60"
+        }
+      ]
+    },
+    {
+      "symbol": "g_save_game_entry",
+      "address": "0x8006c5f4",
+      "size": 28,
+      "label": "s_save_game_label",
+      "choices": "0",
+      "callback_symbols": [
+        "f_15f60",
+        "f_173cc",
+        "0"
+      ],
+      "pointer_sites": [
+        {
+          "address": "0x8006c5fc",
+          "target": "0x80011588"
+        },
+        {
+          "address": "0x8006c604",
+          "target": "0x80015f60"
+        },
+        {
+          "address": "0x8006c608",
+          "target": "0x800173cc"
+        }
+      ]
+    },
+    {
+      "symbol": "g_save_delete_block_entry",
+      "address": "0x8006c610",
+      "size": 28,
+      "label": "s_delete_card_block_label",
+      "choices": "0",
+      "callback_symbols": [
+        "f_15f60",
+        "f_173ec",
+        "0"
+      ],
+      "pointer_sites": [
+        {
+          "address": "0x8006c618",
+          "target": "0x80011568"
+        },
+        {
+          "address": "0x8006c620",
+          "target": "0x80015f60"
+        },
+        {
+          "address": "0x8006c624",
+          "target": "0x800173ec"
+        }
+      ]
+    },
+    {
+      "symbol": "g_save_format_card_entry",
+      "address": "0x8006c62c",
+      "size": 28,
+      "label": "s_format_card_label",
+      "choices": "0",
+      "callback_symbols": [
+        "f_15f60",
+        "f_173fc",
+        "0"
+      ],
+      "pointer_sites": [
+        {
+          "address": "0x8006c634",
+          "target": "0x80011554"
+        },
+        {
+          "address": "0x8006c63c",
+          "target": "0x80015f60"
+        },
+        {
+          "address": "0x8006c640",
+          "target": "0x800173fc"
+        }
+      ]
+    },
+    {
+      "symbol": "g_save_card_exit_entry",
+      "address": "0x8006c648",
+      "size": 28,
+      "label": "s_exit_label",
+      "choices": "0",
+      "callback_symbols": [
+        "f_15f60",
+        "f_1734c",
+        "0"
+      ],
+      "pointer_sites": [
+        {
+          "address": "0x8006c650",
+          "target": "0x8008cef0"
+        },
+        {
+          "address": "0x8006c658",
+          "target": "0x80015f60"
+        },
+        {
+          "address": "0x8006c65c",
+          "target": "0x8001734c"
+        }
+      ]
+    },
+    {
+      "symbol": "g_load_card_options_entry",
+      "address": "0x8006c664",
+      "size": 28,
+      "label": "s_card_options_heading",
+      "choices": "0",
+      "callback_symbols": [
+        "f_15f60",
+        "0",
+        "0"
+      ],
+      "pointer_sites": [
+        {
+          "address": "0x8006c66c",
+          "target": "0x800115ac"
+        },
+        {
+          "address": "0x8006c674",
+          "target": "0x80015f60"
+        }
+      ]
+    },
+    {
+      "symbol": "g_load_game_entry",
+      "address": "0x8006c69c",
+      "size": 28,
+      "label": "s_load_game_label",
+      "choices": "0",
+      "callback_symbols": [
+        "f_15f60",
+        "f_173dc",
+        "0"
+      ],
+      "pointer_sites": [
+        {
+          "address": "0x8006c6a4",
+          "target": "0x800115c0"
+        },
+        {
+          "address": "0x8006c6ac",
+          "target": "0x80015f60"
+        },
+        {
+          "address": "0x8006c6b0",
+          "target": "0x800173dc"
+        }
+      ]
+    },
+    {
+      "symbol": "g_load_delete_block_entry",
+      "address": "0x8006c6b8",
+      "size": 28,
+      "label": "s_delete_card_block_label",
+      "choices": "0",
+      "callback_symbols": [
+        "f_15f60",
+        "f_173ec",
+        "0"
+      ],
+      "pointer_sites": [
+        {
+          "address": "0x8006c6c0",
+          "target": "0x80011568"
+        },
+        {
+          "address": "0x8006c6c8",
+          "target": "0x80015f60"
+        },
+        {
+          "address": "0x8006c6cc",
+          "target": "0x800173ec"
+        }
+      ]
+    },
+    {
+      "symbol": "g_load_format_card_entry",
+      "address": "0x8006c6d4",
+      "size": 28,
+      "label": "s_format_card_label",
+      "choices": "0",
+      "callback_symbols": [
+        "f_15f60",
+        "f_173fc",
+        "0"
+      ],
+      "pointer_sites": [
+        {
+          "address": "0x8006c6dc",
+          "target": "0x80011554"
+        },
+        {
+          "address": "0x8006c6e4",
+          "target": "0x80015f60"
+        },
+        {
+          "address": "0x8006c6e8",
+          "target": "0x800173fc"
+        }
+      ]
+    },
+    {
+      "symbol": "g_load_card_exit_entry",
+      "address": "0x8006c6f0",
+      "size": 28,
+      "label": "s_exit_label",
+      "choices": "0",
+      "callback_symbols": [
+        "f_15f60",
+        "f_1737c",
+        "0"
+      ],
+      "pointer_sites": [
+        {
+          "address": "0x8006c6f8",
+          "target": "0x8008cef0"
+        },
+        {
+          "address": "0x8006c700",
+          "target": "0x80015f60"
+        },
+        {
+          "address": "0x8006c704",
+          "target": "0x8001737c"
+        }
+      ]
+    }
+  ],
+  "boolean_choices": {
+    "address": "0x8006c1d0",
+    "entries": [
+      "OFF",
+      "ON"
+    ],
+    "consumer_records": [
+      "g_camera_sway_entry",
+      "g_indestructible_entry",
+      "g_unlimited_ammunition_entry",
+      "g_weapons_entry"
+    ]
+  },
+  "matched_definitions": 53,
+  "matched_bytes": 1220,
+  "certified_definitions": [
+    {
+      "unit": "menu_labels6",
+      "symbol": "s_credits_label",
+      "address": "0x8001142c",
+      "size": 16,
+      "status": "match"
+    },
+    {
+      "unit": "menu_labels6",
+      "symbol": "s_camera_sway_label",
+      "address": "0x8001143c",
+      "size": 16,
+      "status": "match"
+    },
+    {
+      "unit": "menu_labels6",
+      "symbol": "s_card_management_label",
+      "address": "0x8001144c",
+      "size": 24,
+      "status": "match"
+    },
+    {
+      "unit": "menu_labels6",
+      "symbol": "s_password_label",
+      "address": "0x80011464",
+      "size": 16,
+      "status": "match"
+    },
+    {
+      "unit": "menu_labels6",
+      "symbol": "s_controller_options_label",
+      "address": "0x80011474",
+      "size": 20,
+      "status": "match"
+    },
+    {
+      "unit": "menu_labels6",
+      "symbol": "s_weapons_label",
+      "address": "0x800114c0",
+      "size": 16,
+      "status": "match"
+    },
+    {
+      "unit": "menu_labels6",
+      "symbol": "s_unlimited_ammunition_label",
+      "address": "0x800114e0",
+      "size": 24,
+      "status": "match"
+    },
+    {
+      "unit": "menu_labels6",
+      "symbol": "s_indestructible_label",
+      "address": "0x800114f8",
+      "size": 24,
+      "status": "match"
+    },
+    {
+      "unit": "menu_labels6",
+      "symbol": "s_start_game_label",
+      "address": "0x80011510",
+      "size": 12,
+      "status": "match"
+    },
+    {
+      "unit": "menu_labels6",
+      "symbol": "s_continue_game_label",
+      "address": "0x8001151c",
+      "size": 16,
+      "status": "match"
+    },
+    {
+      "unit": "menu_labels6",
+      "symbol": "s_level_password_heading",
+      "address": "0x8001152c",
+      "size": 16,
+      "status": "match"
+    },
+    {
+      "unit": "menu_labels6",
+      "symbol": "s_control_method_heading",
+      "address": "0x8001153c",
+      "size": 24,
+      "status": "match"
+    },
+    {
+      "unit": "menu_labels6",
+      "symbol": "s_format_card_label",
+      "address": "0x80011554",
+      "size": 20,
+      "status": "match"
+    },
+    {
+      "unit": "menu_labels6",
+      "symbol": "s_delete_card_block_label",
+      "address": "0x80011568",
+      "size": 32,
+      "status": "match"
+    },
+    {
+      "unit": "menu_labels6",
+      "symbol": "s_save_game_label",
+      "address": "0x80011588",
+      "size": 12,
+      "status": "match"
+    },
+    {
+      "unit": "menu_labels6",
+      "symbol": "s_card_options_heading",
+      "address": "0x800115ac",
+      "size": 20,
+      "status": "match"
+    },
+    {
+      "unit": "menu_labels6",
+      "symbol": "s_load_game_label",
+      "address": "0x800115c0",
+      "size": 12,
+      "status": "match"
+    },
+    {
+      "unit": "menu_labels6",
+      "symbol": "s_cheats_label",
+      "address": "0x8008cf14",
+      "size": 8,
+      "status": "match"
+    },
+    {
+      "unit": "menu_labels6",
+      "symbol": "s_options_label",
+      "address": "0x8008cf1c",
+      "size": 8,
+      "status": "match"
+    },
+    {
+      "unit": "game_helpers2",
+      "symbol": "s_option_on",
+      "address": "0x8008ce08",
+      "size": 4,
+      "status": "match"
+    },
+    {
+      "unit": "game_helpers2",
+      "symbol": "s_option_off",
+      "address": "0x8008ce0c",
+      "size": 4,
+      "status": "match"
+    },
+    {
+      "unit": "menu_records6",
+      "symbol": "g_controller_options_entry",
+      "address": "0x8006c31c",
+      "size": 28,
+      "status": "match"
+    },
+    {
+      "unit": "menu_records6",
+      "symbol": "g_password_entry",
+      "address": "0x8006c338",
+      "size": 28,
+      "status": "match"
+    },
+    {
+      "unit": "menu_records6",
+      "symbol": "g_card_management_entry",
+      "address": "0x8006c354",
+      "size": 28,
+      "status": "match"
+    },
+    {
+      "unit": "menu_records6",
+      "symbol": "g_camera_sway_entry",
+      "address": "0x8006c370",
+      "size": 28,
+      "status": "match"
+    },
+    {
+      "unit": "menu_records6",
+      "symbol": "g_credits_entry",
+      "address": "0x8006c38c",
+      "size": 28,
+      "status": "match"
+    },
+    {
+      "unit": "menu_records6",
+      "symbol": "g_options_exit_entry",
+      "address": "0x8006c3a8",
+      "size": 28,
+      "status": "match"
+    },
+    {
+      "unit": "menu_records6",
+      "symbol": "g_indestructible_entry",
+      "address": "0x8006c3e0",
+      "size": 28,
+      "status": "match"
+    },
+    {
+      "unit": "menu_records6",
+      "symbol": "g_unlimited_ammunition_entry",
+      "address": "0x8006c3fc",
+      "size": 28,
+      "status": "match"
+    },
+    {
+      "unit": "menu_records6",
+      "symbol": "g_weapons_entry",
+      "address": "0x8006c434",
+      "size": 28,
+      "status": "match"
+    },
+    {
+      "unit": "menu_records6",
+      "symbol": "g_cheats_exit_entry",
+      "address": "0x8006c450",
+      "size": 28,
+      "status": "match"
+    },
+    {
+      "unit": "menu_records6",
+      "symbol": "g_start_game_entry",
+      "address": "0x8006c46c",
+      "size": 28,
+      "status": "match"
+    },
+    {
+      "unit": "menu_records6",
+      "symbol": "g_options_entry",
+      "address": "0x8006c488",
+      "size": 28,
+      "status": "match"
+    },
+    {
+      "unit": "menu_records6",
+      "symbol": "g_cheats_entry",
+      "address": "0x8006c4a4",
+      "size": 28,
+      "status": "match"
+    },
+    {
+      "unit": "menu_records6",
+      "symbol": "g_level_password_entry",
+      "address": "0x8006c4c0",
+      "size": 28,
+      "status": "match"
+    },
+    {
+      "unit": "menu_records6",
+      "symbol": "g_password_value_entry",
+      "address": "0x8006c4dc",
+      "size": 28,
+      "status": "match"
+    },
+    {
+      "unit": "menu_records6",
+      "symbol": "g_continue_game_entry",
+      "address": "0x8006c4f8",
+      "size": 28,
+      "status": "match"
+    },
+    {
+      "unit": "menu_records6",
+      "symbol": "g_main_card_management_entry",
+      "address": "0x8006c514",
+      "size": 28,
+      "status": "match"
+    },
+    {
+      "unit": "menu_records6",
+      "symbol": "g_control_method_entry",
+      "address": "0x8006c530",
+      "size": 28,
+      "status": "match"
+    },
+    {
+      "unit": "menu_records6",
+      "symbol": "g_centered_exit_entry",
+      "address": "0x8006c568",
+      "size": 28,
+      "status": "match"
+    },
+    {
+      "unit": "menu_records6",
+      "symbol": "g_password_prompt_entry",
+      "address": "0x8006c584",
+      "size": 28,
+      "status": "match"
+    },
+    {
+      "unit": "menu_records6",
+      "symbol": "g_password_exit_entry",
+      "address": "0x8006c5a0",
+      "size": 28,
+      "status": "match"
+    },
+    {
+      "unit": "menu_records6",
+      "symbol": "g_save_card_options_entry",
+      "address": "0x8006c5bc",
+      "size": 28,
+      "status": "match"
+    },
+    {
+      "unit": "menu_records6",
+      "symbol": "g_save_game_entry",
+      "address": "0x8006c5f4",
+      "size": 28,
+      "status": "match"
+    },
+    {
+      "unit": "menu_records6",
+      "symbol": "g_save_delete_block_entry",
+      "address": "0x8006c610",
+      "size": 28,
+      "status": "match"
+    },
+    {
+      "unit": "menu_records6",
+      "symbol": "g_save_format_card_entry",
+      "address": "0x8006c62c",
+      "size": 28,
+      "status": "match"
+    },
+    {
+      "unit": "menu_records6",
+      "symbol": "g_save_card_exit_entry",
+      "address": "0x8006c648",
+      "size": 28,
+      "status": "match"
+    },
+    {
+      "unit": "menu_records6",
+      "symbol": "g_load_card_options_entry",
+      "address": "0x8006c664",
+      "size": 28,
+      "status": "match"
+    },
+    {
+      "unit": "menu_records6",
+      "symbol": "g_load_game_entry",
+      "address": "0x8006c69c",
+      "size": 28,
+      "status": "match"
+    },
+    {
+      "unit": "menu_records6",
+      "symbol": "g_load_delete_block_entry",
+      "address": "0x8006c6b8",
+      "size": 28,
+      "status": "match"
+    },
+    {
+      "unit": "menu_records6",
+      "symbol": "g_load_format_card_entry",
+      "address": "0x8006c6d4",
+      "size": 28,
+      "status": "match"
+    },
+    {
+      "unit": "menu_records6",
+      "symbol": "g_load_card_exit_entry",
+      "address": "0x8006c6f0",
+      "size": 28,
+      "status": "match"
+    },
+    {
+      "unit": "menu_boolean_choices6",
+      "symbol": "g_boolean_choices",
+      "address": "0x8006c1d0",
+      "size": 8,
+      "status": "match"
+    }
+  ],
+  "pointer_sites_checked": 87,
+  "limitations": [
+    "Individual mapped definitions and aligned extents do not establish original section ordering.",
+    "Menu semantic names follow visible labels; flags retain observed numeric values with unresolved bit meanings.",
+    "Callback prototypes are not inferred from data pointers alone; unreviewed roles remain old-style declarations.",
+    "No independent coverage credit is earned by this relationship report."
+  ]
+}

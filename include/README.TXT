@@ -1,0 +1,1 @@
+include/: project-wide shared type definitions and declarations, one class one definition and one declaration per shared symbol, each in the header of the subsystem that owns it (8.3 file names; searched after the Runtime 3.3 SDK headers). Each header names its owning src/ unit and the headers it requires.

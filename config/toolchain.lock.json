@@ -1,0 +1,60 @@
+{
+  "compiler": "GCC 2.5.7 [AL 1.1, MM 40]",
+  "default_options": "-O2 -G8",
+  "assemblers": {
+    "A208": "ASPSX 2.08",
+    "A221": "ASPSX 2.21",
+    "A234": "ASPSX 2.34"
+  },
+  "runtime": "3.3",
+  "reference_sha256": "f424660920764ac70f697b5b909a42fe259a76e60acbf5b01c6ca3ee8c8f8e98",
+  "files": {
+    "toolchain/C257/CC1PSX.EXE": "eee20f31e5cf76b070468f27e6544daf4ccd7258a348e478fd3c9f46cd16f02c",
+    "toolchain/C257/CPPPSX.EXE": "21853f042964b5ae249fdb5eb36fedacb2551942d5d50421aef49d3ec074b016",
+    "toolchain/A208/ASPSX.EXE": "e368c1032ee1ea51bb55e55abdffbf7cb86852b89ba72360266c13b4327e2623",
+    "toolchain/A221/ASPSX.EXE": "b52bf3d40a516333e679f18e9297883158e3015e8d97ac501e108b049617ce41",
+    "toolchain/A234/ASPSX.EXE": "313b950580ab63eeed5c69f1adc96628c65b20ab5f6e5438cb414eae22c8c68b",
+    "toolchain/BIN/DOS4GW.EXE": "dd9f4f342533f99570475b62e53231a468de2e3d83e4fc31e80c27d3a7d6b49c",
+    "toolchain/BIN/CWSDPMI.EXE": "0a890815df6cbdc052915a856c16944cedec825267e7b6e453c351a0cdc695f2",
+    "shared-tools/psyqobj.py": "5c2c16c11793f200f1ba5b37f309e13001dc1abeca4a43dbfea1772d0d3364c7",
+    "toolchain/binutils-mips-decompals-v0.10/mips-ps2-decompals-as.exe": "0bc51ced2206339904c2da7c32da5cd3715fd43cf2dfcf8a79b78a40edbb0bb5",
+    "toolchain/binutils-mips-decompals-v0.10.zip": "2bb5904ee174e04f1600cc70ffdb3dc36b0efa4d1892ea446be588ba8dc6198c"
+  },
+  "selected_assembler": "A234",
+  "library_assemblers": {
+    "A208": {
+      "version": "Psy-Q ASPSX version 2.08",
+      "source": "Runtime Library 3.0 tools (1995-04-08): psx.zip psx/BIN/ASPSX.EXE, 56169 bytes",
+      "path": "toolchain/A208/ASPSX.EXE",
+      "sha256": "e368c1032ee1ea51bb55e55abdffbf7cb86852b89ba72360266c13b4327e2623",
+      "use": "library-variant assembly units only, selected per unit in config/asm_build.json: its signed div/rem macros end in the overflow trap tge zero, zero, 0x5d (0x00001770) where ASPSX 2.21/2.34 write break 6, and it inserts no hazard nops under .set noreorder"
+    }
+  },
+  "assembler_selection_evidence": "reports/compiler_identification.json",
+  "include_dirs": {
+    "PSX33": {
+      "path": "sdk/extracted/Programmer Tool - Runtime Library Version 3.3 (Japan)_DTL-S2190_redump/LZH/PSX1020.LZH/PSX/INCLUDE",
+      "files": 40,
+      "tree_sha256": "6e4fe7086932e64c8e2172c3cec83765d5e236ec31fcc3e619099d86749cfd77",
+      "tree_sha256_definition": "sha256 over one line per file under path, sorted by relative POSIX path: relative path, a NUL byte, the file's lowercase hex sha256, a newline",
+      "evidence": "Same tree as analysis/inventory.json inputs.runtime_root (Runtime Library 3.3 DTL-S2190), whose PSX/LIB archives the runtime matching used; every header with a $PSLibId line says 'Runtime Library Version 3.3'. sdk/psyq/include is Release 4.6 and is not used."
+    }
+  },
+  "selected_include_dir": "PSX33",
+  "gnu_as": {
+    "version": "GNU assembler (GNU Binutils) 2.40",
+    "release": "decompals/binutils-mips-ps2-decompals v0.10 (2026-06-04, GPL-2.0, Windows x86-64 build)",
+    "path": "toolchain/binutils-mips-decompals-v0.10/mips-ps2-decompals-as.exe",
+    "path_sha256": "0bc51ced2206339904c2da7c32da5cd3715fd43cf2dfcf8a79b78a40edbb0bb5",
+    "zip": "toolchain/binutils-mips-decompals-v0.10.zip",
+    "zip_sha256": "2bb5904ee174e04f1600cc70ffdb3dc36b0efa4d1892ea446be588ba8dc6198c",
+    "options": [
+      "-march=r3000",
+      "-mabi=32",
+      "-EL",
+      "-G0",
+      "--fatal-warnings"
+    ],
+    "use": "library assembly units that no pinned ASPSX can express (config/asm_build.json: LIBGTE PATCHGTE's absolute .sbss addressing); the ELF object is converted to PsyQ LNK by tools/elf_lnk.py"
+  }
+}

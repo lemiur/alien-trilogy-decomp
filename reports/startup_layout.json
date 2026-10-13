@@ -1,0 +1,45 @@
+{
+  "reference_sha256": "f424660920764ac70f697b5b909a42fe259a76e60acbf5b01c6ca3ee8c8f8e98",
+  "analyzer_sha256": "7c50f82da360f727cc2194cc0f24b77b1c061eb6a5dcc114a843326893daa02c",
+  "header": {
+    "entry": "0x800588c4",
+    "gp": "0x0",
+    "load": "0x80010000",
+    "payload_size": 514048,
+    "header_bss_address": "0x0",
+    "header_bss_size": 0
+  },
+  "startup_gp": "0x8008cd74",
+  "zero_clear_interval": {
+    "start": "0x8008d088",
+    "end_exclusive": "0x800a1958",
+    "size": 84176,
+    "instruction_start": "0x800588c4",
+    "instruction_size": 36,
+    "loaded_payload_intersection_bytes": 1912
+  },
+  "post_clear_heap_base_operand": "0x800a1958",
+  "new_certified_payload_bytes": 0,
+  "limitations": [
+    "The interval is a startup clearing constraint, not a recovered BSS section map.",
+    "Header BSS fields are zero; .bss/.sbss/COMMON boundaries and allocation sizes remain unresolved.",
+    "No executable bytes are reconstructed by this analyzer."
+  ],
+  "negative_checks": [
+    {
+      "case": "bad_clear_loop",
+      "status": "rejected",
+      "reason": "startup zero-clear loop shape differs"
+    },
+    {
+      "case": "bad_gp_pair",
+      "status": "rejected",
+      "reason": "expected LUI at startup address pair"
+    },
+    {
+      "case": "bad_heap_end",
+      "status": "rejected",
+      "reason": "post-clear heap operand disagrees with cleared end"
+    }
+  ]
+}

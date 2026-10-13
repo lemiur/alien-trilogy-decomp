@@ -1,0 +1,14 @@
+{
+  "gp": "0x8008cd74",
+  "functions": {
+    "SpuSetTransferStartAddr": {
+      "address": "0x8005c92c",
+      "size": 100
+    }
+  },
+  "symbols": {
+    "_spu_fd": "0x80073cf4",
+    "_spu_ioctl": "0x8005ab0c"
+  },
+  "static_data": {}
+}

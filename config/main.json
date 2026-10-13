@@ -1,0 +1,366 @@
+{
+  "gp": "0x8008cd74",
+  "sections": {
+    ".sdata": "0x8008cd74"
+  },
+  "section_starts": {
+    ".sdata": "0x8008cd74"
+  },
+  "functions": {
+    "set_button_layout": {
+      "address": "0x8001380c",
+      "size": 284
+    },
+    "reset_combo_check": {
+      "address": "0x80013928",
+      "size": 172
+    },
+    "random_seed": {
+      "address": "0x800139d4",
+      "size": 72
+    },
+    "random_init": {
+      "address": "0x80013a1c",
+      "size": 40
+    },
+    "random": {
+      "address": "0x80013a44",
+      "size": 140
+    },
+    "menu_display_task": {
+      "address": "0x80013ad0",
+      "size": 236
+    },
+    "boss_backdrop_draw": {
+      "address": "0x80013bbc",
+      "size": 416
+    },
+    "game_display_task": {
+      "address": "0x80013d5c",
+      "size": 324
+    },
+    "vram_slots_release": {
+      "address": "0x80013ea0",
+      "size": 144
+    },
+    "vram_slots_clear_users": {
+      "address": "0x80013f30",
+      "size": 148
+    },
+    "level_unload": {
+      "address": "0x80013fc4",
+      "size": 60
+    },
+    "level_load": {
+      "address": "0x80014000",
+      "size": 360
+    },
+    "vram_slots_reserve": {
+      "address": "0x80014168",
+      "size": 140
+    },
+    "level_start": {
+      "address": "0x800141f4",
+      "size": 516
+    },
+    "read_demo_input": {
+      "address": "0x800143f8",
+      "size": 68
+    },
+    "level_play": {
+      "address": "0x8001443c",
+      "size": 952
+    },
+    "pad_poll": {
+      "address": "0x800147f4",
+      "size": 308
+    },
+    "pad_reset": {
+      "address": "0x80014928",
+      "size": 32
+    },
+    "frontend_run": {
+      "address": "0x80014948",
+      "size": 112
+    },
+    "main": {
+      "address": "0x800149b8",
+      "size": 892
+    },
+    "init_heap": {
+      "address": "0x80014d34",
+      "size": 200
+    },
+    "heap_alloc": {
+      "address": "0x80014dfc",
+      "size": 128
+    },
+    "heap_free": {
+      "address": "0x80014e7c",
+      "size": 80
+    },
+    "heap_mark": {
+      "address": "0x80014ecc",
+      "size": 188
+    },
+    "heap_release": {
+      "address": "0x80014f88",
+      "size": 192
+    },
+    "fatal_error": {
+      "address": "0x80015048",
+      "size": 252
+    },
+    "cd_read_callback": {
+      "address": "0x80015144",
+      "size": 40
+    },
+    "init_cd": {
+      "address": "0x8001516c",
+      "size": 132
+    },
+    "load_file": {
+      "address": "0x800151f0",
+      "size": 172
+    },
+    "load_file_start": {
+      "address": "0x8001529c",
+      "size": 136
+    },
+    "cd_seek_file": {
+      "address": "0x80015324",
+      "size": 60
+    },
+    "init_texture_pages": {
+      "address": "0x80015360",
+      "size": 400
+    },
+    "clear_vram": {
+      "address": "0x800154f0",
+      "size": 116
+    },
+    "find_free_texture_page": {
+      "address": "0x80015564",
+      "size": 72
+    },
+    "vblank_handler": {
+      "address": "0x800155ac",
+      "size": 140
+    },
+    "set_display_mode": {
+      "address": "0x80015638",
+      "size": 60
+    },
+    "install_vblank_handler": {
+      "address": "0x80015674",
+      "size": 136
+    },
+    "init_clut_rows": {
+      "address": "0x800156fc",
+      "size": 212
+    },
+    "upload_clut_row": {
+      "address": "0x800157d0",
+      "size": 68
+    },
+    "find_free_clut_row": {
+      "address": "0x80015814",
+      "size": 76
+    },
+    "init_display_buffers": {
+      "address": "0x80015860",
+      "size": 596
+    },
+    "setup_double_buffer": {
+      "address": "0x80015ab4",
+      "size": 508
+    }
+  },
+  "symbols": {
+    "g_button_use": "0x8008cd84",
+    "g_button_weapon": "0x8008cd86",
+    "g_button_fire": "0x8008cd88",
+    "g_button_strafe_right": "0x8008cd92",
+    "g_button_run": "0x8008cd94",
+    "g_button_strafe_left": "0x8008cd96",
+    "g_button_look": "0x8008cd98",
+    "g_button_grenade": "0x8008cd9a",
+    "g_8cd8a": "0x8008cd8a",
+    "g_8cd8c": "0x8008cd8c",
+    "g_8cd8e": "0x8008cd8e",
+    "g_8cd90": "0x8008cd90",
+    "g_frame_count": "0x8008d380",
+    "g_game_flags": "0x8008d560",
+    "g_cheat_flags": "0x8008cda8",
+    "g_clut_sets": "0x8006a578",
+    "g_page_sets": "0x8006a590",
+    "__main": "0x800588bc",
+    "ResetGraph": "0x800623b8",
+    "SetGraphDebug": "0x80062628",
+    "SetDispMask": "0x800627bc",
+    "InitGeom": "0x80067fb0",
+    "SetGeomOffset": "0x800672f8",
+    "SetGeomScreen": "0x80067310",
+    "SetVideoMode": "0x800616a8",
+    "PadInit": "0x800615b8",
+    "card_init": "0x80048184",
+    "music_enable": "0x8003f7bc",
+    "audio_enable": "0x8003d444",
+    "music_init": "0x8003f470",
+    "TaskerAlloc": "0x80015d28",
+    "particle_pool_alloc": "0x80024768",
+    "panel_pool_alloc": "0x80045444",
+    "actor_pool_alloc": "0x8002889c",
+    "upload_pool_alloc": "0x800218a4",
+    "lifts_alloc": "0x8003e640",
+    "pickup_models_load": "0x80038100",
+    "level_object_models_load": "0x80030f78",
+    "doors_alloc": "0x80023550",
+    "menu_textures_reserve": "0x8001c588",
+    "player_reset": "0x8003cee4",
+    "sprite_sets_load": "0x8001cc84",
+    "font_init_widths": "0x80034598",
+    "password_store_level": "0x800479f0",
+    "show_loading_screen": "0x8001b290",
+    "show_continue_prompt": "0x8001b340",
+    "sound_stop_all": "0x8003d474",
+    "TaskerInit": "0x80015cc8",
+    "play_death_movie": "0x8001bb64",
+    "password_restore": "0x80047a1c",
+    "level_complete": "0x8001b7e8",
+    "play_story_movie": "0x8001ba18",
+    "g_file_table": "0x8006a5f8",
+    "g_tab": "0x8008d458",
+    "g_level_map": "0x80096060",
+    "unpack_buffers_alloc": "0x80021e88",
+    "audio_init": "0x8003d318",
+    "panel_sprites_load_alternate": "0x8001cd04",
+    "audio_select_level_bank": "0x8003d294",
+    "level_panel_sprites_load": "0x8001cc34",
+    "message_box_advance": "0x80019db4",
+    "level_map_file_load": "0x80020be4",
+    "level_parse_map": "0x80020e14",
+    "door_models_prepare": "0x80023478",
+    "lift_models_prepare": "0x8003e590",
+    "level_sprites_load": "0x8001d114",
+    "g_random_state": "0x8008d5f8",
+    "g_level": "0x8008d378",
+    "g_pad_repeat": "0x8008d580",
+    "g_pad_repeat_clock": "0x8008d4d0",
+    "g_pad_hold_frames": "0x8008d590",
+    "g_heap_next": "0x8008d410",
+    "g_heap_used": "0x8008d3c0",
+    "g_heap_free": "0x8008d390",
+    "g_action_index": "0x8008cda4",
+    "audio_free_bank": "0x8003d130",
+    "g_boss_level": "0x8008d578",
+    "g_fade_depth": "0x8008d470",
+    "DpqColor": "0x80066fdc",
+    "upload_queue_flush": "0x8002194c",
+    "g_graphics_busy": "0x8008d388",
+    "g_display": "0x8008d518",
+    "g_render_buffer": "0x8008d4e8",
+    "g_render_workspace": "0x8008d3c8",
+    "g_display_default": "0x8008d3e0",
+    "g_sprite_workspace": "0x8008d478",
+    "DrawSync": "0x80062858",
+    "PutDispEnv": "0x80062f2c",
+    "DrawOTag": "0x80062dbc",
+    "ClearOTagR": "0x80062cc4",
+    "AddPrim": "0x80065220",
+    "g_next_task": "0x8008d4f0",
+    "start_title_sequence": "0x8001b18c",
+    "TaskDispatch": "0x80015ee4",
+    "SetBlockFill": "0x800654f8",
+    "DrawPrim": "0x80062d5c",
+    "SetRCnt": "0x8005d120",
+    "StartRCnt": "0x8005d1f4",
+    "weapon_sprite_bind_slot": "0x8003cae4",
+    "level_cells_reset": "0x800216a4",
+    "upload_queue_reset": "0x800218cc",
+    "hud_messages_reset": "0x80037c78",
+    "particle_pool_init": "0x800246c4",
+    "panel_pool_init": "0x8004548c",
+    "flow_field_clear": "0x800214dc",
+    "actor_pool_init": "0x8002881c",
+    "lights_load": "0x80023800",
+    "level_triggers_load": "0x8003d8dc",
+    "lifts_spawn": "0x8003f334",
+    "doors_init": "0x80023580",
+    "map_objects_init": "0x800384ec",
+    "level_objects_init": "0x800321f4",
+    "actors_init": "0x80029a3c",
+    "command_sequencer_start": "0x800405c0",
+    "countdown_start": "0x80037f08",
+    "TaskCreate": "0x80015e4c",
+    "g_view_position": "0x8008d5b8",
+    "g_view_pitch": "0x8008d5f0",
+    "g_view_rotation": "0x8008d468",
+    "lights_task": "0x80023890",
+    "player_task_start": "0x8003cb0c",
+    "view_render_task": "0x80020980",
+    "particles_task": "0x80027a18",
+    "actors_draw_task": "0x8002ab48",
+    "command_sequencer_task": "0x80040650",
+    "pickups_task": "0x80039440",
+    "g_display_mode": "0x8008d3b8",
+    "g_sound_clock": "0x8008d588",
+    "g_pad_pressed": "0x8008d5a8",
+    "g_pad_held": "0x8008d4d8",
+    "g_pad_previous": "0x8008d448",
+    "PadRead": "0x80061618",
+    "g_heap_snapshots": "0x8009b30c",
+    "g_heap_size": "0x8008d400",
+    "g_heap_allocation": "0x8008d548",
+    "g_heap_snapshot_current": "0x8008cdb0",
+    "malloc": "0x80069748",
+    "g_cd_read_count": "0x8008d508",
+    "SetDefDrawEnv": "0x800663a4",
+    "SetDefDispEnv": "0x80066434",
+    "PutDrawEnv": "0x80062e30",
+    "FntLoad": "0x800657c8",
+    "FntOpen": "0x8006586c",
+    "SetDumpFnt": "0x80065788",
+    "FntPrint": "0x80065e68",
+    "FntFlush": "0x80065b40",
+    "VSync": "0x800621d4",
+    "CdControlB": "0x8005d6d4",
+    "CdControl": "0x8005d4b0",
+    "CdRead": "0x8005d8a4",
+    "CdReadSync": "0x8005d884",
+    "CdSearchFile": "0x8005fb60",
+    "g_display_buffers": "0x8008d5e8",
+    "g_draw_env_a": "0x8009cb28",
+    "g_draw_env_b": "0x8009cb88",
+    "SetDrawEnv": "0x80063540",
+    "SetFarColor": "0x80067264",
+    "SetFogNear": "0x800684a0",
+    "GetTPage": "0x80064ff8",
+    "EnterCriticalSection": "0x8005d0c0",
+    "ExitCriticalSection": "0x8005d2e0",
+    "OpenEvent": "0x8005d2b0",
+    "EnableEvent": "0x8005d0f0",
+    "GetClut": "0x800650c0",
+    "get_difficulty": "0x80017760",
+    "set_difficulty": "0x80017770",
+    "music_play_level": "0x8003f728",
+    "music_poll": "0x8003f81c",
+    "pause_menu_run": "0x80042e88",
+    "LoadImage": "0x80062a80",
+    "ResetCallback": "0x800616d0",
+    "CdInit": "0x8005f94c",
+    "CdSetDebug": "0x8005d3a0",
+    "CdReadCallback": "0x8005d498",
+    "s_heap_overflow": "0x800101e0",
+    "s_error_title": "0x800101f0",
+    "s_error_format": "0x8008cdb4",
+    "message_box_type": "0x800198f8"
+  },
+  "static_data": {
+    "s_13a1c": {
+      "address": "0x8006a5e0",
+      "size": 24,
+      "section": ".data"
+    }
+  }
+}

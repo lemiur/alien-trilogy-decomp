@@ -1,0 +1,23 @@
+{
+  "gp": "0x8008cd74",
+  "functions": {
+    "_SpuInit": {
+      "address": "0x8005c4f4",
+      "size": 228
+    },
+    "SpuStart": {
+      "address": "0x8005c5d8",
+      "size": 92
+    }
+  },
+  "symbols": {
+    "ResetCallback": "0x800616d0",
+    "_spu_init": "0x80059a14",
+    "_spu_open": "0x80059fec",
+    "EnterCriticalSection": "0x8005d0c0",
+    "ExitCriticalSection": "0x8005d2e0",
+    "_spu_ioctl": "0x8005ab0c",
+    "_spu_rev_startaddr": "0x80074164"
+  },
+  "static_data": {}
+}

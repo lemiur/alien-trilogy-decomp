@@ -1,0 +1,40 @@
+{
+  "functions": {
+    "command_run": {
+      "address": "0x80040298",
+      "size": 284
+    },
+    "command_advance": {
+      "address": "0x800403b4",
+      "size": 112
+    },
+    "command_states_init": {
+      "address": "0x80040424",
+      "size": 412
+    },
+    "command_sequencer_start": {
+      "address": "0x800405c0",
+      "size": 64
+    },
+    "command_state_add": {
+      "address": "0x80040600",
+      "size": 80
+    },
+    "command_sequencer_task": {
+      "address": "0x80040650",
+      "size": 188
+    }
+  },
+  "symbols": {
+    "g_level_map": "0x80096060",
+    "random": "0x80013a44",
+    "g_command_states": "0x8009a30c",
+    "g_command_labels": "0x8009d288",
+    "g_command_state_count": "0x8008d4f8",
+    "g_next_task": "0x8008d4f0"
+  },
+  "sections": {
+    ".rdata": "0x800125e8"
+  },
+  "gp": "0x8008cd74"
+}

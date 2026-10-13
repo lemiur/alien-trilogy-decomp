@@ -1,0 +1,2 @@
+# Store every file byte-for-byte: reports pin file hashes and the DOS toolchain reads sources as-is.
+* -text

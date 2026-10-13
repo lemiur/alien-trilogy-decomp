@@ -1,0 +1,10 @@
+{
+  "status": "pass",
+  "latest_report_sha256": "d2b4b4210fc404e7a0bb25486cdb88abb044dd7de0b06684c75ca1120a9edc11",
+  "analyzer_sha256": "30e7c5432b515a00538f352182e6b48658b9cd7910f4014a7b786ec09b7e8eff",
+  "certified_function_count": 368,
+  "direct_call_targets": 2270,
+  "maximum_prefix_distance": 64,
+  "remaining_suspects": [],
+  "limitation": "This bounded direct-call audit cannot prove every original source boundary or identify unreferenced indirect entries."
+}

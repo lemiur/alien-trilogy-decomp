@@ -1,0 +1,94 @@
+{
+  "functions": {
+    "panel_pool_alloc": {
+      "address": "0x80045444",
+      "size": 72
+    },
+    "panel_pool_init": {
+      "address": "0x8004548c",
+      "size": 120
+    },
+    "panel_claim": {
+      "address": "0x80045504",
+      "size": 88
+    },
+    "panel_free": {
+      "address": "0x8004555c",
+      "size": 28
+    },
+    "panel_spawn": {
+      "address": "0x80045578",
+      "size": 2308
+    },
+    "wall_shatter": {
+      "address": "0x80045e7c",
+      "size": 1564
+    },
+    "shard_split": {
+      "address": "0x80046498",
+      "size": 3272
+    },
+    "panel_list_walk": {
+      "address": "0x80047160",
+      "size": 112
+    }
+  },
+  "symbols": {
+    "particle_alloc": "0x80024790",
+    "particle_free": "0x800246ac",
+    "particle_link": "0x800247bc",
+    "g_sprite_uvs": "0x80097fd4",
+    "g_level": "0x8008d378",
+    "random": "0x80013a44",
+    "g_player": "0x80099fd4",
+    "g_panel_grid_xy": "0x80073938",
+    "g_panel_grid_yz": "0x80073980",
+    "g_debris_uvs": "0x8008d4e0",
+    "heap_alloc": "0x80014dfc",
+    "LoadAverageShort12": "0x800679c0",
+    "g_panel_uvs": "0x80096dc4",
+    "g_pickup_uvs": "0x8009b384"
+  },
+  "sections": {
+    ".data": "0x80073938",
+    ".sbss": "0x8008d2c8"
+  },
+  "gp": "0x8008cd74",
+  "static_data": {
+    "g_panel_vertices": {
+      "address": "0x8008d2c8",
+      "size": 8,
+      "section": ".sbss"
+    },
+    "g_panels": {
+      "address": "0x8008d2d0",
+      "size": 8,
+      "section": ".sbss"
+    },
+    "g_split_top": {
+      "address": "0x8008d2d8",
+      "size": 8,
+      "section": ".sbss"
+    },
+    "g_split_left": {
+      "address": "0x8008d2e0",
+      "size": 8,
+      "section": ".sbss"
+    },
+    "g_split_centre": {
+      "address": "0x8008d2e8",
+      "size": 8,
+      "section": ".sbss"
+    },
+    "g_split_right": {
+      "address": "0x8008d2f0",
+      "size": 8,
+      "section": ".sbss"
+    },
+    "g_split_bottom": {
+      "address": "0x8008d2f8",
+      "size": 8,
+      "section": ".sbss"
+    }
+  }
+}

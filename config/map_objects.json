@@ -1,0 +1,125 @@
+{
+  "functions": {
+    "map_object_free": {
+      "address": "0x80037fc0",
+      "size": 24
+    },
+    "map_objects_reset": {
+      "address": "0x80037fd8",
+      "size": 88
+    },
+    "object_model_faces_fixup": {
+      "address": "0x80038030",
+      "size": 208
+    },
+    "map_object_alloc": {
+      "address": "0x800382a0",
+      "size": 44
+    },
+    "map_object_link": {
+      "address": "0x800382cc",
+      "size": 44
+    },
+    "map_objects_spawn": {
+      "address": "0x800382f8",
+      "size": 500
+    },
+    "map_objects_init": {
+      "address": "0x800384ec",
+      "size": 68
+    },
+    "map_object_trigger": {
+      "address": "0x80038530",
+      "size": 472
+    },
+    "actor_drop_item": {
+      "address": "0x80038708",
+      "size": 756
+    },
+    "level_object_drop_item": {
+      "address": "0x800389fc",
+      "size": 784
+    },
+    "map_object_unlink": {
+      "address": "0x80038d0c",
+      "size": 56
+    },
+    "map_object_near_player": {
+      "address": "0x800391dc",
+      "size": 172
+    },
+    "map_object_draw": {
+      "address": "0x80039288",
+      "size": 440
+    },
+    "pickups_task": {
+      "address": "0x80039440",
+      "size": 700
+    },
+    "pickup_models_load": {
+      "address": "0x80038100",
+      "size": 416
+    }
+  },
+  "symbols": {
+    "g_map_object_free": "0x8008d1c8",
+    "g_map_objects": "0x8008d1d0",
+    "g_player": "0x80099fd4",
+    "g_map_object_pool": "0x8008d1c0",
+    "g_level_map": "0x80096060",
+    "g_visible_cell_mask": "0x8008d510",
+    "g_view_position": "0x8008d5b8",
+    "g_relative_position": "0x8008d5c8",
+    "g_view_matrix": "0x8009a2c4",
+    "g_matrix_work": "0x8009a2e4",
+    "g_translation": "0x8009c5a4",
+    "model_draw_mid_in_cell": "0x8001fc0c",
+    "model_draw_far_in_cell": "0x8001f820",
+    "LoadAverageShort12": "0x800679c0",
+    "PushMatrix": "0x80066c6c",
+    "PopMatrix": "0x80066d0c",
+    "ApplyMatrix": "0x80067678",
+    "RotMatrix": "0x800684fc",
+    "MulMatrix2": "0x8006756c",
+    "SetRotMatrix": "0x8006786c",
+    "TransMatrix": "0x80067724",
+    "SetTransMatrix": "0x800678fc",
+    "g_model_uvs": "0x8008d558",
+    "g_pickup_uvs": "0x8009b384",
+    "g_sprite_uvs": "0x80097fd4",
+    "ScaleMatrix": "0x80067748",
+    "map_object_move": "0x80038d44",
+    "player_give_pickup": "0x8003389c",
+    "hud_show_message": "0x80037b98",
+    "sound_play": "0x8003d5b4",
+    "g_next_task": "0x8008d4f0",
+    "g_object_records": "0x8008d1b0",
+    "g_object_record_count": "0x8008d1b8",
+    "g_object_models": "0x80096be4",
+    "floor_height": "0x80021144",
+    "heap_alloc": "0x80014dfc",
+    "load_file": "0x800151f0",
+    "g_file_table": "0x8006a5f8",
+    "parse_decimal": "0x8001c538",
+    "read_be32": "0x8001c50c",
+    "random": "0x80013a44"
+  },
+  "gp": "0x8008cd74",
+  "static_data": {
+    "g_map_object_scales": {
+      "address": "0x80072e0c",
+      "size": 448,
+      "section": ".data"
+    },
+    "g_pickup_messages": {
+      "address": "0x80072fcc",
+      "size": 112,
+      "section": ".data"
+    },
+    "g_object_heights": {
+      "address": "0x8007303c",
+      "size": 56,
+      "section": ".data"
+    }
+  }
+}

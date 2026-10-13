@@ -1,0 +1,10 @@
+{
+  "functions": {
+    "f_47404": {"address": "0x80047404", "size": 384}
+  },
+  "symbols": {},
+  "sections": {
+    ".rdata": "0x80012a00"
+  },
+  "gp": "0x8008cd74"
+}

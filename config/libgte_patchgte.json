@@ -1,0 +1,24 @@
+{
+  "gp": "0x8008cd74",
+  "functions": {
+    "_patch_gte": {
+      "address": "0x80068030",
+      "size": 160
+    }
+  },
+  "symbols": {
+    "EnterCriticalSection": "0x8005d0c0",
+    "ExitCriticalSection": "0x8005d2e0",
+    "FlushCache": "0x800680d0"
+  },
+  "sections": {
+    ".sbss": "0x8008d304"
+  },
+  "static_data": {
+    "g_8008d304": {
+      "address": "0x8008d304",
+      "size": 16,
+      "section": ".sbss"
+    }
+  }
+}

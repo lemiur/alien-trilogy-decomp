@@ -1,0 +1,20 @@
+{
+  "gp": "0x8008cd74",
+  "functions": {
+    "_spu_note2pitch": {
+      "address": "0x8005913c",
+      "size": 244
+    },
+    "_spu_pitch2note": {
+      "address": "0x80059230",
+      "size": 344
+    }
+  },
+  "static_data": {
+    "g_73b00": {
+      "address": "0x80073b00",
+      "size": 388,
+      "section": ".data"
+    }
+  }
+}

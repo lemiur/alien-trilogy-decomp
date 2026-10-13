@@ -1,0 +1,84 @@
+{
+  "status": "pass",
+  "problems": [],
+  "inputs": {
+    "reports\\runtime_data.json": "feeb3c4357e3dbf948d57f8dc4c62b6f8797ee04a00160ff65e0c8412a1dafb9",
+    "analysis\\runtime_linked.json": "41d400fbd72e82f2ddec720cca1b8d520ce8dfd1023768ea0030aa1f873b369d",
+    "tools\\section_layout.py": "768374f9bf05d9bd45cefaac221b354f61784ae29510549a719d165648123e81"
+  },
+  "regions": [
+    {
+      "name": "leading module",
+      "section": null,
+      "start": "0x80010000",
+      "end": "0x800101e0",
+      "status": "unknown"
+    },
+    {
+      "name": ".rdata",
+      "section": ".rdata",
+      "start": {
+        "min": "0x80010000",
+        "max": "0x800101e0"
+      },
+      "end": "0x8001380c",
+      "status": "bounded"
+    },
+    {
+      "name": ".text",
+      "section": ".text",
+      "start": "0x8001380c",
+      "end": "0x8006a578",
+      "status": "pinned"
+    },
+    {
+      "name": ".data",
+      "section": ".data",
+      "start": "0x8006a578",
+      "end": "0x8008cd74",
+      "status": "pinned"
+    },
+    {
+      "name": ".sdata",
+      "section": ".sdata",
+      "start": "0x8008cd74",
+      "end": "0x8008d088",
+      "status": "pinned"
+    },
+    {
+      "name": ".sbss",
+      "section": ".sbss",
+      "start": "0x8008d088",
+      "end": {
+        "min": "0x8008d318",
+        "max": "0x8008f6ec"
+      },
+      "status": "bounded"
+    },
+    {
+      "name": ".bss",
+      "section": ".bss",
+      "start": {
+        "min": "0x8008d318",
+        "max": "0x8008f6ec"
+      },
+      "end": "0x8009603c",
+      "status": "bounded"
+    },
+    {
+      "name": "COMMON",
+      "section": ".bss",
+      "start": "0x8009603c",
+      "end": "0x800a1958",
+      "status": "pinned"
+    }
+  ],
+  "bss_counts": {
+    "entries": 269,
+    "sized_entries": 99,
+    "sized_bytes": 27290,
+    "game_references": 170,
+    "unit_statics": 68,
+    "interior_references": 1
+  }
+}

@@ -1,0 +1,97 @@
+{
+  "gp": "0x8008cd74",
+  "functions": {
+    "CompMatrix": {
+      "address": "0x80066470",
+      "size": 352
+    },
+    "MulMatrix0": {
+      "address": "0x800665d0",
+      "size": 268
+    },
+    "MulRotMatrix0": {
+      "address": "0x800666dc",
+      "size": 228
+    },
+    "MulRotMatrix": {
+      "address": "0x800667c0",
+      "size": 232
+    },
+    "SetMulMatrix": {
+      "address": "0x800668a8",
+      "size": 272
+    },
+    "ApplyMatrixLV": {
+      "address": "0x800669b8",
+      "size": 352
+    },
+    "ApplyRotMatrix": {
+      "address": "0x80066b18",
+      "size": 48
+    },
+    "ScaleMatrixL": {
+      "address": "0x80066b48",
+      "size": 292
+    },
+    "PushMatrix": {
+      "address": "0x80066c6c",
+      "size": 160
+    },
+    "PopMatrix": {
+      "address": "0x80066d0c",
+      "size": 160
+    },
+    "ReadRotMatrix": {
+      "address": "0x80066dac",
+      "size": 72
+    },
+    "ReadLightMatrix": {
+      "address": "0x80066df4",
+      "size": 72
+    },
+    "ReadColorMatrix": {
+      "address": "0x80066e3c",
+      "size": 84
+    }
+  },
+  "symbols": {
+    "printf": "0x80069880"
+  },
+  "static_data": {
+    "g_800766f4": {
+      "address": "0x800766f4",
+      "size": 4,
+      "section": ".data"
+    },
+    "g_800766f8": {
+      "address": "0x800766f8",
+      "size": 8,
+      "section": ".data"
+    },
+    "g_80076700": {
+      "address": "0x80076700",
+      "size": 4,
+      "section": ".data"
+    },
+    "g_80076704": {
+      "address": "0x80076704",
+      "size": 640,
+      "section": ".data"
+    },
+    "g_80076984": {
+      "address": "0x80076984",
+      "size": 49,
+      "section": ".data"
+    },
+    "g_800769b5": {
+      "address": "0x800769b5",
+      "size": 41,
+      "section": ".data"
+    },
+    "g_800769de": {
+      "address": "0x800769de",
+      "size": 38,
+      "section": ".data"
+    }
+  }
+}

@@ -1,0 +1,566 @@
+{
+ "executable_sha256": "f424660920764ac70f697b5b909a42fe259a76e60acbf5b01c6ca3ee8c8f8e98",
+ "method": "see analysis/runtime/README.md, \"Constants (round 3)\"",
+ "sample_ids": {
+  "note": "sample_bank_load(0, PERMSFX) fills ids 0..40 (file table key 0x70, resident); audio_select_level_bank loads the level bank (SFX/<nnn>SFX.BIN, key from g_level_sample_banks) at first id 41, so id N >= 41 is entry N-41 of the level bank. Identity of a level-bank id across levels was checked by hashing each entry's ADPCM data in every SFX/*SFX.BIN and SFX2/*SFX.BIN on the disc.",
+  "perm": {
+   "0x05": "pulse rifle pickup only (0.40 s, short metallic click)",
+   "0x06": "pulse rifle fire (weapon script 0x80055944)",
+   "0x07": "pulse rifle grenade launcher: weapon script 0x800559c4 (played with each grenade launch) and the grenades pickup",
+   "0x08": "pulse grenade launch (pulse_grenade_launch)",
+   "0x09": "hand grenade throw (player_throw_grenade)",
+   "0x0a": "flamethrower: weapon script 0x80055b58 (frame 1 of the firing animation, 0.05 s) and the fuel/flamethrower pickup",
+   "0x0b": "flamethrower burn loop (sound_channel_play, looping sample)",
+   "0x0c": "pistol pickup only (0.25 s click)",
+   "0x0d": "pistol fire",
+   "0x0f": "shotgun pump: weapon script 0x80055a48, mid-animation after every shot, and the shotgun pickup",
+   "0x10": "shotgun fire",
+   "0x12": "smart gun: second weapon script 0x80055bea and the smart gun pickup",
+   "0x13": "smart gun fire",
+   "0x15": "ambient (f_36248, every 96 frames on level 1)",
+   "0x19": "lamp / night vision expiry",
+   "0x1a": "pause-menu automap scroll",
+   "0x23": "shot wall impact, levels 12..21",
+   "0x24": "shot wall impact, other levels",
+   "0x25": "shot impact over a cell of type 8 or 9",
+   "0x26": "footstep while Player.item_flags & 0x4000 (f_3982c)",
+   "0x27": "results-screen tally tick",
+   "0x28": "generic pickup",
+   "0x29": "explosion (explosion_spawn)",
+   "0x2c": "footstep (f_3982c)"
+  },
+  "level": {
+   "0x2a": "level bank entry 1: three variants (levels in SECT1x banks c13e3cc1 1.44 s; SECT2x 9806406e 1.97 s; SECT3x 720c8e9d 0.79 s)",
+   "0x2b": "level bank entry 2: SECT1x 66bfd951 0.24 s; SECT2x b5e71586 1.41 s; absent from the SECT3x banks",
+   "0x5c": "level bank entry 51: one sample (b037a29f, 1.53 s) in every level bank",
+   "0x5e": "level bank entry 53: one sample (f1aeaca8, 2.22 s) in every bank of a level with lifts",
+   "0x5f": "level bank entry 54: one sample (27d782a0, 1.20 s), same banks as 0x5e",
+   "0x62": "level bank entry 57 (352/353 banks, 2.58 s)",
+   "0x63": "level bank entry 58 (113/114/115/155/242/243 banks, 2.77 s)",
+   "0x64": "level bank entry 59 (115/155/242/243 banks, 1.16 s)",
+   "0x65": "level bank entry 60 (113/114 banks, 0.92 s)",
+   "0x6c": "level bank entry 67: one sample (d0f3cfa1, 1.58 s, broadband noise) only in 131, 211, 212, 232 banks"
+  },
+  "wav_exports": "builds/runtime/samples/*.wav (git-ignored; regenerate with builds/lane_tools/np/banks2.py and banks.decode)"
+ },
+ "items": [
+  {
+   "item": 1,
+   "value": ["0x2a", "0x2b", "0x5c", "0x5e", "0x5f", "0x6c", "0x05", "0x07", "0x0a", "0x0c", "0x0f", "0x12", "0x28"],
+   "question": "Which sample each sound id is; are the weapon pickup sounds the reload samples?",
+   "scenario": "slot 10 (level 1): walk to the start door and press Use; fire the pistol 19 times through a reload; every weapon and its ammunition poked in, weapon change, fire and grenade per weapon; teleport onto the battery pickup; teleport in front of the switch panel (type 0x18) and press Use. Slot 4 (level 14): pistol fire at a wall; a lift (no activation). Execute breakpoints on sound_play, sound_play_at, play_menu_sound and voice_play record a0 and the caller. Disc: SFX bank headers parsed and every entry hashed and decoded to WAV.",
+   "observation": "Door: 0x2a from door_task_closed+0x64 when the door starts (frame 30), 0x2b from door_task_opening+0x40 60 frames later when it is fully open. Switch: 0x5c from level_object_activate+0xa4 and switch_panel_task+0x2d8 on the Use press. Battery: 0x28 from pickups_task+0x24c. Pistol reload (15 -> 12 ammo + 1 clip) plays no sound at all. Weapon scripts (frame tables with SPRITE_COMMAND_SOUND words in .text 0x80055930..0x80055c20): pulse rifle fire 0x8106; grenade launch 0x8107 (with pulse_grenade_launch's 0x08); shotgun 0x8110 (fire) then 0x810f mid-animation (pump); pistol 0x810d; flamethrower 0x810a at frame 1 and loop script 0x810b; smart gun fire 0x8113 and a second script with 0x8112. Ids 0x05 and 0x0c occur in no script. Bank hashing: 0x5c, 0x5e, 0x5f and 0x6c are the same sample in every bank that has them; 0x2a/0x2b have one variant per section group (SECT1x, SECT2x, SECT3x; SECT3x banks have no 0x2b). 0x6c exists only in the 131, 211, 212 and 232 banks. Lifts did not move in the level-14 run (Use on the lift does nothing; lifts are trigger-driven), so 0x5e/0x5f rest on lift_task_* and the bank evidence.",
+   "readers_writers": ["door_task_closed+0x5c/+0x64 (0x2a)", "door_task_open+0xb4 (0x2a)", "door_task_closing+0x54 (0x2a), +0xd4 (0x2b)", "door_task_opening+0x38/+0x40 (0x2b)", "level_object_activate+0x9c, switch_panel_task+0x2d0 (0x5c)", "lift_task_delay+0x88, lift_task_wait+0x94/+0xc0 (0x5e)", "lift_task_lower+0x90, lift_task_raise+0x88 (0x5f)", "block_object_task+0x128 (0x6c)", "pickups_task+0x244 (all pickup ids)", "f_3b578+0xd0 (weapon view script sound)"],
+   "recommended_name": {
+    "0x2a": "SOUND_DOOR_MOVE (keep)",
+    "0x2b": "SOUND_DOOR_STOP (keep; SOUND_DOOR_OPENED is also fitting: retail plays it when the door reaches open and when it finishes closing)",
+    "0x5c": "SOUND_SWITCH (keep)",
+    "0x5e": "SOUND_LIFT_MOVE (keep)",
+    "0x5f": "SOUND_LIFT_STOP (keep)",
+    "0x6c": "SOUND_WALL_SHATTER (keep)",
+    "0x05": "SOUND_PULSE_RIFLE_PICKUP (keep; pickup-only sample)",
+    "0x07": "SOUND_GRENADE_LAUNCHER_LOAD (or keep SOUND_GRENADES_PICKUP; the sample is the launcher's handling sound)",
+    "0x0a": "SOUND_FLAMETHROWER_IGNITE (or keep SOUND_FLAMETHROWER_PICKUP)",
+    "0x0c": "SOUND_PISTOL_PICKUP (keep; pickup-only sample)",
+    "0x0f": "SOUND_SHOTGUN_PUMP",
+    "0x12": "SOUND_SMART_GUN_COCK (or keep SOUND_SMART_GUN_PICKUP)",
+    "0x28": "SOUND_PICKUP (keep)"
+   },
+   "confidence": "high for the door, switch, pickup and weapon-script observations and for 'pickup sounds are not reload samples' (no reload sound exists); medium for the new handling names (what the sample sounds like was judged from the script position and the decoded waveform, not by listening); medium for 0x5e/0x5f/0x6c (not played in a run)"
+  },
+  {
+   "item": 2,
+   "value": ["0x01", "0x08"],
+   "question": "What reads Sprite.flags 0x01 (SPRITE_FLAG_MARK) and 0x08 (SPRITE_FLAG_CUE)?",
+   "scenario": "static scan of the retail EXE for every lh/lhu of Sprite.flags (+0x36 in Sprite, +0xb6 in Actor, g_player.weapon_sprite absolute) followed by andi with a mask containing the bit; weapon scripts read from RAM (slot 10)",
+   "observation": "0x01 is read only by the texture upload code: upload_can_queue_pair+0x24/+0x28 and sprite_frame_upload+0x2c (and boss_sprite_frame_upload+0x28). With the bit set, sprite_frame_upload unpacks the frame into the g_unpack_buffer staging area through unpack_rle or unpack_lz (chosen by mode) and times it with GetRCnt; with it clear the frame pixels are queued directly. Every weapon firing script sets it (0x8300) before its frames. 0x08 is read only by creature_task+0x5cc (actor.c ACTOR_LEAP: on the cue frame the actor fires a bullet or lobs a grenade, then clears the bit).",
+   "readers_writers": ["sprite_run_script (writer: commands 0x300/0x400/0x900)", "upload_can_queue_pair+0x24, +0x28", "sprite_frame_upload+0x2c", "boss_sprite_frame_upload+0x28", "creature_task+0x5cc"],
+   "recommended_name": {"0x01": "SPRITE_FLAG_PACKED (commands SPRITE_COMMAND_PACKED 0x300 / SPRITE_COMMAND_UNPACKED 0x400)", "0x08": "SPRITE_FLAG_FIRE (command SPRITE_COMMAND_FIRE 0x900); SPRITE_FLAG_CUE stays acceptable"},
+   "confidence": "high for the readers (exhaustive static scan); medium for PACKED (the branch is clear, the runtime path was not stepped)"
+  },
+  {
+   "item": 3,
+   "value": ["0x14", "0x17", "0x19", "0x18", "0x1a", "0x20..0x25"],
+   "question": "What each level object type depicts",
+   "scenario": "slot 10 (level 1): g_level_objects dumped (44 objects: 8 x 0x14, 15 x 0x17, 16 x 0x19, 2 x 0x18, 1 x 0x1a); the player teleported in front of one of each and screenshots taken (builds/runtime/lo_l1*.png). G0LVL22 (level 22): 13 objects, 10 x 0x14 and 3 x 0x18.",
+   "observation": "0x17: red drums with yellow/black bands (explosive barrels), in rows. 0x14 (level 1): a low green box on the floor, destroyed by hits, drops a pickup (drop[0] 8..22). 0x19: a tall dark container with yellow hazard markings, same task. 0x18: a wall switch panel with hazard stripes (activation played 0x5c). 0x1a: a wall console (battery switch). Level 22 (the derelict/hive tileset) has only 0x14 and 0x18; the 0x14 model there was not identified on screen. No visited level (1, 11, 14, 22) has 0x20..0x25.",
+   "readers_writers": ["level_objects_create (task per type)", "level_object_hit_task (0x14, 0x19)", "level_object_debris_task (0x17)"],
+   "recommended_name": {"0x14": "LEVEL_OBJECT_CRATE", "0x19": "LEVEL_OBJECT_CRATE_TALL", "0x17": "LEVEL_OBJECT_BARREL (EXPLOSIVE is fine)", "0x20..0x25": "unresolved"},
+   "confidence": "medium (screenshots in dark rooms, one object per type); 0x20..0x25 not reached"
+  },
+  {
+   "item": 4,
+   "value": "0x02",
+   "question": "Do doors with facing 2/6 (DOOR_ALONG_Z) run along z?",
+   "scenario": "slot 10 (level 1): g_doors read (6 doors) with their cell pointers; the start door opened and walked through",
+   "observation": "Doors with facing 2 or 6 have flags & 2, facing 0/4 have it clear. Map cells are 16 bytes and a map row is 0x5c0 bytes (92 cells): x steps 1 cell, z steps a row (door 2 vs door 3: dz -9 cells = -0x33c0 bytes; doors 4 vs 5: dx -16 cells = -0x100 bytes). A facing-0/4 door's cells c,a,b,d are 16 bytes apart (adjacent along x); a facing-2/6 door's are 0x5c0 apart (adjacent along z). The player crossed door 0 (facing 2) moving along +x, so its panel spans z.",
+   "readers_writers": ["doors_build (sets it)", "doors.c lines 80, 193, 368, 421 (readers)"],
+   "recommended_name": "DOOR_ALONG_Z (confirmed)",
+   "confidence": "high"
+  },
+  {
+   "item": 5,
+   "value": ["0xfe", "0xfd", "0xff"],
+   "question": "Menu font icon codes 0xfe/0xfd: left/right or up/down arrows?",
+   "scenario": "slot 8 (title): g_menu_glyph_uvs entries 0x77, 0x7b, 0x7d read, VRAM dumped, the glyphs rendered through their tpage/CLUT (builds/runtime/glyphs.png). No memory card screen was opened.",
+   "observation": "0x7b (code 0xfe) is a round button with a left-pointing triangle, 0x7d (code 0xfd) the same with a right-pointing triangle, 0x77 (code 0xff) the Cross button (the results screen draws it in 'Press X button to continue').",
+   "readers_writers": ["draw_glyph (text.c)"],
+   "recommended_name": {"0xfe": "GLYPH_LEFT_BUTTON", "0xfd": "GLYPH_RIGHT_BUTTON", "0xff": "GLYPH_CROSS_BUTTON"},
+   "confidence": "high"
+  },
+  {
+   "item": 6,
+   "value": ["0x100", "0x200"],
+   "question": "g_cheat_flags 0x100 and 0x200 (always set): effect when cleared",
+   "scenario": "static scan of every g_cheat_flags access; slot 10 with the player placed next to awake aliens, 300 frames, flag 0x100 kept vs cleared, execute breakpoints on creature_task's idle test (0x8002f180) and wake store (0x8002f194)",
+   "observation": "menu_task+0x788 sets both (ori 0x300) when a game starts. 0x100 is read by creature_task+0x158 and queen_task+0x10c/+0x1d4: an idle actor (action 0) whose idle_timer is 0 wakes (action 1) only while it is set. Run: kept -> 5 tests, 5 wake-ups, 46 positional (creature) sounds; cleared -> 140 tests, 0 wake-ups, 10 positional sounds. 0x200 is read only by lift_draw+0x4: with it clear lift_draw returns without drawing (static; no lift was on screen when it was cleared on level 1).",
+   "readers_writers": ["menu_task+0x788 (sets 0x300)", "creature_task+0x158", "queen_task+0x10c, +0x1d4", "lift_draw+0x4"],
+   "recommended_name": {"0x100": "CHEAT_FLAG_ACTORS_WAKE", "0x200": "CHEAT_FLAG_DRAW_LIFTS"},
+   "confidence": "high for 0x100 (runtime); medium-high for 0x200 (single static reader, not seen)"
+  },
+  {
+   "item": 7,
+   "value": ["0x4000", "0x10000", "0x400"],
+   "question": "g_game_flags 0x4000 (restored?) and 0x10000 (best grade?): who sets/reads; also 0x400 firing flag or screen flash?",
+   "scenario": "static scan of every g_game_flags access with the following 7-16 instructions; one attempt to enter the 2-1 password (typing went wrong, no runtime result); slot 10 with g_game_flags |= 4 ran level_complete to the results screen",
+   "observation": "0x4000 is set by load_card_slot+0x70 (memory card load) and password_keyboard_input+0x2d4 (password accepted) and cleared by main+0x1c4 when the level loop starts the level; no instruction tests it. 0x10000 is set only by level_complete when the percentage is >= 85 on the last level of a chapter (grade 3); nothing tests or clears it. 0x400 is set by player_fire (every weapon) and big_explosion_spawn, read by f_3b578+0x114 and cleared by lights_task+0x2a8, which lights the scene: a light flash from muzzle flashes and explosions, not a firing state.",
+   "readers_writers": ["load_card_slot+0x70", "password_keyboard_input+0x2d4", "main+0x1c4", "level_complete+0xbc", "player_fire+0x6c..+0x1e0", "big_explosion_spawn+0x70", "f_3b578+0x114", "lights_task+0x2a8"],
+   "recommended_name": {"0x4000": "GAME_FLAG_RESTORED", "0x10000": "GAME_FLAG_BEST_GRADE", "0x400": "GAME_FLAG_FLASH"},
+   "confidence": "medium-high (complete static writer/reader set; the password path was not run)"
+  },
+  {
+   "item": 8,
+   "value": "0x8",
+   "question": "MENU_ENTRY_HEADING: any reader?",
+   "scenario": "static scan for lh/lhu at offset 0 followed by andi with any mask containing 8, in every function",
+   "observation": "run_menu tests MenuEntry.flags with 1, 2, 0x10 and 0x20 only; no menu function tests 8. The only andi 8 after an offset-0 halfword load in the front end is pause_menu_init+0x2d8, on a structure with a field at +0xe (not a MenuEntry).",
+   "readers_writers": ["none"],
+   "recommended_name": "MENU_ENTRY_HEADING (keep; data-only flag, no reader)",
+   "confidence": "medium-high (static, exhaustive for immediate masks)"
+  },
+  {
+   "item": 9,
+   "value": "0x8008cedc",
+   "question": "g_8cedc (0x1e0-byte buffer): who reads it?",
+   "scenario": "static scan of every gp/lui access; round-2 read watchpoints (title, menus, level load, play, death)",
+   "observation": "The only access in the EXE is the store of heap_alloc(0x1e0) in start_menu_tasks+0x8c; the pointer is never loaded. 0x1e0 = 15 x 32, the size of 15 memory card block titles, but nothing fills it.",
+   "readers_writers": ["start_menu_tasks+0x8c (store)"],
+   "recommended_name": "keep g_8cedc (unused allocation); if a name is wanted, g_menu_unused_buffer (invented)",
+   "confidence": "high that it has no reader; no evidence for a purpose"
+  },
+  {
+   "item": 10,
+   "value": "0x27",
+   "question": "Which sample is RESULTS_TALLY_SOUND?",
+   "scenario": "slot 10, g_game_flags |= GAME_FLAG_LEVEL_END, 900 frames to the Mission Assessment screen (builds/runtime/results.png)",
+   "observation": "update_mission_assessment+0x2d0 plays 0x27 every 8 frames (12 times) while a percentage bar fills; PERMSFX entry 39, 0.13 s, quiet click.",
+   "readers_writers": ["update_mission_assessment+0x2c8"],
+   "recommended_name": "SOUND_RESULTS_TALLY (keep)",
+   "confidence": "high"
+  },
+  {"item": 11, "value": "0x4000", "question": "GAME_FLAG_RESTORED", "observation": "see item 7", "recommended_name": "GAME_FLAG_RESTORED", "confidence": "medium-high"},
+  {"item": 12, "value": "0x10000", "question": "GAME_FLAG_BEST_GRADE", "observation": "see item 7", "recommended_name": "GAME_FLAG_BEST_GRADE", "confidence": "medium-high"},
+  {
+   "item": 13,
+   "value": ["0x8", "0x10"],
+   "question": "g_cheat_flags 0x8 (FLOOR_SNAP?) and 0x10 (SHOW_TIMING?)",
+   "scenario": "static scan; slot 10 with g_cheat_flags |= 0x10, 20 frames, screenshot (builds/runtime/cheat_shots.png)",
+   "observation": "0x10: two usage bars across the top (hud_draw_usage_bars), two red numbers at (32,32) and (32,48) (hud_draw_digits of two Player shorts, player_move+0x460), the frame time in yellow at the screen centre (view_render_task+0x100), and doors are not drawn (door_draw+0x4 returns). 0x8: player_move_x/_z (+0x130, +0x254, +0x378) store the floor height straight into the player's y when set, instead of the gradual step.",
+   "readers_writers": ["view_render_task+0x100", "door_draw+0x4", "player_move+0x460 (0x10)", "player_move_x+0x130/+0x254/+0x378, player_move_z+0x130/+0x254/+0x378 (0x8)"],
+   "recommended_name": {"0x10": "CHEAT_FLAG_DEBUG (current name; it is a debug display, not only timing)", "0x8": "CHEAT_FLAG_FLOOR_SNAP"},
+   "confidence": "high for 0x10 (runtime); medium for 0x8 (static only)"
+  },
+  {"item": 14, "value": "0x200", "question": "g_cheat_flags 0x200: any read?", "observation": "yes, lift_draw+0x4 only (see item 6)", "readers_writers": ["lift_draw+0x4"], "recommended_name": "CHEAT_FLAG_DRAW_LIFTS", "confidence": "medium-high"},
+  {
+   "item": 15,
+   "value": "11",
+   "question": "Particle kind 11: what creates it?",
+   "scenario": "static scan for an immediate 11 stored to Particle.kind (+0x1e) or passed in a0..a3 to a particle/spawn function",
+   "observation": "No such store or call in the EXE; kind 11 is not created by a constant. Not watched at runtime (budget).",
+   "recommended_name": "unresolved",
+   "confidence": "low"
+  },
+  {
+   "item": 16,
+   "value": "15",
+   "question": "Actor kind 15: does any level's slot table use it?",
+   "scenario": "g_actor_slots / g_actor_slot_count read in save states after actor_slots_init",
+   "observation": "Level 1: kinds {2: 24, 6: 4}; level 11: {1: 33, 2: 28, 7: 1}; level 14: {2: 34, 12: 19}. g_actor_kind_map is the identity in each. No kind 15 in these three levels; other levels not checked.",
+   "recommended_name": "unresolved (no use seen)",
+   "confidence": "low"
+  },
+  {
+   "item": 17,
+   "value": ["0x23", "0x24", "0x25"],
+   "question": "Shot impact variants: which plays when?",
+   "scenario": "pistol at a wall on level 1 (slot 10) and level 14 (slot 4); particle.c branch",
+   "observation": "particles_task: 0x23 when (g_level - 12) < 10 (levels 12..21), else 0x24; 0x25 when the cell type is 8 or 9. Runtime: level 1 -> 0x24 (14 hits), level 14 -> 0x23 (6 hits). Cell types 8/9 were not shot.",
+   "readers_writers": ["particles_task+0x304/+0x30c"],
+   "recommended_name": {"0x24": "SOUND_SHOT_IMPACT", "0x23": "SOUND_SHOT_IMPACT_CHAPTER2 (levels 12..21)", "0x25": "SOUND_SHOT_IMPACT_SOFT (cell types 8, 9)"},
+   "confidence": "high for when; low for the descriptive suffixes"
+  },
+  {
+   "item": 18,
+   "value": "0x100",
+   "question": "ITEM_HUGGER: set while a face-hugger clings?",
+   "scenario": "static (actor.c); level 1 has 24 face-hugger slots (kind 2) but no cling was provoked",
+   "observation": "actor_start_attack sets it when a kind-2 actor at player_class 0 starts hugger_overlay_start and switches to hugger_cling_task; the hugger code clears it when the hugger dies or drops off.",
+   "recommended_name": "ITEM_HUGGER (keep)",
+   "confidence": "medium (static only)"
+  },
+  {
+   "item": 19,
+   "value": ["0x62", "0x63", "0x64", "0x65"],
+   "question": "Countdown samples",
+   "scenario": "static (countdown_task) plus the disc banks; no countdown level was run",
+   "observation": "At 20 s and 17 s: 0x64 on levels 7, 9, 16, 19; 0x65 on levels 2, 5; 0x62 on 27, 30. At 14 s: 0x63 below level 22, else 0x62. At 11, 8, 5, 2 s: 0x62 on levels >= 22. Level-bank entries 57..60: 0x62 2.58 s (352/353 banks), 0x63 2.77 s, 0x64 1.16 s, 0x65 0.92 s; long one-shot samples, plausibly spoken warnings (not listened to; WAVs in builds/runtime/samples).",
+   "recommended_name": {"0x62": "SOUND_COUNTDOWN_LATE (the repeating 3-second warning of levels 22+)", "0x63": "SOUND_COUNTDOWN_14S", "0x64": "SOUND_COUNTDOWN_WARNING_A", "0x65": "SOUND_COUNTDOWN_WARNING_B"},
+   "confidence": "low (timing only)"
+  },
+  {
+   "item": 20,
+   "value": ["0x19", "0x1a"],
+   "question": "0x19 lamp-off, 0x1a automap scroll?",
+   "scenario": "slot 10: GAME_FLAG_LAMP set and Player.lamp_timer (+0x8a, not +0x88 which is lamp_charges) = 20; then GAME_FLAG_NIGHT_VISION and night_vision_timer (+0x8e) = 20",
+   "observation": "0x19 played by player_tick+0xe4 when the lamp timer ran out (frame 38, flags gained LAMP_FADE_OUT 0x1000) and by player_tick+0x140 when the night vision timer ran out. 0x1a: pause_menu plays it while the map view changes (static).",
+   "recommended_name": {"0x19": "SOUND_POWER_DOWN (lamp and night vision expiry; SOUND_LAMP_OFF is too narrow)", "0x1a": "SOUND_AUTOMAP_SCROLL"},
+   "confidence": "high for 0x19; medium for 0x1a"
+  },
+  {
+   "item": 21,
+   "value": "0x4000",
+   "question": "Player.item_flags 0x4000: when is it set?",
+   "scenario": "write breakpoint on item_flags (0x8009a03c) while walking 400 frames on level 1; static scan",
+   "observation": "Walking wrote only bit 0x4 (f_3bc8c, f_3ac54). The only immediate test of 0x4000 is f_3982c+0x1e4, which picks footstep sample 0x26 instead of 0x2c; no immediate setter was found (it may be set through a computed mask).",
+   "recommended_name": "unresolved (an alternate-footstep surface state)",
+   "confidence": "low"
+  },
+  {
+   "item": 22,
+   "value": ["0x62", "0x63", "0x64", "0x65"],
+   "question": "The four countdown samples: what each is and when it plays (follows item 19)",
+   "scenario": "round 4 (builds/lane_tools/r4): go.py <level> starts a new game from slot 8 and writes g_level at the first password_store_level call of the level loop (the briefing, map, sample bank and countdown all follow the forced level). Levels 2 (113 Ammunition Dump, 60 s), 9 (155 Security Catwalks, 30 s) and 27 (352 Inorganics 1, 45 s) were run; countdown_task's TASK was found in RAM (callback 0x80037ce0), its seconds poked to 23, and sound_play logged with the task's seconds. Level 2 was also run to 0. The samples decoded from the 113/115/352 SFX banks (builds/runtime/samples) were analysed for duration, pitch track and envelope.",
+   "observation": "countdown_task runs every second video frame and counts 30 of its runs per second, so the HUD number is real seconds. Level 2: 0x65 at 20 and 17, 0x63 at 14, nothing below. Level 9: 0x64 at 20 and 17, 0x63 at 14. Level 27: 0x62 at 20, 17, 14, 11, 8, 5 and 2. At 0 the level ends as completed (GAME_FLAG_LEVEL_COMPLETE): the level-password screen follows and g_level advances (2 -> 3). The briefings call these levels re-arm stops ('we can only hover for 60 seconds', 'before we pull you out'). Audio: 0x62 (352 bank, 2.58 s) is three repeats of one voiced tone pattern (pitch steps 225-470 Hz) with no unvoiced gaps: a synthetic klaxon/alarm, not speech. 0x63 (2.77 s), 0x64 (1.16 s) and 0x65 (0.92 s) have speech-like envelopes (a varying 110-215 Hz voiced pitch broken by noise stretches), so they are most likely spoken warnings; the words were not transcribed (no speech recognition available, not listened to).",
+   "readers_writers": ["countdown_task+0x15c (sound_play of 0x62..0x65)", "countdown_start (60 s; 30 s on level 9; 45 s on levels 27 and 30)", "main's level loop: level_complete after GAME_FLAG_LEVEL_COMPLETE"],
+   "recommended_name": {"0x62": "SOUND_COUNTDOWN_ALARM (the klaxon of levels 22+, every 3 s from 20 s)", "0x63": "SOUND_COUNTDOWN_WARNING_14S (spoken, levels < 22 at 14 s)", "0x64": "SOUND_COUNTDOWN_WARNING (spoken, levels 7, 9, 16, 19 at 20 and 17 s)", "0x65": "SOUND_COUNTDOWN_WARNING_ALT (spoken, levels 2, 5 at 20 and 17 s)"},
+   "confidence": "high for timing and level selection (runtime); medium for alarm versus voice (signal analysis only)"
+  },
+  {
+   "item": 23,
+   "value": ["0x20", "0x21", "0x22", "0x23", "0x24", "0x25", "0x15"],
+   "question": "Level-object types 0x20..0x25: where do they occur and what are they? (follows item 3)",
+   "scenario": "round 4 (builds/lane_tools/r4): maps.py parses the MAP0 chunk of all 35 LxxxLEV.MAP files with level_parse_map's layout (0x80020e14: a 36-byte header, then vertices 8*n, faces 20*n, cells 16*w*h, layout records 8*n, actor slots 20*n, object records 8*n, level objects 16*n; result builds/runtime/r4_maps.json), checked against RAM on levels 0, 4, 11 and 14 (identical actor slot kinds). Levels 4 (131 Med Lab) and 2 (113) reached with go.py; objects moved out of view by poking LevelObject.position and the screenshots compared.",
+   "observation": "0x20: level 4 (131: four objects in a ring at x 8704..10752, z -14336..-12288 on floor 1920, rotations 0/1024/2048/-1024, created with flags 1 and state 0) and level 12 (211: 9). 0x21: levels 2 (113: 12), 6 (141: 12), 12 (211: 4), 13 (212: 1), 18 (232: 1). 0x22..0x25: on no level. Moving the four level-4 0x20 objects away did not change the view of the column they surround, and moving all twelve level-2 0x21 objects away did not change two views next to them, so neither model was identified on screen (dark rooms, uncertain camera). The same comparison identified 0x15 on level 2: the black ribbed drums with orange-and-black hazard tops (LEVEL_OBJECT_BLOCK). The 0x20 rotations did not change over 30 frames without a trigger.",
+   "readers_writers": ["level_objects_create (0x20: level_object_spin_task, model 40; 0x21..0x25: level_object_task, model type + 2)"],
+   "recommended_name": {"0x20": "keep LEVEL_OBJECT_SPINNER (levels 131 and 211 only)", "0x21": "keep LEVEL_OBJECT_STATIC_FIRST", "0x22..0x25": "unused by every level (cases in the switch only)", "0x15": "LEVEL_OBJECT_BLOCK: the hazard-topped drums of level 113"},
+   "confidence": "high for occurrence (all 35 maps); low for the 0x20/0x21 pictures"
+  },
+  {
+   "item": 24,
+   "value": "11",
+   "question": "Particle kind 11: what creates it? (follows item 15)",
+   "scenario": "round 4 (builds/lane_tools/r4): static census of every byte store to Particle.kind (+0x1e) in the EXE whose value is not an immediate, and of the arguments their callers pass",
+   "observation": "Non-immediate stores to +0x1e: blood_spray (its kind argument; actor_bleed passes 8, 9, 10 only), jet_spray (jet_update's kind; the four jet tasks pass PARTICLE_KIND_STEAM, _FIRE, _FIRE_VERTICAL, _STEAM_VERTICAL constants), fire_bullet (callers pass 0, 1, 2, 4; f_2603c 0), panel_spawn (debris 6/15), and f_16bdc (another structure). With round 3's immediate stores, nothing writes 11. Not watched at runtime because no producer exists.",
+   "readers_writers": ["particle update and draw switches (kind 11 handled like the grenades)", "no writer"],
+   "recommended_name": "keep PARTICLE_KIND_EXPLOSIVE, noting 'no spawner in retail' (dead kind)",
+   "confidence": "medium-high (exhaustive static census)"
+  },
+  {
+   "item": 25,
+   "value": "15",
+   "question": "Actor kind 15: does any level's slot table use it? (follows item 16)",
+   "scenario": "round 4 (builds/lane_tools/r4): actor slot tables of all 35 levels parsed from the MAP files; every store to Actor.kind (+0x74) listed",
+   "observation": "No level has a kind-15 slot. Jet kinds do occur: 16 on levels 112, 122, 154, 155, 232; 17 on 154, 222, 232; 18 on 155; 19 on 154, 155, 222. Actor.kind is written only by actor_spawn (from the slot), actor_to_ceiling (8, 9), actor_to_floor (5, 6) and actor_die (5, 6), so kind 15 is never produced.",
+   "readers_writers": ["actor_spawn+0x14c (slot kind)", "actor_to_ceiling, actor_to_floor, actor_die"],
+   "recommended_name": "keep ACTOR_KIND_INERT (unused by every level)",
+   "confidence": "high"
+  },
+  {
+   "item": 26,
+   "value": "0x4000",
+   "question": "Player.item_flags bit 0x4000: what sets it? (follows item 21)",
+   "scenario": "round 4 (builds/lane_tools/r4): every store to 0x8009a03c in the EXE (lui -0x5fc4 stores, and base+0x68 stores with an or nearby); f_3982c+0x180..0x214 disassembled; item_flags polled on cell types 0, 1, 5, 6, 9 (level 3) and through a hugger cling (level 4)",
+   "observation": "Correction to the question: item_flags is 0x80099fd4+0x68 (0x8009a03c); +0x6c (0x8009a040) is health. Writers: player_controls (f_3bc8c: clears 0x200, sets 0x400), player_task_start+0x28c (clears 0x4180 = 0x4000|0x100|0x80), player_reset (zero) and the matched or-sites (weapons, auto mapper, hugger, control bits). No instruction sets 0x4000. f_3982c plays a footstep when the step phase wraps unless the cell type is 9 (no step sound there), choosing 0x26 when 0x4000 is set, else 0x2c. The bit stayed clear in every scenario.",
+   "readers_writers": ["f_3982c+0x1ec (andi 0x4000: footstep 0x26 or 0x2c)", "player_task_start+0x28c (clears it)"],
+   "recommended_name": "unresolved: a dead alternate-footstep bit (no setter in retail); leave it unnamed, or ITEM_FOOTSTEP_ALT noting 'never set'",
+   "confidence": "medium-high (no setter in the image)"
+  },
+  {
+   "item": 27,
+   "value": ["0x5e", "0x5f"],
+   "question": "A lift in motion: what starts one, and the lift move/stop sounds",
+   "scenario": "round 4 (builds/lane_tools/r4): level 4 (131): its one lift (Lift at 0x800c656c: width 1, depth 5, low 0, high 68, flags 0x21 UP|RESTS_UP, wait 7, count 0) and every cell trigger whose command chain reaches TRIGGER_LIFT (7) listed from RAM (lifts.py); Lift.count poked to 6, the player teleported onto trigger 15's cell (64, 13), sounds logged",
+   "observation": "Lifts are started by cell triggers, not the Use button: each TRIGGER_LIFT / TRIGGER_LIFT_LAST command adds its amount to Lift.count (lift_trigger), and lift_task_wait starts the lift once count >= wait. On level 4 seven separate one-charge triggers each add 1 (several sit in chains with TRIGGER_SWITCH and TRIGGER_DOOR_POWER, i.e. behind switch panels) and the lift needs 7, so it moves only after the whole sequence. With count 6, stepping onto the trigger cell gave 'Lift activated' and 0x5e from lift_task_wait+0x9c at frame 0; the platform lowered 68 height steps (position.vy 2192 -> 16) and 0x5f came from lift_task_lower+0x98 at frame 136 when it reached low; flags became 0xa4 (DOWN|RESTS_UP|COUNTED) and count went back to 0.",
+   "readers_writers": ["player_cell_trigger, level_commands_run -> lift_trigger, lift_trigger_last", "lift_task_wait+0x9c (0x5e)", "lift_task_lower+0x98, lift_task_raise (0x5f)", "lift_task_delay (0x5e on timed returns)"],
+   "recommended_name": {"0x5e": "SOUND_LIFT_MOVE (keep)", "0x5f": "SOUND_LIFT_STOP (keep)"},
+   "confidence": "high (runtime; the count was pre-poked to skip six switches)"
+  },
+  {
+   "item": 28,
+   "value": "0x100",
+   "question": "A face-hugger latching on: is ITEM_HUGGER_ATTACHED set and cleared? (follows item 18)",
+   "scenario": "round 4 (builds/lane_tools/r4): level 4 (131): the hugger released when wall object 2 shattered; the player teleported 300 units from it; execute breakpoints on actor_start_attack, hugger_overlay_start and hugger_cling_task; item_flags polled",
+   "observation": "From distance class 1 (about 1500 units) the hugger's attacks are leaps that take 5 health each and never set the bit. At class 0 (delta 325, 32, 43) actor_start_attack called hugger_overlay_start (frame 6), item_flags went 0x4 -> 0x104 and hugger_cling_task ran every second frame, with the hugger overlay over the view (builds/runtime/r4_hug_cling.png). With no input it dropped off about 95 frames later: hugger_cling_task cleared the bit (0x104 -> 0x4) and the hugger died beside the player; health 50 -> 47 during the cling.",
+   "readers_writers": ["actor_start_attack (sets it at class 0 within ACTOR_ATTACK_HEIGHT)", "hugger_cling_task (clears it when the hugger drops off)", "player_task_start (clears it at level start)"],
+   "recommended_name": "ITEM_HUGGER_ATTACHED (keep)",
+   "confidence": "high"
+  },
+  {
+   "item": 29,
+   "value": "0x6c",
+   "question": "A wall shatter: what triggers it?",
+   "scenario": "round 4 (builds/lane_tools/r4): level 4 (131): the player teleported in front of wall object 2 (type 0x1c, state 16, 2 x 1 cells) and the pistol fired; breakpoints on the sound functions and level_object_tick",
+   "observation": "The first pistol bullet to reach the wall's cell called level_object_tick(2, 0x10) from the bullet hit code (f_24140+0x194): the bullet's damage (16) used up the wall's state (16), which arms it with hits = (random & 7) + 1. 16 frames later block_object_task+0x130 played 0x6c at the wall (wall_shatter) and wall panels fell, each playing 0x6d from particles_task as it landed. A face-hugger waited behind the wall. explosion_damage arms walls as well. Walls (0x1c) are on levels 4 (131: 14), 12 (211: 2) and 13 (212: 15); the 232 bank carries 0x6c but level 232 has no 0x1c object.",
+   "readers_writers": ["f_24140+0x194 -> level_object_tick (bullet hits)", "explosion_damage (arms objects in a blast)", "block_object_task+0x130 (0x6c)", "particles_task+0xbec (0x6d)"],
+   "recommended_name": "SOUND_WALL_SHATTER (keep); LEVEL_OBJECT_WALL is a breakable wall (state = hit points)",
+   "confidence": "high"
+  },
+  {
+   "item": 30,
+   "value": ["5", "6", "8", "9", "20", "25", "45"],
+   "question": "MapCell.type values from the player constants lane: 5 and 9 (slow), 20 and 25 (player_move_x/_z thresholds), 6 (automap)",
+   "scenario": "round 4 (builds/lane_tools/r4): cell types (+0xa) counted in all 35 MAP files and in RAM; teleports onto each type on level 3 (122) with the cell under the player (Player.cell, 0x8009a038) read back; static readers",
+   "observation": "9: only levels 3 (122 Recreation Rooms, 231 cells) and 17 (231 Mining and Smelting, 853 cells). Shots hitting a type-9 cell spray slow impact sparks (impact_spray selection 1; type 8 selection 2), falling particles stop 384 above the floor in type 9 and 256 in type 8 (they sink into it), footsteps are silent on 9 (f_3982c), and the player moves at half speed on 5 and 9 unless boots_timer runs. No damage was taken standing on 9 for 30 frames. So 9 is a deep liquid and 8 (levels 24, 26) a shallow one. 5 (19 levels) is a slow floor with normal footsteps and no splash. The dark rooms made the screenshots uninformative. 6: on every level. Level 4's door-trigger cells (64, 12..15) are type 6 with ceiling == floor (80/80). Actor code tests 'type == 6 && ceiling - value < 4', particles skip the ceiling clamp on 6, and the automap colours 6 with palette 5 (green), so 6 is a door cell (its ceiling is the door). 20..24 stop both player and actors (20 is the common solid wall cell, about 1000 per level, and a projectile entering a type-20 cell explodes in particle_hit_floor_or_ceiling). 25..44 pass the player's test (type < 20 or 25..44) but actors treat 20..44 as blocked. 45 and up is a separate class in the actor code.",
+   "readers_writers": ["player_accelerate, player_accelerate_slow (5, 9, boots_timer)", "player_move_x/_z (20, 25, 45)", "f_3982c (9: no footstep)", "shot_impact (9, 8)", "particles_task (9, 8 floor offsets)", "automap_build (6 -> palette 5)", "actor movement (20..44 blocked, 45+)"],
+   "recommended_name": {"9": "CELL_TYPE_DEEP_LIQUID", "8": "CELL_TYPE_SHALLOW_LIQUID", "5": "CELL_TYPE_SLOW (surface not identified)", "6": "CELL_TYPE_DOOR", "20": "CELL_TYPE_SOLID (first impassable type)", "25": "CELL_TYPE_PLAYER_PASSABLE (25..44)", "45": "first actor-only type"},
+   "confidence": "medium (behaviour from code and counts; no clear picture)"
+  },
+  {
+   "item": 31,
+   "value": "g_8d270 (0x8008d270)",
+   "question": "pause_menu sets g_8d270 to 0x40: who reads it?",
+   "scenario": "round 4 (builds/lane_tools/r4): every lui (lui 0x8009, -0x2d90) and gp (0x4fc/0x4fe) access in the EXE",
+   "observation": "One access in the whole image: the store of 0x40 at mission_text_draw+0x30 (sh at 0x80041314), next to its other layout stores (0x8008d268, 0x8008d260). f_3d31c's 'sw $zero, -0x2d90' uses lui 0x800a, so it is 0x8009d270, a different address. No reader exists; round 1 saw no runtime read either.",
+   "readers_writers": ["mission_text_draw+0x30 (only access)"],
+   "recommended_name": "keep the address name, noting 'set to 0x40, never read' (dead store)",
+   "confidence": "high"
+  },
+  {
+   "item": 32,
+   "value": "automap palette index 3",
+   "question": "What does the automap draw in palette colour 3 (RGB15(16, 6, 4))?",
+   "scenario": "round 4 (builds/lane_tools/r4): static: automap_build writes every pixel of the map image",
+   "observation": "automap_build writes only indices 0 (unseen or empty), 1 (seen floor), 2 (wall or blocked), 4 (a level object or actor marker, 20 and up) and 5 (door cell, type 6); draw_map draws the image as one textured quad. Index 3, a dark red, is loaded into the CLUT but no pixel uses it.",
+   "readers_writers": ["automap_build (palette and pixels)"],
+   "recommended_name": "AUTOMAP_COLOR_UNUSED (or leave the entry unnamed)",
+   "confidence": "medium-high (static; not seen at runtime)"
+  },
+  {
+   "item": 33,
+   "value": "Player.unknown_102 (0x8009a0d6)",
+   "question": "Does anything read this member at runtime, and what do the level files hold in it?",
+   "scenario": "round 5 (builds/lane_tools/r5): read+write watchpoints on every byte of the member; scenarios title idle 1200 frames (slot 8), options (7), new game to play (8), briefing to play (9), play with combat and pause (10, 4), level 4 combat with actors placed in view (6), level 14 load and play (go 14, slot 4), level 6 load, level 14 lifts set moving (count poked to wait), death (slot 4, health 1, huggers on the player: back to the title), level end (go 2, countdown poked to 3 s: level 3 briefing), pickups thrown by destroyed crates (slot 10); level data: every MAP0 chunk of the 35 levels",
+   "observation": "player_task_start+0x36c stores 1 (new game, briefing to play); no read in any scenario",
+   "readers_writers": [
+    "player_task_start (write)"
+   ],
+   "recommended_name": "keep unknown_102",
+   "confidence": "high (no reader)"
+  },
+  {
+   "item": 34,
+   "value": "Sprite.unknown_2e (actor +0xae; 0x8009a022 for the weapon sprite)",
+   "question": "Does anything read this member at runtime, and what do the level files hold in it?",
+   "scenario": "round 5 (builds/lane_tools/r5): read+write watchpoints on every byte of the member; scenarios title idle 1200 frames (slot 8), options (7), new game to play (8), briefing to play (9), play with combat and pause (10, 4), level 4 combat with actors placed in view (6), level 14 load and play (go 14, slot 4), level 6 load, level 14 lifts set moving (count poked to wait), death (slot 4, health 1, huggers on the player: back to the title), level end (go 2, countdown poked to 3 s: level 3 briefing), pickups thrown by destroyed crates (slot 10); level data: every MAP0 chunk of the 35 levels",
+   "observation": "never written or read; actors placed in view are projected (screen and depth written every frame) while +0xae keeps stale heap bytes (0x0ee1, 0x419d, 0xcc30...)",
+   "readers_writers": [
+    "none"
+   ],
+   "recommended_name": "keep unknown_2e",
+   "confidence": "high (no access)"
+  },
+  {
+   "item": 35,
+   "value": "MessageBox.unknown_12 / unknown_1a (0x8006be8e / 0x8006be96)",
+   "question": "Does anything read this member at runtime, and what do the level files hold in it?",
+   "scenario": "round 5 (builds/lane_tools/r5): read+write watchpoints on every byte of the member; scenarios title idle 1200 frames (slot 8), options (7), new game to play (8), briefing to play (9), play with combat and pause (10, 4), level 4 combat with actors placed in view (6), level 14 load and play (go 14, slot 4), level 6 load, level 14 lifts set moving (count poked to wait), death (slot 4, health 1, huggers on the player: back to the title), level end (go 2, countdown poked to 3 s: level 3 briefing), pickups thrown by destroyed crates (slot 10); level data: every MAP0 chunk of the 35 levels",
+   "observation": "no read or write while the loading, mission and continue boxes of the briefing ran (new game, briefing, level end)",
+   "readers_writers": [
+    "none"
+   ],
+   "recommended_name": "keep",
+   "confidence": "high (no access)"
+  },
+  {
+   "item": 36,
+   "value": "MapObject.unknown_23 / unknown_26[2]",
+   "question": "Does anything read this member at runtime, and what do the level files hold in it?",
+   "scenario": "round 5 (builds/lane_tools/r5): read+write watchpoints on every byte of the member; scenarios title idle 1200 frames (slot 8), options (7), new game to play (8), briefing to play (9), play with combat and pause (10, 4), level 4 combat with actors placed in view (6), level 14 load and play (go 14, slot 4), level 6 load, level 14 lifts set moving (count poked to wait), death (slot 4, health 1, huggers on the player: back to the title), level end (go 2, countdown poked to 3 s: level 3 briefing), pickups thrown by destroyed crates (slot 10); level data: every MAP0 chunk of the 35 levels",
+   "observation": "no access on 12 live and 10 free nodes; destroyed crates threw 10 pickups (bounce_speed written by level_object_drop_item, read and written by map_object_move) while +0x23 and +0x26 stayed untouched. Both sit in alignment holes (before the short at +0x24 and the pointer at +0x28)",
+   "readers_writers": [
+    "none"
+   ],
+   "recommended_name": "remove: compiler padding (applied)",
+   "confidence": "high"
+  },
+  {
+   "item": 37,
+   "value": "ObjectRecord.unknown_07",
+   "question": "Does anything read this member at runtime, and what do the level files hold in it?",
+   "scenario": "round 5 (builds/lane_tools/r5): read+write watchpoints on every byte of the member; scenarios title idle 1200 frames (slot 8), options (7), new game to play (8), briefing to play (9), play with combat and pause (10, 4), level 4 combat with actors placed in view (6), level 14 load and play (go 14, slot 4), level 6 load, level 14 lifts set moving (count poked to wait), death (slot 4, health 1, huggers on the player: back to the title), level end (go 2, countdown poked to 3 s: level 3 briefing), pickups thrown by destroyed crates (slot 10); level data: every MAP0 chunk of the 35 levels",
+   "observation": "no read at level load (map_objects_spawn) or in play; level data: a function of kind only: 6 seismic charges 1, 9 pistol clip 15, 10 shotgun cartridges 5, 11 pulse rifle clip 45, 12 grenades 3, 13 flamethrower fuel 15, 14 smart gun ammo 130, every other kind 0; independent of the record's amount (e.g. pulse rifle clips carry 50 or 90)",
+   "readers_writers": [
+    "none"
+   ],
+   "recommended_name": "default_amount (inferred; applied)",
+   "confidence": "low-medium"
+  },
+  {
+   "item": 38,
+   "value": "LevelObjectRecord.unknown_05",
+   "question": "Does anything read this member at runtime, and what do the level files hold in it?",
+   "scenario": "round 5 (builds/lane_tools/r5): read+write watchpoints on every byte of the member; scenarios title idle 1200 frames (slot 8), options (7), new game to play (8), briefing to play (9), play with combat and pause (10, 4), level 4 combat with actors placed in view (6), level 14 load and play (go 14, slot 4), level 6 load, level 14 lifts set moving (count poked to wait), death (slot 4, health 1, huggers on the player: back to the title), level end (go 2, countdown poked to 3 s: level 3 briefing), pickups thrown by destroyed crates (slot 10); level data: every MAP0 chunk of the 35 levels",
+   "observation": "no read (level_objects_create copies the neighbouring bytes only); level data: 10 on types 0x14, 0x19, 0x1d, 0x20, 0 on 0x15..0x18, 0x1a..0x1c, 0x21 (974 records)",
+   "readers_writers": [
+    "none"
+   ],
+   "recommended_name": "keep unknown_05",
+   "confidence": "high (no reader); meaning unknown"
+  },
+  {
+   "item": 39,
+   "value": "LiftRecord.unknown_06 -> Lift.unknown_14",
+   "question": "Does anything read this member at runtime, and what do the level files hold in it?",
+   "scenario": "round 5 (builds/lane_tools/r5): read+write watchpoints on every byte of the member; scenarios title idle 1200 frames (slot 8), options (7), new game to play (8), briefing to play (9), play with combat and pause (10, 4), level 4 combat with actors placed in view (6), level 14 load and play (go 14, slot 4), level 6 load, level 14 lifts set moving (count poked to wait), death (slot 4, health 1, huggers on the player: back to the title), level end (go 2, countdown poked to 3 s: level 3 briefing), pickups thrown by destroyed crates (slot 10); level data: every MAP0 chunk of the 35 levels",
+   "observation": "lifts_create+0xc0 reads it and +0xc8 stores it into the Lift; nothing reads Lift.unknown_14 with lifts idle or moving (level 14, all four lifts run by poking count = wait); 1 in all 126 lift records",
+   "readers_writers": [
+    "lifts_create (copy)"
+   ],
+   "recommended_name": "keep",
+   "confidence": "high (no reader)"
+  },
+  {
+   "item": 40,
+   "value": "LiftRecord.unknown_0d[3]",
+   "question": "Does anything read this member at runtime, and what do the level files hold in it?",
+   "scenario": "round 5 (builds/lane_tools/r5): read+write watchpoints on every byte of the member; scenarios title idle 1200 frames (slot 8), options (7), new game to play (8), briefing to play (9), play with combat and pause (10, 4), level 4 combat with actors placed in view (6), level 14 load and play (go 14, slot 4), level 6 load, level 14 lifts set moving (count poked to wait), death (slot 4, health 1, huggers on the player: back to the title), level end (go 2, countdown poked to 3 s: level 3 briefing), pickups thrown by destroyed crates (slot 10); level data: every MAP0 chunk of the 35 levels",
+   "observation": "no read at load or in play; three equal bytes 0..8 in every record (63 zero)",
+   "readers_writers": [
+    "none"
+   ],
+   "recommended_name": "keep",
+   "confidence": "high (no reader)"
+  },
+  {
+   "item": 41,
+   "value": "ActorSlot.unknown_03",
+   "question": "Does anything read this member at runtime, and what do the level files hold in it?",
+   "scenario": "round 5 (builds/lane_tools/r5): read+write watchpoints on every byte of the member; scenarios title idle 1200 frames (slot 8), options (7), new game to play (8), briefing to play (9), play with combat and pause (10, 4), level 4 combat with actors placed in view (6), level 14 load and play (go 14, slot 4), level 6 load, level 14 lifts set moving (count poked to wait), death (slot 4, health 1, huggers on the player: back to the title), level end (go 2, countdown poked to 3 s: level 3 briefing), pickups thrown by destroyed crates (slot 10); level data: every MAP0 chunk of the 35 levels",
+   "observation": "no read at load (actor_spawn reads the neighbouring bytes) or in play; 0xff in 1508 of 1515 slots; 6, 7, 8, 63, 64, 65 on six face-hugger slots of level 15 (pointing at eggs, a hugger and flame jets) and 1 on a warrior of level 4",
+   "readers_writers": [
+    "none"
+   ],
+   "recommended_name": "keep",
+   "confidence": "high (no reader)"
+  },
+  {
+   "item": 42,
+   "value": "ActorSlot.unknown_09",
+   "question": "Does anything read this member at runtime, and what do the level files hold in it?",
+   "scenario": "round 5 (builds/lane_tools/r5): read+write watchpoints on every byte of the member; scenarios title idle 1200 frames (slot 8), options (7), new game to play (8), briefing to play (9), play with combat and pause (10, 4), level 4 combat with actors placed in view (6), level 14 load and play (go 14, slot 4), level 6 load, level 14 lifts set moving (count poked to wait), death (slot 4, health 1, huggers on the player: back to the title), level end (go 2, countdown poked to 3 s: level 3 briefing), pickups thrown by destroyed crates (slot 10); level data: every MAP0 chunk of the 35 levels",
+   "observation": "no read; 0 except 2 (5) or 4 (16) on eggs whose attached slot is a face-hugger and 2 on 15 cocooned colonists",
+   "readers_writers": [
+    "none"
+   ],
+   "recommended_name": "keep",
+   "confidence": "high (no reader)"
+  },
+  {
+   "item": 43,
+   "value": "Level.unknown_4a (0x800960aa)",
+   "question": "Does anything read this member at runtime, and what do the level files hold in it?",
+   "scenario": "round 5 (builds/lane_tools/r5): read+write watchpoints on every byte of the member; scenarios title idle 1200 frames (slot 8), options (7), new game to play (8), briefing to play (9), play with combat and pause (10, 4), level 4 combat with actors placed in view (6), level 14 load and play (go 14, slot 4), level 6 load, level 14 lifts set moving (count poked to wait), death (slot 4, health 1, huggers on the player: back to the title), level end (go 2, countdown poked to 3 s: level 3 briefing), pickups thrown by destroyed crates (slot 10); level data: every MAP0 chunk of the 35 levels",
+   "observation": "no read or write in any scenario (level loads included)",
+   "readers_writers": [
+    "none"
+   ],
+   "recommended_name": "keep",
+   "confidence": "high (no access)"
+  },
+  {
+   "item": 44,
+   "value": "ModelBlock.unknown_04[2]",
+   "question": "Does anything read this member at runtime, and what do the level files hold in it?",
+   "scenario": "round 5 (builds/lane_tools/r5): read+write watchpoints on every byte of the member; scenarios title idle 1200 frames (slot 8), options (7), new game to play (8), briefing to play (9), play with combat and pause (10, 4), level 4 combat with actors placed in view (6), level 14 load and play (go 14, slot 4), level 6 load, level 14 lifts set moving (count poked to wait), death (slot 4, health 1, huggers on the player: back to the title), level end (go 2, countdown poked to 3 s: level 3 briefing), pickups thrown by destroyed crates (slot 10); level data: every MAP0 chunk of the 35 levels",
+   "observation": "no read on the pickup models at load or in play; files: word 0 always 0, word 1 0 or 0x005axxxx (OBJ3D.BND, every level MAP's door/lift models; PICKMOD.BND all 0), looking like an address in the exporting tool",
+   "readers_writers": [
+    "none"
+   ],
+   "recommended_name": "keep",
+   "confidence": "high (no reader)"
+  },
+  {
+   "item": 45,
+   "value": "AudioMix (0x8009d270..0x8009d283)",
+   "question": "Does anything read this member at runtime, and what do the level files hold in it?",
+   "scenario": "round 5 (builds/lane_tools/r5): read+write watchpoints on every byte of the member; scenarios title idle 1200 frames (slot 8), options (7), new game to play (8), briefing to play (9), play with combat and pause (10, 4), level 4 combat with actors placed in view (6), level 14 load and play (go 14, slot 4), level 6 load, level 14 lifts set moving (count poked to wait), death (slot 4, health 1, huggers on the player: back to the title), level end (go 2, countdown poked to 3 s: level 3 briefing), pickups thrown by destroyed crates (slot 10); level data: every MAP0 chunk of the 35 levels",
+   "observation": "no CPU read in any scenario; the only references to its address are the five stores of its initialiser, so no library call or DMA can be given it",
+   "readers_writers": [
+    "audio init (writes only)"
+   ],
+   "recommended_name": "keep",
+   "confidence": "high (write-only)"
+  },
+  {
+   "item": 46,
+   "value": "level object type 0x20",
+   "question": "What does object type 0x20 look like?",
+   "scenario": "r5/pics.py, ab2.py: player set 0x380..0x600 units from the object on four sides (floor height from the cell), 25 frames, screenshot; A/B by moving LevelObject.position.vx by 0x4000 (16 frames: the game draws one frame behind)",
+   "observation": "level 12 (objects 74, 75): the A/B difference is a long low dark-grey slab beside the grey wedge consoles; the model (rows 18, vertices 18) spans x -1344..0, y -384..32, z -288..288, a slab rising from one end. Level 4 objects 7, 8 not visible from the four sides tried. level_object_spin_task draws it and tilts it about z (rotation.vz to -0xff by 8 a frame) once its state is set; it never spins",
+   "readers_writers": [
+    "level_object_spin_task",
+    "level_object_draw_unscaled -> model_draw_mid_in_cell"
+   ],
+   "recommended_name": "LEVEL_OBJECT_TILTING (applied)",
+   "confidence": "medium (picture) / high (no spin)"
+  },
+  {
+   "item": 47,
+   "value": "level object type 0x21",
+   "question": "What does object type 0x21 look like?",
+   "scenario": "as above, level 12 objects 87, 88",
+   "observation": "a hazard-striped drum (dark cylinder, orange/black band, octagonal top), centred in every view facing the two objects",
+   "readers_writers": [
+    "level_object_task"
+   ],
+   "recommended_name": "comment on LEVEL_OBJECT_STATIC_FIRST (applied)",
+   "confidence": "medium"
+  },
+  {
+   "item": 48,
+   "value": "cell type 9",
+   "question": "What does a deep-liquid cell look like?",
+   "scenario": "r5/pics.py on levels 3 (122) and 17 (231), lamp poked on (g_game_flags |= 0x900)",
+   "observation": "water: a sunken tiled pool with a rim (level 3) and green water channels in a brown sewer tunnel (level 17)",
+   "readers_writers": [
+    "player_accelerate, particle.c (static)"
+   ],
+   "recommended_name": "CELL_TYPE_LIQUID_DEEP confirmed",
+   "confidence": "high"
+  },
+  {
+   "item": 49,
+   "value": "cell type 5",
+   "question": "What does a slow cell look like?",
+   "scenario": "r5/pics.py on level 1 (cells 55,75 and 56,84)",
+   "observation": "no visible difference from ordinary floor next to the wall consoles and crate stacks viewed",
+   "readers_writers": [
+    "player_accelerate (static)"
+   ],
+   "recommended_name": "keep CELL_TYPE_SLOW",
+   "confidence": "low"
+  },
+  {
+   "item": 50,
+   "value": "samples 0x62..0x65",
+   "question": "What do the countdown samples say?",
+   "scenario": "builds/runtime/samples (decoded at the bank pitch): peak envelope and zero-crossing rate per 50 ms",
+   "observation": "0x63 (113SFX) 2.77 s, 22050 Hz: sustained voiced level with two hiss bursts at 0.45-0.55 s and 1.0-1.1 s (sibilants), decaying from 2.25 s; 0x65 (113SFX) 0.92 s with high-frequency onsets at 0.15 and 0.4 s; 0x64 (115SFX) 1.16 s, a sibilant at 0.55-0.7 s; 0x62 (352SFX) 2.58 s at 11283 Hz, three equal 0.75 s pulses at a constant zero-crossing rate (a klaxon). The first three are speech-like; no speech recogniser is available, so the words stay unknown",
+   "readers_writers": [
+    "countdown_task (sound_play)"
+   ],
+   "recommended_name": "keep SOUND_COUNTDOWN_*",
+   "confidence": "medium (shape) / words unknown"
+  }
+ ]
+}

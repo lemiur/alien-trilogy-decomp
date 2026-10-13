@@ -1,0 +1,189 @@
+{
+  "functions": {
+    "font_init_widths": {
+      "address": "0x80034598",
+      "size": 160
+    },
+    "hud_draw_digits": {
+      "address": "0x80034638",
+      "size": 1200
+    },
+    "draw_number": {
+      "address": "0x80034ae8",
+      "size": 900
+    },
+    "draw_number_large": {
+      "address": "0x80034e6c",
+      "size": 912
+    },
+    "hud_draw_lower_panel": {
+      "address": "0x800351fc",
+      "size": 296
+    },
+    "hud_draw_upper_panel": {
+      "address": "0x80035324",
+      "size": 296
+    },
+    "hud_draw_grenades": {
+      "address": "0x8003544c",
+      "size": 772
+    },
+    "hud_draw_armour": {
+      "address": "0x80035750",
+      "size": 676
+    },
+    "hud_draw_boots": {
+      "address": "0x800359f4",
+      "size": 756
+    },
+    "hud_draw_invulnerability": {
+      "address": "0x80035ce8",
+      "size": 636
+    },
+    "tracker_draw_blips": {
+      "address": "0x80035f64",
+      "size": 732
+    },
+    "hud_draw_tracker": {
+      "address": "0x80036240",
+      "size": 2196
+    },
+    "hud_draw_extra_health": {
+      "address": "0x80036ad4",
+      "size": 376
+    },
+    "hud_draw_health": {
+      "address": "0x80036c4c",
+      "size": 860
+    },
+    "hud_draw_ammo": {
+      "address": "0x80036fa8",
+      "size": 1004
+    },
+    "hud_draw_usage_bars": {
+      "address": "0x80037394",
+      "size": 460
+    },
+    "hud_draw_glyph": {
+      "address": "0x80037560",
+      "size": 376
+    },
+    "draw_glyph_now": {
+      "address": "0x800376d8",
+      "size": 624
+    },
+    "message_line_active": {
+      "address": "0x80037948",
+      "size": 100
+    },
+    "message_task": {
+      "address": "0x800379ac",
+      "size": 492
+    },
+    "hud_show_message": {
+      "address": "0x80037b98",
+      "size": 224
+    },
+    "hud_messages_reset": {
+      "address": "0x80037c78",
+      "size": 104
+    }
+  },
+  "symbols": {
+    "g_font_uvs": "0x80096f34",
+    "g_font2_uvs": "0x800974e4",
+    "g_font_widths": "0x800a1018",
+    "g_font2_widths": "0x800a0fa0",
+    "g_sprite_workspace": "0x8008d478",
+    "g_render_buffer": "0x8008d4e8",
+    "g_palette": "0x8008d490",
+    "g_hud_panel_uvs": "0x80097894",
+    "g_player": "0x80099fd4",
+    "g_heap_size": "0x8008d400",
+    "g_heap_used": "0x8008d3c0",
+    "g_heap_free": "0x8008d390",
+    "g_panel_uvs": "0x80096dc4",
+    "TaskCreate": "0x80015e4c",
+    "strlen": "0x8006993c",
+    "g_game_flags": "0x8008d560",
+    "TaskDie": "0x80015ea4",
+    "g_next_task": "0x8008d4f0",
+    "DrawPrim": "0x80062d5c",
+    "draw_number": "0x80034ae8",
+    "hud_draw_grenades": "0x8003544c",
+    "hud_draw_armour": "0x80035750",
+    "hud_draw_boots": "0x800359f4",
+    "hud_draw_invulnerability": "0x80035ce8",
+    "hud_draw_tracker": "0x80036240",
+    "SetGeomOffset": "0x800672f8",
+    "PushMatrix": "0x80066c6c",
+    "PopMatrix": "0x80066d0c",
+    "RotMatrix": "0x800684fc",
+    "TransMatrix": "0x80067724",
+    "SetRotMatrix": "0x8006786c",
+    "SetTransMatrix": "0x800678fc",
+    "RotTransPers": "0x80066f10",
+    "g_translation": "0x8009c5a4",
+    "g_tracker_matrix": "0x8008f350",
+    "g_view_rotation": "0x8008d468",
+    "g_live_actors": "0x8008d330",
+    "g_gte_interpolation": "0x8008d320",
+    "g_gte_flag": "0x8008d570",
+    "sound_play": "0x8003d5b4",
+    "g_frame_count": "0x8008d380"
+  },
+  "gp": "0x8008cd74",
+  "sections": {
+    ".sdata": "0x8008cfcc"
+  },
+  "section_starts": {
+    ".sdata": "0x8008cd74"
+  },
+  "static_data": {
+    "g_tracker_frame": {
+      "address": "0x8008cfd2",
+      "size": 2,
+      "section": ".sdata"
+    },
+    "g_tracker_delay": {
+      "address": "0x8008cfd4",
+      "size": 2,
+      "section": ".sdata"
+    },
+    "g_tracker_pause": {
+      "address": "0x8008cfd6",
+      "size": 2,
+      "section": ".sdata"
+    },
+    "g_tracker_rotation": {
+      "address": "0x8008cfd8",
+      "size": 8,
+      "section": ".sdata"
+    },
+    "g_message_task": {
+      "address": "0x8008cfcc",
+      "size": 4,
+      "section": ".sdata"
+    },
+    "g_message_count": {
+      "address": "0x8008cfd0",
+      "size": 2,
+      "section": ".sdata"
+    },
+    "g_message_lines": {
+      "address": "0x80072c40",
+      "size": 48,
+      "section": ".data"
+    },
+    "g_glyphs_high": {
+      "address": "0x80072c70",
+      "size": 392,
+      "section": ".data"
+    },
+    "g_extra_health_heights": {
+      "address": "0x80072df8",
+      "size": 20,
+      "section": ".data"
+    }
+  }
+}

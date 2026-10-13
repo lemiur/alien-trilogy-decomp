@@ -1,0 +1,12 @@
+{
+  "gp": "0x8008cd74",
+  "functions": {
+    "_spu_setReverbAttr": {
+      "address": "0x8005b578",
+      "size": 1232
+    }
+  },
+  "symbols": {
+    "_spu_RXX": "0x80073c90"
+  }
+}

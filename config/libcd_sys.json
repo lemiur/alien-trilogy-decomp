@@ -1,0 +1,127 @@
+{
+  "gp": "0x8008cd74",
+  "functions": {
+    "CdStatus": {
+      "address": "0x8005d310",
+      "size": 16
+    },
+    "CdLastCom": {
+      "address": "0x8005d320",
+      "size": 16
+    },
+    "CdReset": {
+      "address": "0x8005d330",
+      "size": 80
+    },
+    "CdFlush": {
+      "address": "0x8005d380",
+      "size": 32
+    },
+    "CdSetDebug": {
+      "address": "0x8005d3a0",
+      "size": 24
+    },
+    "CdComstr": {
+      "address": "0x8005d3b8",
+      "size": 56
+    },
+    "CdIntstr": {
+      "address": "0x8005d3f0",
+      "size": 56
+    },
+    "CdSync": {
+      "address": "0x8005d428",
+      "size": 32
+    },
+    "CdReady": {
+      "address": "0x8005d448",
+      "size": 32
+    },
+    "CdSyncCallback": {
+      "address": "0x8005d468",
+      "size": 24
+    },
+    "CdReadyCallback": {
+      "address": "0x8005d480",
+      "size": 24
+    },
+    "CdReadCallback": {
+      "address": "0x8005d498",
+      "size": 24
+    },
+    "CdControl": {
+      "address": "0x8005d4b0",
+      "size": 280
+    },
+    "CdControlF": {
+      "address": "0x8005d5c8",
+      "size": 268
+    },
+    "CdControlB": {
+      "address": "0x8005d6d4",
+      "size": 292
+    },
+    "CdMix": {
+      "address": "0x8005d7f8",
+      "size": 36
+    },
+    "CdGetSector": {
+      "address": "0x8005d81c",
+      "size": 36
+    },
+    "CdDataCallback": {
+      "address": "0x8005d840",
+      "size": 36
+    },
+    "CdDataSync": {
+      "address": "0x8005d864",
+      "size": 32
+    },
+    "CdReadSync": {
+      "address": "0x8005d884",
+      "size": 32
+    },
+    "CdRead": {
+      "address": "0x8005d8a4",
+      "size": 128
+    },
+    "CdIntToPos": {
+      "address": "0x8005d924",
+      "size": 260
+    },
+    "CdPosToInt": {
+      "address": "0x8005da28",
+      "size": 128
+    }
+  },
+  "symbols": {
+    "CD_sync": "0x8005dfe4",
+    "CD_ready": "0x8005e258",
+    "CD_cw": "0x8005e518",
+    "CD_vol": "0x8005e924",
+    "CD_shell": "0x8005e9ac",
+    "CD_flush": "0x8005ea38",
+    "CD_init": "0x8005eb18",
+    "CD_initvol": "0x8005ed6c",
+    "CD_readm": "0x8005f158",
+    "CD_readsync": "0x8005f220",
+    "CD_datasync": "0x8005f4c4",
+    "CD_getsector": "0x8005f620",
+    "DMACallback": "0x80061730",
+    "CD_cbsync": "0x800744fc",
+    "CD_cbready": "0x80074500",
+    "CD_cbread": "0x80074504",
+    "CD_debug": "0x80074508",
+    "CD_status": "0x8007450c",
+    "CD_com": "0x80074518",
+    "CD_comstr": "0x8007451c",
+    "CD_intstr": "0x8007459c"
+  },
+  "static_data": {
+    "g_7447c": {
+      "address": "0x8007447c",
+      "size": 128,
+      "section": ".data"
+    }
+  }
+}

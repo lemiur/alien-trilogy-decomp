@@ -1,0 +1,23 @@
+{
+  "gp": "0x8008cd74",
+  "functions": {
+    "data_ready_callback": {
+      "address": "0x80061474",
+      "size": 136
+    }
+  },
+  "symbols": {
+    "StFunc1": "0x8009a118",
+    "StFinalSector": "0x8009cae4",
+    "StRingIdx1": "0x8009eecc",
+    "StRingIdx2": "0x8009eed0",
+    "StRingAddr": "0x800a0f9c"
+  },
+  "static_data": {
+    "g_748e0": {
+      "address": "0x800748e0",
+      "size": 16,
+      "section": ".data"
+    }
+  }
+}

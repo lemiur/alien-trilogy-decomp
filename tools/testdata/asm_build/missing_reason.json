@@ -1,0 +1,7 @@
+{
+  "units": {
+    "asm/lib/probe_a208.s": {
+      "assembler": "A208"
+    }
+  }
+}

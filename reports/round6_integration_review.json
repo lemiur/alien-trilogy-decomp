@@ -1,0 +1,370 @@
+{
+  "status": "pass",
+  "reference_sha256": "f424660920764ac70f697b5b909a42fe259a76e60acbf5b01c6ca3ee8c8f8e98",
+  "analyzer_sha256": "60cac43d17f29a13d2d3270dc6e0d5e7f2e8389b2459aade6fd529aa29473598",
+  "latest_report_sha256": "d2b4b4210fc404e7a0bb25486cdb88abb044dd7de0b06684c75ca1120a9edc11",
+  "observations": [
+    {
+      "name": "menu_flags_offset",
+      "address": "0x800181e4",
+      "word": "0x94420000",
+      "meaning": "lhu v0,0(v0): flags at start of each menu entry"
+    },
+    {
+      "name": "menu_stride_multiply7",
+      "address": "0x800181d8",
+      "word": "0x431023",
+      "meaning": "subu v0,v0,v1 combines with shifts for 28-byte stride"
+    },
+    {
+      "name": "menu_value_offset",
+      "address": "0x8001859c",
+      "word": "0x96020004",
+      "meaning": "lhu v0,4(s0): current value follows leading packed flags/position word"
+    },
+    {
+      "name": "menu_limit_offset",
+      "address": "0x800185b8",
+      "word": "0x96020006",
+      "meaning": "lhu v0,6(s0): limit field at offset six"
+    },
+    {
+      "name": "formatter_offset",
+      "address": "0x80018344",
+      "word": "0x8e020010",
+      "meaning": "lw v0,16(s0): formatter callback at offset sixteen"
+    },
+    {
+      "name": "action_callback_offset",
+      "address": "0x80018674",
+      "word": "0x8e020014",
+      "meaning": "lw v0,20(s0): action callback at offset twenty"
+    },
+    {
+      "name": "selection_callback_offset",
+      "address": "0x800185c8",
+      "word": "0x8e020018",
+      "meaning": "lw v0,24(s0): value-change callback at offset twenty-four"
+    },
+    {
+      "name": "callback_first_argument",
+      "address": "0x800185d4",
+      "word": "0x2002021",
+      "meaning": "move a0,s0 passes entry pointer"
+    },
+    {
+      "name": "callback_second_argument",
+      "address": "0x800185dc",
+      "word": "0x2402821",
+      "meaning": "move a1,s2 passes writable menu context"
+    },
+    {
+      "name": "route_halfword_source",
+      "address": "0x80017354",
+      "word": "0x8463c27c",
+      "meaning": "lh v1,-0x3d84(v1): signed route cell at 0x8006c27c"
+    },
+    {
+      "name": "route_word_destination",
+      "address": "0x80017360",
+      "word": "0xaca30008",
+      "meaning": "sw v1,8(a1): sign-extended source is stored as a word"
+    },
+    {
+      "name": "card_route_halfword_source",
+      "address": "0x80017380",
+      "word": "0x8463c27e",
+      "meaning": "lh v1,-0x3d82(v1): source at 0x8006c27e"
+    },
+    {
+      "name": "card_route_word_destination",
+      "address": "0x8001739c",
+      "word": "0xaca30008",
+      "meaning": "sw v1,8(a1): word field in menu context"
+    },
+    {
+      "name": "card_context_clear",
+      "address": "0x80017394",
+      "word": "0xaca00014",
+      "meaning": "sw zero,20(a1): additional menu context field"
+    },
+    {
+      "name": "card_poll_return_halfword",
+      "address": "0x800173a0",
+      "word": "0xa782005e",
+      "meaning": "sh v0,94(gp): result becomes g_display_action"
+    },
+    {
+      "name": "card_management_guard",
+      "address": "0x800174c4",
+      "word": "0x8782005e",
+      "meaning": "lh v0,94(gp): canonical g_display_action"
+    },
+    {
+      "name": "effect_frame_table_word",
+      "address": "0x8003f8ec",
+      "word": "0x8e230008",
+      "meaning": "lw v1,8(s1): frame IDs are word table entries, not strings"
+    },
+    {
+      "name": "long_effect_frame_halfword",
+      "address": "0x80040244",
+      "word": "0x86070014",
+      "meaning": "lh a3,20(s0): signed low-halfword frame view"
+    },
+    {
+      "name": "long_effect_progress_word",
+      "address": "0x80040270",
+      "word": "0x8e020014",
+      "meaning": "lw v0,20(s0): word-sized progress update uses the same storage"
+    },
+    {
+      "name": "controller_route_delay_slot",
+      "address": "0x80017504",
+      "word": "0xaca30008",
+      "meaning": "sw v1,8(a1) after jr ra: complete 24-byte extent"
+    }
+  ],
+  "reviewed_functions": [
+    {
+      "function": "f_1734c",
+      "unit": "game_helpers2",
+      "address": "0x8001734c",
+      "size": 24,
+      "report": "E:\\Compiler Identification\\alien_decomp\\builds\\job-rdvskrit\\f_1734c.json"
+    },
+    {
+      "function": "f_17364",
+      "unit": "game_helpers2",
+      "address": "0x80017364",
+      "size": 24,
+      "report": "E:\\Compiler Identification\\alien_decomp\\builds\\job-rdvskrit\\f_17364.json"
+    },
+    {
+      "function": "f_1737c",
+      "unit": "game_helpers2",
+      "address": "0x8001737c",
+      "size": 56,
+      "report": "E:\\Compiler Identification\\alien_decomp\\builds\\job-rdvskrit\\f_1737c.json"
+    },
+    {
+      "function": "f_173b4",
+      "unit": "game_helpers2",
+      "address": "0x800173b4",
+      "size": 24,
+      "report": "E:\\Compiler Identification\\alien_decomp\\builds\\job-rdvskrit\\f_173b4.json"
+    },
+    {
+      "function": "f_173cc",
+      "unit": "game_helpers2",
+      "address": "0x800173cc",
+      "size": 16,
+      "report": "E:\\Compiler Identification\\alien_decomp\\builds\\job-rdvskrit\\f_173cc.json"
+    },
+    {
+      "function": "f_173dc",
+      "unit": "game_helpers2",
+      "address": "0x800173dc",
+      "size": 16,
+      "report": "E:\\Compiler Identification\\alien_decomp\\builds\\job-rdvskrit\\f_173dc.json"
+    },
+    {
+      "function": "f_173ec",
+      "unit": "game_helpers2",
+      "address": "0x800173ec",
+      "size": 16,
+      "report": "E:\\Compiler Identification\\alien_decomp\\builds\\job-rdvskrit\\f_173ec.json"
+    },
+    {
+      "function": "f_173fc",
+      "unit": "game_helpers2",
+      "address": "0x800173fc",
+      "size": 20,
+      "report": "E:\\Compiler Identification\\alien_decomp\\builds\\job-rdvskrit\\f_173fc.json"
+    },
+    {
+      "function": "f_1749c",
+      "unit": "game_helpers2",
+      "address": "0x8001749c",
+      "size": 24,
+      "report": "E:\\Compiler Identification\\alien_decomp\\builds\\job-rdvskrit\\f_1749c.json"
+    },
+    {
+      "function": "f_174b4",
+      "unit": "game_helpers2",
+      "address": "0x800174b4",
+      "size": 16,
+      "report": "E:\\Compiler Identification\\alien_decomp\\builds\\job-rdvskrit\\f_174b4.json"
+    },
+    {
+      "function": "f_174c4",
+      "unit": "game_helpers2",
+      "address": "0x800174c4",
+      "size": 44,
+      "report": "E:\\Compiler Identification\\alien_decomp\\builds\\job-rdvskrit\\f_174c4.json"
+    },
+    {
+      "function": "f_174f0",
+      "unit": "game_helpers2",
+      "address": "0x800174f0",
+      "size": 24,
+      "report": "E:\\Compiler Identification\\alien_decomp\\builds\\job-rdvskrit\\f_174f0.json"
+    },
+    {
+      "function": "f_175ec",
+      "unit": "game_helpers2",
+      "address": "0x800175ec",
+      "size": 16,
+      "report": "E:\\Compiler Identification\\alien_decomp\\builds\\job-rdvskrit\\f_175ec.json"
+    },
+    {
+      "function": "f_18174",
+      "unit": "game_helpers2",
+      "address": "0x80018174",
+      "size": 48,
+      "report": "E:\\Compiler Identification\\alien_decomp\\builds\\job-rdvskrit\\f_18174.json"
+    },
+    {
+      "function": "f_16b20",
+      "unit": "game_helpers2",
+      "address": "0x80016b20",
+      "size": 76,
+      "report": "E:\\Compiler Identification\\alien_decomp\\builds\\job-rdvskrit\\f_16b20.json"
+    },
+    {
+      "function": "f_1768c",
+      "unit": "game_helpers2",
+      "address": "0x8001768c",
+      "size": 76,
+      "report": "E:\\Compiler Identification\\alien_decomp\\builds\\job-rdvskrit\\f_1768c.json"
+    },
+    {
+      "function": "f_16144",
+      "unit": "game_helpers2",
+      "address": "0x80016144",
+      "size": 92,
+      "report": "E:\\Compiler Identification\\alien_decomp\\builds\\job-rdvskrit\\f_16144.json"
+    },
+    {
+      "function": "f_1e710",
+      "unit": "text_helpers6",
+      "address": "0x8001e710",
+      "size": 68,
+      "report": "E:\\Compiler Identification\\alien_decomp\\builds\\job-aaefzg6y\\f_1e710.json"
+    },
+    {
+      "function": "f_1e754",
+      "unit": "text_helpers6",
+      "address": "0x8001e754",
+      "size": 68,
+      "report": "E:\\Compiler Identification\\alien_decomp\\builds\\job-aaefzg6y\\f_1e754.json"
+    },
+    {
+      "function": "f_1f4f0",
+      "unit": "text_helpers6",
+      "address": "0x8001f4f0",
+      "size": 68,
+      "report": "E:\\Compiler Identification\\alien_decomp\\builds\\job-aaefzg6y\\f_1f4f0.json"
+    },
+    {
+      "function": "f_20048",
+      "unit": "game_helpers14",
+      "address": "0x80020048",
+      "size": 176,
+      "report": "E:\\Compiler Identification\\alien_decomp\\builds\\job-q80f1ixj\\f_20048.json"
+    },
+    {
+      "function": "f_44224",
+      "unit": "audio_helpers6",
+      "address": "0x80044224",
+      "size": 172,
+      "report": "E:\\Compiler Identification\\alien_decomp\\builds\\job-543acy65\\f_44224.json"
+    },
+    {
+      "function": "f_3fc4c",
+      "unit": "game_helpers16",
+      "address": "0x8003fc4c",
+      "size": 116,
+      "report": "E:\\Compiler Identification\\alien_decomp\\builds\\job-nfepq7gg\\f_3fc4c.json"
+    },
+    {
+      "function": "f_3fcc0",
+      "unit": "game_helpers16",
+      "address": "0x8003fcc0",
+      "size": 116,
+      "report": "E:\\Compiler Identification\\alien_decomp\\builds\\job-nfepq7gg\\f_3fcc0.json"
+    },
+    {
+      "function": "f_3fd34",
+      "unit": "game_helpers16",
+      "address": "0x8003fd34",
+      "size": 116,
+      "report": "E:\\Compiler Identification\\alien_decomp\\builds\\job-nfepq7gg\\f_3fd34.json"
+    },
+    {
+      "function": "f_40228",
+      "unit": "game_helpers16",
+      "address": "0x80040228",
+      "size": 112,
+      "report": "E:\\Compiler Identification\\alien_decomp\\builds\\job-nfepq7gg\\f_40228.json"
+    }
+  ],
+  "consolidated_GP_definitions": [
+    {
+      "unit": "game_helpers2",
+      "symbol": "g_display_action",
+      "address": "0x8008cdd2",
+      "size": 2
+    },
+    {
+      "unit": "game_helpers2",
+      "symbol": "g_state_modes",
+      "address": "0x8008cdd4",
+      "size": 4
+    },
+    {
+      "unit": "game_helpers2",
+      "symbol": "g_8cdd8",
+      "address": "0x8008cdd8",
+      "size": 4
+    },
+    {
+      "unit": "game_helpers2",
+      "symbol": "g_8cddc",
+      "address": "0x8008cddc",
+      "size": 4
+    },
+    {
+      "unit": "game_helpers2",
+      "symbol": "g_callback_src_6c",
+      "address": "0x8008cde0",
+      "size": 4
+    },
+    {
+      "unit": "game_helpers2",
+      "symbol": "g_callback_src_70",
+      "address": "0x8008cde4",
+      "size": 4
+    }
+  ],
+  "record_layout": {
+    "size": 28,
+    "leading_packed_flags_position": 0,
+    "value": 4,
+    "limit": 6,
+    "label": 8,
+    "choices": 12,
+    "formatter": 16,
+    "action_callback": 20,
+    "value_change_callback": 24
+  },
+  "old_record_maps_corrected": "Seven earlier menu records were mapped four bytes into their true flag-leading record; value field VAs remain unchanged.",
+  "effect_layout_review": "Effect frame inputs are initialized integer tables; helper word loads establish the pointer element width. ProgressWord union preserves halfword/word accesses without incompatible pointer aliasing. Task removal uses canonical Node pointer declaration.",
+  "voice_layout_review": "audio_helpers2/4/6 share tagged VoiceEntry: pitch0, secondary2, reserved4, sample_note6, volume_left8, volume_right10, stride12.",
+  "limitations": [
+    "The high halfword of the leading menu word is observed as a position but flag bit meanings remain partially unresolved.",
+    "Per-object original placement does not prove complete .sdata/.data/.bss/.sbss/COMMON ordering or boundaries.",
+    "Address-based global names and reconstructed C types do not recover original source spelling.",
+    "This semantic review adds no bytes independently of compiled certification."
+  ]
+}

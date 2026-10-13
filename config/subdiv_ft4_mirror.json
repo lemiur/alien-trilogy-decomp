@@ -1,0 +1,12 @@
+{
+  "gp": "0x8008cd74",
+  "functions": {
+    "subdiv_ft4_mirror": {"address": "0x8004c024", "size": 6656}
+  },
+  "symbols": {
+    "g_sprite_workspace": "0x8008d478",
+    "g_render_buffer": "0x8008d4e8",
+    "RotTransPersN": "0x800682f0",
+    "NormalClip": "0x8006716c"
+  }
+}

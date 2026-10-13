@@ -1,0 +1,64 @@
+{
+  "generated_utc": "2026-10-10T21:40:51.925133+00:00",
+  "reference_sha256": "f424660920764ac70f697b5b909a42fe259a76e60acbf5b01c6ca3ee8c8f8e98",
+  "payload_size": 514048,
+  "primary_source": "builds/gate/provenance.json",
+  "second_witnesses": [
+    "reports/latest.json",
+    "tools/generated_witness.py",
+    "reports/runtime_latest.json",
+    "reports/runtime_data.json",
+    "analysis/link_plan.py"
+  ],
+  "bytes": {
+    "c_function": 205436,
+    "c_verbatim": 0,
+    "c_data": 40515,
+    "generated_data": 8079,
+    "asm": 63848,
+    "library_asm": 50237,
+    "library_text": 27796,
+    "library_data": 100949,
+    "fallback": 17188
+  },
+  "counts": {
+    "c_function": 645,
+    "c_verbatim": 0,
+    "c_data": 287,
+    "generated_data": 406,
+    "library_text": 96,
+    "library_data": 33,
+    "asm": 344,
+    "asm_functions": 344,
+    "asm_routines": 32,
+    "asm_tables": 312,
+    "asm_data": 0,
+    "asm_routine_bytes": 51604,
+    "asm_table_bytes": 12244,
+    "asm_data_bytes": 0,
+    "library_asm": 337,
+    "library_asm_functions": 153,
+    "library_asm_routines": 153,
+    "library_asm_tables": 0,
+    "library_asm_data": 184,
+    "library_asm_routine_bytes": 45096,
+    "library_asm_table_bytes": 0,
+    "library_asm_data_bytes": 5141
+  },
+  "decompiled_game_c_bytes": 254030,
+  "covered_bytes": 496860,
+  "combined_distinct_certified_payload_bytes": 496860,
+  "uncovered_payload_gap_count": 452,
+  "uncovered_or_unresolved_reference_count": 477,
+  "external_reference_status_counts": {
+    "covered": 1520,
+    "mapped_uncovered_code_or_data_target": 464,
+    "mapped_uncovered_code_target": 13
+  },
+  "runtime_unresolved_candidates": [],
+  "runtime_library_asm_candidates": [
+    "S_GKS (libspu_s_gks)",
+    "S_SCA (libspu_s_sca)"
+  ],
+  "note": "decompiled_game_c_bytes = c_function + c_data + generated_data (the gate's source_bytes). asm, library_asm, c_verbatim and library bytes are separate and never part of it; library_asm is the gate's library_asm_bytes and never certified library."
+}

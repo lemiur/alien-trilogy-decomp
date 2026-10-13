@@ -1,0 +1,115 @@
+{
+  "functions": {
+    "strKickCD": {
+      "address": "0x80044364",
+      "size": 68
+    },
+    "strInit": {
+      "address": "0x800443a8",
+      "size": 128
+    },
+    "strCallback": {
+      "address": "0x80044724",
+      "size": 872
+    },
+    "strNext": {
+      "address": "0x80044a8c",
+      "size": 620
+    },
+    "strNextVlc": {
+      "address": "0x80044cf8",
+      "size": 140
+    },
+    "strSync": {
+      "address": "0x80044d84",
+      "size": 164
+    },
+    "movie_end_callback": {
+      "address": "0x80044e28",
+      "size": 20
+    },
+    "movie_play_record": {
+      "address": "0x80044e3c",
+      "size": 840
+    },
+    "movie_show_frame": {
+      "address": "0x80045184",
+      "size": 440
+    },
+    "movie_play": {
+      "address": "0x8004533c",
+      "size": 264
+    }
+  },
+  "symbols": {
+    "g_movie_decode": "0x8009cae8",
+    "g_movie_finished": "0x8008d4a8",
+    "g_stream_bytes": "0x8008d328",
+    "g_movie_end_frame": "0x8008d5c0",
+    "g_frame_width": "0x8008d040",
+    "g_frame_height": "0x8008d044",
+    "g_end_frame_ready": "0x8008d048",
+    "g_movie_start_time": "0x8008d04c",
+    "g_movie_sectors": "0x8008d050",
+    "g_movie_frame": "0x8008d054",
+    "g_8d058": "0x8008d058",
+    "g_movie_vsyncs": "0x8008d05c",
+    "g_movie_disp": "0x8008f648",
+    "g_movie_draw": "0x8008f660",
+    "VSync": "0x800621d4",
+    "PadRead": "0x80061618",
+    "SetDefDispEnv": "0x80066434",
+    "SetDefDrawEnv": "0x800663a4",
+    "PutDispEnv": "0x80062f2c",
+    "PutDrawEnv": "0x80062e30",
+    "SetDispMask": "0x800627bc",
+    "g_file_table": "0x8006a5f8",
+    "g_frame_count": "0x8008d380",
+    "heap_mark": "0x80014ecc",
+    "heap_release": "0x80014f88",
+    "g_first_slice": "0x8008d480",
+    "g_9a120": "0x8009a120",
+    "StCdInterrupt": "0x800607b0",
+    "LoadImage": "0x80062a80",
+    "DecDCTout": "0x800688bc",
+    "StGetNext": "0x800613c0",
+    "StFreeRing": "0x800614fc",
+    "ClearImage": "0x800629ec",
+    "DecDCTvlc": "0x800687f0",
+    "DecDCTReset": "0x8006878c",
+    "DecDCToutCallback": "0x80068940",
+    "StSetRing": "0x80061330",
+    "StSetStream": "0x8005fad8",
+    "g_movie_loc": "0x8008d500",
+    "CdRead2": "0x8005fa64",
+    "CdControl": "0x8005d4b0",
+    "g_movie_file": "0x8009b36c",
+    "movie_display_setup": "0x80044428",
+    "CdDataCallback": "0x8005d840",
+    "CdReadyCallback": "0x8005d480",
+    "CdControlB": "0x8005d6d4",
+    "CdSearchFile": "0x8005fb60",
+    "heap_alloc": "0x80014dfc",
+    "DecDCTin": "0x80068840"
+  },
+  "sections": {
+    ".sdata": "0x8008d040",
+    ".sbss": "0x8008d2c0"
+  },
+  "section_starts": {
+    ".sdata": "0x8008cd74"
+  },
+  "static_data": {
+    "pad.18": {
+      "address": "0x8008d2c0",
+      "size": 8,
+      "section": ".sbss"
+    },
+    "g_movie_records": {
+      "address": "0x80073668",
+      "size": 720,
+      "section": ".data"
+    }
+  },
+  "gp": "0x8008cd74"
+}

@@ -1,0 +1,10 @@
+{
+  "binary": "SLUS_000.07",
+  "reference": "games/Alien Trilogy (PS1 USA)/extracted/SLUS_000.07",
+  "sha256": "f424660920764ac70f697b5b909a42fe259a76e60acbf5b01c6ca3ee8c8f8e98",
+  "file_size": 516096,
+  "header_size": 2048,
+  "load_address": "0x80010000",
+  "payload_size": 514048,
+  "entry": "0x800588c4"
+}

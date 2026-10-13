@@ -1,0 +1,267 @@
+{
+  "exceptions": [
+    {
+      "function": "panel_spawn",
+      "unit": "debris",
+      "address": "0x80045578",
+      "size": 2308,
+      "rule": "access goes through typed members; no raw offset casts",
+      "deviation": "the four texture words of each panel's SpriteUV are copied with *(u_long *)&uv->u0..u3 chains, and the panel rides in Particle.model as (DispatchRow *)",
+      "reason": "exact byte match; retail copies each texture word once into the four panels with one lw and four sw (as screen_sprite_draw_semi does), and panel_free reads Particle.model back as the panel"
+    },
+    {
+      "function": "actor_cell_trigger",
+      "unit": "level_triggers",
+      "address": "0x8003dd3c",
+      "size": 588,
+      "rule": "no fake code, storage, labels",
+      "deviation": "a failed command chain leaves through goto failed to a block after the function's final store",
+      "reason": "exact byte match; same layout as player_cell_trigger (failure block after the shared last-trigger store)"
+    },
+    {
+      "function": "shot_cell_trigger",
+      "unit": "level_triggers",
+      "address": "0x8003df88",
+      "size": 668,
+      "rule": "no fake code, storage, labels",
+      "deviation": "a failed command chain leaves through goto failed to a block after the function's final store",
+      "reason": "exact byte match; same layout as player_cell_trigger (failure block after the shared last-trigger store)"
+    },
+    {
+      "function": "enemy_shot_cell_trigger",
+      "unit": "level_triggers",
+      "address": "0x8003e224",
+      "size": 668,
+      "rule": "no fake code, storage, labels",
+      "deviation": "a failed command chain leaves through goto failed to a block after the function's final store",
+      "reason": "exact byte match; same layout as player_cell_trigger (failure block after the shared last-trigger store)"
+    },
+    {
+      "function": "player_cell_trigger",
+      "unit": "level_triggers",
+      "address": "0x8003da94",
+      "size": 680,
+      "rule": "no fake code, storage, labels",
+      "deviation": "a failed command chain leaves through goto failed to a block after the function's final store",
+      "reason": "exact byte match; retail lays the failure block (clear Player.last_trigger unless still inside) after the shared last_trigger store that the empty-trigger path also reaches, which only the goto layout reproduces"
+    },
+    {
+      "function": "f_1d0e0",
+      "unit": "sprites",
+      "address": "0x8001d0e0",
+      "size": 52,
+      "rule": "source must be defined for every input the machine code accepts",
+      "deviation": "the C shift count is undefined for IDs 0 and below -1; retail's machine code accepts them",
+      "reason": "exact byte match; AGENTS.md 'Keep every exact match' keeps it and records the deviation"
+    },
+    {
+      "function": "door_blocked",
+      "unit": "doors",
+      "address": "0x800223a0",
+      "size": 228,
+      "rule": "access goes through typed members; no raw offset casts",
+      "deviation": "neighbour cells reached by a byte-stride cast (MapCell *)((u8 *)a +/- stride) instead of typed indexing",
+      "reason": "exact byte match only with this spelling; kept under AGENTS.md 'Keep every exact match'"
+    },
+    {
+      "function": "door_models_prepare",
+      "unit": "doors",
+      "address": "0x80023478",
+      "size": 216,
+      "rule": "access goes through typed members; no raw offset casts",
+      "deviation": "model fixups walked with a raw byte pointer instead of typed members",
+      "reason": "exact byte match only with this spelling; kept under AGENTS.md 'Keep every exact match'"
+    },
+    {
+      "function": "screen_sprite_draw_semi",
+      "unit": "game_20000_8",
+      "address": "0x80022158",
+      "size": 292,
+      "rule": "access goes through typed members; no raw offset casts",
+      "deviation": "UV/clut/tpage words copied with *(u_long *)&poly->u0 instead of setUV4 and member stores",
+      "reason": "retail copies each word with one lw/sw; the member spelling emits byte/halfword stores (364 vs 292 bytes); kept under 'Keep every exact match'"
+    },
+    {
+      "function": "screen_sprite_draw",
+      "unit": "game_20000_8",
+      "address": "0x8002227c",
+      "size": 292,
+      "rule": "access goes through typed members; no raw offset casts",
+      "deviation": "UV/clut/tpage words copied with *(u_long *)&poly->u0 instead of setUV4 and member stores",
+      "reason": "retail copies each word with one lw/sw; the member spelling emits byte/halfword stores (364 vs 292 bytes); kept under 'Keep every exact match'"
+    },
+    {
+      "function": "hugger_overlay_draw",
+      "unit": "actor",
+      "address": "0x8002b260",
+      "size": 348,
+      "rule": "access goes through typed members; no raw offset casts",
+      "deviation": "UV/clut/tpage words copied with *(u_long *)&poly->u0 instead of setUV4 and member stores",
+      "reason": "retail copies each word with one lw/sw; the member spelling emits byte/halfword stores (364 vs 292 bytes); kept under 'Keep every exact match'"
+    },
+    {
+      "function": "level_object_task",
+      "unit": "object_render",
+      "address": "0x8003276c",
+      "rule": "no fake locals or padding to move codegen",
+      "deviation": "declares an unused 'VECTOR scale;' local, which gives retail's 0x40 frame",
+      "reason": "exact byte match only with this local; the body is level_object_draw_tall minus its scaling, so the local is probably a copy-paste leftover in the original; kept under 'Keep every exact match' pending the codegen research lane"
+    },
+    {
+      "function": "pause_menu (item flag tests)",
+      "unit": "pause_menu",
+      "address": "see config/pause_menu.json",
+      "rule": "access goes through typed members; casts only at real boundaries",
+      "deviation": "reads Player.flags (int) as (u_short)g_player.flags & mask",
+      "reason": "retail's menu reads the flags word with lhu while save_password reads it with lw; kept under 'Keep every exact match' until the field's true type (likely a union or short pair) is evidenced"
+    },
+    {
+      "function": "particle_draw_blood",
+      "unit": "particle",
+      "rule": "access goes through typed members; no raw offset casts",
+      "deviation": "UV/clut/tpage words copied with *(u_long *) instead of member stores",
+      "reason": "retail copies each word with one lw/sw (same class as screen_sprite_draw_semi); kept under 'Keep every exact match'"
+    },
+    {
+      "function": "particle_draw_flame",
+      "unit": "particle",
+      "rule": "access goes through typed members; no raw offset casts",
+      "deviation": "UV/clut/tpage words copied with *(u_long *) instead of member stores",
+      "reason": "retail copies each word with one lw/sw (same class as screen_sprite_draw_semi); kept under 'Keep every exact match'"
+    },
+    {
+      "function": "particle_draw_steam",
+      "unit": "particle",
+      "rule": "access goes through typed members; no raw offset casts",
+      "deviation": "UV/clut/tpage words copied with *(u_long *) instead of member stores",
+      "reason": "retail copies each word with one lw/sw (same class as screen_sprite_draw_semi); kept under 'Keep every exact match'"
+    },
+    {
+      "function": "particle_draw_fire",
+      "unit": "particle",
+      "rule": "access goes through typed members; no raw offset casts",
+      "deviation": "UV/clut/tpage words copied with *(u_long *) instead of member stores",
+      "reason": "retail copies each word with one lw/sw (same class as screen_sprite_draw_semi); kept under 'Keep every exact match'"
+    },
+    {
+      "function": "particle_draw_debris",
+      "unit": "particle",
+      "rule": "no fake locals or padding to move codegen",
+      "deviation": "declares an unused 'SVECTOR unused;' local for retail's frame size",
+      "reason": "declared aggregates reserve frame space even when unused (recipes note, level_object_task); no better-evidenced spelling found; kept under 'Keep every exact match'"
+    },
+    {
+      "function": "particle_draw_flame",
+      "unit": "particle",
+      "rule": "no fake locals or padding to move codegen",
+      "deviation": "declares an unused 'CVECTOR unused;' local for retail's frame size",
+      "reason": "declared aggregates reserve frame space even when unused (recipes note, level_object_task); no better-evidenced spelling found; kept under 'Keep every exact match'"
+    },
+    {
+      "function": "actor_play_animation",
+      "unit": "actor",
+      "rule": "no volatile levers or raw offset casts",
+      "deviation": "body keeps volatile and offset-cast accesses",
+      "reason": "the typed Actor/Sprite spelling loads the flags before the uv byte stores (16 instructions differ); kept under 'Keep every exact match' until a typed spelling matches"
+    },
+    {
+      "function": "pickups_task",
+      "unit": "map_objects",
+      "address": "0x80039440",
+      "size": 700,
+      "rule": "no fake labels or control flow to shape codegen",
+      "deviation": "the object loop is written as goto next_object / object_loop instead of a while or for loop",
+      "reason": "retail enters the loop with a jump to its bottom test and keeps no copy of the test before the first object; every while/for/do spelling tried (while, for with increment, assignment in the condition, block-local declarations) gets GCC's duplicated top test (beqz) and is 1 word short of exact; kept under 'Keep every exact match'"
+    },
+    {
+      "function": "message_box_type",
+      "unit": "frontend",
+      "address": "0x800198f8",
+      "size": 1212,
+      "rule": "a do { } while (0) wrapper only as a macro that groups one coherent operation",
+      "deviation": "NEXT_DIGIT (read the digit after a control character) is used in the '$' case only; the '!', '%' and '&' cases open-code the same two statements",
+      "reason": "exact only this way: with the macro at all four sites the build is 32 bytes short, without it the '$' case addresses x and position by symbol instead of through the text pointer's register (16 bytes long); kept under 'Keep every exact match'"
+    },
+    {
+      "function": "password_apply_record",
+      "unit": "save_password",
+      "address": "0x800477e4",
+      "size": 524,
+      "rule": "no fake locals or padding to move codegen",
+      "deviation": "declares an unused 'unsigned char codes[32];' local for retail's 0x48 frame",
+      "reason": "declared aggregates reserve frame space even when unused (recipes note, level_object_task); the frame holds exactly 32 unaddressed bytes, the size of the code buffer password_encode keeps for the same record; kept under 'Keep every exact match'"
+    },
+    {
+      "function": "format_card_slot",
+      "unit": "frontend",
+      "address": "0x80017cf0",
+      "size": 284,
+      "rule": "no fake locals or padding to move codegen",
+      "deviation": "declares an unused 'char number[4];' local for retail's frame size",
+      "reason": "declared aggregates reserve frame space even when unused (recipes note); the Saturn port reserves the same 4 unaddressed frame bytes (add #-4,r15 at 0x06008768), so the original likely had an unused local; kept under 'Keep every exact match'"
+    },
+    {
+      "function": "title_sequence_task",
+      "unit": "frontend",
+      "address": "0x8001ae94",
+      "size": 576,
+      "rule": "no fake locals or padding to move codegen",
+      "deviation": "declares an unused 'RECT unused[2];' local for retail's 0x30 frame",
+      "reason": "every instruction matches without it; retail's frame reserves 16 bytes no instruction addresses (archived near-miss); declared aggregates reserve frame space even when unused; no better-evidenced spelling found; kept under 'Keep every exact match'"
+    },
+    {
+      "function": "tracker_draw_blips",
+      "unit": "hud",
+      "address": "0x80035f64",
+      "size": 732,
+      "rule": "access goes through typed members; no raw offset casts",
+      "deviation": "tests the first word of Actor.velocity (vx and vy together) with *(long *)&actor->velocity",
+      "reason": "retail loads the pair with one lw at +0x30 (0x80036090); member compares emit lh; kept under AGENTS.md Keep every exact match"
+    },
+    {
+      "function": "draw_number",
+      "unit": "hud",
+      "address": "0x80034ae8",
+      "size": 900,
+      "rule": "access goes through typed members; no raw offset casts",
+      "deviation": "copies the caller colour into r0/g0/b0/code with *(u_long *)&p->r0 = *(u_long *)rgb before setPolyFT4 overwrites code",
+      "reason": "retail copies the colour with one lw/sw (0x80034c40, 0x80034c50) and then stores the code byte; member stores emit lbu/sb; kept under AGENTS.md Keep every exact match"
+    },
+    {
+      "function": "draw_number_large",
+      "unit": "hud",
+      "address": "0x80034e6c",
+      "size": 912,
+      "rule": "access goes through typed members; no raw offset casts",
+      "deviation": "copies the caller colour word with *(u_long *)&p->r0 = *(u_long *)rgb, as draw_number",
+      "reason": "retail copies the colour with one lw/sw (0x80034fc8, 0x80034fd8); kept under AGENTS.md Keep every exact match"
+    },
+    {
+      "function": "hugger_overlay_draw",
+      "unit": "actor",
+      "address": "0x8002b260",
+      "size": 348,
+      "rule": "casts only at real boundaries",
+      "deviation": "frame->x, y, w and h are read through (u_short) casts: SpriteFrame's offsets are short (actor_draw_sprite and actor_draw_shadowed load them with lh into signed arithmetic) but this overlay draw adds them as unsigned halfwords (lhu)",
+      "reason": "exact byte match; kept under AGENTS.md 'Keep every exact match'"
+    },
+    {
+      "function": "level_object_model_fixup",
+      "unit": "object_render",
+      "address": "0x80030e84",
+      "size": 244,
+      "rule": "access goes through typed members; no raw offset casts",
+      "deviation": "the file's 16-bit face kind is read as *(u16 *)&face->flags, spanning DispatchRow.flags and .selector",
+      "reason": "exact byte match; retail reads the kind with one lhu before the fixed-up flags and selector bytes overwrite it, the same spelling as door_model_faces_fixup (src/doors.c); DispatchRow has no 16-bit view and GCC 2.5.7 C has no anonymous unions"
+    },
+    {
+      "function": "door_model_faces_fixup",
+      "unit": "doors",
+      "address": "0x800233a8",
+      "size": 208,
+      "rule": "access goes through typed members; no raw offset casts",
+      "deviation": "the face kind is read as *(u16 *)&face->flags, spanning DispatchRow.flags and .selector",
+      "reason": "exact byte match; retail reads the kind with one lhu before the fixed-up flags and selector bytes overwrite it; same spelling as level_object_model_fixup (object_render); DispatchRow has no 16-bit view and GCC 2.5.7 C has no anonymous unions"
+    }
+  ]
+}

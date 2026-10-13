@@ -1,0 +1,115 @@
+{
+  "functions": {
+    "audio_find_bank": {
+      "address": "0x8003cfd8",
+      "size": 92
+    },
+    "audio_load_bank": {
+      "address": "0x8003d034",
+      "size": 252
+    },
+    "audio_free_bank": {
+      "address": "0x8003d130",
+      "size": 356
+    },
+    "audio_select_level_bank": {
+      "address": "0x8003d294",
+      "size": 132
+    },
+    "audio_init": {
+      "address": "0x8003d318",
+      "size": 300
+    },
+    "audio_enable": {
+      "address": "0x8003d444",
+      "size": 24
+    },
+    "audio_disable": {
+      "address": "0x8003d45c",
+      "size": 24
+    },
+    "sound_stop_all": {
+      "address": "0x8003d474",
+      "size": 44
+    },
+    "sound_play_request": {
+      "address": "0x8003d4a0",
+      "size": 52
+    },
+    "sound_mute_all": {
+      "address": "0x8003d4d4",
+      "size": 44
+    },
+    "sound_unmute_all": {
+      "address": "0x8003d500",
+      "size": 44
+    },
+    "sound_stop": {
+      "address": "0x8003d52c",
+      "size": 68
+    },
+    "sound_adjust": {
+      "address": "0x8003d570",
+      "size": 68
+    },
+    "sound_play": {
+      "address": "0x8003d5b4",
+      "size": 120
+    },
+    "sound_set_volume": {
+      "address": "0x8003d62c",
+      "size": 64
+    },
+    "sound_play_at": {
+      "address": "0x8003d66c",
+      "size": 384
+    },
+    "sound_play_at_position": {
+      "address": "0x8003d7ec",
+      "size": 40
+    },
+    "sound_play_at_xz": {
+      "address": "0x8003d814",
+      "size": 76
+    }
+  },
+  "symbols": {
+    "voice_set_volume": "0x80043a40",
+    "voices_stop_all": "0x80044224",
+    "voice_stop": "0x80043d50",
+    "voice_play": "0x8004334c",
+    "g_sfx_level": "0x8008d540",
+    "voices_restore": "0x80043968",
+    "voices_mute": "0x8004392c",
+    "g_audio_flags": "0x8008d004",
+    "g_audio_banks": "0x80096b58",
+    "g_file_table": "0x8006a5f8",
+    "load_file": "0x800151f0",
+    "sample_bank_load": "0x80043ecc",
+    "heap_free": "0x80014e7c",
+    "sample_priorities_init": "0x800442d0",
+    "sample_bank_free": "0x80044118",
+    "g_sound_request": "0x8008f370",
+    "g_audio_mix": "0x8009d270",
+    "spu_init": "0x80044138",
+    "voices_reset": "0x8004330c",
+    "spu_set_master_volume": "0x800438e0",
+    "g_level_sample_banks": "0x8007312c",
+    "g_player": "0x80099fd4",
+    "point_heading_xz": "0x8001fea0"
+  },
+  "gp": "0x8008cd74",
+  "sections": {
+    ".sdata": "0x8008d004"
+  },
+  "section_starts": {
+    ".sdata": "0x8008cd74"
+  },
+  "static_data": {
+    "g_sound_balance": {
+      "address": "0x800730ec",
+      "size": 64,
+      "section": ".data"
+    }
+  }
+}

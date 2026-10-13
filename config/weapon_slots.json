@@ -1,0 +1,53 @@
+{
+  "gp": "0x8008cd74",
+  "sections": {
+    ".rdata": "0x80012004",
+    ".sbss": "0x8008d1a8"
+  },
+  "functions": {
+    "weapon_slots_reset": {
+      "address": "0x8003384c",
+      "size": 52
+    },
+    "weapon_slot_sync": {
+      "address": "0x80033880",
+      "size": 28
+    },
+    "player_give_pickup": {
+      "address": "0x8003389c",
+      "size": 1788
+    },
+    "weapon_slot_other_owned": {
+      "address": "0x80033f98",
+      "size": 252
+    },
+    "weapon_select_next": {
+      "address": "0x80034094",
+      "size": 476
+    },
+    "weapon_discard_select_next": {
+      "address": "0x80034270",
+      "size": 536
+    },
+    "weapon_reset_default": {
+      "address": "0x80034488",
+      "size": 76
+    },
+    "weapon_select_slot": {
+      "address": "0x800344d4",
+      "size": 196
+    }
+  },
+  "symbols": {
+    "g_weapon_slots": "0x8008f338",
+    "weapon_select": "0x8003c9ec",
+    "g_player": "0x80099fd4"
+  },
+  "static_data": {
+    "g_weapon_slot": {
+      "address": "0x8008d1a8",
+      "size": 8,
+      "section": ".sbss"
+    }
+  }
+}

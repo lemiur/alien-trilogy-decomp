@@ -1,0 +1,259 @@
+{
+  "gp": "0x8008cd74",
+  "sections": {
+    ".rdata": "0x80012614",
+    ".sdata": "0x8008d018",
+    ".data": "0x800735c4",
+    ".sbss": "0x8008d218"
+  },
+  "section_starts": {
+    ".sdata": "0x8008cd74"
+  },
+  "functions": {
+    "automap_build": {
+      "address": "0x8004070c",
+      "size": 868
+    },
+    "pause_menu_init": {
+      "address": "0x80040a70",
+      "size": 968
+    },
+    "hud_draw_text": {
+      "address": "0x80040e38",
+      "size": 164
+    },
+    "draw_text_typed": {
+      "address": "0x80040edc",
+      "size": 304
+    },
+    "text_word_width": {
+      "address": "0x8004100c",
+      "size": 152
+    },
+    "mission_text_draw_word": {
+      "address": "0x800410a4",
+      "size": 576
+    },
+    "mission_text_draw": {
+      "address": "0x800412e4",
+      "size": 416
+    },
+    "draw_option_bar": {
+      "address": "0x80041484",
+      "size": 220
+    },
+    "draw_map_arrow": {
+      "address": "0x80041560",
+      "size": 372
+    },
+    "draw_map": {
+      "address": "0x800416d4",
+      "size": 1024
+    },
+    "draw_item_page": {
+      "address": "0x80041ad4",
+      "size": 1316
+    },
+    "draw_sound_options": {
+      "address": "0x80041ff8",
+      "size": 756
+    },
+    "pause_menu_draw": {
+      "address": "0x800422ec",
+      "size": 1496
+    },
+    "pause_menu_select": {
+      "address": "0x800428c4",
+      "size": 832
+    },
+    "sound_options_select": {
+      "address": "0x80042c04",
+      "size": 256
+    },
+    "exit_confirm_update": {
+      "address": "0x80042d04",
+      "size": 176
+    },
+    "swap_display_buffers": {
+      "address": "0x80042db4",
+      "size": 212
+    },
+    "pause_menu_run": {
+      "address": "0x80042e88",
+      "size": 1116
+    }
+  },
+  "symbols": {
+    "g_unpack_buffer": "0x8008d520",
+    "g_clut_sets": "0x8006a578",
+    "g_secrets_found": "0x80096c54",
+    "LoadClut": "0x8006633c",
+    "LoadImage": "0x80062a80",
+    "g_level_map": "0x80096060",
+    "g_player": "0x80099fd4",
+    "g_view_rotation": "0x8008d468",
+    "g_level": "0x8008d378",
+    "rotate_vector": "0x8001fca8",
+    "get_sound_volume": "0x80017740",
+    "get_music_volume": "0x80017750",
+    "g_pause_options": "0x800735c4",
+    "g_sound_options": "0x80073614",
+    "g_render_buffer": "0x8008d4e8",
+    "g_sprite_workspace": "0x8008d478",
+    "g_option_bar_uv": "0x80097a84",
+    "g_glyph_widths": "0x800a0fd8",
+    "g_frame_count": "0x8008d380",
+    "g_mission_text": "0x8009a124",
+    "hud_draw_glyph": "0x80037560",
+    "g_map_uv": "0x8008f618",
+    "g_object_models": "0x80096be4",
+    "g_translation": "0x8009c5a4",
+    "g_model_matrix": "0x8008f628",
+    "g_model_uvs": "0x8008d558",
+    "g_pickup_uvs": "0x8009b384",
+    "g_sprite_uvs": "0x80097fd4",
+    "model_draw_mid_in_cell": "0x8001fc0c",
+    "draw_number": "0x80034ae8",
+    "PushMatrix": "0x80066c6c",
+    "PopMatrix": "0x80066d0c",
+    "RotMatrix": "0x800684fc",
+    "SetRotMatrix": "0x8006786c",
+    "TransMatrix": "0x80067724",
+    "SetTransMatrix": "0x800678fc",
+    "g_game_flags": "0x8008d560",
+    "weapon_select_slot": "0x800344d4",
+    "set_sound_volume": "0x80017708",
+    "set_music_volume": "0x80017654",
+    "g_pad_pressed": "0x8008d5a8",
+    "play_menu_sound": "0x80015f2c",
+    "g_graphics_busy": "0x8008d388",
+    "g_display": "0x8008d518",
+    "g_render_workspace": "0x8008d3c8",
+    "g_display_default": "0x8008d3e0",
+    "DrawSync": "0x80062858",
+    "PutDispEnv": "0x80062f2c",
+    "ClearOTagR": "0x80062cc4",
+    "g_pad_previous": "0x8008d448",
+    "g_pad_held": "0x8008d4d8",
+    "g_sound_clock": "0x8008d588",
+    "PadRead": "0x80061618",
+    "music_pause": "0x8003f690",
+    "sound_mute_all": "0x8003d4d4",
+    "reset_combo_check": "0x80013928",
+    "music_poll": "0x8003f81c",
+    "sound_stop": "0x8003d52c",
+    "sound_play": "0x8003d5b4",
+    "sound_unmute_all": "0x8003d500",
+    "music_unpause": "0x8003f6dc",
+    "DrawOTag": "0x80062dbc",
+    "AddPrim": "0x80065220",
+    "g_page_sets": "0x8006a590"
+  },
+  "static_data": {
+    "g_pause_state": {
+      "address": "0x8008d218",
+      "size": 8,
+      "section": ".sbss"
+    },
+    "g_pause_option": {
+      "address": "0x8008d220",
+      "size": 8,
+      "section": ".sbss"
+    },
+    "g_typed_length": {
+      "address": "0x8008d228",
+      "size": 8,
+      "section": ".sbss"
+    },
+    "g_sound_option": {
+      "address": "0x8008d230",
+      "size": 8,
+      "section": ".sbss"
+    },
+    "g_exit_confirmed": {
+      "address": "0x8008d238",
+      "size": 8,
+      "section": ".sbss"
+    },
+    "g_8d240": {
+      "address": "0x8008d240",
+      "size": 8,
+      "section": ".sbss"
+    },
+    "g_sfx_volume": {
+      "address": "0x8008d248",
+      "size": 8,
+      "section": ".sbss"
+    },
+    "g_cdda_volume": {
+      "address": "0x8008d250",
+      "size": 8,
+      "section": ".sbss"
+    },
+    "g_text_left": {
+      "address": "0x8008d258",
+      "size": 8,
+      "section": ".sbss"
+    },
+    "g_text_x": {
+      "address": "0x8008d260",
+      "size": 8,
+      "section": ".sbss"
+    },
+    "g_text_y": {
+      "address": "0x8008d268",
+      "size": 8,
+      "section": ".sbss"
+    },
+    "g_8d270": {
+      "address": "0x8008d270",
+      "size": 8,
+      "section": ".sbss"
+    },
+    "g_text_cursor": {
+      "address": "0x8008d278",
+      "size": 8,
+      "section": ".sbss"
+    },
+    "g_text_style": {
+      "address": "0x8008d280",
+      "size": 8,
+      "section": ".sbss"
+    },
+    "g_map_center_x": {
+      "address": "0x8008d288",
+      "size": 8,
+      "section": ".sbss"
+    },
+    "g_map_center_z": {
+      "address": "0x8008d290",
+      "size": 8,
+      "section": ".sbss"
+    },
+    "g_model_rotation": {
+      "address": "0x8008d298",
+      "size": 8,
+      "section": ".sbss"
+    },
+    "g_ammo_model_rotation": {
+      "address": "0x8008d2a0",
+      "size": 8,
+      "section": ".sbss"
+    },
+    "g_arrow_tip": {
+      "address": "0x8008d2a8",
+      "size": 8,
+      "section": ".sbss"
+    },
+    "g_arrow_right": {
+      "address": "0x8008d2b0",
+      "size": 8,
+      "section": ".sbss"
+    },
+    "g_arrow_left": {
+      "address": "0x8008d2b8",
+      "size": 8,
+      "section": ".sbss"
+    }
+  }
+}

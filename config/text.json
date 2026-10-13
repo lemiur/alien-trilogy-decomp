@@ -1,0 +1,68 @@
+{
+  "gp": "0x8008cd74",
+  "sections": {
+    ".sbss": "0x8008d0b0"
+  },
+  "functions": {
+    "draw_glyph": {
+      "address": "0x8001bfa0",
+      "size": 528
+    },
+    "draw_text": {
+      "address": "0x8001c1b0",
+      "size": 172
+    },
+    "draw_text_multiline": {
+      "address": "0x8001c25c",
+      "size": 172
+    },
+    "text_width": {
+      "address": "0x8001c308",
+      "size": 180
+    },
+    "draw_text_centered": {
+      "address": "0x8001c3bc",
+      "size": 132
+    },
+    "font_load": {
+      "address": "0x8001c440",
+      "size": 204
+    },
+    "read_be32": {
+      "address": "0x8001c50c",
+      "size": 44
+    },
+    "parse_decimal": {
+      "address": "0x8001c538",
+      "size": 80
+    }
+  },
+  "symbols": {
+    "g_menu_glyph_uvs": "0x80096118",
+    "g_menu_glyph_widths": "0x8008d7a0",
+    "g_sprite_workspace": "0x8008d478",
+    "g_render_buffer": "0x8008d4e8",
+    "g_char_widths": "0x8008d760",
+    "g_resource_status": "0x8008d5e0",
+    "sprite_file_load": "0x8001c7c0",
+    "g_page_sets": "0x8006a590",
+    "g_clut_sets": "0x8006a578"
+  },
+  "static_data": {
+    "g_font_page": {
+      "address": "0x8008d0b0",
+      "size": 8,
+      "section": ".sbss"
+    },
+    "g_font_clut": {
+      "address": "0x8008d0b8",
+      "size": 8,
+      "section": ".sbss"
+    },
+    "g_extended_glyphs": {
+      "address": "0x8006cadc",
+      "size": 392,
+      "section": ".data"
+    }
+  }
+}

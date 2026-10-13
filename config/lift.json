@@ -1,0 +1,104 @@
+{
+  "gp": "0x8008cd74",
+  "sections": {
+    ".sdata": "0x8008d008",
+    ".rdata": "0x80012570",
+    ".sbss": "0x8008d1e8"
+  },
+  "section_starts": {
+    ".sdata": "0x8008cd74"
+  },
+  "functions": {
+    "lift_model_faces_fixup": {
+      "address": "0x8003e4c0",
+      "size": 208
+    },
+    "lift_models_prepare": {
+      "address": "0x8003e590",
+      "size": 176
+    },
+    "lifts_alloc": {
+      "address": "0x8003e640",
+      "size": 40
+    },
+    "lift_records_prepare": {
+      "address": "0x8003e668",
+      "size": 156
+    },
+    "lift_records_init": {
+      "address": "0x8003e704",
+      "size": 48
+    },
+    "lift_trigger": {
+      "address": "0x8003e9f0",
+      "size": 104
+    },
+    "lift_trigger_last": {
+      "address": "0x8003ea58",
+      "size": 116
+    },
+    "lift_set_height": {
+      "address": "0x8003eacc",
+      "size": 140
+    },
+    "lift_task_delay": {
+      "address": "0x8003eb58",
+      "size": 188
+    },
+    "lift_task_lower": {
+      "address": "0x8003ec14",
+      "size": 304
+    },
+    "lift_task_raise": {
+      "address": "0x8003ed44",
+      "size": 296
+    },
+    "lift_task_wait": {
+      "address": "0x8003ee6c",
+      "size": 256
+    },
+    "lift_measure_model": {
+      "address": "0x8003ef6c",
+      "size": 408
+    },
+    "lifts_create": {
+      "address": "0x8003f104",
+      "size": 560
+    },
+    "lifts_spawn": {
+      "address": "0x8003f334",
+      "size": 44
+    }
+  },
+  "symbols": {
+    "g_lift_model_count": "0x8008d598",
+    "g_lift_models": "0x800a18d8",
+    "g_next_task": "0x8008d4f0",
+    "sound_play_at": "0x8003d66c",
+    "lift_draw": "0x8003e734",
+    "s_lift_activated": "0x8008d008",
+    "hud_show_message": "0x80037b98",
+    "heap_alloc": "0x80014dfc",
+    "lifts_create": "0x8003f104",
+    "g_level_map": "0x80096060",
+    "g_player": "0x80099fd4",
+    "TaskCreate": "0x80015e4c"
+  },
+  "static_data": {
+    "g_lifts": {
+      "address": "0x8008d1e8",
+      "size": 8,
+      "section": ".sbss"
+    },
+    "g_lift_records": {
+      "address": "0x8008d1f0",
+      "size": 8,
+      "section": ".sbss"
+    },
+    "g_lift_record_count": {
+      "address": "0x8008d1f8",
+      "size": 8,
+      "section": ".sbss"
+    }
+  }
+}

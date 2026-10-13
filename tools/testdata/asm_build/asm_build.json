@@ -1,0 +1,16 @@
+{
+  "units": {
+    "asm/lib/probe_a208.s": {
+      "assembler": "A208",
+      "reason": "div macro expands to the tge overflow trap"
+    },
+    "asm/lib/probe_gnu.s": {
+      "assembler": "GNU_AS",
+      "reason": "absolute .sbss addressing"
+    },
+    "asm/lib/probe_aspsx.s": {
+      "assembler": "ASPSX",
+      "reason": "listed with the default assembler"
+    }
+  }
+}

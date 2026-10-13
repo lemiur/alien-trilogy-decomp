@@ -1,0 +1,30 @@
+{
+  "gp": "0x8008cd74",
+  "functions": {
+    "startIntrDMA": {
+      "address": "0x80061e34",
+      "size": 628
+    }
+  },
+  "symbols": {
+    "InterruptCallback": "0x80061700",
+    "printf": "0x80069880"
+  },
+  "static_data": {
+    "_dma_icr": {
+      "address": "0x800759a0",
+      "size": 4,
+      "section": ".data"
+    },
+    "_dma_callbacks": {
+      "address": "0x800759a4",
+      "size": 32,
+      "section": ".data"
+    },
+    "_dma_bus_error_msg": {
+      "address": "0x80013188",
+      "size": 28,
+      "section": ".rdata"
+    }
+  }
+}

@@ -1,0 +1,367 @@
+{
+  "gp": "0x8008cd74",
+  "functions": {
+    "ResetGraph": {
+      "address": "0x800623b8",
+      "size": 348
+    },
+    "SetGraphReverse": {
+      "address": "0x80062514",
+      "size": 276
+    },
+    "SetGraphDebug": {
+      "address": "0x80062628",
+      "size": 108
+    },
+    "SetGraphQueue": {
+      "address": "0x80062694",
+      "size": 172
+    },
+    "GetGraphType": {
+      "address": "0x80062740",
+      "size": 16
+    },
+    "GetGraphDebug": {
+      "address": "0x80062750",
+      "size": 16
+    },
+    "DrawSyncCallback": {
+      "address": "0x80062760",
+      "size": 92
+    },
+    "SetDispMask": {
+      "address": "0x800627bc",
+      "size": 156
+    },
+    "DrawSync": {
+      "address": "0x80062858",
+      "size": 108
+    },
+    "f_628c4": {
+      "address": "0x800628c4",
+      "size": 296,
+      "static": true
+    },
+    "ClearImage": {
+      "address": "0x800629ec",
+      "size": 148
+    },
+    "LoadImage": {
+      "address": "0x80062a80",
+      "size": 100
+    },
+    "StoreImage": {
+      "address": "0x80062ae4",
+      "size": 100
+    },
+    "MoveImage": {
+      "address": "0x80062b48",
+      "size": 196
+    },
+    "ClearOTag": {
+      "address": "0x80062c0c",
+      "size": 184
+    },
+    "ClearOTagR": {
+      "address": "0x80062cc4",
+      "size": 152
+    },
+    "DrawPrim": {
+      "address": "0x80062d5c",
+      "size": 96
+    },
+    "DrawOTag": {
+      "address": "0x80062dbc",
+      "size": 116
+    },
+    "PutDrawEnv": {
+      "address": "0x80062e30",
+      "size": 196
+    },
+    "GetDrawEnv": {
+      "address": "0x80062ef4",
+      "size": 56
+    },
+    "PutDispEnv": {
+      "address": "0x80062f2c",
+      "size": 1060
+    },
+    "GetDispEnv": {
+      "address": "0x80063350",
+      "size": 56
+    },
+    "GetODE": {
+      "address": "0x80063388",
+      "size": 52
+    },
+    "SetTexWindow": {
+      "address": "0x800633bc",
+      "size": 60
+    },
+    "SetDrawArea": {
+      "address": "0x800633f8",
+      "size": 132
+    },
+    "SetDrawOffset": {
+      "address": "0x8006347c",
+      "size": 68
+    },
+    "SetPriority": {
+      "address": "0x800634c0",
+      "size": 40
+    },
+    "SetDrawMode": {
+      "address": "0x800634e8",
+      "size": 88
+    },
+    "SetDrawEnv": {
+      "address": "0x80063540",
+      "size": 684
+    },
+    "get_mode": {
+      "address": "0x800637ec",
+      "size": 92,
+      "static": true
+    },
+    "get_cs": {
+      "address": "0x80063848",
+      "size": 212,
+      "static": true
+    },
+    "get_ce": {
+      "address": "0x8006391c",
+      "size": 212,
+      "static": true
+    },
+    "get_ofs": {
+      "address": "0x800639f0",
+      "size": 72,
+      "static": true
+    },
+    "get_tw": {
+      "address": "0x80063a38",
+      "size": 132,
+      "static": true
+    },
+    "get_dx": {
+      "address": "0x80063abc",
+      "size": 188,
+      "static": true
+    },
+    "_status": {
+      "address": "0x80063b78",
+      "size": 24,
+      "static": true
+    },
+    "_otc": {
+      "address": "0x80063b90",
+      "size": 232,
+      "static": true
+    },
+    "_clr": {
+      "address": "0x80063c78",
+      "size": 540,
+      "static": true
+    },
+    "_dws": {
+      "address": "0x80063e94",
+      "size": 596,
+      "static": true
+    },
+    "_drs": {
+      "address": "0x800640e8",
+      "size": 668,
+      "static": true
+    },
+    "_ctl": {
+      "address": "0x80064384",
+      "size": 44,
+      "static": true
+    },
+    "_getctl": {
+      "address": "0x800643b0",
+      "size": 24,
+      "static": true
+    },
+    "_cwb": {
+      "address": "0x800643c8",
+      "size": 80,
+      "static": true
+    },
+    "_cwc": {
+      "address": "0x80064418",
+      "size": 76,
+      "static": true
+    },
+    "_param": {
+      "address": "0x80064464",
+      "size": 48,
+      "static": true
+    },
+    "_addque": {
+      "address": "0x80064494",
+      "size": 36,
+      "static": true
+    },
+    "_addque2": {
+      "address": "0x800644b8",
+      "size": 764,
+      "static": true
+    },
+    "_exeque": {
+      "address": "0x800647b4",
+      "size": 788,
+      "static": true
+    },
+    "_reset": {
+      "address": "0x80064ac8",
+      "size": 316,
+      "static": true
+    },
+    "_sync": {
+      "address": "0x80064c04",
+      "size": 328,
+      "static": true
+    },
+    "set_alarm": {
+      "address": "0x80064d4c",
+      "size": 52,
+      "static": true
+    },
+    "get_alarm": {
+      "address": "0x80064d80",
+      "size": 364,
+      "static": true
+    },
+    "f_64eec": {
+      "address": "0x80064eec",
+      "size": 208,
+      "static": true
+    },
+    "memset": {
+      "address": "0x80064fbc",
+      "size": 44,
+      "static": true
+    }
+  },
+  "symbols": {
+    "g_91af4": "0x80091af4",
+    "ctlbuf": "0x80091b34",
+    "_que": "0x8009d6cc",
+    "printf": "0x80069880",
+    "ResetCallback": "0x800616d0",
+    "GPU_cw": "0x80064fe8",
+    "DMACallback": "0x80061730",
+    "memcpy": "0x800697a4",
+    "GetVideoMode": "0x800616c0",
+    "SetIntrMask": "0x8006184c",
+    "VSync": "0x800621d4"
+  },
+  "static_data": {
+    "jtb": {
+      "address": "0x800759fc",
+      "size": 64,
+      "section": ".data"
+    },
+    "jtbp": {
+      "address": "0x80075a3c",
+      "size": 4,
+      "section": ".data"
+    },
+    "g_75a44": {
+      "address": "0x80075a44",
+      "size": 128,
+      "section": ".data"
+    },
+    "g_75ac4": {
+      "address": "0x80075ac4",
+      "size": 20,
+      "section": ".data"
+    },
+    "g_75ad8": {
+      "address": "0x80075ad8",
+      "size": 20,
+      "section": ".data"
+    },
+    "g_75aec": {
+      "address": "0x80075aec",
+      "size": 20,
+      "section": ".data"
+    },
+    "g_75b00": {
+      "address": "0x80075b00",
+      "size": 20,
+      "section": ".data"
+    },
+    "gp0": {
+      "address": "0x80075b14",
+      "size": 4,
+      "section": ".data"
+    },
+    "gp1": {
+      "address": "0x80075b18",
+      "size": 4,
+      "section": ".data"
+    },
+    "d2_madr": {
+      "address": "0x80075b1c",
+      "size": 4,
+      "section": ".data"
+    },
+    "d2_bcr": {
+      "address": "0x80075b20",
+      "size": 4,
+      "section": ".data"
+    },
+    "d2_chcr": {
+      "address": "0x80075b24",
+      "size": 4,
+      "section": ".data"
+    },
+    "d6_madr": {
+      "address": "0x80075b28",
+      "size": 4,
+      "section": ".data"
+    },
+    "d6_bcr": {
+      "address": "0x80075b2c",
+      "size": 4,
+      "section": ".data"
+    },
+    "d6_chcr": {
+      "address": "0x80075b30",
+      "size": 4,
+      "section": ".data"
+    },
+    "d_pcr": {
+      "address": "0x80075b34",
+      "size": 4,
+      "section": ".data"
+    },
+    "g_75b50": {
+      "address": "0x80075b50",
+      "size": 4,
+      "section": ".data"
+    },
+    "g_75b54": {
+      "address": "0x80075b54",
+      "size": 4,
+      "section": ".data"
+    },
+    "g_75b58": {
+      "address": "0x80075b58",
+      "size": 4,
+      "section": ".data"
+    },
+    "g_75b5c": {
+      "address": "0x80075b5c",
+      "size": 4,
+      "section": ".data"
+    },
+    "g_75b60": {
+      "address": "0x80075b60",
+      "size": 4,
+      "section": ".data"
+    }
+  }
+}

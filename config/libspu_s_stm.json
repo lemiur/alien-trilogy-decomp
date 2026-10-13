@@ -1,0 +1,15 @@
+{
+  "gp": "0x8008cd74",
+  "functions": {
+    "SpuSetTransferMode": {
+      "address": "0x8005c8d8",
+      "size": 84
+    }
+  },
+  "symbols": {
+    "_spu_fd": "0x80073cf4",
+    "_spu_trans_mode": "0x80073cf8",
+    "_spu_ioctl": "0x8005ab0c"
+  },
+  "static_data": {}
+}

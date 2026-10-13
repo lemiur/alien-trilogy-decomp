@@ -1,0 +1,15 @@
+{
+  "gp": "0x8008cd74",
+  "functions": {
+    "SpuIsTransferCompleted": {
+      "address": "0x8005c808",
+      "size": 124
+    }
+  },
+  "symbols": {
+    "_spu_inTransfer": "0x80073cbc",
+    "_spu_trans_mode": "0x80073cf8",
+    "_spu_EVdma": "0x80073d50"
+  },
+  "static_data": {}
+}

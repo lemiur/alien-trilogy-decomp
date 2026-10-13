@@ -1,0 +1,19 @@
+{
+  "gp": "0x8008cd74",
+  "functions": {
+    "SpuGetKeyStatus": {
+      "address": "0x800590a8",
+      "size": 148
+    }
+  },
+  "symbols": {
+    "_spu_keystat": "0x80073d4c"
+  },
+  "static_data": {
+    "_spu_RXX": {
+      "address": "0x80073afc",
+      "size": 4,
+      "section": ".data"
+    }
+  }
+}

@@ -1,0 +1,119 @@
+{
+  "functions": {
+    "sound_clock_tick": {
+      "address": "0x800432e4",
+      "size": 40
+    },
+    "voices_reset": {
+      "address": "0x8004330c",
+      "size": 64
+    },
+    "voice_play": {
+      "address": "0x8004334c",
+      "size": 1428
+    },
+    "spu_set_master_volume": {
+      "address": "0x800438e0",
+      "size": 76
+    },
+    "voices_mute": {
+      "address": "0x8004392c",
+      "size": 60
+    },
+    "voices_restore": {
+      "address": "0x80043968",
+      "size": 140
+    },
+    "spu_set_cd_volume": {
+      "address": "0x800439f4",
+      "size": 76
+    },
+    "voice_set_volume": {
+      "address": "0x80043a40",
+      "size": 584
+    },
+    "voice_set_pitch": {
+      "address": "0x80043c88",
+      "size": 100
+    },
+    "voice_set_note": {
+      "address": "0x80043cec",
+      "size": 100
+    },
+    "voice_stop": {
+      "address": "0x80043d50",
+      "size": 108
+    },
+    "voice_of_handle": {
+      "address": "0x80043dbc",
+      "size": 52
+    },
+    "voice_reverb_on": {
+      "address": "0x80043df0",
+      "size": 84
+    },
+    "voice_reverb_off": {
+      "address": "0x80043e44",
+      "size": 84
+    },
+    "f_43e98": {
+      "address": "0x80043e98",
+      "size": 52
+    },
+    "sample_bank_load": {
+      "address": "0x80043ecc",
+      "size": 588
+    },
+    "sample_bank_free": {
+      "address": "0x80044118",
+      "size": 32
+    },
+    "spu_init": {
+      "address": "0x80044138",
+      "size": 236
+    },
+    "voices_stop_all": {
+      "address": "0x80044224",
+      "size": 172
+    },
+    "sample_priorities_init": {
+      "address": "0x800442d0",
+      "size": 148
+    }
+  },
+  "symbols": {
+    "SpuSetCommonAttr": "0x8005bf9c",
+    "SpuSetVoiceAttr": "0x80058980",
+    "g_voice": "0x8009c5bc",
+    "g_sfx_level": "0x8008d540",
+    "g_sound_clock": "0x8008d588",
+    "SpuSetKey": "0x8005ca24",
+    "f_5c6b0": "0x8005c6b0",
+    "g_sample_slots": "0x8009ef6c",
+    "f_5caa4": "0x8005caa4",
+    "f_5c92c": "0x8005c92c",
+    "SpuWrite": "0x8005c990",
+    "f_5c808": "0x8005c808",
+    "SpuInit": "0x8005c718",
+    "f_5c5d8": "0x8005c5d8",
+    "SpuInitMalloc": "0x8005c884",
+    "f_5c8d8": "0x8005c8d8",
+    "SpuReserveReverbWorkArea": "0x8005cd70",
+    "f_59388": "0x80059388",
+    "f_5c738": "0x8005c738",
+    "g_spu_malloc_table": "0x8009eee4",
+    "g_sample_priority_list": "0x8007362c",
+    "SpuGetKeyStatus": "0x800590a8",
+    "SpuSetKeyOnWithAttr": "0x8005c9f0",
+    "SpuFree": "0x8005c634"
+  },
+  "sections": {
+    ".rdata": "0x80012984",
+    ".sdata": "0x8008d03c",
+    ".data": "0x8007362c"
+  },
+  "section_starts": {
+    ".sdata": "0x8008cd74"
+  },
+  "gp": "0x8008cd74"
+}

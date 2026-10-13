@@ -1,0 +1,757 @@
+{
+  "gp": "0x8008cd74",
+  "sections": {
+    ".rdata": "0x80011bbc",
+    ".sbss": "0x8008d140"
+  },
+  "functions": {
+    "actor_free": {
+      "address": "0x80028804",
+      "size": 24
+    },
+    "actor_pool_init": {
+      "address": "0x8002881c",
+      "size": 128
+    },
+    "actor_pool_alloc": {
+      "address": "0x8002889c",
+      "size": 40
+    },
+    "actor_alloc": {
+      "address": "0x800288c4",
+      "size": 44
+    },
+    "actor_link": {
+      "address": "0x800288f0",
+      "size": 44
+    },
+    "actor_unlink": {
+      "address": "0x8002891c",
+      "size": 56
+    },
+    "actor_slot_health": {
+      "address": "0x80028954",
+      "size": 220
+    },
+    "actor_spawn": {
+      "address": "0x80028a30",
+      "size": 2856
+    },
+    "actor_to_ceiling": {
+      "address": "0x80029558",
+      "size": 148
+    },
+    "actor_to_floor": {
+      "address": "0x800295ec",
+      "size": 148
+    },
+    "actor_group_add": {
+      "address": "0x80029680",
+      "size": 180
+    },
+    "actor_spawn_from_object": {
+      "address": "0x80029734",
+      "size": 408
+    },
+    "actor_slots_init": {
+      "address": "0x800298cc",
+      "size": 368
+    },
+    "actors_init": {
+      "address": "0x80029a3c",
+      "size": 56
+    },
+    "actor_play_animation": {
+      "address": "0x80029a74",
+      "size": 132
+    },
+    "actor_draw_shadowed": {
+      "address": "0x80029af8",
+      "size": 2152
+    },
+    "actor_draw_sprite": {
+      "address": "0x8002a360",
+      "size": 948
+    },
+    "actor_sprite_upload": {
+      "address": "0x8002a714",
+      "size": 324
+    },
+    "actor_sprite_find_loaded": {
+      "address": "0x8002a858",
+      "size": 248
+    },
+    "boss_sprite_update": {
+      "address": "0x8002a950",
+      "size": 260
+    },
+    "actor_draw": {
+      "address": "0x8002aa54",
+      "size": 244
+    },
+    "actors_draw_task": {
+      "address": "0x8002ab48",
+      "size": 704
+    },
+    "actor_project": {
+      "address": "0x8002ae08",
+      "size": 232
+    },
+    "hugger_overlay_start": {
+      "address": "0x8002aef0",
+      "size": 880
+    },
+    "hugger_overlay_draw": {
+      "address": "0x8002b260",
+      "size": 348
+    },
+    "hugger_overlay_step": {
+      "address": "0x8002b3bc",
+      "size": 512
+    },
+    "hugger_cling_task": {
+      "address": "0x8002b5bc",
+      "size": 584
+    },
+    "actor_die": {
+      "address": "0x8002b804",
+      "size": 1148
+    },
+    "actor_hurt": {
+      "address": "0x8002bc80",
+      "size": 612
+    },
+    "actor_damage": {
+      "address": "0x8002bee4",
+      "size": 220
+    },
+    "actor_face_view": {
+      "address": "0x8002bfc0",
+      "size": 244
+    },
+    "actor_face_player": {
+      "address": "0x8002c0b4",
+      "size": 72
+    },
+    "actor_face_target": {
+      "address": "0x8002c0fc",
+      "size": 72
+    },
+    "actor_clip_x": {
+      "address": "0x8002c144",
+      "size": 84
+    },
+    "actor_clip_z": {
+      "address": "0x8002c650",
+      "size": 84
+    },
+    "actor_move": {
+      "address": "0x8002cb38",
+      "size": 592
+    },
+    "distance_xz": {
+      "address": "0x8002cd88",
+      "size": 132
+    },
+    "actor_measure_player": {
+      "address": "0x8002ce0c",
+      "size": 236
+    },
+    "actor_measure_target": {
+      "address": "0x8002cef8",
+      "size": 216
+    },
+    "actor_passed_target": {
+      "address": "0x8002cfd0",
+      "size": 136
+    },
+    "actor_path_clear": {
+      "address": "0x8002d058",
+      "size": 1804
+    },
+    "actor_line_of_sight": {
+      "address": "0x8002d764",
+      "size": 932
+    },
+    "actor_turn_toward": {
+      "address": "0x8002db08",
+      "size": 184
+    },
+    "actor_stop": {
+      "address": "0x8002dbc0",
+      "size": 44
+    },
+    "actor_set_velocity": {
+      "address": "0x8002dbec",
+      "size": 132
+    },
+    "actor_pick_target_near_player": {
+      "address": "0x8002dc70",
+      "size": 436
+    },
+    "actor_target_toward_player": {
+      "address": "0x8002de24",
+      "size": 324
+    },
+    "actor_target_away_from_player": {
+      "address": "0x8002df68",
+      "size": 324
+    },
+    "actor_target_layout_centre": {
+      "address": "0x8002e0ac",
+      "size": 124
+    },
+    "actor_pick_chase_target": {
+      "address": "0x8002e128",
+      "size": 1176
+    },
+    "actor_pick_flee_target": {
+      "address": "0x8002e5c0",
+      "size": 632
+    },
+    "actor_sees_player": {
+      "address": "0x8002e838",
+      "size": 104
+    },
+    "actor_hears_player": {
+      "address": "0x8002e8a0",
+      "size": 128
+    },
+    "actor_pick_target_behind": {
+      "address": "0x8002e920",
+      "size": 416
+    },
+    "actor_start_attack": {
+      "address": "0x8002eac0",
+      "size": 724
+    },
+    "actor_melee_hit": {
+      "address": "0x8002ed94",
+      "size": 660
+    },
+    "creature_task": {
+      "address": "0x8002f028",
+      "size": 2724
+    },
+    "actor_spawn_leaping": {
+      "address": "0x8002facc",
+      "size": 240
+    },
+    "egg_release_hugger": {
+      "address": "0x8002fbbc",
+      "size": 72
+    },
+    "colonist_release_burster": {
+      "address": "0x8002fc04",
+      "size": 112
+    },
+    "egg_task": {
+      "address": "0x8002fc74",
+      "size": 660
+    },
+    "jet_update": {
+      "address": "0x8002ff08",
+      "size": 772
+    },
+    "steam_jet_task": {
+      "address": "0x8003020c",
+      "size": 112
+    },
+    "flame_jet_task": {
+      "address": "0x8003027c",
+      "size": 96
+    },
+    "flame_jet_vertical_task": {
+      "address": "0x800302dc",
+      "size": 96
+    },
+    "steam_jet_vertical_task": {
+      "address": "0x8003033c",
+      "size": 96
+    },
+    "queen_task": {
+      "address": "0x8003039c",
+      "size": 2004
+    },
+    "colonist_task": {
+      "address": "0x80030b70",
+      "size": 788
+    }
+  },
+  "symbols": {
+    "random": "0x80013a44",
+    "heap_alloc": "0x80014dfc",
+    "TaskDie": "0x80015ea4",
+    "get_difficulty": "0x80017760",
+    "rotate_vector": "0x8001fca8",
+    "rotate_vector_offset": "0x8001fd18",
+    "point_heading_xz": "0x8001fea0",
+    "point_distance_xz": "0x80020048",
+    "floor_height": "0x80021144",
+    "ceiling_height": "0x800212a8",
+    "upload_can_queue_pair": "0x800219f4",
+    "sprite_frame_upload": "0x80021a80",
+    "boss_sprite_frame_upload": "0x80021ccc",
+    "sprite_step": "0x800220cc",
+    "explosion_spawn": "0x8002485c",
+    "actor_fire_bullet": "0x80024e00",
+    "jet_spray": "0x80024f9c",
+    "actor_lob_grenade": "0x80025120",
+    "actor_move_x": "0x8002c198",
+    "actor_move_z": "0x8002c6a4",
+    "hud_show_message": "0x80037b98",
+    "actor_drop_item": "0x80038708",
+    "player_damage_health": "0x8003b118",
+    "player_hit": "0x8003b324",
+    "player_hit_from": "0x8003b350",
+    "sound_stop": "0x8003d52c",
+    "sound_play_at_position": "0x8003d7ec",
+    "level_commands_run": "0x8003d91c",
+    "actor_cell_trigger": "0x8003dd3c",
+    "PushMatrix": "0x80066c6c",
+    "PopMatrix": "0x80066d0c",
+    "RotTransPers": "0x80066f10",
+    "SquareRoot0": "0x80067340",
+    "g_zero_vector": "0x8008cd9c",
+    "g_cheat_flags": "0x8008cda8",
+    "g_gte_interpolation": "0x8008d320",
+    "g_live_actors": "0x8008d330",
+    "g_frame_count": "0x8008d380",
+    "g_projected_depth": "0x8008d428",
+    "g_actor_pool": "0x8008d460",
+    "g_sprite_workspace": "0x8008d478",
+    "g_fingers_clut": "0x8008d488",
+    "g_palette": "0x8008d490",
+    "g_render_buffer": "0x8008d4e8",
+    "g_next_task": "0x8008d4f0",
+    "g_visible_cell_mask": "0x8008d510",
+    "g_game_flags": "0x8008d560",
+    "g_gte_flag": "0x8008d570",
+    "g_visible_actors": "0x8008efb0",
+    "g_hugger_upper": "0x8008f1b0",
+    "g_hugger_lower": "0x8008f1f0",
+    "g_level_map": "0x80096060",
+    "g_player": "0x80099fd4",
+    "g_actor_kind_map": "0x8009a0f0",
+    "g_egg_clut": "0x8008d3a8",
+    "g_facehugger_clut": "0x8008d408",
+    "g_alien_clut": "0x8008d418",
+    "g_queen_clut": "0x8008d420",
+    "g_burster_clut": "0x8008d398",
+    "g_bambi_clut": "0x8008d3a0",
+    "g_dog_clut": "0x8008d3d8",
+    "g_colonist_clut": "0x8008d3f0",
+    "g_guard_clut": "0x8008d3e8",
+    "g_soldier_clut": "0x8008d3f8",
+    "g_synth_clut": "0x8008d450",
+    "g_handler_clut": "0x8008d3d0",
+    "TaskCreate": "0x80015e4c",
+    "g_page_sets": "0x8006a590",
+    "DpqColor": "0x80066fdc",
+    "g_transform_result": "0x8008d4a0",
+    "g_egg_anim0_frames": "0x80055c14",
+    "g_egg_anim0_script": "0x80055c38",
+    "g_egg_anim1_frames": "0x80055c48",
+    "g_egg_anim1_script": "0x80055c6c",
+    "g_egg_anim2_frames": "0x80055c7c",
+    "g_egg_anim2_script": "0x80055cb8",
+    "g_egg_anim3_frames": "0x80055cd0",
+    "g_egg_anim3_script": "0x80055d18",
+    "g_egg_anim4_frames": "0x80055d2c",
+    "g_egg_anim4_script": "0x80055d8c",
+    "g_egg_anim5_frames": "0x80055da8",
+    "g_egg_anim5_script": "0x80055e08",
+    "g_hugger_anim0_frames": "0x80055e20",
+    "g_hugger_anim0_script": "0x80055e50",
+    "g_hugger_anim4_frames": "0x80055e64",
+    "g_hugger_anim4_script": "0x80055e94",
+    "g_hugger_anim2_frames": "0x80055ea8",
+    "g_hugger_anim2_script": "0x80055ed8",
+    "g_hugger_anim1_frames": "0x80055eec",
+    "g_hugger_anim1_script": "0x80055f1c",
+    "g_hugger_anim3_frames": "0x80055f30",
+    "g_hugger_anim3_script": "0x80055f60",
+    "g_hugger_anim6_frames": "0x80055f74",
+    "g_hugger_anim6_script": "0x80055fbc",
+    "g_hugger_anim7_frames": "0x80055fd4",
+    "g_hugger_anim7_script": "0x80056034",
+    "g_hugger_anim5_frames": "0x80056050",
+    "g_hugger_anim5_script": "0x80056080",
+    "g_warrior_anim5_frames": "0x80056094",
+    "g_warrior_anim5_script": "0x800560e8",
+    "g_warrior_anim3_frames": "0x80056100",
+    "g_warrior_anim3_script": "0x80056154",
+    "g_warrior_anim4_frames": "0x8005616c",
+    "g_warrior_anim4_script": "0x800561c0",
+    "g_warrior_anim7_frames": "0x800561d8",
+    "g_warrior_anim7_script": "0x8005622c",
+    "g_warrior_anim6_frames": "0x80056244",
+    "g_warrior_anim6_script": "0x80056298",
+    "g_warrior_anim0_frames": "0x800562b0",
+    "g_warrior_anim0_script": "0x800562d4",
+    "g_warrior_anim1_frames": "0x800562e4",
+    "g_warrior_anim1_script": "0x80056308",
+    "g_warrior_anim2_frames": "0x80056318",
+    "g_warrior_anim2_script": "0x80056360",
+    "g_warrior_anim8_frames": "0x80056378",
+    "g_warrior_anim8_script": "0x800563a8",
+    "g_warrior_anim9_frames": "0x800563bc",
+    "g_warrior_anim9_script": "0x80056410",
+    "g_handler_anim0_frames": "0x80056428",
+    "g_handler_anim0_script": "0x8005647c",
+    "g_handler_anim1_frames": "0x80056494",
+    "g_handler_anim1_script": "0x800564e8",
+    "g_handler_anim2_frames": "0x80056500",
+    "g_handler_anim2_script": "0x80056554",
+    "g_handler_anim3_frames": "0x8005656c",
+    "g_handler_anim3_script": "0x800565c0",
+    "g_handler_anim4_frames": "0x800565d8",
+    "g_handler_anim4_script": "0x8005662c",
+    "g_handler_anim5_frames": "0x80056644",
+    "g_handler_anim5_script": "0x80056668",
+    "g_handler_anim6_frames": "0x80056678",
+    "g_handler_anim6_script": "0x800566b4",
+    "g_handler_anim7_frames": "0x800566cc",
+    "g_handler_anim7_script": "0x8005672c",
+    "g_handler_anim8_frames": "0x8005674c",
+    "g_handler_anim8_script": "0x80056770",
+    "g_burster_anim0_frames": "0x80056784",
+    "g_burster_anim0_script": "0x800567b4",
+    "g_burster_anim1_frames": "0x800567c8",
+    "g_burster_anim1_script": "0x80056828",
+    "g_burster_anim2_frames": "0x80056844",
+    "g_burster_anim2_script": "0x80056874",
+    "g_burster_anim3_frames": "0x80056888",
+    "g_burster_anim3_script": "0x800568b8",
+    "g_burster_anim4_frames": "0x800568cc",
+    "g_burster_anim4_script": "0x80056914",
+    "g_burster_anim5_frames": "0x8005692c",
+    "g_burster_anim5_script": "0x80056974",
+    "g_burster_anim6_frames": "0x8005698c",
+    "g_burster_anim6_script": "0x800569bc",
+    "g_burster_anim7_frames": "0x800569d0",
+    "g_burster_anim7_script": "0x80056a00",
+    "g_burster_anim8_frames": "0x80056a14",
+    "g_burster_anim8_script": "0x80056a44",
+    "g_burster_anim9_frames": "0x80056a58",
+    "g_burster_anim9_script": "0x80056a88",
+    "g_burster_anim10_frames": "0x80056a9c",
+    "g_burster_anim10_script": "0x80056acc",
+    "g_bambi_anim0_frames": "0x80056ae0",
+    "g_bambi_anim0_script": "0x80056b28",
+    "g_bambi_anim1_frames": "0x80056b40",
+    "g_bambi_anim1_script": "0x80056b64",
+    "g_bambi_anim2_frames": "0x80056b74",
+    "g_bambi_anim2_script": "0x80056b98",
+    "g_bambi_anim3_frames": "0x80056ba8",
+    "g_bambi_anim3_script": "0x80056bfc",
+    "g_bambi_anim4_frames": "0x80056c14",
+    "g_bambi_anim4_script": "0x80056c68",
+    "g_bambi_anim5_frames": "0x80056c80",
+    "g_bambi_anim5_script": "0x80056cd4",
+    "g_bambi_anim6_frames": "0x80056cec",
+    "g_bambi_anim6_script": "0x80056d40",
+    "g_bambi_anim7_frames": "0x80056d58",
+    "g_bambi_anim7_script": "0x80056dac",
+    "g_bambi_anim8_frames": "0x80056dc4",
+    "g_bambi_anim8_script": "0x80056e0c",
+    "g_bambi_anim9_frames": "0x80056e24",
+    "g_bambi_anim9_script": "0x80056e6c",
+    "g_soldier_anim0_frames": "0x80056e84",
+    "g_soldier_anim0_script": "0x80056eb4",
+    "g_soldier_anim1_frames": "0x80056ec8",
+    "g_soldier_anim1_script": "0x80056eec",
+    "g_soldier_anim2_frames": "0x80056f00",
+    "g_soldier_anim2_script": "0x80056f3c",
+    "g_soldier_anim3_frames": "0x80056f54",
+    "g_soldier_anim3_script": "0x80056fa8",
+    "g_soldier_anim5_frames": "0x80056fc0",
+    "g_soldier_anim5_script": "0x80057014",
+    "g_soldier_anim4_frames": "0x8005702c",
+    "g_soldier_anim4_script": "0x80057080",
+    "g_soldier_anim6_frames": "0x80057098",
+    "g_soldier_anim6_script": "0x800570ec",
+    "g_soldier_anim7_frames": "0x80057104",
+    "g_soldier_anim7_script": "0x80057158",
+    "g_guard_anim0_frames": "0x80057170",
+    "g_guard_anim0_script": "0x80057194",
+    "g_guard_anim1_frames": "0x800571a4",
+    "g_guard_anim1_script": "0x800571e0",
+    "g_guard_anim2_frames": "0x800571f8",
+    "g_guard_anim2_script": "0x8005721c",
+    "g_guard_anim4_frames": "0x80057230",
+    "g_guard_anim4_script": "0x80057284",
+    "g_guard_anim3_frames": "0x8005729c",
+    "g_guard_anim3_script": "0x800572f0",
+    "g_guard_anim5_frames": "0x80057308",
+    "g_guard_anim5_script": "0x8005735c",
+    "g_guard_anim7_frames": "0x80057374",
+    "g_guard_anim7_script": "0x800573c8",
+    "g_guard_anim6_frames": "0x800573e0",
+    "g_guard_anim6_script": "0x80057434",
+    "g_synth_anim0_frames": "0x8005744c",
+    "g_synth_anim0_script": "0x80057470",
+    "g_synth_anim1_frames": "0x80057480",
+    "g_synth_anim1_script": "0x80057498",
+    "g_synth_anim2_frames": "0x800574a8",
+    "g_synth_anim2_script": "0x800574d8",
+    "g_synth_anim3_frames": "0x800574ec",
+    "g_synth_anim3_script": "0x8005751c",
+    "g_synth_anim4_frames": "0x80057530",
+    "g_synth_anim4_script": "0x80057554",
+    "g_synth_anim6_frames": "0x80057568",
+    "g_synth_anim6_script": "0x800575bc",
+    "g_synth_anim5_frames": "0x800575d4",
+    "g_synth_anim5_script": "0x80057628",
+    "g_synth_anim7_frames": "0x80057640",
+    "g_synth_anim7_script": "0x80057694",
+    "g_synth_anim8_frames": "0x800576ac",
+    "g_synth_anim8_script": "0x80057700",
+    "g_synth_anim11_frames": "0x80057718",
+    "g_synth_anim11_script": "0x8005776c",
+    "g_synth_anim12_frames": "0x80057784",
+    "g_synth_anim12_script": "0x800577d8",
+    "g_synth_anim9_frames": "0x800577f0",
+    "g_synth_anim9_script": "0x80057844",
+    "g_synth_anim10_frames": "0x8005785c",
+    "g_synth_anim10_script": "0x800578b0",
+    "g_dog_anim0_frames": "0x800578c8",
+    "g_dog_anim0_script": "0x800578ec",
+    "g_dog_anim1_frames": "0x800578fc",
+    "g_dog_anim1_script": "0x80057920",
+    "g_dog_anim2_frames": "0x80057930",
+    "g_dog_anim2_script": "0x8005796c",
+    "g_dog_anim3_frames": "0x80057984",
+    "g_dog_anim3_script": "0x800579c0",
+    "g_dog_anim4_frames": "0x800579d8",
+    "g_dog_anim4_script": "0x80057a2c",
+    "g_dog_anim5_frames": "0x80057a44",
+    "g_dog_anim5_script": "0x80057a98",
+    "g_dog_anim6_frames": "0x80057ab0",
+    "g_dog_anim6_script": "0x80057b04",
+    "g_dog_anim7_frames": "0x80057b1c",
+    "g_dog_anim7_script": "0x80057b70",
+    "g_dog_anim8_frames": "0x80057b88",
+    "g_dog_anim8_script": "0x80057bdc",
+    "g_dog_anim9_frames": "0x80057bf4",
+    "g_dog_anim9_script": "0x80057c54",
+    "g_dog_anim10_frames": "0x80057c70",
+    "g_dog_anim10_script": "0x80057cb8",
+    "g_fingers_anim1_frames": "0x80057cd0",
+    "g_fingers_anim1_script": "0x80057d00",
+    "g_fingers_anim0_frames": "0x80057d10",
+    "g_fingers_anim0_script": "0x80057d40",
+    "g_queen_anim0_frames": "0x80057d54",
+    "g_queen_anim0_script": "0x80057d84",
+    "g_queen_anim1_frames": "0x80057d94",
+    "g_queen_anim1_script": "0x80057e18",
+    "g_queen_anim2_frames": "0x80057e38",
+    "g_queen_anim2_script": "0x80057eb0",
+    "g_queen_anim3_frames": "0x80057ecc",
+    "g_queen_anim3_script": "0x80057f14",
+    "g_queen_anim4_frames": "0x80057f2c",
+    "g_queen_anim4_script": "0x80057fb0",
+    "g_queen_anim5_frames": "0x80057fd0",
+    "g_queen_anim5_script": "0x80058054",
+    "g_queen_anim6_frames": "0x80058074",
+    "g_queen_anim6_script": "0x800580bc",
+    "g_queen_anim7_frames": "0x800580d4",
+    "g_queen_anim7_script": "0x8005811c",
+    "g_queen_anim8_frames": "0x80058134",
+    "g_queen_anim8_script": "0x8005817c",
+    "g_queen_anim9_frames": "0x80058190",
+    "g_queen_anim9_script": "0x800581b4",
+    "g_queen_anim10_frames": "0x800581c4",
+    "g_queen_anim10_script": "0x800581f4",
+    "g_queen_anim11_frames": "0x80058208",
+    "g_queen_anim11_script": "0x8005825c",
+    "g_warrior_ceiling_anim2_frames": "0x80058274",
+    "g_warrior_ceiling_anim2_script": "0x800582c8",
+    "g_warrior_ceiling_anim3_frames": "0x800582e0",
+    "g_warrior_ceiling_anim3_script": "0x80058334",
+    "g_warrior_ceiling_anim0_frames": "0x8005834c",
+    "g_warrior_ceiling_anim0_script": "0x80058388",
+    "g_warrior_ceiling_anim1_frames": "0x8005839c",
+    "g_warrior_ceiling_anim1_script": "0x800583c0",
+    "g_warrior_ceiling_anim4_frames": "0x800583d0",
+    "g_warrior_ceiling_anim4_script": "0x80058400",
+    "g_colonist_anim0_frames": "0x80058410",
+    "g_colonist_anim0_script": "0x8005841c",
+    "g_colonist_anim1_frames": "0x80058428",
+    "g_colonist_anim1_script": "0x80058434",
+    "g_colonist_anim2_frames": "0x80058440",
+    "g_colonist_anim2_script": "0x8005844c",
+    "g_colonist_anim3_frames": "0x80058458",
+    "g_colonist_anim3_script": "0x80058464",
+    "g_colonist_anim4_frames": "0x80058470",
+    "g_colonist_anim4_script": "0x8005847c",
+    "g_colonist_anim5_frames": "0x80058488",
+    "g_colonist_anim5_script": "0x80058494",
+    "g_colonist_anim6_frames": "0x800584a0",
+    "g_colonist_anim6_script": "0x800584ac",
+    "g_colonist_anim7_frames": "0x800584b8",
+    "g_colonist_anim7_script": "0x800584c4",
+    "g_colonist_anim8_frames": "0x800584d0",
+    "g_colonist_anim8_script": "0x800584dc",
+    "g_colonist_anim9_frames": "0x800584e8",
+    "g_colonist_anim9_script": "0x800584f4",
+    "g_colonist_anim10_frames": "0x80058500",
+    "g_colonist_anim10_script": "0x80058518",
+    "g_colonist_anim11_frames": "0x80058524",
+    "g_colonist_anim11_script": "0x8005853c",
+    "g_colonist_anim12_frames": "0x80058548",
+    "g_colonist_anim12_script": "0x80058560",
+    "g_colonist_anim13_frames": "0x8005856c",
+    "g_colonist_anim13_script": "0x80058584",
+    "g_colonist_anim14_frames": "0x80058590",
+    "g_colonist_anim14_script": "0x800585a8",
+    "g_colonist_anim15_frames": "0x800585b4",
+    "g_colonist_anim15_script": "0x800585e4",
+    "g_colonist_anim16_frames": "0x800585f8",
+    "g_colonist_anim16_script": "0x80058628",
+    "g_colonist_anim17_frames": "0x80058638",
+    "g_colonist_anim17_script": "0x8005868c",
+    "g_colonist_anim18_frames": "0x800586a4",
+    "g_colonist_anim18_script": "0x800586b0",
+    "g_colonist_anim19_frames": "0x800586bc",
+    "g_colonist_anim19_script": "0x800586c8",
+    "g_colonist_anim20_frames": "0x800586d4",
+    "g_colonist_anim20_script": "0x800586e0",
+    "g_colonist_anim21_frames": "0x800586ec",
+    "g_colonist_anim21_script": "0x800586f8",
+    "g_colonist_anim22_frames": "0x80058704",
+    "g_colonist_anim22_script": "0x80058710",
+    "g_dog_ceiling_anim0_frames": "0x8005871c",
+    "g_dog_ceiling_anim0_script": "0x80058770",
+    "g_dog_ceiling_anim1_frames": "0x80058788",
+    "g_dog_ceiling_anim1_script": "0x800587dc",
+    "g_dog_ceiling_anim2_frames": "0x800587f4",
+    "g_dog_ceiling_anim2_script": "0x80058818",
+    "g_dog_ceiling_anim3_frames": "0x80058828",
+    "g_dog_ceiling_anim3_script": "0x80058858",
+    "g_dog_ceiling_anim4_frames": "0x80058868",
+    "g_dog_ceiling_anim4_script": "0x800588a4"
+  },
+  "static_data": {
+    "g_sight_point": {
+      "address": "0x8008d140",
+      "size": 8,
+      "section": ".sbss"
+    },
+    "g_8d148": {
+      "address": "0x8008d148",
+      "size": 8,
+      "section": ".sbss"
+    },
+    "g_sight_step": {
+      "address": "0x8008d150",
+      "size": 8,
+      "section": ".sbss"
+    },
+    "g_velocity_rotation": {
+      "address": "0x8008d158",
+      "size": 8,
+      "section": ".sbss"
+    },
+    "g_wander_offset": {
+      "address": "0x8008d160",
+      "size": 8,
+      "section": ".sbss"
+    },
+    "g_wander_rotation": {
+      "address": "0x8008d168",
+      "size": 8,
+      "section": ".sbss"
+    },
+    "g_actor_free": {
+      "address": "0x8008d170",
+      "size": 8,
+      "section": ".sbss"
+    },
+    "g_actor_slots": {
+      "address": "0x8008d178",
+      "size": 8,
+      "section": ".sbss"
+    },
+    "g_actor_slot_count": {
+      "address": "0x8008d180",
+      "size": 8,
+      "section": ".sbss"
+    },
+    "g_visible_actor_count": {
+      "address": "0x8008d188",
+      "size": 8,
+      "section": ".sbss"
+    },
+    "g_egg_animations": {
+      "address": "0x800725c8",
+      "size": 48,
+      "section": ".data"
+    },
+    "g_hugger_animations": {
+      "address": "0x800725f8",
+      "size": 104,
+      "section": ".data"
+    },
+    "g_alien_animations": {
+      "address": "0x80072660",
+      "size": 104,
+      "section": ".data"
+    },
+    "g_alien_ceiling_animations": {
+      "address": "0x800726c8",
+      "size": 88,
+      "section": ".data"
+    },
+    "g_dog_ceiling_animations": {
+      "address": "0x80072720",
+      "size": 88,
+      "section": ".data"
+    },
+    "g_handler_animations": {
+      "address": "0x80072778",
+      "size": 96,
+      "section": ".data"
+    },
+    "g_burster_animations": {
+      "address": "0x800727d8",
+      "size": 112,
+      "section": ".data"
+    },
+    "g_bambi_animations": {
+      "address": "0x80072848",
+      "size": 104,
+      "section": ".data"
+    },
+    "g_soldier_animations": {
+      "address": "0x800728b0",
+      "size": 88,
+      "section": ".data"
+    },
+    "g_guard_animations": {
+      "address": "0x80072908",
+      "size": 88,
+      "section": ".data"
+    },
+    "g_synth_animations": {
+      "address": "0x80072960",
+      "size": 104,
+      "section": ".data"
+    },
+    "g_dog_animations": {
+      "address": "0x800729c8",
+      "size": 112,
+      "section": ".data"
+    },
+    "g_queen_animations": {
+      "address": "0x80072a38",
+      "size": 144,
+      "section": ".data"
+    },
+    "g_colonist_animations": {
+      "address": "0x80072ac8",
+      "size": 280,
+      "section": ".data"
+    }
+  }
+}

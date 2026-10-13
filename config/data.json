@@ -1,0 +1,1971 @@
+{
+  "tasker": {},
+  "audio_control": {
+    "g_sound_balance": {
+      "address": "0x800730ec",
+      "size": 64
+    },
+    "g_level_sample_banks": {
+      "address": "0x8007312c",
+      "size": 72
+    },
+    "g_audio_flags": {
+      "address": "0x8008d004",
+      "size": 2
+    }
+  },
+  "music_control": {
+    "g_level_music_tracks": {
+      "address": "0x80073174",
+      "size": 72
+    },
+    "g_music_flags": {
+      "address": "0x8008d00c",
+      "size": 2
+    },
+    "g_music_result": {
+      "address": "0x8008d00e",
+      "size": 2
+    },
+    "g_music_callback_state": {
+      "address": "0x8008d010",
+      "size": 2
+    },
+    "g_music_timer": {
+      "address": "0x8008d012",
+      "size": 2
+    }
+  },
+  "actor": {
+    ".rdata+0x0": {
+      "address": "0x80011bbc",
+      "size": 32
+    },
+    ".rdata+0x20": {
+      "address": "0x80011bdc",
+      "size": 76
+    },
+    ".rdata+0x70": {
+      "address": "0x80011c2c",
+      "size": 32
+    },
+    ".rdata+0x90": {
+      "address": "0x80011c4c",
+      "size": 56
+    },
+    ".rdata+0xc8": {
+      "address": "0x80011c84",
+      "size": 56
+    },
+    ".rdata+0x100": {
+      "address": "0x80011cbc",
+      "size": 52
+    },
+    ".rdata+0x138": {
+      "address": "0x80011cf4",
+      "size": 56
+    },
+    ".rdata+0x170": {
+      "address": "0x80011d2c",
+      "size": 76
+    },
+    ".rdata+0x1c0": {
+      "address": "0x80011d7c",
+      "size": 76
+    },
+    ".rdata+0x210": {
+      "address": "0x80011dcc",
+      "size": 76
+    },
+    ".rdata+0x260": {
+      "address": "0x80011e1c",
+      "size": 76
+    },
+    ".rdata+0x2b0": {
+      "address": "0x80011e6c",
+      "size": 32
+    },
+    ".rdata+0x2d0": {
+      "address": "0x80011e8c",
+      "size": 32
+    },
+    ".rdata+0x2f0": {
+      "address": "0x80011eac",
+      "size": 32
+    },
+    "g_egg_animations": {
+      "address": "0x800725c8",
+      "size": 48
+    },
+    "g_hugger_animations": {
+      "address": "0x800725f8",
+      "size": 104
+    },
+    "g_alien_animations": {
+      "address": "0x80072660",
+      "size": 104
+    },
+    "g_alien_ceiling_animations": {
+      "address": "0x800726c8",
+      "size": 88
+    },
+    "g_dog_ceiling_animations": {
+      "address": "0x80072720",
+      "size": 88
+    },
+    "g_handler_animations": {
+      "address": "0x80072778",
+      "size": 96
+    },
+    "g_burster_animations": {
+      "address": "0x800727d8",
+      "size": 112
+    },
+    "g_bambi_animations": {
+      "address": "0x80072848",
+      "size": 104
+    },
+    "g_soldier_animations": {
+      "address": "0x800728b0",
+      "size": 88
+    },
+    "g_guard_animations": {
+      "address": "0x80072908",
+      "size": 88
+    },
+    "g_synth_animations": {
+      "address": "0x80072960",
+      "size": 104
+    },
+    "g_dog_animations": {
+      "address": "0x800729c8",
+      "size": 112
+    },
+    "g_queen_animations": {
+      "address": "0x80072a38",
+      "size": 144
+    },
+    "g_colonist_animations": {
+      "address": "0x80072ac8",
+      "size": 280
+    }
+  },
+  "lift": {
+    "s_lift_activated": {
+      "address": "0x8008d008",
+      "size": 4
+    }
+  },
+  "movie": {
+    "g_frame_width": {
+      "address": "0x8008d040",
+      "size": 4
+    },
+    "g_frame_height": {
+      "address": "0x8008d044",
+      "size": 4
+    },
+    "g_end_frame_ready": {
+      "address": "0x8008d048",
+      "size": 4
+    },
+    "g_movie_start_time": {
+      "address": "0x8008d04c",
+      "size": 4
+    },
+    "g_movie_sectors": {
+      "address": "0x8008d050",
+      "size": 4
+    },
+    "g_movie_frame": {
+      "address": "0x8008d054",
+      "size": 4
+    },
+    "g_8d058": {
+      "address": "0x8008d058",
+      "size": 2
+    },
+    "g_movie_vsyncs": {
+      "address": "0x8008d05c",
+      "size": 4
+    },
+    "g_movie_records": {
+      "address": "0x80073668",
+      "size": 720
+    }
+  },
+  "command_sequencer": {
+    ".rdata+0x0": {
+      "address": "0x800125e8",
+      "size": 44
+    }
+  },
+  "save_password": {
+    ".rdata+0x0": {
+      "address": "0x800129e0",
+      "size": 32
+    },
+    ".rdata+0x20": {
+      "address": "0x80012a00",
+      "size": 20
+    },
+    ".rdata+0x38": {
+      "address": "0x80012a18",
+      "size": 20
+    },
+    "g_card_save_name": {
+      "address": "0x80012a44",
+      "size": 20
+    },
+    "g_password_alphabet": {
+      "address": "0x800739c8",
+      "size": 32
+    }
+  },
+  "pause_menu": {
+    "g_pause_options": {
+      "address": "0x800735c4",
+      "size": 80
+    },
+    "g_sound_options": {
+      "address": "0x80073614",
+      "size": 24
+    },
+    ".rdata+0x0": {
+      "address": "0x80012614",
+      "size": 10
+    },
+    ".rdata+0xc": {
+      "address": "0x80012620",
+      "size": 10
+    },
+    ".rdata+0x18": {
+      "address": "0x8001262c",
+      "size": 12
+    },
+    ".rdata+0x24": {
+      "address": "0x80012638",
+      "size": 13
+    },
+    ".rdata+0x34": {
+      "address": "0x80012648",
+      "size": 11
+    },
+    ".rdata+0x40": {
+      "address": "0x80012654",
+      "size": 14
+    },
+    ".rdata+0x50": {
+      "address": "0x80012664",
+      "size": 12
+    },
+    ".rdata+0x5c": {
+      "address": "0x80012670",
+      "size": 10
+    },
+    ".rdata+0x68": {
+      "address": "0x8001267c",
+      "size": 12
+    },
+    ".rdata+0x74": {
+      "address": "0x80012688",
+      "size": 11
+    },
+    ".rdata+0x80": {
+      "address": "0x80012694",
+      "size": 13
+    },
+    ".rdata+0x90": {
+      "address": "0x800126a4",
+      "size": 40
+    },
+    ".rdata+0xb8": {
+      "address": "0x800126cc",
+      "size": 116
+    },
+    ".rdata+0x130": {
+      "address": "0x80012744",
+      "size": 116
+    },
+    ".rdata+0x1a8": {
+      "address": "0x800127bc",
+      "size": 112
+    },
+    ".rdata+0x218": {
+      "address": "0x8001282c",
+      "size": 112
+    },
+    ".rdata+0x288": {
+      "address": "0x8001289c",
+      "size": 18
+    },
+    ".rdata+0x29c": {
+      "address": "0x800128b0",
+      "size": 17
+    },
+    ".rdata+0x2b0": {
+      "address": "0x800128c4",
+      "size": 32
+    },
+    ".sdata+0x0": {
+      "address": "0x8008d018",
+      "size": 8
+    },
+    ".sdata+0x8": {
+      "address": "0x8008d020",
+      "size": 8
+    },
+    ".sdata+0x10": {
+      "address": "0x8008d028",
+      "size": 8
+    },
+    ".sdata+0x18": {
+      "address": "0x8008d030",
+      "size": 4
+    },
+    ".rdata+0x2d0": {
+      "address": "0x800128e4",
+      "size": 15
+    },
+    ".rdata+0x2e0": {
+      "address": "0x800128f4",
+      "size": 9
+    },
+    ".rdata+0x2ec": {
+      "address": "0x80012900",
+      "size": 10
+    },
+    ".rdata+0x2f8": {
+      "address": "0x8001290c",
+      "size": 14
+    },
+    ".rdata+0x308": {
+      "address": "0x8001291c",
+      "size": 32
+    },
+    ".rdata+0x328": {
+      "address": "0x8001293c",
+      "size": 32
+    },
+    ".rdata+0x348": {
+      "address": "0x8001295c",
+      "size": 40
+    },
+    ".sdata+0x1c": {
+      "address": "0x8008d034",
+      "size": 4
+    },
+    ".sdata+0x20": {
+      "address": "0x8008d038",
+      "size": 3
+    }
+  },
+  "audio": {
+    "g_play_serial": {
+      "address": "0x8008d03c",
+      "size": 2
+    },
+    "g_sample_priority_list": {
+      "address": "0x8007362c",
+      "size": 60
+    },
+    ".rdata+0x0": {
+      "address": "0x80012984",
+      "size": 44
+    },
+    ".rdata+0x30": {
+      "address": "0x800129b4",
+      "size": 44
+    }
+  },
+  "level_triggers": {
+    ".rdata+0x0": {
+      "address": "0x800124a8",
+      "size": 40
+    }
+  },
+  "debris": {
+    "g_panel_grid_xy": {
+      "address": "0x80073938",
+      "size": 72
+    },
+    "g_panel_grid_yz": {
+      "address": "0x80073980",
+      "size": 72
+    }
+  },
+  "hud": {
+    "g_message_task": {
+      "address": "0x8008cfcc",
+      "size": 4
+    },
+    "g_message_count": {
+      "address": "0x8008cfd0",
+      "size": 2
+    },
+    "g_tracker_frame": {
+      "address": "0x8008cfd2",
+      "size": 2
+    },
+    "g_tracker_delay": {
+      "address": "0x8008cfd4",
+      "size": 2
+    },
+    "g_tracker_pause": {
+      "address": "0x8008cfd6",
+      "size": 2
+    },
+    "g_tracker_rotation": {
+      "address": "0x8008cfd8",
+      "size": 8
+    },
+    "g_message_lines": {
+      "address": "0x80072c40",
+      "size": 48
+    },
+    "g_glyphs_high": {
+      "address": "0x80072c70",
+      "size": 392
+    },
+    "g_extra_health_heights": {
+      "address": "0x80072df8",
+      "size": 20
+    }
+  },
+  "player": {
+    "g_mode_control": {
+      "address": "0x8008cff8",
+      "size": 2
+    },
+    ".rdata+0x0": {
+      "address": "0x800123f8",
+      "size": 20
+    },
+    ".rdata+0x18": {
+      "address": "0x80012410",
+      "size": 48
+    },
+    ".rdata+0x48": {
+      "address": "0x80012440",
+      "size": 20
+    },
+    ".rdata+0x60": {
+      "address": "0x80012458",
+      "size": 20
+    },
+    ".rdata+0x78": {
+      "address": "0x80012470",
+      "size": 20
+    },
+    "g_pulse_rifle_sequence": {
+      "address": "0x80073074",
+      "size": 32
+    },
+    "g_shotgun_sequence": {
+      "address": "0x80073094",
+      "size": 16
+    },
+    "g_pistol_sequence": {
+      "address": "0x800730a4",
+      "size": 24
+    },
+    "g_flamethrower_sequence": {
+      "address": "0x800730bc",
+      "size": 24
+    },
+    "g_smart_gun_sequence": {
+      "address": "0x800730d4",
+      "size": 24
+    },
+    "s_demo": {
+      "address": "0x8008cffc",
+      "size": 8
+    }
+  },
+  "frontend": {
+    "g_mode_table": {
+      "address": "0x8006be9c",
+      "size": 16
+    },
+    "g_sound_mode_choices": {
+      "address": "0x8006c1c0",
+      "size": 16
+    },
+    "g_boolean_choices": {
+      "address": "0x8006c1d0",
+      "size": 8
+    },
+    "g_difficulty_choices": {
+      "address": "0x8006c1d8",
+      "size": 12
+    },
+    "g_track_names": {
+      "address": "0x8006c1e4",
+      "size": 52
+    },
+    "g_track_numbers": {
+      "address": "0x8006c218",
+      "size": 26
+    },
+    "g_movie_names": {
+      "address": "0x8006c234",
+      "size": 52
+    },
+    "g_card_choices": {
+      "address": "0x8006c268",
+      "size": 12
+    },
+    "g_video_choices": {
+      "address": "0x8006c274",
+      "size": 8
+    },
+    "g_menu_cursors": {
+      "address": "0x8006c27c",
+      "size": 12
+    },
+    "g_password_key_characters": {
+      "address": "0x8006c288",
+      "size": 36
+    },
+    "g_options_menu": {
+      "address": "0x8006c2ac",
+      "size": 280
+    },
+    "g_cheats_menu": {
+      "address": "0x8006c3c4",
+      "size": 168
+    },
+    "g_main_menu": {
+      "address": "0x8006c46c",
+      "size": 84
+    },
+    "g_password_menu": {
+      "address": "0x8006c4c0",
+      "size": 112
+    },
+    "g_control_method_menu": {
+      "address": "0x8006c530",
+      "size": 84
+    },
+    "g_password_prompt_menu": {
+      "address": "0x8006c584",
+      "size": 56
+    },
+    "g_save_card_menu": {
+      "address": "0x8006c5bc",
+      "size": 168
+    },
+    "g_load_card_menu": {
+      "address": "0x8006c664",
+      "size": 168
+    },
+    "g_card_format_menu": {
+      "address": "0x8006c70c",
+      "size": 112
+    },
+    "g_card_delete_menu": {
+      "address": "0x8006c77c",
+      "size": 140
+    },
+    "g_card_delete_file_menu": {
+      "address": "0x8006c808",
+      "size": 112
+    },
+    "g_card_overwrite_menu": {
+      "address": "0x8006c878",
+      "size": 112
+    },
+    "g_card_load_menu": {
+      "address": "0x8006c8e8",
+      "size": 168
+    },
+    "g_card_save_menu": {
+      "address": "0x8006c990",
+      "size": 168
+    },
+    "g_menu_sound_request": {
+      "address": "0x8006ca38",
+      "size": 20
+    },
+    "g_render_task": {
+      "address": "0x8008cdb8",
+      "size": 4
+    },
+    "g_highlight_color": {
+      "address": "0x8008cdbc",
+      "size": 4
+    },
+    "g_text_color": {
+      "address": "0x8008cdc0",
+      "size": 4
+    },
+    "g_disabled_text_color": {
+      "address": "0x8008cdc4",
+      "size": 4
+    },
+    "g_disabled_highlight_color": {
+      "address": "0x8008cdc8",
+      "size": 4
+    },
+    "g_message_color": {
+      "address": "0x8008cdcc",
+      "size": 4
+    },
+    "g_start_level": {
+      "address": "0x8008cdd0",
+      "size": 2
+    },
+    "g_card_status": {
+      "address": "0x8008cdd2",
+      "size": 2
+    },
+    "g_card_status_previous": {
+      "address": "0x8008cdd4",
+      "size": 2
+    },
+    "g_card_file_index": {
+      "address": "0x8008cdd6",
+      "size": 2
+    },
+    "g_menu_screen": {
+      "address": "0x8008cdd8",
+      "size": 4
+    },
+    "g_menu_screen_previous": {
+      "address": "0x8008cddc",
+      "size": 4
+    },
+    "g_menu_next_state": {
+      "address": "0x8008cde0",
+      "size": 4
+    },
+    "g_menu_return_state": {
+      "address": "0x8008cde4",
+      "size": 4
+    },
+    "g_card_menu_saving": {
+      "address": "0x8008cde8",
+      "size": 2
+    },
+    "g_title_intro_state": {
+      "address": "0x8008cdea",
+      "size": 2
+    },
+    "g_menu_idle_frames": {
+      "address": "0x8008cdec",
+      "size": 2
+    },
+    "g_demo_index": {
+      "address": "0x8008cdee",
+      "size": 1
+    },
+    "g_menu_music_started": {
+      "address": "0x8008cdf0",
+      "size": 2
+    },
+    "g_menu_message_task": {
+      "address": "0x8008ced4",
+      "size": 4
+    },
+    "g_card_files": {
+      "address": "0x8008ced8",
+      "size": 4
+    },
+    "g_8cedc": {
+      "address": "0x8008cedc",
+      "size": 4
+    },
+    "g_card_headers": {
+      "address": "0x8008cee0",
+      "size": 4
+    },
+    "g_card_file_count": {
+      "address": "0x8008cee4",
+      "size": 2
+    },
+    "g_label_delete_file": {
+      "address": "0x8008cee8",
+      "size": 4
+    },
+    "g_label_load_file": {
+      "address": "0x8008ceec",
+      "size": 4
+    },
+    "g_label_exit": {
+      "address": "0x8008cef8",
+      "size": 4
+    },
+    "g_label_unreadable_file": {
+      "address": "0x8008cefc",
+      "size": 4
+    },
+    "g_password_length": {
+      "address": "0x8008cf00",
+      "size": 2
+    },
+    "g_sound_mode": {
+      "address": "0x8008cf02",
+      "size": 2
+    },
+    "blink.36": {
+      "address": "0x8008cf46",
+      "size": 2
+    },
+    "picture.193": {
+      "address": "0x8008cf7e",
+      "size": 2
+    },
+    "s_no_message": {
+      "address": "0x8006be04",
+      "size": 11
+    },
+    "s_loading_data": {
+      "address": "0x8006be10",
+      "size": 17
+    },
+    "s_press_to_continue": {
+      "address": "0x8006be24",
+      "size": 31
+    },
+    "g_mission_brief_header": {
+      "address": "0x8006be44",
+      "size": 54
+    },
+    "g_message_box": {
+      "address": "0x8006be7c",
+      "size": 32
+    },
+    "g_message_box_colours": {
+      "address": "0x8006beac",
+      "size": 20
+    },
+    "g_message_box_shadow_colours": {
+      "address": "0x8006bec0",
+      "size": 20
+    },
+    "g_texture_records": {
+      "address": "0x8006bf10",
+      "size": 192
+    },
+    "g_palette_records": {
+      "address": "0x8006bfd0",
+      "size": 128
+    },
+    "g_demo_levels": {
+      "address": "0x8006c050",
+      "size": 14
+    },
+    "g_level_target_classes": {
+      "address": "0x8006c084",
+      "size": 175
+    },
+    "g_level_names": {
+      "address": "0x8006c134",
+      "size": 140
+    },
+    "g_name_table": {
+      "address": "0x8006ca4c",
+      "size": 110
+    },
+    "g_controller_layout_sprites": {
+      "address": "0x8006cabc",
+      "size": 8
+    },
+    "g_percentage_bar_widths": {
+      "address": "0x8006cac4",
+      "size": 22
+    }
+  },
+  "main": {
+    "s_heap_overflow": {
+      "address": "0x800101e0",
+      "size": 16
+    },
+    "s_error_title": {
+      "address": "0x800101f0",
+      "size": 20
+    },
+    "g_idx": {
+      "address": "0x8008cd74",
+      "size": 2
+    },
+    "g_button_use": {
+      "address": "0x8008cd84",
+      "size": 2
+    },
+    "g_button_weapon": {
+      "address": "0x8008cd86",
+      "size": 2
+    },
+    "g_button_fire": {
+      "address": "0x8008cd88",
+      "size": 2
+    },
+    "g_8cd8a": {
+      "address": "0x8008cd8a",
+      "size": 2
+    },
+    "g_8cd8c": {
+      "address": "0x8008cd8c",
+      "size": 2
+    },
+    "g_8cd8e": {
+      "address": "0x8008cd8e",
+      "size": 2
+    },
+    "g_8cd90": {
+      "address": "0x8008cd90",
+      "size": 2
+    },
+    "g_button_strafe_right": {
+      "address": "0x8008cd92",
+      "size": 2
+    },
+    "g_button_run": {
+      "address": "0x8008cd94",
+      "size": 2
+    },
+    "g_button_strafe_left": {
+      "address": "0x8008cd96",
+      "size": 2
+    },
+    "g_button_look": {
+      "address": "0x8008cd98",
+      "size": 2
+    },
+    "g_button_grenade": {
+      "address": "0x8008cd9a",
+      "size": 2
+    },
+    "g_action_index": {
+      "address": "0x8008cda4",
+      "size": 2
+    },
+    "g_cheat_flags": {
+      "address": "0x8008cda8",
+      "size": 4
+    },
+    "g_reset_hold_start": {
+      "address": "0x8008cdac",
+      "size": 4
+    },
+    "g_heap_snapshot_current": {
+      "address": "0x8008cdb0",
+      "size": 2
+    },
+    "s_error_format": {
+      "address": "0x8008cdb4",
+      "size": 4
+    },
+    "_stacksize": {
+      "address": "0x8008cd78",
+      "size": 4
+    },
+    "g_8cd7c": {
+      "address": "0x8008cd7c",
+      "size": 8
+    },
+    "g_zero_vector": {
+      "address": "0x8008cd9c",
+      "size": 8
+    },
+    "g_clut_sets": {
+      "address": "0x8006a578",
+      "size": 24
+    },
+    "g_page_sets": {
+      "address": "0x8006a590",
+      "size": 80
+    },
+    "s_13a1c": {
+      "address": "0x8006a5e0",
+      "size": 24
+    },
+    "g_file_table": {
+      "address": "0x8006a5f8",
+      "size": 6156
+    }
+  },
+  "sprites": {
+    "g_sprite_warn": {
+      "address": "0x80011998",
+      "size": 36
+    },
+    "g_menu_resource_ids": {
+      "address": "0x8006d2c0",
+      "size": 72
+    },
+    "g_sprite_list_count": {
+      "address": "0x8008cf84",
+      "size": 2
+    },
+    "g_sprite_resources": {
+      "address": "0x8006d1d0",
+      "size": 240
+    },
+    "g_pulse_rifle_set": {
+      "address": "0x8006ccf0",
+      "size": 32
+    },
+    "g_shotgun_set": {
+      "address": "0x8006cd10",
+      "size": 16
+    },
+    "g_pistol_set": {
+      "address": "0x8006cd20",
+      "size": 24
+    },
+    "g_smart_gun_set": {
+      "address": "0x8006cd38",
+      "size": 24
+    },
+    "g_flamethrower_set": {
+      "address": "0x8006cd50",
+      "size": 24
+    },
+    "g_hugger_set": {
+      "address": "0x8006cd68",
+      "size": 64
+    },
+    "g_fingers_set": {
+      "address": "0x8006cda8",
+      "size": 16
+    },
+    "g_dog_set": {
+      "address": "0x8006cdb8",
+      "size": 88
+    },
+    "g_dog_ceiling_set": {
+      "address": "0x8006ce10",
+      "size": 40
+    },
+    "g_warrior_set": {
+      "address": "0x8006ce38",
+      "size": 80
+    },
+    "g_warrior_ceiling_set": {
+      "address": "0x8006ce88",
+      "size": 40
+    },
+    "g_egg_set": {
+      "address": "0x8006ceb0",
+      "size": 48
+    },
+    "g_handler_set": {
+      "address": "0x8006cee0",
+      "size": 72
+    },
+    "g_synth_set": {
+      "address": "0x8006cf28",
+      "size": 104
+    },
+    "g_guard_set": {
+      "address": "0x8006cf90",
+      "size": 64
+    },
+    "g_soldier_set": {
+      "address": "0x8006cfd0",
+      "size": 64
+    },
+    "g_burster_set": {
+      "address": "0x8006d010",
+      "size": 88
+    },
+    "g_bambi_set": {
+      "address": "0x8006d068",
+      "size": 80
+    },
+    "g_queen_set": {
+      "address": "0x8006d0b8",
+      "size": 96
+    },
+    "g_colonist_set": {
+      "address": "0x8006d118",
+      "size": 184
+    }
+  },
+  "doors": {
+    "s_door_activated": {
+      "address": "0x800119ec",
+      "size": 16
+    },
+    "s_door_powered_up": {
+      "address": "0x800119fc",
+      "size": 16
+    },
+    ".rdata+0x20": {
+      "address": "0x80011a0c",
+      "size": 48
+    },
+    "g_door_rotation_0": {
+      "address": "0x8008cfac",
+      "size": 8
+    },
+    "g_door_rotation_2": {
+      "address": "0x8008cfb4",
+      "size": 8
+    },
+    "g_door_rotation_4": {
+      "address": "0x8008cfbc",
+      "size": 8
+    },
+    "g_door_rotation_6": {
+      "address": "0x8008cfc4",
+      "size": 8
+    }
+  },
+  "effects": {
+    "g_explosion_frames": {
+      "address": "0x800731bc",
+      "size": 172
+    },
+    "g_big_explosion_frames": {
+      "address": "0x80073268",
+      "size": 172
+    },
+    "g_effect_frames_73314": {
+      "address": "0x80073314",
+      "size": 172
+    },
+    "g_acid_splash_frames": {
+      "address": "0x800733c0",
+      "size": 172
+    },
+    "g_blood_splash_frames": {
+      "address": "0x8007346c",
+      "size": 172
+    },
+    "g_synth_splash_frames": {
+      "address": "0x80073518",
+      "size": 172
+    }
+  },
+  "memcard": {
+    "g_card_directory_format": {
+      "address": "0x80012b4c",
+      "size": 20
+    },
+    "g_card_entry_format": {
+      "address": "0x80012b60",
+      "size": 24
+    },
+    "g_card_devices": {
+      "address": "0x80073a88",
+      "size": 32
+    },
+    "g_card_error_messages": {
+      "address": "0x80073aa8",
+      "size": 64
+    },
+    "g_card_event_messages": {
+      "address": "0x80073ae8",
+      "size": 16
+    },
+    "g_card_icon": {
+      "address": "0x800739e8",
+      "size": 128
+    },
+    "g_card_clut": {
+      "address": "0x80073a68",
+      "size": 32
+    }
+  },
+  "texture_upload": {
+    "g_unpack_hblanks": {
+      "address": "0x8008cfa8",
+      "size": 2
+    }
+  },
+  "model_draw": {
+    "g_spad_grid": {
+      "address": "0x8008cf88",
+      "size": 4
+    },
+    "g_spad_sxy": {
+      "address": "0x8008cf8c",
+      "size": 4
+    },
+    "g_spad_sz": {
+      "address": "0x8008cf90",
+      "size": 4
+    },
+    "g_spad_flag": {
+      "address": "0x8008cf94",
+      "size": 4
+    },
+    "g_spad_p": {
+      "address": "0x8008cf98",
+      "size": 4
+    },
+    "g_near_draw_table": {
+      "address": "0x8006d308",
+      "size": 140
+    },
+    "g_far_draw_table": {
+      "address": "0x8006d394",
+      "size": 140
+    },
+    "g_mid_draw_table": {
+      "address": "0x8006d420",
+      "size": 140
+    }
+  },
+  "geometry": {
+    "g_atan_table": {
+      "address": "0x8006d4ac",
+      "size": 1480
+    },
+    "g_sine_table": {
+      "address": "0x8006da74",
+      "size": 8192
+    }
+  },
+  "game_20000_3": {
+    "g_level_map_files": {
+      "address": "0x800722d0",
+      "size": 70
+    },
+    "g_view_rays": {
+      "address": "0x8006fa74",
+      "size": 9306
+    },
+    "g_view_ray_buckets": {
+      "address": "0x80071ed0",
+      "size": 1024
+    },
+    "g_view_cells_buckets": {
+      "address": "0x8008cf9c",
+      "size": 4
+    },
+    "g_view_cells_rays": {
+      "address": "0x8008cfa0",
+      "size": 4
+    },
+    "g_view_cells_level": {
+      "address": "0x8008cfa4",
+      "size": 4
+    }
+  },
+  "object_render": {
+    "g_blast_near_offsets": {
+      "address": "0x80072be0",
+      "size": 32
+    },
+    "g_blast_far_offsets": {
+      "address": "0x80072c00",
+      "size": 64
+    }
+  },
+  "particle": {
+    "g_steam_lengths": {
+      "address": "0x80072338",
+      "size": 128
+    },
+    "g_steam_widths": {
+      "address": "0x800723b8",
+      "size": 128
+    },
+    "g_steam_frames": {
+      "address": "0x80072438",
+      "size": 72
+    },
+    "g_fire_lengths": {
+      "address": "0x80072480",
+      "size": 128
+    },
+    "g_fire_widths": {
+      "address": "0x80072500",
+      "size": 128
+    },
+    "g_fire_frames": {
+      "address": "0x80072580",
+      "size": 72
+    }
+  },
+  "text": {
+    "g_extended_glyphs": {
+      "address": "0x8006cadc",
+      "size": 392
+    }
+  },
+  "map_objects": {
+    "g_map_object_scales": {
+      "address": "0x80072e0c",
+      "size": 448
+    },
+    "g_pickup_messages": {
+      "address": "0x80072fcc",
+      "size": 112
+    },
+    "g_object_heights": {
+      "address": "0x8007303c",
+      "size": 56
+    }
+  },
+  "libspu_s_gks": {
+    "_spu_RXX": {
+      "address": "0x80073afc",
+      "size": 4
+    }
+  },
+  "libetc_intr_dma": {
+    "_dma_bus_error_msg": {
+      "address": "0x80013188",
+      "size": 28
+    },
+    "_dma_icr": {
+      "address": "0x800759a0",
+      "size": 4
+    },
+    "_dma_callbacks": {
+      "address": "0x800759a4",
+      "size": 32
+    }
+  },
+  "libspu_spu": {
+    "s_spu_timeout_fmt": {
+      "address": "0x80012bdc",
+      "size": 14
+    },
+    "s_wait_reset": {
+      "address": "0x80012bec",
+      "size": 13
+    },
+    "s_wait_wrdy": {
+      "address": "0x80012bfc",
+      "size": 19
+    },
+    "s_wait_dmaf": {
+      "address": "0x80012c10",
+      "size": 20
+    },
+    "g_73c88": {
+      "address": "0x80073c88",
+      "size": 4
+    },
+    "_spu_tsa": {
+      "address": "0x80073c8c",
+      "size": 4
+    },
+    "_spu_RXX": {
+      "address": "0x80073c90",
+      "size": 4
+    },
+    "g_73c94": {
+      "address": "0x80073c94",
+      "size": 4
+    },
+    "g_73c98": {
+      "address": "0x80073c98",
+      "size": 4
+    },
+    "g_73c9c": {
+      "address": "0x80073c9c",
+      "size": 4
+    },
+    "g_73ca0": {
+      "address": "0x80073ca0",
+      "size": 4
+    },
+    "g_73ca4": {
+      "address": "0x80073ca4",
+      "size": 4
+    },
+    "g_73ca8": {
+      "address": "0x80073ca8",
+      "size": 4
+    },
+    "_spu_transMode": {
+      "address": "0x80073cac",
+      "size": 4
+    },
+    "_spu_addrMode": {
+      "address": "0x80073cb0",
+      "size": 4
+    },
+    "_spu_mem_mode": {
+      "address": "0x80073cb4",
+      "size": 4
+    },
+    "_spu_mem_mode_plus": {
+      "address": "0x80073cb8",
+      "size": 4
+    },
+    "_spu_inTransfer": {
+      "address": "0x80073cbc",
+      "size": 4
+    },
+    "_spu_transferCallback": {
+      "address": "0x80073cc0",
+      "size": 4
+    },
+    "_spu_IRQCallback": {
+      "address": "0x80073cc4",
+      "size": 4
+    },
+    "g_73cc8": {
+      "address": "0x80073cc8",
+      "size": 16
+    },
+    "g_73cd8": {
+      "address": "0x80073cd8",
+      "size": 4
+    },
+    "g_73cdc": {
+      "address": "0x80073cdc",
+      "size": 4
+    },
+    "g_73ce0": {
+      "address": "0x80073ce0",
+      "size": 4
+    },
+    "s_wait_ioctl_irq": {
+      "address": "0x80012c24",
+      "size": 17
+    }
+  },
+  "libgpu_sys": {
+    "jtb": {
+      "address": "0x800759fc",
+      "size": 64
+    },
+    "jtbp": {
+      "address": "0x80075a3c",
+      "size": 4
+    },
+    "GPU_printf": {
+      "address": "0x80075a40",
+      "size": 4
+    },
+    "g_75a44": {
+      "address": "0x80075a44",
+      "size": 128
+    },
+    "g_75ac4": {
+      "address": "0x80075ac4",
+      "size": 20
+    },
+    "g_75ad8": {
+      "address": "0x80075ad8",
+      "size": 20
+    },
+    "g_75aec": {
+      "address": "0x80075aec",
+      "size": 20
+    },
+    "g_75b00": {
+      "address": "0x80075b00",
+      "size": 20
+    },
+    "gp0": {
+      "address": "0x80075b14",
+      "size": 4
+    },
+    "gp1": {
+      "address": "0x80075b18",
+      "size": 4
+    },
+    "d2_madr": {
+      "address": "0x80075b1c",
+      "size": 4
+    },
+    "d2_bcr": {
+      "address": "0x80075b20",
+      "size": 4
+    },
+    "d2_chcr": {
+      "address": "0x80075b24",
+      "size": 4
+    },
+    "d6_madr": {
+      "address": "0x80075b28",
+      "size": 4
+    },
+    "d6_bcr": {
+      "address": "0x80075b2c",
+      "size": 4
+    },
+    "d6_chcr": {
+      "address": "0x80075b30",
+      "size": 4
+    },
+    "d_pcr": {
+      "address": "0x80075b34",
+      "size": 4
+    },
+    "_qlog": {
+      "address": "0x80075b38",
+      "size": 16
+    },
+    "_qin": {
+      "address": "0x80075b48",
+      "size": 4
+    },
+    "_qout": {
+      "address": "0x80075b4c",
+      "size": 4
+    },
+    "g_75b50": {
+      "address": "0x80075b50",
+      "size": 4
+    },
+    "g_75b54": {
+      "address": "0x80075b54",
+      "size": 4
+    },
+    "g_75b58": {
+      "address": "0x80075b58",
+      "size": 4
+    },
+    "g_75b5c": {
+      "address": "0x80075b5c",
+      "size": 4
+    },
+    "g_75b60": {
+      "address": "0x80075b60",
+      "size": 4
+    },
+    ".rdata+0x0": {
+      "address": "0x800131b4",
+      "size": 50
+    },
+    ".rdata+0x34": {
+      "address": "0x800131e8",
+      "size": 30
+    },
+    ".rdata+0x54": {
+      "address": "0x80013208",
+      "size": 19
+    },
+    ".rdata+0x68": {
+      "address": "0x8001321c",
+      "size": 24
+    },
+    ".rdata+0x80": {
+      "address": "0x80013234",
+      "size": 43
+    },
+    ".rdata+0xac": {
+      "address": "0x80013260",
+      "size": 19
+    },
+    ".rdata+0xc0": {
+      "address": "0x80013274",
+      "size": 27
+    },
+    ".rdata+0xdc": {
+      "address": "0x80013290",
+      "size": 20
+    },
+    ".rdata+0xf0": {
+      "address": "0x800132a4",
+      "size": 17
+    },
+    ".rdata+0x104": {
+      "address": "0x800132b8",
+      "size": 12
+    },
+    ".rdata+0x110": {
+      "address": "0x800132c4",
+      "size": 17
+    },
+    ".rdata+0x124": {
+      "address": "0x800132d8",
+      "size": 4
+    },
+    ".rdata+0x128": {
+      "address": "0x800132dc",
+      "size": 11
+    },
+    ".rdata+0x134": {
+      "address": "0x800132e8",
+      "size": 10
+    },
+    ".rdata+0x140": {
+      "address": "0x800132f4",
+      "size": 11
+    },
+    ".rdata+0x14c": {
+      "address": "0x80013300",
+      "size": 10
+    },
+    ".rdata+0x158": {
+      "address": "0x8001330c",
+      "size": 23
+    },
+    ".rdata+0x170": {
+      "address": "0x80013324",
+      "size": 24
+    },
+    ".rdata+0x188": {
+      "address": "0x8001333c",
+      "size": 19
+    },
+    ".rdata+0x19c": {
+      "address": "0x80013350",
+      "size": 21
+    },
+    ".rdata+0x1b4": {
+      "address": "0x80013368",
+      "size": 21
+    },
+    ".rdata+0x1cc": {
+      "address": "0x80013380",
+      "size": 50
+    },
+    ".rdata+0x200": {
+      "address": "0x800133b4",
+      "size": 24
+    }
+  },
+  "libspu_s_ini": {
+    "_spu_fd": {
+      "address": "0x80073cf4",
+      "size": 4
+    },
+    "_spu_trans_mode": {
+      "address": "0x80073cf8",
+      "size": 4
+    },
+    "_spu_rev_flag": {
+      "address": "0x80073cfc",
+      "size": 4
+    },
+    "_spu_rev_reserve_wa": {
+      "address": "0x80073d00",
+      "size": 4
+    },
+    "_spu_rev_attr": {
+      "address": "0x80073d04",
+      "size": 20
+    },
+    "_spu_rev_offsetaddr": {
+      "address": "0x80073d18",
+      "size": 4
+    },
+    "_spu_voice_centerNote": {
+      "address": "0x80073d1c",
+      "size": 48
+    },
+    "_spu_keystat": {
+      "address": "0x80073d4c",
+      "size": 4
+    },
+    "_spu_EVdma": {
+      "address": "0x80073d50",
+      "size": 4
+    },
+    "_spu_keyevent_time": {
+      "address": "0x80073d54",
+      "size": 4
+    },
+    "_spu_keyon_bit": {
+      "address": "0x80073d58",
+      "size": 4
+    },
+    "_spu_keyoff_bit": {
+      "address": "0x80073d5c",
+      "size": 4
+    },
+    "_spu_zerobuf": {
+      "address": "0x80073d60",
+      "size": 1024
+    },
+    "_spu_isCalled": {
+      "address": "0x80074160",
+      "size": 4
+    }
+  },
+  "libspu_s_sca": {
+    "_spu_RXX": {
+      "address": "0x80073cf0",
+      "size": 4
+    },
+    "sca_mvoll_mode_tab": {
+      "address": "0x80012c38",
+      "size": 32
+    },
+    "sca_mvolr_mode_tab": {
+      "address": "0x80012c58",
+      "size": 32
+    }
+  },
+  "libspu_s_sva": {
+    "_spu_RXX": {
+      "address": "0x80073af8",
+      "size": 4
+    },
+    "sva_voll_mode_tab": {
+      "address": "0x80012b9c",
+      "size": 32
+    },
+    "sva_volr_mode_tab": {
+      "address": "0x80012bbc",
+      "size": 32
+    }
+  },
+  "libcd_c_004": {
+    "g_748e0": {
+      "address": "0x800748e0",
+      "size": 16
+    }
+  },
+  "libcd_sys": {
+    ".rdata+0x0": {
+      "address": "0x80012c78",
+      "size": 5
+    },
+    "g_7447c": {
+      "address": "0x8007447c",
+      "size": 128
+    }
+  },
+  "libcd_c_009": {
+    "g_748d0": {
+      "address": "0x800748d0",
+      "size": 16
+    }
+  },
+  "libcd_c_011": {
+    ".rdata+0x0": {
+      "address": "0x80013104",
+      "size": 21
+    },
+    "g_74840": {
+      "address": "0x80074840",
+      "size": 72
+    },
+    "debug_cause": {
+      "address": "0x80074888",
+      "size": 8
+    }
+  },
+  "libcd_bios": {
+    ".rdata+0x0": {
+      "address": "0x80012c80",
+      "size": 9
+    },
+    ".rdata+0xc": {
+      "address": "0x80012c8c",
+      "size": 9
+    },
+    ".rdata+0x18": {
+      "address": "0x80012c98",
+      "size": 9
+    },
+    ".rdata+0x24": {
+      "address": "0x80012ca4",
+      "size": 9
+    },
+    ".rdata+0x30": {
+      "address": "0x80012cb0",
+      "size": 9
+    },
+    ".rdata+0x3c": {
+      "address": "0x80012cbc",
+      "size": 11
+    },
+    ".rdata+0x48": {
+      "address": "0x80012cc8",
+      "size": 11
+    },
+    ".rdata+0x54": {
+      "address": "0x80012cd4",
+      "size": 2
+    },
+    ".rdata+0x58": {
+      "address": "0x80012cd8",
+      "size": 11
+    },
+    ".rdata+0x64": {
+      "address": "0x80012ce4",
+      "size": 13
+    },
+    ".rdata+0x74": {
+      "address": "0x80012cf4",
+      "size": 10
+    },
+    ".rdata+0x80": {
+      "address": "0x80012d00",
+      "size": 8
+    },
+    ".rdata+0x88": {
+      "address": "0x80012d08",
+      "size": 9
+    },
+    ".rdata+0x94": {
+      "address": "0x80012d14",
+      "size": 9
+    },
+    ".rdata+0xa0": {
+      "address": "0x80012d20",
+      "size": 8
+    },
+    ".rdata+0xa8": {
+      "address": "0x80012d28",
+      "size": 11
+    },
+    ".rdata+0xb4": {
+      "address": "0x80012d34",
+      "size": 9
+    },
+    ".rdata+0xc0": {
+      "address": "0x80012d40",
+      "size": 12
+    },
+    ".rdata+0xcc": {
+      "address": "0x80012d4c",
+      "size": 11
+    },
+    ".rdata+0xd8": {
+      "address": "0x80012d58",
+      "size": 8
+    },
+    ".rdata+0xe0": {
+      "address": "0x80012d60",
+      "size": 10
+    },
+    ".rdata+0xec": {
+      "address": "0x80012d6c",
+      "size": 7
+    },
+    ".rdata+0xf4": {
+      "address": "0x80012d74",
+      "size": 8
+    },
+    ".rdata+0xfc": {
+      "address": "0x80012d7c",
+      "size": 10
+    },
+    ".rdata+0x108": {
+      "address": "0x80012d88",
+      "size": 8
+    },
+    ".rdata+0x110": {
+      "address": "0x80012d90",
+      "size": 12
+    },
+    ".rdata+0x11c": {
+      "address": "0x80012d9c",
+      "size": 9
+    },
+    ".rdata+0x128": {
+      "address": "0x80012da8",
+      "size": 10
+    },
+    ".rdata+0x134": {
+      "address": "0x80012db4",
+      "size": 7
+    },
+    ".rdata+0x13c": {
+      "address": "0x80012dbc",
+      "size": 35
+    },
+    ".rdata+0x160": {
+      "address": "0x80012de0",
+      "size": 21
+    },
+    ".rdata+0x178": {
+      "address": "0x80012df8",
+      "size": 25
+    },
+    ".rdata+0x198": {
+      "address": "0x80012e18",
+      "size": 20
+    },
+    ".rdata+0x1ac": {
+      "address": "0x80012e2c",
+      "size": 8
+    },
+    ".rdata+0x1b4": {
+      "address": "0x80012e34",
+      "size": 9
+    },
+    ".rdata+0x1c0": {
+      "address": "0x80012e40",
+      "size": 7
+    },
+    ".rdata+0x1c8": {
+      "address": "0x80012e48",
+      "size": 14
+    },
+    ".rdata+0x1d8": {
+      "address": "0x80012e58",
+      "size": 6
+    },
+    ".rdata+0x1e0": {
+      "address": "0x80012e60",
+      "size": 18
+    },
+    ".rdata+0x1f4": {
+      "address": "0x80012e74",
+      "size": 19
+    },
+    ".rdata+0x208": {
+      "address": "0x80012e88",
+      "size": 35
+    },
+    ".rdata+0x22c": {
+      "address": "0x80012eac",
+      "size": 8
+    },
+    ".rdata+0x234": {
+      "address": "0x80012eb4",
+      "size": 12
+    },
+    "CD_cbsync": {
+      "address": "0x800744fc",
+      "size": 4
+    },
+    "CD_cbready": {
+      "address": "0x80074500",
+      "size": 4
+    },
+    "CD_cbread": {
+      "address": "0x80074504",
+      "size": 4
+    },
+    "CD_debug": {
+      "address": "0x80074508",
+      "size": 4
+    },
+    "CD_status": {
+      "address": "0x8007450c",
+      "size": 4
+    },
+    "CD_nopen": {
+      "address": "0x80074510",
+      "size": 4
+    },
+    "CD_pos": {
+      "address": "0x80074514",
+      "size": 4
+    },
+    "CD_com": {
+      "address": "0x80074518",
+      "size": 4
+    },
+    "CD_comstr": {
+      "address": "0x8007451c",
+      "size": 128
+    },
+    "CD_intstr": {
+      "address": "0x8007459c",
+      "size": 32
+    },
+    "g_745bc": {
+      "address": "0x800745bc",
+      "size": 128
+    },
+    "g_7463c": {
+      "address": "0x8007463c",
+      "size": 128
+    },
+    "g_746bc": {
+      "address": "0x800746bc",
+      "size": 128
+    },
+    "g_7473c": {
+      "address": "0x8007473c",
+      "size": 128
+    },
+    "g_747bc": {
+      "address": "0x800747bc",
+      "size": 24
+    },
+    "g_747d4": {
+      "address": "0x800747d4",
+      "size": 4
+    },
+    "g_747d8": {
+      "address": "0x800747d8",
+      "size": 4
+    },
+    "g_747dc": {
+      "address": "0x800747dc",
+      "size": 4
+    },
+    "g_747e0": {
+      "address": "0x800747e0",
+      "size": 4
+    },
+    "g_747e4": {
+      "address": "0x800747e4",
+      "size": 4
+    },
+    "g_747e8": {
+      "address": "0x800747e8",
+      "size": 4
+    },
+    "g_747ec": {
+      "address": "0x800747ec",
+      "size": 4
+    },
+    "g_747f0": {
+      "address": "0x800747f0",
+      "size": 4
+    },
+    "g_747f4": {
+      "address": "0x800747f4",
+      "size": 4
+    },
+    "g_747f8": {
+      "address": "0x800747f8",
+      "size": 4
+    },
+    "g_747fc": {
+      "address": "0x800747fc",
+      "size": 4
+    },
+    "g_74800": {
+      "address": "0x80074800",
+      "size": 20
+    },
+    "g_74814": {
+      "address": "0x80074814",
+      "size": 20
+    }
+  },
+  "libspu_s_srmp": {
+    "_spu_RXX": {
+      "address": "0x80073c84",
+      "size": 4
+    }
+  },
+  "libspu_s_n2p": {
+    "g_73b00": {
+      "address": "0x80073b00",
+      "size": 388
+    }
+  },
+  "libgte_mtx_00": {
+    "g_800766f4": {
+      "address": "0x800766f4",
+      "size": 4
+    },
+    "g_800766f8": {
+      "address": "0x800766f8",
+      "size": 8
+    },
+    "g_80076700": {
+      "address": "0x80076700",
+      "size": 4
+    },
+    "g_80076704": {
+      "address": "0x80076704",
+      "size": 640
+    },
+    "g_80076984": {
+      "address": "0x80076984",
+      "size": 49
+    },
+    "g_800769b5": {
+      "address": "0x800769b5",
+      "size": 41
+    },
+    "g_800769de": {
+      "address": "0x800769de",
+      "size": 38
+    }
+  }
+}

@@ -1,0 +1,16 @@
+{
+  "gp": "0x8008cd74",
+  "functions": {
+    "CdRead2": {
+      "address": "0x8005fa64",
+      "size": 116
+    }
+  },
+  "symbols": {
+    "CdReadyCallback": "0x8005d480",
+    "CdControl": "0x8005d4b0",
+    "CdDataCallback": "0x8005d840",
+    "StCdInterrupt": "0x800607b0",
+    "data_ready_callback": "0x80061474"
+  }
+}

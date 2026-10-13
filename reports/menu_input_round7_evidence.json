@@ -1,0 +1,284 @@
+{
+  "status": "pass",
+  "reference_sha256": "f424660920764ac70f697b5b909a42fe259a76e60acbf5b01c6ca3ee8c8f8e98",
+  "latest_report_sha256": "d2b4b4210fc404e7a0bb25486cdb88abb044dd7de0b06684c75ca1120a9edc11",
+  "input_hashes": {
+    "analysis\\menu_input_round7_evidence.py": "b1d859e61fba15e90881d73027c4abf037babe5e827bd1e93d16ecf3f566c0f9",
+    "analysis\\menu_input_round7\\definitions.json": "52f7b566dfe1395624595ab734c3ab48f954f064f031e1709057b14a43ef0bb9",
+    "config\\data.json": "91d566ad4a1c9d94b7857c763148b522c1a6d42b5ea58e0dca7e9469fadeec3b",
+    "src\\game_helpers2.c": "ed1d575f1fd6a8dfe9806cf102813ed4655bd4fc78be5e06b12e906dc4f54351",
+    "config\\game_helpers2.json": "44d7cd4894c29c31d3f48f7938c2d2849bf72110b21409124d46494a2bb37590",
+    "builds\\job-rdvskrit\\INPUT.OBJ": "df9615268c96e67b97590e3e7d941936014cbf7b9f54835e300ba04cb799b8d2",
+    "src\\menu_input_labels7.c": "905073bc0d98aac57bab685843d14bfef84ff914558d8b2e1680189a477f4091",
+    "config\\menu_input_labels7.json": "f2c138813e82ca507daa5ed37ca92eb602feea2189cebc4cb235ac63f51715e9",
+    "builds\\job-crlpky6l\\INPUT.OBJ": "7dd8921bb6281d1aa5312bd3ec75134031b10d3a86840c76e48e396315ef6e4b",
+    "src\\menu_input7.c": "2d454c8d25597a8429973f89d24b1d3cbc10047d716d89c3d763104b400eb333",
+    "config\\menu_input7.json": "7da4cd1bd0962f3620465c7f40d0c6ae239b98e652393d9d78b83d5041a1edd0",
+    "builds\\job-8vi_gdld\\INPUT.OBJ": "436f89cb0c6331be97e74b347b118123d357fe6afd48e1d8a255ff901b0fe430",
+    "src\\menu_sound_record7.c": "1ec622d2aee9e9c9ea020f1f2131e331a0101aa6506fddbd3a0c0c273b0a5f8a",
+    "config\\menu_sound_record7.json": "8ac5ad35300298189457fb5b43d473ef4ba342ac6965fe09b8a28fa07544db4d",
+    "builds\\job-mngoklyo\\INPUT.OBJ": "92e645f04d3ab46dc3bb80c78af164005559a1dcd2f82205914ba91d7489edd2"
+  },
+  "observations": [
+    {
+      "address": "0x80018870",
+      "words": [
+        "0x3222ffff",
+        "0x2c420024",
+        "0x10400050"
+      ],
+      "meaning": "unsigned key-loop index check <36"
+    },
+    {
+      "address": "0x800188bc",
+      "words": [
+        "0x8f8201e8",
+        "0x8f8301ec",
+        "0xafa20010",
+        "0xafa30014"
+      ],
+      "meaning": "Delete caption: two full GP words at +0x1e8/+0x1ec"
+    },
+    {
+      "address": "0x800188d4",
+      "words": [
+        "0x8f8201f0",
+        "0x8f8301f4",
+        "0xafa20010",
+        "0xafa30014"
+      ],
+      "meaning": "Accept caption: two full GP words at +0x1f0/+0x1f4"
+    },
+    {
+      "address": "0x800188ec",
+      "words": [
+        "0x8f8201f8",
+        "0x878301fc",
+        "0xafa20010",
+        "0xa7a30014"
+      ],
+      "meaning": "Quit caption: GP word plus halfword, aligned next object at +0x200"
+    },
+    {
+      "address": "0x80018908",
+      "words": [
+        "0x3c018007",
+        "0x220821",
+        "0x9022c288"
+      ],
+      "meaning": "keyboard indexed byte load at 0x8006c288"
+    },
+    {
+      "address": "0x80018d18",
+      "words": [
+        "0x3c018007",
+        "0x220821",
+        "0x9023c288"
+      ],
+      "meaning": "key-action byte load from same table"
+    },
+    {
+      "address": "0x80018d24",
+      "words": [
+        "0x34020079",
+        "0x1062002b",
+        "0x2862007a"
+      ],
+      "meaning": "special key y tested before ordinary character insertion"
+    },
+    {
+      "address": "0x80018d70",
+      "words": [
+        "0x3c018007",
+        "0x220821",
+        "0x9022c288"
+      ],
+      "meaning": "ordinary password insertion byte load"
+    },
+    {
+      "address": "0x800169d8",
+      "words": [
+        "0x86020004",
+        "0x0",
+        "0x21080",
+        "0x431021",
+        "0x8c450000"
+      ],
+      "meaning": "formatter indexes word pointer table using signed current value at +4"
+    },
+    {
+      "address": "0x80017888",
+      "words": [
+        "0x84840004",
+        "0xc005def",
+        "0x0"
+      ],
+      "meaning": "Sound change callback passes signed halfword value to f_177bc"
+    }
+  ],
+  "labels": [
+    [
+      "s_sound_option_none",
+      2148060660,
+      8,
+      "None"
+    ],
+    [
+      "s_sound_option_music",
+      2148060668,
+      8,
+      "Music"
+    ],
+    [
+      "s_sound_option_sfx",
+      2148060676,
+      4,
+      "SFX"
+    ],
+    [
+      "s_sound_option_both",
+      2147554164,
+      16,
+      "SFX and music"
+    ],
+    [
+      "s_sound_mode_label",
+      2148060932,
+      8,
+      "Sound: "
+    ],
+    [
+      "s_password_key_delete",
+      2148061020,
+      8,
+      "Delete "
+    ],
+    [
+      "s_password_key_accept",
+      2148061028,
+      8,
+      "Accept "
+    ],
+    [
+      "s_password_key_quit",
+      2148061036,
+      8,
+      "Quit "
+    ]
+  ],
+  "sound_choices": {
+    "symbol": "g_sound_mode_choices",
+    "address": "0x8006c1c0",
+    "entries": [
+      "s_sound_option_sfx",
+      "s_sound_option_music",
+      "s_sound_option_both",
+      "s_sound_option_none"
+    ]
+  },
+  "sound_record": {
+    "symbol": "g_sound_mode_entry",
+    "address": "0x8006c2ac",
+    "flags": 1703939,
+    "value": 2,
+    "limit": 4,
+    "label": "s_sound_mode_label",
+    "choices": "g_sound_mode_choices",
+    "formatter": "f_16994",
+    "change": "f_17880"
+  },
+  "password_key_table": {
+    "symbol": "g_password_key_characters",
+    "address": "0x8006c288",
+    "size": 36,
+    "text": "BCDFGHJKLMNPQRSTVWXYZ0123456789?*xyz"
+  },
+  "matched_definitions": 11,
+  "matched_bytes": 148,
+  "certified_definitions": [
+    {
+      "unit": "game_helpers2",
+      "symbol": "s_sound_option_none",
+      "address": "0x8008cdf4",
+      "size": 8,
+      "status": "match"
+    },
+    {
+      "unit": "game_helpers2",
+      "symbol": "s_sound_option_music",
+      "address": "0x8008cdfc",
+      "size": 8,
+      "status": "match"
+    },
+    {
+      "unit": "game_helpers2",
+      "symbol": "s_sound_option_sfx",
+      "address": "0x8008ce04",
+      "size": 4,
+      "status": "match"
+    },
+    {
+      "unit": "menu_input_labels7",
+      "symbol": "s_sound_option_both",
+      "address": "0x80011374",
+      "size": 16,
+      "status": "match"
+    },
+    {
+      "unit": "menu_input_labels7",
+      "symbol": "s_sound_mode_label",
+      "address": "0x8008cf04",
+      "size": 8,
+      "status": "match"
+    },
+    {
+      "unit": "menu_input_labels7",
+      "symbol": "s_password_key_delete",
+      "address": "0x8008cf5c",
+      "size": 8,
+      "status": "match"
+    },
+    {
+      "unit": "menu_input_labels7",
+      "symbol": "s_password_key_accept",
+      "address": "0x8008cf64",
+      "size": 8,
+      "status": "match"
+    },
+    {
+      "unit": "menu_input_labels7",
+      "symbol": "s_password_key_quit",
+      "address": "0x8008cf6c",
+      "size": 8,
+      "status": "match"
+    },
+    {
+      "unit": "menu_input_labels7",
+      "symbol": "g_password_key_characters",
+      "address": "0x8006c288",
+      "size": 36,
+      "status": "match"
+    },
+    {
+      "unit": "menu_input7",
+      "symbol": "g_sound_mode_choices",
+      "address": "0x8006c1c0",
+      "size": 16,
+      "status": "match"
+    },
+    {
+      "unit": "menu_sound_record7",
+      "symbol": "g_sound_mode_entry",
+      "address": "0x8006c2ac",
+      "size": 28,
+      "status": "match"
+    }
+  ],
+  "pointer_sites_checked": 8,
+  "limitations": [
+    "Individual aligned compiled definitions and operand access bounds do not establish original section order or complete BSS allocation.",
+    "Sound callback and formatter full source types remain governed by existing reviewed declarations; data pointers alone do not prove complete prototypes.",
+    "Keyboard x/y/z are action selectors rather than ordinary password characters.",
+    "Relationship evidence earns no coverage independently of exact object/data byte checks."
+  ]
+}

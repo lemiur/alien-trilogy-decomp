@@ -1,0 +1,153 @@
+{
+  "gp": "0x8008cd74",
+  "sections": {
+    ".sbss": "0x8008d100"
+  },
+  "functions": {
+    "door_blocked": {
+      "address": "0x800223a0",
+      "size": 228
+    },
+    "door_defs_load": {
+      "address": "0x80022484",
+      "size": 136
+    },
+    "level_doors_load": {
+      "address": "0x8002250c",
+      "size": 52
+    },
+    "door_draw": {
+      "address": "0x80022540",
+      "size": 576
+    },
+    "door_task_static": {
+      "address": "0x80022780",
+      "size": 60
+    },
+    "door_task_hold": {
+      "address": "0x800227bc",
+      "size": 124
+    },
+    "door_task_open": {
+      "address": "0x80022838",
+      "size": 232
+    },
+    "door_task_closed": {
+      "address": "0x80022920",
+      "size": 144
+    },
+    "door_task_closing": {
+      "address": "0x800229b0",
+      "size": 360
+    },
+    "door_task_opening": {
+      "address": "0x80022b18",
+      "size": 268
+    },
+    "door_power": {
+      "address": "0x80022c24",
+      "size": 228
+    },
+    "door_power_final": {
+      "address": "0x80022d08",
+      "size": 248
+    },
+    "doors_build": {
+      "address": "0x80022e00",
+      "size": 1448
+    },
+    "door_model_faces_fixup": {
+      "address": "0x800233a8",
+      "size": 208
+    },
+    "door_models_prepare": {
+      "address": "0x80023478",
+      "size": 216
+    },
+    "doors_alloc": {
+      "address": "0x80023550",
+      "size": 48
+    },
+    "doors_init": {
+      "address": "0x80023580",
+      "size": 44
+    }
+  },
+  "symbols": {
+    "g_level_map": "0x80096060",
+    "model_draw_near": "0x8001f37c",
+    "g_visible_cell_mask": "0x8008d510",
+    "g_cheat_flags": "0x8008cda8",
+    "g_next_task": "0x8008d4f0",
+    "g_view_position": "0x8008d5b8",
+    "g_level": "0x8008d378",
+    "g_door_model_count": "0x8008d5a0",
+    "g_door_models": "0x80096040",
+    "model_draw_mid": "0x8001fb78",
+    "model_draw_far": "0x8001f78c",
+    "g_relative_position": "0x8008d5c8",
+    "g_view_matrix": "0x8009a2c4",
+    "g_matrix_work": "0x8009a2e4",
+    "g_translation": "0x8009c5a4",
+    "LoadAverageShort12": "0x800679c0",
+    "PushMatrix": "0x80066c6c",
+    "PopMatrix": "0x80066d0c",
+    "ApplyMatrix": "0x80067678",
+    "RotMatrix": "0x800684fc",
+    "MulMatrix2": "0x8006756c",
+    "SetRotMatrix": "0x8006786c",
+    "TransMatrix": "0x80067724",
+    "SetTransMatrix": "0x800678fc",
+    "s_door_activated": "0x800119ec",
+    "s_door_powered_up": "0x800119fc",
+    "hud_show_message": "0x80037b98",
+    "door_defs_load": "0x80022484",
+    "g_player": "0x80099fd4",
+    "heap_alloc": "0x80014dfc",
+    "sound_play_at": "0x8003d66c",
+    "doors_build": "0x80022e00",
+    "TaskCreate": "0x80015e4c"
+  },
+  "static_data": {
+    "g_doors": {
+      "address": "0x8008d100",
+      "size": 8,
+      "section": ".sbss"
+    },
+    "g_door_defs": {
+      "address": "0x8008d108",
+      "size": 8,
+      "section": ".sbss"
+    },
+    "g_door_count": {
+      "address": "0x8008d110",
+      "size": 8,
+      "section": ".sbss"
+    },
+    "g_door_open_ticks": {
+      "address": "0x8008d118",
+      "size": 8,
+      "section": ".sbss"
+    },
+    "g_door_rotation_0": {
+      "address": "0x8008cfac",
+      "size": 8,
+      "section": ".sdata"
+    },
+    "g_door_rotation_2": {
+      "address": "0x8008cfb4",
+      "size": 8,
+      "section": ".sdata"
+    },
+    "g_door_rotation_4": {
+      "address": "0x8008cfbc",
+      "size": 8,
+      "section": ".sdata"
+    },
+    "g_door_rotation_6": {
+      "address": "0x8008cfc4",
+      "size": 8,
+      "section": ".sdata"
+    }
+  }
+}

@@ -1,0 +1,1257 @@
+{
+  "executable_sha256": "f424660920764ac70f697b5b909a42fe259a76e60acbf5b01c6ca3ee8c8f8e98",
+  "runtime_3_3_primary_module_results": {
+    "full_match_modules": 95,
+    "relocated_exact_modules": 47,
+    "unresolved_modules": 2
+  },
+  "runtime_symbol_inventory": {
+    "module_records": 97,
+    "byte_exact_unrelocated_module_records": 48,
+    "unique_byte_exact_unrelocated_text_bytes": 5908
+  },
+  "supplemental_relocated_module_candidates": [
+    {
+      "candidate": {
+        "library": "sdk\\extracted\\Programmer Tool - Runtime Library Version 3.3 (Japan)_DTL-S2190_redump\\LZH\\PSX1020.LZH\\PSX\\LIB\\LIBCD.LIB",
+        "module": "CDROM",
+        "address": "0x80061330",
+        "size": 48,
+        "relocation_count": 5,
+        "unmasked_byte_count": 28,
+        "unmasked_fraction": 0.5833,
+        "byte_exact_object_text": false,
+        "object_text_sha256": "44ae9a1453d5de1a5077872d1c26d62d29f3692e49c621f5e7bfd4b3702313fa",
+        "discovery": "supplemental_unique_relocation_masked_text_scan",
+        "exported_symbols": [
+          "StSetRing"
+        ],
+        "imported_symbols": [
+          "StClearRing"
+        ],
+        "duplicate_module_aliases": []
+      },
+      "resolution": {
+        "status": "full_match",
+        "text_size": 48,
+        "relocation_count": 5,
+        "mismatch_count": 0,
+        "unresolved_relocations": [],
+        "imported_symbols": [
+          "StClearRing"
+        ],
+        "reconstructed_sha256": "23e2eea7781cc39ec9e55b8c5fa41e06c0bb112db9954f9a166de02f361fd45c",
+        "reference_sha256": "23e2eea7781cc39ec9e55b8c5fa41e06c0bb112db9954f9a166de02f361fd45c",
+        "hilo_pairs": [
+          {
+            "hi_offset": 8,
+            "lo_offset": 12,
+            "expression": [
+              2,
+              11
+            ],
+            "target": 2148143004,
+            "address": "0x80061338"
+          },
+          {
+            "hi_offset": 16,
+            "lo_offset": 20,
+            "expression": [
+              2,
+              16
+            ],
+            "target": 2148145364,
+            "address": "0x80061340"
+          }
+        ]
+      }
+    },
+    {
+      "candidate": {
+        "library": "sdk\\extracted\\Programmer Tool - Runtime Library Version 3.3 (Japan)_DTL-S2190_redump\\LZH\\PSX1020.LZH\\PSX\\LIB\\LIBCD.LIB",
+        "module": "C_002",
+        "address": "0x80061360",
+        "size": 96,
+        "relocation_count": 17,
+        "unmasked_byte_count": 28,
+        "unmasked_fraction": 0.2917,
+        "byte_exact_object_text": false,
+        "object_text_sha256": "b37fa2b811eecc54292e200bc174992f17d955fce5f7ba9a3a995aff6bddd331",
+        "discovery": "supplemental_unique_relocation_masked_text_scan",
+        "exported_symbols": [
+          "StClearRing"
+        ],
+        "imported_symbols": [
+          "init_ring_status"
+        ],
+        "duplicate_module_aliases": []
+      },
+      "resolution": {
+        "status": "full_match",
+        "text_size": 96,
+        "relocation_count": 17,
+        "mismatch_count": 0,
+        "unresolved_relocations": [],
+        "imported_symbols": [
+          "init_ring_status"
+        ],
+        "reconstructed_sha256": "87e090487c90d25985e63f5b1095a242a5483f29cd00baffc89f95e081c2c83c",
+        "reference_sha256": "87e090487c90d25985e63f5b1095a242a5483f29cd00baffc89f95e081c2c83c",
+        "hilo_pairs": [
+          {
+            "hi_offset": 4,
+            "lo_offset": 8,
+            "expression": [
+              2,
+              16
+            ],
+            "target": 2148145364,
+            "address": "0x80061364"
+          },
+          {
+            "hi_offset": 16,
+            "lo_offset": 20,
+            "expression": [
+              2,
+              19
+            ],
+            "target": 2148134612,
+            "address": "0x80061370"
+          },
+          {
+            "hi_offset": 24,
+            "lo_offset": 28,
+            "expression": [
+              2,
+              18
+            ],
+            "target": 2148134608,
+            "address": "0x80061378"
+          },
+          {
+            "hi_offset": 32,
+            "lo_offset": 36,
+            "expression": [
+              2,
+              17
+            ],
+            "target": 2148134604,
+            "address": "0x80061380"
+          },
+          {
+            "hi_offset": 40,
+            "lo_offset": 44,
+            "expression": [
+              2,
+              23
+            ],
+            "target": 2148125412,
+            "address": "0x80061388"
+          },
+          {
+            "hi_offset": 56,
+            "lo_offset": 60,
+            "expression": [
+              2,
+              28
+            ],
+            "target": 2148114720,
+            "address": "0x80061398"
+          },
+          {
+            "hi_offset": 64,
+            "lo_offset": 68,
+            "expression": [
+              2,
+              27
+            ],
+            "target": 2148101020,
+            "address": "0x800613a0"
+          },
+          {
+            "hi_offset": 72,
+            "lo_offset": 76,
+            "expression": [
+              2,
+              26
+            ],
+            "target": 2148101016,
+            "address": "0x800613a8"
+          }
+        ]
+      }
+    }
+  ],
+  "spu_object_definition": {
+    "library": "sdk\\extracted\\Programmer Tool - Runtime Library Version 3.3 (Japan)_DTL-S2190_redump\\LZH\\PSX1020.LZH\\PSX\\LIB\\LIBSPU.LIB",
+    "library_sha256": "8c75abf4934f30a707b389c7e5ef7a45dec7e8b60a0a1ae6dad02918ff5a2185",
+    "module": "SPU",
+    "data_section_size": 96,
+    "data_section_sha256": "b4e0bc57ab90ac30abab76eafb949ff8caf22076ed93e2c57237ace0bb7ebee5",
+    "_spu_RXX": {
+      "name": "_spu_RXX",
+      "section": ".data",
+      "offset": 8
+    },
+    "interpretation": "The archive establishes the symbol's object offset only; it does not establish the linked section base."
+  },
+  "conflict": {
+    "status": "ambiguous",
+    "evidence": [
+      {
+        "address": "0x80073afc",
+        "module": "S_GKS",
+        "type": "HI16/LO16",
+        "offsets": [
+          72,
+          76
+        ],
+        "addend": 0,
+        "operand_target": "0x80073afc"
+      },
+      {
+        "address": "0x80073afc",
+        "module": "S_GKS",
+        "type": "HI16/LO16",
+        "offsets": [
+          72,
+          76
+        ],
+        "evidence_address": "0x800590f0"
+      },
+      {
+        "address": "0x80073cf0",
+        "module": "S_SCA",
+        "type": "HI16/LO16",
+        "offsets": [
+          204,
+          208
+        ],
+        "addend": 0,
+        "operand_target": "0x80073cf0"
+      },
+      {
+        "address": "0x80073cf0",
+        "module": "S_SCA",
+        "type": "HI16/LO16",
+        "offsets": [
+          408,
+          412
+        ],
+        "addend": 0,
+        "operand_target": "0x80073cf0"
+      },
+      {
+        "address": "0x80073cf0",
+        "module": "S_SCA",
+        "type": "HI16/LO16",
+        "offsets": [
+          440,
+          444
+        ],
+        "addend": 0,
+        "operand_target": "0x80073cf0"
+      },
+      {
+        "address": "0x80073cf0",
+        "module": "S_SCA",
+        "type": "HI16/LO16",
+        "offsets": [
+          476,
+          480
+        ],
+        "addend": 0,
+        "operand_target": "0x80073cf0"
+      },
+      {
+        "address": "0x80073cf0",
+        "module": "S_SCA",
+        "type": "HI16/LO16",
+        "offsets": [
+          528,
+          532
+        ],
+        "addend": 0,
+        "operand_target": "0x80073cf0"
+      },
+      {
+        "address": "0x80073cf0",
+        "module": "S_SCA",
+        "type": "HI16/LO16",
+        "offsets": [
+          552,
+          556
+        ],
+        "addend": 0,
+        "operand_target": "0x80073cf0"
+      },
+      {
+        "address": "0x80073cf0",
+        "module": "S_SCA",
+        "type": "HI16/LO16",
+        "offsets": [
+          612,
+          616
+        ],
+        "addend": 0,
+        "operand_target": "0x80073cf0"
+      },
+      {
+        "address": "0x80073cf0",
+        "module": "S_SCA",
+        "type": "HI16/LO16",
+        "offsets": [
+          636,
+          640
+        ],
+        "addend": 0,
+        "operand_target": "0x80073cf0"
+      },
+      {
+        "address": "0x80073cf0",
+        "module": "S_SCA",
+        "type": "HI16/LO16",
+        "offsets": [
+          680,
+          684
+        ],
+        "addend": 0,
+        "operand_target": "0x80073cf0"
+      },
+      {
+        "address": "0x80073cf0",
+        "module": "S_SCA",
+        "type": "HI16/LO16",
+        "offsets": [
+          716,
+          720
+        ],
+        "addend": 0,
+        "operand_target": "0x80073cf0"
+      },
+      {
+        "address": "0x80073cf0",
+        "module": "S_SCA",
+        "type": "HI16/LO16",
+        "offsets": [
+          768,
+          772
+        ],
+        "addend": 0,
+        "operand_target": "0x80073cf0"
+      },
+      {
+        "address": "0x80073cf0",
+        "module": "S_SCA",
+        "type": "HI16/LO16",
+        "offsets": [
+          792,
+          796
+        ],
+        "addend": 0,
+        "operand_target": "0x80073cf0"
+      },
+      {
+        "address": "0x80073cf0",
+        "module": "S_SCA",
+        "type": "HI16/LO16",
+        "offsets": [
+          852,
+          856
+        ],
+        "addend": 0,
+        "operand_target": "0x80073cf0"
+      },
+      {
+        "address": "0x80073cf0",
+        "module": "S_SCA",
+        "type": "HI16/LO16",
+        "offsets": [
+          876,
+          880
+        ],
+        "addend": 0,
+        "operand_target": "0x80073cf0"
+      },
+      {
+        "address": "0x80073cf0",
+        "module": "S_SCA",
+        "type": "HI16/LO16",
+        "offsets": [
+          204,
+          208
+        ],
+        "evidence_address": "0x8005c068"
+      }
+    ],
+    "certification_decision": "unresolved; no per-module override or operand-selected binding"
+  },
+  "spu_rxx_archive_data_cross_check": {
+    "object_definition": {
+      "name": "_spu_RXX",
+      "section": ".data",
+      "offset": 8
+    },
+    "object_data_sha256": "b4e0bc57ab90ac30abab76eafb949ff8caf22076ed93e2c57237ace0bb7ebee5",
+    "candidate_windows": [
+      {
+        "inferred_symbol_address": "0x80073afc",
+        "implied_spu_data_base": "0x80073af4",
+        "archive_data_plus_8": "001c801f",
+        "reference_word_at_symbol": "001c801f",
+        "word_matches_archive_data_plus_8": true,
+        "identical_bytes_in_full_spu_data_window": 10,
+        "full_spu_data_window_size": 96,
+        "full_spu_data_window_matches": false
+      },
+      {
+        "inferred_symbol_address": "0x80073cf0",
+        "implied_spu_data_base": "0x80073ce8",
+        "archive_data_plus_8": "001c801f",
+        "reference_word_at_symbol": "001c801f",
+        "word_matches_archive_data_plus_8": true,
+        "identical_bytes_in_full_spu_data_window": 41,
+        "full_spu_data_window_size": 96,
+        "full_spu_data_window_matches": false
+      }
+    ],
+    "conclusion": "Both operand-implied addresses contain the same archive .data+8 word, 0x1f801c00. Neither surrounding 96-byte window matches the full SPU .data section, so object contents do not independently select a linked base."
+  },
+  "spu_rxx_layout": {
+    "placed_spu_data_sections": {
+      "SPU": {
+        "data_size": 96,
+        "bound_symbols": [
+          "_spu_inTransfer",
+          "_spu_mem_mode_plus",
+          "_spu_transferCallback"
+        ],
+        "implied_bases": [
+          "0x80073c84",
+          "0x80073c8c"
+        ]
+      },
+      "S_M": {
+        "data_size": 12,
+        "bound_symbols": [
+          "_spu_AllocBlockNum",
+          "_spu_AllocLastNum",
+          "_spu_memList"
+        ],
+        "implied_bases": [
+          "0x80073ce4"
+        ]
+      },
+      "S_INI": {
+        "data_size": 1136,
+        "bound_symbols": [
+          "_spu_keystat",
+          "_spu_rev_offsetaddr",
+          "_spu_rev_reserve_wa"
+        ],
+        "implied_bases": [
+          "0x80073cf4"
+        ]
+      }
+    },
+    "operand_checks": [
+      {
+        "operand": "0x80073afc",
+        "implied_spu_data": [
+          "0x80073af4",
+          "0x80073b54"
+        ],
+        "overlaps_placed_data_of": []
+      },
+      {
+        "operand": "0x80073cf0",
+        "implied_spu_data": [
+          "0x80073ce8",
+          "0x80073d48"
+        ],
+        "overlaps_placed_data_of": [
+          "S_M",
+          "S_INI"
+        ]
+      }
+    ],
+    "words_holding_0x1f801c00": [
+      {
+        "address": "0x80073af8",
+        "reference_count": 13,
+        "referencing_text": {
+          "unidentified text": [
+            "0x80058a60",
+            "0x80058ff0",
+            13
+          ]
+        }
+      },
+      {
+        "address": "0x80073afc",
+        "reference_count": 1,
+        "referencing_text": {
+          "S_GKS (unresolved)": [
+            "0x800590f4",
+            "0x800590f4",
+            1
+          ]
+        }
+      },
+      {
+        "address": "0x80073c84",
+        "reference_count": 3,
+        "referencing_text": {
+          "unidentified text": [
+            "0x80059764",
+            "0x800597c4",
+            3
+          ]
+        }
+      },
+      {
+        "address": "0x80073c90",
+        "reference_count": 108,
+        "referencing_text": {
+          "unidentified text": [
+            "0x80059988",
+            "0x8005bf34",
+            108
+          ]
+        }
+      },
+      {
+        "address": "0x80073cf0",
+        "reference_count": 14,
+        "referencing_text": {
+          "S_SCA (unresolved)": [
+            "0x8005c06c",
+            "0x8005c30c",
+            14
+          ]
+        }
+      },
+      {
+        "address": "0x800747d0",
+        "reference_count": 2,
+        "referencing_text": {
+          "unidentified text": [
+            "0x8005ed70",
+            "0x8005eda4",
+            2
+          ]
+        }
+      }
+    ],
+    "verdict": "unresolved",
+    "conclusion": "Neither operand is the 3.3 SPU module's _spu_RXX. 0x80073cf0 is a lone word between S_M .data (0x80073ce4..0x80073cf0) and S_INI .data (0x80073cf4..), both placed by certified relocations; a 96-byte SPU .data at 0x80073ce8 would overlap both. The bindings that certified S_R, S_W and S_M_* resolved for other SPU .data symbols imply two different SPU .data bases (0x80073c84 and 0x80073c8c), so the linked SPU module is not the 3.3 object either. 0x80073afc sits beside 0x80073af8, the word used by the unidentified SpuSetVoiceAttr text before S_GKS, and the main SPU text uses 0x80073c90 instead. Each word appears to be private to the module that uses it, in text order. The 3.3 objects import one global _spu_RXX, so no single link of these archive members reproduces both modules. Choosing either binding would be operand-selected, so both stay uncertified until a library build with module-local SPU base pointers is identified."
+  },
+  "spu_variant_build": {
+    "libraries_scanned": 16,
+    "regions": {
+      "SpuSetVoiceAttr text": {
+        "range": [
+          "0x80058980",
+          "0x800590a8"
+        ],
+        "region_words": 458,
+        "best_by_module": [
+          {
+            "library": "sdk\\extracted\\Programmer Tool - Runtime Library Version 3.3 (Japan)_DTL-S2190_redump\\LZH\\PSX1020.LZH\\PSX\\LIB\\LIBSPU.LIB",
+            "library_sha256": "8c75abf4934f30a707b389c7e5ef7a45dec7e8b60a0a1ae6dad02918ff5a2185",
+            "module": "S_SVA",
+            "object_words": 420,
+            "matched_skeleton_words": 416,
+            "object_fraction": 0.9905
+          }
+        ]
+      },
+      "main SPU text": {
+        "range": [
+          "0x80059984",
+          "0x8005bf54"
+        ],
+        "region_words": 2420,
+        "best_by_module": [
+          {
+            "library": "sdk\\extracted\\Programmer Tools Runtime Library 3.5 CD Release 1.7\\Image.bin\\OLD_LIBS\\LIB34.ZIP__unz\\LIB\\LIBSPU.LIB",
+            "library_sha256": "6f38d2e6e6c752564b21aa42a0ea975c0c697f9ddb3d702688bbcbc29521dde3",
+            "module": "SPU",
+            "object_words": 1118,
+            "matched_skeleton_words": 1005,
+            "object_fraction": 0.8989
+          },
+          {
+            "library": "sdk\\extracted\\Programmer Tool - Runtime Library Version 3.3 (Japan)_DTL-S2190_redump\\LZH\\PSX1020.LZH\\PSX\\LIB\\LIBSPU.LIB",
+            "library_sha256": "8c75abf4934f30a707b389c7e5ef7a45dec7e8b60a0a1ae6dad02918ff5a2185",
+            "module": "SPU_IO",
+            "object_words": 493,
+            "matched_skeleton_words": 480,
+            "object_fraction": 0.9736
+          },
+          {
+            "library": "sdk\\extracted\\Programmer Tool - Runtime Library Version 3.3 (Japan)_DTL-S2190_redump\\LZH\\PSX1020.LZH\\PSX\\LIB\\LIBSPU.LIB",
+            "library_sha256": "8c75abf4934f30a707b389c7e5ef7a45dec7e8b60a0a1ae6dad02918ff5a2185",
+            "module": "S_INI",
+            "object_words": 83,
+            "matched_skeleton_words": 61,
+            "object_fraction": 0.7349
+          },
+          {
+            "library": "sdk\\extracted\\[SONY].PlayStation Programer Tool\\PSX\\LIB\\LIBSPU.LIB",
+            "library_sha256": "41c47817707f0207390e7ca5c9750aca1c9c543981a5ad5ed717e7c92e278bd5",
+            "module": "S_SK",
+            "object_words": 32,
+            "matched_skeleton_words": 30,
+            "object_fraction": 0.9375
+          },
+          {
+            "library": "sdk\\extracted\\[SONY].PlayStation Programer Tool\\PSX\\LIB\\LIBSPU.LIB",
+            "library_sha256": "41c47817707f0207390e7ca5c9750aca1c9c543981a5ad5ed717e7c92e278bd5",
+            "module": "S_SR",
+            "object_words": 43,
+            "matched_skeleton_words": 39,
+            "object_fraction": 0.907
+          },
+          {
+            "library": "sdk\\extracted\\[SONY].PlayStation Programer Tool\\PSX\\LIB\\LIBSPU.LIB",
+            "library_sha256": "41c47817707f0207390e7ca5c9750aca1c9c543981a5ad5ed717e7c92e278bd5",
+            "module": "S_SRD",
+            "object_words": 32,
+            "matched_skeleton_words": 31,
+            "object_fraction": 0.9688
+          }
+        ]
+      }
+    },
+    "conclusion": "The SpuSetVoiceAttr text at 0x80058980 is Runtime 3.3 S_SVA source (416 of 420 skeleton words) built differently: the two _spu_FsetRXXa calls are expanded inline (divide by _spu_mem_mode_unit at 0x80073cb4, shift by _spu_mem_mode_plus at 0x80073cb8, store through the private base word 0x80073af8), and the SPU .data layout puts mem_mode_unit before mem_mode_plus, unlike 3.3 (plus, then unit) and 3.6 and later (plus at +40, unit at +44 after a moved _spu_RXX). The main SPU text is the same family (SPU_IO 97% and SPU 90% of their skeleton words, best against 3.3 and LIB34). No PsyQ-format LIBSPU.LIB in the SDK tree (all 16 distinct archives, including LIB34 and the 3.5/3.6/3.7 OLD_LIBS) has these bytes. The COFF .A archives (CodeWarrior and the snd403/snd404 patches) are a different compiler and are not parsed. The build is not available, so nothing here can be certified."
+  },
+  "archive_variants": {
+    "3.0": {
+      "library": "sdk\\extracted\\Programmer Tool - Runtime Library Version 3.0 (Japan) (En,Ja)_DTL-S2180_redump\\LZH\\LZH_PSX0314.LZH\\PSX\\LIB\\LIBSPU.LIB",
+      "library_sha256": "41c47817707f0207390e7ca5c9750aca1c9c543981a5ad5ed717e7c92e278bd5",
+      "modules": {
+        "S_GKS": {
+          "present": true,
+          "text_size": 148,
+          "text_sha256": "65e688f1a14f42445e929dc8f7c771fabd1ad0a4e8c500210152e8a402c3dae3",
+          "relocation_count": 7,
+          "unmasked_equal_at_3_3_candidate": false,
+          "imports": [
+            "_spu_keystat"
+          ],
+          "definitions": []
+        },
+        "S_SCA": {
+          "present": true,
+          "text_size": 912,
+          "text_sha256": "ab283fdfa90caea2a3e06dbfc2d63dfffe589dabc0cb6df6f929e33025fff34e",
+          "relocation_count": 52,
+          "unmasked_equal_at_3_3_candidate": false,
+          "imports": [],
+          "definitions": []
+        }
+      }
+    },
+    "3.3": {
+      "library": "sdk\\extracted\\Programmer Tool - Runtime Library Version 3.3 (Japan)_DTL-S2190_redump\\LZH\\PSX1020.LZH\\PSX\\LIB\\LIBSPU.LIB",
+      "library_sha256": "8c75abf4934f30a707b389c7e5ef7a45dec7e8b60a0a1ae6dad02918ff5a2185",
+      "modules": {
+        "S_GKS": {
+          "present": true,
+          "text_size": 148,
+          "text_sha256": "a7d021f4b34fdfadc3e295d1fca8e6a64d92b9b0b8a489c54422b7cc5da59720",
+          "relocation_count": 7,
+          "unmasked_equal_at_3_3_candidate": true,
+          "imports": [
+            "_spu_RXX",
+            "_spu_keystat"
+          ],
+          "definitions": []
+        },
+        "S_SCA": {
+          "present": true,
+          "text_size": 916,
+          "text_sha256": "31f70902c03ab776b2e526cf762f2f0ff7f65000bd744d13318047ed38ea2987",
+          "relocation_count": 52,
+          "unmasked_equal_at_3_3_candidate": true,
+          "imports": [
+            "_spu_RXX"
+          ],
+          "definitions": []
+        }
+      }
+    },
+    "3.5": {
+      "library": "sdk\\extracted\\Programmer Tool - Runtime Library Version 3.5 (Japan) (En,Ja)_DTL-S2300_redump\\LZH\\PSX35.LZH\\PSX\\LIB\\LIBSPU.LIB",
+      "library_sha256": "7417da7726cb7df9c5beb57cbfa2e9cfc5919343cec525899296159265b3149a",
+      "modules": {
+        "S_GKS": {
+          "present": true,
+          "text_size": 148,
+          "text_sha256": "a7d021f4b34fdfadc3e295d1fca8e6a64d92b9b0b8a489c54422b7cc5da59720",
+          "relocation_count": 7,
+          "unmasked_equal_at_3_3_candidate": true,
+          "imports": [
+            "_spu_RXX",
+            "_spu_keystat"
+          ],
+          "definitions": []
+        },
+        "S_SCA": {
+          "present": true,
+          "text_size": 916,
+          "text_sha256": "ab9268c19babfa49446d96fea6679f11991c0c8dc2afe70e6ac0bbc97ba6dec5",
+          "relocation_count": 52,
+          "unmasked_equal_at_3_3_candidate": false,
+          "imports": [
+            "_spu_RXX"
+          ],
+          "definitions": []
+        }
+      }
+    }
+  },
+  "supplemental_small_exact_module_matches": [
+    {
+      "library": "sdk\\extracted\\Programmer Tool - Runtime Library Version 3.3 (Japan)_DTL-S2190_redump\\LZH\\PSX1020.LZH\\PSX\\LIB\\LIBAPI.LIB",
+      "module": "A36",
+      "address": "0x8005d0c0",
+      "size": 16,
+      "relocation_count": 0,
+      "byte_exact_object_text": true,
+      "object_text_sha256": "505f018057cab576fce3e80a248467f5c8ad5e14c7d2289869e453ad092ef931",
+      "reference_text_sha256": "505f018057cab576fce3e80a248467f5c8ad5e14c7d2289869e453ad092ef931",
+      "discovery": "supplemental_unique_full_text_scan",
+      "exported_symbols": [
+        "EnterCriticalSection"
+      ],
+      "imported_symbols": [],
+      "duplicate_module_aliases": []
+    },
+    {
+      "library": "sdk\\extracted\\Programmer Tool - Runtime Library Version 3.3 (Japan)_DTL-S2190_redump\\LZH\\PSX1020.LZH\\PSX\\LIB\\LIBAPI.LIB",
+      "module": "A54",
+      "address": "0x8005d0d0",
+      "size": 16,
+      "relocation_count": 0,
+      "byte_exact_object_text": true,
+      "object_text_sha256": "f0a4980cb5e50a9d5c91635595396f286bb4e50ea98b25b5272c8cee640fd6b1",
+      "reference_text_sha256": "f0a4980cb5e50a9d5c91635595396f286bb4e50ea98b25b5272c8cee640fd6b1",
+      "discovery": "supplemental_unique_full_text_scan",
+      "exported_symbols": [
+        "close"
+      ],
+      "imported_symbols": [],
+      "duplicate_module_aliases": []
+    },
+    {
+      "library": "sdk\\extracted\\Programmer Tool - Runtime Library Version 3.3 (Japan)_DTL-S2190_redump\\LZH\\PSX1020.LZH\\PSX\\LIB\\LIBAPI.LIB",
+      "module": "A53",
+      "address": "0x8005d0e0",
+      "size": 16,
+      "relocation_count": 0,
+      "byte_exact_object_text": true,
+      "object_text_sha256": "5c075aa8a7ebe5be8018a52058b763faffa0d2351ecfbaa38289a4676649642d",
+      "reference_text_sha256": "5c075aa8a7ebe5be8018a52058b763faffa0d2351ecfbaa38289a4676649642d",
+      "discovery": "supplemental_unique_full_text_scan",
+      "exported_symbols": [
+        "write"
+      ],
+      "imported_symbols": [],
+      "duplicate_module_aliases": []
+    },
+    {
+      "library": "sdk\\extracted\\Programmer Tool - Runtime Library Version 3.3 (Japan)_DTL-S2190_redump\\LZH\\PSX1020.LZH\\PSX\\LIB\\LIBAPI.LIB",
+      "module": "A12",
+      "address": "0x8005d0f0",
+      "size": 16,
+      "relocation_count": 0,
+      "byte_exact_object_text": true,
+      "object_text_sha256": "9aa900f79f4f3f07620ef5ea343fd0cde1e29aed0a802b106c3efed374300412",
+      "reference_text_sha256": "9aa900f79f4f3f07620ef5ea343fd0cde1e29aed0a802b106c3efed374300412",
+      "discovery": "supplemental_unique_full_text_scan",
+      "exported_symbols": [
+        "EnableEvent"
+      ],
+      "imported_symbols": [],
+      "duplicate_module_aliases": []
+    },
+    {
+      "library": "sdk\\extracted\\Programmer Tool - Runtime Library Version 3.3 (Japan)_DTL-S2190_redump\\LZH\\PSX1020.LZH\\PSX\\LIB\\LIBAPI.LIB",
+      "module": "A69",
+      "address": "0x8005d100",
+      "size": 16,
+      "relocation_count": 0,
+      "byte_exact_object_text": true,
+      "object_text_sha256": "b5bbae57e8f339e1e64e67c6b84472719960eb9ce57473231627ad3caf701425",
+      "reference_text_sha256": "b5bbae57e8f339e1e64e67c6b84472719960eb9ce57473231627ad3caf701425",
+      "discovery": "supplemental_unique_full_text_scan",
+      "exported_symbols": [
+        "delete"
+      ],
+      "imported_symbols": [],
+      "duplicate_module_aliases": []
+    },
+    {
+      "library": "sdk\\extracted\\Programmer Tool - Runtime Library Version 3.3 (Japan)_DTL-S2190_redump\\LZH\\PSX1020.LZH\\PSX\\LIB\\LIBAPI.LIB",
+      "module": "A65",
+      "address": "0x8005d110",
+      "size": 16,
+      "relocation_count": 0,
+      "byte_exact_object_text": true,
+      "object_text_sha256": "94b94ed6bb38374d1aed6e97476670c0cd06befbe84350abc34f3bbd2e73d498",
+      "reference_text_sha256": "94b94ed6bb38374d1aed6e97476670c0cd06befbe84350abc34f3bbd2e73d498",
+      "discovery": "supplemental_unique_full_text_scan",
+      "exported_symbols": [
+        "format"
+      ],
+      "imported_symbols": [],
+      "duplicate_module_aliases": []
+    },
+    {
+      "library": "sdk\\extracted\\Programmer Tool - Runtime Library Version 3.3 (Japan)_DTL-S2190_redump\\LZH\\PSX1020.LZH\\PSX\\LIB\\LIBAPI.LIB",
+      "module": "C57",
+      "address": "0x8005d290",
+      "size": 16,
+      "relocation_count": 0,
+      "byte_exact_object_text": true,
+      "object_text_sha256": "b2a341cca7698a1f246a9a4f43bed1f46d59a771f52cdb1602bbbbbb5ebadb5b",
+      "reference_text_sha256": "b2a341cca7698a1f246a9a4f43bed1f46d59a771f52cdb1602bbbbbb5ebadb5b",
+      "discovery": "supplemental_unique_full_text_scan",
+      "exported_symbols": [
+        "InitHeap"
+      ],
+      "imported_symbols": [],
+      "duplicate_module_aliases": []
+    },
+    {
+      "library": "sdk\\extracted\\Programmer Tool - Runtime Library Version 3.3 (Japan)_DTL-S2190_redump\\LZH\\PSX1020.LZH\\PSX\\LIB\\LIBAPI.LIB",
+      "module": "A67",
+      "address": "0x8005d2a0",
+      "size": 16,
+      "relocation_count": 0,
+      "byte_exact_object_text": true,
+      "object_text_sha256": "77f77a03b65476edc6855674389c393518987a52cc91c142d071cb4a8a977dd4",
+      "reference_text_sha256": "77f77a03b65476edc6855674389c393518987a52cc91c142d071cb4a8a977dd4",
+      "discovery": "supplemental_unique_full_text_scan",
+      "exported_symbols": [
+        "nextfile"
+      ],
+      "imported_symbols": [],
+      "duplicate_module_aliases": []
+    },
+    {
+      "library": "sdk\\extracted\\Programmer Tool - Runtime Library Version 3.3 (Japan)_DTL-S2190_redump\\LZH\\PSX1020.LZH\\PSX\\LIB\\LIBAPI.LIB",
+      "module": "A08",
+      "address": "0x8005d2b0",
+      "size": 16,
+      "relocation_count": 0,
+      "byte_exact_object_text": true,
+      "object_text_sha256": "aa2854c7ca7498981559c2cfb0cf50c38dc043d106fa21e86877f5e27aa9139e",
+      "reference_text_sha256": "aa2854c7ca7498981559c2cfb0cf50c38dc043d106fa21e86877f5e27aa9139e",
+      "discovery": "supplemental_unique_full_text_scan",
+      "exported_symbols": [
+        "OpenEvent"
+      ],
+      "imported_symbols": [],
+      "duplicate_module_aliases": []
+    },
+    {
+      "library": "sdk\\extracted\\Programmer Tool - Runtime Library Version 3.3 (Japan)_DTL-S2190_redump\\LZH\\PSX1020.LZH\\PSX\\LIB\\LIBAPI.LIB",
+      "module": "A52",
+      "address": "0x8005d2c0",
+      "size": 16,
+      "relocation_count": 0,
+      "byte_exact_object_text": true,
+      "object_text_sha256": "61d9bba43e1510d318c216df826774f814a2d50b789131971d8c44e7ffcc712c",
+      "reference_text_sha256": "61d9bba43e1510d318c216df826774f814a2d50b789131971d8c44e7ffcc712c",
+      "discovery": "supplemental_unique_full_text_scan",
+      "exported_symbols": [
+        "read"
+      ],
+      "imported_symbols": [],
+      "duplicate_module_aliases": []
+    },
+    {
+      "library": "sdk\\extracted\\Programmer Tool - Runtime Library Version 3.3 (Japan)_DTL-S2190_redump\\LZH\\PSX1020.LZH\\PSX\\LIB\\LIBAPI.LIB",
+      "module": "A11",
+      "address": "0x8005d2d0",
+      "size": 16,
+      "relocation_count": 0,
+      "byte_exact_object_text": true,
+      "object_text_sha256": "310222cdbb94b7d9048f6ddb2026f00bb8c20b4a9745d4c20b85f4f421dbcad6",
+      "reference_text_sha256": "310222cdbb94b7d9048f6ddb2026f00bb8c20b4a9745d4c20b85f4f421dbcad6",
+      "discovery": "supplemental_unique_full_text_scan",
+      "exported_symbols": [
+        "TestEvent"
+      ],
+      "imported_symbols": [],
+      "duplicate_module_aliases": []
+    },
+    {
+      "library": "sdk\\extracted\\Programmer Tool - Runtime Library Version 3.3 (Japan)_DTL-S2190_redump\\LZH\\PSX1020.LZH\\PSX\\LIB\\LIBAPI.LIB",
+      "module": "A37",
+      "address": "0x8005d2e0",
+      "size": 16,
+      "relocation_count": 0,
+      "byte_exact_object_text": true,
+      "object_text_sha256": "6e003f701ca622421a42bea9b13f252e5325ecafcb0e85216766a154e060e578",
+      "reference_text_sha256": "6e003f701ca622421a42bea9b13f252e5325ecafcb0e85216766a154e060e578",
+      "discovery": "supplemental_unique_full_text_scan",
+      "exported_symbols": [
+        "ExitCriticalSection"
+      ],
+      "imported_symbols": [],
+      "duplicate_module_aliases": []
+    },
+    {
+      "library": "sdk\\extracted\\Programmer Tool - Runtime Library Version 3.3 (Japan)_DTL-S2190_redump\\LZH\\PSX1020.LZH\\PSX\\LIB\\LIBAPI.LIB",
+      "module": "A50",
+      "address": "0x8005d2f0",
+      "size": 16,
+      "relocation_count": 0,
+      "byte_exact_object_text": true,
+      "object_text_sha256": "e964e050b512fb720d64bc508f2fe84c5b1dfd2ca78ab0cac5c15838252d466b",
+      "reference_text_sha256": "e964e050b512fb720d64bc508f2fe84c5b1dfd2ca78ab0cac5c15838252d466b",
+      "discovery": "supplemental_unique_full_text_scan",
+      "exported_symbols": [
+        "open"
+      ],
+      "imported_symbols": [],
+      "duplicate_module_aliases": []
+    },
+    {
+      "library": "sdk\\extracted\\Programmer Tool - Runtime Library Version 3.3 (Japan)_DTL-S2190_redump\\LZH\\PSX1020.LZH\\PSX\\LIB\\LIBAPI.LIB",
+      "module": "A66",
+      "address": "0x8005d300",
+      "size": 16,
+      "relocation_count": 0,
+      "byte_exact_object_text": true,
+      "object_text_sha256": "6536f490307d3083867f9d89a5ff355072695e06e95a529a14e4c13d2ffac8ae",
+      "reference_text_sha256": "6536f490307d3083867f9d89a5ff355072695e06e95a529a14e4c13d2ffac8ae",
+      "discovery": "supplemental_unique_full_text_scan",
+      "exported_symbols": [
+        "firstfile"
+      ],
+      "imported_symbols": [],
+      "duplicate_module_aliases": []
+    },
+    {
+      "library": "sdk\\extracted\\Programmer Tool - Runtime Library Version 3.3 (Japan)_DTL-S2190_redump\\LZH\\PSX1020.LZH\\PSX\\LIB\\LIBAPI.LIB",
+      "module": "A07",
+      "address": "0x8005fa54",
+      "size": 16,
+      "relocation_count": 0,
+      "byte_exact_object_text": true,
+      "object_text_sha256": "1649362cdd2b6d2dbb17c6e881b19a2a2b4da5254ba5764cc1b9db5aee1677df",
+      "reference_text_sha256": "1649362cdd2b6d2dbb17c6e881b19a2a2b4da5254ba5764cc1b9db5aee1677df",
+      "discovery": "supplemental_unique_full_text_scan",
+      "exported_symbols": [
+        "DeliverEvent"
+      ],
+      "imported_symbols": [],
+      "duplicate_module_aliases": []
+    },
+    {
+      "library": "sdk\\extracted\\Programmer Tool - Runtime Library Version 3.3 (Japan)_DTL-S2190_redump\\LZH\\PSX1020.LZH\\PSX\\LIB\\LIBAPI.LIB",
+      "module": "A22",
+      "address": "0x80061668",
+      "size": 16,
+      "relocation_count": 0,
+      "byte_exact_object_text": true,
+      "object_text_sha256": "f01dcf59b84d86bb81db5485d2b22cc3b4109756b42b0b05d4945f56440fbda2",
+      "reference_text_sha256": "f01dcf59b84d86bb81db5485d2b22cc3b4109756b42b0b05d4945f56440fbda2",
+      "discovery": "supplemental_unique_full_text_scan",
+      "exported_symbols": [
+        "PAD_dr"
+      ],
+      "imported_symbols": [],
+      "duplicate_module_aliases": []
+    },
+    {
+      "library": "sdk\\extracted\\Programmer Tool - Runtime Library Version 3.3 (Japan)_DTL-S2190_redump\\LZH\\PSX1020.LZH\\PSX\\LIB\\LIBAPI.LIB",
+      "module": "A20",
+      "address": "0x80061678",
+      "size": 16,
+      "relocation_count": 0,
+      "byte_exact_object_text": true,
+      "object_text_sha256": "c2935ba9287355ffcb55c140e7a98b2f069b9d7c4e17c025cbe3c54ed4e350c6",
+      "reference_text_sha256": "c2935ba9287355ffcb55c140e7a98b2f069b9d7c4e17c025cbe3c54ed4e350c6",
+      "discovery": "supplemental_unique_full_text_scan",
+      "exported_symbols": [
+        "StopPAD"
+      ],
+      "imported_symbols": [],
+      "duplicate_module_aliases": []
+    },
+    {
+      "library": "sdk\\extracted\\Programmer Tool - Runtime Library Version 3.3 (Japan)_DTL-S2190_redump\\LZH\\PSX1020.LZH\\PSX\\LIB\\LIBAPI.LIB",
+      "module": "A21",
+      "address": "0x80061688",
+      "size": 16,
+      "relocation_count": 0,
+      "byte_exact_object_text": true,
+      "object_text_sha256": "deee6fa2d293c6f5babd06f8a6a644a8de3ed1ad48bc871f7007bafcc7ce970b",
+      "reference_text_sha256": "deee6fa2d293c6f5babd06f8a6a644a8de3ed1ad48bc871f7007bafcc7ce970b",
+      "discovery": "supplemental_unique_full_text_scan",
+      "exported_symbols": [
+        "PAD_init"
+      ],
+      "imported_symbols": [],
+      "duplicate_module_aliases": []
+    },
+    {
+      "library": "sdk\\extracted\\Programmer Tool - Runtime Library Version 3.3 (Japan)_DTL-S2190_redump\\LZH\\PSX1020.LZH\\PSX\\LIB\\LIBAPI.LIB",
+      "module": "A91",
+      "address": "0x80061698",
+      "size": 16,
+      "relocation_count": 0,
+      "byte_exact_object_text": true,
+      "object_text_sha256": "1e5b87bfede28345cb9701b76974698b353783fd345c8bdb1172d727b4ee64b9",
+      "reference_text_sha256": "1e5b87bfede28345cb9701b76974698b353783fd345c8bdb1172d727b4ee64b9",
+      "discovery": "supplemental_unique_full_text_scan",
+      "exported_symbols": [
+        "ChangeClearPAD"
+      ],
+      "imported_symbols": [],
+      "duplicate_module_aliases": []
+    },
+    {
+      "library": "sdk\\extracted\\Programmer Tool - Runtime Library Version 3.3 (Japan)_DTL-S2190_redump\\LZH\\PSX1020.LZH\\PSX\\LIB\\LIBAPI.LIB",
+      "module": "A25",
+      "address": "0x80061de4",
+      "size": 16,
+      "relocation_count": 0,
+      "byte_exact_object_text": true,
+      "object_text_sha256": "71bc7d71dd0d687c9d2831da8cfefac289bd4e79b870095ce0e51d39f49f64e8",
+      "reference_text_sha256": "71bc7d71dd0d687c9d2831da8cfefac289bd4e79b870095ce0e51d39f49f64e8",
+      "discovery": "supplemental_unique_full_text_scan",
+      "exported_symbols": [
+        "HookEntryInt"
+      ],
+      "imported_symbols": [],
+      "duplicate_module_aliases": []
+    },
+    {
+      "library": "sdk\\extracted\\Programmer Tool - Runtime Library Version 3.3 (Japan)_DTL-S2190_redump\\LZH\\PSX1020.LZH\\PSX\\LIB\\LIBAPI.LIB",
+      "module": "A24",
+      "address": "0x80061df4",
+      "size": 16,
+      "relocation_count": 0,
+      "byte_exact_object_text": true,
+      "object_text_sha256": "d2bc95f90007b5994f42dca64682330a28203d4e9b0891baf58a4afa5cab7030",
+      "reference_text_sha256": "d2bc95f90007b5994f42dca64682330a28203d4e9b0891baf58a4afa5cab7030",
+      "discovery": "supplemental_unique_full_text_scan",
+      "exported_symbols": [
+        "ResetEntryInt"
+      ],
+      "imported_symbols": [],
+      "duplicate_module_aliases": []
+    },
+    {
+      "library": "sdk\\extracted\\Programmer Tool - Runtime Library Version 3.3 (Japan)_DTL-S2190_redump\\LZH\\PSX1020.LZH\\PSX\\LIB\\LIBAPI.LIB",
+      "module": "L10",
+      "address": "0x80061e04",
+      "size": 16,
+      "relocation_count": 0,
+      "byte_exact_object_text": true,
+      "object_text_sha256": "b66aac87180e52cdbfb2ad4683f941695a8f429d21e312d4ec840810df4a54cf",
+      "reference_text_sha256": "b66aac87180e52cdbfb2ad4683f941695a8f429d21e312d4ec840810df4a54cf",
+      "discovery": "supplemental_unique_full_text_scan",
+      "exported_symbols": [
+        "ChangeClearRCnt"
+      ],
+      "imported_symbols": [],
+      "duplicate_module_aliases": []
+    },
+    {
+      "library": "sdk\\extracted\\Programmer Tool - Runtime Library Version 3.3 (Japan)_DTL-S2190_redump\\LZH\\PSX1020.LZH\\PSX\\LIB\\LIBAPI.LIB",
+      "module": "C114",
+      "address": "0x80061e14",
+      "size": 16,
+      "relocation_count": 0,
+      "byte_exact_object_text": true,
+      "object_text_sha256": "d3ead7216fc5019853f7f3e1d39843231b1406ff25116feb158dbfe402789d2d",
+      "reference_text_sha256": "d3ead7216fc5019853f7f3e1d39843231b1406ff25116feb158dbfe402789d2d",
+      "discovery": "supplemental_unique_full_text_scan",
+      "exported_symbols": [
+        "_96_remove"
+      ],
+      "imported_symbols": [],
+      "duplicate_module_aliases": []
+    },
+    {
+      "library": "sdk\\extracted\\Programmer Tool - Runtime Library Version 3.3 (Japan)_DTL-S2190_redump\\LZH\\PSX1020.LZH\\PSX\\LIB\\LIBAPI.LIB",
+      "module": "A23",
+      "address": "0x80061e24",
+      "size": 16,
+      "relocation_count": 0,
+      "byte_exact_object_text": true,
+      "object_text_sha256": "f0cdeab31ae4c93b6f67e6afcbb1a7d89848759b52868dfd6814889063f58395",
+      "reference_text_sha256": "f0cdeab31ae4c93b6f67e6afcbb1a7d89848759b52868dfd6814889063f58395",
+      "discovery": "supplemental_unique_full_text_scan",
+      "exported_symbols": [
+        "ReturnFromException"
+      ],
+      "imported_symbols": [],
+      "duplicate_module_aliases": []
+    },
+    {
+      "library": "sdk\\extracted\\Programmer Tool - Runtime Library Version 3.3 (Japan)_DTL-S2190_redump\\LZH\\PSX1020.LZH\\PSX\\LIB\\LIBAPI.LIB",
+      "module": "C73",
+      "address": "0x80064fe8",
+      "size": 16,
+      "relocation_count": 0,
+      "byte_exact_object_text": true,
+      "object_text_sha256": "7c2333e325be8e693e09cde0816e776348404ce7e883e17cdc429e157b2f3372",
+      "reference_text_sha256": "7c2333e325be8e693e09cde0816e776348404ce7e883e17cdc429e157b2f3372",
+      "discovery": "supplemental_unique_full_text_scan",
+      "exported_symbols": [
+        "GPU_cw"
+      ],
+      "imported_symbols": [],
+      "duplicate_module_aliases": []
+    },
+    {
+      "library": "sdk\\extracted\\Programmer Tool - Runtime Library Version 3.3 (Japan)_DTL-S2190_redump\\LZH\\PSX1020.LZH\\PSX\\LIB\\LIBAPI.LIB",
+      "module": "C68",
+      "address": "0x800680d0",
+      "size": 16,
+      "relocation_count": 0,
+      "byte_exact_object_text": true,
+      "object_text_sha256": "bf6f4999a7f56522dbf2626c937da16585d7aa48c33a939b8d8bbfa4c04ed213",
+      "reference_text_sha256": "bf6f4999a7f56522dbf2626c937da16585d7aa48c33a939b8d8bbfa4c04ed213",
+      "discovery": "supplemental_unique_full_text_scan",
+      "exported_symbols": [
+        "FlushCache"
+      ],
+      "imported_symbols": [],
+      "duplicate_module_aliases": []
+    },
+    {
+      "library": "sdk\\extracted\\Programmer Tool - Runtime Library Version 3.3 (Japan)_DTL-S2190_redump\\LZH\\PSX1020.LZH\\PSX\\LIB\\LIBC2.LIB",
+      "module": "MEMSET",
+      "address": "0x80069778",
+      "size": 44,
+      "relocation_count": 0,
+      "byte_exact_object_text": true,
+      "object_text_sha256": "e04daae25e11c9daf3e473004392c5a2eb79da72e33948c77d23d9deadc8157b",
+      "reference_text_sha256": "e04daae25e11c9daf3e473004392c5a2eb79da72e33948c77d23d9deadc8157b",
+      "discovery": "supplemental_unique_full_text_scan",
+      "exported_symbols": [
+        "memset"
+      ],
+      "imported_symbols": [],
+      "duplicate_module_aliases": []
+    },
+    {
+      "library": "sdk\\extracted\\Programmer Tool - Runtime Library Version 3.3 (Japan)_DTL-S2190_redump\\LZH\\PSX1020.LZH\\PSX\\LIB\\LIBC2.LIB",
+      "module": "EXIT",
+      "address": "0x80069d34",
+      "size": 16,
+      "relocation_count": 0,
+      "byte_exact_object_text": true,
+      "object_text_sha256": "11764d59dee01aae0090d181f5bc24eb4c9435298fbe6853ab316b5b40238793",
+      "reference_text_sha256": "11764d59dee01aae0090d181f5bc24eb4c9435298fbe6853ab316b5b40238793",
+      "discovery": "supplemental_unique_full_text_scan",
+      "exported_symbols": [
+        "exit"
+      ],
+      "imported_symbols": [],
+      "duplicate_module_aliases": [
+        {
+          "module": "A56",
+          "library": "sdk\\extracted\\Programmer Tool - Runtime Library Version 3.3 (Japan)_DTL-S2190_redump\\LZH\\PSX1020.LZH\\PSX\\LIB\\LIBC.LIB"
+        }
+      ]
+    },
+    {
+      "library": "sdk\\extracted\\Programmer Tool - Runtime Library Version 3.3 (Japan)_DTL-S2190_redump\\LZH\\PSX1020.LZH\\PSX\\LIB\\LIBCARD.LIB",
+      "module": "C171",
+      "address": "0x8006a528",
+      "size": 16,
+      "relocation_count": 0,
+      "byte_exact_object_text": true,
+      "object_text_sha256": "11dcfe43209fc9bb5923bffe17270c11ea219ad0e3451eab2b6a33aa4ac963f7",
+      "reference_text_sha256": "11dcfe43209fc9bb5923bffe17270c11ea219ad0e3451eab2b6a33aa4ac963f7",
+      "discovery": "supplemental_unique_full_text_scan",
+      "exported_symbols": [
+        "_card_info"
+      ],
+      "imported_symbols": [],
+      "duplicate_module_aliases": []
+    },
+    {
+      "library": "sdk\\extracted\\Programmer Tool - Runtime Library Version 3.3 (Japan)_DTL-S2190_redump\\LZH\\PSX1020.LZH\\PSX\\LIB\\LIBCARD.LIB",
+      "module": "C173",
+      "address": "0x8006a538",
+      "size": 16,
+      "relocation_count": 0,
+      "byte_exact_object_text": true,
+      "object_text_sha256": "d5da4b75112c9ab56aa0893b9b355d870f1aa66324a12a4a09799b89a31a4493",
+      "reference_text_sha256": "d5da4b75112c9ab56aa0893b9b355d870f1aa66324a12a4a09799b89a31a4493",
+      "discovery": "supplemental_unique_full_text_scan",
+      "exported_symbols": [
+        "_card_auto"
+      ],
+      "imported_symbols": [],
+      "duplicate_module_aliases": []
+    },
+    {
+      "library": "sdk\\extracted\\Programmer Tool - Runtime Library Version 3.3 (Japan)_DTL-S2190_redump\\LZH\\PSX1020.LZH\\PSX\\LIB\\LIBCARD.LIB",
+      "module": "A74",
+      "address": "0x8006a548",
+      "size": 16,
+      "relocation_count": 0,
+      "byte_exact_object_text": true,
+      "object_text_sha256": "7cfd68eefaba92fdc3389626a5aa4ef88237b50ad00d42c9a2ae8f28d70f1333",
+      "reference_text_sha256": "7cfd68eefaba92fdc3389626a5aa4ef88237b50ad00d42c9a2ae8f28d70f1333",
+      "discovery": "supplemental_unique_full_text_scan",
+      "exported_symbols": [
+        "InitCARD"
+      ],
+      "imported_symbols": [],
+      "duplicate_module_aliases": []
+    },
+    {
+      "library": "sdk\\extracted\\Programmer Tool - Runtime Library Version 3.3 (Japan)_DTL-S2190_redump\\LZH\\PSX1020.LZH\\PSX\\LIB\\LIBCARD.LIB",
+      "module": "A75",
+      "address": "0x8006a558",
+      "size": 16,
+      "relocation_count": 0,
+      "byte_exact_object_text": true,
+      "object_text_sha256": "3201dbd265d1f569cf4baf14ae09238125f26cc61e03ebfe31e51f5faf83600d",
+      "reference_text_sha256": "3201dbd265d1f569cf4baf14ae09238125f26cc61e03ebfe31e51f5faf83600d",
+      "discovery": "supplemental_unique_full_text_scan",
+      "exported_symbols": [
+        "StartCARD"
+      ],
+      "imported_symbols": [],
+      "duplicate_module_aliases": []
+    },
+    {
+      "library": "sdk\\extracted\\Programmer Tool - Runtime Library Version 3.3 (Japan)_DTL-S2190_redump\\LZH\\PSX1020.LZH\\PSX\\LIB\\LIBAPI.LIB",
+      "module": "C112",
+      "address": "0x8006a568",
+      "size": 16,
+      "relocation_count": 0,
+      "byte_exact_object_text": true,
+      "object_text_sha256": "6d011673eb04bf3a24a7326b3e0c93884881d829922f15cd3c1829b2c7dcbd4f",
+      "reference_text_sha256": "6d011673eb04bf3a24a7326b3e0c93884881d829922f15cd3c1829b2c7dcbd4f",
+      "discovery": "supplemental_unique_full_text_scan",
+      "exported_symbols": [
+        "_bu_init"
+      ],
+      "imported_symbols": [],
+      "duplicate_module_aliases": [
+        {
+          "module": "C112",
+          "library": "sdk\\extracted\\Programmer Tool - Runtime Library Version 3.3 (Japan)_DTL-S2190_redump\\LZH\\PSX1020.LZH\\PSX\\LIB\\LIBCARD.LIB"
+        }
+      ]
+    }
+  ],
+  "small_module_scan_policy": "Runtime 3.3 library .text lengths 1..48 bytes were checked for unique, aligned, full-byte occurrences. Records overlapping any inventory candidate or already certified exact range were excluded; same-range duplicate objects are grouped as aliases and count once.",
+  "method_note": "Variant comparison checks complete text sizes, object hashes, relocation counts, and unmasked bytes at the 3.3 candidate placements. Supplemental unrelocated matches compare every text byte and require alignment and a unique occurrence. Supplemental relocated candidates require a unique aligned whole-text masked match, then runtime_relocations must resolve all relocation bytes to an exact full match."
+}

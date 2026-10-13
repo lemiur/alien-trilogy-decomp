@@ -1,0 +1,14 @@
+{
+  "functions": {
+    "unpack_rle": {
+      "address": "0x8002175c",
+      "size": 124
+    },
+    "unpack_lz": {
+      "address": "0x800217d8",
+      "size": 204
+    }
+  },
+  "symbols": {},
+  "gp": "0x8008cd74"
+}

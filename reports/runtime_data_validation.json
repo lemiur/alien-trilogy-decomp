@@ -1,0 +1,117 @@
+{
+  "status": "validated",
+  "runtime_data_report": "alien_decomp/reports/runtime_data.json",
+  "runtime_data_report_sha256": "feeb3c4357e3dbf948d57f8dc4c62b6f8797ee04a00160ff65e0c8412a1dafb9",
+  "independent_replay": {
+    "status": "validated",
+    "section_candidates": 288,
+    "certified_sections": 30,
+    "certified_initialized_section_bytes": 10077
+  },
+  "negative_checks": {
+    "modified_section_bytes": {
+      "status": "rejected",
+      "reason": "runtime data report differs from replay at section_results"
+    },
+    "mismatched_expected_address": {
+      "status": "rejected",
+      "reason": "runtime data report differs from replay at section_results"
+    },
+    "unsupported_relocation_type": {
+      "status": "rejected",
+      "reason": "runtime data report differs from replay at section_results"
+    },
+    "contradictory_section_base": {
+      "status": "rejected",
+      "reason": "runtime data report differs from replay at section_results"
+    },
+    "changed_status_or_count": {
+      "status": "rejected",
+      "reason": "runtime data report differs from replay at counts"
+    },
+    "stale_reference": {
+      "status": "rejected",
+      "reason": "runtime data report differs from replay at inputs"
+    },
+    "stale_runtime_report": {
+      "status": "rejected",
+      "reason": "runtime data report differs from replay at inputs"
+    },
+    "stale_parser": {
+      "status": "rejected",
+      "reason": "runtime data report differs from replay at inputs"
+    },
+    "stale_archive": {
+      "status": "rejected",
+      "reason": "runtime data report differs from replay at inputs"
+    },
+    "supplemental_status_tampering": {
+      "status": "rejected",
+      "reason": "runtime data report differs from replay at supplemental_data_only_section_results"
+    },
+    "supplemental_address_tampering": {
+      "status": "rejected",
+      "reason": "runtime data report differs from replay at supplemental_data_only_section_results"
+    },
+    "supplemental_extent_tampering": {
+      "status": "rejected",
+      "reason": "runtime data report differs from replay at supplemental_data_only_section_results"
+    },
+    "supplemental_bytes_hash_tampering": {
+      "status": "rejected",
+      "reason": "runtime data report differs from replay at supplemental_data_only_section_results"
+    },
+    "supplemental_occurrence_count_tampering": {
+      "status": "rejected",
+      "reason": "runtime data report differs from replay at supplemental_data_only_section_results"
+    },
+    "reject_unsupported_patch": {
+      "status": "rejected",
+      "reason": "unsupported relocation type 999"
+    },
+    "reject_unresolved_symbol": {
+      "status": "rejected",
+      "reason": "unresolved relocation context: {('symbol', 'missing'): 1}"
+    },
+    "reject_conflicting_symbol": {
+      "status": "rejected",
+      "reason": "contradictory binding: [('symbol', 'missing')]"
+    },
+    "reject_cross_extent_patch": {
+      "status": "rejected",
+      "reason": "relocation extent is outside complete section"
+    }
+  },
+  "inputs": {
+    "executable": "games\\Alien Trilogy (PS1 USA)\\extracted\\SLUS_000.07",
+    "executable_sha256": "f424660920764ac70f697b5b909a42fe259a76e60acbf5b01c6ca3ee8c8f8e98",
+    "inventory_report": "alien_decomp/analysis/inventory.json",
+    "inventory_report_sha256": "a578a05e3e603284f50073b0ddc36eb440426e2c2e22a34e09bd15820cb16774",
+    "runtime_symbol_report": "alien_decomp/analysis/runtime_symbols.json",
+    "runtime_symbol_report_sha256": "b05ddd14541e12173ce3ba819b195a4f250c67ebe84eb8c0ff93fe0dabff5895",
+    "runtime_linked_report": "alien_decomp/analysis/runtime_linked.json",
+    "runtime_linked_report_sha256": "41d400fbd72e82f2ddec720cca1b8d520ce8dfd1023768ea0030aa1f873b369d",
+    "runtime_summary_report": "alien_decomp/reports/runtime_latest.json",
+    "runtime_summary_report_sha256": "048f9fcff7646a7d17ea0720d160c42ba2578b9f51becc62ca7dd94f6bcc6c7d",
+    "psyq_parser": "shared-tools/psyqobj.py",
+    "psyq_parser_sha256": "5c2c16c11793f200f1ba5b37f309e13001dc1abeca4a43dbfea1772d0d3364c7",
+    "toolchain_lock": "alien_decomp/config/toolchain.lock.json",
+    "toolchain_lock_sha256": "13c9cb09f0c4a7adf87a3cee6a1ed36f9cc496ce7d69db5155a4aa9d8e7cafda",
+    "analyzer": "alien_decomp/analysis/runtime_data.py",
+    "analyzer_sha256": "db24466a3fbd5d26dcbdf6a7290442d753b8c5ac130ea404a06a5dc9ff8fc464",
+    "runtime_analyzer_sha256": "0f4d27b17924d373939d57054fed975a656f3a6d131e8deaa679197c0c4fbd15",
+    "runtime": "3.3",
+    "runtime_library_sha256": {
+      "sdk\\extracted\\Programmer Tool - Runtime Library Version 3.3 (Japan)_DTL-S2190_redump\\LZH\\PSX1020.LZH\\PSX\\LIB\\2MBYTE.OBJ": "b4ed8b2e76bc841f7a81132906d846877aefa8f6233fb738600c8b1ebd032a46",
+      "sdk\\extracted\\Programmer Tool - Runtime Library Version 3.3 (Japan)_DTL-S2190_redump\\LZH\\PSX1020.LZH\\PSX\\LIB\\LIBAPI.LIB": "c86ad75d077094ba51acbb04129a37d98682a79d241d1cf458a649df600eaa10",
+      "sdk\\extracted\\Programmer Tool - Runtime Library Version 3.3 (Japan)_DTL-S2190_redump\\LZH\\PSX1020.LZH\\PSX\\LIB\\LIBC2.LIB": "1d82a6d780c8911ee6dfeb729f83f554c5c3a56b10558534730145d3dad4f098",
+      "sdk\\extracted\\Programmer Tool - Runtime Library Version 3.3 (Japan)_DTL-S2190_redump\\LZH\\PSX1020.LZH\\PSX\\LIB\\LIBCARD.LIB": "2a647d21c158d81422eb48917d513850549087e737188451343da43d2eba995d",
+      "sdk\\extracted\\Programmer Tool - Runtime Library Version 3.3 (Japan)_DTL-S2190_redump\\LZH\\PSX1020.LZH\\PSX\\LIB\\LIBCD.LIB": "122fe1696237fa2dd18bace4d12f0d49658c597fc25f57bc81295cb24aa69242",
+      "sdk\\extracted\\Programmer Tool - Runtime Library Version 3.3 (Japan)_DTL-S2190_redump\\LZH\\PSX1020.LZH\\PSX\\LIB\\LIBETC.LIB": "23435518b40906e1f0ff34219edb7873cb69c08bb6b75f0fd9b1713bc1b3dd19",
+      "sdk\\extracted\\Programmer Tool - Runtime Library Version 3.3 (Japan)_DTL-S2190_redump\\LZH\\PSX1020.LZH\\PSX\\LIB\\LIBGPU.LIB": "01e301fd645c47c800a4d13d44a40807f8e9e01bbe97ee91bd706f3a816f9f60",
+      "sdk\\extracted\\Programmer Tool - Runtime Library Version 3.3 (Japan)_DTL-S2190_redump\\LZH\\PSX1020.LZH\\PSX\\LIB\\LIBGTE.LIB": "0f8bd56b89d1ab71d7fb4352ab4d22eedf8a9bf8ab2315ea13479c2606b24203",
+      "sdk\\extracted\\Programmer Tool - Runtime Library Version 3.3 (Japan)_DTL-S2190_redump\\LZH\\PSX1020.LZH\\PSX\\LIB\\LIBPRESS.LIB": "7ed2866b5e2d3d855936f9fe5c3c330dd3a360c3ab9d49e2bff107a500b42d6c",
+      "sdk\\extracted\\Programmer Tool - Runtime Library Version 3.3 (Japan)_DTL-S2190_redump\\LZH\\PSX1020.LZH\\PSX\\LIB\\LIBSPU.LIB": "8c75abf4934f30a707b389c7e5ef7a45dec7e8b60a0a1ae6dad02918ff5a2185"
+    }
+  }
+}

@@ -1,0 +1,338 @@
+{
+  "status": "pass",
+  "reference_sha256": "f424660920764ac70f697b5b909a42fe259a76e60acbf5b01c6ca3ee8c8f8e98",
+  "duplicate_function_ownership_rejected": true,
+  "registered_function_ownership_unique": true,
+  "supplemental_sdk_modules_independently_replayed": 38,
+  "supplemental_unrelocated_matches_unique_and_aligned": true,
+  "small_relocated_modules_unique_placements_replayed": [
+    "S_DCB",
+    "S_CB",
+    "S_I"
+  ],
+  "small_relocated_negative_checks": [
+    {
+      "module": "S_DCB",
+      "case": "wrong_address",
+      "status": "rejected",
+      "reason": "small module placement is not the unique aligned masked hit"
+    },
+    {
+      "module": "S_DCB",
+      "case": "truncated_extent",
+      "status": "rejected",
+      "reason": "small module extent differs from complete archive text"
+    },
+    {
+      "module": "S_DCB",
+      "case": "relocated_anchor",
+      "status": "rejected",
+      "reason": "small module anchor includes relocation bytes or invalid extent"
+    },
+    {
+      "module": "S_CB",
+      "case": "wrong_address",
+      "status": "rejected",
+      "reason": "small module placement is not the unique aligned masked hit"
+    },
+    {
+      "module": "S_CB",
+      "case": "truncated_extent",
+      "status": "rejected",
+      "reason": "small module extent differs from complete archive text"
+    },
+    {
+      "module": "S_CB",
+      "case": "relocated_anchor",
+      "status": "rejected",
+      "reason": "small module anchor includes relocation bytes or invalid extent"
+    },
+    {
+      "module": "S_I",
+      "case": "wrong_address",
+      "status": "rejected",
+      "reason": "small module placement is not the unique aligned masked hit"
+    },
+    {
+      "module": "S_I",
+      "case": "truncated_extent",
+      "status": "rejected",
+      "reason": "small module extent differs from complete archive text"
+    },
+    {
+      "module": "S_I",
+      "case": "relocated_anchor",
+      "status": "rejected",
+      "reason": "small module anchor includes relocation bytes or invalid extent"
+    }
+  ],
+  "sdk_certified_ranges_disjoint": true,
+  "checks": [
+    {
+      "module": "A36",
+      "address": "0x8005d0c0",
+      "size": 16,
+      "relocation_count": 0,
+      "reconstructed_sha256": "505f018057cab576fce3e80a248467f5c8ad5e14c7d2289869e453ad092ef931"
+    },
+    {
+      "module": "A54",
+      "address": "0x8005d0d0",
+      "size": 16,
+      "relocation_count": 0,
+      "reconstructed_sha256": "f0a4980cb5e50a9d5c91635595396f286bb4e50ea98b25b5272c8cee640fd6b1"
+    },
+    {
+      "module": "A53",
+      "address": "0x8005d0e0",
+      "size": 16,
+      "relocation_count": 0,
+      "reconstructed_sha256": "5c075aa8a7ebe5be8018a52058b763faffa0d2351ecfbaa38289a4676649642d"
+    },
+    {
+      "module": "A12",
+      "address": "0x8005d0f0",
+      "size": 16,
+      "relocation_count": 0,
+      "reconstructed_sha256": "9aa900f79f4f3f07620ef5ea343fd0cde1e29aed0a802b106c3efed374300412"
+    },
+    {
+      "module": "A69",
+      "address": "0x8005d100",
+      "size": 16,
+      "relocation_count": 0,
+      "reconstructed_sha256": "b5bbae57e8f339e1e64e67c6b84472719960eb9ce57473231627ad3caf701425"
+    },
+    {
+      "module": "A65",
+      "address": "0x8005d110",
+      "size": 16,
+      "relocation_count": 0,
+      "reconstructed_sha256": "94b94ed6bb38374d1aed6e97476670c0cd06befbe84350abc34f3bbd2e73d498"
+    },
+    {
+      "module": "C57",
+      "address": "0x8005d290",
+      "size": 16,
+      "relocation_count": 0,
+      "reconstructed_sha256": "b2a341cca7698a1f246a9a4f43bed1f46d59a771f52cdb1602bbbbbb5ebadb5b"
+    },
+    {
+      "module": "A67",
+      "address": "0x8005d2a0",
+      "size": 16,
+      "relocation_count": 0,
+      "reconstructed_sha256": "77f77a03b65476edc6855674389c393518987a52cc91c142d071cb4a8a977dd4"
+    },
+    {
+      "module": "A08",
+      "address": "0x8005d2b0",
+      "size": 16,
+      "relocation_count": 0,
+      "reconstructed_sha256": "aa2854c7ca7498981559c2cfb0cf50c38dc043d106fa21e86877f5e27aa9139e"
+    },
+    {
+      "module": "A52",
+      "address": "0x8005d2c0",
+      "size": 16,
+      "relocation_count": 0,
+      "reconstructed_sha256": "61d9bba43e1510d318c216df826774f814a2d50b789131971d8c44e7ffcc712c"
+    },
+    {
+      "module": "A11",
+      "address": "0x8005d2d0",
+      "size": 16,
+      "relocation_count": 0,
+      "reconstructed_sha256": "310222cdbb94b7d9048f6ddb2026f00bb8c20b4a9745d4c20b85f4f421dbcad6"
+    },
+    {
+      "module": "A37",
+      "address": "0x8005d2e0",
+      "size": 16,
+      "relocation_count": 0,
+      "reconstructed_sha256": "6e003f701ca622421a42bea9b13f252e5325ecafcb0e85216766a154e060e578"
+    },
+    {
+      "module": "A50",
+      "address": "0x8005d2f0",
+      "size": 16,
+      "relocation_count": 0,
+      "reconstructed_sha256": "e964e050b512fb720d64bc508f2fe84c5b1dfd2ca78ab0cac5c15838252d466b"
+    },
+    {
+      "module": "A66",
+      "address": "0x8005d300",
+      "size": 16,
+      "relocation_count": 0,
+      "reconstructed_sha256": "6536f490307d3083867f9d89a5ff355072695e06e95a529a14e4c13d2ffac8ae"
+    },
+    {
+      "module": "A07",
+      "address": "0x8005fa54",
+      "size": 16,
+      "relocation_count": 0,
+      "reconstructed_sha256": "1649362cdd2b6d2dbb17c6e881b19a2a2b4da5254ba5764cc1b9db5aee1677df"
+    },
+    {
+      "module": "A22",
+      "address": "0x80061668",
+      "size": 16,
+      "relocation_count": 0,
+      "reconstructed_sha256": "f01dcf59b84d86bb81db5485d2b22cc3b4109756b42b0b05d4945f56440fbda2"
+    },
+    {
+      "module": "A20",
+      "address": "0x80061678",
+      "size": 16,
+      "relocation_count": 0,
+      "reconstructed_sha256": "c2935ba9287355ffcb55c140e7a98b2f069b9d7c4e17c025cbe3c54ed4e350c6"
+    },
+    {
+      "module": "A21",
+      "address": "0x80061688",
+      "size": 16,
+      "relocation_count": 0,
+      "reconstructed_sha256": "deee6fa2d293c6f5babd06f8a6a644a8de3ed1ad48bc871f7007bafcc7ce970b"
+    },
+    {
+      "module": "A91",
+      "address": "0x80061698",
+      "size": 16,
+      "relocation_count": 0,
+      "reconstructed_sha256": "1e5b87bfede28345cb9701b76974698b353783fd345c8bdb1172d727b4ee64b9"
+    },
+    {
+      "module": "A25",
+      "address": "0x80061de4",
+      "size": 16,
+      "relocation_count": 0,
+      "reconstructed_sha256": "71bc7d71dd0d687c9d2831da8cfefac289bd4e79b870095ce0e51d39f49f64e8"
+    },
+    {
+      "module": "A24",
+      "address": "0x80061df4",
+      "size": 16,
+      "relocation_count": 0,
+      "reconstructed_sha256": "d2bc95f90007b5994f42dca64682330a28203d4e9b0891baf58a4afa5cab7030"
+    },
+    {
+      "module": "L10",
+      "address": "0x80061e04",
+      "size": 16,
+      "relocation_count": 0,
+      "reconstructed_sha256": "b66aac87180e52cdbfb2ad4683f941695a8f429d21e312d4ec840810df4a54cf"
+    },
+    {
+      "module": "C114",
+      "address": "0x80061e14",
+      "size": 16,
+      "relocation_count": 0,
+      "reconstructed_sha256": "d3ead7216fc5019853f7f3e1d39843231b1406ff25116feb158dbfe402789d2d"
+    },
+    {
+      "module": "A23",
+      "address": "0x80061e24",
+      "size": 16,
+      "relocation_count": 0,
+      "reconstructed_sha256": "f0cdeab31ae4c93b6f67e6afcbb1a7d89848759b52868dfd6814889063f58395"
+    },
+    {
+      "module": "C73",
+      "address": "0x80064fe8",
+      "size": 16,
+      "relocation_count": 0,
+      "reconstructed_sha256": "7c2333e325be8e693e09cde0816e776348404ce7e883e17cdc429e157b2f3372"
+    },
+    {
+      "module": "C68",
+      "address": "0x800680d0",
+      "size": 16,
+      "relocation_count": 0,
+      "reconstructed_sha256": "bf6f4999a7f56522dbf2626c937da16585d7aa48c33a939b8d8bbfa4c04ed213"
+    },
+    {
+      "module": "MEMSET",
+      "address": "0x80069778",
+      "size": 44,
+      "relocation_count": 0,
+      "reconstructed_sha256": "e04daae25e11c9daf3e473004392c5a2eb79da72e33948c77d23d9deadc8157b"
+    },
+    {
+      "module": "EXIT",
+      "address": "0x80069d34",
+      "size": 16,
+      "relocation_count": 0,
+      "reconstructed_sha256": "11764d59dee01aae0090d181f5bc24eb4c9435298fbe6853ab316b5b40238793"
+    },
+    {
+      "module": "C171",
+      "address": "0x8006a528",
+      "size": 16,
+      "relocation_count": 0,
+      "reconstructed_sha256": "11dcfe43209fc9bb5923bffe17270c11ea219ad0e3451eab2b6a33aa4ac963f7"
+    },
+    {
+      "module": "C173",
+      "address": "0x8006a538",
+      "size": 16,
+      "relocation_count": 0,
+      "reconstructed_sha256": "d5da4b75112c9ab56aa0893b9b355d870f1aa66324a12a4a09799b89a31a4493"
+    },
+    {
+      "module": "A74",
+      "address": "0x8006a548",
+      "size": 16,
+      "relocation_count": 0,
+      "reconstructed_sha256": "7cfd68eefaba92fdc3389626a5aa4ef88237b50ad00d42c9a2ae8f28d70f1333"
+    },
+    {
+      "module": "A75",
+      "address": "0x8006a558",
+      "size": 16,
+      "relocation_count": 0,
+      "reconstructed_sha256": "3201dbd265d1f569cf4baf14ae09238125f26cc61e03ebfe31e51f5faf83600d"
+    },
+    {
+      "module": "C112",
+      "address": "0x8006a568",
+      "size": 16,
+      "relocation_count": 0,
+      "reconstructed_sha256": "6d011673eb04bf3a24a7326b3e0c93884881d829922f15cd3c1829b2c7dcbd4f"
+    },
+    {
+      "module": "CDROM",
+      "address": "0x80061330",
+      "size": 48,
+      "relocation_count": 5,
+      "reconstructed_sha256": "23e2eea7781cc39ec9e55b8c5fa41e06c0bb112db9954f9a166de02f361fd45c"
+    },
+    {
+      "module": "C_002",
+      "address": "0x80061360",
+      "size": 96,
+      "relocation_count": 17,
+      "reconstructed_sha256": "87e090487c90d25985e63f5b1095a242a5483f29cd00baffc89f95e081c2c83c"
+    },
+    {
+      "module": "S_DCB",
+      "address": "0x8005bf54",
+      "size": 36,
+      "relocation_count": 1,
+      "reconstructed_sha256": "60abed180dfc7c42b83f62d4fbe721f5169a3bc38a99b64f999a13e557f478b7"
+    },
+    {
+      "module": "S_CB",
+      "address": "0x8005bf78",
+      "size": 36,
+      "relocation_count": 1,
+      "reconstructed_sha256": "81fbee0e30e2296b3791b93d942d88021e1652dcd88fd5914f8c1de68b97508a"
+    },
+    {
+      "module": "S_I",
+      "address": "0x8005c718",
+      "size": 32,
+      "relocation_count": 1,
+      "reconstructed_sha256": "76b3779c1b135c7a9b0e3f00f2f313a2cfb1d04ef35a8e52b5acbcdff9a867fa"
+    }
+  ]
+}

@@ -1,0 +1,13 @@
+{
+  "gp": "0x8008cd74",
+  "functions": {
+    "SetFogFar": {
+      "address": "0x800684a0",
+      "size": 92
+    }
+  },
+  "symbols": {
+    "SetDQA": "0x8006731c",
+    "SetDQB": "0x80067328"
+  }
+}

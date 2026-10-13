@@ -1,0 +1,4229 @@
+{
+  "reference_sha256": "f424660920764ac70f697b5b909a42fe259a76e60acbf5b01c6ca3ee8c8f8e98",
+  "range": {
+    "start": "0x8008d088",
+    "end": "0x800a1958",
+    "size": 84176,
+    "evidence": "2MBYTE.OBJ zero-clear loop sectstart(.sbss)..sectend(.bss) at 0x800588bc; header bss fields are 0x0/0"
+  },
+  "counts": {
+    "entries": 269,
+    "sized_entries": 99,
+    "sized_bytes": 27290,
+    "game_references": 170,
+    "unit_statics": 68,
+    "interior_references": 1
+  },
+  "notes": [
+    "size is exact only for library sections, COMMON symbols and unit statics (from the objects); a game reference carries max_size, the distance to the next evidenced address, never a size",
+    "no matched unit defines an uninitialised global (no XBSS records or exported .sbss/.bss definitions in the unit objects); the game-owned entries are unit statics (kind unit_static, owner = the unit), each the allocation of one local symbol"
+  ],
+  "entries": [
+    {
+      "address": "0x8008d088",
+      "size": 8,
+      "kind": "unit_static",
+      "section": ".sbss",
+      "names": [
+        "TaskMEM"
+      ],
+      "owner": "tasker",
+      "evidence": "static_data of tasker: a local symbol of its .sbss, whose offset, extent and address (section base + offset) verify.py and the gate audit against the unit's object",
+      "region": ".sbss"
+    },
+    {
+      "address": "0x8008d090",
+      "size": 8,
+      "kind": "unit_static",
+      "section": ".sbss",
+      "names": [
+        "TaskFree"
+      ],
+      "owner": "tasker",
+      "evidence": "static_data of tasker: a local symbol of its .sbss, whose offset, extent and address (section base + offset) verify.py and the gate audit against the unit's object",
+      "region": ".sbss"
+    },
+    {
+      "address": "0x8008d098",
+      "size": 8,
+      "kind": "unit_static",
+      "section": ".sbss",
+      "names": [
+        "TaskUsed"
+      ],
+      "owner": "tasker",
+      "evidence": "static_data of tasker: a local symbol of its .sbss, whose offset, extent and address (section base + offset) verify.py and the gate audit against the unit's object",
+      "region": ".sbss"
+    },
+    {
+      "address": "0x8008d0a0",
+      "size": null,
+      "kind": "game_reference",
+      "section": null,
+      "names": [
+        "g_menu_entry_color"
+      ],
+      "owner": null,
+      "referenced_by": [
+        "frontend"
+      ],
+      "evidence": "address of a global named by a matched unit's map",
+      "region": ".sbss",
+      "max_size": 8
+    },
+    {
+      "address": "0x8008d0a8",
+      "size": null,
+      "kind": "game_reference",
+      "section": null,
+      "names": [
+        "g_death_type"
+      ],
+      "owner": null,
+      "referenced_by": [
+        "frontend"
+      ],
+      "evidence": "address of a global named by a matched unit's map",
+      "region": ".sbss",
+      "max_size": 8
+    },
+    {
+      "address": "0x8008d0b0",
+      "size": 8,
+      "kind": "unit_static",
+      "section": ".sbss",
+      "names": [
+        "g_font_page"
+      ],
+      "owner": "text",
+      "evidence": "static_data of text: a local symbol of its .sbss, whose offset, extent and address (section base + offset) verify.py and the gate audit against the unit's object",
+      "region": ".sbss"
+    },
+    {
+      "address": "0x8008d0b8",
+      "size": 8,
+      "kind": "unit_static",
+      "section": ".sbss",
+      "names": [
+        "g_font_clut"
+      ],
+      "owner": "text",
+      "evidence": "static_data of text: a local symbol of its .sbss, whose offset, extent and address (section base + offset) verify.py and the gate audit against the unit's object",
+      "region": ".sbss"
+    },
+    {
+      "address": "0x8008d0c0",
+      "size": 8,
+      "kind": "unit_static",
+      "section": ".sbss",
+      "names": [
+        "g_panel_sprites_alternate"
+      ],
+      "owner": "sprites",
+      "evidence": "static_data of sprites: a local symbol of its .sbss, whose offset, extent and address (section base + offset) verify.py and the gate audit against the unit's object",
+      "region": ".sbss"
+    },
+    {
+      "address": "0x8008d0d0",
+      "size": 8,
+      "kind": "unit_static",
+      "section": ".sbss",
+      "names": [
+        "g_unpack_cursor"
+      ],
+      "owner": "texture_upload",
+      "evidence": "static_data of texture_upload: a local symbol of its .sbss, whose offset, extent and address (section base + offset) verify.py and the gate audit against the unit's object",
+      "region": ".sbss"
+    },
+    {
+      "address": "0x8008d0d8",
+      "size": 8,
+      "kind": "unit_static",
+      "section": ".sbss",
+      "names": [
+        "g_unpack_full"
+      ],
+      "owner": "texture_upload",
+      "evidence": "static_data of texture_upload: a local symbol of its .sbss, whose offset, extent and address (section base + offset) verify.py and the gate audit against the unit's object",
+      "region": ".sbss"
+    },
+    {
+      "address": "0x8008d0e0",
+      "size": 8,
+      "kind": "unit_static",
+      "section": ".sbss",
+      "names": [
+        "g_upload_free"
+      ],
+      "owner": "texture_upload",
+      "evidence": "static_data of texture_upload: a local symbol of its .sbss, whose offset, extent and address (section base + offset) verify.py and the gate audit against the unit's object",
+      "region": ".sbss"
+    },
+    {
+      "address": "0x8008d0e8",
+      "size": 8,
+      "kind": "unit_static",
+      "section": ".sbss",
+      "names": [
+        "g_upload_queue_tail"
+      ],
+      "owner": "texture_upload",
+      "evidence": "static_data of texture_upload: a local symbol of its .sbss, whose offset, extent and address (section base + offset) verify.py and the gate audit against the unit's object",
+      "region": ".sbss"
+    },
+    {
+      "address": "0x8008d0f0",
+      "size": 8,
+      "kind": "unit_static",
+      "section": ".sbss",
+      "names": [
+        "g_upload_queue"
+      ],
+      "owner": "texture_upload",
+      "evidence": "static_data of texture_upload: a local symbol of its .sbss, whose offset, extent and address (section base + offset) verify.py and the gate audit against the unit's object",
+      "region": ".sbss"
+    },
+    {
+      "address": "0x8008d0f8",
+      "size": 8,
+      "kind": "unit_static",
+      "section": ".sbss",
+      "names": [
+        "g_upload_pool"
+      ],
+      "owner": "texture_upload",
+      "evidence": "static_data of texture_upload: a local symbol of its .sbss, whose offset, extent and address (section base + offset) verify.py and the gate audit against the unit's object",
+      "region": ".sbss"
+    },
+    {
+      "address": "0x8008d100",
+      "size": 8,
+      "kind": "unit_static",
+      "section": ".sbss",
+      "names": [
+        "g_doors"
+      ],
+      "owner": "doors",
+      "evidence": "static_data of doors: a local symbol of its .sbss, whose offset, extent and address (section base + offset) verify.py and the gate audit against the unit's object",
+      "region": ".sbss"
+    },
+    {
+      "address": "0x8008d108",
+      "size": 8,
+      "kind": "unit_static",
+      "section": ".sbss",
+      "names": [
+        "g_door_defs"
+      ],
+      "owner": "doors",
+      "evidence": "static_data of doors: a local symbol of its .sbss, whose offset, extent and address (section base + offset) verify.py and the gate audit against the unit's object",
+      "region": ".sbss"
+    },
+    {
+      "address": "0x8008d110",
+      "size": 8,
+      "kind": "unit_static",
+      "section": ".sbss",
+      "names": [
+        "g_door_count"
+      ],
+      "owner": "doors",
+      "evidence": "static_data of doors: a local symbol of its .sbss, whose offset, extent and address (section base + offset) verify.py and the gate audit against the unit's object",
+      "region": ".sbss"
+    },
+    {
+      "address": "0x8008d118",
+      "size": 8,
+      "kind": "unit_static",
+      "section": ".sbss",
+      "names": [
+        "g_door_open_ticks"
+      ],
+      "owner": "doors",
+      "evidence": "static_data of doors: a local symbol of its .sbss, whose offset, extent and address (section base + offset) verify.py and the gate audit against the unit's object",
+      "region": ".sbss"
+    },
+    {
+      "address": "0x8008d120",
+      "size": 8,
+      "kind": "unit_static",
+      "section": ".sbss",
+      "names": [
+        "g_light_count"
+      ],
+      "owner": "lights",
+      "evidence": "static_data of lights: a local symbol of its .sbss, whose offset, extent and address (section base + offset) verify.py and the gate audit against the unit's object",
+      "region": ".sbss"
+    },
+    {
+      "address": "0x8008d128",
+      "size": 8,
+      "kind": "unit_static",
+      "section": ".sbss",
+      "names": [
+        "g_particle_pool"
+      ],
+      "owner": "particle",
+      "evidence": "static_data of particle: a local symbol of its .sbss, whose offset, extent and address (section base + offset) verify.py and the gate audit against the unit's object",
+      "region": ".sbss"
+    },
+    {
+      "address": "0x8008d130",
+      "size": 8,
+      "kind": "unit_static",
+      "section": ".sbss",
+      "names": [
+        "g_particle_free"
+      ],
+      "owner": "particle",
+      "evidence": "static_data of particle: a local symbol of its .sbss, whose offset, extent and address (section base + offset) verify.py and the gate audit against the unit's object",
+      "region": ".sbss"
+    },
+    {
+      "address": "0x8008d138",
+      "size": 8,
+      "kind": "unit_static",
+      "section": ".sbss",
+      "names": [
+        "g_live_particles"
+      ],
+      "owner": "particle",
+      "evidence": "static_data of particle: a local symbol of its .sbss, whose offset, extent and address (section base + offset) verify.py and the gate audit against the unit's object",
+      "region": ".sbss"
+    },
+    {
+      "address": "0x8008d140",
+      "size": 8,
+      "kind": "unit_static",
+      "section": ".sbss",
+      "names": [
+        "g_sight_point"
+      ],
+      "owner": "actor",
+      "evidence": "static_data of actor: a local symbol of its .sbss, whose offset, extent and address (section base + offset) verify.py and the gate audit against the unit's object",
+      "region": ".sbss"
+    },
+    {
+      "address": "0x8008d148",
+      "size": 8,
+      "kind": "unit_static",
+      "section": ".sbss",
+      "names": [
+        "g_8d148"
+      ],
+      "owner": "actor",
+      "evidence": "static_data of actor: a local symbol of its .sbss, whose offset, extent and address (section base + offset) verify.py and the gate audit against the unit's object",
+      "region": ".sbss"
+    },
+    {
+      "address": "0x8008d150",
+      "size": 8,
+      "kind": "unit_static",
+      "section": ".sbss",
+      "names": [
+        "g_sight_step"
+      ],
+      "owner": "actor",
+      "evidence": "static_data of actor: a local symbol of its .sbss, whose offset, extent and address (section base + offset) verify.py and the gate audit against the unit's object",
+      "region": ".sbss"
+    },
+    {
+      "address": "0x8008d158",
+      "size": 8,
+      "kind": "unit_static",
+      "section": ".sbss",
+      "names": [
+        "g_velocity_rotation"
+      ],
+      "owner": "actor",
+      "evidence": "static_data of actor: a local symbol of its .sbss, whose offset, extent and address (section base + offset) verify.py and the gate audit against the unit's object",
+      "region": ".sbss"
+    },
+    {
+      "address": "0x8008d160",
+      "size": 8,
+      "kind": "unit_static",
+      "section": ".sbss",
+      "names": [
+        "g_wander_offset"
+      ],
+      "owner": "actor",
+      "evidence": "static_data of actor: a local symbol of its .sbss, whose offset, extent and address (section base + offset) verify.py and the gate audit against the unit's object",
+      "region": ".sbss"
+    },
+    {
+      "address": "0x8008d168",
+      "size": 8,
+      "kind": "unit_static",
+      "section": ".sbss",
+      "names": [
+        "g_wander_rotation"
+      ],
+      "owner": "actor",
+      "evidence": "static_data of actor: a local symbol of its .sbss, whose offset, extent and address (section base + offset) verify.py and the gate audit against the unit's object",
+      "region": ".sbss"
+    },
+    {
+      "address": "0x8008d170",
+      "size": 8,
+      "kind": "unit_static",
+      "section": ".sbss",
+      "names": [
+        "g_actor_free"
+      ],
+      "owner": "actor",
+      "evidence": "static_data of actor: a local symbol of its .sbss, whose offset, extent and address (section base + offset) verify.py and the gate audit against the unit's object",
+      "region": ".sbss"
+    },
+    {
+      "address": "0x8008d178",
+      "size": 8,
+      "kind": "unit_static",
+      "section": ".sbss",
+      "names": [
+        "g_actor_slots"
+      ],
+      "owner": "actor",
+      "evidence": "static_data of actor: a local symbol of its .sbss, whose offset, extent and address (section base + offset) verify.py and the gate audit against the unit's object",
+      "region": ".sbss"
+    },
+    {
+      "address": "0x8008d180",
+      "size": 8,
+      "kind": "unit_static",
+      "section": ".sbss",
+      "names": [
+        "g_actor_slot_count"
+      ],
+      "owner": "actor",
+      "evidence": "static_data of actor: a local symbol of its .sbss, whose offset, extent and address (section base + offset) verify.py and the gate audit against the unit's object",
+      "region": ".sbss"
+    },
+    {
+      "address": "0x8008d188",
+      "size": 8,
+      "kind": "unit_static",
+      "section": ".sbss",
+      "names": [
+        "g_visible_actor_count"
+      ],
+      "owner": "actor",
+      "evidence": "static_data of actor: a local symbol of its .sbss, whose offset, extent and address (section base + offset) verify.py and the gate audit against the unit's object",
+      "region": ".sbss"
+    },
+    {
+      "address": "0x8008d190",
+      "size": null,
+      "kind": "game_reference",
+      "section": null,
+      "names": [
+        "g_level_object_records"
+      ],
+      "owner": null,
+      "referenced_by": [
+        "object_render"
+      ],
+      "evidence": "address of a global named by a matched unit's map",
+      "region": ".sbss",
+      "max_size": 8
+    },
+    {
+      "address": "0x8008d198",
+      "size": null,
+      "kind": "game_reference",
+      "section": null,
+      "names": [
+        "g_level_object_count"
+      ],
+      "owner": null,
+      "referenced_by": [
+        "object_render"
+      ],
+      "evidence": "address of a global named by a matched unit's map",
+      "region": ".sbss",
+      "max_size": 8
+    },
+    {
+      "address": "0x8008d1a0",
+      "size": null,
+      "kind": "game_reference",
+      "section": null,
+      "names": [
+        "g_level_objects"
+      ],
+      "owner": null,
+      "referenced_by": [
+        "object_render"
+      ],
+      "evidence": "address of a global named by a matched unit's map",
+      "region": ".sbss",
+      "max_size": 8
+    },
+    {
+      "address": "0x8008d1a8",
+      "size": 8,
+      "kind": "unit_static",
+      "section": ".sbss",
+      "names": [
+        "g_weapon_slot"
+      ],
+      "owner": "weapon_slots",
+      "evidence": "static_data of weapon_slots: a local symbol of its .sbss, whose offset, extent and address (section base + offset) verify.py and the gate audit against the unit's object",
+      "region": ".sbss"
+    },
+    {
+      "address": "0x8008d1b0",
+      "size": null,
+      "kind": "game_reference",
+      "section": null,
+      "names": [
+        "g_object_records"
+      ],
+      "owner": null,
+      "referenced_by": [
+        "map_objects"
+      ],
+      "evidence": "address of a global named by a matched unit's map",
+      "region": ".sbss",
+      "max_size": 8
+    },
+    {
+      "address": "0x8008d1b8",
+      "size": null,
+      "kind": "game_reference",
+      "section": null,
+      "names": [
+        "g_object_record_count"
+      ],
+      "owner": null,
+      "referenced_by": [
+        "map_objects"
+      ],
+      "evidence": "address of a global named by a matched unit's map",
+      "region": ".sbss",
+      "max_size": 8
+    },
+    {
+      "address": "0x8008d1c0",
+      "size": null,
+      "kind": "game_reference",
+      "section": null,
+      "names": [
+        "g_map_object_pool"
+      ],
+      "owner": null,
+      "referenced_by": [
+        "map_objects"
+      ],
+      "evidence": "address of a global named by a matched unit's map",
+      "region": ".sbss",
+      "max_size": 8
+    },
+    {
+      "address": "0x8008d1c8",
+      "size": null,
+      "kind": "game_reference",
+      "section": null,
+      "names": [
+        "g_map_object_free"
+      ],
+      "owner": null,
+      "referenced_by": [
+        "map_objects"
+      ],
+      "evidence": "address of a global named by a matched unit's map",
+      "region": ".sbss",
+      "max_size": 8
+    },
+    {
+      "address": "0x8008d1d0",
+      "size": null,
+      "kind": "game_reference",
+      "section": null,
+      "names": [
+        "g_map_objects"
+      ],
+      "owner": null,
+      "referenced_by": [
+        "map_objects"
+      ],
+      "evidence": "address of a global named by a matched unit's map",
+      "region": ".sbss",
+      "max_size": 8
+    },
+    {
+      "address": "0x8008d1d8",
+      "size": 8,
+      "kind": "unit_static",
+      "section": ".sbss",
+      "names": [
+        "g_cell_trigger_count"
+      ],
+      "owner": "level_triggers",
+      "evidence": "static_data of level_triggers: a local symbol of its .sbss, whose offset, extent and address (section base + offset) verify.py and the gate audit against the unit's object",
+      "region": ".sbss"
+    },
+    {
+      "address": "0x8008d1e0",
+      "size": 8,
+      "kind": "unit_static",
+      "section": ".sbss",
+      "names": [
+        "g_level_commands"
+      ],
+      "owner": "level_triggers",
+      "evidence": "static_data of level_triggers: a local symbol of its .sbss, whose offset, extent and address (section base + offset) verify.py and the gate audit against the unit's object",
+      "region": ".sbss"
+    },
+    {
+      "address": "0x8008d1e8",
+      "size": 8,
+      "kind": "unit_static",
+      "section": ".sbss",
+      "names": [
+        "g_lifts"
+      ],
+      "owner": "lift",
+      "evidence": "static_data of lift: a local symbol of its .sbss, whose offset, extent and address (section base + offset) verify.py and the gate audit against the unit's object",
+      "region": ".sbss"
+    },
+    {
+      "address": "0x8008d1f0",
+      "size": 8,
+      "kind": "unit_static",
+      "section": ".sbss",
+      "names": [
+        "g_lift_records"
+      ],
+      "owner": "lift",
+      "evidence": "static_data of lift: a local symbol of its .sbss, whose offset, extent and address (section base + offset) verify.py and the gate audit against the unit's object",
+      "region": ".sbss"
+    },
+    {
+      "address": "0x8008d1f8",
+      "size": 8,
+      "kind": "unit_static",
+      "section": ".sbss",
+      "names": [
+        "g_lift_record_count"
+      ],
+      "owner": "lift",
+      "evidence": "static_data of lift: a local symbol of its .sbss, whose offset, extent and address (section base + offset) verify.py and the gate audit against the unit's object",
+      "region": ".sbss"
+    },
+    {
+      "address": "0x8008d200",
+      "size": 8,
+      "kind": "unit_static",
+      "section": ".sbss",
+      "names": [
+        "g_cd_mode"
+      ],
+      "owner": "music_control",
+      "evidence": "static_data of music_control: a local symbol of its .sbss, whose offset, extent and address (section base + offset) verify.py and the gate audit against the unit's object",
+      "region": ".sbss"
+    },
+    {
+      "address": "0x8008d208",
+      "size": 8,
+      "kind": "unit_static",
+      "section": ".sbss",
+      "names": [
+        "g_cd_requested_command"
+      ],
+      "owner": "music_control",
+      "evidence": "static_data of music_control: a local symbol of its .sbss, whose offset, extent and address (section base + offset) verify.py and the gate audit against the unit's object",
+      "region": ".sbss"
+    },
+    {
+      "address": "0x8008d210",
+      "size": 8,
+      "kind": "unit_static",
+      "section": ".sbss",
+      "names": [
+        "g_cd_track_count"
+      ],
+      "owner": "music_control",
+      "evidence": "static_data of music_control: a local symbol of its .sbss, whose offset, extent and address (section base + offset) verify.py and the gate audit against the unit's object",
+      "region": ".sbss"
+    },
+    {
+      "address": "0x8008d218",
+      "size": 8,
+      "kind": "unit_static",
+      "section": ".sbss",
+      "names": [
+        "g_pause_state"
+      ],
+      "owner": "pause_menu",
+      "evidence": "static_data of pause_menu: a local symbol of its .sbss, whose offset, extent and address (section base + offset) verify.py and the gate audit against the unit's object",
+      "region": ".sbss"
+    },
+    {
+      "address": "0x8008d220",
+      "size": 8,
+      "kind": "unit_static",
+      "section": ".sbss",
+      "names": [
+        "g_pause_option"
+      ],
+      "owner": "pause_menu",
+      "evidence": "static_data of pause_menu: a local symbol of its .sbss, whose offset, extent and address (section base + offset) verify.py and the gate audit against the unit's object",
+      "region": ".sbss"
+    },
+    {
+      "address": "0x8008d228",
+      "size": 8,
+      "kind": "unit_static",
+      "section": ".sbss",
+      "names": [
+        "g_typed_length"
+      ],
+      "owner": "pause_menu",
+      "evidence": "static_data of pause_menu: a local symbol of its .sbss, whose offset, extent and address (section base + offset) verify.py and the gate audit against the unit's object",
+      "region": ".sbss"
+    },
+    {
+      "address": "0x8008d230",
+      "size": 8,
+      "kind": "unit_static",
+      "section": ".sbss",
+      "names": [
+        "g_sound_option"
+      ],
+      "owner": "pause_menu",
+      "evidence": "static_data of pause_menu: a local symbol of its .sbss, whose offset, extent and address (section base + offset) verify.py and the gate audit against the unit's object",
+      "region": ".sbss"
+    },
+    {
+      "address": "0x8008d238",
+      "size": 8,
+      "kind": "unit_static",
+      "section": ".sbss",
+      "names": [
+        "g_exit_confirmed"
+      ],
+      "owner": "pause_menu",
+      "evidence": "static_data of pause_menu: a local symbol of its .sbss, whose offset, extent and address (section base + offset) verify.py and the gate audit against the unit's object",
+      "region": ".sbss"
+    },
+    {
+      "address": "0x8008d240",
+      "size": 8,
+      "kind": "unit_static",
+      "section": ".sbss",
+      "names": [
+        "g_8d240"
+      ],
+      "owner": "pause_menu",
+      "evidence": "static_data of pause_menu: a local symbol of its .sbss, whose offset, extent and address (section base + offset) verify.py and the gate audit against the unit's object",
+      "region": ".sbss"
+    },
+    {
+      "address": "0x8008d248",
+      "size": 8,
+      "kind": "unit_static",
+      "section": ".sbss",
+      "names": [
+        "g_sfx_volume"
+      ],
+      "owner": "pause_menu",
+      "evidence": "static_data of pause_menu: a local symbol of its .sbss, whose offset, extent and address (section base + offset) verify.py and the gate audit against the unit's object",
+      "region": ".sbss"
+    },
+    {
+      "address": "0x8008d250",
+      "size": 8,
+      "kind": "unit_static",
+      "section": ".sbss",
+      "names": [
+        "g_cdda_volume"
+      ],
+      "owner": "pause_menu",
+      "evidence": "static_data of pause_menu: a local symbol of its .sbss, whose offset, extent and address (section base + offset) verify.py and the gate audit against the unit's object",
+      "region": ".sbss"
+    },
+    {
+      "address": "0x8008d258",
+      "size": 8,
+      "kind": "unit_static",
+      "section": ".sbss",
+      "names": [
+        "g_text_left"
+      ],
+      "owner": "pause_menu",
+      "evidence": "static_data of pause_menu: a local symbol of its .sbss, whose offset, extent and address (section base + offset) verify.py and the gate audit against the unit's object",
+      "region": ".sbss"
+    },
+    {
+      "address": "0x8008d260",
+      "size": 8,
+      "kind": "unit_static",
+      "section": ".sbss",
+      "names": [
+        "g_text_x"
+      ],
+      "owner": "pause_menu",
+      "evidence": "static_data of pause_menu: a local symbol of its .sbss, whose offset, extent and address (section base + offset) verify.py and the gate audit against the unit's object",
+      "region": ".sbss"
+    },
+    {
+      "address": "0x8008d268",
+      "size": 8,
+      "kind": "unit_static",
+      "section": ".sbss",
+      "names": [
+        "g_text_y"
+      ],
+      "owner": "pause_menu",
+      "evidence": "static_data of pause_menu: a local symbol of its .sbss, whose offset, extent and address (section base + offset) verify.py and the gate audit against the unit's object",
+      "region": ".sbss"
+    },
+    {
+      "address": "0x8008d270",
+      "size": 8,
+      "kind": "unit_static",
+      "section": ".sbss",
+      "names": [
+        "g_8d270"
+      ],
+      "owner": "pause_menu",
+      "evidence": "static_data of pause_menu: a local symbol of its .sbss, whose offset, extent and address (section base + offset) verify.py and the gate audit against the unit's object",
+      "region": ".sbss"
+    },
+    {
+      "address": "0x8008d278",
+      "size": 8,
+      "kind": "unit_static",
+      "section": ".sbss",
+      "names": [
+        "g_text_cursor"
+      ],
+      "owner": "pause_menu",
+      "evidence": "static_data of pause_menu: a local symbol of its .sbss, whose offset, extent and address (section base + offset) verify.py and the gate audit against the unit's object",
+      "region": ".sbss"
+    },
+    {
+      "address": "0x8008d280",
+      "size": 8,
+      "kind": "unit_static",
+      "section": ".sbss",
+      "names": [
+        "g_text_style"
+      ],
+      "owner": "pause_menu",
+      "evidence": "static_data of pause_menu: a local symbol of its .sbss, whose offset, extent and address (section base + offset) verify.py and the gate audit against the unit's object",
+      "region": ".sbss"
+    },
+    {
+      "address": "0x8008d288",
+      "size": 8,
+      "kind": "unit_static",
+      "section": ".sbss",
+      "names": [
+        "g_map_center_x"
+      ],
+      "owner": "pause_menu",
+      "evidence": "static_data of pause_menu: a local symbol of its .sbss, whose offset, extent and address (section base + offset) verify.py and the gate audit against the unit's object",
+      "region": ".sbss"
+    },
+    {
+      "address": "0x8008d290",
+      "size": 8,
+      "kind": "unit_static",
+      "section": ".sbss",
+      "names": [
+        "g_map_center_z"
+      ],
+      "owner": "pause_menu",
+      "evidence": "static_data of pause_menu: a local symbol of its .sbss, whose offset, extent and address (section base + offset) verify.py and the gate audit against the unit's object",
+      "region": ".sbss"
+    },
+    {
+      "address": "0x8008d298",
+      "size": 8,
+      "kind": "unit_static",
+      "section": ".sbss",
+      "names": [
+        "g_model_rotation"
+      ],
+      "owner": "pause_menu",
+      "evidence": "static_data of pause_menu: a local symbol of its .sbss, whose offset, extent and address (section base + offset) verify.py and the gate audit against the unit's object",
+      "region": ".sbss"
+    },
+    {
+      "address": "0x8008d2a0",
+      "size": 8,
+      "kind": "unit_static",
+      "section": ".sbss",
+      "names": [
+        "g_ammo_model_rotation"
+      ],
+      "owner": "pause_menu",
+      "evidence": "static_data of pause_menu: a local symbol of its .sbss, whose offset, extent and address (section base + offset) verify.py and the gate audit against the unit's object",
+      "region": ".sbss"
+    },
+    {
+      "address": "0x8008d2a8",
+      "size": 8,
+      "kind": "unit_static",
+      "section": ".sbss",
+      "names": [
+        "g_arrow_tip"
+      ],
+      "owner": "pause_menu",
+      "evidence": "static_data of pause_menu: a local symbol of its .sbss, whose offset, extent and address (section base + offset) verify.py and the gate audit against the unit's object",
+      "region": ".sbss"
+    },
+    {
+      "address": "0x8008d2b0",
+      "size": 8,
+      "kind": "unit_static",
+      "section": ".sbss",
+      "names": [
+        "g_arrow_right"
+      ],
+      "owner": "pause_menu",
+      "evidence": "static_data of pause_menu: a local symbol of its .sbss, whose offset, extent and address (section base + offset) verify.py and the gate audit against the unit's object",
+      "region": ".sbss"
+    },
+    {
+      "address": "0x8008d2b8",
+      "size": 8,
+      "kind": "unit_static",
+      "section": ".sbss",
+      "names": [
+        "g_arrow_left"
+      ],
+      "owner": "pause_menu",
+      "evidence": "static_data of pause_menu: a local symbol of its .sbss, whose offset, extent and address (section base + offset) verify.py and the gate audit against the unit's object",
+      "region": ".sbss"
+    },
+    {
+      "address": "0x8008d2c0",
+      "size": 8,
+      "kind": "unit_static",
+      "section": ".sbss",
+      "names": [
+        "pad.18"
+      ],
+      "owner": "movie",
+      "evidence": "static_data of movie: a local symbol of its .sbss, whose offset, extent and address (section base + offset) verify.py and the gate audit against the unit's object",
+      "region": ".sbss"
+    },
+    {
+      "address": "0x8008d2c8",
+      "size": 8,
+      "kind": "unit_static",
+      "section": ".sbss",
+      "names": [
+        "g_panel_vertices"
+      ],
+      "owner": "debris",
+      "evidence": "static_data of debris: a local symbol of its .sbss, whose offset, extent and address (section base + offset) verify.py and the gate audit against the unit's object",
+      "region": ".sbss"
+    },
+    {
+      "address": "0x8008d2d0",
+      "size": 8,
+      "kind": "unit_static",
+      "section": ".sbss",
+      "names": [
+        "g_panels"
+      ],
+      "owner": "debris",
+      "evidence": "static_data of debris: a local symbol of its .sbss, whose offset, extent and address (section base + offset) verify.py and the gate audit against the unit's object",
+      "region": ".sbss"
+    },
+    {
+      "address": "0x8008d2d8",
+      "size": 8,
+      "kind": "unit_static",
+      "section": ".sbss",
+      "names": [
+        "g_split_top"
+      ],
+      "owner": "debris",
+      "evidence": "static_data of debris: a local symbol of its .sbss, whose offset, extent and address (section base + offset) verify.py and the gate audit against the unit's object",
+      "region": ".sbss"
+    },
+    {
+      "address": "0x8008d2e0",
+      "size": 8,
+      "kind": "unit_static",
+      "section": ".sbss",
+      "names": [
+        "g_split_left"
+      ],
+      "owner": "debris",
+      "evidence": "static_data of debris: a local symbol of its .sbss, whose offset, extent and address (section base + offset) verify.py and the gate audit against the unit's object",
+      "region": ".sbss"
+    },
+    {
+      "address": "0x8008d2e8",
+      "size": 8,
+      "kind": "unit_static",
+      "section": ".sbss",
+      "names": [
+        "g_split_centre"
+      ],
+      "owner": "debris",
+      "evidence": "static_data of debris: a local symbol of its .sbss, whose offset, extent and address (section base + offset) verify.py and the gate audit against the unit's object",
+      "region": ".sbss"
+    },
+    {
+      "address": "0x8008d2f0",
+      "size": 8,
+      "kind": "unit_static",
+      "section": ".sbss",
+      "names": [
+        "g_split_right"
+      ],
+      "owner": "debris",
+      "evidence": "static_data of debris: a local symbol of its .sbss, whose offset, extent and address (section base + offset) verify.py and the gate audit against the unit's object",
+      "region": ".sbss"
+    },
+    {
+      "address": "0x8008d2f8",
+      "size": 8,
+      "kind": "unit_static",
+      "section": ".sbss",
+      "names": [
+        "g_split_bottom"
+      ],
+      "owner": "debris",
+      "evidence": "static_data of debris: a local symbol of its .sbss, whose offset, extent and address (section base + offset) verify.py and the gate audit against the unit's object",
+      "region": ".sbss"
+    },
+    {
+      "address": "0x8008d300",
+      "size": 4,
+      "kind": "library_section",
+      "section": ".sbss",
+      "names": [],
+      "owner": "2MBYTE.OBJ@800588bc",
+      "evidence": "certified relocation section base of 2MBYTE.OBJ@800588bc .sbss",
+      "region": ".sbss"
+    },
+    {
+      "address": "0x8008d314",
+      "size": 4,
+      "kind": "library_section",
+      "section": ".sbss",
+      "names": [],
+      "owner": "PUTCHAR@8006a430",
+      "evidence": "certified relocation section base of PUTCHAR@8006a430 .sbss",
+      "region": ".sbss"
+    },
+    {
+      "address": "0x8008d318",
+      "size": null,
+      "kind": "game_reference",
+      "section": null,
+      "names": [
+        "g_render_hblanks"
+      ],
+      "owner": null,
+      "referenced_by": [
+        "game_20000_3"
+      ],
+      "evidence": "address of a global named by a matched unit's map",
+      "region": "unknown",
+      "max_size": 8
+    },
+    {
+      "address": "0x8008d320",
+      "size": null,
+      "kind": "game_reference",
+      "section": null,
+      "names": [
+        "g_gte_interpolation"
+      ],
+      "owner": null,
+      "referenced_by": [
+        "actor",
+        "effects",
+        "hud",
+        "model_draw",
+        "particle"
+      ],
+      "evidence": "address of a global named by a matched unit's map",
+      "region": "unknown",
+      "max_size": 8
+    },
+    {
+      "address": "0x8008d328",
+      "size": null,
+      "kind": "game_reference",
+      "section": null,
+      "names": [
+        "g_stream_bytes"
+      ],
+      "owner": null,
+      "referenced_by": [
+        "movie"
+      ],
+      "evidence": "address of a global named by a matched unit's map",
+      "region": "unknown",
+      "max_size": 8
+    },
+    {
+      "address": "0x8008d330",
+      "size": null,
+      "kind": "game_reference",
+      "section": null,
+      "names": [
+        "g_live_actors"
+      ],
+      "owner": null,
+      "referenced_by": [
+        "actor",
+        "hud",
+        "particle",
+        "particle_hits"
+      ],
+      "evidence": "address of a global named by a matched unit's map",
+      "region": "unknown",
+      "max_size": 8
+    },
+    {
+      "address": "0x8008d338",
+      "size": null,
+      "kind": "game_reference",
+      "section": null,
+      "names": [
+        "g_message_box_save_rect"
+      ],
+      "owner": null,
+      "referenced_by": [
+        "frontend"
+      ],
+      "evidence": "address of a global named by a matched unit's map",
+      "region": "unknown",
+      "max_size": 8
+    },
+    {
+      "address": "0x8008d340",
+      "size": null,
+      "kind": "game_reference",
+      "section": null,
+      "names": [
+        "g_panel_page"
+      ],
+      "owner": null,
+      "referenced_by": [
+        "sprites"
+      ],
+      "evidence": "address of a global named by a matched unit's map",
+      "region": "unknown",
+      "max_size": 8
+    },
+    {
+      "address": "0x8008d348",
+      "size": null,
+      "kind": "game_reference",
+      "section": null,
+      "names": [
+        "g_pickup_page"
+      ],
+      "owner": null,
+      "referenced_by": [
+        "sprites"
+      ],
+      "evidence": "address of a global named by a matched unit's map",
+      "region": "unknown",
+      "max_size": 8
+    },
+    {
+      "address": "0x8008d350",
+      "size": null,
+      "kind": "game_reference",
+      "section": null,
+      "names": [
+        "g_pistol_clut"
+      ],
+      "owner": null,
+      "referenced_by": [
+        "player",
+        "sprites"
+      ],
+      "evidence": "address of a global named by a matched unit's map",
+      "region": "unknown",
+      "max_size": 8
+    },
+    {
+      "address": "0x8008d358",
+      "size": null,
+      "kind": "game_reference",
+      "section": null,
+      "names": [
+        "g_flamethrower_clut"
+      ],
+      "owner": null,
+      "referenced_by": [
+        "player",
+        "sprites"
+      ],
+      "evidence": "address of a global named by a matched unit's map",
+      "region": "unknown",
+      "max_size": 8
+    },
+    {
+      "address": "0x8008d360",
+      "size": null,
+      "kind": "game_reference",
+      "section": null,
+      "names": [
+        "g_smart_gun_clut"
+      ],
+      "owner": null,
+      "referenced_by": [
+        "player",
+        "sprites"
+      ],
+      "evidence": "address of a global named by a matched unit's map",
+      "region": "unknown",
+      "max_size": 8
+    },
+    {
+      "address": "0x8008d368",
+      "size": null,
+      "kind": "game_reference",
+      "section": null,
+      "names": [
+        "g_shotgun_clut"
+      ],
+      "owner": null,
+      "referenced_by": [
+        "player",
+        "sprites"
+      ],
+      "evidence": "address of a global named by a matched unit's map",
+      "region": "unknown",
+      "max_size": 8
+    },
+    {
+      "address": "0x8008d370",
+      "size": null,
+      "kind": "game_reference",
+      "section": null,
+      "names": [
+        "g_pulse_rifle_clut"
+      ],
+      "owner": null,
+      "referenced_by": [
+        "player",
+        "sprites"
+      ],
+      "evidence": "address of a global named by a matched unit's map",
+      "region": "unknown",
+      "max_size": 8
+    },
+    {
+      "address": "0x8008d378",
+      "size": null,
+      "kind": "game_reference",
+      "section": null,
+      "names": [
+        "g_level"
+      ],
+      "owner": null,
+      "referenced_by": [
+        "countdown_timer",
+        "debris",
+        "doors",
+        "frontend",
+        "game_20000_3",
+        "game_helpers7",
+        "main",
+        "object_render",
+        "particle",
+        "pause_menu",
+        "save_password",
+        "sprites"
+      ],
+      "evidence": "address of a global named by a matched unit's map",
+      "region": "unknown",
+      "max_size": 8
+    },
+    {
+      "address": "0x8008d380",
+      "size": null,
+      "kind": "game_reference",
+      "section": null,
+      "names": [
+        "g_frame_count"
+      ],
+      "owner": null,
+      "referenced_by": [
+        "actor",
+        "hud",
+        "main",
+        "movie",
+        "particle",
+        "pause_menu",
+        "player"
+      ],
+      "evidence": "address of a global named by a matched unit's map",
+      "region": "unknown",
+      "max_size": 8
+    },
+    {
+      "address": "0x8008d388",
+      "size": null,
+      "kind": "game_reference",
+      "section": null,
+      "names": [
+        "g_graphics_busy"
+      ],
+      "owner": null,
+      "referenced_by": [
+        "main",
+        "pause_menu"
+      ],
+      "evidence": "address of a global named by a matched unit's map",
+      "region": "unknown",
+      "max_size": 8
+    },
+    {
+      "address": "0x8008d390",
+      "size": null,
+      "kind": "game_reference",
+      "section": null,
+      "names": [
+        "g_heap_free"
+      ],
+      "owner": null,
+      "referenced_by": [
+        "hud",
+        "main"
+      ],
+      "evidence": "address of a global named by a matched unit's map",
+      "region": "unknown",
+      "max_size": 8
+    },
+    {
+      "address": "0x8008d398",
+      "size": null,
+      "kind": "game_reference",
+      "section": null,
+      "names": [
+        "g_burster_clut"
+      ],
+      "owner": null,
+      "referenced_by": [
+        "actor",
+        "sprites"
+      ],
+      "evidence": "address of a global named by a matched unit's map",
+      "region": "unknown",
+      "max_size": 8
+    },
+    {
+      "address": "0x8008d3a0",
+      "size": null,
+      "kind": "game_reference",
+      "section": null,
+      "names": [
+        "g_bambi_clut"
+      ],
+      "owner": null,
+      "referenced_by": [
+        "actor",
+        "sprites"
+      ],
+      "evidence": "address of a global named by a matched unit's map",
+      "region": "unknown",
+      "max_size": 8
+    },
+    {
+      "address": "0x8008d3a8",
+      "size": null,
+      "kind": "game_reference",
+      "section": null,
+      "names": [
+        "g_egg_clut"
+      ],
+      "owner": null,
+      "referenced_by": [
+        "actor",
+        "sprites"
+      ],
+      "evidence": "address of a global named by a matched unit's map",
+      "region": "unknown",
+      "max_size": 8
+    },
+    {
+      "address": "0x8008d3b0",
+      "size": null,
+      "kind": "game_reference",
+      "section": null,
+      "names": [
+        "g_explosion_page"
+      ],
+      "owner": null,
+      "referenced_by": [
+        "sprites"
+      ],
+      "evidence": "address of a global named by a matched unit's map",
+      "region": "unknown",
+      "max_size": 8
+    },
+    {
+      "address": "0x8008d3b8",
+      "size": null,
+      "kind": "game_reference",
+      "section": null,
+      "names": [
+        "g_display_mode"
+      ],
+      "owner": null,
+      "referenced_by": [
+        "main"
+      ],
+      "evidence": "address of a global named by a matched unit's map",
+      "region": "unknown",
+      "max_size": 8
+    },
+    {
+      "address": "0x8008d3c0",
+      "size": null,
+      "kind": "game_reference",
+      "section": null,
+      "names": [
+        "g_heap_used"
+      ],
+      "owner": null,
+      "referenced_by": [
+        "hud",
+        "main"
+      ],
+      "evidence": "address of a global named by a matched unit's map",
+      "region": "unknown",
+      "max_size": 8
+    },
+    {
+      "address": "0x8008d3c8",
+      "size": null,
+      "kind": "game_reference",
+      "section": null,
+      "names": [
+        "g_render_workspace"
+      ],
+      "owner": null,
+      "referenced_by": [
+        "main",
+        "pause_menu"
+      ],
+      "evidence": "address of a global named by a matched unit's map",
+      "region": "unknown",
+      "max_size": 8
+    },
+    {
+      "address": "0x8008d3d0",
+      "size": null,
+      "kind": "game_reference",
+      "section": null,
+      "names": [
+        "g_handler_clut"
+      ],
+      "owner": null,
+      "referenced_by": [
+        "actor",
+        "sprites"
+      ],
+      "evidence": "address of a global named by a matched unit's map",
+      "region": "unknown",
+      "max_size": 8
+    },
+    {
+      "address": "0x8008d3d8",
+      "size": null,
+      "kind": "game_reference",
+      "section": null,
+      "names": [
+        "g_dog_clut"
+      ],
+      "owner": null,
+      "referenced_by": [
+        "actor",
+        "sprites"
+      ],
+      "evidence": "address of a global named by a matched unit's map",
+      "region": "unknown",
+      "max_size": 8
+    },
+    {
+      "address": "0x8008d3e0",
+      "size": null,
+      "kind": "game_reference",
+      "section": null,
+      "names": [
+        "g_display_default"
+      ],
+      "owner": null,
+      "referenced_by": [
+        "main",
+        "pause_menu"
+      ],
+      "evidence": "address of a global named by a matched unit's map",
+      "region": "unknown",
+      "max_size": 8
+    },
+    {
+      "address": "0x8008d3e8",
+      "size": null,
+      "kind": "game_reference",
+      "section": null,
+      "names": [
+        "g_guard_clut"
+      ],
+      "owner": null,
+      "referenced_by": [
+        "actor",
+        "sprites"
+      ],
+      "evidence": "address of a global named by a matched unit's map",
+      "region": "unknown",
+      "max_size": 8
+    },
+    {
+      "address": "0x8008d3f0",
+      "size": null,
+      "kind": "game_reference",
+      "section": null,
+      "names": [
+        "g_colonist_clut"
+      ],
+      "owner": null,
+      "referenced_by": [
+        "actor",
+        "sprites"
+      ],
+      "evidence": "address of a global named by a matched unit's map",
+      "region": "unknown",
+      "max_size": 8
+    },
+    {
+      "address": "0x8008d3f8",
+      "size": null,
+      "kind": "game_reference",
+      "section": null,
+      "names": [
+        "g_soldier_clut"
+      ],
+      "owner": null,
+      "referenced_by": [
+        "actor",
+        "sprites"
+      ],
+      "evidence": "address of a global named by a matched unit's map",
+      "region": "unknown",
+      "max_size": 8
+    },
+    {
+      "address": "0x8008d400",
+      "size": null,
+      "kind": "game_reference",
+      "section": null,
+      "names": [
+        "g_heap_size"
+      ],
+      "owner": null,
+      "referenced_by": [
+        "hud",
+        "main"
+      ],
+      "evidence": "address of a global named by a matched unit's map",
+      "region": "unknown",
+      "max_size": 8
+    },
+    {
+      "address": "0x8008d408",
+      "size": null,
+      "kind": "game_reference",
+      "section": null,
+      "names": [
+        "g_facehugger_clut"
+      ],
+      "owner": null,
+      "referenced_by": [
+        "actor",
+        "sprites"
+      ],
+      "evidence": "address of a global named by a matched unit's map",
+      "region": "unknown",
+      "max_size": 8
+    },
+    {
+      "address": "0x8008d410",
+      "size": null,
+      "kind": "game_reference",
+      "section": null,
+      "names": [
+        "g_heap_next"
+      ],
+      "owner": null,
+      "referenced_by": [
+        "main"
+      ],
+      "evidence": "address of a global named by a matched unit's map",
+      "region": "unknown",
+      "max_size": 8
+    },
+    {
+      "address": "0x8008d418",
+      "size": null,
+      "kind": "game_reference",
+      "section": null,
+      "names": [
+        "g_alien_clut"
+      ],
+      "owner": null,
+      "referenced_by": [
+        "actor",
+        "sprites"
+      ],
+      "evidence": "address of a global named by a matched unit's map",
+      "region": "unknown",
+      "max_size": 8
+    },
+    {
+      "address": "0x8008d420",
+      "size": null,
+      "kind": "game_reference",
+      "section": null,
+      "names": [
+        "g_queen_clut"
+      ],
+      "owner": null,
+      "referenced_by": [
+        "actor",
+        "sprites"
+      ],
+      "evidence": "address of a global named by a matched unit's map",
+      "region": "unknown",
+      "max_size": 8
+    },
+    {
+      "address": "0x8008d428",
+      "size": null,
+      "kind": "game_reference",
+      "section": null,
+      "names": [
+        "g_projected_depth"
+      ],
+      "owner": null,
+      "referenced_by": [
+        "actor",
+        "effects",
+        "particle"
+      ],
+      "evidence": "address of a global named by a matched unit's map",
+      "region": "unknown",
+      "max_size": 32
+    },
+    {
+      "address": "0x8008d448",
+      "size": null,
+      "kind": "game_reference",
+      "section": null,
+      "names": [
+        "g_pad_previous"
+      ],
+      "owner": null,
+      "referenced_by": [
+        "main",
+        "pause_menu",
+        "player"
+      ],
+      "evidence": "address of a global named by a matched unit's map",
+      "region": "unknown",
+      "max_size": 8
+    },
+    {
+      "address": "0x8008d450",
+      "size": null,
+      "kind": "game_reference",
+      "section": null,
+      "names": [
+        "g_synth_clut"
+      ],
+      "owner": null,
+      "referenced_by": [
+        "actor",
+        "sprites"
+      ],
+      "evidence": "address of a global named by a matched unit's map",
+      "region": "unknown",
+      "max_size": 8
+    },
+    {
+      "address": "0x8008d458",
+      "size": null,
+      "kind": "game_reference",
+      "section": null,
+      "names": [
+        "g_tab"
+      ],
+      "owner": null,
+      "referenced_by": [
+        "main"
+      ],
+      "evidence": "address of a global named by a matched unit's map",
+      "region": "unknown",
+      "max_size": 8
+    },
+    {
+      "address": "0x8008d460",
+      "size": null,
+      "kind": "game_reference",
+      "section": null,
+      "names": [
+        "g_actor_pool"
+      ],
+      "owner": null,
+      "referenced_by": [
+        "actor",
+        "object_render"
+      ],
+      "evidence": "address of a global named by a matched unit's map",
+      "region": "unknown",
+      "max_size": 8
+    },
+    {
+      "address": "0x8008d468",
+      "size": null,
+      "kind": "game_reference",
+      "section": null,
+      "names": [
+        "g_view_rotation"
+      ],
+      "owner": null,
+      "referenced_by": [
+        "geometry",
+        "hud",
+        "main",
+        "particle",
+        "pause_menu"
+      ],
+      "evidence": "address of a global named by a matched unit's map",
+      "region": "unknown",
+      "max_size": 8
+    },
+    {
+      "address": "0x8008d470",
+      "size": null,
+      "kind": "game_reference",
+      "section": null,
+      "names": [
+        "g_fade_depth"
+      ],
+      "owner": null,
+      "referenced_by": [
+        "main"
+      ],
+      "evidence": "address of a global named by a matched unit's map",
+      "region": "unknown",
+      "max_size": 8
+    },
+    {
+      "address": "0x8008d478",
+      "size": null,
+      "kind": "game_reference",
+      "section": null,
+      "names": [
+        "g_sprite_workspace"
+      ],
+      "owner": null,
+      "referenced_by": [
+        "actor",
+        "effects",
+        "frontend",
+        "game_20000_8",
+        "hud",
+        "main",
+        "model_draw",
+        "particle",
+        "pause_menu",
+        "text"
+      ],
+      "evidence": "address of a global named by a matched unit's map",
+      "region": "unknown",
+      "max_size": 8
+    },
+    {
+      "address": "0x8008d480",
+      "size": null,
+      "kind": "game_reference",
+      "section": null,
+      "names": [
+        "g_first_slice"
+      ],
+      "owner": null,
+      "referenced_by": [
+        "movie"
+      ],
+      "evidence": "address of a global named by a matched unit's map",
+      "region": "unknown",
+      "max_size": 8
+    },
+    {
+      "address": "0x8008d488",
+      "size": null,
+      "kind": "game_reference",
+      "section": null,
+      "names": [
+        "g_fingers_clut"
+      ],
+      "owner": null,
+      "referenced_by": [
+        "actor",
+        "sprites"
+      ],
+      "evidence": "address of a global named by a matched unit's map",
+      "region": "unknown",
+      "max_size": 8
+    },
+    {
+      "address": "0x8008d490",
+      "size": null,
+      "kind": "game_reference",
+      "section": null,
+      "names": [
+        "g_palette"
+      ],
+      "owner": null,
+      "referenced_by": [
+        "actor",
+        "countdown_timer",
+        "effects",
+        "hud",
+        "lights",
+        "model_draw",
+        "particle",
+        "player",
+        "sprites"
+      ],
+      "evidence": "address of a global named by a matched unit's map",
+      "region": "unknown",
+      "max_size": 16
+    },
+    {
+      "address": "0x8008d4a0",
+      "size": null,
+      "kind": "game_reference",
+      "section": null,
+      "names": [
+        "g_transform_result"
+      ],
+      "owner": null,
+      "referenced_by": [
+        "actor",
+        "model_draw",
+        "particle"
+      ],
+      "evidence": "address of a global named by a matched unit's map",
+      "region": "unknown",
+      "max_size": 8
+    },
+    {
+      "address": "0x8008d4a8",
+      "size": null,
+      "kind": "game_reference",
+      "section": null,
+      "names": [
+        "g_movie_finished"
+      ],
+      "owner": null,
+      "referenced_by": [
+        "movie"
+      ],
+      "evidence": "address of a global named by a matched unit's map",
+      "region": "unknown",
+      "max_size": 8
+    },
+    {
+      "address": "0x8008d4b0",
+      "size": null,
+      "kind": "game_reference",
+      "section": null,
+      "names": [
+        "g_card_event_complete"
+      ],
+      "owner": null,
+      "referenced_by": [
+        "memcard"
+      ],
+      "evidence": "address of a global named by a matched unit's map",
+      "region": "unknown",
+      "max_size": 8
+    },
+    {
+      "address": "0x8008d4b8",
+      "size": null,
+      "kind": "game_reference",
+      "section": null,
+      "names": [
+        "g_card_event_error"
+      ],
+      "owner": null,
+      "referenced_by": [
+        "memcard"
+      ],
+      "evidence": "address of a global named by a matched unit's map",
+      "region": "unknown",
+      "max_size": 8
+    },
+    {
+      "address": "0x8008d4c0",
+      "size": null,
+      "kind": "game_reference",
+      "section": null,
+      "names": [
+        "g_card_event_timeout"
+      ],
+      "owner": null,
+      "referenced_by": [
+        "memcard"
+      ],
+      "evidence": "address of a global named by a matched unit's map",
+      "region": "unknown",
+      "max_size": 8
+    },
+    {
+      "address": "0x8008d4c8",
+      "size": null,
+      "kind": "game_reference",
+      "section": null,
+      "names": [
+        "g_card_event_new_device"
+      ],
+      "owner": null,
+      "referenced_by": [
+        "memcard"
+      ],
+      "evidence": "address of a global named by a matched unit's map",
+      "region": "unknown",
+      "max_size": 8
+    },
+    {
+      "address": "0x8008d4d0",
+      "size": null,
+      "kind": "game_reference",
+      "section": null,
+      "names": [
+        "g_pad_repeat_clock"
+      ],
+      "owner": null,
+      "referenced_by": [
+        "main"
+      ],
+      "evidence": "address of a global named by a matched unit's map",
+      "region": "unknown",
+      "max_size": 8
+    },
+    {
+      "address": "0x8008d4d8",
+      "size": null,
+      "kind": "game_reference",
+      "section": null,
+      "names": [
+        "g_pad_held"
+      ],
+      "owner": null,
+      "referenced_by": [
+        "frontend",
+        "main",
+        "pause_menu",
+        "player"
+      ],
+      "evidence": "address of a global named by a matched unit's map",
+      "region": "unknown",
+      "max_size": 8
+    },
+    {
+      "address": "0x8008d4e0",
+      "size": null,
+      "kind": "game_reference",
+      "section": null,
+      "names": [
+        "g_debris_uvs"
+      ],
+      "owner": null,
+      "referenced_by": [
+        "debris",
+        "particle"
+      ],
+      "evidence": "address of a global named by a matched unit's map",
+      "region": "unknown",
+      "max_size": 8
+    },
+    {
+      "address": "0x8008d4e8",
+      "size": null,
+      "kind": "game_reference",
+      "section": null,
+      "names": [
+        "g_render_buffer"
+      ],
+      "owner": null,
+      "referenced_by": [
+        "actor",
+        "effects",
+        "frontend",
+        "game_20000_8",
+        "hud",
+        "main",
+        "model_draw",
+        "particle",
+        "pause_menu",
+        "text"
+      ],
+      "evidence": "address of a global named by a matched unit's map",
+      "region": "unknown",
+      "max_size": 8
+    },
+    {
+      "address": "0x8008d4f0",
+      "size": null,
+      "kind": "game_reference",
+      "section": null,
+      "names": [
+        "g_next_task"
+      ],
+      "owner": null,
+      "referenced_by": [
+        "actor",
+        "command_sequencer",
+        "countdown_timer",
+        "doors",
+        "effects",
+        "frontend",
+        "game_20000_3",
+        "hud",
+        "lift",
+        "main",
+        "map_objects",
+        "object_render",
+        "particle",
+        "player",
+        "tasker"
+      ],
+      "evidence": "address of a global named by a matched unit's map",
+      "region": "unknown",
+      "max_size": 8
+    },
+    {
+      "address": "0x8008d4f8",
+      "size": null,
+      "kind": "game_reference",
+      "section": null,
+      "names": [
+        "g_command_state_count"
+      ],
+      "owner": null,
+      "referenced_by": [
+        "command_sequencer"
+      ],
+      "evidence": "address of a global named by a matched unit's map",
+      "region": "unknown",
+      "max_size": 8
+    },
+    {
+      "address": "0x8008d500",
+      "size": null,
+      "kind": "game_reference",
+      "section": null,
+      "names": [
+        "g_movie_loc"
+      ],
+      "owner": null,
+      "referenced_by": [
+        "movie"
+      ],
+      "evidence": "address of a global named by a matched unit's map",
+      "region": "unknown",
+      "max_size": 8
+    },
+    {
+      "address": "0x8008d508",
+      "size": null,
+      "kind": "game_reference",
+      "section": null,
+      "names": [
+        "g_cd_read_count"
+      ],
+      "owner": null,
+      "referenced_by": [
+        "main"
+      ],
+      "evidence": "address of a global named by a matched unit's map",
+      "region": "unknown",
+      "max_size": 8
+    },
+    {
+      "address": "0x8008d510",
+      "size": null,
+      "kind": "game_reference",
+      "section": null,
+      "names": [
+        "g_visible_cell_mask"
+      ],
+      "owner": null,
+      "referenced_by": [
+        "actor",
+        "doors",
+        "game_20000_3",
+        "map_objects",
+        "object_render",
+        "particle"
+      ],
+      "evidence": "address of a global named by a matched unit's map",
+      "region": "unknown",
+      "max_size": 8
+    },
+    {
+      "address": "0x8008d518",
+      "size": null,
+      "kind": "game_reference",
+      "section": null,
+      "names": [
+        "g_display"
+      ],
+      "owner": null,
+      "referenced_by": [
+        "main",
+        "pause_menu"
+      ],
+      "evidence": "address of a global named by a matched unit's map",
+      "region": "unknown",
+      "max_size": 8
+    },
+    {
+      "address": "0x8008d520",
+      "size": null,
+      "kind": "game_reference",
+      "section": null,
+      "names": [
+        "g_unpack_buffer"
+      ],
+      "owner": null,
+      "referenced_by": [
+        "game_helpers7",
+        "pause_menu",
+        "texture_upload"
+      ],
+      "evidence": "address of a global named by a matched unit's map",
+      "region": "unknown",
+      "max_size": 8
+    },
+    {
+      "address": "0x8008d528",
+      "size": null,
+      "kind": "game_reference",
+      "section": null,
+      "names": [
+        "g_unpack_buffer_end"
+      ],
+      "owner": null,
+      "referenced_by": [
+        "game_helpers7",
+        "texture_upload"
+      ],
+      "evidence": "address of a global named by a matched unit's map",
+      "region": "unknown",
+      "max_size": 8
+    },
+    {
+      "address": "0x8008d530",
+      "size": null,
+      "kind": "game_reference",
+      "section": null,
+      "names": [
+        "g_8d530"
+      ],
+      "owner": null,
+      "referenced_by": [
+        "music_control"
+      ],
+      "evidence": "address of a global named by a matched unit's map",
+      "region": "unknown",
+      "max_size": 8
+    },
+    {
+      "address": "0x8008d538",
+      "size": null,
+      "kind": "game_reference",
+      "section": null,
+      "names": [
+        "g_boss_unpack_buffer"
+      ],
+      "owner": null,
+      "referenced_by": [
+        "game_helpers7",
+        "texture_upload"
+      ],
+      "evidence": "address of a global named by a matched unit's map",
+      "region": "unknown",
+      "max_size": 8
+    },
+    {
+      "address": "0x8008d540",
+      "size": null,
+      "kind": "game_reference",
+      "section": null,
+      "names": [
+        "g_sfx_level"
+      ],
+      "owner": null,
+      "referenced_by": [
+        "audio",
+        "audio_control"
+      ],
+      "evidence": "address of a global named by a matched unit's map",
+      "region": "unknown",
+      "max_size": 8
+    },
+    {
+      "address": "0x8008d548",
+      "size": null,
+      "kind": "game_reference",
+      "section": null,
+      "names": [
+        "g_heap_allocation"
+      ],
+      "owner": null,
+      "referenced_by": [
+        "main"
+      ],
+      "evidence": "address of a global named by a matched unit's map",
+      "region": "unknown",
+      "max_size": 8
+    },
+    {
+      "address": "0x8008d550",
+      "size": null,
+      "kind": "game_reference",
+      "section": null,
+      "names": [
+        "g_target_count"
+      ],
+      "owner": null,
+      "referenced_by": [
+        "particle"
+      ],
+      "evidence": "address of a global named by a matched unit's map",
+      "region": "unknown",
+      "max_size": 8
+    },
+    {
+      "address": "0x8008d558",
+      "size": null,
+      "kind": "game_reference",
+      "section": null,
+      "names": [
+        "g_model_uvs"
+      ],
+      "owner": null,
+      "referenced_by": [
+        "map_objects",
+        "model_draw",
+        "object_render",
+        "particle",
+        "pause_menu",
+        "sprites"
+      ],
+      "evidence": "address of a global named by a matched unit's map",
+      "region": "unknown",
+      "max_size": 8
+    },
+    {
+      "address": "0x8008d560",
+      "size": null,
+      "kind": "game_reference",
+      "section": null,
+      "names": [
+        "g_game_flags"
+      ],
+      "owner": null,
+      "referenced_by": [
+        "actor",
+        "countdown_timer",
+        "frontend",
+        "hud",
+        "level_triggers",
+        "main",
+        "particle",
+        "pause_menu",
+        "player"
+      ],
+      "evidence": "address of a global named by a matched unit's map",
+      "region": "unknown",
+      "max_size": 8
+    },
+    {
+      "address": "0x8008d568",
+      "size": null,
+      "kind": "game_reference",
+      "section": null,
+      "names": [
+        "g_lamp_level"
+      ],
+      "owner": null,
+      "referenced_by": [
+        "lights"
+      ],
+      "evidence": "address of a global named by a matched unit's map",
+      "region": "unknown",
+      "max_size": 8
+    },
+    {
+      "address": "0x8008d570",
+      "size": null,
+      "kind": "game_reference",
+      "section": null,
+      "names": [
+        "g_gte_flag"
+      ],
+      "owner": null,
+      "referenced_by": [
+        "actor",
+        "effects",
+        "hud",
+        "model_draw",
+        "particle"
+      ],
+      "evidence": "address of a global named by a matched unit's map",
+      "region": "unknown",
+      "max_size": 8
+    },
+    {
+      "address": "0x8008d578",
+      "size": null,
+      "kind": "game_reference",
+      "section": null,
+      "names": [
+        "g_boss_level"
+      ],
+      "owner": null,
+      "referenced_by": [
+        "main"
+      ],
+      "evidence": "address of a global named by a matched unit's map",
+      "region": "unknown",
+      "max_size": 8
+    },
+    {
+      "address": "0x8008d580",
+      "size": null,
+      "kind": "game_reference",
+      "section": null,
+      "names": [
+        "g_pad_repeat"
+      ],
+      "owner": null,
+      "referenced_by": [
+        "frontend",
+        "main"
+      ],
+      "evidence": "address of a global named by a matched unit's map",
+      "region": "unknown",
+      "max_size": 8
+    },
+    {
+      "address": "0x8008d588",
+      "size": null,
+      "kind": "game_reference",
+      "section": null,
+      "names": [
+        "g_sound_clock"
+      ],
+      "owner": null,
+      "referenced_by": [
+        "audio",
+        "main",
+        "pause_menu"
+      ],
+      "evidence": "address of a global named by a matched unit's map",
+      "region": "unknown",
+      "max_size": 8
+    },
+    {
+      "address": "0x8008d590",
+      "size": null,
+      "kind": "game_reference",
+      "section": null,
+      "names": [
+        "g_pad_hold_frames"
+      ],
+      "owner": null,
+      "referenced_by": [
+        "main"
+      ],
+      "evidence": "address of a global named by a matched unit's map",
+      "region": "unknown",
+      "max_size": 8
+    },
+    {
+      "address": "0x8008d598",
+      "size": null,
+      "kind": "game_reference",
+      "section": null,
+      "names": [
+        "g_lift_model_count"
+      ],
+      "owner": null,
+      "referenced_by": [
+        "game_20000_3",
+        "lift"
+      ],
+      "evidence": "address of a global named by a matched unit's map",
+      "region": "unknown",
+      "max_size": 8
+    },
+    {
+      "address": "0x8008d5a0",
+      "size": null,
+      "kind": "game_reference",
+      "section": null,
+      "names": [
+        "g_door_model_count"
+      ],
+      "owner": null,
+      "referenced_by": [
+        "doors",
+        "game_20000_3"
+      ],
+      "evidence": "address of a global named by a matched unit's map",
+      "region": "unknown",
+      "max_size": 8
+    },
+    {
+      "address": "0x8008d5a8",
+      "size": null,
+      "kind": "game_reference",
+      "section": null,
+      "names": [
+        "g_pad_pressed"
+      ],
+      "owner": null,
+      "referenced_by": [
+        "frontend",
+        "main",
+        "pause_menu",
+        "player"
+      ],
+      "evidence": "address of a global named by a matched unit's map",
+      "region": "unknown",
+      "max_size": 8
+    },
+    {
+      "address": "0x8008d5b0",
+      "size": null,
+      "kind": "game_reference",
+      "section": null,
+      "names": [
+        "g_level_result"
+      ],
+      "owner": null,
+      "referenced_by": [
+        "frontend"
+      ],
+      "evidence": "address of a global named by a matched unit's map",
+      "region": "unknown",
+      "max_size": 8
+    },
+    {
+      "address": "0x8008d5b8",
+      "size": null,
+      "kind": "game_reference",
+      "section": null,
+      "names": [
+        "g_view_position"
+      ],
+      "owner": null,
+      "referenced_by": [
+        "doors",
+        "game_20000_3",
+        "geometry",
+        "main",
+        "map_objects",
+        "object_render",
+        "particle"
+      ],
+      "evidence": "address of a global named by a matched unit's map",
+      "region": "unknown",
+      "max_size": 8
+    },
+    {
+      "address": "0x8008d5c0",
+      "size": null,
+      "kind": "game_reference",
+      "section": null,
+      "names": [
+        "g_movie_end_frame"
+      ],
+      "owner": null,
+      "referenced_by": [
+        "movie"
+      ],
+      "evidence": "address of a global named by a matched unit's map",
+      "region": "unknown",
+      "max_size": 8
+    },
+    {
+      "address": "0x8008d5c8",
+      "size": null,
+      "kind": "game_reference",
+      "section": null,
+      "names": [
+        "g_relative_position"
+      ],
+      "owner": null,
+      "referenced_by": [
+        "doors",
+        "geometry",
+        "map_objects",
+        "object_render",
+        "particle"
+      ],
+      "evidence": "address of a global named by a matched unit's map",
+      "region": "unknown",
+      "max_size": 8
+    },
+    {
+      "address": "0x8008d5d0",
+      "size": null,
+      "kind": "game_reference",
+      "section": null,
+      "names": [
+        "g_player_cell_x"
+      ],
+      "owner": null,
+      "referenced_by": [
+        "game_20000_3"
+      ],
+      "evidence": "address of a global named by a matched unit's map",
+      "region": "unknown",
+      "max_size": 8
+    },
+    {
+      "address": "0x8008d5d8",
+      "size": null,
+      "kind": "game_reference",
+      "section": null,
+      "names": [
+        "g_player_cell_z"
+      ],
+      "owner": null,
+      "referenced_by": [
+        "game_20000_3"
+      ],
+      "evidence": "address of a global named by a matched unit's map",
+      "region": "unknown",
+      "max_size": 8
+    },
+    {
+      "address": "0x8008d5e0",
+      "size": null,
+      "kind": "game_reference",
+      "section": null,
+      "names": [
+        "g_resource_status"
+      ],
+      "owner": null,
+      "referenced_by": [
+        "text"
+      ],
+      "evidence": "address of a global named by a matched unit's map",
+      "region": "unknown",
+      "max_size": 8
+    },
+    {
+      "address": "0x8008d5e8",
+      "size": null,
+      "kind": "game_reference",
+      "section": null,
+      "names": [
+        "g_display_buffers"
+      ],
+      "owner": null,
+      "referenced_by": [
+        "main"
+      ],
+      "evidence": "address of a global named by a matched unit's map",
+      "region": "unknown",
+      "max_size": 8
+    },
+    {
+      "address": "0x8008d5f0",
+      "size": null,
+      "kind": "game_reference",
+      "section": null,
+      "names": [
+        "g_view_pitch"
+      ],
+      "owner": null,
+      "referenced_by": [
+        "geometry",
+        "main",
+        "particle"
+      ],
+      "evidence": "address of a global named by a matched unit's map",
+      "region": "unknown",
+      "max_size": 8
+    },
+    {
+      "address": "0x8008d5f8",
+      "size": null,
+      "kind": "game_reference",
+      "section": null,
+      "names": [
+        "g_random_state"
+      ],
+      "owner": null,
+      "referenced_by": [
+        "main"
+      ],
+      "evidence": "address of a global named by a matched unit's map",
+      "region": "unknown",
+      "max_size": 24
+    },
+    {
+      "address": "0x8008d610",
+      "size": null,
+      "kind": "game_reference",
+      "section": null,
+      "names": [
+        "g_icon_uvs"
+      ],
+      "owner": null,
+      "referenced_by": [
+        "frontend"
+      ],
+      "evidence": "address of a global named by a matched unit's map",
+      "region": "unknown",
+      "max_size": 336
+    },
+    {
+      "address": "0x8008d760",
+      "size": null,
+      "kind": "game_reference",
+      "section": null,
+      "names": [
+        "g_char_widths"
+      ],
+      "owner": null,
+      "referenced_by": [
+        "text"
+      ],
+      "evidence": "address of a global named by a matched unit's map",
+      "region": "unknown",
+      "max_size": 48
+    },
+    {
+      "address": "0x8008d790",
+      "size": null,
+      "kind": "game_reference",
+      "section": null,
+      "names": [
+        "g_card_slot_levels"
+      ],
+      "owner": null,
+      "referenced_by": [
+        "frontend"
+      ],
+      "evidence": "address of a global named by a matched unit's map",
+      "region": "unknown",
+      "max_size": 16
+    },
+    {
+      "address": "0x8008d7a0",
+      "size": null,
+      "kind": "game_reference",
+      "section": null,
+      "names": [
+        "g_menu_glyph_widths"
+      ],
+      "owner": null,
+      "referenced_by": [
+        "text"
+      ],
+      "evidence": "address of a global named by a matched unit's map",
+      "region": "unknown",
+      "max_size": 256
+    },
+    {
+      "address": "0x8008d8a0",
+      "size": null,
+      "kind": "game_reference",
+      "section": null,
+      "names": [
+        "g_flow_queue"
+      ],
+      "owner": null,
+      "referenced_by": [
+        "game_20000_3"
+      ],
+      "evidence": "address of a global named by a matched unit's map",
+      "region": "unknown",
+      "max_size": 272
+    },
+    {
+      "address": "0x8008d9b0",
+      "size": null,
+      "kind": "game_reference",
+      "section": null,
+      "names": [
+        "g_lights"
+      ],
+      "owner": null,
+      "referenced_by": [
+        "lights"
+      ],
+      "evidence": "address of a global named by a matched unit's map",
+      "region": "unknown",
+      "max_size": 3584
+    },
+    {
+      "address": "0x8008e7b0",
+      "size": null,
+      "kind": "game_reference",
+      "section": null,
+      "names": [
+        "g_particle_positions"
+      ],
+      "owner": null,
+      "referenced_by": [
+        "particle"
+      ],
+      "evidence": "address of a global named by a matched unit's map",
+      "region": "unknown",
+      "max_size": 1024
+    },
+    {
+      "address": "0x8008ebb0",
+      "size": null,
+      "kind": "game_reference",
+      "section": null,
+      "names": [
+        "g_particle_velocities"
+      ],
+      "owner": null,
+      "referenced_by": [
+        "particle"
+      ],
+      "evidence": "address of a global named by a matched unit's map",
+      "region": "unknown",
+      "max_size": 1024
+    },
+    {
+      "address": "0x8008efb0",
+      "size": null,
+      "kind": "game_reference",
+      "section": null,
+      "names": [
+        "g_visible_actors"
+      ],
+      "owner": null,
+      "referenced_by": [
+        "actor"
+      ],
+      "evidence": "address of a global named by a matched unit's map",
+      "region": "unknown",
+      "max_size": 512
+    },
+    {
+      "address": "0x8008f1b0",
+      "size": null,
+      "kind": "game_reference",
+      "section": null,
+      "names": [
+        "g_hugger_upper"
+      ],
+      "owner": null,
+      "referenced_by": [
+        "actor"
+      ],
+      "evidence": "address of a global named by a matched unit's map",
+      "region": "unknown",
+      "max_size": 64
+    },
+    {
+      "address": "0x8008f1f0",
+      "size": null,
+      "kind": "game_reference",
+      "section": null,
+      "names": [
+        "g_hugger_lower"
+      ],
+      "owner": null,
+      "referenced_by": [
+        "actor"
+      ],
+      "evidence": "address of a global named by a matched unit's map",
+      "region": "unknown",
+      "max_size": 64
+    },
+    {
+      "address": "0x8008f230",
+      "size": null,
+      "kind": "game_reference",
+      "section": null,
+      "names": [
+        "g_level_object_models"
+      ],
+      "owner": null,
+      "referenced_by": [
+        "object_render"
+      ],
+      "evidence": "address of a global named by a matched unit's map",
+      "region": "unknown",
+      "max_size": 168
+    },
+    {
+      "address": "0x8008f2d8",
+      "size": null,
+      "kind": "game_reference",
+      "section": null,
+      "names": [
+        "g_blast_near"
+      ],
+      "owner": null,
+      "referenced_by": [
+        "object_render"
+      ],
+      "evidence": "address of a global named by a matched unit's map",
+      "region": "unknown",
+      "max_size": 32
+    },
+    {
+      "address": "0x8008f2f8",
+      "size": null,
+      "kind": "game_reference",
+      "section": null,
+      "names": [
+        "g_blast_far"
+      ],
+      "owner": null,
+      "referenced_by": [
+        "object_render"
+      ],
+      "evidence": "address of a global named by a matched unit's map",
+      "region": "unknown",
+      "max_size": 64
+    },
+    {
+      "address": "0x8008f338",
+      "size": null,
+      "kind": "game_reference",
+      "section": null,
+      "names": [
+        "g_weapon_slots"
+      ],
+      "owner": null,
+      "referenced_by": [
+        "weapon_slots"
+      ],
+      "evidence": "address of a global named by a matched unit's map",
+      "region": "unknown",
+      "max_size": 24
+    },
+    {
+      "address": "0x8008f350",
+      "size": null,
+      "kind": "game_reference",
+      "section": null,
+      "names": [
+        "g_tracker_matrix"
+      ],
+      "owner": null,
+      "referenced_by": [
+        "hud"
+      ],
+      "evidence": "address of a global named by a matched unit's map",
+      "region": "unknown",
+      "max_size": 32
+    },
+    {
+      "address": "0x8008f370",
+      "size": null,
+      "kind": "game_reference",
+      "section": null,
+      "names": [
+        "g_sound_request"
+      ],
+      "owner": null,
+      "referenced_by": [
+        "audio_control"
+      ],
+      "evidence": "address of a global named by a matched unit's map",
+      "region": "unknown",
+      "max_size": 24
+    },
+    {
+      "address": "0x8008f388",
+      "size": null,
+      "kind": "game_reference",
+      "section": null,
+      "names": [
+        "g_cell_triggers"
+      ],
+      "owner": null,
+      "referenced_by": [
+        "level_triggers"
+      ],
+      "evidence": "address of a global named by a matched unit's map",
+      "region": "unknown",
+      "max_size": 256
+    },
+    {
+      "address": "0x8008f488",
+      "size": null,
+      "kind": "game_reference",
+      "section": null,
+      "names": [
+        "g_cd_toc"
+      ],
+      "owner": null,
+      "referenced_by": [
+        "music_control"
+      ],
+      "evidence": "address of a global named by a matched unit's map",
+      "region": "unknown",
+      "max_size": 400
+    },
+    {
+      "address": "0x8008f618",
+      "size": null,
+      "kind": "game_reference",
+      "section": null,
+      "names": [
+        "g_map_uv"
+      ],
+      "owner": null,
+      "referenced_by": [
+        "pause_menu"
+      ],
+      "evidence": "address of a global named by a matched unit's map",
+      "region": "unknown",
+      "max_size": 16
+    },
+    {
+      "address": "0x8008f628",
+      "size": null,
+      "kind": "game_reference",
+      "section": null,
+      "names": [
+        "g_model_matrix"
+      ],
+      "owner": null,
+      "referenced_by": [
+        "pause_menu"
+      ],
+      "evidence": "address of a global named by a matched unit's map",
+      "region": "unknown",
+      "max_size": 32
+    },
+    {
+      "address": "0x8008f648",
+      "size": null,
+      "kind": "game_reference",
+      "section": null,
+      "names": [
+        "g_movie_disp"
+      ],
+      "owner": null,
+      "referenced_by": [
+        "movie"
+      ],
+      "evidence": "address of a global named by a matched unit's map",
+      "region": "unknown",
+      "max_size": 24
+    },
+    {
+      "address": "0x8008f660",
+      "size": null,
+      "kind": "game_reference",
+      "section": null,
+      "names": [
+        "g_movie_draw"
+      ],
+      "owner": null,
+      "referenced_by": [
+        "movie"
+      ],
+      "evidence": "address of a global named by a matched unit's map",
+      "region": "unknown",
+      "max_size": 140
+    },
+    {
+      "address": "0x8008f6ec",
+      "size": 9216,
+      "kind": "library_section",
+      "section": ".bss",
+      "names": [],
+      "owner": "ISO9660@8005fb60",
+      "evidence": "certified relocation section base of ISO9660@8005fb60 .bss",
+      "region": ".bss"
+    },
+    {
+      "address": "0x80091af0",
+      "size": 4,
+      "kind": "library_section",
+      "section": ".bss",
+      "names": [],
+      "owner": "PAD@800615b8",
+      "evidence": "certified relocation section base of PAD@800615b8 .bss",
+      "region": ".bss"
+    },
+    {
+      "address": "0x80091c34",
+      "size": 17416,
+      "kind": "library_section",
+      "section": ".bss",
+      "names": [],
+      "owner": "FONT@80065788",
+      "evidence": "certified relocation section base of FONT@80065788 .bss",
+      "region": ".bss"
+    },
+    {
+      "address": "0x8009603c",
+      "size": 4,
+      "kind": "library_common",
+      "section": null,
+      "names": [
+        "dc_cr"
+      ],
+      "owner": null,
+      "referenced_by": [
+        "VLC2@80069158"
+      ],
+      "evidence": "COMMON symbol dc_cr (XBSS size 4, largest declaration in Runtime Library 3.3) resolved from certified relocations",
+      "region": "COMMON"
+    },
+    {
+      "address": "0x80096040",
+      "size": null,
+      "kind": "game_reference",
+      "section": null,
+      "names": [
+        "g_door_models"
+      ],
+      "owner": null,
+      "referenced_by": [
+        "doors",
+        "game_20000_3"
+      ],
+      "evidence": "address of a global named by a matched unit's map",
+      "region": "COMMON",
+      "max_size": 32
+    },
+    {
+      "address": "0x80096060",
+      "size": null,
+      "kind": "game_reference",
+      "section": null,
+      "names": [
+        "g_level_map"
+      ],
+      "owner": null,
+      "referenced_by": [
+        "actor",
+        "command_sequencer",
+        "doors",
+        "frontend",
+        "game_20000_3",
+        "level_triggers",
+        "lift",
+        "lights",
+        "main",
+        "map_objects",
+        "object_render",
+        "particle",
+        "particle_hits",
+        "pause_menu",
+        "player",
+        "sprites"
+      ],
+      "evidence": "address of a global named by a matched unit's map",
+      "region": "COMMON",
+      "max_size": 184
+    },
+    {
+      "address": "0x80096118",
+      "size": null,
+      "kind": "game_reference",
+      "section": null,
+      "names": [
+        "g_menu_glyph_uvs"
+      ],
+      "owner": null,
+      "referenced_by": [
+        "frontend",
+        "text"
+      ],
+      "evidence": "address of a global named by a matched unit's map",
+      "region": "COMMON",
+      "max_size": 2624
+    },
+    {
+      "address": "0x80096b58",
+      "size": null,
+      "kind": "game_reference",
+      "section": null,
+      "names": [
+        "g_audio_banks"
+      ],
+      "owner": null,
+      "referenced_by": [
+        "audio_control"
+      ],
+      "evidence": "address of a global named by a matched unit's map",
+      "region": "COMMON",
+      "max_size": 64
+    },
+    {
+      "address": "0x80096b98",
+      "size": 4,
+      "kind": "library_common",
+      "section": null,
+      "names": [
+        "Stframe_no"
+      ],
+      "owner": null,
+      "referenced_by": [
+        "C_002@80061360",
+        "C_005@8005fad8"
+      ],
+      "evidence": "COMMON symbol Stframe_no (XBSS size 4, largest declaration in Runtime Library 3.3) resolved from certified relocations",
+      "region": "COMMON"
+    },
+    {
+      "address": "0x80096b9c",
+      "size": 2,
+      "kind": "library_common",
+      "section": null,
+      "names": [
+        "Stsector_offset"
+      ],
+      "owner": null,
+      "referenced_by": [
+        "C_002@80061360",
+        "C_005@8005fad8"
+      ],
+      "evidence": "COMMON symbol Stsector_offset (XBSS size 2, largest declaration in Runtime Library 3.3) resolved from certified relocations",
+      "region": "COMMON"
+    },
+    {
+      "address": "0x80096ba0",
+      "size": null,
+      "kind": "game_reference",
+      "section": null,
+      "names": [
+        "g_panel_cluts"
+      ],
+      "owner": null,
+      "referenced_by": [
+        "sprites"
+      ],
+      "evidence": "address of a global named by a matched unit's map",
+      "region": "COMMON",
+      "max_size": 40
+    },
+    {
+      "address": "0x80096bc8",
+      "size": null,
+      "kind": "game_reference",
+      "section": null,
+      "names": [
+        "g_menu_resource_records"
+      ],
+      "owner": null,
+      "referenced_by": [
+        "sprites"
+      ],
+      "evidence": "address of a global named by a matched unit's map",
+      "region": "COMMON",
+      "max_size": 24
+    },
+    {
+      "address": "0x80096be0",
+      "size": 4,
+      "kind": "library_common",
+      "section": null,
+      "names": [
+        "StRgb24"
+      ],
+      "owner": null,
+      "referenced_by": [
+        "C_005@8005fad8"
+      ],
+      "evidence": "COMMON symbol StRgb24 (XBSS size 4, largest declaration in Runtime Library 3.3) resolved from certified relocations",
+      "region": "COMMON"
+    },
+    {
+      "address": "0x80096be4",
+      "size": null,
+      "kind": "game_reference",
+      "section": null,
+      "names": [
+        "g_object_models"
+      ],
+      "owner": null,
+      "referenced_by": [
+        "map_objects",
+        "particle",
+        "pause_menu"
+      ],
+      "evidence": "address of a global named by a matched unit's map",
+      "region": "COMMON",
+      "max_size": 112
+    },
+    {
+      "address": "0x80096c54",
+      "size": null,
+      "kind": "game_reference",
+      "section": null,
+      "names": [
+        "g_secrets_found"
+      ],
+      "owner": null,
+      "referenced_by": [
+        "frontend",
+        "game_20000_3",
+        "pause_menu"
+      ],
+      "evidence": "address of a global named by a matched unit's map",
+      "region": "COMMON",
+      "max_size": 256
+    },
+    {
+      "address": "0x80096d54",
+      "size": null,
+      "kind": "game_reference",
+      "section": null,
+      "names": [
+        "g_password_record"
+      ],
+      "owner": null,
+      "referenced_by": [
+        "save_password"
+      ],
+      "evidence": "address of a global named by a matched unit's map",
+      "region": "COMMON",
+      "max_size": 24
+    },
+    {
+      "address": "0x80096d6c",
+      "size": null,
+      "kind": "game_reference",
+      "section": null,
+      "names": [
+        "g_pickup_cluts"
+      ],
+      "owner": null,
+      "referenced_by": [
+        "sprites"
+      ],
+      "evidence": "address of a global named by a matched unit's map",
+      "region": "COMMON",
+      "max_size": 64
+    },
+    {
+      "address": "0x80096dac",
+      "size": null,
+      "kind": "game_reference",
+      "section": null,
+      "names": [
+        "g_menu_resource_data"
+      ],
+      "owner": null,
+      "referenced_by": [
+        "sprites"
+      ],
+      "evidence": "address of a global named by a matched unit's map",
+      "region": "COMMON",
+      "max_size": 24
+    },
+    {
+      "address": "0x80096dc4",
+      "size": null,
+      "kind": "game_reference",
+      "section": null,
+      "names": [
+        "g_panel_uvs"
+      ],
+      "owner": null,
+      "referenced_by": [
+        "debris",
+        "hud",
+        "object_render",
+        "sprites"
+      ],
+      "evidence": "address of a global named by a matched unit's map",
+      "region": "COMMON",
+      "max_size": 368
+    },
+    {
+      "address": "0x80096f34",
+      "size": null,
+      "kind": "game_reference",
+      "section": null,
+      "names": [
+        "g_font_uvs"
+      ],
+      "owner": null,
+      "referenced_by": [
+        "hud"
+      ],
+      "evidence": "address of a global named by a matched unit's map",
+      "region": "COMMON",
+      "max_size": 1456
+    },
+    {
+      "address": "0x800974e4",
+      "size": null,
+      "kind": "game_reference",
+      "section": null,
+      "names": [
+        "g_font2_uvs"
+      ],
+      "owner": null,
+      "referenced_by": [
+        "hud"
+      ],
+      "evidence": "address of a global named by a matched unit's map",
+      "region": "COMMON",
+      "max_size": 944
+    },
+    {
+      "address": "0x80097894",
+      "size": null,
+      "kind": "game_reference",
+      "section": null,
+      "names": [
+        "g_hud_panel_uvs"
+      ],
+      "owner": null,
+      "referenced_by": [
+        "hud"
+      ],
+      "evidence": "address of a global named by a matched unit's map",
+      "region": "COMMON",
+      "max_size": 496
+    },
+    {
+      "address": "0x80097a84",
+      "size": null,
+      "kind": "game_reference",
+      "section": null,
+      "names": [
+        "g_option_bar_uv"
+      ],
+      "owner": null,
+      "referenced_by": [
+        "pause_menu"
+      ],
+      "evidence": "address of a global named by a matched unit's map",
+      "region": "COMMON",
+      "max_size": 1360
+    },
+    {
+      "address": "0x80097fd4",
+      "size": null,
+      "kind": "game_reference",
+      "section": null,
+      "names": [
+        "g_sprite_uvs"
+      ],
+      "owner": null,
+      "referenced_by": [
+        "debris",
+        "frontend",
+        "map_objects",
+        "object_render",
+        "particle",
+        "pause_menu",
+        "sprites"
+      ],
+      "evidence": "address of a global named by a matched unit's map",
+      "region": "COMMON",
+      "max_size": 8192
+    },
+    {
+      "address": "0x80099fd4",
+      "size": null,
+      "kind": "game_reference",
+      "section": null,
+      "names": [
+        "g_player"
+      ],
+      "owner": null,
+      "referenced_by": [
+        "actor",
+        "audio_control",
+        "debris",
+        "doors",
+        "frontend",
+        "hud",
+        "level_triggers",
+        "lift",
+        "map_objects",
+        "object_render",
+        "particle",
+        "particle_hits",
+        "pause_menu",
+        "player",
+        "save_password",
+        "weapon_slots"
+      ],
+      "evidence": "address of a global named by a matched unit's map",
+      "region": "COMMON",
+      "max_size": 264
+    },
+    {
+      "address": "0x8009a0dc",
+      "size": null,
+      "kind": "game_reference",
+      "section": null,
+      "names": [
+        "g_sound_channels"
+      ],
+      "owner": null,
+      "referenced_by": [
+        "player"
+      ],
+      "evidence": "address of a global named by a matched unit's map",
+      "region": "COMMON",
+      "max_size": 16
+    },
+    {
+      "address": "0x8009a0ec",
+      "size": 4,
+      "kind": "library_common",
+      "section": null,
+      "names": [
+        "dec_pt"
+      ],
+      "owner": null,
+      "referenced_by": [
+        "VLC2@80069158"
+      ],
+      "evidence": "COMMON symbol dec_pt (XBSS size 4, largest declaration in Runtime Library 3.3) resolved from certified relocations",
+      "region": "COMMON"
+    },
+    {
+      "address": "0x8009a0f0",
+      "size": null,
+      "kind": "game_reference",
+      "section": null,
+      "names": [
+        "g_actor_kind_map"
+      ],
+      "owner": null,
+      "referenced_by": [
+        "actor",
+        "sprites"
+      ],
+      "evidence": "address of a global named by a matched unit's map",
+      "region": "COMMON",
+      "max_size": 40
+    },
+    {
+      "address": "0x8009a118",
+      "size": 4,
+      "kind": "library_common",
+      "section": null,
+      "names": [
+        "StFunc1"
+      ],
+      "owner": null,
+      "referenced_by": [
+        "C_005@8005fad8"
+      ],
+      "evidence": "COMMON symbol StFunc1 (XBSS size 4, largest declaration in Runtime Library 3.3) resolved from certified relocations",
+      "region": "COMMON"
+    },
+    {
+      "address": "0x8009a11c",
+      "size": 4,
+      "kind": "library_common",
+      "section": null,
+      "names": [
+        "StFunc2"
+      ],
+      "owner": null,
+      "referenced_by": [
+        "C_005@8005fad8"
+      ],
+      "evidence": "COMMON symbol StFunc2 (XBSS size 4, largest declaration in Runtime Library 3.3) resolved from certified relocations",
+      "region": "COMMON"
+    },
+    {
+      "address": "0x8009a120",
+      "size": null,
+      "kind": "game_reference",
+      "section": null,
+      "names": [
+        "g_9a120"
+      ],
+      "owner": null,
+      "referenced_by": [
+        "movie"
+      ],
+      "evidence": "address of a global named by a matched unit's map; lies inside an evidenced library allocation, so it is not separate storage",
+      "interior_of": "StCdIntrFlag",
+      "region": "COMMON"
+    },
+    {
+      "address": "0x8009a120",
+      "size": 4,
+      "kind": "library_common",
+      "section": null,
+      "names": [
+        "StCdIntrFlag"
+      ],
+      "owner": null,
+      "referenced_by": [
+        "C_002@80061360"
+      ],
+      "evidence": "COMMON symbol StCdIntrFlag (XBSS size 4, largest declaration in Runtime Library 3.3) resolved from certified relocations",
+      "region": "COMMON"
+    },
+    {
+      "address": "0x8009a124",
+      "size": null,
+      "kind": "game_reference",
+      "section": null,
+      "names": [
+        "g_mission_text"
+      ],
+      "owner": null,
+      "referenced_by": [
+        "frontend",
+        "pause_menu"
+      ],
+      "evidence": "address of a global named by a matched unit's map",
+      "region": "COMMON",
+      "max_size": 400
+    },
+    {
+      "address": "0x8009a2b4",
+      "size": null,
+      "kind": "game_reference",
+      "section": null,
+      "names": [
+        "g_explosion_cluts"
+      ],
+      "owner": null,
+      "referenced_by": [
+        "particle",
+        "sprites"
+      ],
+      "evidence": "address of a global named by a matched unit's map",
+      "region": "COMMON",
+      "max_size": 16
+    },
+    {
+      "address": "0x8009a2c4",
+      "size": null,
+      "kind": "game_reference",
+      "section": null,
+      "names": [
+        "g_view_matrix"
+      ],
+      "owner": null,
+      "referenced_by": [
+        "doors",
+        "geometry",
+        "map_objects",
+        "object_render",
+        "particle"
+      ],
+      "evidence": "address of a global named by a matched unit's map",
+      "region": "COMMON",
+      "max_size": 32
+    },
+    {
+      "address": "0x8009a2e4",
+      "size": null,
+      "kind": "game_reference",
+      "section": null,
+      "names": [
+        "g_matrix_work"
+      ],
+      "owner": null,
+      "referenced_by": [
+        "doors",
+        "geometry",
+        "map_objects",
+        "object_render",
+        "particle"
+      ],
+      "evidence": "address of a global named by a matched unit's map",
+      "region": "COMMON",
+      "max_size": 32
+    },
+    {
+      "address": "0x8009a304",
+      "size": 4,
+      "kind": "library_common",
+      "section": null,
+      "names": [
+        "StCHANNEL"
+      ],
+      "owner": null,
+      "referenced_by": [
+        "C_005@8005fad8"
+      ],
+      "evidence": "COMMON symbol StCHANNEL (XBSS size 4, largest declaration in Runtime Library 3.3) resolved from certified relocations",
+      "region": "COMMON"
+    },
+    {
+      "address": "0x8009a308",
+      "size": 4,
+      "kind": "library_common",
+      "section": null,
+      "names": [
+        "StStartFrame"
+      ],
+      "owner": null,
+      "referenced_by": [
+        "C_010@80061310"
+      ],
+      "evidence": "COMMON symbol StStartFrame (XBSS size 4, largest declaration in Runtime Library 3.3) resolved from certified relocations",
+      "region": "COMMON"
+    },
+    {
+      "address": "0x8009a30c",
+      "size": null,
+      "kind": "game_reference",
+      "section": null,
+      "names": [
+        "g_command_states"
+      ],
+      "owner": null,
+      "referenced_by": [
+        "command_sequencer",
+        "model_draw"
+      ],
+      "evidence": "address of a global named by a matched unit's map",
+      "region": "COMMON",
+      "max_size": 4096
+    },
+    {
+      "address": "0x8009b30c",
+      "size": null,
+      "kind": "game_reference",
+      "section": null,
+      "names": [
+        "g_heap_snapshots"
+      ],
+      "owner": null,
+      "referenced_by": [
+        "main"
+      ],
+      "evidence": "address of a global named by a matched unit's map",
+      "region": "COMMON",
+      "max_size": 96
+    },
+    {
+      "address": "0x8009b36c",
+      "size": null,
+      "kind": "game_reference",
+      "section": null,
+      "names": [
+        "g_movie_file"
+      ],
+      "owner": null,
+      "referenced_by": [
+        "movie"
+      ],
+      "evidence": "address of a global named by a matched unit's map",
+      "region": "COMMON",
+      "max_size": 24
+    },
+    {
+      "address": "0x8009b384",
+      "size": null,
+      "kind": "game_reference",
+      "section": null,
+      "names": [
+        "g_pickup_uvs"
+      ],
+      "owner": null,
+      "referenced_by": [
+        "debris",
+        "map_objects",
+        "object_render",
+        "particle",
+        "pause_menu",
+        "sprites"
+      ],
+      "evidence": "address of a global named by a matched unit's map",
+      "region": "COMMON",
+      "max_size": 4640
+    },
+    {
+      "address": "0x8009c5a4",
+      "size": null,
+      "kind": "game_reference",
+      "section": null,
+      "names": [
+        "g_translation"
+      ],
+      "owner": null,
+      "referenced_by": [
+        "doors",
+        "geometry",
+        "hud",
+        "map_objects",
+        "object_render",
+        "particle",
+        "pause_menu"
+      ],
+      "evidence": "address of a global named by a matched unit's map",
+      "region": "COMMON",
+      "max_size": 16
+    },
+    {
+      "address": "0x8009c5b4",
+      "size": 4,
+      "kind": "library_common",
+      "section": null,
+      "names": [
+        "dc_type"
+      ],
+      "owner": null,
+      "referenced_by": [
+        "VLC2@80069158"
+      ],
+      "evidence": "COMMON symbol dc_type (XBSS size 4, largest declaration in Runtime Library 3.3) resolved from certified relocations",
+      "region": "COMMON"
+    },
+    {
+      "address": "0x8009c5b8",
+      "size": 4,
+      "kind": "library_common",
+      "section": null,
+      "names": [
+        "bs_curt"
+      ],
+      "owner": null,
+      "referenced_by": [
+        "VLC2@80069158"
+      ],
+      "evidence": "COMMON symbol bs_curt (XBSS size 4, largest declaration in Runtime Library 3.3) resolved from certified relocations",
+      "region": "COMMON"
+    },
+    {
+      "address": "0x8009c5bc",
+      "size": null,
+      "kind": "game_reference",
+      "section": null,
+      "names": [
+        "g_voice"
+      ],
+      "owner": null,
+      "referenced_by": [
+        "audio"
+      ],
+      "evidence": "address of a global named by a matched unit's map",
+      "region": "COMMON",
+      "max_size": 288
+    },
+    {
+      "address": "0x8009c6dc",
+      "size": 4,
+      "kind": "library_common",
+      "section": null,
+      "names": [
+        "CChannel"
+      ],
+      "owner": null,
+      "referenced_by": [
+        "C_005@8005fad8"
+      ],
+      "evidence": "COMMON symbol CChannel (XBSS size 4, largest declaration in Runtime Library 3.3) resolved from certified relocations",
+      "region": "COMMON"
+    },
+    {
+      "address": "0x8009c6e0",
+      "size": null,
+      "kind": "game_reference",
+      "section": null,
+      "names": [
+        "g_sprite_list"
+      ],
+      "owner": null,
+      "referenced_by": [
+        "sprites"
+      ],
+      "evidence": "address of a global named by a matched unit's map",
+      "region": "COMMON",
+      "max_size": 1024
+    },
+    {
+      "address": "0x8009cae0",
+      "size": 4,
+      "kind": "library_common",
+      "section": null,
+      "names": [
+        "PadIdentifier"
+      ],
+      "owner": null,
+      "referenced_by": [
+        "PAD@800615b8"
+      ],
+      "evidence": "COMMON symbol PadIdentifier (XBSS size 4, largest declaration in Runtime Library 3.3) resolved from certified relocations",
+      "region": "COMMON"
+    },
+    {
+      "address": "0x8009cae4",
+      "size": 4,
+      "kind": "library_common",
+      "section": null,
+      "names": [
+        "StFinalSector"
+      ],
+      "owner": null,
+      "referenced_by": [
+        "C_002@80061360"
+      ],
+      "evidence": "COMMON symbol StFinalSector (XBSS size 4, largest declaration in Runtime Library 3.3) resolved from certified relocations",
+      "region": "COMMON"
+    },
+    {
+      "address": "0x8009cae8",
+      "size": null,
+      "kind": "game_reference",
+      "section": null,
+      "names": [
+        "g_movie_decode"
+      ],
+      "owner": null,
+      "referenced_by": [
+        "movie"
+      ],
+      "evidence": "address of a global named by a matched unit's map",
+      "region": "COMMON",
+      "max_size": 64
+    },
+    {
+      "address": "0x8009cb28",
+      "size": null,
+      "kind": "game_reference",
+      "section": null,
+      "names": [
+        "g_draw_env_a"
+      ],
+      "owner": null,
+      "referenced_by": [
+        "main"
+      ],
+      "evidence": "address of a global named by a matched unit's map",
+      "region": "COMMON",
+      "max_size": 96
+    },
+    {
+      "address": "0x8009cb88",
+      "size": null,
+      "kind": "game_reference",
+      "section": null,
+      "names": [
+        "g_draw_env_b"
+      ],
+      "owner": null,
+      "referenced_by": [
+        "main"
+      ],
+      "evidence": "address of a global named by a matched unit's map",
+      "region": "COMMON",
+      "max_size": 96
+    },
+    {
+      "address": "0x8009cbe8",
+      "size": 4,
+      "kind": "library_common",
+      "section": null,
+      "names": [
+        "dec_used"
+      ],
+      "owner": null,
+      "referenced_by": [
+        "VLC2@80069158"
+      ],
+      "evidence": "COMMON symbol dec_used (XBSS size 4, largest declaration in Runtime Library 3.3) resolved from certified relocations",
+      "region": "COMMON"
+    },
+    {
+      "address": "0x8009cbec",
+      "size": null,
+      "kind": "game_reference",
+      "section": null,
+      "names": [
+        "g_explosion_uvs"
+      ],
+      "owner": null,
+      "referenced_by": [
+        "effects",
+        "particle",
+        "sprites"
+      ],
+      "evidence": "address of a global named by a matched unit's map",
+      "region": "COMMON",
+      "max_size": 640
+    },
+    {
+      "address": "0x8009ce6c",
+      "size": null,
+      "kind": "game_reference",
+      "section": null,
+      "names": [
+        "g_targets"
+      ],
+      "owner": null,
+      "referenced_by": [
+        "particle"
+      ],
+      "evidence": "address of a global named by a matched unit's map",
+      "region": "COMMON",
+      "max_size": 1028
+    },
+    {
+      "address": "0x8009d270",
+      "size": null,
+      "kind": "game_reference",
+      "section": null,
+      "names": [
+        "g_audio_mix"
+      ],
+      "owner": null,
+      "referenced_by": [
+        "audio_control"
+      ],
+      "evidence": "address of a global named by a matched unit's map",
+      "region": "COMMON",
+      "max_size": 24
+    },
+    {
+      "address": "0x8009d288",
+      "size": null,
+      "kind": "game_reference",
+      "section": null,
+      "names": [
+        "g_command_labels"
+      ],
+      "owner": null,
+      "referenced_by": [
+        "command_sequencer"
+      ],
+      "evidence": "address of a global named by a matched unit's map",
+      "region": "COMMON",
+      "max_size": 1024
+    },
+    {
+      "address": "0x8009d688",
+      "size": 4,
+      "kind": "library_common",
+      "section": null,
+      "names": [
+        "dc_y"
+      ],
+      "owner": null,
+      "referenced_by": [
+        "VLC2@80069158"
+      ],
+      "evidence": "COMMON symbol dc_y (XBSS size 4, largest declaration in Runtime Library 3.3) resolved from certified relocations",
+      "region": "COMMON"
+    },
+    {
+      "address": "0x8009d68c",
+      "size": null,
+      "kind": "game_reference",
+      "section": null,
+      "names": [
+        "g_card_block_names"
+      ],
+      "owner": null,
+      "referenced_by": [
+        "frontend"
+      ],
+      "evidence": "address of a global named by a matched unit's map",
+      "region": "COMMON",
+      "max_size": 6208
+    },
+    {
+      "address": "0x8009eecc",
+      "size": 4,
+      "kind": "library_common",
+      "section": null,
+      "names": [
+        "StRingIdx1"
+      ],
+      "owner": null,
+      "referenced_by": [
+        "C_002@80061360"
+      ],
+      "evidence": "COMMON symbol StRingIdx1 (XBSS size 4, largest declaration in Runtime Library 3.3) resolved from certified relocations",
+      "region": "COMMON"
+    },
+    {
+      "address": "0x8009eed0",
+      "size": 4,
+      "kind": "library_common",
+      "section": null,
+      "names": [
+        "StRingIdx2"
+      ],
+      "owner": null,
+      "referenced_by": [
+        "C_002@80061360"
+      ],
+      "evidence": "COMMON symbol StRingIdx2 (XBSS size 4, largest declaration in Runtime Library 3.3) resolved from certified relocations",
+      "region": "COMMON"
+    },
+    {
+      "address": "0x8009eed4",
+      "size": 4,
+      "kind": "library_common",
+      "section": null,
+      "names": [
+        "StRingIdx3"
+      ],
+      "owner": null,
+      "referenced_by": [
+        "C_002@80061360",
+        "C_007@800614fc"
+      ],
+      "evidence": "COMMON symbol StRingIdx3 (XBSS size 4, largest declaration in Runtime Library 3.3) resolved from certified relocations",
+      "region": "COMMON"
+    },
+    {
+      "address": "0x8009eedc",
+      "size": 4,
+      "kind": "library_common",
+      "section": null,
+      "names": [
+        "StEndFrame"
+      ],
+      "owner": null,
+      "referenced_by": [
+        "C_010@80061310"
+      ],
+      "evidence": "COMMON symbol StEndFrame (XBSS size 4, largest declaration in Runtime Library 3.3) resolved from certified relocations",
+      "region": "COMMON"
+    },
+    {
+      "address": "0x8009eee0",
+      "size": 4,
+      "kind": "library_common",
+      "section": null,
+      "names": [
+        "StEmu_Addr"
+      ],
+      "owner": null,
+      "referenced_by": [
+        "C_005@8005fad8"
+      ],
+      "evidence": "COMMON symbol StEmu_Addr (XBSS size 4, largest declaration in Runtime Library 3.3) resolved from certified relocations",
+      "region": "COMMON"
+    },
+    {
+      "address": "0x8009eee4",
+      "size": null,
+      "kind": "game_reference",
+      "section": null,
+      "names": [
+        "g_spu_malloc_table"
+      ],
+      "owner": null,
+      "referenced_by": [
+        "audio"
+      ],
+      "evidence": "address of a global named by a matched unit's map",
+      "region": "COMMON",
+      "max_size": 136
+    },
+    {
+      "address": "0x8009ef6c",
+      "size": null,
+      "kind": "game_reference",
+      "section": null,
+      "names": [
+        "g_sample_slots"
+      ],
+      "owner": null,
+      "referenced_by": [
+        "audio"
+      ],
+      "evidence": "address of a global named by a matched unit's map",
+      "region": "COMMON",
+      "max_size": 8192
+    },
+    {
+      "address": "0x800a0f6c",
+      "size": null,
+      "kind": "game_reference",
+      "section": null,
+      "names": [
+        "g_password_text"
+      ],
+      "owner": null,
+      "referenced_by": [
+        "frontend",
+        "save_password"
+      ],
+      "evidence": "address of a global named by a matched unit's map",
+      "region": "COMMON",
+      "max_size": 40
+    },
+    {
+      "address": "0x800a0f94",
+      "size": 4,
+      "kind": "library_common",
+      "section": null,
+      "names": [
+        "StSTART_FLAG"
+      ],
+      "owner": null,
+      "referenced_by": [
+        "C_010@80061310"
+      ],
+      "evidence": "COMMON symbol StSTART_FLAG (XBSS size 4, largest declaration in Runtime Library 3.3) resolved from certified relocations",
+      "region": "COMMON"
+    },
+    {
+      "address": "0x800a0f9c",
+      "size": 4,
+      "kind": "library_common",
+      "section": null,
+      "names": [
+        "StRingAddr"
+      ],
+      "owner": null,
+      "referenced_by": [
+        "CDROM@80061330",
+        "C_007@800614fc",
+        "C_008@800612d0"
+      ],
+      "evidence": "COMMON symbol StRingAddr (XBSS size 4, largest declaration in Runtime Library 3.3) resolved from certified relocations",
+      "region": "COMMON"
+    },
+    {
+      "address": "0x800a0fa0",
+      "size": null,
+      "kind": "game_reference",
+      "section": null,
+      "names": [
+        "g_font2_widths"
+      ],
+      "owner": null,
+      "referenced_by": [
+        "hud"
+      ],
+      "evidence": "address of a global named by a matched unit's map",
+      "region": "COMMON",
+      "max_size": 56
+    },
+    {
+      "address": "0x800a0fd8",
+      "size": null,
+      "kind": "game_reference",
+      "section": null,
+      "names": [
+        "g_glyph_widths"
+      ],
+      "owner": null,
+      "referenced_by": [
+        "pause_menu"
+      ],
+      "evidence": "address of a global named by a matched unit's map",
+      "region": "COMMON",
+      "max_size": 64
+    },
+    {
+      "address": "0x800a1018",
+      "size": null,
+      "kind": "game_reference",
+      "section": null,
+      "names": [
+        "g_font_widths"
+      ],
+      "owner": null,
+      "referenced_by": [
+        "hud"
+      ],
+      "evidence": "address of a global named by a matched unit's map",
+      "region": "COMMON",
+      "max_size": 184
+    },
+    {
+      "address": "0x800a10d0",
+      "size": 4,
+      "kind": "library_common",
+      "section": null,
+      "names": [
+        "dc_cb"
+      ],
+      "owner": null,
+      "referenced_by": [
+        "VLC2@80069158"
+      ],
+      "evidence": "COMMON symbol dc_cb (XBSS size 4, largest declaration in Runtime Library 3.3) resolved from certified relocations",
+      "region": "COMMON"
+    },
+    {
+      "address": "0x800a10d4",
+      "size": null,
+      "kind": "game_reference",
+      "section": null,
+      "names": [
+        "g_palettes"
+      ],
+      "owner": null,
+      "referenced_by": [
+        "sprites"
+      ],
+      "evidence": "address of a global named by a matched unit's map",
+      "region": "COMMON",
+      "max_size": 2048
+    },
+    {
+      "address": "0x800a18d4",
+      "size": 4,
+      "kind": "library_common",
+      "section": null,
+      "names": [
+        "StRingSize"
+      ],
+      "owner": null,
+      "referenced_by": [
+        "CDROM@80061330",
+        "C_002@80061360",
+        "C_007@800614fc"
+      ],
+      "evidence": "COMMON symbol StRingSize (XBSS size 4, largest declaration in Runtime Library 3.3) resolved from certified relocations",
+      "region": "COMMON"
+    },
+    {
+      "address": "0x800a18d8",
+      "size": null,
+      "kind": "game_reference",
+      "section": null,
+      "names": [
+        "g_lift_models"
+      ],
+      "owner": null,
+      "referenced_by": [
+        "game_20000_3",
+        "lift"
+      ],
+      "evidence": "address of a global named by a matched unit's map",
+      "region": "COMMON",
+      "max_size": 128
+    }
+  ]
+}

@@ -1,0 +1,142 @@
+{
+  "description": "Where assembly units may place bytes (tools/asm_units.py). Every range is [first, last], both inclusive, as AGENTS.md writes them. An asm unit of a category may place its .text routines only inside that category's text ranges, data directives in .text only inside its text_data ranges, and .rdata/.data/.sdata definitions only inside its data ranges; any other placement is refused by verify.py and the gate.",
+  "categories": {
+    "asm": {
+      "label": "assembly",
+      "policy": "AGENTS.md, Hand-written assembly: the hand-written GTE/renderer code",
+      "registry": "ASM_UNITS in tools/verify.py",
+      "text": [
+        [
+          "0x80048f54",
+          "0x800588bb"
+        ]
+      ],
+      "text_data": [
+        [
+          "0x800558e8",
+          "0x800588bb"
+        ]
+      ],
+      "data": []
+    },
+    "library_asm": {
+      "label": "library assembly",
+      "policy": "AGENTS.md, Library-variant assembly: Sony Runtime Library modules linked as rebuilds matching no archive in ../sdk",
+      "registry": "LIBRARY_ASM_UNITS in tools/verify.py",
+      "evidence": "analysis/data_survey/gaps.json: text = the library_text/library_variant gaps; data = the library_data/blocked_by_library_text pieces, adjacent pieces merged, without LIBCD C_010's .data (0x800748a0..0x800748af, certifiable Runtime 3.3)",
+      "text": [
+        [
+          "0x80058980",
+          "0x8005989b"
+        ],
+        [
+          "0x80059984",
+          "0x8005bf53"
+        ],
+        [
+          "0x8005bf9c",
+          "0x8005c633"
+        ],
+        [
+          "0x8005c6b0",
+          "0x8005c717"
+        ],
+        [
+          "0x8005c738",
+          "0x8005c883"
+        ],
+        [
+          "0x8005c8d8",
+          "0x8005c98f"
+        ],
+        [
+          "0x8005ca24",
+          "0x8005cd6f"
+        ],
+        [
+          "0x8005d310",
+          "0x8005f94b"
+        ],
+        [
+          "0x8005fa64",
+          "0x8005fad7"
+        ],
+        [
+          "0x800607b0",
+          "0x800612cf"
+        ],
+        [
+          "0x800613c0",
+          "0x800614fb"
+        ],
+        [
+          "0x80061e34",
+          "0x800620a7"
+        ],
+        [
+          "0x800623b8",
+          "0x80064fe7"
+        ],
+        [
+          "0x80066250",
+          "0x80066e8f"
+        ],
+        [
+          "0x80068030",
+          "0x800680cf"
+        ],
+        [
+          "0x800684a0",
+          "0x800684fb"
+        ]
+      ],
+      "text_data": [],
+      "data": [
+        [
+          "0x80012b9c",
+          "0x80012ebf"
+        ],
+        [
+          "0x80013102",
+          "0x8001311b"
+        ],
+        [
+          "0x80013185",
+          "0x800131a3"
+        ],
+        [
+          "0x800131b4",
+          "0x800133cb"
+        ],
+        [
+          "0x80073af8",
+          "0x80074163"
+        ],
+        [
+          "0x8007447c",
+          "0x80074827"
+        ],
+        [
+          "0x80074840",
+          "0x8007488f"
+        ],
+        [
+          "0x800748d0",
+          "0x800748ef"
+        ],
+        [
+          "0x800759a0",
+          "0x800759c3"
+        ],
+        [
+          "0x800759fc",
+          "0x80075b63"
+        ],
+        [
+          "0x800766f4",
+          "0x80076a03"
+        ]
+      ]
+    }
+  }
+}

@@ -1,0 +1,27 @@
+{
+  "gp": "0x8008cd74",
+  "functions": {
+    "SpuSetCommonAttr": {
+      "address": "0x8005bf9c",
+      "size": 916
+    }
+  },
+  "symbols": {},
+  "static_data": {
+    "_spu_RXX": {
+      "address": "0x80073cf0",
+      "size": 4,
+      "section": ".data"
+    },
+    "sca_mvoll_mode_tab": {
+      "address": "0x80012c38",
+      "size": 32,
+      "section": ".rdata"
+    },
+    "sca_mvolr_mode_tab": {
+      "address": "0x80012c58",
+      "size": 32,
+      "section": ".rdata"
+    }
+  }
+}

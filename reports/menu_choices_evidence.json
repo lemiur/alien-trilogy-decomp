@@ -1,0 +1,78 @@
+{
+  "status": "pass",
+  "reference_sha256": "f424660920764ac70f697b5b909a42fe259a76e60acbf5b01c6ca3ee8c8f8e98",
+  "analyzer_sha256": "951fe7d8b41b0b972f3c9c0d0b634b81fde7150f2de84578c02c7bf9ba37c3b1",
+  "scope": "Reference relationships only; no coverage credit independent of C data byte checks.",
+  "card_video_boundary": "0x8006c274",
+  "table_consumers": [
+    {
+      "record": "0x8006c300",
+      "choice_pointer_site": "0x8006c30c",
+      "table": "0x8006c1d8",
+      "entries": 3
+    },
+    {
+      "record": "0x8006c5d8",
+      "choice_pointer_site": "0x8006c5e4",
+      "table": "0x8006c268",
+      "entries": 3
+    },
+    {
+      "record": "0x8006c680",
+      "choice_pointer_site": "0x8006c68c",
+      "table": "0x8006c268",
+      "entries": 3
+    },
+    {
+      "record": "0x8006c418",
+      "choice_pointer_site": "0x8006c424",
+      "table": "0x8006c274",
+      "entries": 2
+    }
+  ],
+  "formatter_call": {
+    "address": "0x8001834c",
+    "argument0": "stack buffer",
+    "argument1": "menu layout in s0",
+    "argument2": "opaque context in s2"
+  },
+  "semantic_labels": [
+    {
+      "address": "0x80011384",
+      "text": "Xenomania {{{"
+    },
+    {
+      "address": "0x80011394",
+      "text": "Raging Terror {{"
+    },
+    {
+      "address": "0x800113a8",
+      "text": "Acid Reign {"
+    },
+    {
+      "address": "0x800113f4",
+      "text": "None available"
+    },
+    {
+      "address": "0x8008cec0",
+      "text": "Left"
+    },
+    {
+      "address": "0x8008ceb8",
+      "text": "Right"
+    },
+    {
+      "address": "0x800114d0",
+      "text": "Video Mode: "
+    },
+    {
+      "address": "0x8008cecc",
+      "text": "NTSC"
+    },
+    {
+      "address": "0x8008cec8",
+      "text": "PAL"
+    }
+  ],
+  "limitation": "Per-definition placement does not recover original section ordering or every input index bound."
+}

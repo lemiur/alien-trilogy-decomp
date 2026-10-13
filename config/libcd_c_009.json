@@ -1,0 +1,21 @@
+{
+  "gp": "0x8008cd74",
+  "functions": {
+    "StGetNext": {
+      "address": "0x800613c0",
+      "size": 180
+    }
+  },
+  "symbols": {
+    "StRingIdx3": "0x8009eed4",
+    "StRingAddr": "0x800a0f9c",
+    "StRingSize": "0x800a18d4"
+  },
+  "static_data": {
+    "g_748d0": {
+      "address": "0x800748d0",
+      "size": 16,
+      "section": ".data"
+    }
+  }
+}

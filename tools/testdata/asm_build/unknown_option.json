@@ -1,0 +1,9 @@
+{
+  "units": {
+    "asm/lib/probe_a208.s": {
+      "assembler": "A208",
+      "reason": "div macro",
+      "options": "-G0"
+    }
+  }
+}

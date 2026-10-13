@@ -1,0 +1,98 @@
+{
+  "gp": "0x8008cd74",
+  "sections": {
+    ".sdata": "0x8008d00c",
+    ".rdata": "0x800125b0",
+    ".sbss": "0x8008d200"
+  },
+  "section_starts": {
+    ".sdata": "0x8008cd74"
+  },
+  "functions": {
+    "music_resume": {
+      "address": "0x8003f360",
+      "size": 108
+    },
+    "music_cd_complete": {
+      "address": "0x8003f3cc",
+      "size": 108
+    },
+    "music_cd_data_ready": {
+      "address": "0x8003f438",
+      "size": 56
+    },
+    "music_init": {
+      "address": "0x8003f470",
+      "size": 164
+    },
+    "music_play_track": {
+      "address": "0x8003f514",
+      "size": 252
+    },
+    "music_stop": {
+      "address": "0x8003f610",
+      "size": 128
+    },
+    "music_pause": {
+      "address": "0x8003f690",
+      "size": 76
+    },
+    "music_unpause": {
+      "address": "0x8003f6dc",
+      "size": 76
+    },
+    "music_play_level": {
+      "address": "0x8003f728",
+      "size": 124
+    },
+    "music_disable": {
+      "address": "0x8003f7a4",
+      "size": 24
+    },
+    "music_enable": {
+      "address": "0x8003f7bc",
+      "size": 24
+    },
+    "music_set_volume": {
+      "address": "0x8003f7d4",
+      "size": 72
+    },
+    "music_poll": {
+      "address": "0x8003f81c",
+      "size": 164
+    }
+  },
+  "symbols": {
+    "g_8d530": "0x8008d530",
+    "g_cd_toc": "0x8008f488",
+    "g_music_flags": "0x8008d00c",
+    "g_music_result": "0x8008d00e",
+    "g_music_callback_state": "0x8008d010",
+    "g_music_timer": "0x8008d012",
+    "spu_set_cd_volume": "0x800439f4",
+    "g_level_music_tracks": "0x80073174",
+    "CdControlB": "0x8005d6d4",
+    "CdControl": "0x8005d4b0",
+    "CdSetDebug": "0x8005d3a0",
+    "CdGetToc": "0x80060568",
+    "CdIntstr": "0x8005d3f0",
+    "printf": "0x80069880"
+  },
+  "static_data": {
+    "g_cd_mode": {
+      "address": "0x8008d200",
+      "size": 8,
+      "section": ".sbss"
+    },
+    "g_cd_requested_command": {
+      "address": "0x8008d208",
+      "size": 8,
+      "section": ".sbss"
+    },
+    "g_cd_track_count": {
+      "address": "0x8008d210",
+      "size": 8,
+      "section": ".sbss"
+    }
+  }
+}

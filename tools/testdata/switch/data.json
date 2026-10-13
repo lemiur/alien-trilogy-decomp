@@ -1,0 +1,32 @@
+{
+  "actor_attack": {
+    ".rdata+0x0": {
+      "address": "0x80011cf4",
+      "size": 56
+    },
+    ".rdata+0x38": {
+      "address": "0x80011d2c",
+      "size": 76
+    },
+    ".rdata+0x88": {
+      "address": "0x80011d7c",
+      "size": 76
+    },
+    ".rdata+0xd8": {
+      "address": "0x80011dcc",
+      "size": 76
+    },
+    ".rdata+0x128": {
+      "address": "0x80011e1c",
+      "size": 76
+    },
+    ".rdata+0x178": {
+      "address": "0x80011e6c",
+      "size": 32
+    },
+    ".rdata+0x198": {
+      "address": "0x80011e8c",
+      "size": 32
+    }
+  }
+}

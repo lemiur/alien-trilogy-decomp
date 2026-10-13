@@ -1,0 +1,24 @@
+{
+  "gp": "0x8008cd74",
+  "sections": {
+    ".sdata": "0x8008cf5c"
+  },
+  "section_starts": {
+    ".sdata": "0x8008cd74"
+  },
+  "functions": {
+    "f_18820": {
+      "address": "0x80018820",
+      "size": 716
+    }
+  },
+  "symbols": {
+    "g_password_prompt_menu": "0x8006c584",
+    "g_password_key_characters": "0x8006c288",
+    "g_request_kind2_color": "0x8008cdbc",
+    "g_request_default_color": "0x8008cdc0",
+    "f_1c308": "0x8001c308",
+    "f_1c1b0": "0x8001c1b0",
+    "f_18724": "0x80018724"
+  }
+}

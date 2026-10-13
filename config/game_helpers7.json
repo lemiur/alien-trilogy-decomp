@@ -1,0 +1,24 @@
+{
+  "functions": {
+    "unpack_buffers_alloc": {
+      "address": "0x80021e88",
+      "size": 108
+    },
+    "sprite_run_script": {
+      "address": "0x80021ef4",
+      "size": 472
+    },
+    "sprite_step": {
+      "address": "0x800220cc",
+      "size": 140
+    }
+  },
+  "symbols": {
+    "heap_alloc": "0x80014dfc",
+    "g_boss_unpack_buffer": "0x8008d538",
+    "g_unpack_buffer": "0x8008d520",
+    "g_level": "0x8008d378",
+    "g_unpack_buffer_end": "0x8008d528"
+  },
+  "gp": "0x8008cd74"
+}

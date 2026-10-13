@@ -1,0 +1,34 @@
+{
+  "gp": "0x8008cd74",
+  "functions": {
+    "particle_step_back": {
+      "address": "0x80023ef4",
+      "size": 180
+    },
+    "particle_hit_floor_or_ceiling": {
+      "address": "0x80023fa8",
+      "size": 408
+    },
+    "particle_hit_actors": {
+      "address": "0x80024380",
+      "size": 564
+    },
+    "particle_hit_player": {
+      "address": "0x800245b4",
+      "size": 248
+    }
+  },
+  "symbols": {
+    "g_level_map": "0x80096060",
+    "level_object_tick": "0x800319bc",
+    "explosion_damage": "0x80031144",
+    "floor_height": "0x80021144",
+    "ceiling_height": "0x800212a8",
+    "g_live_actors": "0x8008d330",
+    "actor_damage": "0x8002bee4",
+    "actor_bleed": "0x80024d80",
+    "g_player": "0x80099fd4",
+    "player_hit_from": "0x8003b350",
+    "player_hit": "0x8003b324"
+  }
+}

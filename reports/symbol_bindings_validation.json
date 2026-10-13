@@ -1,0 +1,29 @@
+{
+  "status": "pass",
+  "verifier_sha256": "8f84723e288c36167dd6574d57a7ad6eda7bede2d7a92d65bb348dd1fd36832f",
+  "registered_units": 138,
+  "consistent_import_and_alias_accepted": true,
+  "cases": [
+    {
+      "case": "import_import",
+      "status": "rejected",
+      "reason": "symbol shared maps to 0x80010000 in first and 0x80010008 in second; reconcile global naming before linking"
+    },
+    {
+      "case": "definition_import",
+      "status": "rejected",
+      "reason": "symbol shared maps to 0x80010000 in first and 0x80010008 in second; reconcile global naming before linking"
+    },
+    {
+      "case": "definition_definition",
+      "status": "rejected",
+      "reason": "symbol shared maps to 0x80010000 in first and 0x80010008 in second; reconcile global naming before linking"
+    },
+    {
+      "case": "same_map",
+      "status": "rejected",
+      "reason": "symbol shared maps to 0x80010000 in first and 0x80010008 in first; reconcile global naming before linking"
+    }
+  ],
+  "all_conflicts_rejected": true
+}

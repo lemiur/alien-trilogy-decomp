@@ -1,0 +1,49 @@
+{
+  "gp": "0x8008cd74",
+  "functions": {
+    "StCdInterrupt": {
+      "address": "0x800607b0",
+      "size": 2364
+    },
+    "f_610ec": {
+      "address": "0x800610ec",
+      "size": 52
+    },
+    "f_61120": {
+      "address": "0x80061120",
+      "size": 432
+    }
+  },
+  "symbols": {
+    "CdReady": "0x8005d448",
+    "init_ring_status": "0x800612d0",
+    "data_ready_callback": "0x80061474",
+    "printf": "0x80069880",
+    "g_91aec": "0x80091aec",
+    "Stframe_no": "0x80096b98",
+    "Stsector_offset": "0x80096b9c",
+    "StRgb24": "0x80096be0",
+    "StFunc2": "0x8009a11c",
+    "StCdIntrFlag": "0x8009a120",
+    "StCHANNEL": "0x8009a304",
+    "StStartFrame": "0x8009a308",
+    "CChannel": "0x8009c6dc",
+    "StFinalSector": "0x8009cae4",
+    "StEmu_Idx": "0x8009d26c",
+    "StRingIdx1": "0x8009eecc",
+    "StRingIdx2": "0x8009eed0",
+    "StEndFrame": "0x8009eedc",
+    "StEmu_Addr": "0x8009eee0",
+    "StSTART_FLAG": "0x800a0f94",
+    "StRingBase": "0x800a0f98",
+    "StRingAddr": "0x800a0f9c",
+    "StRingSize": "0x800a18d4"
+  },
+  "static_data": {
+    "g_74840": {
+      "address": "0x80074840",
+      "size": 72,
+      "section": ".data"
+    }
+  }
+}

@@ -1,0 +1,36 @@
+{
+  "gp": "0x8008cd74",
+  "functions": {
+    "SpuSetVoiceAttr": {
+      "address": "0x80058980",
+      "size": 40
+    },
+    "_SpuSetVoiceAttr": {
+      "address": "0x800589a8",
+      "size": 1792
+    }
+  },
+  "symbols": {
+    "_spu_note2pitch": "0x8005913c",
+    "_spu_voice_centerNote": "0x80073d1c",
+    "_spu_mem_mode": "0x80073cb4",
+    "_spu_mem_mode_plus": "0x80073cb8"
+  },
+  "static_data": {
+    "_spu_RXX": {
+      "address": "0x80073af8",
+      "size": 4,
+      "section": ".data"
+    },
+    "sva_voll_mode_tab": {
+      "address": "0x80012b9c",
+      "size": 32,
+      "section": ".rdata"
+    },
+    "sva_volr_mode_tab": {
+      "address": "0x80012bbc",
+      "size": 32,
+      "section": ".rdata"
+    }
+  }
+}

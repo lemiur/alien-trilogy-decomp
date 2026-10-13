@@ -1,0 +1,146 @@
+{
+  "gp": "0x8008cd74",
+  "functions": {
+    "_spu_reset": {
+      "address": "0x80059984",
+      "size": 144
+    },
+    "_spu_init": {
+      "address": "0x80059a14",
+      "size": 1444
+    },
+    "_spu_close": {
+      "address": "0x80059fb8",
+      "size": 52
+    },
+    "_spu_open": {
+      "address": "0x80059fec",
+      "size": 44
+    },
+    "f_5a018": {
+      "address": "0x8005a018",
+      "size": 836,
+      "static": true
+    },
+    "_spu_FiDMA": {
+      "address": "0x8005a35c",
+      "size": 416
+    },
+    "_spu_r_": {
+      "address": "0x8005a4fc",
+      "size": 560
+    },
+    "_spu_t": {
+      "address": "0x8005a72c",
+      "size": 748
+    },
+    "_spu_write": {
+      "address": "0x8005aa18",
+      "size": 140
+    },
+    "_spu_read": {
+      "address": "0x8005aaa4",
+      "size": 104
+    },
+    "_spu_ioctl": {
+      "address": "0x8005ab0c",
+      "size": 2284
+    },
+    "f_5b3f8": {
+      "address": "0x8005b3f8",
+      "size": 384,
+      "static": true
+    }
+  },
+  "symbols": {
+    "printf": "0x80069880",
+    "_SpuDataCallback": "0x8005bf54",
+    "g_73d50": "0x80073d50",
+    "_SpuCallback": "0x8005bf78",
+    "_spu_setReverbAttr": "0x8005b578",
+    "f_5ba48": "0x8005ba48",
+    "f_5bde0": "0x8005bde0"
+  },
+  "static_data": {
+    "s_spu_timeout_fmt": {
+      "address": "0x80012bdc",
+      "size": 14,
+      "section": ".rdata"
+    },
+    "s_wait_reset": {
+      "address": "0x80012bec",
+      "size": 13,
+      "section": ".rdata"
+    },
+    "s_wait_wrdy": {
+      "address": "0x80012bfc",
+      "size": 19,
+      "section": ".rdata"
+    },
+    "s_wait_dmaf": {
+      "address": "0x80012c10",
+      "size": 20,
+      "section": ".rdata"
+    },
+    "g_73c88": {
+      "address": "0x80073c88",
+      "size": 4,
+      "section": ".data"
+    },
+    "g_73c94": {
+      "address": "0x80073c94",
+      "size": 4,
+      "section": ".data"
+    },
+    "g_73c98": {
+      "address": "0x80073c98",
+      "size": 4,
+      "section": ".data"
+    },
+    "g_73c9c": {
+      "address": "0x80073c9c",
+      "size": 4,
+      "section": ".data"
+    },
+    "g_73ca0": {
+      "address": "0x80073ca0",
+      "size": 4,
+      "section": ".data"
+    },
+    "g_73ca4": {
+      "address": "0x80073ca4",
+      "size": 4,
+      "section": ".data"
+    },
+    "g_73ca8": {
+      "address": "0x80073ca8",
+      "size": 4,
+      "section": ".data"
+    },
+    "g_73cc8": {
+      "address": "0x80073cc8",
+      "size": 16,
+      "section": ".data"
+    },
+    "g_73cd8": {
+      "address": "0x80073cd8",
+      "size": 4,
+      "section": ".data"
+    },
+    "g_73cdc": {
+      "address": "0x80073cdc",
+      "size": 4,
+      "section": ".data"
+    },
+    "g_73ce0": {
+      "address": "0x80073ce0",
+      "size": 4,
+      "section": ".data"
+    },
+    "s_wait_ioctl_irq": {
+      "address": "0x80012c24",
+      "size": 17,
+      "section": ".rdata"
+    }
+  }
+}

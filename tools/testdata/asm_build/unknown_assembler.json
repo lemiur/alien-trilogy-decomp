@@ -1,0 +1,12 @@
+{
+  "units": {
+    "asm/lib/probe_a208.s": {
+      "assembler": "A208",
+      "reason": "div macro"
+    },
+    "asm/lib/other.s": {
+      "assembler": "A207",
+      "reason": "not a pinned assembler"
+    }
+  }
+}

@@ -1,0 +1,26 @@
+{
+  "gp": "0x8008cd74",
+  "functions": {
+    "SpuSetReverbModeParam": {
+      "address": "0x80059388",
+      "size": 1300
+    }
+  },
+  "symbols": {
+    "_spu_rev_attr": "0x80073d04",
+    "_spu_rev_offsetaddr": "0x80073d18",
+    "_spu_fd": "0x80073cf4",
+    "_spu_rev_startaddr": "0x80074164",
+    "g_741b4": "0x800741b4",
+    "_spu_ioctl": "0x8005ab0c",
+    "_SpuIsInAllocateArea_": "0x8005990c",
+    "SpuClearReverbWorkArea": "0x8005c330"
+  },
+  "static_data": {
+    "_spu_RXX": {
+      "address": "0x80073c84",
+      "size": 4,
+      "section": ".data"
+    }
+  }
+}

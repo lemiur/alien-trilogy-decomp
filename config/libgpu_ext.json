@@ -1,0 +1,26 @@
+{
+  "gp": "0x8008cd74",
+  "functions": {
+    "LoadTPage": {
+      "address": "0x80066250",
+      "size": 236
+    },
+    "LoadClut": {
+      "address": "0x8006633c",
+      "size": 104
+    },
+    "SetDefDrawEnv": {
+      "address": "0x800663a4",
+      "size": 144
+    },
+    "SetDefDispEnv": {
+      "address": "0x80066434",
+      "size": 60
+    }
+  },
+  "symbols": {
+    "LoadImage": "0x80062a80",
+    "GetTPage": "0x80064ff8",
+    "GetClut": "0x800650c0"
+  }
+}

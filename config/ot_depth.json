@@ -1,0 +1,8 @@
+{
+  "gp": "0x8008cd74",
+  "functions": {
+    "ot_index_tri": {"address": "0x80048f54", "size": 56},
+    "ot_index_quad": {"address": "0x80048f8c", "size": 76}
+  },
+  "symbols": {}
+}

@@ -1,0 +1,157 @@
+{
+  "functions": {
+    "level_object_model_fixup": {
+      "address": "0x80030e84",
+      "size": 244
+    },
+    "level_object_models_load": {
+      "address": "0x80030f78",
+      "size": 460
+    },
+    "explosion_damage": {
+      "address": "0x80031144",
+      "size": 2168
+    },
+    "level_object_tick": {
+      "address": "0x800319bc",
+      "size": 136
+    },
+    "level_object_activate": {
+      "address": "0x80031a44",
+      "size": 248
+    },
+    "level_object_mark_cells": {
+      "address": "0x80031b3c",
+      "size": 160
+    },
+    "level_object_clear_cells": {
+      "address": "0x80031bdc",
+      "size": 140
+    },
+    "level_objects_create": {
+      "address": "0x80031c68",
+      "size": 1420
+    },
+    "level_objects_init": {
+      "address": "0x800321f4",
+      "size": 52
+    },
+    "level_object_draw": {
+      "address": "0x80032228",
+      "size": 520
+    },
+    "level_object_draw_tall": {
+      "address": "0x80032430",
+      "size": 448
+    },
+    "level_object_draw_unscaled": {
+      "address": "0x800325f0",
+      "size": 380
+    },
+    "level_object_task": {
+      "address": "0x8003276c",
+      "size": 484
+    },
+    "level_object_spin_task": {
+      "address": "0x80032950",
+      "size": 152
+    },
+    "level_object_hit_task": {
+      "address": "0x800329e8",
+      "size": 316
+    },
+    "level_object_debris_task": {
+      "address": "0x80032b24",
+      "size": 244
+    },
+    "block_object_explode": {
+      "address": "0x80032c18",
+      "size": 844
+    },
+    "block_object_task": {
+      "address": "0x80032f64",
+      "size": 452
+    },
+    "switch_panel_active_task": {
+      "address": "0x80033128",
+      "size": 1064
+    },
+    "switch_panel_task": {
+      "address": "0x80033550",
+      "size": 764
+    }
+  },
+  "symbols": {
+    "g_level_objects": "0x8008d1a0",
+    "random": "0x80013a44",
+    "sound_play": "0x8003d5b4",
+    "hud_show_message": "0x80037b98",
+    "g_player": "0x80099fd4",
+    "g_level_map": "0x80096060",
+    "level_objects_create": "0x80031c68",
+    "g_visible_cell_mask": "0x8008d510",
+    "g_view_position": "0x8008d5b8",
+    "g_relative_position": "0x8008d5c8",
+    "g_view_matrix": "0x8009a2c4",
+    "g_matrix_work": "0x8009a2e4",
+    "g_translation": "0x8009c5a4",
+    "model_draw_near_in_cell": "0x8001f410",
+    "model_draw_mid_in_cell": "0x8001fc0c",
+    "model_draw_far_in_cell": "0x8001f820",
+    "LoadAverageShort12": "0x800679c0",
+    "PushMatrix": "0x80066c6c",
+    "PopMatrix": "0x80066d0c",
+    "ApplyMatrix": "0x80067678",
+    "RotMatrix": "0x800684fc",
+    "MulMatrix2": "0x8006756c",
+    "SetRotMatrix": "0x8006786c",
+    "TransMatrix": "0x80067724",
+    "SetTransMatrix": "0x800678fc",
+    "g_level": "0x8008d378",
+    "g_model_uvs": "0x8008d558",
+    "g_panel_uvs": "0x80096dc4",
+    "g_pickup_uvs": "0x8009b384",
+    "g_sprite_uvs": "0x80097fd4",
+    "ScaleMatrix": "0x80067748",
+    "floor_height": "0x80021144",
+    "g_next_task": "0x8008d4f0",
+    "level_object_drop_item": "0x800389fc",
+    "actor_spawn_from_object": "0x80029734",
+    "explosion_spawn": "0x8002485c",
+    "panel_list_walk": "0x80047160",
+    "TaskDie": "0x80015ea4",
+    "big_explosion_spawn": "0x800248f0",
+    "g_level_object_records": "0x8008d190",
+    "g_level_object_count": "0x8008d198",
+    "g_level_object_models": "0x8008f230",
+    "TaskCreate": "0x80015e4c",
+    "wall_shatter": "0x80045e7c",
+    "command_state_add": "0x80040600",
+    "sound_play_at": "0x8003d66c",
+    "level_object_clear_cells": "0x80031bdc",
+    "load_file": "0x800151f0",
+    "parse_decimal": "0x8001c538",
+    "read_be32": "0x8001c50c",
+    "heap_alloc": "0x80014dfc",
+    "g_file_table": "0x8006a5f8",
+    "g_blast_near": "0x8008f2d8",
+    "g_blast_far": "0x8008f2f8",
+    "g_actor_pool": "0x8008d460",
+    "actor_damage": "0x8002bee4",
+    "player_hit": "0x8003b324"
+  },
+  "gp": "0x8008cd74",
+  "sections": {},
+  "static_data": {
+    "g_blast_near_offsets": {
+      "address": "0x80072be0",
+      "size": 32,
+      "section": ".data"
+    },
+    "g_blast_far_offsets": {
+      "address": "0x80072c00",
+      "size": 64,
+      "section": ".data"
+    }
+  }
+}

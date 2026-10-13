@@ -1,0 +1,149 @@
+{
+  "reference_sha256": "f424660920764ac70f697b5b909a42fe259a76e60acbf5b01c6ca3ee8c8f8e98",
+  "load_address": "0x80010000",
+  "payload_end": "0x8008d800",
+  "gp": "0x8008cd74",
+  "section_order": [
+    ".rdata",
+    ".text",
+    ".data",
+    ".sdata",
+    ".sbss",
+    ".bss"
+  ],
+  "section_order_evidence": "2MBYTE.OBJ and every Runtime Library 3.3 module declare sections in this order; the certified library sections appear in the image in the same order",
+  "startup": {
+    "module": "2MBYTE.OBJ",
+    "address": "0x800588bc",
+    "sectstart(.sdata)": "0x8008cd74",
+    "sectstart(.sbss)": "0x8008d088",
+    "sectend(.bss)": "0x800a1958",
+    "operand_sites": {
+      "sectstart(.sbss)": [
+        "0x800588c4",
+        "0x800588c8"
+      ],
+      "sectend(.bss)": [
+        "0x800588cc",
+        "0x800588d0",
+        "0x80058914",
+        "0x80058918"
+      ],
+      "sectstart(.sdata)": [
+        "0x80058944",
+        "0x80058948"
+      ]
+    }
+  },
+  "header": {
+    "bss_address": "0x0",
+    "bss_size": 0,
+    "gp": "0x0",
+    "entry": "0x800588c4"
+  },
+  "regions": [
+    {
+      "name": "leading module",
+      "section": null,
+      "status": "unknown",
+      "evidence": [
+        "payload starts at the header load address 0x80010000",
+        "retail .text calls (jal) ['0x80010000', '0x80010170']: code, with its tables, ahead of the first string referenced by matched code at 0x800101e0",
+        "not .text: PSYLINK concatenates same-named sections and .text starts at 0x8001380c; its section name (.rdata or an earlier-ordered section) is not evidenced"
+      ],
+      "start": "0x80010000",
+      "end": "0x800101e0"
+    },
+    {
+      "name": ".rdata",
+      "section": ".rdata",
+      "status": "bounded",
+      "evidence": [
+        "first string referenced by matched code at 0x800101e0, before .text",
+        "last library .rdata PRNT ends at 0x8001380c: certified Runtime Library 3.3 section (reports/runtime_data.json)",
+        "start is the leading module's start or its end, depending on that module's section"
+      ],
+      "start": {
+        "min": "0x80010000",
+        "max": "0x800101e0"
+      },
+      "end": "0x8001380c"
+    },
+    {
+      "name": ".text",
+      "section": ".text",
+      "status": "pinned",
+      "evidence": [
+        "first matched function at 0x8001380c directly follows the library .rdata end",
+        "last certified library text module C112 ends at 0x8006a578",
+        "first global referenced by matched code above it is 0x8006a578",
+        "observed (not certifying) retail operand pairs naming 0x8006a578 as data: ['0x80014a74']"
+      ],
+      "start": "0x8001380c",
+      "end": "0x8006a578"
+    },
+    {
+      "name": ".data",
+      "section": ".data",
+      "status": "pinned",
+      "evidence": [
+        "library .data S_RMP..CTYPE lie in [0x80074164, 0x8008cd71): certified Runtime Library 3.3 section (reports/runtime_data.json)",
+        "end is sectstart(.sdata) = 0x8008cd74 from 2MBYTE.OBJ (also its $gp)"
+      ],
+      "start": "0x8006a578",
+      "end": "0x8008cd74"
+    },
+    {
+      "name": ".sdata",
+      "section": ".sdata",
+      "status": "pinned",
+      "evidence": [
+        "sectstart(.sdata) = 0x8008cd74 and sectstart(.sbss) = 0x8008d088, retail operands of 2MBYTE.OBJ at 0x800588bc",
+        "library .sdata ends at 0x8008d087 (alignment to 0x8008d088)"
+      ],
+      "start": "0x8008cd74",
+      "end": "0x8008d088"
+    },
+    {
+      "name": ".sbss",
+      "section": ".sbss",
+      "status": "bounded",
+      "evidence": [
+        "start: sectstart(.sbss), the startup zero-clear start",
+        "last evidenced library .sbss section ends at 0x8008d318",
+        "first evidenced library .bss section starts at 0x8008f6ec",
+        "the payload file carries the first 1912 bytes of .sbss as zeros (payload rounded to 0x800 at 0x8008d800)"
+      ],
+      "start": "0x8008d088",
+      "end": {
+        "min": "0x8008d318",
+        "max": "0x8008f6ec"
+      }
+    },
+    {
+      "name": ".bss",
+      "section": ".bss",
+      "status": "bounded",
+      "evidence": [
+        "library .bss sections evidenced in [0x8008f6ec, 0x8009603c)",
+        "the lowest library COMMON symbol is at 0x8009603c"
+      ],
+      "start": {
+        "min": "0x8008d318",
+        "max": "0x8008f6ec"
+      },
+      "end": "0x8009603c"
+    },
+    {
+      "name": "COMMON",
+      "section": ".bss",
+      "status": "pinned",
+      "evidence": [
+        "COMMON (XBSS) symbols allocated by the linker after the .bss sections",
+        "end is sectend(.bss) = 0x800a1958 (zero-clear end and heap base)"
+      ],
+      "start": "0x8009603c",
+      "end": "0x800a1958"
+    }
+  ]
+}

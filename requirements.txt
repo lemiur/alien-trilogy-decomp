@@ -1,0 +1,2 @@
+# Only tools/diff.py requires this package; compilation/checking uses stdlib.
+capstone==5.0.7

@@ -1,0 +1,245 @@
+{
+  "gp": "0x8008cd74",
+  "functions": {
+    "draw_near_ft4": {
+      "address": "0x8001d464",
+      "size": 472
+    },
+    "draw_near_ft4_mirror": {
+      "address": "0x8001dc24",
+      "size": 472
+    },
+    "draw_near_ft3_alt": {
+      "address": "0x8001ddfc",
+      "size": 8
+    },
+    "draw_near_ft4_nocull": {
+      "address": "0x8001de04",
+      "size": 456
+    },
+    "draw_near_ft4_nocull_mirror": {
+      "address": "0x8001e540",
+      "size": 456
+    },
+    "draw_near_ft3_alt_nocull": {
+      "address": "0x8001e708",
+      "size": 8
+    },
+    "draw_near_ft4_by_state": {
+      "address": "0x8001e710",
+      "size": 68
+    },
+    "draw_near_ft4_mirror_by_state": {
+      "address": "0x8001e754",
+      "size": 68
+    },
+    "draw_near_ft4_abe": {
+      "address": "0x8001e798",
+      "size": 456
+    },
+    "draw_near_f4_abe": {
+      "address": "0x8001eed4",
+      "size": 456
+    },
+    "draw_near_ft4_nocull_by_state": {
+      "address": "0x8001f09c",
+      "size": 68
+    },
+    "draw_near_ft4_nocull_mirror_by_state": {
+      "address": "0x8001f0e0",
+      "size": 68
+    },
+    "draw_near_ft4_abe_by_state": {
+      "address": "0x8001f124",
+      "size": 68
+    },
+    "draw_near_ft4_abe_mirror_by_state": {
+      "address": "0x8001f168",
+      "size": 68
+    },
+    "draw_near_ft4_abe_mirror": {
+      "address": "0x8001f1ac",
+      "size": 456
+    },
+    "draw_near_none": {
+      "address": "0x8001f374",
+      "size": 8
+    },
+    "model_draw_near": {
+      "address": "0x8001f37c",
+      "size": 148
+    },
+    "model_draw_near_in_cell": {
+      "address": "0x8001f410",
+      "size": 156
+    },
+    "draw_far_ft4_by_state": {
+      "address": "0x8001f4ac",
+      "size": 68
+    },
+    "draw_far_ft4_mirror_by_state": {
+      "address": "0x8001f4f0",
+      "size": 68
+    },
+    "draw_far_ft3_abe": {
+      "address": "0x8001f534",
+      "size": 320
+    },
+    "draw_far_ft4_nocull_by_state": {
+      "address": "0x8001f674",
+      "size": 68
+    },
+    "draw_far_ft4_nocull_mirror_by_state": {
+      "address": "0x8001f6b8",
+      "size": 68
+    },
+    "draw_far_ft4_abe_by_state": {
+      "address": "0x8001f6fc",
+      "size": 68
+    },
+    "draw_far_ft4_abe_mirror_by_state": {
+      "address": "0x8001f740",
+      "size": 68
+    },
+    "draw_far_none": {
+      "address": "0x8001f784",
+      "size": 8
+    },
+    "model_draw_far": {
+      "address": "0x8001f78c",
+      "size": 148
+    },
+    "model_draw_far_in_cell": {
+      "address": "0x8001f820",
+      "size": 156
+    },
+    "draw_mid_ft4_by_state": {
+      "address": "0x8001f8bc",
+      "size": 68
+    },
+    "draw_mid_ft4_mirror_by_state": {
+      "address": "0x8001f900",
+      "size": 68
+    },
+    "draw_mid_ft3_abe": {
+      "address": "0x8001f944",
+      "size": 284
+    },
+    "draw_mid_ft4_nocull_by_state": {
+      "address": "0x8001fa60",
+      "size": 68
+    },
+    "draw_mid_ft4_nocull_mirror_by_state": {
+      "address": "0x8001faa4",
+      "size": 68
+    },
+    "draw_mid_ft4_abe_by_state": {
+      "address": "0x8001fae8",
+      "size": 68
+    },
+    "draw_mid_ft4_abe_mirror_by_state": {
+      "address": "0x8001fb2c",
+      "size": 68
+    },
+    "draw_mid_none": {
+      "address": "0x8001fb70",
+      "size": 8
+    },
+    "model_draw_mid": {
+      "address": "0x8001fb78",
+      "size": 148
+    },
+    "model_draw_mid_in_cell": {
+      "address": "0x8001fc0c",
+      "size": 156
+    },
+    "draw_near_ft3_nocull": {
+      "address": "0x8001dfcc",
+      "size": 1396
+    },
+    "draw_near_ft3_abe": {
+      "address": "0x8001e960",
+      "size": 1396
+    }
+  },
+  "symbols": {
+    "g_transform_result": "0x8008d4a0",
+    "g_gte_interpolation": "0x8008d320",
+    "g_gte_flag": "0x8008d570",
+    "RotTransPers4": "0x80067f30",
+    "subdiv_ft4_abe": "0x80050c6c",
+    "g_sprite_workspace": "0x8008d478",
+    "subdiv_ft4_nocull": "0x8004da24",
+    "subdiv_ft4_nocull_mirror": "0x8004f308",
+    "subdiv_ft4_abe_mirror": "0x80052550",
+    "subdiv_f4_abe": "0x80053eb4",
+    "subdiv_ft4": "0x8004a6b4",
+    "subdiv_ft4_mirror": "0x8004c024",
+    "RotAverageNclip4": "0x800683f0",
+    "RotTransPers3": "0x80066f3c",
+    "ot_index_tri": "0x80048f54",
+    "g_render_buffer": "0x8008d4e8",
+    "emit_ft4_mirror_fog": "0x8004921c",
+    "g_command_states": "0x8009a30c",
+    "g_model_uvs": "0x8008d558",
+    "emit_ft4_fog": "0x80048fd8",
+    "emit_ft4_nocull_fog": "0x80049478",
+    "emit_ft4_nocull_mirror_fog": "0x8004969c",
+    "emit_ft4_abe_fog": "0x800498d8",
+    "emit_ft4_abe_mirror_fog": "0x80049afc",
+    "emit_ft4": "0x80049c38",
+    "emit_ft4_mirror": "0x80049e24",
+    "emit_ft4_nocull": "0x8004a028",
+    "emit_ft4_nocull_mirror": "0x8004a1f4",
+    "emit_ft4_abe": "0x8004a3d8",
+    "emit_ft4_abe_mirror": "0x8004a5a4",
+    "g_palette": "0x8008d490",
+    "g_mid_draw_table": "0x8006d420",
+    "DpqColor": "0x80066fdc",
+    "g_far_draw_table": "0x8006d394",
+    "LoadAverageShort12": "0x800679c0",
+    "RotTransPersN": "0x800682f0",
+    "draw_near_ft3": "0x8001d63c",
+    "emit_ft3_fog": "0x8004910c",
+    "emit_ft3_alt_fog": "0x80049368",
+    "emit_ft3_nocull_fog": "0x8004959c",
+    "emit_ft3_alt_nocull_fog": "0x800497d8",
+    "emit_f4_abe_fog": "0x800499fc",
+    "emit_ft3": "0x80049d40",
+    "emit_ft3_alt": "0x80049f44",
+    "emit_ft3_nocull": "0x8004a120",
+    "emit_ft3_alt_nocull": "0x8004a304",
+    "emit_f4_abe": "0x8004a4d0",
+    "g_near_draw_table": "0x8006d308"
+  },
+  "section_starts": {
+    ".sdata": "0x8008cd74"
+  },
+  "static_data": {
+    "g_spad_grid": {
+      "address": "0x8008cf88",
+      "size": 4,
+      "section": ".sdata"
+    },
+    "g_spad_sxy": {
+      "address": "0x8008cf8c",
+      "size": 4,
+      "section": ".sdata"
+    },
+    "g_spad_sz": {
+      "address": "0x8008cf90",
+      "size": 4,
+      "section": ".sdata"
+    },
+    "g_spad_flag": {
+      "address": "0x8008cf94",
+      "size": 4,
+      "section": ".sdata"
+    },
+    "g_spad_p": {
+      "address": "0x8008cf98",
+      "size": 4,
+      "section": ".sdata"
+    }
+  }
+}

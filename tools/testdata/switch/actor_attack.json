@@ -1,0 +1,97 @@
+{
+  "functions": {
+    "f_2bfc0": {
+      "address": "0x8002bfc0",
+      "size": 244
+    },
+    "f_2c0b4": {
+      "address": "0x8002c0b4",
+      "size": 72
+    },
+    "f_2c0fc": {
+      "address": "0x8002c0fc",
+      "size": 72
+    },
+    "f_2c144": {
+      "address": "0x8002c144",
+      "size": 84
+    },
+    "f_2c650": {
+      "address": "0x8002c650",
+      "size": 84
+    },
+    "f_2eac0": {
+      "address": "0x8002eac0",
+      "size": 724
+    },
+    "f_2ed94": {
+      "address": "0x8002ed94",
+      "size": 660
+    },
+    "f_2f028": {
+      "address": "0x8002f028",
+      "size": 2724
+    },
+    "f_2facc": {
+      "address": "0x8002facc",
+      "size": 240
+    },
+    "f_2fbbc": {
+      "address": "0x8002fbbc",
+      "size": 72
+    },
+    "f_2fc04": {
+      "address": "0x8002fc04",
+      "size": 112
+    }
+  },
+  "symbols": {
+    "actor_sees_player": "0x8002e838",
+    "actor_path_clear": "0x8002d058",
+    "f_3b324": "0x8003b324",
+    "f_3b350": "0x8003b350",
+    "f_2e8a0": "0x8002e8a0",
+    "g_game_flags": "0x8008d560",
+    "g_cheat_flags": "0x8008cda8",
+    "g_actor_slots": "0x8008d178",
+    "g_next_task": "0x8008d4f0",
+    "TaskDie": "0x80015ea4",
+    "get_difficulty": "0x80017760",
+    "point_heading_xz": "0x8001fea0",
+    "sprite_step": "0x800220cc",
+    "f_24e00": "0x80024e00",
+    "f_25120": "0x80025120",
+    "actor_free": "0x80028804",
+    "actor_unlink": "0x8002891c",
+    "actor_project": "0x8002ae08",
+    "f_2bfc0": "0x8002bfc0",
+    "f_2c0b4": "0x8002c0b4",
+    "f_2c0fc": "0x8002c0fc",
+    "f_2cb38": "0x8002cb38",
+    "actor_measure_player": "0x8002ce0c",
+    "actor_measure_target": "0x8002cef8",
+    "f_2cfd0": "0x8002cfd0",
+    "actor_line_of_sight": "0x8002d764",
+    "actor_turn_toward": "0x8002db08",
+    "actor_stop": "0x8002dbc0",
+    "f_2dc70": "0x8002dc70",
+    "f_2e128": "0x8002e128",
+    "f_2e5c0": "0x8002e5c0",
+    "f_2e920": "0x8002e920",
+    "sound_play_at_position": "0x8003d7ec",
+    "g_reference_position": "0x80099fd4",
+    "actor_set_velocity": "0x8002dbec",
+    "random": "0x80013a44",
+    "actor_play_animation": "0x80029a74",
+    "hugger_overlay_start": "0x8002aef0",
+    "hugger_cling_task": "0x8002b5bc",
+    "f_28a30": "0x80028a30",
+    "g_screen": "0x80096060",
+    "actor_to_floor": "0x800295ec",
+    "actor_slot_health": "0x80028954"
+  },
+  "sections": {
+    ".rdata": "0x80011cf4"
+  },
+  "gp": "0x8008cd74"
+}

@@ -1,0 +1,64 @@
+{
+  "gp": "0x8008cd74",
+  "sections": {
+    ".rdata": "0x800124a8",
+    ".sbss": "0x8008d1d8"
+  },
+  "functions": {
+    "cell_triggers_load": {
+      "address": "0x8003d860",
+      "size": 124
+    },
+    "level_triggers_load": {
+      "address": "0x8003d8dc",
+      "size": 64
+    },
+    "level_commands_run": {
+      "address": "0x8003d91c",
+      "size": 376
+    },
+    "player_cell_trigger": {
+      "address": "0x8003da94",
+      "size": 680
+    },
+    "actor_cell_trigger": {
+      "address": "0x8003dd3c",
+      "size": 588
+    },
+    "shot_cell_trigger": {
+      "address": "0x8003df88",
+      "size": 668
+    },
+    "enemy_shot_cell_trigger": {
+      "address": "0x8003e224",
+      "size": 668
+    }
+  },
+  "symbols": {
+    "g_cell_triggers": "0x8008f388",
+    "g_game_flags": "0x8008d560",
+    "g_player": "0x80099fd4",
+    "g_level_map": "0x80096060",
+    "actor_group_add": "0x80029680",
+    "map_object_trigger": "0x80038530",
+    "lift_trigger_last": "0x8003ea58",
+    "door_power_final": "0x80022d08",
+    "light_raise": "0x80023838",
+    "level_object_activate": "0x80031a44",
+    "door_power": "0x80022c24",
+    "lift_trigger": "0x8003e9f0",
+    "command_state_add": "0x80040600"
+  },
+  "static_data": {
+    "g_cell_trigger_count": {
+      "address": "0x8008d1d8",
+      "size": 8,
+      "section": ".sbss"
+    },
+    "g_level_commands": {
+      "address": "0x8008d1e0",
+      "size": 8,
+      "section": ".sbss"
+    }
+  }
+}
