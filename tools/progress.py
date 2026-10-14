@@ -31,6 +31,11 @@ Independent second witnesses; any disagreement is an error (AGENTS.md, "The byte
 - ``analysis/link_plan.py`` builds its range union from verify.py, the runtime reports and
   the witnessed generated claims; its per-category bytes must equal the record's.
 
+Matched under the rules (the headline): ``tools/rules.py`` counts the byte-matched functions
+that are not MATCH-PENDING and have no unexcused [match] rule finding (AGENTS.md, "Project
+profile"). Its byte-matched count (the symbol maps of the registered units) must equal the
+gate's matched C functions.
+
 Run the whole chain with ``python tools/reports.py``.
 """
 from __future__ import annotations
@@ -69,9 +74,11 @@ def digest(path):
     return hashlib.sha256(Path(path).read_bytes()).hexdigest()
 
 
-def load_module(name, path):
+def load_module(name, path, register=False):
     spec = importlib.util.spec_from_file_location(name, path)
     module = importlib.util.module_from_spec(spec)
+    if register:  # dataclasses look their module up in sys.modules
+        sys.modules[name] = module
     spec.loader.exec_module(module)
     return module
 
@@ -360,6 +367,28 @@ def collect(provenance_path=DEFAULT_PROVENANCE, latest_path=DEFAULT_LATEST):
                                     for m in runtime_linked["module_results"] if m["status"] == "library_asm"]}
 
 
+def rules_summary(c_functions):
+    """tools/rules.py's summary; its byte-matched functions must be the gate's matched C functions."""
+    summary = load_module("rules", PROJECT / "tools/rules.py", register=True).check(decimal=False).summary()
+    if summary["byte_matched_functions"] != c_functions:
+        raise ProgressError(f"byte-matched functions: rules.py (symbol maps) {summary['byte_matched_functions']}, "
+                            f"gate record {c_functions}")
+    return summary
+
+
+def rules_lines(rules):
+    """The PROGRESS.md headline: matched under the rules, then bytes matched."""
+    if not rules:
+        return []
+    failing = ", ".join(f"{r} {n}" for r, n in rules["failing_functions_by_rule"].items())
+    return [f"**Matched under the rules: {rules['matched_under_the_rules']:,} of "
+            f"{rules['byte_matched_functions']:,} byte-matched game C functions.** "
+            f"MATCH-PENDING: {rules['match_pending_functions']:,}; with unexcused [match] findings: "
+            f"{rules['functions_with_unexcused_match_findings']:,}" + (f" ({failing})" if failing else "")
+            + ". Counted by `tools/rules.py` (AGENTS.md, \"Project profile\"): a byte-matched function counts "
+            "only when it is not MATCH-PENDING and passes every [match] rule.", ""]
+
+
 # -------------------------------------------------------------------- output
 
 ROWS = (
@@ -384,7 +413,7 @@ def render(result):
              "(`builds/gate/provenance.json`) and cross-checked against `verify.py`, "
              "`generated_witness.py`, the runtime reports and `analysis/link_plan.py`.", "",
              f"Payload: {payload:,} bytes. Compiler: {result['latest']['compiler']}, ASPSX 2.34, "
-             "`-O2 -G8`; Sony Runtime Library 3.3.", "",
+             "`-O2 -G8`; Sony Runtime Library 3.3.", ""] + rules_lines(result.get("rules")) + [
              "| Category | Count | Bytes | Payload |", "|---|---:|---:|---:|"]
     for key, label, unit in ROWS:
         count = counts.get(key)
@@ -420,6 +449,7 @@ def main(argv=None):
     ap.add_argument("--latest", type=Path, default=DEFAULT_LATEST)
     args = ap.parse_args(argv)
     result = collect(args.provenance, args.latest)
+    result["rules"] = rules_summary(result["counts"]["c_function"])
     totals, plan, payload = result["totals"], result["plan"], result["contract"]["payload_size"]
     report = {"generated_utc": datetime.now(timezone.utc).isoformat(),
               "reference_sha256": result["contract"]["sha256"],
@@ -428,6 +458,9 @@ def main(argv=None):
               "second_witnesses": ["reports/latest.json", "tools/generated_witness.py",
                                    "reports/runtime_latest.json", "reports/runtime_data.json",
                                    "analysis/link_plan.py"],
+              "matched_under_the_rules": result["rules"]["matched_under_the_rules"],
+              "rules": {k: v for k, v in result["rules"].items() if k != "match_pending"},
+              "match_pending": result["rules"]["match_pending"],
               "bytes": totals, "counts": result["counts"],
               "decompiled_game_c_bytes": sum(totals[c] for c in DECOMPILED_C),
               "covered_bytes": payload - totals["fallback"],
@@ -442,7 +475,8 @@ def main(argv=None):
                       "library_asm is the gate's library_asm_bytes and never certified library."}
     (PROJECT / "reports/progress.json").write_text(json.dumps(report, indent=2) + "\n", encoding="utf-8")
     (PROJECT / "PROGRESS.md").write_text(render(result), encoding="utf-8")
-    print(json.dumps({k: report[k] for k in ("bytes", "counts", "decompiled_game_c_bytes", "covered_bytes")}, indent=2))
+    print(json.dumps({k: report[k] for k in ("matched_under_the_rules", "bytes", "counts", "decompiled_game_c_bytes",
+                                             "covered_bytes")}, indent=2))
     return 0
 
 

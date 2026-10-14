@@ -1,27 +1,27 @@
 {
   "gp": "0x8008cd74",
   "functions": {
-    "effect_draw": {
+    "Fx_Draw": {
       "address": "0x8003f8c0",
       "size": 908
     },
-    "acid_splash_task": {
+    "Fx_AcidSplashTask": {
       "address": "0x8003fc4c",
       "size": 116
     },
-    "blood_splash_task": {
+    "Fx_BloodSplashTask": {
       "address": "0x8003fcc0",
       "size": 116
     },
-    "synth_splash_task": {
+    "Fx_SynthSplashTask": {
       "address": "0x8003fd34",
       "size": 116
     },
-    "explosion_task": {
+    "Fx_ExplosionTask": {
       "address": "0x80040138",
       "size": 120
     },
-    "big_explosion_task": {
+    "Fx_BigExplosionTask": {
       "address": "0x800401b0",
       "size": 120
     },
@@ -32,22 +32,22 @@
   },
   "symbols": {
     "TaskDie": "0x80015ea4",
-    "g_next_task": "0x8008d4f0",
-    "g_acid_splash_frames": "0x800733c0",
-    "g_blood_splash_frames": "0x8007346c",
-    "g_synth_splash_frames": "0x80073518",
-    "g_effect_frames_73314": "0x80073314",
-    "g_explosion_frames": "0x800731bc",
-    "g_big_explosion_frames": "0x80073268",
+    "g_nextTask": "0x8008d4f0",
+    "g_acidSplashFrames": "0x800733c0",
+    "g_bloodSplashFrames": "0x8007346c",
+    "g_synthSplashFrames": "0x80073518",
+    "g_effectFrames73314": "0x80073314",
+    "g_explosionFrames": "0x800731bc",
+    "g_bigExplosionFrames": "0x80073268",
     "RotTransPers": "0x80066f10",
-    "g_gte_interpolation": "0x8008d320",
-    "g_gte_flag": "0x8008d570",
-    "g_projected_depth": "0x8008d428",
-    "g_sprite_workspace": "0x8008d478",
+    "g_gteInterpolation": "0x8008d320",
+    "g_gteFlag": "0x8008d570",
+    "g_projectedDepth": "0x8008d428",
+    "g_spriteWorkspace": "0x8008d478",
     "g_palette": "0x8008d490",
-    "g_render_buffer": "0x8008d4e8",
-    "g_explosion_uvs": "0x8009cbec",
+    "g_renderBuffer": "0x8008d4e8",
+    "g_explosionUvs": "0x8009cbec",
     "GetTPage": "0x80064ff8",
-    "effect_draw_additive": "0x8003fda8"
+    "Fx_DrawAdditive": "0x8003fda8"
   }
 }

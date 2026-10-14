@@ -4,73 +4,73 @@
     ".sbss": "0x8008d0d0"
   },
   "functions": {
-    "upload_pool_alloc": {
+    "Tex_UploadPoolAlloc": {
       "address": "0x800218a4",
       "size": 40
     },
-    "upload_queue_reset": {
+    "Tex_ResetUploadQueue": {
       "address": "0x800218cc",
       "size": 128
     },
-    "upload_queue_flush": {
+    "Tex_FlushUploadQueue": {
       "address": "0x8002194c",
       "size": 168
     },
-    "upload_can_queue_pair": {
+    "Tex_UploadCanQueuePair": {
       "address": "0x800219f4",
       "size": 140
     },
-    "sprite_frame_upload": {
+    "Tex_UploadSpriteFrame": {
       "address": "0x80021a80",
       "size": 588
     },
-    "boss_sprite_frame_upload": {
+    "Tex_UploadBossSpriteFrame": {
       "address": "0x80021ccc",
       "size": 444
     }
   },
   "symbols": {
-    "g_unpack_buffer": "0x8008d520",
+    "g_unpackBuffer": "0x8008d520",
     "LoadImage": "0x80062a80",
-    "heap_alloc": "0x80014dfc",
+    "Heap_Alloc": "0x80014dfc",
     "GetRCnt": "0x8005d1bc",
-    "unpack_rle": "0x8002175c",
-    "unpack_lz": "0x800217d8",
-    "g_unpack_buffer_end": "0x8008d528",
-    "g_boss_unpack_buffer": "0x8008d538"
+    "UnpackRLE": "0x8002175c",
+    "UnpackLZ": "0x800217d8",
+    "g_unpackBufferEnd": "0x8008d528",
+    "g_bossUnpackBuffer": "0x8008d538"
   },
   "static_data": {
-    "g_unpack_cursor": {
+    "g_unpackCursor": {
       "address": "0x8008d0d0",
       "size": 8,
       "section": ".sbss"
     },
-    "g_unpack_full": {
+    "g_unpackFull": {
       "address": "0x8008d0d8",
       "size": 8,
       "section": ".sbss"
     },
-    "g_upload_free": {
+    "g_uploadFree": {
       "address": "0x8008d0e0",
       "size": 8,
       "section": ".sbss"
     },
-    "g_upload_queue_tail": {
+    "g_uploadQueueTail": {
       "address": "0x8008d0e8",
       "size": 8,
       "section": ".sbss"
     },
-    "g_upload_queue": {
+    "g_uploadQueue": {
       "address": "0x8008d0f0",
       "size": 8,
       "section": ".sbss"
     },
-    "g_upload_pool": {
+    "g_uploadPool": {
       "address": "0x8008d0f8",
       "size": 8,
       "section": ".sbss"
     },
-    "g_unpack_hblanks": {
+    "g_unpackHblanks": {
       "address": "0x8008cfa8",
       "size": 2,
       "section": ".sdata"

@@ -5,15 +5,15 @@
 #ifndef DEBRIS_H
 #define DEBRIS_H
 
-struct Particle;
-struct LevelObject;
+struct particle_s;
+struct levelObject_s;
 
-extern void panel_pool_alloc(void);
-extern void panel_pool_init(void);
-extern void panel_list_walk(struct LevelObject *owner);
+extern void Debris_PanelPoolAlloc( void );
+extern void Debris_InitPanelPool( void );
+extern void Debris_WalkPanelList( struct levelObject_s *owner );
 /* frees the debris panel a PARTICLE_KIND_SHARD or PARTICLE_KIND_PANEL particle carries in its model slot */
-extern void panel_free(struct Particle *particle);
-/* bursts a destroyed wall object into debris panels (block_object_task) */
-extern void wall_shatter(struct LevelObject *source);
+extern void Debris_FreePanel( struct particle_s *particle );
+/* bursts a destroyed wall object into debris panels (Object_BlockObjectTask) */
+extern void Debris_ShatterWall( struct levelObject_s *source );
 
 #endif

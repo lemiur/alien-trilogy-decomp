@@ -4,27 +4,27 @@
     ".sbss": "0x8008d120"
   },
   "functions": {
-    "lights_init": {
+    "Light_Init": {
       "address": "0x800235ac",
       "size": 596
     },
-    "lights_load": {
+    "Light_Load": {
       "address": "0x80023800",
       "size": 56
     },
-    "light_raise": {
+    "Light_Raise": {
       "address": "0x80023838",
       "size": 88
     }
   },
   "symbols": {
-    "g_lamp_level": "0x8008d568",
-    "g_level_map": "0x80096060",
+    "g_lampLevel": "0x8008d568",
+    "g_levelMap": "0x80096060",
     "g_lights": "0x8008d9b0",
     "g_palette": "0x8008d490"
   },
   "static_data": {
-    "g_light_count": {
+    "g_lightCount": {
       "address": "0x8008d120",
       "size": 8,
       "section": ".sbss"

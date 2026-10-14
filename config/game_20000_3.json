@@ -1,83 +1,83 @@
 {
   "gp": "0x8008cd74",
   "functions": {
-    "view_render_task": {
+    "ViewRenderTask": {
       "address": "0x80020980",
       "size": 332
     },
-    "level_fixup_pointers": {
+    "FixupLevelPointers": {
       "address": "0x80020acc",
       "size": 280
     },
-    "level_map_file_load": {
+    "LoadLevelMapFile": {
       "address": "0x80020be4",
       "size": 560
     },
-    "floor_height": {
+    "FloorHeight": {
       "address": "0x80021144",
       "size": 356
     },
-    "ceiling_height": {
+    "CeilingHeight": {
       "address": "0x800212a8",
       "size": 108
     },
-    "diagonal_clip_x": {
+    "DiagonalClipX": {
       "address": "0x80021314",
       "size": 228
     },
-    "diagonal_clip_z": {
+    "DiagonalClipZ": {
       "address": "0x800213f8",
       "size": 228
     },
-    "flow_field_clear": {
+    "ClearFlowField": {
       "address": "0x800214dc",
       "size": 80
     },
-    "flow_field_fill": {
+    "FillFlowField": {
       "address": "0x8002152c",
       "size": 376
     },
-    "level_cells_reset": {
+    "ResetLevelCells": {
       "address": "0x800216a4",
       "size": 184
     }
   },
   "symbols": {
-    "g_secrets_found": "0x80096c54",
-    "g_level_map": "0x80096060",
+    "g_secretsFound": "0x80096c54",
+    "g_levelMap": "0x80096060",
     "GetRCnt": "0x8005d1bc",
-    "view_transform_setup": "0x8001fdac",
-    "model_draw_near": "0x8001f37c",
-    "draw_visible_cells": "0x8005533c",
-    "hud_draw_digits": "0x80034638",
-    "g_render_hblanks": "0x8008d318",
-    "g_player_cell_x": "0x8008d5d0",
-    "g_player_cell_z": "0x8008d5d8",
-    "g_visible_cell_mask": "0x8008d510",
-    "g_cheat_flags": "0x8008cda8",
-    "g_next_task": "0x8008d4f0",
-    "g_flow_queue": "0x8008d8a0",
-    "g_view_position": "0x8008d5b8",
-    "g_file_table": "0x8006a5f8",
-    "g_level_map_files": "0x800722d0",
+    "Geo_SetupViewTransform": "0x8001fdac",
+    "Model_DrawNear": "0x8001f37c",
+    "Model_DrawVisibleCells": "0x8005533c",
+    "Hud_DrawDigits": "0x80034638",
+    "g_renderHblanks": "0x8008d318",
+    "g_playerCellX": "0x8008d5d0",
+    "g_playerCellZ": "0x8008d5d8",
+    "g_visibleCellMask": "0x8008d510",
+    "g_cheatFlags": "0x8008cda8",
+    "g_nextTask": "0x8008d4f0",
+    "g_flowQueue": "0x8008d8a0",
+    "g_viewPosition": "0x8008d5b8",
+    "g_fileTable": "0x8006a5f8",
+    "g_levelMapFiles": "0x800722d0",
     "g_level": "0x8008d378",
-    "g_door_model_count": "0x8008d5a0",
-    "g_lift_model_count": "0x8008d598",
-    "g_door_models": "0x80096040",
-    "g_lift_models": "0x800a18d8",
-    "load_file": "0x800151f0",
-    "read_be32": "0x8001c50c",
-    "g_view_cells_buckets": "0x8008cf9c",
-    "g_view_cells_rays": "0x8008cfa0",
-    "g_view_cells_level": "0x8008cfa4"
+    "g_doorModelCount": "0x8008d5a0",
+    "g_liftModelCount": "0x8008d598",
+    "g_doorModels": "0x80096040",
+    "g_liftModels": "0x800a18d8",
+    "Sys_LoadFile": "0x800151f0",
+    "Text_ReadBigEndian32": "0x8001c50c",
+    "g_viewCellsBuckets": "0x8008cf9c",
+    "g_viewCellsRays": "0x8008cfa0",
+    "g_viewCellsLevel": "0x8008cfa4"
   },
   "static_data": {
-    "g_view_rays": {
+    "g_viewRays": {
       "address": "0x8006fa74",
       "size": 9306,
       "section": ".data"
     },
-    "g_view_ray_buckets": {
+    "g_viewRayBuckets": {
       "address": "0x80071ed0",
       "size": 1024,
       "section": ".data"

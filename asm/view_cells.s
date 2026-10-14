@@ -12,24 +12,24 @@
 	.set	noreorder
 
 /*
- * draw_visible_cells - walk the precomputed rays around the player and draw every visible cell
+ * Model_DrawVisibleCells - walk the precomputed rays around the player and draw every visible cell
  *
  * Purpose:    for rings 0..14 around the player's map cell, scan the rays whose angle lies
- *             in a cone around the view angle (g_view_rotation.vy, 0x1000 = one turn): +-0x4ff for
+ *             in a cone around the view angle (g_viewRotation.vy, 0x1000 = one turn): +-0x4ff for
  *             rings 0 and 1, +-0x27f for rings 2..7, +-0x1ff for rings 8..14. Each ray names
  *             a cell at (player x - dx, player z + dz). A cell inside the map whose zone
  *             bits meet the zone mask is marked seen (flags bit 0), adds its zone bits to
  *             the mask (unless it is a type-6 cell whose bytes 13 and 11 differ by less
- *             than 8), and has its face list drawn: rings 0..1 through model_draw_near (dispatch
- *             table 0x8006d308), rings 2..7 through model_draw_mid (g_dispatch_table, the plain
- *             emitters of poly_emit.s), rings 8..14 through model_draw_far (the depth-cued
+ *             than 8), and has its face list drawn: rings 0..1 through Model_DrawNear (dispatch
+ *             table 0x8006d308), rings 2..7 through Model_DrawMid (g_dispatch_table, the plain
+ *             emitters of poly_emit.s), rings 8..14 through Model_DrawFar (the depth-cued
  *             emitters). The widened mask is stored back to g_mask.
- * Inputs:     g_view_cells_level = map header (+0x68 width, +0x6a height, +0x78 cell array);
- *             g_view_cells_buckets = bucket table: per ring, 32 halfword ray indices by angle / 128;
- *             g_view_cells_rays = ray table, 6-byte records { s16 angle, s16 dx, s16 dz } sorted by
- *             angle; g_player_cell_x, g_player_cell_z = player cell x, z; g_view_rotation.vy = view angle;
+ * Inputs:     g_viewCellsLevel = map header (+0x68 width, +0x6a height, +0x78 cell array);
+ *             g_viewCellsBuckets = bucket table: per ring, 32 halfword ray indices by angle / 128;
+ *             g_viewCellsRays = ray table, 6-byte records { s16 angle, s16 dx, s16 dz } sorted by
+ *             angle; g_playerCellX, g_playerCellZ = player cell x, z; g_viewRotation.vy = view angle;
  *             g_mask = zone mask.
- *             Cell (16 bytes): +0 face list (DispatchRow *), +7 flags, +8 zone bits,
+ *             Cell (16 bytes): +0 face list (dispatchRow_t *), +7 flags, +8 zone bits,
  *             +0xa type, +0xb and +0xd bytes compared for type 6.
  * Outputs:    g_mask; the cells' flags; primitives from the face renderers.
  * Clobbers:   v0, v1, a0..a2, t0..t4, hi/lo, and whatever the face renderers clobber.
@@ -38,10 +38,10 @@
  *             0x2c..0x4c saved s7..s0 and ra.
  * Scratchpad: none directly (the face renderers use it).
  * Callers:    jal at 0x80020a60 (C, after marking the player's own cell seen).
- * Callees:    model_draw_near, model_draw_mid, model_draw_far (C face-list dispatchers).
+ * Callees:    Model_DrawNear, Model_DrawMid, Model_DrawFar (C face-list dispatchers).
  */
-	.globl	draw_visible_cells
-draw_visible_cells:
+	.globl	Model_DrawVisibleCells
+Model_DrawVisibleCells:
 
 	/* Prologue: save ra and s0..s7 on the stack */
 	addiu	sp, sp, -80		/* frame: s0..s7, ra and four locals */
@@ -59,20 +59,20 @@ draw_visible_cells:
 	/*   s0 = map header (then its cell array), s1 = ring/angle bucket table, */
 	/*   s2 = ray table, s3/s4 = player cell x/z, s5 = zone mask (g_mask), */
 	/*   s6/s7 = map width/height */
-	lw	s0, g_view_cells_level		/* s0 = map header (macro: lui + lw) */
-	lw	s1, g_view_cells_buckets		/* s1 = ring/angle bucket table (macro: lui + lw) */
-	lw	s2, g_view_cells_rays		/* s2 = ray table (macro: lui + lw) */
-	lw	s3, g_player_cell_x		/* s3 = player cell x (macro: lui + lw) */
-	lw	s4, g_player_cell_z		/* s4 = player cell z (macro: lui + lw) */
-	lh	s5, g_visible_cell_mask		/* s5 = zone mask (macro: lui + lh) */
+	lw	s0, g_viewCellsLevel		/* s0 = map header (macro: lui + lw) */
+	lw	s1, g_viewCellsBuckets		/* s1 = ring/angle bucket table (macro: lui + lw) */
+	lw	s2, g_viewCellsRays		/* s2 = ray table (macro: lui + lw) */
+	lw	s3, g_playerCellX		/* s3 = player cell x (macro: lui + lw) */
+	lw	s4, g_playerCellZ		/* s4 = player cell z (macro: lui + lw) */
+	lh	s5, g_visibleCellMask		/* s5 = zone mask (macro: lui + lh) */
 	lh	s6, 104(s0)		/* s6 = map width (cells) */
 	lh	s7, 106(s0)		/* s7 = map height (cells) */
 
-	/* ==== Ring 0: cone of +-0x4ff around the view angle; faces drawn by model_draw_near ==== */
+	/* ==== Ring 0: cone of +-0x4ff around the view angle; faces drawn by Model_DrawNear ==== */
 
 	/* Cone: t3 = angle - 0x4ff, t4 = angle + 0x4ff, both shifted up a turn when the */
 	/* start is negative, so the scan below never wraps */
-	lh	t4, g_view_rotation+2	/* t4 = view angle, g_view_rotation.vy (macro: lui + lh) */
+	lh	t4, g_viewRotation+2	/* t4 = view angle, g_viewRotation.vy (macro: lui + lh) */
 	lw	s0, 120(s0)		/* s0 = cell array (16 bytes per cell, row-major) */
 	move	t3, t4			/* t3 = view angle too */
 	addi	t4, t4, 1279		/* t4 = cone end: angle + 0x4ff */
@@ -125,7 +125,7 @@ $5533c_5540c:
 	addu	v0, s0, t0
 	addu	v0, v0, t1		/* v0 = &cell[z][x] */
 	lh	t1, 8(v0)		/* t1 = the cell's zone bits */
-	lw	a0, 0(v0)		/* a0 = the cell's face list (DispatchRow *), or 0 */
+	lw	a0, 0(v0)		/* a0 = the cell's face list (dispatchRow_t *), or 0 */
 
 	/* Visible only if it lies in a zone already seen. A type-6 cell whose bytes 13 */
 	/* and 11 differ by less than 8 (a nearly closed door, by the look of it) is */
@@ -154,7 +154,7 @@ $5533c_5548c:
 	nop				/* spare slot (as written) */
 	beqz	a0, $5533c_554b8	/* no faces: next ray */
 	or	s5, s5, t1		/* delay slot (real work): zones seen |= the cell's zones */
-	jal	model_draw_near			/* draw the cell's faces (a0 = face list) */
+	jal	Model_DrawNear			/* draw the cell's faces (a0 = face list) */
 	sw	t2, 36(sp)		/* delay slot (real work): keep the ray pointer across the call */
 	lw	t2, 36(sp)		/* restore the ray pointer */
 	lw	t4, 40(sp)		/* restore the cone end */
@@ -165,9 +165,9 @@ $5533c_554b8:
 	j	$5533c_5540c		/* loop */
 	nop				/* branch delay: nothing to do */
 
-	/* ==== Ring 1: the same cone; faces drawn by model_draw_near ==== */
+	/* ==== Ring 1: the same cone; faces drawn by Model_DrawNear ==== */
 $5533c_554cc:
-	lh	t4, g_view_rotation+2	/* t4 = view angle, g_view_rotation.vy (macro: lui + lh) */
+	lh	t4, g_viewRotation+2	/* t4 = view angle, g_viewRotation.vy (macro: lui + lh) */
 	li	v1, 1			/* v1 = ring 1 */
 	move	t3, t4			/* t3 = view angle too */
 	addi	t4, t4, 1279		/* t4 = cone end: angle + 0x4ff */
@@ -217,7 +217,7 @@ $5533c_55548:
 	addu	v0, s0, t0
 	addu	v0, v0, t1		/* v0 = &cell[z][x] */
 	lh	t1, 8(v0)		/* t1 = the cell's zone bits */
-	lw	a0, 0(v0)		/* a0 = the cell's face list (DispatchRow *), or 0 */
+	lw	a0, 0(v0)		/* a0 = the cell's face list (dispatchRow_t *), or 0 */
 	and	t0, t1, s5		/* in a zone seen so far? */
 	beqz	t0, $5533c_555f4	/* zone not seen: next ray */
 	lbu	a1, 10(v0)		/* delay slot (real work): a1 = cell type */
@@ -240,7 +240,7 @@ $5533c_555c8:
 	nop				/* spare slot (as written) */
 	beqz	a0, $5533c_555f4	/* no faces: next ray */
 	or	s5, s5, t1		/* delay slot (real work): zones seen |= the cell's zones */
-	jal	model_draw_near			/* draw the cell's faces (a0 = face list) */
+	jal	Model_DrawNear			/* draw the cell's faces (a0 = face list) */
 	sw	t2, 36(sp)		/* delay slot (real work): keep the ray pointer across the call */
 	lw	t2, 36(sp)		/* restore the ray pointer */
 	lw	t4, 40(sp)		/* restore the cone end */
@@ -251,9 +251,9 @@ $5533c_555f4:
 	j	$5533c_55548		/* loop */
 	nop				/* branch delay: nothing to do */
 
-	/* ==== Rings 2..7: cone of +-0x27f; faces drawn by model_draw_mid (plain emitters) ==== */
+	/* ==== Rings 2..7: cone of +-0x27f; faces drawn by Model_DrawMid (plain emitters) ==== */
 $5533c_55608:
-	lh	t4, g_view_rotation+2	/* t4 = view angle, g_view_rotation.vy (macro: lui + lh) */
+	lh	t4, g_viewRotation+2	/* t4 = view angle, g_viewRotation.vy (macro: lui + lh) */
 	li	v1, 2			/* v1 = ring 2 */
 	move	t3, t4			/* t3 = view angle too */
 	addi	t4, t4, 639		/* t4 = cone end: angle + 0x27f */
@@ -310,7 +310,7 @@ $5533c_55684:
 	addu	v0, s0, t0
 	addu	v0, v0, t1		/* v0 = &cell[z][x] */
 	lh	t1, 8(v0)		/* t1 = the cell's zone bits */
-	lw	a0, 0(v0)		/* a0 = the cell's face list (DispatchRow *), or 0 */
+	lw	a0, 0(v0)		/* a0 = the cell's face list (dispatchRow_t *), or 0 */
 	and	t0, t1, s5		/* in a zone seen so far? */
 	beqz	t0, $5533c_55730	/* zone not seen: next ray */
 	lbu	a1, 10(v0)		/* delay slot (real work): a1 = cell type */
@@ -333,7 +333,7 @@ $5533c_55704:
 	nop				/* spare slot (as written) */
 	beqz	a0, $5533c_55730	/* no faces: next ray */
 	or	s5, s5, t1		/* delay slot (real work): zones seen |= the cell's zones */
-	jal	model_draw_mid			/* draw the cell's faces (a0 = face list) */
+	jal	Model_DrawMid			/* draw the cell's faces (a0 = face list) */
 	sw	t2, 36(sp)		/* delay slot (real work): keep the ray pointer across the call */
 	lw	t2, 36(sp)		/* restore the ray pointer */
 	lw	t4, 40(sp)		/* restore the cone end */
@@ -353,8 +353,8 @@ $5533c_55744:
 	bnez	v0, $5533c_55638	/* more rings */
 	nop				/* branch delay: nothing to do */
 
-	/* ==== Rings 8..14: cone of +-0x1ff; faces drawn by model_draw_far (depth-cued emitters) ==== */
-	lh	t4, g_view_rotation+2	/* t4 = view angle, g_view_rotation.vy (macro: lui + lh) */
+	/* ==== Rings 8..14: cone of +-0x1ff; faces drawn by Model_DrawFar (depth-cued emitters) ==== */
+	lh	t4, g_viewRotation+2	/* t4 = view angle, g_viewRotation.vy (macro: lui + lh) */
 	nop				/* load delay */
 	move	t3, t4			/* t3 = view angle too */
 	addi	t4, t4, 511		/* t4 = cone end: angle + 0x1ff */
@@ -411,7 +411,7 @@ $5533c_557d8:
 	addu	v0, s0, t0
 	addu	v0, v0, t1		/* v0 = &cell[z][x] */
 	lh	t1, 8(v0)		/* t1 = the cell's zone bits */
-	lw	a0, 0(v0)		/* a0 = the cell's face list (DispatchRow *), or 0 */
+	lw	a0, 0(v0)		/* a0 = the cell's face list (dispatchRow_t *), or 0 */
 	and	t0, t1, s5		/* in a zone seen so far? */
 	beqz	t0, $5533c_55884	/* zone not seen: next ray */
 	lbu	a1, 10(v0)		/* delay slot (real work): a1 = cell type */
@@ -434,7 +434,7 @@ $5533c_55858:
 	nop				/* spare slot (as written) */
 	beqz	a0, $5533c_55884	/* no faces: next ray */
 	or	s5, s5, t1		/* delay slot (real work): zones seen |= the cell's zones */
-	jal	model_draw_far			/* draw the cell's faces (a0 = face list) */
+	jal	Model_DrawFar			/* draw the cell's faces (a0 = face list) */
 	sw	t2, 36(sp)		/* delay slot (real work): keep the ray pointer across the call */
 	lw	t2, 36(sp)		/* restore the ray pointer */
 	lw	t4, 40(sp)		/* restore the cone end */
@@ -455,7 +455,7 @@ $5533c_55898:
 	nop				/* branch delay: nothing to do */
 
 	/* Store the widened zone mask for the next frame, restore and return */
-	sh	s5, g_visible_cell_mask		/* macro: lui AT, then sh through AT */
+	sh	s5, g_visibleCellMask		/* macro: lui AT, then sh through AT */
 	lw	ra, 76(sp)		/* restore ra */
 	lw	s0, 68(sp)		/* restore s0 */
 	lw	s1, 72(sp)		/* restore s1 */

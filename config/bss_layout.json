@@ -61,7 +61,7 @@
       "kind": "game_reference",
       "section": null,
       "names": [
-        "g_menu_entry_color"
+        "g_menuEntryColor"
       ],
       "owner": null,
       "referenced_by": [
@@ -77,7 +77,7 @@
       "kind": "game_reference",
       "section": null,
       "names": [
-        "g_death_type"
+        "g_deathType"
       ],
       "owner": null,
       "referenced_by": [
@@ -93,7 +93,7 @@
       "kind": "unit_static",
       "section": ".sbss",
       "names": [
-        "g_font_page"
+        "g_fontPage"
       ],
       "owner": "text",
       "evidence": "static_data of text: a local symbol of its .sbss, whose offset, extent and address (section base + offset) verify.py and the gate audit against the unit's object",
@@ -105,7 +105,7 @@
       "kind": "unit_static",
       "section": ".sbss",
       "names": [
-        "g_font_clut"
+        "g_fontCLUT"
       ],
       "owner": "text",
       "evidence": "static_data of text: a local symbol of its .sbss, whose offset, extent and address (section base + offset) verify.py and the gate audit against the unit's object",
@@ -117,7 +117,7 @@
       "kind": "unit_static",
       "section": ".sbss",
       "names": [
-        "g_panel_sprites_alternate"
+        "g_panelSpritesAlternate"
       ],
       "owner": "sprites",
       "evidence": "static_data of sprites: a local symbol of its .sbss, whose offset, extent and address (section base + offset) verify.py and the gate audit against the unit's object",
@@ -129,7 +129,7 @@
       "kind": "unit_static",
       "section": ".sbss",
       "names": [
-        "g_unpack_cursor"
+        "g_unpackCursor"
       ],
       "owner": "texture_upload",
       "evidence": "static_data of texture_upload: a local symbol of its .sbss, whose offset, extent and address (section base + offset) verify.py and the gate audit against the unit's object",
@@ -141,7 +141,7 @@
       "kind": "unit_static",
       "section": ".sbss",
       "names": [
-        "g_unpack_full"
+        "g_unpackFull"
       ],
       "owner": "texture_upload",
       "evidence": "static_data of texture_upload: a local symbol of its .sbss, whose offset, extent and address (section base + offset) verify.py and the gate audit against the unit's object",
@@ -153,7 +153,7 @@
       "kind": "unit_static",
       "section": ".sbss",
       "names": [
-        "g_upload_free"
+        "g_uploadFree"
       ],
       "owner": "texture_upload",
       "evidence": "static_data of texture_upload: a local symbol of its .sbss, whose offset, extent and address (section base + offset) verify.py and the gate audit against the unit's object",
@@ -165,7 +165,7 @@
       "kind": "unit_static",
       "section": ".sbss",
       "names": [
-        "g_upload_queue_tail"
+        "g_uploadQueueTail"
       ],
       "owner": "texture_upload",
       "evidence": "static_data of texture_upload: a local symbol of its .sbss, whose offset, extent and address (section base + offset) verify.py and the gate audit against the unit's object",
@@ -177,7 +177,7 @@
       "kind": "unit_static",
       "section": ".sbss",
       "names": [
-        "g_upload_queue"
+        "g_uploadQueue"
       ],
       "owner": "texture_upload",
       "evidence": "static_data of texture_upload: a local symbol of its .sbss, whose offset, extent and address (section base + offset) verify.py and the gate audit against the unit's object",
@@ -189,7 +189,7 @@
       "kind": "unit_static",
       "section": ".sbss",
       "names": [
-        "g_upload_pool"
+        "g_uploadPool"
       ],
       "owner": "texture_upload",
       "evidence": "static_data of texture_upload: a local symbol of its .sbss, whose offset, extent and address (section base + offset) verify.py and the gate audit against the unit's object",
@@ -213,7 +213,7 @@
       "kind": "unit_static",
       "section": ".sbss",
       "names": [
-        "g_door_defs"
+        "g_doorDefs"
       ],
       "owner": "doors",
       "evidence": "static_data of doors: a local symbol of its .sbss, whose offset, extent and address (section base + offset) verify.py and the gate audit against the unit's object",
@@ -225,7 +225,7 @@
       "kind": "unit_static",
       "section": ".sbss",
       "names": [
-        "g_door_count"
+        "g_doorCount"
       ],
       "owner": "doors",
       "evidence": "static_data of doors: a local symbol of its .sbss, whose offset, extent and address (section base + offset) verify.py and the gate audit against the unit's object",
@@ -237,7 +237,7 @@
       "kind": "unit_static",
       "section": ".sbss",
       "names": [
-        "g_door_open_ticks"
+        "g_doorOpenTicks"
       ],
       "owner": "doors",
       "evidence": "static_data of doors: a local symbol of its .sbss, whose offset, extent and address (section base + offset) verify.py and the gate audit against the unit's object",
@@ -249,7 +249,7 @@
       "kind": "unit_static",
       "section": ".sbss",
       "names": [
-        "g_light_count"
+        "g_lightCount"
       ],
       "owner": "lights",
       "evidence": "static_data of lights: a local symbol of its .sbss, whose offset, extent and address (section base + offset) verify.py and the gate audit against the unit's object",
@@ -261,7 +261,7 @@
       "kind": "unit_static",
       "section": ".sbss",
       "names": [
-        "g_particle_pool"
+        "g_particlePool"
       ],
       "owner": "particle",
       "evidence": "static_data of particle: a local symbol of its .sbss, whose offset, extent and address (section base + offset) verify.py and the gate audit against the unit's object",
@@ -273,7 +273,7 @@
       "kind": "unit_static",
       "section": ".sbss",
       "names": [
-        "g_particle_free"
+        "g_particleFree"
       ],
       "owner": "particle",
       "evidence": "static_data of particle: a local symbol of its .sbss, whose offset, extent and address (section base + offset) verify.py and the gate audit against the unit's object",
@@ -285,7 +285,7 @@
       "kind": "unit_static",
       "section": ".sbss",
       "names": [
-        "g_live_particles"
+        "g_liveParticles"
       ],
       "owner": "particle",
       "evidence": "static_data of particle: a local symbol of its .sbss, whose offset, extent and address (section base + offset) verify.py and the gate audit against the unit's object",
@@ -297,7 +297,7 @@
       "kind": "unit_static",
       "section": ".sbss",
       "names": [
-        "g_sight_point"
+        "g_sightPoint"
       ],
       "owner": "actor",
       "evidence": "static_data of actor: a local symbol of its .sbss, whose offset, extent and address (section base + offset) verify.py and the gate audit against the unit's object",
@@ -309,7 +309,7 @@
       "kind": "unit_static",
       "section": ".sbss",
       "names": [
-        "g_8d148"
+        "g_pathSidePoint"
       ],
       "owner": "actor",
       "evidence": "static_data of actor: a local symbol of its .sbss, whose offset, extent and address (section base + offset) verify.py and the gate audit against the unit's object",
@@ -321,7 +321,7 @@
       "kind": "unit_static",
       "section": ".sbss",
       "names": [
-        "g_sight_step"
+        "g_sightStep"
       ],
       "owner": "actor",
       "evidence": "static_data of actor: a local symbol of its .sbss, whose offset, extent and address (section base + offset) verify.py and the gate audit against the unit's object",
@@ -333,7 +333,7 @@
       "kind": "unit_static",
       "section": ".sbss",
       "names": [
-        "g_velocity_rotation"
+        "g_velocityRotation"
       ],
       "owner": "actor",
       "evidence": "static_data of actor: a local symbol of its .sbss, whose offset, extent and address (section base + offset) verify.py and the gate audit against the unit's object",
@@ -345,7 +345,7 @@
       "kind": "unit_static",
       "section": ".sbss",
       "names": [
-        "g_wander_offset"
+        "g_wanderOffset"
       ],
       "owner": "actor",
       "evidence": "static_data of actor: a local symbol of its .sbss, whose offset, extent and address (section base + offset) verify.py and the gate audit against the unit's object",
@@ -357,7 +357,7 @@
       "kind": "unit_static",
       "section": ".sbss",
       "names": [
-        "g_wander_rotation"
+        "g_wanderRotation"
       ],
       "owner": "actor",
       "evidence": "static_data of actor: a local symbol of its .sbss, whose offset, extent and address (section base + offset) verify.py and the gate audit against the unit's object",
@@ -369,7 +369,7 @@
       "kind": "unit_static",
       "section": ".sbss",
       "names": [
-        "g_actor_free"
+        "g_actorFree"
       ],
       "owner": "actor",
       "evidence": "static_data of actor: a local symbol of its .sbss, whose offset, extent and address (section base + offset) verify.py and the gate audit against the unit's object",
@@ -381,7 +381,7 @@
       "kind": "unit_static",
       "section": ".sbss",
       "names": [
-        "g_actor_slots"
+        "g_actorSlots"
       ],
       "owner": "actor",
       "evidence": "static_data of actor: a local symbol of its .sbss, whose offset, extent and address (section base + offset) verify.py and the gate audit against the unit's object",
@@ -393,7 +393,7 @@
       "kind": "unit_static",
       "section": ".sbss",
       "names": [
-        "g_actor_slot_count"
+        "g_actorSlotCount"
       ],
       "owner": "actor",
       "evidence": "static_data of actor: a local symbol of its .sbss, whose offset, extent and address (section base + offset) verify.py and the gate audit against the unit's object",
@@ -405,7 +405,7 @@
       "kind": "unit_static",
       "section": ".sbss",
       "names": [
-        "g_visible_actor_count"
+        "g_visibleActorCount"
       ],
       "owner": "actor",
       "evidence": "static_data of actor: a local symbol of its .sbss, whose offset, extent and address (section base + offset) verify.py and the gate audit against the unit's object",
@@ -417,7 +417,7 @@
       "kind": "game_reference",
       "section": null,
       "names": [
-        "g_level_object_records"
+        "g_levelObjectRecords"
       ],
       "owner": null,
       "referenced_by": [
@@ -433,7 +433,7 @@
       "kind": "game_reference",
       "section": null,
       "names": [
-        "g_level_object_count"
+        "g_levelObjectCount"
       ],
       "owner": null,
       "referenced_by": [
@@ -449,7 +449,7 @@
       "kind": "game_reference",
       "section": null,
       "names": [
-        "g_level_objects"
+        "g_levelObjects"
       ],
       "owner": null,
       "referenced_by": [
@@ -465,7 +465,7 @@
       "kind": "unit_static",
       "section": ".sbss",
       "names": [
-        "g_weapon_slot"
+        "g_weaponSlot"
       ],
       "owner": "weapon_slots",
       "evidence": "static_data of weapon_slots: a local symbol of its .sbss, whose offset, extent and address (section base + offset) verify.py and the gate audit against the unit's object",
@@ -477,7 +477,7 @@
       "kind": "game_reference",
       "section": null,
       "names": [
-        "g_object_records"
+        "g_objectRecords"
       ],
       "owner": null,
       "referenced_by": [
@@ -493,7 +493,7 @@
       "kind": "game_reference",
       "section": null,
       "names": [
-        "g_object_record_count"
+        "g_objectRecordCount"
       ],
       "owner": null,
       "referenced_by": [
@@ -509,7 +509,7 @@
       "kind": "game_reference",
       "section": null,
       "names": [
-        "g_map_object_pool"
+        "g_mapObjectPool"
       ],
       "owner": null,
       "referenced_by": [
@@ -525,7 +525,7 @@
       "kind": "game_reference",
       "section": null,
       "names": [
-        "g_map_object_free"
+        "g_mapObjectFree"
       ],
       "owner": null,
       "referenced_by": [
@@ -541,7 +541,7 @@
       "kind": "game_reference",
       "section": null,
       "names": [
-        "g_map_objects"
+        "g_mapObjects"
       ],
       "owner": null,
       "referenced_by": [
@@ -557,7 +557,7 @@
       "kind": "unit_static",
       "section": ".sbss",
       "names": [
-        "g_cell_trigger_count"
+        "g_cellTriggerCount"
       ],
       "owner": "level_triggers",
       "evidence": "static_data of level_triggers: a local symbol of its .sbss, whose offset, extent and address (section base + offset) verify.py and the gate audit against the unit's object",
@@ -569,7 +569,7 @@
       "kind": "unit_static",
       "section": ".sbss",
       "names": [
-        "g_level_commands"
+        "g_levelCommands"
       ],
       "owner": "level_triggers",
       "evidence": "static_data of level_triggers: a local symbol of its .sbss, whose offset, extent and address (section base + offset) verify.py and the gate audit against the unit's object",
@@ -593,7 +593,7 @@
       "kind": "unit_static",
       "section": ".sbss",
       "names": [
-        "g_lift_records"
+        "g_liftRecords"
       ],
       "owner": "lift",
       "evidence": "static_data of lift: a local symbol of its .sbss, whose offset, extent and address (section base + offset) verify.py and the gate audit against the unit's object",
@@ -605,7 +605,7 @@
       "kind": "unit_static",
       "section": ".sbss",
       "names": [
-        "g_lift_record_count"
+        "g_liftRecordCount"
       ],
       "owner": "lift",
       "evidence": "static_data of lift: a local symbol of its .sbss, whose offset, extent and address (section base + offset) verify.py and the gate audit against the unit's object",
@@ -617,7 +617,7 @@
       "kind": "unit_static",
       "section": ".sbss",
       "names": [
-        "g_cd_mode"
+        "g_cdMode"
       ],
       "owner": "music_control",
       "evidence": "static_data of music_control: a local symbol of its .sbss, whose offset, extent and address (section base + offset) verify.py and the gate audit against the unit's object",
@@ -629,7 +629,7 @@
       "kind": "unit_static",
       "section": ".sbss",
       "names": [
-        "g_cd_requested_command"
+        "g_cdRequestedCommand"
       ],
       "owner": "music_control",
       "evidence": "static_data of music_control: a local symbol of its .sbss, whose offset, extent and address (section base + offset) verify.py and the gate audit against the unit's object",
@@ -641,7 +641,7 @@
       "kind": "unit_static",
       "section": ".sbss",
       "names": [
-        "g_cd_track_count"
+        "g_cdTrackCount"
       ],
       "owner": "music_control",
       "evidence": "static_data of music_control: a local symbol of its .sbss, whose offset, extent and address (section base + offset) verify.py and the gate audit against the unit's object",
@@ -653,7 +653,7 @@
       "kind": "unit_static",
       "section": ".sbss",
       "names": [
-        "g_pause_state"
+        "g_pauseState"
       ],
       "owner": "pause_menu",
       "evidence": "static_data of pause_menu: a local symbol of its .sbss, whose offset, extent and address (section base + offset) verify.py and the gate audit against the unit's object",
@@ -665,7 +665,7 @@
       "kind": "unit_static",
       "section": ".sbss",
       "names": [
-        "g_pause_option"
+        "g_pauseOption"
       ],
       "owner": "pause_menu",
       "evidence": "static_data of pause_menu: a local symbol of its .sbss, whose offset, extent and address (section base + offset) verify.py and the gate audit against the unit's object",
@@ -677,7 +677,7 @@
       "kind": "unit_static",
       "section": ".sbss",
       "names": [
-        "g_typed_length"
+        "g_typedLength"
       ],
       "owner": "pause_menu",
       "evidence": "static_data of pause_menu: a local symbol of its .sbss, whose offset, extent and address (section base + offset) verify.py and the gate audit against the unit's object",
@@ -689,7 +689,7 @@
       "kind": "unit_static",
       "section": ".sbss",
       "names": [
-        "g_sound_option"
+        "g_soundOption"
       ],
       "owner": "pause_menu",
       "evidence": "static_data of pause_menu: a local symbol of its .sbss, whose offset, extent and address (section base + offset) verify.py and the gate audit against the unit's object",
@@ -701,7 +701,7 @@
       "kind": "unit_static",
       "section": ".sbss",
       "names": [
-        "g_exit_confirmed"
+        "g_exitConfirmed"
       ],
       "owner": "pause_menu",
       "evidence": "static_data of pause_menu: a local symbol of its .sbss, whose offset, extent and address (section base + offset) verify.py and the gate audit against the unit's object",
@@ -725,7 +725,7 @@
       "kind": "unit_static",
       "section": ".sbss",
       "names": [
-        "g_sfx_volume"
+        "g_sfxVolume"
       ],
       "owner": "pause_menu",
       "evidence": "static_data of pause_menu: a local symbol of its .sbss, whose offset, extent and address (section base + offset) verify.py and the gate audit against the unit's object",
@@ -737,7 +737,7 @@
       "kind": "unit_static",
       "section": ".sbss",
       "names": [
-        "g_cdda_volume"
+        "g_cddaVolume"
       ],
       "owner": "pause_menu",
       "evidence": "static_data of pause_menu: a local symbol of its .sbss, whose offset, extent and address (section base + offset) verify.py and the gate audit against the unit's object",
@@ -749,7 +749,7 @@
       "kind": "unit_static",
       "section": ".sbss",
       "names": [
-        "g_text_left"
+        "g_textLeft"
       ],
       "owner": "pause_menu",
       "evidence": "static_data of pause_menu: a local symbol of its .sbss, whose offset, extent and address (section base + offset) verify.py and the gate audit against the unit's object",
@@ -761,7 +761,7 @@
       "kind": "unit_static",
       "section": ".sbss",
       "names": [
-        "g_text_x"
+        "g_textX"
       ],
       "owner": "pause_menu",
       "evidence": "static_data of pause_menu: a local symbol of its .sbss, whose offset, extent and address (section base + offset) verify.py and the gate audit against the unit's object",
@@ -773,7 +773,7 @@
       "kind": "unit_static",
       "section": ".sbss",
       "names": [
-        "g_text_y"
+        "g_textY"
       ],
       "owner": "pause_menu",
       "evidence": "static_data of pause_menu: a local symbol of its .sbss, whose offset, extent and address (section base + offset) verify.py and the gate audit against the unit's object",
@@ -797,7 +797,7 @@
       "kind": "unit_static",
       "section": ".sbss",
       "names": [
-        "g_text_cursor"
+        "g_textCursor"
       ],
       "owner": "pause_menu",
       "evidence": "static_data of pause_menu: a local symbol of its .sbss, whose offset, extent and address (section base + offset) verify.py and the gate audit against the unit's object",
@@ -809,7 +809,7 @@
       "kind": "unit_static",
       "section": ".sbss",
       "names": [
-        "g_text_style"
+        "g_textStyle"
       ],
       "owner": "pause_menu",
       "evidence": "static_data of pause_menu: a local symbol of its .sbss, whose offset, extent and address (section base + offset) verify.py and the gate audit against the unit's object",
@@ -821,7 +821,7 @@
       "kind": "unit_static",
       "section": ".sbss",
       "names": [
-        "g_map_center_x"
+        "g_mapCenterX"
       ],
       "owner": "pause_menu",
       "evidence": "static_data of pause_menu: a local symbol of its .sbss, whose offset, extent and address (section base + offset) verify.py and the gate audit against the unit's object",
@@ -833,7 +833,7 @@
       "kind": "unit_static",
       "section": ".sbss",
       "names": [
-        "g_map_center_z"
+        "g_mapCenterZ"
       ],
       "owner": "pause_menu",
       "evidence": "static_data of pause_menu: a local symbol of its .sbss, whose offset, extent and address (section base + offset) verify.py and the gate audit against the unit's object",
@@ -845,7 +845,7 @@
       "kind": "unit_static",
       "section": ".sbss",
       "names": [
-        "g_model_rotation"
+        "g_modelRotation"
       ],
       "owner": "pause_menu",
       "evidence": "static_data of pause_menu: a local symbol of its .sbss, whose offset, extent and address (section base + offset) verify.py and the gate audit against the unit's object",
@@ -857,7 +857,7 @@
       "kind": "unit_static",
       "section": ".sbss",
       "names": [
-        "g_ammo_model_rotation"
+        "g_ammoModelRotation"
       ],
       "owner": "pause_menu",
       "evidence": "static_data of pause_menu: a local symbol of its .sbss, whose offset, extent and address (section base + offset) verify.py and the gate audit against the unit's object",
@@ -869,7 +869,7 @@
       "kind": "unit_static",
       "section": ".sbss",
       "names": [
-        "g_arrow_tip"
+        "g_arrowTip"
       ],
       "owner": "pause_menu",
       "evidence": "static_data of pause_menu: a local symbol of its .sbss, whose offset, extent and address (section base + offset) verify.py and the gate audit against the unit's object",
@@ -881,7 +881,7 @@
       "kind": "unit_static",
       "section": ".sbss",
       "names": [
-        "g_arrow_right"
+        "g_arrowRight"
       ],
       "owner": "pause_menu",
       "evidence": "static_data of pause_menu: a local symbol of its .sbss, whose offset, extent and address (section base + offset) verify.py and the gate audit against the unit's object",
@@ -893,7 +893,7 @@
       "kind": "unit_static",
       "section": ".sbss",
       "names": [
-        "g_arrow_left"
+        "g_arrowLeft"
       ],
       "owner": "pause_menu",
       "evidence": "static_data of pause_menu: a local symbol of its .sbss, whose offset, extent and address (section base + offset) verify.py and the gate audit against the unit's object",
@@ -917,7 +917,7 @@
       "kind": "unit_static",
       "section": ".sbss",
       "names": [
-        "g_panel_vertices"
+        "g_panelVertices"
       ],
       "owner": "debris",
       "evidence": "static_data of debris: a local symbol of its .sbss, whose offset, extent and address (section base + offset) verify.py and the gate audit against the unit's object",
@@ -941,7 +941,7 @@
       "kind": "unit_static",
       "section": ".sbss",
       "names": [
-        "g_split_top"
+        "g_splitTop"
       ],
       "owner": "debris",
       "evidence": "static_data of debris: a local symbol of its .sbss, whose offset, extent and address (section base + offset) verify.py and the gate audit against the unit's object",
@@ -953,7 +953,7 @@
       "kind": "unit_static",
       "section": ".sbss",
       "names": [
-        "g_split_left"
+        "g_splitLeft"
       ],
       "owner": "debris",
       "evidence": "static_data of debris: a local symbol of its .sbss, whose offset, extent and address (section base + offset) verify.py and the gate audit against the unit's object",
@@ -965,7 +965,7 @@
       "kind": "unit_static",
       "section": ".sbss",
       "names": [
-        "g_split_centre"
+        "g_splitCentre"
       ],
       "owner": "debris",
       "evidence": "static_data of debris: a local symbol of its .sbss, whose offset, extent and address (section base + offset) verify.py and the gate audit against the unit's object",
@@ -977,7 +977,7 @@
       "kind": "unit_static",
       "section": ".sbss",
       "names": [
-        "g_split_right"
+        "g_splitRight"
       ],
       "owner": "debris",
       "evidence": "static_data of debris: a local symbol of its .sbss, whose offset, extent and address (section base + offset) verify.py and the gate audit against the unit's object",
@@ -989,7 +989,7 @@
       "kind": "unit_static",
       "section": ".sbss",
       "names": [
-        "g_split_bottom"
+        "g_splitBottom"
       ],
       "owner": "debris",
       "evidence": "static_data of debris: a local symbol of its .sbss, whose offset, extent and address (section base + offset) verify.py and the gate audit against the unit's object",
@@ -1021,7 +1021,7 @@
       "kind": "game_reference",
       "section": null,
       "names": [
-        "g_render_hblanks"
+        "g_renderHblanks"
       ],
       "owner": null,
       "referenced_by": [
@@ -1037,7 +1037,7 @@
       "kind": "game_reference",
       "section": null,
       "names": [
-        "g_gte_interpolation"
+        "g_gteInterpolation"
       ],
       "owner": null,
       "referenced_by": [
@@ -1057,7 +1057,7 @@
       "kind": "game_reference",
       "section": null,
       "names": [
-        "g_stream_bytes"
+        "g_streamBytes"
       ],
       "owner": null,
       "referenced_by": [
@@ -1073,7 +1073,7 @@
       "kind": "game_reference",
       "section": null,
       "names": [
-        "g_live_actors"
+        "g_liveActors"
       ],
       "owner": null,
       "referenced_by": [
@@ -1092,7 +1092,7 @@
       "kind": "game_reference",
       "section": null,
       "names": [
-        "g_message_box_save_rect"
+        "g_messageBoxSaveRect"
       ],
       "owner": null,
       "referenced_by": [
@@ -1108,7 +1108,7 @@
       "kind": "game_reference",
       "section": null,
       "names": [
-        "g_panel_page"
+        "g_panelPage"
       ],
       "owner": null,
       "referenced_by": [
@@ -1124,7 +1124,7 @@
       "kind": "game_reference",
       "section": null,
       "names": [
-        "g_pickup_page"
+        "g_pickupPage"
       ],
       "owner": null,
       "referenced_by": [
@@ -1140,7 +1140,7 @@
       "kind": "game_reference",
       "section": null,
       "names": [
-        "g_pistol_clut"
+        "g_pistolCLUT"
       ],
       "owner": null,
       "referenced_by": [
@@ -1157,7 +1157,7 @@
       "kind": "game_reference",
       "section": null,
       "names": [
-        "g_flamethrower_clut"
+        "g_flamethrowerCLUT"
       ],
       "owner": null,
       "referenced_by": [
@@ -1174,7 +1174,7 @@
       "kind": "game_reference",
       "section": null,
       "names": [
-        "g_smart_gun_clut"
+        "g_smartGunCLUT"
       ],
       "owner": null,
       "referenced_by": [
@@ -1191,7 +1191,7 @@
       "kind": "game_reference",
       "section": null,
       "names": [
-        "g_shotgun_clut"
+        "g_shotgunCLUT"
       ],
       "owner": null,
       "referenced_by": [
@@ -1208,7 +1208,7 @@
       "kind": "game_reference",
       "section": null,
       "names": [
-        "g_pulse_rifle_clut"
+        "g_pulseRifleCLUT"
       ],
       "owner": null,
       "referenced_by": [
@@ -1252,7 +1252,7 @@
       "kind": "game_reference",
       "section": null,
       "names": [
-        "g_frame_count"
+        "g_frameCount"
       ],
       "owner": null,
       "referenced_by": [
@@ -1274,7 +1274,7 @@
       "kind": "game_reference",
       "section": null,
       "names": [
-        "g_graphics_busy"
+        "g_graphicsBusy"
       ],
       "owner": null,
       "referenced_by": [
@@ -1291,7 +1291,7 @@
       "kind": "game_reference",
       "section": null,
       "names": [
-        "g_heap_free"
+        "g_heapFree"
       ],
       "owner": null,
       "referenced_by": [
@@ -1308,7 +1308,7 @@
       "kind": "game_reference",
       "section": null,
       "names": [
-        "g_burster_clut"
+        "g_bursterCLUT"
       ],
       "owner": null,
       "referenced_by": [
@@ -1325,7 +1325,7 @@
       "kind": "game_reference",
       "section": null,
       "names": [
-        "g_bambi_clut"
+        "g_bambiCLUT"
       ],
       "owner": null,
       "referenced_by": [
@@ -1342,7 +1342,7 @@
       "kind": "game_reference",
       "section": null,
       "names": [
-        "g_egg_clut"
+        "g_eggCLUT"
       ],
       "owner": null,
       "referenced_by": [
@@ -1359,7 +1359,7 @@
       "kind": "game_reference",
       "section": null,
       "names": [
-        "g_explosion_page"
+        "g_explosionPage"
       ],
       "owner": null,
       "referenced_by": [
@@ -1375,7 +1375,7 @@
       "kind": "game_reference",
       "section": null,
       "names": [
-        "g_display_mode"
+        "g_displayMode"
       ],
       "owner": null,
       "referenced_by": [
@@ -1391,7 +1391,7 @@
       "kind": "game_reference",
       "section": null,
       "names": [
-        "g_heap_used"
+        "g_heapUsed"
       ],
       "owner": null,
       "referenced_by": [
@@ -1408,7 +1408,7 @@
       "kind": "game_reference",
       "section": null,
       "names": [
-        "g_render_workspace"
+        "g_renderWorkspace"
       ],
       "owner": null,
       "referenced_by": [
@@ -1425,7 +1425,7 @@
       "kind": "game_reference",
       "section": null,
       "names": [
-        "g_handler_clut"
+        "g_handlerCLUT"
       ],
       "owner": null,
       "referenced_by": [
@@ -1442,7 +1442,7 @@
       "kind": "game_reference",
       "section": null,
       "names": [
-        "g_dog_clut"
+        "g_dogCLUT"
       ],
       "owner": null,
       "referenced_by": [
@@ -1459,7 +1459,7 @@
       "kind": "game_reference",
       "section": null,
       "names": [
-        "g_display_default"
+        "g_displayDefault"
       ],
       "owner": null,
       "referenced_by": [
@@ -1476,7 +1476,7 @@
       "kind": "game_reference",
       "section": null,
       "names": [
-        "g_guard_clut"
+        "g_guardCLUT"
       ],
       "owner": null,
       "referenced_by": [
@@ -1493,7 +1493,7 @@
       "kind": "game_reference",
       "section": null,
       "names": [
-        "g_colonist_clut"
+        "g_colonistCLUT"
       ],
       "owner": null,
       "referenced_by": [
@@ -1510,7 +1510,7 @@
       "kind": "game_reference",
       "section": null,
       "names": [
-        "g_soldier_clut"
+        "g_soldierCLUT"
       ],
       "owner": null,
       "referenced_by": [
@@ -1527,7 +1527,7 @@
       "kind": "game_reference",
       "section": null,
       "names": [
-        "g_heap_size"
+        "g_heapSize"
       ],
       "owner": null,
       "referenced_by": [
@@ -1544,7 +1544,7 @@
       "kind": "game_reference",
       "section": null,
       "names": [
-        "g_facehugger_clut"
+        "g_facehuggerCLUT"
       ],
       "owner": null,
       "referenced_by": [
@@ -1561,7 +1561,7 @@
       "kind": "game_reference",
       "section": null,
       "names": [
-        "g_heap_next"
+        "g_heapNext"
       ],
       "owner": null,
       "referenced_by": [
@@ -1577,7 +1577,7 @@
       "kind": "game_reference",
       "section": null,
       "names": [
-        "g_alien_clut"
+        "g_alienCLUT"
       ],
       "owner": null,
       "referenced_by": [
@@ -1594,7 +1594,7 @@
       "kind": "game_reference",
       "section": null,
       "names": [
-        "g_queen_clut"
+        "g_queenCLUT"
       ],
       "owner": null,
       "referenced_by": [
@@ -1611,7 +1611,7 @@
       "kind": "game_reference",
       "section": null,
       "names": [
-        "g_projected_depth"
+        "g_projectedDepth"
       ],
       "owner": null,
       "referenced_by": [
@@ -1629,7 +1629,7 @@
       "kind": "game_reference",
       "section": null,
       "names": [
-        "g_pad_previous"
+        "g_padPrevious"
       ],
       "owner": null,
       "referenced_by": [
@@ -1647,7 +1647,7 @@
       "kind": "game_reference",
       "section": null,
       "names": [
-        "g_synth_clut"
+        "g_synthCLUT"
       ],
       "owner": null,
       "referenced_by": [
@@ -1680,7 +1680,7 @@
       "kind": "game_reference",
       "section": null,
       "names": [
-        "g_actor_pool"
+        "g_actorPool"
       ],
       "owner": null,
       "referenced_by": [
@@ -1697,7 +1697,7 @@
       "kind": "game_reference",
       "section": null,
       "names": [
-        "g_view_rotation"
+        "g_viewRotation"
       ],
       "owner": null,
       "referenced_by": [
@@ -1717,7 +1717,7 @@
       "kind": "game_reference",
       "section": null,
       "names": [
-        "g_fade_depth"
+        "g_fadeDepth"
       ],
       "owner": null,
       "referenced_by": [
@@ -1733,7 +1733,7 @@
       "kind": "game_reference",
       "section": null,
       "names": [
-        "g_sprite_workspace"
+        "g_spriteWorkspace"
       ],
       "owner": null,
       "referenced_by": [
@@ -1758,7 +1758,7 @@
       "kind": "game_reference",
       "section": null,
       "names": [
-        "g_first_slice"
+        "g_firstSlice"
       ],
       "owner": null,
       "referenced_by": [
@@ -1774,7 +1774,7 @@
       "kind": "game_reference",
       "section": null,
       "names": [
-        "g_fingers_clut"
+        "g_fingersCLUT"
       ],
       "owner": null,
       "referenced_by": [
@@ -1815,7 +1815,7 @@
       "kind": "game_reference",
       "section": null,
       "names": [
-        "g_transform_result"
+        "g_transformResult"
       ],
       "owner": null,
       "referenced_by": [
@@ -1833,7 +1833,7 @@
       "kind": "game_reference",
       "section": null,
       "names": [
-        "g_movie_finished"
+        "g_movieFinished"
       ],
       "owner": null,
       "referenced_by": [
@@ -1849,7 +1849,7 @@
       "kind": "game_reference",
       "section": null,
       "names": [
-        "g_card_event_complete"
+        "g_cardEventComplete"
       ],
       "owner": null,
       "referenced_by": [
@@ -1865,7 +1865,7 @@
       "kind": "game_reference",
       "section": null,
       "names": [
-        "g_card_event_error"
+        "g_cardEventError"
       ],
       "owner": null,
       "referenced_by": [
@@ -1881,7 +1881,7 @@
       "kind": "game_reference",
       "section": null,
       "names": [
-        "g_card_event_timeout"
+        "g_cardEventTimeout"
       ],
       "owner": null,
       "referenced_by": [
@@ -1897,7 +1897,7 @@
       "kind": "game_reference",
       "section": null,
       "names": [
-        "g_card_event_new_device"
+        "g_cardEventNewDevice"
       ],
       "owner": null,
       "referenced_by": [
@@ -1913,7 +1913,7 @@
       "kind": "game_reference",
       "section": null,
       "names": [
-        "g_pad_repeat_clock"
+        "g_padRepeatClock"
       ],
       "owner": null,
       "referenced_by": [
@@ -1929,7 +1929,7 @@
       "kind": "game_reference",
       "section": null,
       "names": [
-        "g_pad_held"
+        "g_padHeld"
       ],
       "owner": null,
       "referenced_by": [
@@ -1948,7 +1948,7 @@
       "kind": "game_reference",
       "section": null,
       "names": [
-        "g_debris_uvs"
+        "g_debrisUvs"
       ],
       "owner": null,
       "referenced_by": [
@@ -1965,7 +1965,7 @@
       "kind": "game_reference",
       "section": null,
       "names": [
-        "g_render_buffer"
+        "g_renderBuffer"
       ],
       "owner": null,
       "referenced_by": [
@@ -1990,7 +1990,7 @@
       "kind": "game_reference",
       "section": null,
       "names": [
-        "g_next_task"
+        "g_nextTask"
       ],
       "owner": null,
       "referenced_by": [
@@ -2020,7 +2020,7 @@
       "kind": "game_reference",
       "section": null,
       "names": [
-        "g_command_state_count"
+        "g_commandStateCount"
       ],
       "owner": null,
       "referenced_by": [
@@ -2036,7 +2036,7 @@
       "kind": "game_reference",
       "section": null,
       "names": [
-        "g_movie_loc"
+        "g_movieLoc"
       ],
       "owner": null,
       "referenced_by": [
@@ -2052,7 +2052,7 @@
       "kind": "game_reference",
       "section": null,
       "names": [
-        "g_cd_read_count"
+        "g_cdReadCount"
       ],
       "owner": null,
       "referenced_by": [
@@ -2068,7 +2068,7 @@
       "kind": "game_reference",
       "section": null,
       "names": [
-        "g_visible_cell_mask"
+        "g_visibleCellMask"
       ],
       "owner": null,
       "referenced_by": [
@@ -2106,7 +2106,7 @@
       "kind": "game_reference",
       "section": null,
       "names": [
-        "g_unpack_buffer"
+        "g_unpackBuffer"
       ],
       "owner": null,
       "referenced_by": [
@@ -2124,7 +2124,7 @@
       "kind": "game_reference",
       "section": null,
       "names": [
-        "g_unpack_buffer_end"
+        "g_unpackBufferEnd"
       ],
       "owner": null,
       "referenced_by": [
@@ -2141,7 +2141,7 @@
       "kind": "game_reference",
       "section": null,
       "names": [
-        "g_8d530"
+        "g_musicResumed"
       ],
       "owner": null,
       "referenced_by": [
@@ -2157,7 +2157,7 @@
       "kind": "game_reference",
       "section": null,
       "names": [
-        "g_boss_unpack_buffer"
+        "g_bossUnpackBuffer"
       ],
       "owner": null,
       "referenced_by": [
@@ -2174,7 +2174,7 @@
       "kind": "game_reference",
       "section": null,
       "names": [
-        "g_sfx_level"
+        "g_sfxLevel"
       ],
       "owner": null,
       "referenced_by": [
@@ -2191,7 +2191,7 @@
       "kind": "game_reference",
       "section": null,
       "names": [
-        "g_heap_allocation"
+        "g_heapAllocation"
       ],
       "owner": null,
       "referenced_by": [
@@ -2207,7 +2207,7 @@
       "kind": "game_reference",
       "section": null,
       "names": [
-        "g_target_count"
+        "g_targetCount"
       ],
       "owner": null,
       "referenced_by": [
@@ -2223,7 +2223,7 @@
       "kind": "game_reference",
       "section": null,
       "names": [
-        "g_model_uvs"
+        "g_modelUvs"
       ],
       "owner": null,
       "referenced_by": [
@@ -2244,7 +2244,7 @@
       "kind": "game_reference",
       "section": null,
       "names": [
-        "g_game_flags"
+        "g_gameFlags"
       ],
       "owner": null,
       "referenced_by": [
@@ -2268,7 +2268,7 @@
       "kind": "game_reference",
       "section": null,
       "names": [
-        "g_lamp_level"
+        "g_lampLevel"
       ],
       "owner": null,
       "referenced_by": [
@@ -2284,7 +2284,7 @@
       "kind": "game_reference",
       "section": null,
       "names": [
-        "g_gte_flag"
+        "g_gteFlag"
       ],
       "owner": null,
       "referenced_by": [
@@ -2304,7 +2304,7 @@
       "kind": "game_reference",
       "section": null,
       "names": [
-        "g_boss_level"
+        "g_bossLevel"
       ],
       "owner": null,
       "referenced_by": [
@@ -2320,7 +2320,7 @@
       "kind": "game_reference",
       "section": null,
       "names": [
-        "g_pad_repeat"
+        "g_padRepeat"
       ],
       "owner": null,
       "referenced_by": [
@@ -2337,7 +2337,7 @@
       "kind": "game_reference",
       "section": null,
       "names": [
-        "g_sound_clock"
+        "g_soundClock"
       ],
       "owner": null,
       "referenced_by": [
@@ -2355,7 +2355,7 @@
       "kind": "game_reference",
       "section": null,
       "names": [
-        "g_pad_hold_frames"
+        "g_padHoldFrames"
       ],
       "owner": null,
       "referenced_by": [
@@ -2371,7 +2371,7 @@
       "kind": "game_reference",
       "section": null,
       "names": [
-        "g_lift_model_count"
+        "g_liftModelCount"
       ],
       "owner": null,
       "referenced_by": [
@@ -2388,7 +2388,7 @@
       "kind": "game_reference",
       "section": null,
       "names": [
-        "g_door_model_count"
+        "g_doorModelCount"
       ],
       "owner": null,
       "referenced_by": [
@@ -2405,7 +2405,7 @@
       "kind": "game_reference",
       "section": null,
       "names": [
-        "g_pad_pressed"
+        "g_padPressed"
       ],
       "owner": null,
       "referenced_by": [
@@ -2424,7 +2424,7 @@
       "kind": "game_reference",
       "section": null,
       "names": [
-        "g_level_result"
+        "g_levelResult"
       ],
       "owner": null,
       "referenced_by": [
@@ -2440,7 +2440,7 @@
       "kind": "game_reference",
       "section": null,
       "names": [
-        "g_view_position"
+        "g_viewPosition"
       ],
       "owner": null,
       "referenced_by": [
@@ -2462,7 +2462,7 @@
       "kind": "game_reference",
       "section": null,
       "names": [
-        "g_movie_end_frame"
+        "g_movieEndFrame"
       ],
       "owner": null,
       "referenced_by": [
@@ -2478,7 +2478,7 @@
       "kind": "game_reference",
       "section": null,
       "names": [
-        "g_relative_position"
+        "g_relativePosition"
       ],
       "owner": null,
       "referenced_by": [
@@ -2498,7 +2498,7 @@
       "kind": "game_reference",
       "section": null,
       "names": [
-        "g_player_cell_x"
+        "g_playerCellX"
       ],
       "owner": null,
       "referenced_by": [
@@ -2514,7 +2514,7 @@
       "kind": "game_reference",
       "section": null,
       "names": [
-        "g_player_cell_z"
+        "g_playerCellZ"
       ],
       "owner": null,
       "referenced_by": [
@@ -2530,7 +2530,7 @@
       "kind": "game_reference",
       "section": null,
       "names": [
-        "g_resource_status"
+        "g_resourceStatus"
       ],
       "owner": null,
       "referenced_by": [
@@ -2546,7 +2546,7 @@
       "kind": "game_reference",
       "section": null,
       "names": [
-        "g_display_buffers"
+        "g_displayBuffers"
       ],
       "owner": null,
       "referenced_by": [
@@ -2562,7 +2562,7 @@
       "kind": "game_reference",
       "section": null,
       "names": [
-        "g_view_pitch"
+        "g_viewPitch"
       ],
       "owner": null,
       "referenced_by": [
@@ -2580,7 +2580,7 @@
       "kind": "game_reference",
       "section": null,
       "names": [
-        "g_random_state"
+        "g_randomState"
       ],
       "owner": null,
       "referenced_by": [
@@ -2596,7 +2596,7 @@
       "kind": "game_reference",
       "section": null,
       "names": [
-        "g_icon_uvs"
+        "g_iconUvs"
       ],
       "owner": null,
       "referenced_by": [
@@ -2612,7 +2612,7 @@
       "kind": "game_reference",
       "section": null,
       "names": [
-        "g_char_widths"
+        "g_charWidths"
       ],
       "owner": null,
       "referenced_by": [
@@ -2628,7 +2628,7 @@
       "kind": "game_reference",
       "section": null,
       "names": [
-        "g_card_slot_levels"
+        "g_cardSlotLevels"
       ],
       "owner": null,
       "referenced_by": [
@@ -2644,7 +2644,7 @@
       "kind": "game_reference",
       "section": null,
       "names": [
-        "g_menu_glyph_widths"
+        "g_menuGlyphWidths"
       ],
       "owner": null,
       "referenced_by": [
@@ -2660,7 +2660,7 @@
       "kind": "game_reference",
       "section": null,
       "names": [
-        "g_flow_queue"
+        "g_flowQueue"
       ],
       "owner": null,
       "referenced_by": [
@@ -2692,7 +2692,7 @@
       "kind": "game_reference",
       "section": null,
       "names": [
-        "g_particle_positions"
+        "g_particlePositions"
       ],
       "owner": null,
       "referenced_by": [
@@ -2708,7 +2708,7 @@
       "kind": "game_reference",
       "section": null,
       "names": [
-        "g_particle_velocities"
+        "g_particleVelocities"
       ],
       "owner": null,
       "referenced_by": [
@@ -2724,7 +2724,7 @@
       "kind": "game_reference",
       "section": null,
       "names": [
-        "g_visible_actors"
+        "g_visibleActors"
       ],
       "owner": null,
       "referenced_by": [
@@ -2740,7 +2740,7 @@
       "kind": "game_reference",
       "section": null,
       "names": [
-        "g_hugger_upper"
+        "g_huggerUpper"
       ],
       "owner": null,
       "referenced_by": [
@@ -2756,7 +2756,7 @@
       "kind": "game_reference",
       "section": null,
       "names": [
-        "g_hugger_lower"
+        "g_huggerLower"
       ],
       "owner": null,
       "referenced_by": [
@@ -2772,7 +2772,7 @@
       "kind": "game_reference",
       "section": null,
       "names": [
-        "g_level_object_models"
+        "g_levelObjectModels"
       ],
       "owner": null,
       "referenced_by": [
@@ -2788,7 +2788,7 @@
       "kind": "game_reference",
       "section": null,
       "names": [
-        "g_blast_near"
+        "g_blastNear"
       ],
       "owner": null,
       "referenced_by": [
@@ -2804,7 +2804,7 @@
       "kind": "game_reference",
       "section": null,
       "names": [
-        "g_blast_far"
+        "g_blastFar"
       ],
       "owner": null,
       "referenced_by": [
@@ -2820,7 +2820,7 @@
       "kind": "game_reference",
       "section": null,
       "names": [
-        "g_weapon_slots"
+        "g_weaponSlots"
       ],
       "owner": null,
       "referenced_by": [
@@ -2836,7 +2836,7 @@
       "kind": "game_reference",
       "section": null,
       "names": [
-        "g_tracker_matrix"
+        "g_trackerMatrix"
       ],
       "owner": null,
       "referenced_by": [
@@ -2852,7 +2852,7 @@
       "kind": "game_reference",
       "section": null,
       "names": [
-        "g_sound_request"
+        "g_soundRequest"
       ],
       "owner": null,
       "referenced_by": [
@@ -2868,7 +2868,7 @@
       "kind": "game_reference",
       "section": null,
       "names": [
-        "g_cell_triggers"
+        "g_cellTriggers"
       ],
       "owner": null,
       "referenced_by": [
@@ -2884,7 +2884,7 @@
       "kind": "game_reference",
       "section": null,
       "names": [
-        "g_cd_toc"
+        "g_cdToc"
       ],
       "owner": null,
       "referenced_by": [
@@ -2900,7 +2900,7 @@
       "kind": "game_reference",
       "section": null,
       "names": [
-        "g_map_uv"
+        "g_mapUV"
       ],
       "owner": null,
       "referenced_by": [
@@ -2916,7 +2916,7 @@
       "kind": "game_reference",
       "section": null,
       "names": [
-        "g_model_matrix"
+        "g_modelMatrix"
       ],
       "owner": null,
       "referenced_by": [
@@ -2932,7 +2932,7 @@
       "kind": "game_reference",
       "section": null,
       "names": [
-        "g_movie_disp"
+        "g_movieDisp"
       ],
       "owner": null,
       "referenced_by": [
@@ -2948,7 +2948,7 @@
       "kind": "game_reference",
       "section": null,
       "names": [
-        "g_movie_draw"
+        "g_movieDraw"
       ],
       "owner": null,
       "referenced_by": [
@@ -3009,7 +3009,7 @@
       "kind": "game_reference",
       "section": null,
       "names": [
-        "g_door_models"
+        "g_doorModels"
       ],
       "owner": null,
       "referenced_by": [
@@ -3026,7 +3026,7 @@
       "kind": "game_reference",
       "section": null,
       "names": [
-        "g_level_map"
+        "g_levelMap"
       ],
       "owner": null,
       "referenced_by": [
@@ -3057,7 +3057,7 @@
       "kind": "game_reference",
       "section": null,
       "names": [
-        "g_menu_glyph_uvs"
+        "g_menuGlyphUvs"
       ],
       "owner": null,
       "referenced_by": [
@@ -3074,7 +3074,7 @@
       "kind": "game_reference",
       "section": null,
       "names": [
-        "g_audio_banks"
+        "g_audioBanks"
       ],
       "owner": null,
       "referenced_by": [
@@ -3122,7 +3122,7 @@
       "kind": "game_reference",
       "section": null,
       "names": [
-        "g_panel_cluts"
+        "g_panelCluts"
       ],
       "owner": null,
       "referenced_by": [
@@ -3138,7 +3138,7 @@
       "kind": "game_reference",
       "section": null,
       "names": [
-        "g_menu_resource_records"
+        "g_menuResourceRecords"
       ],
       "owner": null,
       "referenced_by": [
@@ -3169,7 +3169,7 @@
       "kind": "game_reference",
       "section": null,
       "names": [
-        "g_object_models"
+        "g_objectModels"
       ],
       "owner": null,
       "referenced_by": [
@@ -3187,7 +3187,7 @@
       "kind": "game_reference",
       "section": null,
       "names": [
-        "g_secrets_found"
+        "g_secretsFound"
       ],
       "owner": null,
       "referenced_by": [
@@ -3205,7 +3205,7 @@
       "kind": "game_reference",
       "section": null,
       "names": [
-        "g_password_record"
+        "g_passwordRecord"
       ],
       "owner": null,
       "referenced_by": [
@@ -3221,7 +3221,7 @@
       "kind": "game_reference",
       "section": null,
       "names": [
-        "g_pickup_cluts"
+        "g_pickupCluts"
       ],
       "owner": null,
       "referenced_by": [
@@ -3237,7 +3237,7 @@
       "kind": "game_reference",
       "section": null,
       "names": [
-        "g_menu_resource_data"
+        "g_menuResourceData"
       ],
       "owner": null,
       "referenced_by": [
@@ -3253,7 +3253,7 @@
       "kind": "game_reference",
       "section": null,
       "names": [
-        "g_panel_uvs"
+        "g_panelUvs"
       ],
       "owner": null,
       "referenced_by": [
@@ -3272,7 +3272,7 @@
       "kind": "game_reference",
       "section": null,
       "names": [
-        "g_font_uvs"
+        "g_fontUvs"
       ],
       "owner": null,
       "referenced_by": [
@@ -3288,7 +3288,7 @@
       "kind": "game_reference",
       "section": null,
       "names": [
-        "g_font2_uvs"
+        "g_font2Uvs"
       ],
       "owner": null,
       "referenced_by": [
@@ -3304,7 +3304,7 @@
       "kind": "game_reference",
       "section": null,
       "names": [
-        "g_hud_panel_uvs"
+        "g_hudPanelUvs"
       ],
       "owner": null,
       "referenced_by": [
@@ -3320,7 +3320,7 @@
       "kind": "game_reference",
       "section": null,
       "names": [
-        "g_option_bar_uv"
+        "g_optionBarUV"
       ],
       "owner": null,
       "referenced_by": [
@@ -3336,7 +3336,7 @@
       "kind": "game_reference",
       "section": null,
       "names": [
-        "g_sprite_uvs"
+        "g_spriteUvs"
       ],
       "owner": null,
       "referenced_by": [
@@ -3389,7 +3389,7 @@
       "kind": "game_reference",
       "section": null,
       "names": [
-        "g_sound_channels"
+        "g_soundChannels"
       ],
       "owner": null,
       "referenced_by": [
@@ -3420,7 +3420,7 @@
       "kind": "game_reference",
       "section": null,
       "names": [
-        "g_actor_kind_map"
+        "g_actorKindMap"
       ],
       "owner": null,
       "referenced_by": [
@@ -3467,7 +3467,7 @@
       "kind": "game_reference",
       "section": null,
       "names": [
-        "g_9a120"
+        "StCdIntrFlag"
       ],
       "owner": null,
       "referenced_by": [
@@ -3498,7 +3498,7 @@
       "kind": "game_reference",
       "section": null,
       "names": [
-        "g_mission_text"
+        "g_missionText"
       ],
       "owner": null,
       "referenced_by": [
@@ -3515,7 +3515,7 @@
       "kind": "game_reference",
       "section": null,
       "names": [
-        "g_explosion_cluts"
+        "g_explosionCluts"
       ],
       "owner": null,
       "referenced_by": [
@@ -3532,7 +3532,7 @@
       "kind": "game_reference",
       "section": null,
       "names": [
-        "g_view_matrix"
+        "g_viewMatrix"
       ],
       "owner": null,
       "referenced_by": [
@@ -3552,7 +3552,7 @@
       "kind": "game_reference",
       "section": null,
       "names": [
-        "g_matrix_work"
+        "g_matrixWork"
       ],
       "owner": null,
       "referenced_by": [
@@ -3602,7 +3602,7 @@
       "kind": "game_reference",
       "section": null,
       "names": [
-        "g_command_states"
+        "g_commandStates"
       ],
       "owner": null,
       "referenced_by": [
@@ -3619,7 +3619,7 @@
       "kind": "game_reference",
       "section": null,
       "names": [
-        "g_heap_snapshots"
+        "g_heapSnapshots"
       ],
       "owner": null,
       "referenced_by": [
@@ -3635,7 +3635,7 @@
       "kind": "game_reference",
       "section": null,
       "names": [
-        "g_movie_file"
+        "g_movieFile"
       ],
       "owner": null,
       "referenced_by": [
@@ -3651,7 +3651,7 @@
       "kind": "game_reference",
       "section": null,
       "names": [
-        "g_pickup_uvs"
+        "g_pickupUvs"
       ],
       "owner": null,
       "referenced_by": [
@@ -3755,7 +3755,7 @@
       "kind": "game_reference",
       "section": null,
       "names": [
-        "g_sprite_list"
+        "g_spriteList"
       ],
       "owner": null,
       "referenced_by": [
@@ -3801,7 +3801,7 @@
       "kind": "game_reference",
       "section": null,
       "names": [
-        "g_movie_decode"
+        "g_movieDecode"
       ],
       "owner": null,
       "referenced_by": [
@@ -3817,7 +3817,7 @@
       "kind": "game_reference",
       "section": null,
       "names": [
-        "g_draw_env_a"
+        "g_drawEnvA"
       ],
       "owner": null,
       "referenced_by": [
@@ -3833,7 +3833,7 @@
       "kind": "game_reference",
       "section": null,
       "names": [
-        "g_draw_env_b"
+        "g_drawEnvB"
       ],
       "owner": null,
       "referenced_by": [
@@ -3864,7 +3864,7 @@
       "kind": "game_reference",
       "section": null,
       "names": [
-        "g_explosion_uvs"
+        "g_explosionUvs"
       ],
       "owner": null,
       "referenced_by": [
@@ -3898,7 +3898,7 @@
       "kind": "game_reference",
       "section": null,
       "names": [
-        "g_audio_mix"
+        "g_audioMix"
       ],
       "owner": null,
       "referenced_by": [
@@ -3914,7 +3914,7 @@
       "kind": "game_reference",
       "section": null,
       "names": [
-        "g_command_labels"
+        "g_commandLabels"
       ],
       "owner": null,
       "referenced_by": [
@@ -3945,7 +3945,7 @@
       "kind": "game_reference",
       "section": null,
       "names": [
-        "g_card_block_names"
+        "g_cardBlockNames"
       ],
       "owner": null,
       "referenced_by": [
@@ -4037,7 +4037,7 @@
       "kind": "game_reference",
       "section": null,
       "names": [
-        "g_spu_malloc_table"
+        "g_spuMallocTable"
       ],
       "owner": null,
       "referenced_by": [
@@ -4053,7 +4053,7 @@
       "kind": "game_reference",
       "section": null,
       "names": [
-        "g_sample_slots"
+        "g_sampleSlots"
       ],
       "owner": null,
       "referenced_by": [
@@ -4069,7 +4069,7 @@
       "kind": "game_reference",
       "section": null,
       "names": [
-        "g_password_text"
+        "g_passwordText"
       ],
       "owner": null,
       "referenced_by": [
@@ -4118,7 +4118,7 @@
       "kind": "game_reference",
       "section": null,
       "names": [
-        "g_font2_widths"
+        "g_font2Widths"
       ],
       "owner": null,
       "referenced_by": [
@@ -4134,7 +4134,7 @@
       "kind": "game_reference",
       "section": null,
       "names": [
-        "g_glyph_widths"
+        "g_glyphWidths"
       ],
       "owner": null,
       "referenced_by": [
@@ -4150,7 +4150,7 @@
       "kind": "game_reference",
       "section": null,
       "names": [
-        "g_font_widths"
+        "g_fontWidths"
       ],
       "owner": null,
       "referenced_by": [
@@ -4214,7 +4214,7 @@
       "kind": "game_reference",
       "section": null,
       "names": [
-        "g_lift_models"
+        "g_liftModels"
       ],
       "owner": null,
       "referenced_by": [

@@ -9,68 +9,68 @@
     ".sdata": "0x8008cd74"
   },
   "functions": {
-    "music_resume": {
+    "Music_Resume": {
       "address": "0x8003f360",
       "size": 108
     },
-    "music_cd_complete": {
+    "Music_CDComplete": {
       "address": "0x8003f3cc",
       "size": 108
     },
-    "music_cd_data_ready": {
+    "Music_CDDataReady": {
       "address": "0x8003f438",
       "size": 56
     },
-    "music_init": {
+    "Music_Init": {
       "address": "0x8003f470",
       "size": 164
     },
-    "music_play_track": {
+    "Music_PlayTrack": {
       "address": "0x8003f514",
       "size": 252
     },
-    "music_stop": {
+    "Music_Stop": {
       "address": "0x8003f610",
       "size": 128
     },
-    "music_pause": {
+    "Music_Pause": {
       "address": "0x8003f690",
       "size": 76
     },
-    "music_unpause": {
+    "Music_Unpause": {
       "address": "0x8003f6dc",
       "size": 76
     },
-    "music_play_level": {
+    "Music_PlayLevel": {
       "address": "0x8003f728",
       "size": 124
     },
-    "music_disable": {
+    "Music_Disable": {
       "address": "0x8003f7a4",
       "size": 24
     },
-    "music_enable": {
+    "Music_Enable": {
       "address": "0x8003f7bc",
       "size": 24
     },
-    "music_set_volume": {
+    "Music_SetVolume": {
       "address": "0x8003f7d4",
       "size": 72
     },
-    "music_poll": {
+    "Music_Poll": {
       "address": "0x8003f81c",
       "size": 164
     }
   },
   "symbols": {
-    "g_8d530": "0x8008d530",
-    "g_cd_toc": "0x8008f488",
-    "g_music_flags": "0x8008d00c",
-    "g_music_result": "0x8008d00e",
-    "g_music_callback_state": "0x8008d010",
-    "g_music_timer": "0x8008d012",
-    "spu_set_cd_volume": "0x800439f4",
-    "g_level_music_tracks": "0x80073174",
+    "g_musicResumed": "0x8008d530",
+    "g_cdToc": "0x8008f488",
+    "g_musicFlags": "0x8008d00c",
+    "g_musicResult": "0x8008d00e",
+    "g_musicCallbackState": "0x8008d010",
+    "g_musicTimer": "0x8008d012",
+    "Snd_SPUSetCDVolume": "0x800439f4",
+    "g_levelMusicTracks": "0x80073174",
     "CdControlB": "0x8005d6d4",
     "CdControl": "0x8005d4b0",
     "CdSetDebug": "0x8005d3a0",
@@ -79,17 +79,17 @@
     "printf": "0x80069880"
   },
   "static_data": {
-    "g_cd_mode": {
+    "g_cdMode": {
       "address": "0x8008d200",
       "size": 8,
       "section": ".sbss"
     },
-    "g_cd_requested_command": {
+    "g_cdRequestedCommand": {
       "address": "0x8008d208",
       "size": 8,
       "section": ".sbss"
     },
-    "g_cd_track_count": {
+    "g_cdTrackCount": {
       "address": "0x8008d210",
       "size": 8,
       "section": ".sbss"

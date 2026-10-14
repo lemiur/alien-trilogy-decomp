@@ -173,7 +173,7 @@ class GateTest(unittest.TestCase):
 
     # Data-only units whose initializers use string literals: retail g_difficulty_choices
     # (0x8006c1d8) points at "Acid Reign {", "Raging Terror {{" and "Xenomania {{{".
-    DIFFICULTY = 'const char *const g_difficulty_choices[] = {\n    "Acid Reign {", "Raging Terror {{", "Xenomania {{{"\n};\n'
+    DIFFICULTY = 'const char *const g_difficultyChoices[] = {\n    "Acid Reign {", "Raging Terror {{", "Xenomania {{{"\n};\n'
     POOL = [(0x80011384, 14), (0x80011394, 17), (0x800113a8, 13)]
 
     def _literal_unit(self, tmp, source, defs, unit="lit"):
@@ -205,7 +205,7 @@ class GateTest(unittest.TestCase):
         with tempfile.TemporaryDirectory() as tmp:
             units, checks = [], []
             for unit, source, defs in (
-                    ("lit_a", self.DIFFICULTY, {"g_difficulty_choices": {"address": "0x8006c1d8", "size": 12}}),
+                    ("lit_a", self.DIFFICULTY, {"g_difficultyChoices": {"address": "0x8006c1d8", "size": 12}}),
                     ("lit_b", 'const char *const t[] = { "Track 10" };\n', {"t": {"address": "0x8006c208", "size": 4}})):
                 item, object_path, mapping, asm = self._literal_unit(tmp, source, defs, unit)
                 placed, findings = gate.generated_placements(item, asm, self.raw, self.contract, layout)
@@ -228,7 +228,7 @@ class GateTest(unittest.TestCase):
 
     def test_data_literal_pool_is_placed_and_witnessed(self):
         layout = gate.section_layout.load_layout()
-        defs = {"g_difficulty_choices": {"address": "0x8006c1d8", "size": 12}}
+        defs = {"g_difficultyChoices": {"address": "0x8006c1d8", "size": 12}}
         with tempfile.TemporaryDirectory() as tmp:
             item, object_path, mapping, asm = self._literal_unit(tmp, self.DIFFICULTY, defs)
             placed, findings = gate.generated_placements(item, asm, self.raw, self.contract, layout)
@@ -250,7 +250,7 @@ class GateTest(unittest.TestCase):
 
     def test_data_literal_wrong_anchor_is_rejected(self):
         layout = gate.section_layout.load_layout()
-        defs = {"g_difficulty_choices": {"address": "0x8006c1d8", "size": 12}}
+        defs = {"g_difficultyChoices": {"address": "0x8006c1d8", "size": 12}}
         word = self.contract["header_size"] + 0x8006c1d8 - 0x80010000  # retail pointer to "Acid Reign {"
         with tempfile.TemporaryDirectory() as tmp:
             item, object_path, mapping, asm = self._literal_unit(tmp, self.DIFFICULTY, defs)
@@ -758,7 +758,7 @@ class AsmUnitTest(unittest.TestCase):
     def test_out_of_range_asm_unit_is_refused(self):
         lo, hi = gate.verify.ASM_REGION
         moved = json.loads(json.dumps(self.spec))
-        moved["functions"]["ot_index_tri"]["address"] = hex(lo - 4)  # one word below the region
+        moved["functions"]["Model_OTIndexTri"]["address"] = hex(lo - 4)  # one word below the region
         with self.assertRaises(gate.GateError) as caught:
             self.item(moved)
         self.assertIn("outside the hand-written assembly region", str(caught.exception))
@@ -784,14 +784,14 @@ class AsmUnitTest(unittest.TestCase):
 
     def test_corrupted_asm_byte_is_attributed(self):
         item = self.item()
-        target = next(p for p in item.placements if p.symbol == "ot_index_quad")
+        target = next(p for p in item.placements if p.symbol == "Model_OTIndexQuad")
         item.obj.code[target.section][target.offset + 12] ^= 0x01
         linker = gate.Linker(self.contract, self.raw)
         linker.link([item])
         blame = linker.attribute(self.raw)
         self.assertEqual(len(blame), 1)
         owner, offsets = blame[0]
-        self.assertEqual((owner["kind"], owner["unit"], owner["symbol"]), ("asm", "ot_depth", "ot_index_quad"))
+        self.assertEqual((owner["kind"], owner["unit"], owner["symbol"]), ("asm", "ot_depth", "Model_OTIndexQuad"))
         self.assertEqual(offsets, [self.contract["header_size"] + 0x80048f8c + 12 - 0x80010000])
 
     # The first table record retail keeps in .text after f_5533c: one 12-byte sprite frame

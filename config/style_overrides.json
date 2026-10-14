@@ -1,0 +1,119 @@
+{
+  "_doc": "Hand decisions on top of tools/rename_map.py's mechanical rule: old -> [new, reworded reason or null]. Approved by the user with the map.",
+  "functions": {
+    "Actor_GroupAdd": [
+      "Actor_GroupAdd",
+      null
+    ],
+    "Sprite_ListAdd": [
+      "Sprite_ListAdd",
+      null
+    ],
+    "Actor_MeleeHit": [
+      "Actor_MeleeHit",
+      null
+    ],
+    "Actor_PathClear": [
+      "Actor_PathClear",
+      null
+    ],
+    "Object_ExplosionDamage": [
+      "Object_ExplosionDamage",
+      null
+    ],
+    "Particle_ActorBleed": [
+      "Particle_ActorBleed",
+      null
+    ],
+    "Tex_UploadCanQueuePair": [
+      "Tex_UploadCanQueuePair",
+      null
+    ],
+    "Tex_UploadPoolAlloc": [
+      "Tex_UploadPoolAlloc",
+      null
+    ],
+    "Hud_InitFontWidths": [
+      "Hud_InitFontWidths",
+      "verb moved first"
+    ],
+    "Hud_DrawTrackerBlips": [
+      "Hud_DrawTrackerBlips",
+      "verb moved first"
+    ],
+    "Pause_DrawMissionTextWord": [
+      "Pause_DrawMissionTextWord",
+      "verb moved first"
+    ],
+    "Pause_DrawHUDText": [
+      "Pause_DrawHUDText",
+      "verb moved first"
+    ],
+    "Object_ClearLevelObjectCells": [
+      "Object_ClearLevelObjectCells",
+      "verb moved first"
+    ],
+    "Object_MarkLevelObjectCells": [
+      "Object_MarkLevelObjectCells",
+      "verb moved first"
+    ],
+    "Player_BindWeaponSpriteSlot": [
+      "Player_BindWeaponSpriteSlot",
+      "verb moved first"
+    ],
+    "AllocUnpackBuffers": [
+      "AllocUnpackBuffers",
+      "verb moved first"
+    ],
+    "FixupLevelPointers": [
+      "FixupLevelPointers",
+      "verb moved first"
+    ],
+    "Tex_FlushUploadQueue": [
+      "Tex_FlushUploadQueue",
+      "verb moved first"
+    ],
+    "Tex_ResetUploadQueue": [
+      "Tex_ResetUploadQueue",
+      "verb moved first"
+    ],
+    "TickTimer": [
+      "TickTimer",
+      "plain static name; Player_Tick is Player_Tick, so the timer object is named"
+    ],
+    "TickTimerExpire": [
+      "TickTimerExpire",
+      "plain static name, paired with TickTimer"
+    ],
+    "SelectSlot": [
+      "SelectSlot",
+      null
+    ],
+    "Text_ReadBigEndian32": [
+      "Text_ReadBigEndian32",
+      "be32 spelled out: Text_ReadBE32 reads as an address placeholder to tools/rules.py R7"
+    ],
+    "Trigger_ActorCell": [
+      "Trigger_ActorCell",
+      null
+    ],
+    "Trigger_PlayerCell": [
+      "Trigger_PlayerCell",
+      null
+    ],
+    "Trigger_ShotCell": [
+      "Trigger_ShotCell",
+      null
+    ],
+    "Trigger_EnemyShotCell": [
+      "Trigger_EnemyShotCell",
+      null
+    ],
+    "Snd_StopAllVoices": [
+      "Snd_StopAllVoices",
+      "verb moved first"
+    ]
+  },
+  "globals": {},
+  "types": {}
+}

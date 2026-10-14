@@ -1,80 +1,80 @@
 {
   "functions": {
-    "map_object_free": {
+    "Object_Free": {
       "address": "0x80037fc0",
       "size": 24
     },
-    "map_objects_reset": {
+    "Object_Reset": {
       "address": "0x80037fd8",
       "size": 88
     },
-    "object_model_faces_fixup": {
+    "Object_FixupModelFaces": {
       "address": "0x80038030",
       "size": 208
     },
-    "map_object_alloc": {
+    "Object_Alloc": {
       "address": "0x800382a0",
       "size": 44
     },
-    "map_object_link": {
+    "Object_Link": {
       "address": "0x800382cc",
       "size": 44
     },
-    "map_objects_spawn": {
+    "Object_Spawn": {
       "address": "0x800382f8",
       "size": 500
     },
-    "map_objects_init": {
+    "Object_Init": {
       "address": "0x800384ec",
       "size": 68
     },
-    "map_object_trigger": {
+    "Object_Trigger": {
       "address": "0x80038530",
       "size": 472
     },
-    "actor_drop_item": {
+    "Object_ActorDropItem": {
       "address": "0x80038708",
       "size": 756
     },
-    "level_object_drop_item": {
+    "Object_LevelObjectDropItem": {
       "address": "0x800389fc",
       "size": 784
     },
-    "map_object_unlink": {
+    "Object_Unlink": {
       "address": "0x80038d0c",
       "size": 56
     },
-    "map_object_near_player": {
+    "Object_NearPlayer": {
       "address": "0x800391dc",
       "size": 172
     },
-    "map_object_draw": {
+    "Object_Draw": {
       "address": "0x80039288",
       "size": 440
     },
-    "pickups_task": {
+    "Object_PickupsTask": {
       "address": "0x80039440",
       "size": 700
     },
-    "pickup_models_load": {
+    "Object_LoadPickupModels": {
       "address": "0x80038100",
       "size": 416
     }
   },
   "symbols": {
-    "g_map_object_free": "0x8008d1c8",
-    "g_map_objects": "0x8008d1d0",
+    "g_mapObjectFree": "0x8008d1c8",
+    "g_mapObjects": "0x8008d1d0",
     "g_player": "0x80099fd4",
-    "g_map_object_pool": "0x8008d1c0",
-    "g_level_map": "0x80096060",
-    "g_visible_cell_mask": "0x8008d510",
-    "g_view_position": "0x8008d5b8",
-    "g_relative_position": "0x8008d5c8",
-    "g_view_matrix": "0x8009a2c4",
-    "g_matrix_work": "0x8009a2e4",
+    "g_mapObjectPool": "0x8008d1c0",
+    "g_levelMap": "0x80096060",
+    "g_visibleCellMask": "0x8008d510",
+    "g_viewPosition": "0x8008d5b8",
+    "g_relativePosition": "0x8008d5c8",
+    "g_viewMatrix": "0x8009a2c4",
+    "g_matrixWork": "0x8009a2e4",
     "g_translation": "0x8009c5a4",
-    "model_draw_mid_in_cell": "0x8001fc0c",
-    "model_draw_far_in_cell": "0x8001f820",
+    "Model_DrawMidInCell": "0x8001fc0c",
+    "Model_DrawFarInCell": "0x8001f820",
     "LoadAverageShort12": "0x800679c0",
     "PushMatrix": "0x80066c6c",
     "PopMatrix": "0x80066d0c",
@@ -84,39 +84,39 @@
     "SetRotMatrix": "0x8006786c",
     "TransMatrix": "0x80067724",
     "SetTransMatrix": "0x800678fc",
-    "g_model_uvs": "0x8008d558",
-    "g_pickup_uvs": "0x8009b384",
-    "g_sprite_uvs": "0x80097fd4",
+    "g_modelUvs": "0x8008d558",
+    "g_pickupUvs": "0x8009b384",
+    "g_spriteUvs": "0x80097fd4",
     "ScaleMatrix": "0x80067748",
-    "map_object_move": "0x80038d44",
-    "player_give_pickup": "0x8003389c",
-    "hud_show_message": "0x80037b98",
-    "sound_play": "0x8003d5b4",
-    "g_next_task": "0x8008d4f0",
-    "g_object_records": "0x8008d1b0",
-    "g_object_record_count": "0x8008d1b8",
-    "g_object_models": "0x80096be4",
-    "floor_height": "0x80021144",
-    "heap_alloc": "0x80014dfc",
-    "load_file": "0x800151f0",
-    "g_file_table": "0x8006a5f8",
-    "parse_decimal": "0x8001c538",
-    "read_be32": "0x8001c50c",
-    "random": "0x80013a44"
+    "Object_Move": "0x80038d44",
+    "Weapon_PlayerGivePickup": "0x8003389c",
+    "Hud_ShowMessage": "0x80037b98",
+    "Snd_Play": "0x8003d5b4",
+    "g_nextTask": "0x8008d4f0",
+    "g_objectRecords": "0x8008d1b0",
+    "g_objectRecordCount": "0x8008d1b8",
+    "g_objectModels": "0x80096be4",
+    "FloorHeight": "0x80021144",
+    "Heap_Alloc": "0x80014dfc",
+    "Sys_LoadFile": "0x800151f0",
+    "g_fileTable": "0x8006a5f8",
+    "Text_ParseDecimal": "0x8001c538",
+    "Text_ReadBigEndian32": "0x8001c50c",
+    "Sys_Random": "0x80013a44"
   },
   "gp": "0x8008cd74",
   "static_data": {
-    "g_map_object_scales": {
+    "g_mapObjectScales": {
       "address": "0x80072e0c",
       "size": 448,
       "section": ".data"
     },
-    "g_pickup_messages": {
+    "g_pickupMessages": {
       "address": "0x80072fcc",
       "size": 112,
       "section": ".data"
     },
-    "g_object_heights": {
+    "g_objectHeights": {
       "address": "0x8007303c",
       "size": 56,
       "section": ".data"

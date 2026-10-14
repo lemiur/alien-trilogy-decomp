@@ -1,10 +1,10 @@
 /*
- * subdiv_ft4.s - quad-subdivision renderer:
+ * Model_SubdivFT4.s - quad-subdivision renderer:
  *             textured quad (POLY_FT4), back faces culled.
  *
  * Hand-written assembly (AGENTS.md, "Hand-written assembly"): GTE/renderer region only.
  * Built by tools/build_asm.py (CPPPSX, then ASPSX 2.34); placed by
- * config/subdiv_ft4.json. One of seven renderers (subdiv_*.s) that share the
+ * config/Model_SubdivFT4.json. One of seven renderers (subdiv_*.s) that share the
  * scratchpad layout and the building blocks of subdiv.h; they differ in primitive
  * type, culling, texture mirroring and semi-transparency, and otherwise follow the
  * same plan instruction for instruction.
@@ -15,7 +15,7 @@
 	.set	noreorder
 
 /*
- * subdiv_ft4 - draw one near textured quad (POLY_FT4), back faces culled, subdivided
+ * Model_SubdivFT4 - draw one near textured quad (POLY_FT4), back faces culled, subdivided
  *
  * Purpose:    split the quad into a 3x3 vertex grid (2x2 sub-quads), or a 5x5 grid (4x4
  *             sub-quads, as four 2x2 quadrants) when any corner is nearer than
@@ -28,8 +28,8 @@
  *             a2 = pointer to its 16-byte texture record (u0v0+clut, u1v1+tpage, u2v2,
  *             u3v3);
  *             GTE SZ0..SZ3 = the corners' screen z, left by the caller's RotTransPers4;
- *             g_sprite_workspace = next free primitive, g_render_buffer = OT base.
- * Outputs:    the sub-quad primitives, their OT links, g_sprite_workspace advanced.
+ *             g_spriteWorkspace = next free primitive, g_renderBuffer = OT base.
+ * Outputs:    the sub-quad primitives, their OT links, g_spriteWorkspace advanced.
  * Clobbers:   v0, v1, a0..a3, t0..t8, AT, the GTE, scratchpad 0x1f800000..0x1f800205.
  * Preserves:  s0..s7 and ra, saved in the scratchpad (SPAD_SAVE_*), not on the stack;
  *             sp (an 80-byte frame holds only the two stacked RotTransPersN arguments).
@@ -38,12 +38,12 @@
  * Live across calls: a3 is reloaded after RotTransPersN (it is that call's fourth
  *             argument); NormalClip only touches a0..a2, v0 and the GTE; nothing in t
  *             registers survives a call here.
- * Callers:    draw_near_ft4 (jal at 0x8001d618), after its RotTransPers4 and an
+ * Callers:    Model_DrawNearFT4 (jal at 0x8001d618), after its RotTransPers4 and an
  *             all-corners-off-screen test.
  * Callees:    RotTransPersN, NormalClip (Runtime Library 3.3 libgte).
  */
-	.globl	subdiv_ft4
-subdiv_ft4:
+	.globl	Model_SubdivFT4
+Model_SubdivFT4:
 
 	/* Prologue: ra and s0..s7 go to the scratchpad; the stack frame only holds */
 	/* the two stacked arguments of RotTransPersN. Keep the colour word and the */
@@ -179,10 +179,10 @@ subdiv_ft4:
 
 	/* Sub-quad emission registers (see subdiv.h) */
 	lw	s4, SPAD_COLOUR(a3)		/* s4 = colour word for every sub-quad */
-	lw	s5, g_sprite_workspace		/* s5 = next free primitive (macro: lui + lw) */
+	lw	s5, g_spriteWorkspace		/* s5 = next free primitive (macro: lui + lw) */
 	li	s6, POLY_FT4_LEN		/* s6 = tag length of every sub-quad */
 	li	s7, CODE_POLY_FT4		/* s7 = GPU code of every sub-quad */
-	lw	t8, g_render_buffer		/* t8 = OT base (macro: lui + lw) */
+	lw	t8, g_renderBuffer		/* t8 = OT base (macro: lui + lw) */
 
 	/* Sub-quad rows 0..1, columns 0..1 */
 	QUAD_OT(SZ3(0,0), SZ3(0,1), SZ3(1,0), SZ3(1,1))	/* t4 = OT entry of the farthest corner */
@@ -391,10 +391,10 @@ $4a6b4_grid5:
 
 	/* Sub-quad emission registers (see subdiv.h) */
 	lw	s4, SPAD_COLOUR(a3)		/* s4 = colour word for every sub-quad */
-	lw	s5, g_sprite_workspace		/* s5 = next free primitive (macro: lui + lw) */
+	lw	s5, g_spriteWorkspace		/* s5 = next free primitive (macro: lui + lw) */
 	li	s6, POLY_FT4_LEN		/* s6 = tag length of every sub-quad */
 	li	s7, CODE_POLY_FT4		/* s7 = GPU code of every sub-quad */
-	lw	t8, g_render_buffer		/* t8 = OT base (macro: lui + lw) */
+	lw	t8, g_renderBuffer		/* t8 = OT base (macro: lui + lw) */
 
 	/* Quadrant rows 0..2, columns 0..2: skip it when its centre (1,1) is too */
 	/* close or the quadrant faces away */
@@ -701,7 +701,7 @@ $4a6b4_quadrant4:
 
 	/* Publish the allocation pointer */
 $4a6b4_publish:
-	sw	s5, g_sprite_workspace		/* macro: lui AT, then sw through AT */
+	sw	s5, g_spriteWorkspace		/* macro: lui AT, then sw through AT */
 
 	/* Restore ra and s0..s7 from the scratchpad and return */
 $4a6b4_return:

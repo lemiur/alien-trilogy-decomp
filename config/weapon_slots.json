@@ -5,46 +5,46 @@
     ".sbss": "0x8008d1a8"
   },
   "functions": {
-    "weapon_slots_reset": {
+    "Weapon_ResetSlots": {
       "address": "0x8003384c",
       "size": 52
     },
-    "weapon_slot_sync": {
+    "Weapon_SyncSlot": {
       "address": "0x80033880",
       "size": 28
     },
-    "player_give_pickup": {
+    "Weapon_PlayerGivePickup": {
       "address": "0x8003389c",
       "size": 1788
     },
-    "weapon_slot_other_owned": {
+    "Weapon_SlotOtherOwned": {
       "address": "0x80033f98",
       "size": 252
     },
-    "weapon_select_next": {
+    "Weapon_SelectNext": {
       "address": "0x80034094",
       "size": 476
     },
-    "weapon_discard_select_next": {
+    "Weapon_DiscardSelectNext": {
       "address": "0x80034270",
       "size": 536
     },
-    "weapon_reset_default": {
+    "Weapon_ResetDefault": {
       "address": "0x80034488",
       "size": 76
     },
-    "weapon_select_slot": {
+    "Weapon_SelectSlot": {
       "address": "0x800344d4",
       "size": 196
     }
   },
   "symbols": {
-    "g_weapon_slots": "0x8008f338",
-    "weapon_select": "0x8003c9ec",
+    "g_weaponSlots": "0x8008f338",
+    "Player_SelectWeapon": "0x8003c9ec",
     "g_player": "0x80099fd4"
   },
   "static_data": {
-    "g_weapon_slot": {
+    "g_weaponSlot": {
       "address": "0x8008d1a8",
       "size": 8,
       "section": ".sbss"

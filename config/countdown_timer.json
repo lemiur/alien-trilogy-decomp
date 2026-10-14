@@ -1,10 +1,10 @@
 {
   "functions": {
-    "countdown_task": {
+    "Timer_Task": {
       "address": "0x80037ce0",
       "size": 552
     },
-    "countdown_start": {
+    "Timer_Start": {
       "address": "0x80037f08",
       "size": 184
     }
@@ -12,12 +12,12 @@
   "symbols": {
     "g_level": "0x8008d378",
     "g_palette": "0x8008d490",
-    "g_game_flags": "0x8008d560",
-    "g_next_task": "0x8008d4f0",
-    "sound_play": "0x8003d5b4",
-    "draw_text": "0x8001c1b0",
-    "g_cheat_flags": "0x8008cda8",
-    "mode_in_table": "0x8001b624",
+    "g_gameFlags": "0x8008d560",
+    "g_nextTask": "0x8008d4f0",
+    "Snd_Play": "0x8003d5b4",
+    "Text_DrawText": "0x8001c1b0",
+    "g_cheatFlags": "0x8008cda8",
+    "Menu_ModeInTable": "0x8001b624",
     "TaskCreate": "0x80015e4c"
   },
   "gp": "0x8008cd74",

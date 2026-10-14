@@ -147,5 +147,38 @@ class AsmSplitTest(unittest.TestCase):
         self.assertEqual(tables, {("g", "t_table", 0x800558ec, 8)})
 
 
+class RulesHeadlineTest(unittest.TestCase):
+    SUMMARY = {"matched_under_the_rules": 1200, "byte_matched_functions": 1300, "match_pending_functions": 60,
+               "functions_with_unexcused_match_findings": 40, "failing_functions_by_rule": {"R2": 30, "R4": 10}}
+
+    def test_headline_comes_first_with_both_numbers(self):
+        line = progress.rules_lines(self.SUMMARY)[0]
+        self.assertTrue(line.startswith("**Matched under the rules: 1,200 of 1,300 byte-matched game C functions.**"))
+        self.assertIn("MATCH-PENDING: 60", line)
+        self.assertIn("(R2 30, R4 10)", line)
+
+    def test_no_summary_no_headline(self):
+        self.assertEqual(progress.rules_lines(None), [])
+
+    def test_disagreeing_function_counts_are_refused(self):
+        class FakeChecker:
+            def summary(self):
+                return {"byte_matched_functions": 3}
+
+        class FakeRules:
+            @staticmethod
+            def check(decimal):
+                return FakeChecker()
+
+        original = progress.load_module
+        progress.load_module = lambda name, path, register=False: FakeRules
+        try:
+            with self.assertRaises(progress.ProgressError):
+                progress.rules_summary(4)
+            self.assertEqual(progress.rules_summary(3), {"byte_matched_functions": 3})
+        finally:
+            progress.load_module = original
+
+
 if __name__ == "__main__":
     unittest.main()

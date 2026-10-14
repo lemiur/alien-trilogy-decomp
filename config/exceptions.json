@@ -1,49 +1,55 @@
 {
+  "_doc": "Recorded rule exceptions (AGENTS.md, 'Project profile'). An entry with only rules_id excuses findings of that advisory rule in that function; its code carries /* RULE-EXCEPTION: <rule>, <reason> */. An entry with status 'match_pending' is revoked: it excused a [match] rule (R4, R17), so the function is MATCH-PENDING and the entry keeps the evidence. volatile_allow lists the genuine hardware/IRQ volatile objects (R17).",
   "exceptions": [
     {
-      "function": "panel_spawn",
+      "function": "Debris_SpawnPanel",
       "unit": "debris",
       "address": "0x80045578",
       "size": 2308,
-      "rule": "access goes through typed members; no raw offset casts",
-      "deviation": "the four texture words of each panel's SpriteUV are copied with *(u_long *)&uv->u0..u3 chains, and the panel rides in Particle.model as (DispatchRow *)",
-      "reason": "exact byte match; retail copies each texture word once into the four panels with one lw and four sw (as screen_sprite_draw_semi does), and panel_free reads Particle.model back as the panel"
+      "rule": "type pun *(T *)&x; a named member or helper reads better",
+      "deviation": "the four texture words of each panel's spriteUV_t are copied with *(u_long *)&uv->u0..u3 chains",
+      "reason": "exact byte match; retail copies each texture word once into the four panels with one lw and four sw (as DrawScreenSpriteSemi does); a chained spriteUV_t struct copy compiles 164 bytes larger",
+      "rules_id": "R19"
     },
     {
-      "function": "actor_cell_trigger",
+      "function": "Trigger_ActorCell",
       "unit": "level_triggers",
       "address": "0x8003dd3c",
       "size": 588,
       "rule": "no fake code, storage, labels",
       "deviation": "a failed command chain leaves through goto failed to a block after the function's final store",
-      "reason": "exact byte match; same layout as player_cell_trigger (failure block after the shared last-trigger store)"
+      "reason": "exact byte match; same layout as Trigger_PlayerCell (failure block after the shared last-trigger store)",
+      "rules_id": "R14"
     },
     {
-      "function": "shot_cell_trigger",
+      "function": "Trigger_ShotCell",
       "unit": "level_triggers",
       "address": "0x8003df88",
       "size": 668,
       "rule": "no fake code, storage, labels",
       "deviation": "a failed command chain leaves through goto failed to a block after the function's final store",
-      "reason": "exact byte match; same layout as player_cell_trigger (failure block after the shared last-trigger store)"
+      "reason": "exact byte match; same layout as Trigger_PlayerCell (failure block after the shared last-trigger store)",
+      "rules_id": "R14"
     },
     {
-      "function": "enemy_shot_cell_trigger",
+      "function": "Trigger_EnemyShotCell",
       "unit": "level_triggers",
       "address": "0x8003e224",
       "size": 668,
       "rule": "no fake code, storage, labels",
       "deviation": "a failed command chain leaves through goto failed to a block after the function's final store",
-      "reason": "exact byte match; same layout as player_cell_trigger (failure block after the shared last-trigger store)"
+      "reason": "exact byte match; same layout as Trigger_PlayerCell (failure block after the shared last-trigger store)",
+      "rules_id": "R14"
     },
     {
-      "function": "player_cell_trigger",
+      "function": "Trigger_PlayerCell",
       "unit": "level_triggers",
       "address": "0x8003da94",
       "size": 680,
       "rule": "no fake code, storage, labels",
       "deviation": "a failed command chain leaves through goto failed to a block after the function's final store",
-      "reason": "exact byte match; retail lays the failure block (clear Player.last_trigger unless still inside) after the shared last_trigger store that the empty-trigger path also reaches, which only the goto layout reproduces"
+      "reason": "exact byte match; retail lays the failure block (clear Player.lastTrigger unless still inside) after the shared lastTrigger store that the empty-trigger path also reaches, which only the goto layout reproduces",
+      "rules_id": "R14"
     },
     {
       "function": "f_1d0e0",
@@ -52,60 +58,69 @@
       "size": 52,
       "rule": "source must be defined for every input the machine code accepts",
       "deviation": "the C shift count is undefined for IDs 0 and below -1; retail's machine code accepts them",
-      "reason": "exact byte match; AGENTS.md 'Keep every exact match' keeps it and records the deviation"
+      "reason": "exact byte match; AGENTS.md 'Keep every exact match' keeps it and records the deviation",
+      "rules_id": "R36"
     },
     {
-      "function": "door_blocked",
+      "function": "Door_Blocked",
       "unit": "doors",
       "address": "0x800223a0",
       "size": 228,
       "rule": "access goes through typed members; no raw offset casts",
-      "deviation": "neighbour cells reached by a byte-stride cast (MapCell *)((u8 *)a +/- stride) instead of typed indexing",
-      "reason": "exact byte match only with this spelling; kept under AGENTS.md 'Keep every exact match'"
+      "deviation": "neighbour cells reached by a byte-stride cast (mapCell_t *)((u8 *)a +/- stride) instead of typed indexing",
+      "reason": "exact byte match only with this spelling: typed neighbour spellings add the scaled index as addu (w<<4, a), retail adds (a, stride); kept under AGENTS.md 'Keep every exact match'",
+      "rules_id": "R4",
+      "status": "match_pending"
     },
     {
-      "function": "door_models_prepare",
+      "function": "Door_PrepareModels",
       "unit": "doors",
       "address": "0x80023478",
       "size": 216,
       "rule": "access goes through typed members; no raw offset casts",
-      "deviation": "model fixups walked with a raw byte pointer instead of typed members",
-      "reason": "exact byte match only with this spelling; kept under AGENTS.md 'Keep every exact match'"
+      "deviation": "model header fields walked with a u8 cursor stepped by member sizes and read via *(int *)p instead of typed members",
+      "reason": "exact byte match only with this spelling (block->rowCount/block->rows change the function size); kept under AGENTS.md 'Keep every exact match'",
+      "rules_id": "R4",
+      "status": "match_pending"
     },
     {
-      "function": "screen_sprite_draw_semi",
+      "function": "DrawScreenSpriteSemi",
       "unit": "game_20000_8",
       "address": "0x80022158",
       "size": 292,
       "rule": "access goes through typed members; no raw offset casts",
       "deviation": "UV/clut/tpage words copied with *(u_long *)&poly->u0 instead of setUV4 and member stores",
-      "reason": "retail copies each word with one lw/sw; the member spelling emits byte/halfword stores (364 vs 292 bytes); kept under 'Keep every exact match'"
+      "reason": "retail copies each word with one lw/sw; the member spelling emits byte/halfword stores (364 vs 292 bytes); kept under 'Keep every exact match'",
+      "rules_id": "R19"
     },
     {
-      "function": "screen_sprite_draw",
+      "function": "DrawScreenSprite",
       "unit": "game_20000_8",
       "address": "0x8002227c",
       "size": 292,
       "rule": "access goes through typed members; no raw offset casts",
       "deviation": "UV/clut/tpage words copied with *(u_long *)&poly->u0 instead of setUV4 and member stores",
-      "reason": "retail copies each word with one lw/sw; the member spelling emits byte/halfword stores (364 vs 292 bytes); kept under 'Keep every exact match'"
+      "reason": "retail copies each word with one lw/sw; the member spelling emits byte/halfword stores (364 vs 292 bytes); kept under 'Keep every exact match'",
+      "rules_id": "R19"
     },
     {
-      "function": "hugger_overlay_draw",
+      "function": "Actor_DrawHuggerOverlay",
       "unit": "actor",
       "address": "0x8002b260",
       "size": 348,
       "rule": "access goes through typed members; no raw offset casts",
       "deviation": "UV/clut/tpage words copied with *(u_long *)&poly->u0 instead of setUV4 and member stores",
-      "reason": "retail copies each word with one lw/sw; the member spelling emits byte/halfword stores (364 vs 292 bytes); kept under 'Keep every exact match'"
+      "reason": "retail copies each word with one lw/sw; the member spelling emits byte/halfword stores (364 vs 292 bytes); kept under 'Keep every exact match'",
+      "rules_id": "R19"
     },
     {
-      "function": "level_object_task",
+      "function": "Object_LevelObjectTask",
       "unit": "object_render",
       "address": "0x8003276c",
-      "rule": "no fake locals or padding to move codegen",
+      "rule": "an unused local is fake code unless it is an evidenced dead local (R17-dead-local)",
       "deviation": "declares an unused 'VECTOR scale;' local, which gives retail's 0x40 frame",
-      "reason": "exact byte match only with this local; the body is level_object_draw_tall minus its scaling, so the local is probably a copy-paste leftover in the original; kept under 'Keep every exact match' pending the codegen research lane"
+      "reason": "type, name and 16-byte size from Object_DrawLevelObjectTall, whose body this is minus ScaleMatrix, with VECTOR scale in the same 0x18(sp) slot; ruled out: inlined callee (a shared inline panel-draw helper gives a 0x38 frame), aggregate temporary, SDK macro locals, dead scale stores",
+      "rules_id": "R17-dead-local"
     },
     {
       "function": "pause_menu (item flag tests)",
@@ -113,155 +128,176 @@
       "address": "see config/pause_menu.json",
       "rule": "access goes through typed members; casts only at real boundaries",
       "deviation": "reads Player.flags (int) as (u_short)g_player.flags & mask",
-      "reason": "retail's menu reads the flags word with lhu while save_password reads it with lw; kept under 'Keep every exact match' until the field's true type (likely a union or short pair) is evidenced"
+      "reason": "retail's menu reads the flags word with lhu while save_password reads it with lw; kept under 'Keep every exact match' until the field's true type (likely a union or short pair) is evidenced",
+      "rules_id": "R19"
     },
     {
-      "function": "particle_draw_blood",
+      "function": "Particle_DrawBlood",
       "unit": "particle",
       "rule": "access goes through typed members; no raw offset casts",
       "deviation": "UV/clut/tpage words copied with *(u_long *) instead of member stores",
-      "reason": "retail copies each word with one lw/sw (same class as screen_sprite_draw_semi); kept under 'Keep every exact match'"
+      "reason": "retail copies each word with one lw/sw (same class as DrawScreenSpriteSemi); kept under 'Keep every exact match'",
+      "rules_id": "R19"
     },
     {
-      "function": "particle_draw_flame",
+      "function": "Particle_DrawFlame",
       "unit": "particle",
       "rule": "access goes through typed members; no raw offset casts",
       "deviation": "UV/clut/tpage words copied with *(u_long *) instead of member stores",
-      "reason": "retail copies each word with one lw/sw (same class as screen_sprite_draw_semi); kept under 'Keep every exact match'"
+      "reason": "retail copies each word with one lw/sw (same class as DrawScreenSpriteSemi); kept under 'Keep every exact match'",
+      "rules_id": "R19"
     },
     {
-      "function": "particle_draw_steam",
+      "function": "Particle_DrawSteam",
       "unit": "particle",
       "rule": "access goes through typed members; no raw offset casts",
       "deviation": "UV/clut/tpage words copied with *(u_long *) instead of member stores",
-      "reason": "retail copies each word with one lw/sw (same class as screen_sprite_draw_semi); kept under 'Keep every exact match'"
+      "reason": "retail copies each word with one lw/sw (same class as DrawScreenSpriteSemi); kept under 'Keep every exact match'",
+      "rules_id": "R19"
     },
     {
-      "function": "particle_draw_fire",
+      "function": "Particle_DrawFire",
       "unit": "particle",
       "rule": "access goes through typed members; no raw offset casts",
       "deviation": "UV/clut/tpage words copied with *(u_long *) instead of member stores",
-      "reason": "retail copies each word with one lw/sw (same class as screen_sprite_draw_semi); kept under 'Keep every exact match'"
+      "reason": "retail copies each word with one lw/sw (same class as DrawScreenSpriteSemi); kept under 'Keep every exact match'",
+      "rules_id": "R19"
     },
     {
-      "function": "particle_draw_debris",
+      "function": "Particle_DrawDebris",
       "unit": "particle",
       "rule": "no fake locals or padding to move codegen",
       "deviation": "declares an unused 'SVECTOR unused;' local for retail's frame size",
-      "reason": "declared aggregates reserve frame space even when unused (recipes note, level_object_task); no better-evidenced spelling found; kept under 'Keep every exact match'"
+      "reason": "declared aggregates reserve frame space even when unused (GCC 2.5.7), but nothing evidences this 8-byte local's type (Particle_DrawModel keeps scale only), so it is not an R17-dead-local exception; no inlined callee, aggregate temporary or SDK macro local explains the slot",
+      "rules_id": "R17",
+      "status": "match_pending"
     },
     {
-      "function": "particle_draw_flame",
+      "function": "Particle_DrawFlame",
       "unit": "particle",
-      "rule": "no fake locals or padding to move codegen",
-      "deviation": "declares an unused 'CVECTOR unused;' local for retail's frame size",
-      "reason": "declared aggregates reserve frame space even when unused (recipes note, level_object_task); no better-evidenced spelling found; kept under 'Keep every exact match'"
+      "rule": "an unused local is fake code unless it is an evidenced dead local (R17-dead-local)",
+      "deviation": "declares an unused 'CVECTOR color;' local that reproduces retail's untouched 8 bytes at 0x10(sp)",
+      "reason": "type, name and size from Particle_DrawSteam and Particle_DrawFire, which keep CVECTOR color in the same slot of the same 0x30 frame; ruled out: inlined callee, aggregate temporary, SDK macro local, a live colour copied through color (20 bytes larger)",
+      "rules_id": "R17-dead-local"
     },
     {
-      "function": "actor_play_animation",
-      "unit": "actor",
-      "rule": "no volatile levers or raw offset casts",
-      "deviation": "body keeps volatile and offset-cast accesses",
-      "reason": "the typed Actor/Sprite spelling loads the flags before the uv byte stores (16 instructions differ); kept under 'Keep every exact match' until a typed spelling matches"
-    },
-    {
-      "function": "pickups_task",
+      "function": "Object_PickupsTask",
       "unit": "map_objects",
       "address": "0x80039440",
       "size": 700,
       "rule": "no fake labels or control flow to shape codegen",
-      "deviation": "the object loop is written as goto next_object / object_loop instead of a while or for loop",
-      "reason": "retail enters the loop with a jump to its bottom test and keeps no copy of the test before the first object; every while/for/do spelling tried (while, for with increment, assignment in the condition, block-local declarations) gets GCC's duplicated top test (beqz) and is 1 word short of exact; kept under 'Keep every exact match'"
+      "deviation": "the object loop is written as goto nextObject / objectLoop instead of a while or for loop",
+      "reason": "retail enters the loop with a jump to its bottom test and keeps no copy of the test before the first object; every while/for/do spelling tried (while, for with increment, assignment in the condition, block-local declarations) gets GCC's duplicated top test (beqz) and is 1 word short of exact; kept under 'Keep every exact match'",
+      "rules_id": "R17",
+      "status": "match_pending"
     },
     {
-      "function": "message_box_type",
+      "function": "Menu_MessageBoxType",
       "unit": "frontend",
       "address": "0x800198f8",
       "size": 1212,
       "rule": "a do { } while (0) wrapper only as a macro that groups one coherent operation",
       "deviation": "NEXT_DIGIT (read the digit after a control character) is used in the '$' case only; the '!', '%' and '&' cases open-code the same two statements",
-      "reason": "exact only this way: with the macro at all four sites the build is 32 bytes short, without it the '$' case addresses x and position by symbol instead of through the text pointer's register (16 bytes long); kept under 'Keep every exact match'"
+      "reason": "exact only this way: with the macro at all four sites the build is 32 bytes short, without it the '$' case addresses x and position by symbol instead of through the text pointer's register (16 bytes long); kept under 'Keep every exact match'",
+      "rules_id": "R17",
+      "status": "match_pending"
     },
     {
-      "function": "password_apply_record",
-      "unit": "save_password",
-      "address": "0x800477e4",
-      "size": 524,
-      "rule": "no fake locals or padding to move codegen",
-      "deviation": "declares an unused 'unsigned char codes[32];' local for retail's 0x48 frame",
-      "reason": "declared aggregates reserve frame space even when unused (recipes note, level_object_task); the frame holds exactly 32 unaddressed bytes, the size of the code buffer password_encode keeps for the same record; kept under 'Keep every exact match'"
-    },
-    {
-      "function": "format_card_slot",
-      "unit": "frontend",
-      "address": "0x80017cf0",
-      "size": 284,
-      "rule": "no fake locals or padding to move codegen",
-      "deviation": "declares an unused 'char number[4];' local for retail's frame size",
-      "reason": "declared aggregates reserve frame space even when unused (recipes note); the Saturn port reserves the same 4 unaddressed frame bytes (add #-4,r15 at 0x06008768), so the original likely had an unused local; kept under 'Keep every exact match'"
-    },
-    {
-      "function": "title_sequence_task",
-      "unit": "frontend",
-      "address": "0x8001ae94",
-      "size": 576,
-      "rule": "no fake locals or padding to move codegen",
-      "deviation": "declares an unused 'RECT unused[2];' local for retail's 0x30 frame",
-      "reason": "every instruction matches without it; retail's frame reserves 16 bytes no instruction addresses (archived near-miss); declared aggregates reserve frame space even when unused; no better-evidenced spelling found; kept under 'Keep every exact match'"
-    },
-    {
-      "function": "tracker_draw_blips",
+      "function": "Hud_DrawTrackerBlips",
       "unit": "hud",
       "address": "0x80035f64",
       "size": 732,
       "rule": "access goes through typed members; no raw offset casts",
       "deviation": "tests the first word of Actor.velocity (vx and vy together) with *(long *)&actor->velocity",
-      "reason": "retail loads the pair with one lw at +0x30 (0x80036090); member compares emit lh; kept under AGENTS.md Keep every exact match"
+      "reason": "retail loads the pair with one lw at +0x30 (0x80036090); member compares emit lh; kept under AGENTS.md Keep every exact match",
+      "rules_id": "R19"
     },
     {
-      "function": "draw_number",
+      "function": "Hud_DrawNumber",
       "unit": "hud",
       "address": "0x80034ae8",
       "size": 900,
       "rule": "access goes through typed members; no raw offset casts",
       "deviation": "copies the caller colour into r0/g0/b0/code with *(u_long *)&p->r0 = *(u_long *)rgb before setPolyFT4 overwrites code",
-      "reason": "retail copies the colour with one lw/sw (0x80034c40, 0x80034c50) and then stores the code byte; member stores emit lbu/sb; kept under AGENTS.md Keep every exact match"
+      "reason": "retail copies the colour with one lw/sw (0x80034c40, 0x80034c50) and then stores the code byte; member stores emit lbu/sb; kept under AGENTS.md Keep every exact match",
+      "rules_id": "R19"
     },
     {
-      "function": "draw_number_large",
+      "function": "Hud_DrawNumberLarge",
       "unit": "hud",
       "address": "0x80034e6c",
       "size": 912,
       "rule": "access goes through typed members; no raw offset casts",
-      "deviation": "copies the caller colour word with *(u_long *)&p->r0 = *(u_long *)rgb, as draw_number",
-      "reason": "retail copies the colour with one lw/sw (0x80034fc8, 0x80034fd8); kept under AGENTS.md Keep every exact match"
+      "deviation": "copies the caller colour word with *(u_long *)&p->r0 = *(u_long *)rgb, as Hud_DrawNumber",
+      "reason": "retail copies the colour with one lw/sw (0x80034fc8, 0x80034fd8); kept under AGENTS.md Keep every exact match",
+      "rules_id": "R19"
     },
     {
-      "function": "hugger_overlay_draw",
+      "function": "Actor_DrawHuggerOverlay",
       "unit": "actor",
       "address": "0x8002b260",
       "size": 348,
       "rule": "casts only at real boundaries",
-      "deviation": "frame->x, y, w and h are read through (u_short) casts: SpriteFrame's offsets are short (actor_draw_sprite and actor_draw_shadowed load them with lh into signed arithmetic) but this overlay draw adds them as unsigned halfwords (lhu)",
-      "reason": "exact byte match; kept under AGENTS.md 'Keep every exact match'"
+      "deviation": "frame->x, y, w and h are read through (u_short) casts: spriteFrame_t's offsets are short (Actor_DrawSprite and Actor_DrawShadowed load them with lh into signed arithmetic) but this overlay draw adds them as unsigned halfwords (lhu)",
+      "reason": "exact byte match; kept under AGENTS.md 'Keep every exact match'",
+      "rules_id": "R19"
     },
     {
-      "function": "level_object_model_fixup",
-      "unit": "object_render",
-      "address": "0x80030e84",
-      "size": 244,
-      "rule": "access goes through typed members; no raw offset casts",
-      "deviation": "the file's 16-bit face kind is read as *(u16 *)&face->flags, spanning DispatchRow.flags and .selector",
-      "reason": "exact byte match; retail reads the kind with one lhu before the fixed-up flags and selector bytes overwrite it, the same spelling as door_model_faces_fixup (src/doors.c); DispatchRow has no 16-bit view and GCC 2.5.7 C has no anonymous unions"
+      "function": "Menu_TitleSequenceTask",
+      "unit": "frontend",
+      "address": "0x8001ae94",
+      "size": 576,
+      "rule": "no fake code, storage, labels",
+      "deviation": "unused 'RECT unused[2]' local",
+      "reason": "exact byte match; retail's frame holds 9-16 unused bytes; 16 = the two RECTs Menu_BlankScreen/Menu_ClearDisplayArea/Menu_ClearVRAMArea declare; ruled out: all three are jal calls, no inline helper, macro or aggregate temporary, no Probe lineage counterpart",
+      "rules_id": "R17-dead-local"
     },
     {
-      "function": "door_model_faces_fixup",
-      "unit": "doors",
-      "address": "0x800233a8",
-      "size": 208,
-      "rule": "access goes through typed members; no raw offset casts",
-      "deviation": "the face kind is read as *(u16 *)&face->flags, spanning DispatchRow.flags and .selector",
-      "reason": "exact byte match; retail reads the kind with one lhu before the fixed-up flags and selector bytes overwrite it; same spelling as level_object_model_fixup (object_render); DispatchRow has no 16-bit view and GCC 2.5.7 C has no anonymous unions"
+      "function": "Menu_FormatCardSlot",
+      "unit": "frontend",
+      "address": "0x80017cf0",
+      "size": 284,
+      "rule": "no fake code, storage, labels",
+      "deviation": "unused 'char number[8]' local",
+      "reason": "exact byte match; retail's frame holds 2-8 unused bytes; char number[8] is Menu_FormatValueLabel's digit buffer for the same decimal; ruled out: Menu_FormatDecimal is a jal, strcpy builtins use register block moves, no macro or aggregate temporary",
+      "rules_id": "R17-dead-local"
+    },
+    {
+      "function": "Password_ApplyRecord",
+      "unit": "save_password",
+      "address": "0x800477e4",
+      "size": 524,
+      "rule": "no fake code, storage, labels",
+      "deviation": "unused 'unsigned char codes[PASSWORD_LENGTH]' local",
+      "reason": "exact byte match; retail's 0x48 frame holds 25-32 unused bytes; codes[PASSWORD_LENGTH] is the unit's password code buffer; ruled out: Password_ClearWeaponAmmo has no locals, every other callee is a jal, passwordRecord_t (20 bytes) is too small",
+      "rules_id": "R17-dead-local"
+    }
+  ],
+  "volatile_allow": [
+    {
+      "file": "include/GAME.H",
+      "name": "g_frameCount",
+      "evidence": "frame counter advanced by the vertical-blank callback and polled by the main loop"
+    },
+    {
+      "file": "include/GAME.H",
+      "name": "g_graphicsBusy",
+      "evidence": "set by the drawing-done callback (IRQ) and polled by the main loop"
+    },
+    {
+      "file": "include/AUDIO.H",
+      "name": "g_soundClock",
+      "evidence": "advanced by the sound timer callback (IRQ) and polled by the audio code"
+    },
+    {
+      "file": "src/main.c",
+      "name": "g_cdReadCount",
+      "evidence": "advanced by the CD read callback (IRQ) and polled while loading"
+    },
+    {
+      "file": "src/movie.c",
+      "name": "cnt",
+      "evidence": "strSync busy-wait counter from Sony's movie sample (volatile u_long cnt = WAIT_TIME)"
     }
   ]
 }

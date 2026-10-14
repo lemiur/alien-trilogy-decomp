@@ -4,90 +4,90 @@
     ".sbss": "0x8008d100"
   },
   "functions": {
-    "door_blocked": {
+    "Door_Blocked": {
       "address": "0x800223a0",
       "size": 228
     },
-    "door_defs_load": {
+    "Door_LoadDefs": {
       "address": "0x80022484",
       "size": 136
     },
-    "level_doors_load": {
+    "Door_LoadLevelDoors": {
       "address": "0x8002250c",
       "size": 52
     },
-    "door_draw": {
+    "Door_Draw": {
       "address": "0x80022540",
       "size": 576
     },
-    "door_task_static": {
+    "Door_TaskStatic": {
       "address": "0x80022780",
       "size": 60
     },
-    "door_task_hold": {
+    "Door_TaskHold": {
       "address": "0x800227bc",
       "size": 124
     },
-    "door_task_open": {
+    "Door_TaskOpen": {
       "address": "0x80022838",
       "size": 232
     },
-    "door_task_closed": {
+    "Door_TaskClosed": {
       "address": "0x80022920",
       "size": 144
     },
-    "door_task_closing": {
+    "Door_TaskClosing": {
       "address": "0x800229b0",
       "size": 360
     },
-    "door_task_opening": {
+    "Door_TaskOpening": {
       "address": "0x80022b18",
       "size": 268
     },
-    "door_power": {
+    "Door_Power": {
       "address": "0x80022c24",
       "size": 228
     },
-    "door_power_final": {
+    "Door_PowerFinal": {
       "address": "0x80022d08",
       "size": 248
     },
-    "doors_build": {
+    "Door_Build": {
       "address": "0x80022e00",
       "size": 1448
     },
-    "door_model_faces_fixup": {
+    "Door_FixupModelFaces": {
       "address": "0x800233a8",
       "size": 208
     },
-    "door_models_prepare": {
+    "Door_PrepareModels": {
       "address": "0x80023478",
       "size": 216
     },
-    "doors_alloc": {
+    "Door_Alloc": {
       "address": "0x80023550",
       "size": 48
     },
-    "doors_init": {
+    "Door_Init": {
       "address": "0x80023580",
       "size": 44
     }
   },
   "symbols": {
-    "g_level_map": "0x80096060",
-    "model_draw_near": "0x8001f37c",
-    "g_visible_cell_mask": "0x8008d510",
-    "g_cheat_flags": "0x8008cda8",
-    "g_next_task": "0x8008d4f0",
-    "g_view_position": "0x8008d5b8",
+    "g_levelMap": "0x80096060",
+    "Model_DrawNear": "0x8001f37c",
+    "g_visibleCellMask": "0x8008d510",
+    "g_cheatFlags": "0x8008cda8",
+    "g_nextTask": "0x8008d4f0",
+    "g_viewPosition": "0x8008d5b8",
     "g_level": "0x8008d378",
-    "g_door_model_count": "0x8008d5a0",
-    "g_door_models": "0x80096040",
-    "model_draw_mid": "0x8001fb78",
-    "model_draw_far": "0x8001f78c",
-    "g_relative_position": "0x8008d5c8",
-    "g_view_matrix": "0x8009a2c4",
-    "g_matrix_work": "0x8009a2e4",
+    "g_doorModelCount": "0x8008d5a0",
+    "g_doorModels": "0x80096040",
+    "Model_DrawMid": "0x8001fb78",
+    "Model_DrawFar": "0x8001f78c",
+    "g_relativePosition": "0x8008d5c8",
+    "g_viewMatrix": "0x8009a2c4",
+    "g_matrixWork": "0x8009a2e4",
     "g_translation": "0x8009c5a4",
     "LoadAverageShort12": "0x800679c0",
     "PushMatrix": "0x80066c6c",
@@ -98,14 +98,14 @@
     "SetRotMatrix": "0x8006786c",
     "TransMatrix": "0x80067724",
     "SetTransMatrix": "0x800678fc",
-    "s_door_activated": "0x800119ec",
-    "s_door_powered_up": "0x800119fc",
-    "hud_show_message": "0x80037b98",
-    "door_defs_load": "0x80022484",
+    "s_doorActivated": "0x800119ec",
+    "s_doorPoweredUp": "0x800119fc",
+    "Hud_ShowMessage": "0x80037b98",
+    "Door_LoadDefs": "0x80022484",
     "g_player": "0x80099fd4",
-    "heap_alloc": "0x80014dfc",
-    "sound_play_at": "0x8003d66c",
-    "doors_build": "0x80022e00",
+    "Heap_Alloc": "0x80014dfc",
+    "Snd_PlayAt": "0x8003d66c",
+    "Door_Build": "0x80022e00",
     "TaskCreate": "0x80015e4c"
   },
   "static_data": {
@@ -114,37 +114,37 @@
       "size": 8,
       "section": ".sbss"
     },
-    "g_door_defs": {
+    "g_doorDefs": {
       "address": "0x8008d108",
       "size": 8,
       "section": ".sbss"
     },
-    "g_door_count": {
+    "g_doorCount": {
       "address": "0x8008d110",
       "size": 8,
       "section": ".sbss"
     },
-    "g_door_open_ticks": {
+    "g_doorOpenTicks": {
       "address": "0x8008d118",
       "size": 8,
       "section": ".sbss"
     },
-    "g_door_rotation_0": {
+    "g_doorRotation0": {
       "address": "0x8008cfac",
       "size": 8,
       "section": ".sdata"
     },
-    "g_door_rotation_2": {
+    "g_doorRotation2": {
       "address": "0x8008cfb4",
       "size": 8,
       "section": ".sdata"
     },
-    "g_door_rotation_4": {
+    "g_doorRotation4": {
       "address": "0x8008cfbc",
       "size": 8,
       "section": ".sdata"
     },
-    "g_door_rotation_6": {
+    "g_doorRotation6": {
       "address": "0x8008cfc4",
       "size": 8,
       "section": ".sdata"

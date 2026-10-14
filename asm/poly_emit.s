@@ -7,9 +7,9 @@
  *
  * Twenty-two routines in two groups of eleven. Each group is reached through its own
  * function table, with one C wrapper per table entry:
- *   - 0x8006d394.. (g_far_draw_table): colour depth-cued with DpqColor; the
+ *   - 0x8006d394.. (g_farDrawTable): colour depth-cued with DpqColor; the
  *     primitive is built through a3;
- *   - 0x8006d420.. (g_dispatch_table, indexed by model_draw_mid_in_cell): colour word stored unchanged,
+ *   - 0x8006d420.. (g_dispatch_table, indexed by Model_DrawMidInCell): colour word stored unchanged,
  *     fetched on entry; the primitive is built through a0.
  * Within a group the variants are: textured quad or triangle, with or without back-face
  * culling, plain or left-right mirrored texture, triangles taking texture corners 0,1,2
@@ -18,11 +18,11 @@
  * Every routine follows the same plan:
  *   1. call a libgte "_nom" transform (RTPT, plus RTPS for a quad), which leaves screen
  *      x,y in the SXY FIFO and z in the SZ FIFO; culling variants test NCLIP;
- *   2. take the primitive at g_sprite_workspace and store the screen coordinates;
- *   3. OT entry = g_render_buffer + 4 * (max z >> OT_SHIFT), the computation of
- *      ot_index_tri / ot_index_quad (ot_depth.s) written inline;
+ *   2. take the primitive at g_spriteWorkspace and store the screen coordinates;
+ *   3. OT entry = g_renderBuffer + 4 * (max z >> OT_SHIFT), the computation of
+ *      Model_OTIndexTri / Model_OTIndexQuad (ot_depth.s) written inline;
  *   4. colour, addPrim, GPU code and length, texture words;
- *   5. g_sprite_workspace += primitive size.
+ *   5. g_spriteWorkspace += primitive size.
  * The libgte routines called here use only a0..a3, v0, v1 and the GTE, so the emitters
  * keep values in t registers across those calls, which compiled C would not do.
  *
@@ -42,19 +42,19 @@
 	.set	noreorder
 
 /*
- * emit_ft4_fog - emit a POLY_FT4 (textured quad)
+ * Model_EmitFT4Fog - emit a POLY_FT4 (textured quad)
  *
  * Purpose:    transform the four vertices with RotTransPers4_nom (RTPT on three, then RTPS on
  *             the fourth), drop the polygon when it faces away (NCLIP <= 0), fill a POLY_FT4
- *             at the primitive allocation pointer g_sprite_workspace, depth-cue its colour
+ *             at the primitive allocation pointer g_spriteWorkspace, depth-cue its colour
  *             with DpqColor beyond z = DEPTH_CUE_START, link it into the ordering table
- *             g_render_buffer at its farthest z, and advance g_sprite_workspace.
+ *             g_renderBuffer at its farthest z, and advance g_spriteWorkspace.
  * Inputs:     a0 = pointer to 4 SVECTOR pointers; the corners are taken in reverse order
  *             (the last vertex becomes x0,y0).
  *             a1 = pointer to the CVECTOR colour (r,g,b,code), before depth cueing.
  *             a2 = pointer to a 16-byte texture record: u0v0+clut, u1v1+tpage, u2v2, u3v3.
- *             g_sprite_workspace = next free primitive; g_render_buffer = ordering table.
- * Outputs:    none in registers; the primitive, the OT entry and g_sprite_workspace.
+ *             g_spriteWorkspace = next free primitive; g_renderBuffer = ordering table.
+ * Outputs:    none in registers; the primitive, the OT entry and g_spriteWorkspace.
  * Clobbers:   v0, v1, a0..a3, t0..t7, AT ($1), the GTE.
  * Preserves:  s0..s7, sp; ra is saved in a 24-byte frame around the calls.
  * Live across calls: t0 (colour pointer) and t1 (texture record) across the libgte
@@ -63,12 +63,12 @@
  *             v1 = SXY of the last vertex, which RotTransPers4_nom reads from SXY0 before
  *             its RTPS pushes it out of the FIFO (NormalClipS leaves v1 alone).
  * Scratchpad: none.
- * Callers:    g_far_draw_table[0] (pointer at 0x8006d394); jal from draw_far_ft4_by_state
+ * Callers:    g_farDrawTable[0] (pointer at 0x8006d394); jal from Model_DrawFarFT4ByState
  *             (0x8001f4d8).
  * Callees:    RotTransPers4_nom, NormalClipS, DpqColor (Runtime Library 3.3 libgte).
  */
-	.globl	emit_ft4_fog
-emit_ft4_fog:
+	.globl	Model_EmitFT4Fog
+Model_EmitFT4Fog:
 	addiu	sp, sp, -24		/* frame: argument save area + ra */
 	sw	ra, 16(sp)
 	move	t0, a1			/* t0 = colour pointer */
@@ -91,7 +91,7 @@ emit_ft4_fog:
 	.set	at
 
 	/* Screen x,y from the SXY FIFO into the primitive */
-	lw	a3, g_sprite_workspace	/* a3 = primitive; macro: its lui fills */
+	lw	a3, g_spriteWorkspace	/* a3 = primitive; macro: its lui fills */
 					/* the beqz delay slot (harmless when taken) */
 	mfc2	t2, C2_SXY0
 	mfc2	t3, C2_SXY1
@@ -127,7 +127,7 @@ $48fd8_max2:
 	/* v0 = &ot[z >> OT_SHIFT] */
 	move	a1, v0			/* a1 = z, for the depth cue */
 	sra	v0, v0, OT_SHIFT
-	lw	v1, g_render_buffer	/* v1 = OT base (lui+lw macro) */
+	lw	v1, g_renderBuffer	/* v1 = OT base (lui+lw macro) */
 	sll	v0, v0, 2
 	addu	v0, v0, v1
 
@@ -166,7 +166,7 @@ $48fd8_linked:
 
 	/* Advance the primitive allocation pointer */
 	addiu	a3, a3, POLY_FT4_SIZE
-	sw	a3, g_sprite_workspace	/* macro: lui AT, then sw through AT */
+	sw	a3, g_spriteWorkspace	/* macro: lui AT, then sw through AT */
 $48fd8_done:
 	lw	ra, 16(sp)
 	nop				/* load delay */
@@ -174,30 +174,30 @@ $48fd8_done:
 	addiu	sp, sp, 24		/* delay slot (real work): pop the frame */
 
 /*
- * emit_ft3_fog - emit a POLY_FT3 (textured triangle)
+ * Model_EmitFT3Fog - emit a POLY_FT3 (textured triangle)
  *
  * Purpose:    transform the three vertices with RotNclip3_nom (RTPT), drop the polygon when it
  *             faces away (NCLIP <= 0), fill a POLY_FT3 at the primitive allocation pointer
- *             g_sprite_workspace, depth-cue its colour with DpqColor beyond z =
- *             DEPTH_CUE_START, link it into the ordering table g_render_buffer at its farthest
- *             z, and advance g_sprite_workspace.
+ *             g_spriteWorkspace, depth-cue its colour with DpqColor beyond z =
+ *             DEPTH_CUE_START, link it into the ordering table g_renderBuffer at its farthest
+ *             z, and advance g_spriteWorkspace.
  * Inputs:     a0 = pointer to 3 SVECTOR pointers; the corners are taken in reverse order
  *             (the last vertex becomes x0,y0).
  *             a1 = pointer to the CVECTOR colour (r,g,b,code), before depth cueing.
  *             a2 = pointer to a 16-byte texture record: u0v0+clut, u1v1+tpage, u2v2, u3v3.
- *             g_sprite_workspace = next free primitive; g_render_buffer = ordering table.
- * Outputs:    none in registers; the primitive, the OT entry and g_sprite_workspace.
+ *             g_spriteWorkspace = next free primitive; g_renderBuffer = ordering table.
+ * Outputs:    none in registers; the primitive, the OT entry and g_spriteWorkspace.
  * Clobbers:   v0, v1, a0..a3, t0..t7, AT ($1), the GTE.
  * Preserves:  s0..s7, sp; ra is saved in a 24-byte frame around the calls.
  * Live across calls: t0 (colour pointer) and t1 (texture record) across the libgte
  *             calls, which use only a0..a3, v0, v1 and the GTE.
  *             Across DpqColor (a0..a2 only): v0 (OT entry), a3 (primitive), t4/t5.
  * Scratchpad: none.
- * Callers:    g_far_draw_table[1] (pointer at 0x8006d398).
+ * Callers:    g_farDrawTable[1] (pointer at 0x8006d398).
  * Callees:    RotNclip3_nom, DpqColor (Runtime Library 3.3 libgte).
  */
-	.globl	emit_ft3_fog
-emit_ft3_fog:
+	.globl	Model_EmitFT3Fog
+Model_EmitFT3Fog:
 	addiu	sp, sp, -24		/* frame: argument save area + ra */
 	sw	ra, 16(sp)
 	move	t1, a2			/* t1 = texture record */
@@ -219,7 +219,7 @@ emit_ft3_fog:
 	.set	at
 
 	/* Screen x,y from the SXY FIFO into the primitive */
-	lw	a3, g_sprite_workspace	/* a3 = primitive; macro: its lui fills */
+	lw	a3, g_spriteWorkspace	/* a3 = primitive; macro: its lui fills */
 					/* the beqz delay slot (harmless when taken) */
 	mfc2	t2, C2_SXY0
 	mfc2	t3, C2_SXY1
@@ -248,7 +248,7 @@ $4910c_max1:
 	/* v0 = &ot[z >> OT_SHIFT] */
 	move	a1, v0			/* a1 = z, for the depth cue */
 	sra	v0, v0, OT_SHIFT
-	lw	v1, g_render_buffer	/* v1 = OT base (lui+lw macro) */
+	lw	v1, g_renderBuffer	/* v1 = OT base (lui+lw macro) */
 	sll	v0, v0, 2
 	addu	v0, v0, v1
 
@@ -285,7 +285,7 @@ $4910c_linked:
 
 	/* Advance the primitive allocation pointer */
 	addiu	a3, a3, POLY_FT3_SIZE
-	sw	a3, g_sprite_workspace	/* macro: lui AT, then sw through AT */
+	sw	a3, g_spriteWorkspace	/* macro: lui AT, then sw through AT */
 $4910c_done:
 	lw	ra, 16(sp)
 	nop				/* load delay */
@@ -293,19 +293,19 @@ $4910c_done:
 	addiu	sp, sp, 24		/* delay slot (real work): pop the frame */
 
 /*
- * emit_ft4_mirror_fog - emit a POLY_FT4 (textured quad), texture mirrored left-right
+ * Model_EmitFT4MirrorFog - emit a POLY_FT4 (textured quad), texture mirrored left-right
  *
  * Purpose:    transform the four vertices with RotTransPers4_nom (RTPT on three, then RTPS on
  *             the fourth), drop the polygon when it faces away (NCLIP <= 0), fill a POLY_FT4
- *             at the primitive allocation pointer g_sprite_workspace, depth-cue its colour
+ *             at the primitive allocation pointer g_spriteWorkspace, depth-cue its colour
  *             with DpqColor beyond z = DEPTH_CUE_START, link it into the ordering table
- *             g_render_buffer at its farthest z, and advance g_sprite_workspace.
+ *             g_renderBuffer at its farthest z, and advance g_spriteWorkspace.
  * Inputs:     a0 = pointer to 4 SVECTOR pointers; the corners are taken in reverse order
  *             (the last vertex becomes x0,y0).
  *             a1 = pointer to the CVECTOR colour (r,g,b,code), before depth cueing.
  *             a2 = pointer to a 16-byte texture record: u0v0+clut, u1v1+tpage, u2v2, u3v3.
- *             g_sprite_workspace = next free primitive; g_render_buffer = ordering table.
- * Outputs:    none in registers; the primitive, the OT entry and g_sprite_workspace.
+ *             g_spriteWorkspace = next free primitive; g_renderBuffer = ordering table.
+ * Outputs:    none in registers; the primitive, the OT entry and g_spriteWorkspace.
  * Clobbers:   v0, v1, a0..a3, t0..t7, AT ($1), the GTE.
  * Preserves:  s0..s7, sp; ra is saved in a 24-byte frame around the calls.
  * Live across calls: t0 (colour pointer) and t1 (texture record) across the libgte
@@ -314,12 +314,12 @@ $4910c_done:
  *             v1 = SXY of the last vertex, which RotTransPers4_nom reads from SXY0 before
  *             its RTPS pushes it out of the FIFO (NormalClipS leaves v1 alone).
  * Scratchpad: none.
- * Callers:    g_far_draw_table[2] (pointer at 0x8006d39c); jal from draw_far_ft4_mirror_by_state
+ * Callers:    g_farDrawTable[2] (pointer at 0x8006d39c); jal from Model_DrawFarFT4MirrorByState
  *             (0x8001f51c).
  * Callees:    RotTransPers4_nom, NormalClipS, DpqColor (Runtime Library 3.3 libgte).
  */
-	.globl	emit_ft4_mirror_fog
-emit_ft4_mirror_fog:
+	.globl	Model_EmitFT4MirrorFog
+Model_EmitFT4MirrorFog:
 	addiu	sp, sp, -24		/* frame: argument save area + ra */
 	sw	ra, 16(sp)
 	move	t0, a1			/* t0 = colour pointer */
@@ -342,7 +342,7 @@ emit_ft4_mirror_fog:
 	.set	at
 
 	/* Screen x,y from the SXY FIFO into the primitive */
-	lw	a3, g_sprite_workspace	/* a3 = primitive; macro: its lui fills */
+	lw	a3, g_spriteWorkspace	/* a3 = primitive; macro: its lui fills */
 					/* the beqz delay slot (harmless when taken) */
 	mfc2	t2, C2_SXY0
 	mfc2	t3, C2_SXY1
@@ -378,7 +378,7 @@ $4921c_max2:
 	/* v0 = &ot[z >> OT_SHIFT] */
 	move	a1, v0			/* a1 = z, for the depth cue */
 	sra	v0, v0, OT_SHIFT
-	lw	v1, g_render_buffer	/* v1 = OT base (lui+lw macro) */
+	lw	v1, g_renderBuffer	/* v1 = OT base (lui+lw macro) */
 	sll	v0, v0, 2
 	addu	v0, v0, v1
 
@@ -425,7 +425,7 @@ $4921c_linked:
 
 	/* Advance the primitive allocation pointer */
 	addiu	a3, a3, POLY_FT4_SIZE
-	sw	a3, g_sprite_workspace	/* macro: lui AT, then sw through AT */
+	sw	a3, g_spriteWorkspace	/* macro: lui AT, then sw through AT */
 $4921c_done:
 	lw	ra, 16(sp)
 	nop				/* load delay */
@@ -433,30 +433,30 @@ $4921c_done:
 	addiu	sp, sp, 24		/* delay slot (real work): pop the frame */
 
 /*
- * emit_ft3_alt_fog - emit a POLY_FT3 (textured triangle), texture corners 3,1,2
+ * Model_EmitFT3AltFog - emit a POLY_FT3 (textured triangle), texture corners 3,1,2
  *
  * Purpose:    transform the three vertices with RotNclip3_nom (RTPT), drop the polygon when it
  *             faces away (NCLIP <= 0), fill a POLY_FT3 at the primitive allocation pointer
- *             g_sprite_workspace, depth-cue its colour with DpqColor beyond z =
- *             DEPTH_CUE_START, link it into the ordering table g_render_buffer at its farthest
- *             z, and advance g_sprite_workspace.
+ *             g_spriteWorkspace, depth-cue its colour with DpqColor beyond z =
+ *             DEPTH_CUE_START, link it into the ordering table g_renderBuffer at its farthest
+ *             z, and advance g_spriteWorkspace.
  * Inputs:     a0 = pointer to 3 SVECTOR pointers; the corners are taken in reverse order
  *             (the last vertex becomes x0,y0).
  *             a1 = pointer to the CVECTOR colour (r,g,b,code), before depth cueing.
  *             a2 = pointer to a 16-byte texture record: u0v0+clut, u1v1+tpage, u2v2, u3v3.
- *             g_sprite_workspace = next free primitive; g_render_buffer = ordering table.
- * Outputs:    none in registers; the primitive, the OT entry and g_sprite_workspace.
+ *             g_spriteWorkspace = next free primitive; g_renderBuffer = ordering table.
+ * Outputs:    none in registers; the primitive, the OT entry and g_spriteWorkspace.
  * Clobbers:   v0, v1, a0..a3, t0..t7, AT ($1), the GTE.
  * Preserves:  s0..s7, sp; ra is saved in a 24-byte frame around the calls.
  * Live across calls: t0 (colour pointer) and t1 (texture record) across the libgte
  *             calls, which use only a0..a3, v0, v1 and the GTE.
  *             Across DpqColor (a0..a2 only): v0 (OT entry), a3 (primitive), t4/t5.
  * Scratchpad: none.
- * Callers:    g_far_draw_table[3] (pointer at 0x8006d3a0).
+ * Callers:    g_farDrawTable[3] (pointer at 0x8006d3a0).
  * Callees:    RotNclip3_nom, DpqColor (Runtime Library 3.3 libgte).
  */
-	.globl	emit_ft3_alt_fog
-emit_ft3_alt_fog:
+	.globl	Model_EmitFT3AltFog
+Model_EmitFT3AltFog:
 	addiu	sp, sp, -24		/* frame: argument save area + ra */
 	sw	ra, 16(sp)
 	move	t1, a2			/* t1 = texture record */
@@ -478,7 +478,7 @@ emit_ft3_alt_fog:
 	.set	at
 
 	/* Screen x,y from the SXY FIFO into the primitive */
-	lw	a3, g_sprite_workspace	/* a3 = primitive; macro: its lui fills */
+	lw	a3, g_spriteWorkspace	/* a3 = primitive; macro: its lui fills */
 					/* the beqz delay slot (harmless when taken) */
 	mfc2	t2, C2_SXY0
 	mfc2	t3, C2_SXY1
@@ -507,7 +507,7 @@ $49368_max1:
 	/* v0 = &ot[z >> OT_SHIFT] */
 	move	a1, v0			/* a1 = z, for the depth cue */
 	sra	v0, v0, OT_SHIFT
-	lw	v1, g_render_buffer	/* v1 = OT base (lui+lw macro) */
+	lw	v1, g_renderBuffer	/* v1 = OT base (lui+lw macro) */
 	sll	v0, v0, 2
 	addu	v0, v0, v1
 
@@ -544,7 +544,7 @@ $49368_linked:
 
 	/* Advance the primitive allocation pointer */
 	addiu	a3, a3, POLY_FT3_SIZE
-	sw	a3, g_sprite_workspace	/* macro: lui AT, then sw through AT */
+	sw	a3, g_spriteWorkspace	/* macro: lui AT, then sw through AT */
 $49368_done:
 	lw	ra, 16(sp)
 	nop				/* load delay */
@@ -552,19 +552,19 @@ $49368_done:
 	addiu	sp, sp, 24		/* delay slot (real work): pop the frame */
 
 /*
- * emit_ft4_nocull_fog - emit a POLY_FT4 (textured quad)
+ * Model_EmitFT4NoCullFog - emit a POLY_FT4 (textured quad)
  *
  * Purpose:    transform the four vertices with RotTransPers4_nom (RTPT on three, then RTPS on
  *             the fourth), fill a POLY_FT4 at the primitive allocation pointer
- *             g_sprite_workspace, depth-cue its colour with DpqColor beyond z =
- *             DEPTH_CUE_START, link it into the ordering table g_render_buffer at its farthest
- *             z, and advance g_sprite_workspace.
+ *             g_spriteWorkspace, depth-cue its colour with DpqColor beyond z =
+ *             DEPTH_CUE_START, link it into the ordering table g_renderBuffer at its farthest
+ *             z, and advance g_spriteWorkspace.
  * Inputs:     a0 = pointer to 4 SVECTOR pointers; the corners are taken in reverse order
  *             (the last vertex becomes x0,y0).
  *             a1 = pointer to the CVECTOR colour (r,g,b,code), before depth cueing.
  *             a2 = pointer to a 16-byte texture record: u0v0+clut, u1v1+tpage, u2v2, u3v3.
- *             g_sprite_workspace = next free primitive; g_render_buffer = ordering table.
- * Outputs:    none in registers; the primitive, the OT entry and g_sprite_workspace.
+ *             g_spriteWorkspace = next free primitive; g_renderBuffer = ordering table.
+ * Outputs:    none in registers; the primitive, the OT entry and g_spriteWorkspace.
  * Clobbers:   v0, v1, a0..a3, t0..t7, AT ($1), the GTE.
  * Preserves:  s0..s7, sp; ra is saved in a 24-byte frame around the calls.
  * Live across calls: t0 (colour pointer) and t1 (texture record) across the libgte
@@ -573,12 +573,12 @@ $49368_done:
  *             v1 = SXY of the last vertex, which RotTransPers4_nom reads from SXY0 before
  *             its RTPS pushes it out of the FIFO.
  * Scratchpad: none.
- * Callers:    g_far_draw_table[4] (pointer at 0x8006d3a4); jal from draw_far_ft4_nocull_by_state
+ * Callers:    g_farDrawTable[4] (pointer at 0x8006d3a4); jal from Model_DrawFarFT4NoCullByState
  *             (0x8001f6a0).
  * Callees:    RotTransPers4_nom, DpqColor (Runtime Library 3.3 libgte).
  */
-	.globl	emit_ft4_nocull_fog
-emit_ft4_nocull_fog:
+	.globl	Model_EmitFT4NoCullFog
+Model_EmitFT4NoCullFog:
 	addiu	sp, sp, -24		/* frame: argument save area + ra */
 	sw	ra, 16(sp)
 	move	t0, a1			/* t0 = colour pointer */
@@ -593,7 +593,7 @@ emit_ft4_nocull_fog:
 	nop				/* branch delay: nothing to do */
 
 	/* Screen x,y from the SXY FIFO into the primitive */
-	lw	a3, g_sprite_workspace	/* a3 = primitive (lui+lw macro) */
+	lw	a3, g_spriteWorkspace	/* a3 = primitive (lui+lw macro) */
 	mfc2	t2, C2_SXY0
 	mfc2	t3, C2_SXY1
 	mfc2	t4, C2_SXY2
@@ -628,7 +628,7 @@ $49478_max2:
 	/* v0 = &ot[z >> OT_SHIFT] */
 	move	a1, v0			/* a1 = z, for the depth cue */
 	sra	v0, v0, OT_SHIFT
-	lw	v1, g_render_buffer	/* v1 = OT base (lui+lw macro) */
+	lw	v1, g_renderBuffer	/* v1 = OT base (lui+lw macro) */
 	sll	v0, v0, 2
 	addu	v0, v0, v1
 
@@ -667,7 +667,7 @@ $49478_linked:
 
 	/* Advance the primitive allocation pointer */
 	addiu	a3, a3, POLY_FT4_SIZE
-	sw	a3, g_sprite_workspace	/* macro: lui AT, then sw through AT */
+	sw	a3, g_spriteWorkspace	/* macro: lui AT, then sw through AT */
 $49478_done:
 	lw	ra, 16(sp)
 	nop				/* load delay */
@@ -675,29 +675,29 @@ $49478_done:
 	addiu	sp, sp, 24		/* delay slot (real work): pop the frame */
 
 /*
- * emit_ft3_nocull_fog - emit a POLY_FT3 (textured triangle)
+ * Model_EmitFT3NoCullFog - emit a POLY_FT3 (textured triangle)
  *
  * Purpose:    transform the three vertices with RotTransPers3_nom (RTPT), fill a POLY_FT3 at
- *             the primitive allocation pointer g_sprite_workspace, depth-cue its colour with
+ *             the primitive allocation pointer g_spriteWorkspace, depth-cue its colour with
  *             DpqColor beyond z = DEPTH_CUE_START, link it into the ordering table
- *             g_render_buffer at its farthest z, and advance g_sprite_workspace.
+ *             g_renderBuffer at its farthest z, and advance g_spriteWorkspace.
  * Inputs:     a0 = pointer to 3 SVECTOR pointers; the corners are taken in reverse order
  *             (the last vertex becomes x0,y0).
  *             a1 = pointer to the CVECTOR colour (r,g,b,code), before depth cueing.
  *             a2 = pointer to a 16-byte texture record: u0v0+clut, u1v1+tpage, u2v2, u3v3.
- *             g_sprite_workspace = next free primitive; g_render_buffer = ordering table.
- * Outputs:    none in registers; the primitive, the OT entry and g_sprite_workspace.
+ *             g_spriteWorkspace = next free primitive; g_renderBuffer = ordering table.
+ * Outputs:    none in registers; the primitive, the OT entry and g_spriteWorkspace.
  * Clobbers:   v0, v1, a0..a3, t0..t7, AT ($1), the GTE.
  * Preserves:  s0..s7, sp; ra is saved in a 24-byte frame around the calls.
  * Live across calls: t0 (colour pointer) and t1 (texture record) across the libgte
  *             calls, which use only a0..a3, v0, v1 and the GTE.
  *             Across DpqColor (a0..a2 only): v0 (OT entry), a3 (primitive), t4/t5.
  * Scratchpad: none.
- * Callers:    g_far_draw_table[5] (pointer at 0x8006d3a8).
+ * Callers:    g_farDrawTable[5] (pointer at 0x8006d3a8).
  * Callees:    RotTransPers3_nom, DpqColor (Runtime Library 3.3 libgte).
  */
-	.globl	emit_ft3_nocull_fog
-emit_ft3_nocull_fog:
+	.globl	Model_EmitFT3NoCullFog
+Model_EmitFT3NoCullFog:
 	addiu	sp, sp, -24		/* frame: argument save area + ra */
 	sw	ra, 16(sp)
 	move	t1, a2			/* t1 = texture record */
@@ -711,7 +711,7 @@ emit_ft3_nocull_fog:
 	nop				/* branch delay: nothing to do */
 
 	/* Screen x,y from the SXY FIFO into the primitive */
-	lw	a3, g_sprite_workspace	/* a3 = primitive (lui+lw macro) */
+	lw	a3, g_spriteWorkspace	/* a3 = primitive (lui+lw macro) */
 	mfc2	t2, C2_SXY0
 	mfc2	t3, C2_SXY1
 	mfc2	t4, C2_SXY2
@@ -739,7 +739,7 @@ $4959c_max1:
 	/* v0 = &ot[z >> OT_SHIFT] */
 	move	a1, v0			/* a1 = z, for the depth cue */
 	sra	v0, v0, OT_SHIFT
-	lw	v1, g_render_buffer	/* v1 = OT base (lui+lw macro) */
+	lw	v1, g_renderBuffer	/* v1 = OT base (lui+lw macro) */
 	sll	v0, v0, 2
 	addu	v0, v0, v1
 
@@ -776,7 +776,7 @@ $4959c_linked:
 
 	/* Advance the primitive allocation pointer */
 	addiu	a3, a3, POLY_FT3_SIZE
-	sw	a3, g_sprite_workspace	/* macro: lui AT, then sw through AT */
+	sw	a3, g_spriteWorkspace	/* macro: lui AT, then sw through AT */
 $4959c_done:
 	lw	ra, 16(sp)
 	nop				/* load delay */
@@ -784,19 +784,19 @@ $4959c_done:
 	addiu	sp, sp, 24		/* delay slot (real work): pop the frame */
 
 /*
- * emit_ft4_nocull_mirror_fog - emit a POLY_FT4 (textured quad), texture mirrored left-right
+ * Model_EmitFT4NoCullMirrorFog - emit a POLY_FT4 (textured quad), texture mirrored left-right
  *
  * Purpose:    transform the four vertices with RotTransPers4_nom (RTPT on three, then RTPS on
  *             the fourth), fill a POLY_FT4 at the primitive allocation pointer
- *             g_sprite_workspace, depth-cue its colour with DpqColor beyond z =
- *             DEPTH_CUE_START, link it into the ordering table g_render_buffer at its farthest
- *             z, and advance g_sprite_workspace.
+ *             g_spriteWorkspace, depth-cue its colour with DpqColor beyond z =
+ *             DEPTH_CUE_START, link it into the ordering table g_renderBuffer at its farthest
+ *             z, and advance g_spriteWorkspace.
  * Inputs:     a0 = pointer to 4 SVECTOR pointers; the corners are taken in reverse order
  *             (the last vertex becomes x0,y0).
  *             a1 = pointer to the CVECTOR colour (r,g,b,code), before depth cueing.
  *             a2 = pointer to a 16-byte texture record: u0v0+clut, u1v1+tpage, u2v2, u3v3.
- *             g_sprite_workspace = next free primitive; g_render_buffer = ordering table.
- * Outputs:    none in registers; the primitive, the OT entry and g_sprite_workspace.
+ *             g_spriteWorkspace = next free primitive; g_renderBuffer = ordering table.
+ * Outputs:    none in registers; the primitive, the OT entry and g_spriteWorkspace.
  * Clobbers:   v0, v1, a0..a3, t0..t7, AT ($1), the GTE.
  * Preserves:  s0..s7, sp; ra is saved in a 24-byte frame around the calls.
  * Live across calls: t0 (colour pointer) and t1 (texture record) across the libgte
@@ -805,12 +805,12 @@ $4959c_done:
  *             v1 = SXY of the last vertex, which RotTransPers4_nom reads from SXY0 before
  *             its RTPS pushes it out of the FIFO.
  * Scratchpad: none.
- * Callers:    g_far_draw_table[6] (pointer at 0x8006d3ac); jal from draw_far_ft4_nocull_mirror_by_state
+ * Callers:    g_farDrawTable[6] (pointer at 0x8006d3ac); jal from Model_DrawFarFT4NoCullMirrorByState
  *             (0x8001f6e4).
  * Callees:    RotTransPers4_nom, DpqColor (Runtime Library 3.3 libgte).
  */
-	.globl	emit_ft4_nocull_mirror_fog
-emit_ft4_nocull_mirror_fog:
+	.globl	Model_EmitFT4NoCullMirrorFog
+Model_EmitFT4NoCullMirrorFog:
 	addiu	sp, sp, -24		/* frame: argument save area + ra */
 	sw	ra, 16(sp)
 	move	t0, a1			/* t0 = colour pointer */
@@ -825,7 +825,7 @@ emit_ft4_nocull_mirror_fog:
 	nop				/* branch delay: nothing to do */
 
 	/* Screen x,y from the SXY FIFO into the primitive */
-	lw	a3, g_sprite_workspace	/* a3 = primitive (lui+lw macro) */
+	lw	a3, g_spriteWorkspace	/* a3 = primitive (lui+lw macro) */
 	mfc2	t2, C2_SXY0
 	mfc2	t3, C2_SXY1
 	mfc2	t4, C2_SXY2
@@ -860,7 +860,7 @@ $4969c_max2:
 	/* v0 = &ot[z >> OT_SHIFT] */
 	move	a1, v0			/* a1 = z, for the depth cue */
 	sra	v0, v0, OT_SHIFT
-	lw	v1, g_render_buffer	/* v1 = OT base (lui+lw macro) */
+	lw	v1, g_renderBuffer	/* v1 = OT base (lui+lw macro) */
 	sll	v0, v0, 2
 	addu	v0, v0, v1
 
@@ -907,7 +907,7 @@ $4969c_linked:
 
 	/* Advance the primitive allocation pointer */
 	addiu	a3, a3, POLY_FT4_SIZE
-	sw	a3, g_sprite_workspace	/* macro: lui AT, then sw through AT */
+	sw	a3, g_spriteWorkspace	/* macro: lui AT, then sw through AT */
 $4969c_done:
 	lw	ra, 16(sp)
 	nop				/* load delay */
@@ -915,29 +915,29 @@ $4969c_done:
 	addiu	sp, sp, 24		/* delay slot (real work): pop the frame */
 
 /*
- * emit_ft3_alt_nocull_fog - emit a POLY_FT3 (textured triangle), texture corners 3,1,2
+ * Model_EmitFT3AltNoCullFog - emit a POLY_FT3 (textured triangle), texture corners 3,1,2
  *
  * Purpose:    transform the three vertices with RotTransPers3_nom (RTPT), fill a POLY_FT3 at
- *             the primitive allocation pointer g_sprite_workspace, depth-cue its colour with
+ *             the primitive allocation pointer g_spriteWorkspace, depth-cue its colour with
  *             DpqColor beyond z = DEPTH_CUE_START, link it into the ordering table
- *             g_render_buffer at its farthest z, and advance g_sprite_workspace.
+ *             g_renderBuffer at its farthest z, and advance g_spriteWorkspace.
  * Inputs:     a0 = pointer to 3 SVECTOR pointers; the corners are taken in reverse order
  *             (the last vertex becomes x0,y0).
  *             a1 = pointer to the CVECTOR colour (r,g,b,code), before depth cueing.
  *             a2 = pointer to a 16-byte texture record: u0v0+clut, u1v1+tpage, u2v2, u3v3.
- *             g_sprite_workspace = next free primitive; g_render_buffer = ordering table.
- * Outputs:    none in registers; the primitive, the OT entry and g_sprite_workspace.
+ *             g_spriteWorkspace = next free primitive; g_renderBuffer = ordering table.
+ * Outputs:    none in registers; the primitive, the OT entry and g_spriteWorkspace.
  * Clobbers:   v0, v1, a0..a3, t0..t7, AT ($1), the GTE.
  * Preserves:  s0..s7, sp; ra is saved in a 24-byte frame around the calls.
  * Live across calls: t0 (colour pointer) and t1 (texture record) across the libgte
  *             calls, which use only a0..a3, v0, v1 and the GTE.
  *             Across DpqColor (a0..a2 only): v0 (OT entry), a3 (primitive), t4/t5.
  * Scratchpad: none.
- * Callers:    g_far_draw_table[7] (pointer at 0x8006d3b0).
+ * Callers:    g_farDrawTable[7] (pointer at 0x8006d3b0).
  * Callees:    RotTransPers3_nom, DpqColor (Runtime Library 3.3 libgte).
  */
-	.globl	emit_ft3_alt_nocull_fog
-emit_ft3_alt_nocull_fog:
+	.globl	Model_EmitFT3AltNoCullFog
+Model_EmitFT3AltNoCullFog:
 	addiu	sp, sp, -24		/* frame: argument save area + ra */
 	sw	ra, 16(sp)
 	move	t1, a2			/* t1 = texture record */
@@ -951,7 +951,7 @@ emit_ft3_alt_nocull_fog:
 	nop				/* branch delay: nothing to do */
 
 	/* Screen x,y from the SXY FIFO into the primitive */
-	lw	a3, g_sprite_workspace	/* a3 = primitive (lui+lw macro) */
+	lw	a3, g_spriteWorkspace	/* a3 = primitive (lui+lw macro) */
 	mfc2	t2, C2_SXY0
 	mfc2	t3, C2_SXY1
 	mfc2	t4, C2_SXY2
@@ -979,7 +979,7 @@ $497d8_max1:
 	/* v0 = &ot[z >> OT_SHIFT] */
 	move	a1, v0			/* a1 = z, for the depth cue */
 	sra	v0, v0, OT_SHIFT
-	lw	v1, g_render_buffer	/* v1 = OT base (lui+lw macro) */
+	lw	v1, g_renderBuffer	/* v1 = OT base (lui+lw macro) */
 	sll	v0, v0, 2
 	addu	v0, v0, v1
 
@@ -1016,7 +1016,7 @@ $497d8_linked:
 
 	/* Advance the primitive allocation pointer */
 	addiu	a3, a3, POLY_FT3_SIZE
-	sw	a3, g_sprite_workspace	/* macro: lui AT, then sw through AT */
+	sw	a3, g_spriteWorkspace	/* macro: lui AT, then sw through AT */
 $497d8_done:
 	lw	ra, 16(sp)
 	nop				/* load delay */
@@ -1024,19 +1024,19 @@ $497d8_done:
 	addiu	sp, sp, 24		/* delay slot (real work): pop the frame */
 
 /*
- * emit_ft4_abe_fog - emit a POLY_FT4 (textured quad), semi-transparent
+ * Model_EmitFT4ABEFog - emit a POLY_FT4 (textured quad), semi-transparent
  *
  * Purpose:    transform the four vertices with RotTransPers4_nom (RTPT on three, then RTPS on
  *             the fourth), fill a POLY_FT4 at the primitive allocation pointer
- *             g_sprite_workspace, depth-cue its colour with DpqColor beyond z =
- *             DEPTH_CUE_START, link it into the ordering table g_render_buffer at its farthest
- *             z, and advance g_sprite_workspace.
+ *             g_spriteWorkspace, depth-cue its colour with DpqColor beyond z =
+ *             DEPTH_CUE_START, link it into the ordering table g_renderBuffer at its farthest
+ *             z, and advance g_spriteWorkspace.
  * Inputs:     a0 = pointer to 4 SVECTOR pointers; the corners are taken in reverse order
  *             (the last vertex becomes x0,y0).
  *             a1 = pointer to the CVECTOR colour (r,g,b,code), before depth cueing.
  *             a2 = pointer to a 16-byte texture record: u0v0+clut, u1v1+tpage, u2v2, u3v3.
- *             g_sprite_workspace = next free primitive; g_render_buffer = ordering table.
- * Outputs:    none in registers; the primitive, the OT entry and g_sprite_workspace.
+ *             g_spriteWorkspace = next free primitive; g_renderBuffer = ordering table.
+ * Outputs:    none in registers; the primitive, the OT entry and g_spriteWorkspace.
  * Clobbers:   v0, v1, a0..a3, t0..t7, AT ($1), the GTE.
  * Preserves:  s0..s7, sp; ra is saved in a 24-byte frame around the calls.
  * Live across calls: t0 (colour pointer) and t1 (texture record) across the libgte
@@ -1045,12 +1045,12 @@ $497d8_done:
  *             v1 = SXY of the last vertex, which RotTransPers4_nom reads from SXY0 before
  *             its RTPS pushes it out of the FIFO.
  * Scratchpad: none.
- * Callers:    g_far_draw_table[12] (pointer at 0x8006d3c4); jal from draw_far_ft4_abe_by_state
+ * Callers:    g_farDrawTable[12] (pointer at 0x8006d3c4); jal from Model_DrawFarFT4ABEByState
  *             (0x8001f728).
  * Callees:    RotTransPers4_nom, DpqColor (Runtime Library 3.3 libgte).
  */
-	.globl	emit_ft4_abe_fog
-emit_ft4_abe_fog:
+	.globl	Model_EmitFT4ABEFog
+Model_EmitFT4ABEFog:
 	addiu	sp, sp, -24		/* frame: argument save area + ra */
 	sw	ra, 16(sp)
 	move	t0, a1			/* t0 = colour pointer */
@@ -1065,7 +1065,7 @@ emit_ft4_abe_fog:
 	nop				/* branch delay: nothing to do */
 
 	/* Screen x,y from the SXY FIFO into the primitive */
-	lw	a3, g_sprite_workspace	/* a3 = primitive (lui+lw macro) */
+	lw	a3, g_spriteWorkspace	/* a3 = primitive (lui+lw macro) */
 	mfc2	t2, C2_SXY0
 	mfc2	t3, C2_SXY1
 	mfc2	t4, C2_SXY2
@@ -1100,7 +1100,7 @@ $498d8_max2:
 	/* v0 = &ot[z >> OT_SHIFT] */
 	move	a1, v0			/* a1 = z, for the depth cue */
 	sra	v0, v0, OT_SHIFT
-	lw	v1, g_render_buffer	/* v1 = OT base (lui+lw macro) */
+	lw	v1, g_renderBuffer	/* v1 = OT base (lui+lw macro) */
 	sll	v0, v0, 2
 	addu	v0, v0, v1
 
@@ -1139,7 +1139,7 @@ $498d8_linked:
 
 	/* Advance the primitive allocation pointer */
 	addiu	a3, a3, POLY_FT4_SIZE
-	sw	a3, g_sprite_workspace	/* macro: lui AT, then sw through AT */
+	sw	a3, g_spriteWorkspace	/* macro: lui AT, then sw through AT */
 $498d8_done:
 	lw	ra, 16(sp)
 	nop				/* load delay */
@@ -1147,19 +1147,19 @@ $498d8_done:
 	addiu	sp, sp, 24		/* delay slot (real work): pop the frame */
 
 /*
- * emit_f4_abe_fog - emit a POLY_F4 (flat quad), semi-transparent
+ * Model_EmitF4ABEFog - emit a POLY_F4 (flat quad), semi-transparent
  *
  * Purpose:    transform the four vertices with RotTransPers4_nom (RTPT on three, then RTPS on
  *             the fourth), fill a POLY_F4 at the primitive allocation pointer
- *             g_sprite_workspace, depth-cue its colour with DpqColor beyond z =
- *             DEPTH_CUE_START, link it into the ordering table g_render_buffer at its farthest
- *             z, and advance g_sprite_workspace.
+ *             g_spriteWorkspace, depth-cue its colour with DpqColor beyond z =
+ *             DEPTH_CUE_START, link it into the ordering table g_renderBuffer at its farthest
+ *             z, and advance g_spriteWorkspace.
  * Inputs:     a0 = pointer to 4 SVECTOR pointers; the corners are taken in reverse order
  *             (the last vertex becomes x0,y0).
  *             a1 = pointer to the CVECTOR colour (r,g,b,code), before depth cueing.
  *             a2 = unused (flat polygon: no texture record).
- *             g_sprite_workspace = next free primitive; g_render_buffer = ordering table.
- * Outputs:    none in registers; the primitive, the OT entry and g_sprite_workspace.
+ *             g_spriteWorkspace = next free primitive; g_renderBuffer = ordering table.
+ * Outputs:    none in registers; the primitive, the OT entry and g_spriteWorkspace.
  * Clobbers:   v0, v1, a0..a3, t0..t7, AT ($1), the GTE.
  * Preserves:  s0..s7, sp; ra is saved in a 24-byte frame around the calls.
  * Live across calls: t0 (colour pointer) across the libgte
@@ -1168,11 +1168,11 @@ $498d8_done:
  *             v1 = SXY of the last vertex, which RotTransPers4_nom reads from SXY0 before
  *             its RTPS pushes it out of the FIFO.
  * Scratchpad: none.
- * Callers:    g_far_draw_table[14] (pointer at 0x8006d3cc).
+ * Callers:    g_farDrawTable[14] (pointer at 0x8006d3cc).
  * Callees:    RotTransPers4_nom, DpqColor (Runtime Library 3.3 libgte).
  */
-	.globl	emit_f4_abe_fog
-emit_f4_abe_fog:
+	.globl	Model_EmitF4ABEFog
+Model_EmitF4ABEFog:
 	addiu	sp, sp, -24		/* frame: argument save area + ra */
 	sw	ra, 16(sp)
 	move	t0, a1			/* t0 = colour pointer */
@@ -1186,7 +1186,7 @@ emit_f4_abe_fog:
 	nop				/* branch delay: nothing to do */
 
 	/* Screen x,y from the SXY FIFO into the primitive */
-	lw	a3, g_sprite_workspace	/* a3 = primitive (lui+lw macro) */
+	lw	a3, g_spriteWorkspace	/* a3 = primitive (lui+lw macro) */
 	mfc2	t2, C2_SXY0
 	mfc2	t3, C2_SXY1
 	mfc2	t4, C2_SXY2
@@ -1221,7 +1221,7 @@ $499fc_max2:
 	/* v0 = &ot[z >> OT_SHIFT] */
 	move	a1, v0			/* a1 = z, for the depth cue */
 	sra	v0, v0, OT_SHIFT
-	lw	v1, g_render_buffer	/* v1 = OT base (lui+lw macro) */
+	lw	v1, g_renderBuffer	/* v1 = OT base (lui+lw macro) */
 	sll	v0, v0, 2
 	addu	v0, v0, v1
 
@@ -1250,7 +1250,7 @@ $499fc_linked:
 
 	/* Advance the primitive allocation pointer */
 	addiu	a3, a3, POLY_F4_SIZE
-	sw	a3, g_sprite_workspace	/* macro: lui AT, then sw through AT */
+	sw	a3, g_spriteWorkspace	/* macro: lui AT, then sw through AT */
 $499fc_done:
 	lw	ra, 16(sp)
 	nop				/* load delay */
@@ -1258,19 +1258,19 @@ $499fc_done:
 	addiu	sp, sp, 24		/* delay slot (real work): pop the frame */
 
 /*
- * emit_ft4_abe_mirror_fog - emit a POLY_FT4 (textured quad), semi-transparent, texture mirrored left-right
+ * Model_EmitFT4ABEMirrorFog - emit a POLY_FT4 (textured quad), semi-transparent, texture mirrored left-right
  *
  * Purpose:    transform the four vertices with RotTransPers4_nom (RTPT on three, then RTPS on
  *             the fourth), fill a POLY_FT4 at the primitive allocation pointer
- *             g_sprite_workspace, depth-cue its colour with DpqColor beyond z =
- *             DEPTH_CUE_START, link it into the ordering table g_render_buffer at its farthest
- *             z, and advance g_sprite_workspace.
+ *             g_spriteWorkspace, depth-cue its colour with DpqColor beyond z =
+ *             DEPTH_CUE_START, link it into the ordering table g_renderBuffer at its farthest
+ *             z, and advance g_spriteWorkspace.
  * Inputs:     a0 = pointer to 4 SVECTOR pointers; the corners are taken in reverse order
  *             (the last vertex becomes x0,y0).
  *             a1 = pointer to the CVECTOR colour (r,g,b,code), before depth cueing.
  *             a2 = pointer to a 16-byte texture record: u0v0+clut, u1v1+tpage, u2v2, u3v3.
- *             g_sprite_workspace = next free primitive; g_render_buffer = ordering table.
- * Outputs:    none in registers; the primitive, the OT entry and g_sprite_workspace.
+ *             g_spriteWorkspace = next free primitive; g_renderBuffer = ordering table.
+ * Outputs:    none in registers; the primitive, the OT entry and g_spriteWorkspace.
  * Clobbers:   v0, v1, a0..a3, t0..t7, AT ($1), the GTE.
  * Preserves:  s0..s7, sp; ra is saved in a 24-byte frame around the calls.
  * Live across calls: t0 (colour pointer) and t1 (texture record) across the libgte
@@ -1279,12 +1279,12 @@ $499fc_done:
  *             v1 = SXY of the last vertex, which RotTransPers4_nom reads from SXY0 before
  *             its RTPS pushes it out of the FIFO.
  * Scratchpad: none.
- * Callers:    g_far_draw_table[34] (pointer at 0x8006d41c); jal from draw_far_ft4_abe_mirror_by_state
+ * Callers:    g_farDrawTable[34] (pointer at 0x8006d41c); jal from Model_DrawFarFT4ABEMirrorByState
  *             (0x8001f76c).
  * Callees:    RotTransPers4_nom, DpqColor (Runtime Library 3.3 libgte).
  */
-	.globl	emit_ft4_abe_mirror_fog
-emit_ft4_abe_mirror_fog:
+	.globl	Model_EmitFT4ABEMirrorFog
+Model_EmitFT4ABEMirrorFog:
 	addiu	sp, sp, -24		/* frame: argument save area + ra */
 	sw	ra, 16(sp)
 	move	t0, a1			/* t0 = colour pointer */
@@ -1299,7 +1299,7 @@ emit_ft4_abe_mirror_fog:
 	nop				/* branch delay: nothing to do */
 
 	/* Screen x,y from the SXY FIFO into the primitive */
-	lw	a3, g_sprite_workspace	/* a3 = primitive (lui+lw macro) */
+	lw	a3, g_spriteWorkspace	/* a3 = primitive (lui+lw macro) */
 	mfc2	t2, C2_SXY0
 	mfc2	t3, C2_SXY1
 	mfc2	t4, C2_SXY2
@@ -1334,7 +1334,7 @@ $49afc_max2:
 	/* v0 = &ot[z >> OT_SHIFT] */
 	move	a1, v0			/* a1 = z, for the depth cue */
 	sra	v0, v0, OT_SHIFT
-	lw	v1, g_render_buffer	/* v1 = OT base (lui+lw macro) */
+	lw	v1, g_renderBuffer	/* v1 = OT base (lui+lw macro) */
 	sll	v0, v0, 2
 	addu	v0, v0, v1
 
@@ -1381,7 +1381,7 @@ $49afc_linked:
 
 	/* Advance the primitive allocation pointer */
 	addiu	a3, a3, POLY_FT4_SIZE
-	sw	a3, g_sprite_workspace	/* macro: lui AT, then sw through AT */
+	sw	a3, g_spriteWorkspace	/* macro: lui AT, then sw through AT */
 $49afc_done:
 	lw	ra, 16(sp)
 	nop				/* load delay */
@@ -1389,19 +1389,19 @@ $49afc_done:
 	addiu	sp, sp, 24		/* delay slot (real work): pop the frame */
 
 /*
- * emit_ft4 - emit a POLY_FT4 (textured quad)
+ * Model_EmitFT4 - emit a POLY_FT4 (textured quad)
  *
  * Purpose:    transform the four vertices with RotTransPers4_nom (RTPT on three, then RTPS on
  *             the fourth), drop the polygon when it faces away (NCLIP <= 0), fill a POLY_FT4
- *             at the primitive allocation pointer g_sprite_workspace, store its colour word
- *             unchanged, link it into the ordering table g_render_buffer at its farthest z,
- *             and advance g_sprite_workspace.
+ *             at the primitive allocation pointer g_spriteWorkspace, store its colour word
+ *             unchanged, link it into the ordering table g_renderBuffer at its farthest z,
+ *             and advance g_spriteWorkspace.
  * Inputs:     a0 = pointer to 4 SVECTOR pointers; the corners are taken in reverse order
  *             (the last vertex becomes x0,y0).
  *             a1 = pointer to the colour word (r,g,b,code), stored as is.
  *             a2 = pointer to a 16-byte texture record: u0v0+clut, u1v1+tpage, u2v2, u3v3.
- *             g_sprite_workspace = next free primitive; g_render_buffer = ordering table.
- * Outputs:    none in registers; the primitive, the OT entry and g_sprite_workspace.
+ *             g_spriteWorkspace = next free primitive; g_renderBuffer = ordering table.
+ * Outputs:    none in registers; the primitive, the OT entry and g_spriteWorkspace.
  * Clobbers:   v0, v1, a0..a3, t0..t6, AT ($1), the GTE.
  * Preserves:  s0..s7, sp; ra is saved in a 24-byte frame around the calls.
  * Live across calls: t0 (colour word) and t1 (texture record) across the libgte
@@ -1409,12 +1409,12 @@ $49afc_done:
  *             v1 = SXY of the last vertex, which RotTransPers4_nom reads from SXY0 before
  *             its RTPS pushes it out of the FIFO (NormalClipS leaves v1 alone).
  * Scratchpad: none.
- * Callers:    g_dispatch_table[0] (pointer at 0x8006d420), called by model_draw_mid_in_cell; jal from draw_mid_ft4_by_state
+ * Callers:    g_dispatch_table[0] (pointer at 0x8006d420), called by Model_DrawMidInCell; jal from Model_DrawMidFT4ByState
  *             (0x8001f8e8).
  * Callees:    RotTransPers4_nom, NormalClipS (Runtime Library 3.3 libgte).
  */
-	.globl	emit_ft4
-emit_ft4:
+	.globl	Model_EmitFT4
+Model_EmitFT4:
 	addiu	sp, sp, -24		/* frame: argument save area + ra */
 	sw	ra, 16(sp)
 	lw	t0, 0(a1)		/* t0 = colour word */
@@ -1437,7 +1437,7 @@ emit_ft4:
 	.set	at
 
 	/* Screen x,y from the SXY FIFO into the primitive */
-	lw	a0, g_sprite_workspace	/* a0 = primitive; macro: its lui fills */
+	lw	a0, g_spriteWorkspace	/* a0 = primitive; macro: its lui fills */
 					/* the beqz delay slot (harmless when taken) */
 	mfc2	t2, C2_SXY0
 	mfc2	t3, C2_SXY1
@@ -1472,7 +1472,7 @@ $49c38_max2:
 
 	/* v0 = &ot[z >> OT_SHIFT] */
 	sra	v0, v0, OT_SHIFT
-	lw	v1, g_render_buffer	/* v1 = OT base (lui+lw macro) */
+	lw	v1, g_renderBuffer	/* v1 = OT base (lui+lw macro) */
 	sll	v0, v0, 2
 	addu	v0, v0, v1
 
@@ -1498,7 +1498,7 @@ $49c38_max2:
 
 	/* Advance the primitive allocation pointer */
 	addiu	a0, a0, POLY_FT4_SIZE
-	sw	a0, g_sprite_workspace	/* macro: lui AT, then sw through AT */
+	sw	a0, g_spriteWorkspace	/* macro: lui AT, then sw through AT */
 $49c38_done:
 	lw	ra, 16(sp)
 	nop				/* load delay */
@@ -1506,28 +1506,28 @@ $49c38_done:
 	addiu	sp, sp, 24		/* delay slot (real work): pop the frame */
 
 /*
- * emit_ft3 - emit a POLY_FT3 (textured triangle)
+ * Model_EmitFT3 - emit a POLY_FT3 (textured triangle)
  *
  * Purpose:    transform the three vertices with RotNclip3_nom (RTPT), drop the polygon when it
  *             faces away (NCLIP <= 0), fill a POLY_FT3 at the primitive allocation pointer
- *             g_sprite_workspace, store its colour word unchanged, link it into the ordering
- *             table g_render_buffer at its farthest z, and advance g_sprite_workspace.
+ *             g_spriteWorkspace, store its colour word unchanged, link it into the ordering
+ *             table g_renderBuffer at its farthest z, and advance g_spriteWorkspace.
  * Inputs:     a0 = pointer to 3 SVECTOR pointers; the corners are taken in reverse order
  *             (the last vertex becomes x0,y0).
  *             a1 = pointer to the colour word (r,g,b,code), stored as is.
  *             a2 = pointer to a 16-byte texture record: u0v0+clut, u1v1+tpage, u2v2, u3v3.
- *             g_sprite_workspace = next free primitive; g_render_buffer = ordering table.
- * Outputs:    none in registers; the primitive, the OT entry and g_sprite_workspace.
+ *             g_spriteWorkspace = next free primitive; g_renderBuffer = ordering table.
+ * Outputs:    none in registers; the primitive, the OT entry and g_spriteWorkspace.
  * Clobbers:   v0, v1, a0..a3, t0..t6, AT ($1), the GTE.
  * Preserves:  s0..s7, sp; ra is saved in a 24-byte frame around the calls.
  * Live across calls: t0 (colour word) and t1 (texture record) across the libgte
  *             calls, which use only a0..a3, v0, v1 and the GTE.
  * Scratchpad: none.
- * Callers:    g_dispatch_table[1] (pointer at 0x8006d424), called by model_draw_mid_in_cell.
+ * Callers:    g_dispatch_table[1] (pointer at 0x8006d424), called by Model_DrawMidInCell.
  * Callees:    RotNclip3_nom (Runtime Library 3.3 libgte).
  */
-	.globl	emit_ft3
-emit_ft3:
+	.globl	Model_EmitFT3
+Model_EmitFT3:
 	addiu	sp, sp, -24		/* frame: argument save area + ra */
 	sw	ra, 16(sp)
 	lw	t0, 0(a1)		/* t0 = colour word */
@@ -1549,7 +1549,7 @@ emit_ft3:
 	.set	at
 
 	/* Screen x,y from the SXY FIFO into the primitive */
-	lw	a0, g_sprite_workspace	/* a0 = primitive; macro: its lui fills */
+	lw	a0, g_spriteWorkspace	/* a0 = primitive; macro: its lui fills */
 					/* the beqz delay slot (harmless when taken) */
 	mfc2	t2, C2_SXY0
 	mfc2	t3, C2_SXY1
@@ -1577,7 +1577,7 @@ $49d40_max1:
 
 	/* v0 = &ot[z >> OT_SHIFT] */
 	sra	v0, v0, OT_SHIFT
-	lw	v1, g_render_buffer	/* v1 = OT base (lui+lw macro) */
+	lw	v1, g_renderBuffer	/* v1 = OT base (lui+lw macro) */
 	sll	v0, v0, 2
 	addu	v0, v0, v1
 
@@ -1601,7 +1601,7 @@ $49d40_max1:
 
 	/* Advance the primitive allocation pointer */
 	addiu	a0, a0, POLY_FT3_SIZE
-	sw	a0, g_sprite_workspace	/* macro: lui AT, then sw through AT */
+	sw	a0, g_spriteWorkspace	/* macro: lui AT, then sw through AT */
 $49d40_done:
 	lw	ra, 16(sp)
 	nop				/* load delay */
@@ -1609,19 +1609,19 @@ $49d40_done:
 	addiu	sp, sp, 24		/* delay slot (real work): pop the frame */
 
 /*
- * emit_ft4_mirror - emit a POLY_FT4 (textured quad), texture mirrored left-right
+ * Model_EmitFT4Mirror - emit a POLY_FT4 (textured quad), texture mirrored left-right
  *
  * Purpose:    transform the four vertices with RotTransPers4_nom (RTPT on three, then RTPS on
  *             the fourth), drop the polygon when it faces away (NCLIP <= 0), fill a POLY_FT4
- *             at the primitive allocation pointer g_sprite_workspace, store its colour word
- *             unchanged, link it into the ordering table g_render_buffer at its farthest z,
- *             and advance g_sprite_workspace.
+ *             at the primitive allocation pointer g_spriteWorkspace, store its colour word
+ *             unchanged, link it into the ordering table g_renderBuffer at its farthest z,
+ *             and advance g_spriteWorkspace.
  * Inputs:     a0 = pointer to 4 SVECTOR pointers; the corners are taken in reverse order
  *             (the last vertex becomes x0,y0).
  *             a1 = pointer to the colour word (r,g,b,code), stored as is.
  *             a2 = pointer to a 16-byte texture record: u0v0+clut, u1v1+tpage, u2v2, u3v3.
- *             g_sprite_workspace = next free primitive; g_render_buffer = ordering table.
- * Outputs:    none in registers; the primitive, the OT entry and g_sprite_workspace.
+ *             g_spriteWorkspace = next free primitive; g_renderBuffer = ordering table.
+ * Outputs:    none in registers; the primitive, the OT entry and g_spriteWorkspace.
  * Clobbers:   v0, v1, a0..a3, t0..t6, AT ($1), the GTE.
  * Preserves:  s0..s7, sp; ra is saved in a 24-byte frame around the calls.
  * Live across calls: t0 (colour word) and t1 (texture record) across the libgte
@@ -1629,12 +1629,12 @@ $49d40_done:
  *             v1 = SXY of the last vertex, which RotTransPers4_nom reads from SXY0 before
  *             its RTPS pushes it out of the FIFO (NormalClipS leaves v1 alone).
  * Scratchpad: none.
- * Callers:    g_dispatch_table[2] (pointer at 0x8006d428), called by model_draw_mid_in_cell; jal from draw_mid_ft4_mirror_by_state
+ * Callers:    g_dispatch_table[2] (pointer at 0x8006d428), called by Model_DrawMidInCell; jal from Model_DrawMidFT4MirrorByState
  *             (0x8001f92c).
  * Callees:    RotTransPers4_nom, NormalClipS (Runtime Library 3.3 libgte).
  */
-	.globl	emit_ft4_mirror
-emit_ft4_mirror:
+	.globl	Model_EmitFT4Mirror
+Model_EmitFT4Mirror:
 	addiu	sp, sp, -24		/* frame: argument save area + ra */
 	sw	ra, 16(sp)
 	lw	t0, 0(a1)		/* t0 = colour word */
@@ -1657,7 +1657,7 @@ emit_ft4_mirror:
 	.set	at
 
 	/* Screen x,y from the SXY FIFO into the primitive */
-	lw	a0, g_sprite_workspace	/* a0 = primitive; macro: its lui fills */
+	lw	a0, g_spriteWorkspace	/* a0 = primitive; macro: its lui fills */
 					/* the beqz delay slot (harmless when taken) */
 	mfc2	t2, C2_SXY0
 	mfc2	t3, C2_SXY1
@@ -1692,7 +1692,7 @@ $49e24_max2:
 
 	/* v0 = &ot[z >> OT_SHIFT] */
 	sra	v0, v0, OT_SHIFT
-	lw	v1, g_render_buffer	/* v1 = OT base (lui+lw macro) */
+	lw	v1, g_renderBuffer	/* v1 = OT base (lui+lw macro) */
 	sll	v0, v0, 2
 	addu	v0, v0, v1
 
@@ -1726,7 +1726,7 @@ $49e24_max2:
 
 	/* Advance the primitive allocation pointer */
 	addiu	a0, a0, POLY_FT4_SIZE
-	sw	a0, g_sprite_workspace	/* macro: lui AT, then sw through AT */
+	sw	a0, g_spriteWorkspace	/* macro: lui AT, then sw through AT */
 $49e24_done:
 	lw	ra, 16(sp)
 	nop				/* load delay */
@@ -1734,28 +1734,28 @@ $49e24_done:
 	addiu	sp, sp, 24		/* delay slot (real work): pop the frame */
 
 /*
- * emit_ft3_alt - emit a POLY_FT3 (textured triangle), texture corners 3,1,2
+ * Model_EmitFT3Alt - emit a POLY_FT3 (textured triangle), texture corners 3,1,2
  *
  * Purpose:    transform the three vertices with RotNclip3_nom (RTPT), drop the polygon when it
  *             faces away (NCLIP <= 0), fill a POLY_FT3 at the primitive allocation pointer
- *             g_sprite_workspace, store its colour word unchanged, link it into the ordering
- *             table g_render_buffer at its farthest z, and advance g_sprite_workspace.
+ *             g_spriteWorkspace, store its colour word unchanged, link it into the ordering
+ *             table g_renderBuffer at its farthest z, and advance g_spriteWorkspace.
  * Inputs:     a0 = pointer to 3 SVECTOR pointers; the corners are taken in reverse order
  *             (the last vertex becomes x0,y0).
  *             a1 = pointer to the colour word (r,g,b,code), stored as is.
  *             a2 = pointer to a 16-byte texture record: u0v0+clut, u1v1+tpage, u2v2, u3v3.
- *             g_sprite_workspace = next free primitive; g_render_buffer = ordering table.
- * Outputs:    none in registers; the primitive, the OT entry and g_sprite_workspace.
+ *             g_spriteWorkspace = next free primitive; g_renderBuffer = ordering table.
+ * Outputs:    none in registers; the primitive, the OT entry and g_spriteWorkspace.
  * Clobbers:   v0, v1, a0..a3, t0..t6, AT ($1), the GTE.
  * Preserves:  s0..s7, sp; ra is saved in a 24-byte frame around the calls.
  * Live across calls: t0 (colour word) and t1 (texture record) across the libgte
  *             calls, which use only a0..a3, v0, v1 and the GTE.
  * Scratchpad: none.
- * Callers:    g_dispatch_table[3] (pointer at 0x8006d42c), called by model_draw_mid_in_cell.
+ * Callers:    g_dispatch_table[3] (pointer at 0x8006d42c), called by Model_DrawMidInCell.
  * Callees:    RotNclip3_nom (Runtime Library 3.3 libgte).
  */
-	.globl	emit_ft3_alt
-emit_ft3_alt:
+	.globl	Model_EmitFT3Alt
+Model_EmitFT3Alt:
 	addiu	sp, sp, -24		/* frame: argument save area + ra */
 	sw	ra, 16(sp)
 	lw	t0, 0(a1)		/* t0 = colour word */
@@ -1777,7 +1777,7 @@ emit_ft3_alt:
 	.set	at
 
 	/* Screen x,y from the SXY FIFO into the primitive */
-	lw	a0, g_sprite_workspace	/* a0 = primitive; macro: its lui fills */
+	lw	a0, g_spriteWorkspace	/* a0 = primitive; macro: its lui fills */
 					/* the beqz delay slot (harmless when taken) */
 	mfc2	t2, C2_SXY0
 	mfc2	t3, C2_SXY1
@@ -1805,7 +1805,7 @@ $49f44_max1:
 
 	/* v0 = &ot[z >> OT_SHIFT] */
 	sra	v0, v0, OT_SHIFT
-	lw	v1, g_render_buffer	/* v1 = OT base (lui+lw macro) */
+	lw	v1, g_renderBuffer	/* v1 = OT base (lui+lw macro) */
 	sll	v0, v0, 2
 	addu	v0, v0, v1
 
@@ -1829,7 +1829,7 @@ $49f44_max1:
 
 	/* Advance the primitive allocation pointer */
 	addiu	a0, a0, POLY_FT3_SIZE
-	sw	a0, g_sprite_workspace	/* macro: lui AT, then sw through AT */
+	sw	a0, g_spriteWorkspace	/* macro: lui AT, then sw through AT */
 $49f44_done:
 	lw	ra, 16(sp)
 	nop				/* load delay */
@@ -1837,18 +1837,18 @@ $49f44_done:
 	addiu	sp, sp, 24		/* delay slot (real work): pop the frame */
 
 /*
- * emit_ft4_nocull - emit a POLY_FT4 (textured quad)
+ * Model_EmitFT4NoCull - emit a POLY_FT4 (textured quad)
  *
  * Purpose:    transform the four vertices with RotTransPers4_nom (RTPT on three, then RTPS on
  *             the fourth), fill a POLY_FT4 at the primitive allocation pointer
- *             g_sprite_workspace, store its colour word unchanged, link it into the ordering
- *             table g_render_buffer at its farthest z, and advance g_sprite_workspace.
+ *             g_spriteWorkspace, store its colour word unchanged, link it into the ordering
+ *             table g_renderBuffer at its farthest z, and advance g_spriteWorkspace.
  * Inputs:     a0 = pointer to 4 SVECTOR pointers; the corners are taken in reverse order
  *             (the last vertex becomes x0,y0).
  *             a1 = pointer to the colour word (r,g,b,code), stored as is.
  *             a2 = pointer to a 16-byte texture record: u0v0+clut, u1v1+tpage, u2v2, u3v3.
- *             g_sprite_workspace = next free primitive; g_render_buffer = ordering table.
- * Outputs:    none in registers; the primitive, the OT entry and g_sprite_workspace.
+ *             g_spriteWorkspace = next free primitive; g_renderBuffer = ordering table.
+ * Outputs:    none in registers; the primitive, the OT entry and g_spriteWorkspace.
  * Clobbers:   v0, v1, a0..a3, t0..t6, AT ($1), the GTE.
  * Preserves:  s0..s7, sp; ra is saved in a 24-byte frame around the calls.
  * Live across calls: t0 (colour word) and t1 (texture record) across the libgte
@@ -1856,12 +1856,12 @@ $49f44_done:
  *             v1 = SXY of the last vertex, which RotTransPers4_nom reads from SXY0 before
  *             its RTPS pushes it out of the FIFO.
  * Scratchpad: none.
- * Callers:    g_dispatch_table[4] (pointer at 0x8006d430), called by model_draw_mid_in_cell; jal from draw_mid_ft4_nocull_by_state
+ * Callers:    g_dispatch_table[4] (pointer at 0x8006d430), called by Model_DrawMidInCell; jal from Model_DrawMidFT4NoCullByState
  *             (0x8001fa8c).
  * Callees:    RotTransPers4_nom (Runtime Library 3.3 libgte).
  */
-	.globl	emit_ft4_nocull
-emit_ft4_nocull:
+	.globl	Model_EmitFT4NoCull
+Model_EmitFT4NoCull:
 	addiu	sp, sp, -24		/* frame: argument save area + ra */
 	sw	ra, 16(sp)
 	lw	t0, 0(a1)		/* t0 = colour word */
@@ -1876,7 +1876,7 @@ emit_ft4_nocull:
 	nop				/* branch delay: nothing to do */
 
 	/* Screen x,y from the SXY FIFO into the primitive */
-	lw	a0, g_sprite_workspace	/* a0 = primitive (lui+lw macro) */
+	lw	a0, g_spriteWorkspace	/* a0 = primitive (lui+lw macro) */
 	mfc2	t2, C2_SXY0
 	mfc2	t3, C2_SXY1
 	mfc2	t4, C2_SXY2
@@ -1910,7 +1910,7 @@ $4a028_max2:
 
 	/* v0 = &ot[z >> OT_SHIFT] */
 	sra	v0, v0, OT_SHIFT
-	lw	v1, g_render_buffer	/* v1 = OT base (lui+lw macro) */
+	lw	v1, g_renderBuffer	/* v1 = OT base (lui+lw macro) */
 	sll	v0, v0, 2
 	addu	v0, v0, v1
 
@@ -1936,7 +1936,7 @@ $4a028_max2:
 
 	/* Advance the primitive allocation pointer */
 	addiu	a0, a0, POLY_FT4_SIZE
-	sw	a0, g_sprite_workspace	/* macro: lui AT, then sw through AT */
+	sw	a0, g_spriteWorkspace	/* macro: lui AT, then sw through AT */
 $4a028_done:
 	lw	ra, 16(sp)
 	nop				/* load delay */
@@ -1944,28 +1944,28 @@ $4a028_done:
 	addiu	sp, sp, 24		/* delay slot (real work): pop the frame */
 
 /*
- * emit_ft3_nocull - emit a POLY_FT3 (textured triangle)
+ * Model_EmitFT3NoCull - emit a POLY_FT3 (textured triangle)
  *
  * Purpose:    transform the three vertices with RotTransPers3_nom (RTPT), fill a POLY_FT3 at
- *             the primitive allocation pointer g_sprite_workspace, store its colour word
- *             unchanged, link it into the ordering table g_render_buffer at its farthest z,
- *             and advance g_sprite_workspace.
+ *             the primitive allocation pointer g_spriteWorkspace, store its colour word
+ *             unchanged, link it into the ordering table g_renderBuffer at its farthest z,
+ *             and advance g_spriteWorkspace.
  * Inputs:     a0 = pointer to 3 SVECTOR pointers; the corners are taken in reverse order
  *             (the last vertex becomes x0,y0).
  *             a1 = pointer to the colour word (r,g,b,code), stored as is.
  *             a2 = pointer to a 16-byte texture record: u0v0+clut, u1v1+tpage, u2v2, u3v3.
- *             g_sprite_workspace = next free primitive; g_render_buffer = ordering table.
- * Outputs:    none in registers; the primitive, the OT entry and g_sprite_workspace.
+ *             g_spriteWorkspace = next free primitive; g_renderBuffer = ordering table.
+ * Outputs:    none in registers; the primitive, the OT entry and g_spriteWorkspace.
  * Clobbers:   v0, v1, a0..a3, t0..t6, AT ($1), the GTE.
  * Preserves:  s0..s7, sp; ra is saved in a 24-byte frame around the calls.
  * Live across calls: t0 (colour word) and t1 (texture record) across the libgte
  *             calls, which use only a0..a3, v0, v1 and the GTE.
  * Scratchpad: none.
- * Callers:    g_dispatch_table[5] (pointer at 0x8006d434), called by model_draw_mid_in_cell.
+ * Callers:    g_dispatch_table[5] (pointer at 0x8006d434), called by Model_DrawMidInCell.
  * Callees:    RotTransPers3_nom (Runtime Library 3.3 libgte).
  */
-	.globl	emit_ft3_nocull
-emit_ft3_nocull:
+	.globl	Model_EmitFT3NoCull
+Model_EmitFT3NoCull:
 	addiu	sp, sp, -24		/* frame: argument save area + ra */
 	sw	ra, 16(sp)
 	lw	t0, 0(a1)		/* t0 = colour word */
@@ -1979,7 +1979,7 @@ emit_ft3_nocull:
 	nop				/* branch delay: nothing to do */
 
 	/* Screen x,y from the SXY FIFO into the primitive */
-	lw	a0, g_sprite_workspace	/* a0 = primitive (lui+lw macro) */
+	lw	a0, g_spriteWorkspace	/* a0 = primitive (lui+lw macro) */
 	mfc2	t2, C2_SXY0
 	mfc2	t3, C2_SXY1
 	mfc2	t4, C2_SXY2
@@ -2006,7 +2006,7 @@ $4a120_max1:
 
 	/* v0 = &ot[z >> OT_SHIFT] */
 	sra	v0, v0, OT_SHIFT
-	lw	v1, g_render_buffer	/* v1 = OT base (lui+lw macro) */
+	lw	v1, g_renderBuffer	/* v1 = OT base (lui+lw macro) */
 	sll	v0, v0, 2
 	addu	v0, v0, v1
 
@@ -2030,7 +2030,7 @@ $4a120_max1:
 
 	/* Advance the primitive allocation pointer */
 	addiu	a0, a0, POLY_FT3_SIZE
-	sw	a0, g_sprite_workspace	/* macro: lui AT, then sw through AT */
+	sw	a0, g_spriteWorkspace	/* macro: lui AT, then sw through AT */
 $4a120_done:
 	lw	ra, 16(sp)
 	nop				/* load delay */
@@ -2038,18 +2038,18 @@ $4a120_done:
 	addiu	sp, sp, 24		/* delay slot (real work): pop the frame */
 
 /*
- * emit_ft4_nocull_mirror - emit a POLY_FT4 (textured quad), texture mirrored left-right
+ * Model_EmitFT4NoCullMirror - emit a POLY_FT4 (textured quad), texture mirrored left-right
  *
  * Purpose:    transform the four vertices with RotTransPers4_nom (RTPT on three, then RTPS on
  *             the fourth), fill a POLY_FT4 at the primitive allocation pointer
- *             g_sprite_workspace, store its colour word unchanged, link it into the ordering
- *             table g_render_buffer at its farthest z, and advance g_sprite_workspace.
+ *             g_spriteWorkspace, store its colour word unchanged, link it into the ordering
+ *             table g_renderBuffer at its farthest z, and advance g_spriteWorkspace.
  * Inputs:     a0 = pointer to 4 SVECTOR pointers; the corners are taken in reverse order
  *             (the last vertex becomes x0,y0).
  *             a1 = pointer to the colour word (r,g,b,code), stored as is.
  *             a2 = pointer to a 16-byte texture record: u0v0+clut, u1v1+tpage, u2v2, u3v3.
- *             g_sprite_workspace = next free primitive; g_render_buffer = ordering table.
- * Outputs:    none in registers; the primitive, the OT entry and g_sprite_workspace.
+ *             g_spriteWorkspace = next free primitive; g_renderBuffer = ordering table.
+ * Outputs:    none in registers; the primitive, the OT entry and g_spriteWorkspace.
  * Clobbers:   v0, v1, a0..a3, t0..t6, AT ($1), the GTE.
  * Preserves:  s0..s7, sp; ra is saved in a 24-byte frame around the calls.
  * Live across calls: t0 (colour word) and t1 (texture record) across the libgte
@@ -2057,12 +2057,12 @@ $4a120_done:
  *             v1 = SXY of the last vertex, which RotTransPers4_nom reads from SXY0 before
  *             its RTPS pushes it out of the FIFO.
  * Scratchpad: none.
- * Callers:    g_dispatch_table[6] (pointer at 0x8006d438), called by model_draw_mid_in_cell; jal from draw_mid_ft4_nocull_mirror_by_state
+ * Callers:    g_dispatch_table[6] (pointer at 0x8006d438), called by Model_DrawMidInCell; jal from Model_DrawMidFT4NoCullMirrorByState
  *             (0x8001fad0).
  * Callees:    RotTransPers4_nom (Runtime Library 3.3 libgte).
  */
-	.globl	emit_ft4_nocull_mirror
-emit_ft4_nocull_mirror:
+	.globl	Model_EmitFT4NoCullMirror
+Model_EmitFT4NoCullMirror:
 	addiu	sp, sp, -24		/* frame: argument save area + ra */
 	sw	ra, 16(sp)
 	lw	t0, 0(a1)		/* t0 = colour word */
@@ -2077,7 +2077,7 @@ emit_ft4_nocull_mirror:
 	nop				/* branch delay: nothing to do */
 
 	/* Screen x,y from the SXY FIFO into the primitive */
-	lw	a0, g_sprite_workspace	/* a0 = primitive (lui+lw macro) */
+	lw	a0, g_spriteWorkspace	/* a0 = primitive (lui+lw macro) */
 	mfc2	t2, C2_SXY0
 	mfc2	t3, C2_SXY1
 	mfc2	t4, C2_SXY2
@@ -2111,7 +2111,7 @@ $4a1f4_max2:
 
 	/* v0 = &ot[z >> OT_SHIFT] */
 	sra	v0, v0, OT_SHIFT
-	lw	v1, g_render_buffer	/* v1 = OT base (lui+lw macro) */
+	lw	v1, g_renderBuffer	/* v1 = OT base (lui+lw macro) */
 	sll	v0, v0, 2
 	addu	v0, v0, v1
 
@@ -2145,7 +2145,7 @@ $4a1f4_max2:
 
 	/* Advance the primitive allocation pointer */
 	addiu	a0, a0, POLY_FT4_SIZE
-	sw	a0, g_sprite_workspace	/* macro: lui AT, then sw through AT */
+	sw	a0, g_spriteWorkspace	/* macro: lui AT, then sw through AT */
 $4a1f4_done:
 	lw	ra, 16(sp)
 	nop				/* load delay */
@@ -2153,28 +2153,28 @@ $4a1f4_done:
 	addiu	sp, sp, 24		/* delay slot (real work): pop the frame */
 
 /*
- * emit_ft3_alt_nocull - emit a POLY_FT3 (textured triangle), texture corners 3,1,2
+ * Model_EmitFT3AltNoCull - emit a POLY_FT3 (textured triangle), texture corners 3,1,2
  *
  * Purpose:    transform the three vertices with RotTransPers3_nom (RTPT), fill a POLY_FT3 at
- *             the primitive allocation pointer g_sprite_workspace, store its colour word
- *             unchanged, link it into the ordering table g_render_buffer at its farthest z,
- *             and advance g_sprite_workspace.
+ *             the primitive allocation pointer g_spriteWorkspace, store its colour word
+ *             unchanged, link it into the ordering table g_renderBuffer at its farthest z,
+ *             and advance g_spriteWorkspace.
  * Inputs:     a0 = pointer to 3 SVECTOR pointers; the corners are taken in reverse order
  *             (the last vertex becomes x0,y0).
  *             a1 = pointer to the colour word (r,g,b,code), stored as is.
  *             a2 = pointer to a 16-byte texture record: u0v0+clut, u1v1+tpage, u2v2, u3v3.
- *             g_sprite_workspace = next free primitive; g_render_buffer = ordering table.
- * Outputs:    none in registers; the primitive, the OT entry and g_sprite_workspace.
+ *             g_spriteWorkspace = next free primitive; g_renderBuffer = ordering table.
+ * Outputs:    none in registers; the primitive, the OT entry and g_spriteWorkspace.
  * Clobbers:   v0, v1, a0..a3, t0..t6, AT ($1), the GTE.
  * Preserves:  s0..s7, sp; ra is saved in a 24-byte frame around the calls.
  * Live across calls: t0 (colour word) and t1 (texture record) across the libgte
  *             calls, which use only a0..a3, v0, v1 and the GTE.
  * Scratchpad: none.
- * Callers:    g_dispatch_table[7] (pointer at 0x8006d43c), called by model_draw_mid_in_cell.
+ * Callers:    g_dispatch_table[7] (pointer at 0x8006d43c), called by Model_DrawMidInCell.
  * Callees:    RotTransPers3_nom (Runtime Library 3.3 libgte).
  */
-	.globl	emit_ft3_alt_nocull
-emit_ft3_alt_nocull:
+	.globl	Model_EmitFT3AltNoCull
+Model_EmitFT3AltNoCull:
 	addiu	sp, sp, -24		/* frame: argument save area + ra */
 	sw	ra, 16(sp)
 	lw	t0, 0(a1)		/* t0 = colour word */
@@ -2188,7 +2188,7 @@ emit_ft3_alt_nocull:
 	nop				/* branch delay: nothing to do */
 
 	/* Screen x,y from the SXY FIFO into the primitive */
-	lw	a0, g_sprite_workspace	/* a0 = primitive (lui+lw macro) */
+	lw	a0, g_spriteWorkspace	/* a0 = primitive (lui+lw macro) */
 	mfc2	t2, C2_SXY0
 	mfc2	t3, C2_SXY1
 	mfc2	t4, C2_SXY2
@@ -2215,7 +2215,7 @@ $4a304_max1:
 
 	/* v0 = &ot[z >> OT_SHIFT] */
 	sra	v0, v0, OT_SHIFT
-	lw	v1, g_render_buffer	/* v1 = OT base (lui+lw macro) */
+	lw	v1, g_renderBuffer	/* v1 = OT base (lui+lw macro) */
 	sll	v0, v0, 2
 	addu	v0, v0, v1
 
@@ -2239,7 +2239,7 @@ $4a304_max1:
 
 	/* Advance the primitive allocation pointer */
 	addiu	a0, a0, POLY_FT3_SIZE
-	sw	a0, g_sprite_workspace	/* macro: lui AT, then sw through AT */
+	sw	a0, g_spriteWorkspace	/* macro: lui AT, then sw through AT */
 $4a304_done:
 	lw	ra, 16(sp)
 	nop				/* load delay */
@@ -2247,18 +2247,18 @@ $4a304_done:
 	addiu	sp, sp, 24		/* delay slot (real work): pop the frame */
 
 /*
- * emit_ft4_abe - emit a POLY_FT4 (textured quad), semi-transparent
+ * Model_EmitFT4ABE - emit a POLY_FT4 (textured quad), semi-transparent
  *
  * Purpose:    transform the four vertices with RotTransPers4_nom (RTPT on three, then RTPS on
  *             the fourth), fill a POLY_FT4 at the primitive allocation pointer
- *             g_sprite_workspace, store its colour word unchanged, link it into the ordering
- *             table g_render_buffer at its farthest z, and advance g_sprite_workspace.
+ *             g_spriteWorkspace, store its colour word unchanged, link it into the ordering
+ *             table g_renderBuffer at its farthest z, and advance g_spriteWorkspace.
  * Inputs:     a0 = pointer to 4 SVECTOR pointers; the corners are taken in reverse order
  *             (the last vertex becomes x0,y0).
  *             a1 = pointer to the colour word (r,g,b,code), stored as is.
  *             a2 = pointer to a 16-byte texture record: u0v0+clut, u1v1+tpage, u2v2, u3v3.
- *             g_sprite_workspace = next free primitive; g_render_buffer = ordering table.
- * Outputs:    none in registers; the primitive, the OT entry and g_sprite_workspace.
+ *             g_spriteWorkspace = next free primitive; g_renderBuffer = ordering table.
+ * Outputs:    none in registers; the primitive, the OT entry and g_spriteWorkspace.
  * Clobbers:   v0, v1, a0..a3, t0..t6, AT ($1), the GTE.
  * Preserves:  s0..s7, sp; ra is saved in a 24-byte frame around the calls.
  * Live across calls: t0 (colour word) and t1 (texture record) across the libgte
@@ -2266,12 +2266,12 @@ $4a304_done:
  *             v1 = SXY of the last vertex, which RotTransPers4_nom reads from SXY0 before
  *             its RTPS pushes it out of the FIFO.
  * Scratchpad: none.
- * Callers:    g_dispatch_table[12] (pointer at 0x8006d450), called by model_draw_mid_in_cell; jal from
- *             draw_mid_ft4_abe_by_state (0x8001fb14).
+ * Callers:    g_dispatch_table[12] (pointer at 0x8006d450), called by Model_DrawMidInCell; jal from
+ *             Model_DrawMidFT4ABEByState (0x8001fb14).
  * Callees:    RotTransPers4_nom (Runtime Library 3.3 libgte).
  */
-	.globl	emit_ft4_abe
-emit_ft4_abe:
+	.globl	Model_EmitFT4ABE
+Model_EmitFT4ABE:
 	addiu	sp, sp, -24		/* frame: argument save area + ra */
 	sw	ra, 16(sp)
 	lw	t0, 0(a1)		/* t0 = colour word */
@@ -2286,7 +2286,7 @@ emit_ft4_abe:
 	nop				/* branch delay: nothing to do */
 
 	/* Screen x,y from the SXY FIFO into the primitive */
-	lw	a0, g_sprite_workspace	/* a0 = primitive (lui+lw macro) */
+	lw	a0, g_spriteWorkspace	/* a0 = primitive (lui+lw macro) */
 	mfc2	t2, C2_SXY0
 	mfc2	t3, C2_SXY1
 	mfc2	t4, C2_SXY2
@@ -2320,7 +2320,7 @@ $4a3d8_max2:
 
 	/* v0 = &ot[z >> OT_SHIFT] */
 	sra	v0, v0, OT_SHIFT
-	lw	v1, g_render_buffer	/* v1 = OT base (lui+lw macro) */
+	lw	v1, g_renderBuffer	/* v1 = OT base (lui+lw macro) */
 	sll	v0, v0, 2
 	addu	v0, v0, v1
 
@@ -2346,7 +2346,7 @@ $4a3d8_max2:
 
 	/* Advance the primitive allocation pointer */
 	addiu	a0, a0, POLY_FT4_SIZE
-	sw	a0, g_sprite_workspace	/* macro: lui AT, then sw through AT */
+	sw	a0, g_spriteWorkspace	/* macro: lui AT, then sw through AT */
 $4a3d8_done:
 	lw	ra, 16(sp)
 	nop				/* load delay */
@@ -2354,18 +2354,18 @@ $4a3d8_done:
 	addiu	sp, sp, 24		/* delay slot (real work): pop the frame */
 
 /*
- * emit_f4_abe - emit a POLY_F4 (flat quad), semi-transparent
+ * Model_EmitF4ABE - emit a POLY_F4 (flat quad), semi-transparent
  *
  * Purpose:    transform the four vertices with RotTransPers4_nom (RTPT on three, then RTPS on
  *             the fourth), fill a POLY_F4 at the primitive allocation pointer
- *             g_sprite_workspace, store its colour word unchanged, link it into the ordering
- *             table g_render_buffer at its farthest z, and advance g_sprite_workspace.
+ *             g_spriteWorkspace, store its colour word unchanged, link it into the ordering
+ *             table g_renderBuffer at its farthest z, and advance g_spriteWorkspace.
  * Inputs:     a0 = pointer to 4 SVECTOR pointers; the corners are taken in reverse order
  *             (the last vertex becomes x0,y0).
  *             a1 = pointer to the colour word (r,g,b,code), stored as is.
  *             a2 = unused (flat polygon: no texture record).
- *             g_sprite_workspace = next free primitive; g_render_buffer = ordering table.
- * Outputs:    none in registers; the primitive, the OT entry and g_sprite_workspace.
+ *             g_spriteWorkspace = next free primitive; g_renderBuffer = ordering table.
+ * Outputs:    none in registers; the primitive, the OT entry and g_spriteWorkspace.
  * Clobbers:   v0, v1, a0..a3, t0..t6, AT ($1), the GTE.
  * Preserves:  s0..s7, sp; ra is saved in a 24-byte frame around the calls.
  * Live across calls: t0 (colour word) across the libgte
@@ -2373,11 +2373,11 @@ $4a3d8_done:
  *             v1 = SXY of the last vertex, which RotTransPers4_nom reads from SXY0 before
  *             its RTPS pushes it out of the FIFO.
  * Scratchpad: none.
- * Callers:    g_dispatch_table[14] (pointer at 0x8006d458), called by model_draw_mid_in_cell.
+ * Callers:    g_dispatch_table[14] (pointer at 0x8006d458), called by Model_DrawMidInCell.
  * Callees:    RotTransPers4_nom (Runtime Library 3.3 libgte).
  */
-	.globl	emit_f4_abe
-emit_f4_abe:
+	.globl	Model_EmitF4ABE
+Model_EmitF4ABE:
 	addiu	sp, sp, -24		/* frame: argument save area + ra */
 	sw	ra, 16(sp)
 	lw	t0, 0(a1)		/* t0 = colour word */
@@ -2391,7 +2391,7 @@ emit_f4_abe:
 	nop				/* branch delay: nothing to do */
 
 	/* Screen x,y from the SXY FIFO into the primitive */
-	lw	a0, g_sprite_workspace	/* a0 = primitive (lui+lw macro) */
+	lw	a0, g_spriteWorkspace	/* a0 = primitive (lui+lw macro) */
 	mfc2	t2, C2_SXY0
 	mfc2	t3, C2_SXY1
 	mfc2	t4, C2_SXY2
@@ -2425,7 +2425,7 @@ $4a4d0_max2:
 
 	/* v0 = &ot[z >> OT_SHIFT] */
 	sra	v0, v0, OT_SHIFT
-	lw	v1, g_render_buffer	/* v1 = OT base (lui+lw macro) */
+	lw	v1, g_renderBuffer	/* v1 = OT base (lui+lw macro) */
 	sll	v0, v0, 2
 	addu	v0, v0, v1
 
@@ -2441,7 +2441,7 @@ $4a4d0_max2:
 
 	/* Advance the primitive allocation pointer */
 	addiu	a0, a0, POLY_F4_SIZE
-	sw	a0, g_sprite_workspace	/* macro: lui AT, then sw through AT */
+	sw	a0, g_spriteWorkspace	/* macro: lui AT, then sw through AT */
 $4a4d0_done:
 	lw	ra, 16(sp)
 	nop				/* load delay */
@@ -2449,18 +2449,18 @@ $4a4d0_done:
 	addiu	sp, sp, 24		/* delay slot (real work): pop the frame */
 
 /*
- * emit_ft4_abe_mirror - emit a POLY_FT4 (textured quad), semi-transparent, texture mirrored left-right
+ * Model_EmitFT4ABEMirror - emit a POLY_FT4 (textured quad), semi-transparent, texture mirrored left-right
  *
  * Purpose:    transform the four vertices with RotTransPers4_nom (RTPT on three, then RTPS on
  *             the fourth), fill a POLY_FT4 at the primitive allocation pointer
- *             g_sprite_workspace, store its colour word unchanged, link it into the ordering
- *             table g_render_buffer at its farthest z, and advance g_sprite_workspace.
+ *             g_spriteWorkspace, store its colour word unchanged, link it into the ordering
+ *             table g_renderBuffer at its farthest z, and advance g_spriteWorkspace.
  * Inputs:     a0 = pointer to 4 SVECTOR pointers; the corners are taken in reverse order
  *             (the last vertex becomes x0,y0).
  *             a1 = pointer to the colour word (r,g,b,code), stored as is.
  *             a2 = pointer to a 16-byte texture record: u0v0+clut, u1v1+tpage, u2v2, u3v3.
- *             g_sprite_workspace = next free primitive; g_render_buffer = ordering table.
- * Outputs:    none in registers; the primitive, the OT entry and g_sprite_workspace.
+ *             g_spriteWorkspace = next free primitive; g_renderBuffer = ordering table.
+ * Outputs:    none in registers; the primitive, the OT entry and g_spriteWorkspace.
  * Clobbers:   v0, v1, a0..a3, t0..t6, AT ($1), the GTE.
  * Preserves:  s0..s7, sp; ra is saved in a 24-byte frame around the calls.
  * Live across calls: t0 (colour word) and t1 (texture record) across the libgte
@@ -2468,12 +2468,12 @@ $4a4d0_done:
  *             v1 = SXY of the last vertex, which RotTransPers4_nom reads from SXY0 before
  *             its RTPS pushes it out of the FIFO.
  * Scratchpad: none.
- * Callers:    g_dispatch_table[34] (pointer at 0x8006d4a8), called by model_draw_mid_in_cell; jal from
- *             draw_mid_ft4_abe_mirror_by_state (0x8001fb58).
+ * Callers:    g_dispatch_table[34] (pointer at 0x8006d4a8), called by Model_DrawMidInCell; jal from
+ *             Model_DrawMidFT4ABEMirrorByState (0x8001fb58).
  * Callees:    RotTransPers4_nom (Runtime Library 3.3 libgte).
  */
-	.globl	emit_ft4_abe_mirror
-emit_ft4_abe_mirror:
+	.globl	Model_EmitFT4ABEMirror
+Model_EmitFT4ABEMirror:
 	addiu	sp, sp, -24		/* frame: argument save area + ra */
 	sw	ra, 16(sp)
 	lw	t0, 0(a1)		/* t0 = colour word */
@@ -2488,7 +2488,7 @@ emit_ft4_abe_mirror:
 	nop				/* branch delay: nothing to do */
 
 	/* Screen x,y from the SXY FIFO into the primitive */
-	lw	a0, g_sprite_workspace	/* a0 = primitive (lui+lw macro) */
+	lw	a0, g_spriteWorkspace	/* a0 = primitive (lui+lw macro) */
 	mfc2	t2, C2_SXY0
 	mfc2	t3, C2_SXY1
 	mfc2	t4, C2_SXY2
@@ -2522,7 +2522,7 @@ $4a5a4_max2:
 
 	/* v0 = &ot[z >> OT_SHIFT] */
 	sra	v0, v0, OT_SHIFT
-	lw	v1, g_render_buffer	/* v1 = OT base (lui+lw macro) */
+	lw	v1, g_renderBuffer	/* v1 = OT base (lui+lw macro) */
 	sll	v0, v0, 2
 	addu	v0, v0, v1
 
@@ -2556,7 +2556,7 @@ $4a5a4_max2:
 
 	/* Advance the primitive allocation pointer */
 	addiu	a0, a0, POLY_FT4_SIZE
-	sw	a0, g_sprite_workspace	/* macro: lui AT, then sw through AT */
+	sw	a0, g_spriteWorkspace	/* macro: lui AT, then sw through AT */
 $4a5a4_done:
 	lw	ra, 16(sp)
 	nop				/* load delay */

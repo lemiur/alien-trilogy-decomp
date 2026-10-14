@@ -1,220 +1,376 @@
 /*
  * Sprite animation tables of the hand-written module asm/sprite_anims.s (retail .text
  * 0x800558e8..0x800588bb). Each animation is a frame list followed by its script; the
- * TrackEntry tables in .data (<TRACK.H>) pair them. Requires <sys/types.h> and <SPRITE.H>.
+ * trackEntry_t tables in .data (<TRACK.H>) pair them. Requires <sys/types.h> and <SPRITE.H>.
  * Names are the labels' addresses until their animations are identified.
  */
 #ifndef ANIMS_H
 #define ANIMS_H
 
-extern SpriteFrame g_pulse_rifle_anim0_frames[1];	extern u_short g_pulse_rifle_anim0_script[];	/* animation 0 */
-extern SpriteFrame g_pulse_rifle_anim2_frames[6];	extern u_short g_pulse_rifle_anim2_script[];	/* animation 1 */
-extern SpriteFrame g_pulse_rifle_anim3_frames[4];	extern u_short g_pulse_rifle_anim3_script[];	/* animation 2 */
-extern SpriteFrame g_pulse_rifle_anim1_frames[3];	extern u_short g_pulse_rifle_anim1_script[];	/* animation 3 */
-extern SpriteFrame g_shotgun_anim0_frames[1];	extern u_short g_shotgun_anim0_script[];	/* animation 4 */
-extern SpriteFrame g_shotgun_anim1_frames[8];	extern u_short g_shotgun_anim1_script[];	/* animation 5 */
-extern SpriteFrame g_pistol_anim0_frames[1];	extern u_short g_pistol_anim0_script[];	/* animation 6 */
-extern SpriteFrame g_pistol_anim1_frames[3];	extern u_short g_pistol_anim1_script[];	/* animation 7 */
-extern SpriteFrame g_pistol_anim2_frames[3];	extern u_short g_pistol_anim2_script[];	/* animation 8 */
-extern SpriteFrame g_flamethrower_anim0_frames[1];	extern u_short g_flamethrower_anim0_script[];	/* animation 9 */
-extern SpriteFrame g_flamethrower_anim1_frames[1];	extern u_short g_flamethrower_anim1_script[];	/* animation 10 */
-extern SpriteFrame g_flamethrower_anim2_frames[5];	extern u_short g_flamethrower_anim2_script[];	/* animation 11 */
-extern SpriteFrame g_smart_gun_anim1_frames[4];	extern u_short g_smart_gun_anim1_script[];	/* animation 12 */
-extern SpriteFrame g_smart_gun_anim2_frames[5];	extern u_short g_smart_gun_anim2_script[];	/* animation 13 */
-extern SpriteFrame g_smart_gun_anim0_frames[1];	extern u_short g_smart_gun_anim0_script[];	/* animation 14 */
-extern SpriteFrame g_egg_anim0_frames[3];	extern u_short g_egg_anim0_script[];	/* animation 15 */
-extern SpriteFrame g_egg_anim1_frames[3];	extern u_short g_egg_anim1_script[];	/* animation 16 */
-extern SpriteFrame g_egg_anim2_frames[5];	extern u_short g_egg_anim2_script[];	/* animation 17 */
-extern SpriteFrame g_egg_anim3_frames[6];	extern u_short g_egg_anim3_script[];	/* animation 18 */
-extern SpriteFrame g_egg_anim4_frames[8];	extern u_short g_egg_anim4_script[];	/* animation 19 */
-extern SpriteFrame g_egg_anim5_frames[8];	extern u_short g_egg_anim5_script[];	/* animation 20 */
-extern SpriteFrame g_hugger_anim0_frames[4];	extern u_short g_hugger_anim0_script[];	/* animation 21 */
-extern SpriteFrame g_hugger_anim4_frames[4];	extern u_short g_hugger_anim4_script[];	/* animation 22 */
-extern SpriteFrame g_hugger_anim2_frames[4];	extern u_short g_hugger_anim2_script[];	/* animation 23 */
-extern SpriteFrame g_hugger_anim1_frames[4];	extern u_short g_hugger_anim1_script[];	/* animation 24 */
-extern SpriteFrame g_hugger_anim3_frames[4];	extern u_short g_hugger_anim3_script[];	/* animation 25 */
-extern SpriteFrame g_hugger_anim6_frames[6];	extern u_short g_hugger_anim6_script[];	/* animation 26 */
-extern SpriteFrame g_hugger_anim7_frames[8];	extern u_short g_hugger_anim7_script[];	/* animation 27 */
-extern SpriteFrame g_hugger_anim5_frames[4];	extern u_short g_hugger_anim5_script[];	/* animation 28 */
-extern SpriteFrame g_warrior_anim5_frames[7];	extern u_short g_warrior_anim5_script[];	/* animation 29 */
-extern SpriteFrame g_warrior_anim3_frames[7];	extern u_short g_warrior_anim3_script[];	/* animation 30 */
-extern SpriteFrame g_warrior_anim4_frames[7];	extern u_short g_warrior_anim4_script[];	/* animation 31 */
-extern SpriteFrame g_warrior_anim7_frames[7];	extern u_short g_warrior_anim7_script[];	/* animation 32 */
-extern SpriteFrame g_warrior_anim6_frames[7];	extern u_short g_warrior_anim6_script[];	/* animation 33 */
-extern SpriteFrame g_warrior_anim0_frames[3];	extern u_short g_warrior_anim0_script[];	/* animation 34 */
-extern SpriteFrame g_warrior_anim1_frames[3];	extern u_short g_warrior_anim1_script[];	/* animation 35 */
-extern SpriteFrame g_warrior_anim2_frames[6];	extern u_short g_warrior_anim2_script[];	/* animation 36 */
-extern SpriteFrame g_warrior_anim8_frames[4];	extern u_short g_warrior_anim8_script[];	/* animation 37 */
-extern SpriteFrame g_warrior_anim9_frames[7];	extern u_short g_warrior_anim9_script[];	/* animation 38 */
-extern SpriteFrame g_handler_anim0_frames[7];	extern u_short g_handler_anim0_script[];	/* animation 39 */
-extern SpriteFrame g_handler_anim1_frames[7];	extern u_short g_handler_anim1_script[];	/* animation 40 */
-extern SpriteFrame g_handler_anim2_frames[7];	extern u_short g_handler_anim2_script[];	/* animation 41 */
-extern SpriteFrame g_handler_anim3_frames[7];	extern u_short g_handler_anim3_script[];	/* animation 42 */
-extern SpriteFrame g_handler_anim4_frames[7];	extern u_short g_handler_anim4_script[];	/* animation 43 */
-extern SpriteFrame g_handler_anim5_frames[3];	extern u_short g_handler_anim5_script[];	/* animation 44 */
-extern SpriteFrame g_handler_anim6_frames[5];	extern u_short g_handler_anim6_script[];	/* animation 45 */
-extern SpriteFrame g_handler_anim7_frames[8];	extern u_short g_handler_anim7_script[];	/* animation 46 */
-extern SpriteFrame g_handler_anim8_frames[3];	extern u_short g_handler_anim8_script[];	/* animation 47 */
-extern SpriteFrame g_burster_anim0_frames[4];	extern u_short g_burster_anim0_script[];	/* animation 48 */
-extern SpriteFrame g_burster_anim1_frames[8];	extern u_short g_burster_anim1_script[];	/* animation 49 */
-extern SpriteFrame g_burster_anim2_frames[4];	extern u_short g_burster_anim2_script[];	/* animation 50 */
-extern SpriteFrame g_burster_anim3_frames[4];	extern u_short g_burster_anim3_script[];	/* animation 51 */
-extern SpriteFrame g_burster_anim4_frames[6];	extern u_short g_burster_anim4_script[];	/* animation 52 */
-extern SpriteFrame g_burster_anim5_frames[6];	extern u_short g_burster_anim5_script[];	/* animation 53 */
-extern SpriteFrame g_burster_anim6_frames[4];	extern u_short g_burster_anim6_script[];	/* animation 54 */
-extern SpriteFrame g_burster_anim7_frames[4];	extern u_short g_burster_anim7_script[];	/* animation 55 */
-extern SpriteFrame g_burster_anim8_frames[4];	extern u_short g_burster_anim8_script[];	/* animation 56 */
-extern SpriteFrame g_burster_anim9_frames[4];	extern u_short g_burster_anim9_script[];	/* animation 57 */
-extern SpriteFrame g_burster_anim10_frames[4];	extern u_short g_burster_anim10_script[];	/* animation 58 */
-extern SpriteFrame g_bambi_anim0_frames[6];	extern u_short g_bambi_anim0_script[];	/* animation 59 */
-extern SpriteFrame g_bambi_anim1_frames[3];	extern u_short g_bambi_anim1_script[];	/* animation 60 */
-extern SpriteFrame g_bambi_anim2_frames[3];	extern u_short g_bambi_anim2_script[];	/* animation 61 */
-extern SpriteFrame g_bambi_anim3_frames[7];	extern u_short g_bambi_anim3_script[];	/* animation 62 */
-extern SpriteFrame g_bambi_anim4_frames[7];	extern u_short g_bambi_anim4_script[];	/* animation 63 */
-extern SpriteFrame g_bambi_anim5_frames[7];	extern u_short g_bambi_anim5_script[];	/* animation 64 */
-extern SpriteFrame g_bambi_anim6_frames[7];	extern u_short g_bambi_anim6_script[];	/* animation 65 */
-extern SpriteFrame g_bambi_anim7_frames[7];	extern u_short g_bambi_anim7_script[];	/* animation 66 */
-extern SpriteFrame g_bambi_anim8_frames[6];	extern u_short g_bambi_anim8_script[];	/* animation 67 */
-extern SpriteFrame g_bambi_anim9_frames[6];	extern u_short g_bambi_anim9_script[];	/* animation 68 */
-extern SpriteFrame g_soldier_anim0_frames[4];	extern u_short g_soldier_anim0_script[];	/* animation 69 */
-extern SpriteFrame g_soldier_anim1_frames[3];	extern u_short g_soldier_anim1_script[];	/* animation 70 */
-extern SpriteFrame g_soldier_anim2_frames[5];	extern u_short g_soldier_anim2_script[];	/* animation 71 */
-extern SpriteFrame g_soldier_anim3_frames[7];	extern u_short g_soldier_anim3_script[];	/* animation 72 */
-extern SpriteFrame g_soldier_anim5_frames[7];	extern u_short g_soldier_anim5_script[];	/* animation 73 */
-extern SpriteFrame g_soldier_anim4_frames[7];	extern u_short g_soldier_anim4_script[];	/* animation 74 */
-extern SpriteFrame g_soldier_anim6_frames[7];	extern u_short g_soldier_anim6_script[];	/* animation 75 */
-extern SpriteFrame g_soldier_anim7_frames[7];	extern u_short g_soldier_anim7_script[];	/* animation 76 */
-extern SpriteFrame g_guard_anim0_frames[3];	extern u_short g_guard_anim0_script[];	/* animation 77 */
-extern SpriteFrame g_guard_anim1_frames[5];	extern u_short g_guard_anim1_script[];	/* animation 78 */
-extern SpriteFrame g_guard_anim2_frames[3];	extern u_short g_guard_anim2_script[];	/* animation 79 */
-extern SpriteFrame g_guard_anim4_frames[7];	extern u_short g_guard_anim4_script[];	/* animation 80 */
-extern SpriteFrame g_guard_anim3_frames[7];	extern u_short g_guard_anim3_script[];	/* animation 81 */
-extern SpriteFrame g_guard_anim5_frames[7];	extern u_short g_guard_anim5_script[];	/* animation 82 */
-extern SpriteFrame g_guard_anim7_frames[7];	extern u_short g_guard_anim7_script[];	/* animation 83 */
-extern SpriteFrame g_guard_anim6_frames[7];	extern u_short g_guard_anim6_script[];	/* animation 84 */
-extern SpriteFrame g_synth_anim0_frames[3];	extern u_short g_synth_anim0_script[];	/* animation 85 */
-extern SpriteFrame g_synth_anim1_frames[2];	extern u_short g_synth_anim1_script[];	/* animation 86 */
-extern SpriteFrame g_synth_anim2_frames[4];	extern u_short g_synth_anim2_script[];	/* animation 87 */
-extern SpriteFrame g_synth_anim3_frames[4];	extern u_short g_synth_anim3_script[];	/* animation 88 */
-extern SpriteFrame g_synth_anim4_frames[3];	extern u_short g_synth_anim4_script[];	/* animation 89 */
-extern SpriteFrame g_synth_anim6_frames[7];	extern u_short g_synth_anim6_script[];	/* animation 90 */
-extern SpriteFrame g_synth_anim5_frames[7];	extern u_short g_synth_anim5_script[];	/* animation 91 */
-extern SpriteFrame g_synth_anim7_frames[7];	extern u_short g_synth_anim7_script[];	/* animation 92 */
-extern SpriteFrame g_synth_anim8_frames[7];	extern u_short g_synth_anim8_script[];	/* animation 93 */
-extern SpriteFrame g_synth_anim11_frames[7];	extern u_short g_synth_anim11_script[];	/* animation 94 */
-extern SpriteFrame g_synth_anim12_frames[7];	extern u_short g_synth_anim12_script[];	/* animation 95 */
-extern SpriteFrame g_synth_anim9_frames[7];	extern u_short g_synth_anim9_script[];	/* animation 96 */
-extern SpriteFrame g_synth_anim10_frames[7];	extern u_short g_synth_anim10_script[];	/* animation 97 */
-extern SpriteFrame g_dog_anim0_frames[3];	extern u_short g_dog_anim0_script[];	/* animation 98 */
-extern SpriteFrame g_dog_anim1_frames[3];	extern u_short g_dog_anim1_script[];	/* animation 99 */
-extern SpriteFrame g_dog_anim2_frames[5];	extern u_short g_dog_anim2_script[];	/* animation 100 */
-extern SpriteFrame g_dog_anim3_frames[5];	extern u_short g_dog_anim3_script[];	/* animation 101 */
-extern SpriteFrame g_dog_anim4_frames[7];	extern u_short g_dog_anim4_script[];	/* animation 102 */
-extern SpriteFrame g_dog_anim5_frames[7];	extern u_short g_dog_anim5_script[];	/* animation 103 */
-extern SpriteFrame g_dog_anim6_frames[7];	extern u_short g_dog_anim6_script[];	/* animation 104 */
-extern SpriteFrame g_dog_anim7_frames[7];	extern u_short g_dog_anim7_script[];	/* animation 105 */
-extern SpriteFrame g_dog_anim8_frames[7];	extern u_short g_dog_anim8_script[];	/* animation 106 */
-extern SpriteFrame g_dog_anim9_frames[8];	extern u_short g_dog_anim9_script[];	/* animation 107 */
-extern SpriteFrame g_dog_anim10_frames[6];	extern u_short g_dog_anim10_script[];	/* animation 108 */
-extern SpriteFrame g_fingers_anim1_frames[4];	extern u_short g_fingers_anim1_script[];	/* animation 109 */
-extern SpriteFrame g_fingers_anim0_frames[4];	extern u_short g_fingers_anim0_script[];	/* animation 110 */
-extern SpriteFrame g_queen_anim0_frames[4];	extern u_short g_queen_anim0_script[];	/* animation 111 */
-extern SpriteFrame g_queen_anim1_frames[11];	extern u_short g_queen_anim1_script[];	/* animation 112 */
-extern SpriteFrame g_queen_anim2_frames[10];	extern u_short g_queen_anim2_script[];	/* animation 113 */
-extern SpriteFrame g_queen_anim3_frames[6];	extern u_short g_queen_anim3_script[];	/* animation 114 */
-extern SpriteFrame g_queen_anim4_frames[11];	extern u_short g_queen_anim4_script[];	/* animation 115 */
-extern SpriteFrame g_queen_anim5_frames[11];	extern u_short g_queen_anim5_script[];	/* animation 116 */
-extern SpriteFrame g_queen_anim6_frames[6];	extern u_short g_queen_anim6_script[];	/* animation 117 */
-extern SpriteFrame g_queen_anim7_frames[6];	extern u_short g_queen_anim7_script[];	/* animation 118 */
-extern SpriteFrame g_queen_anim8_frames[6];	extern u_short g_queen_anim8_script[];	/* animation 119 */
-extern SpriteFrame g_queen_anim9_frames[3];	extern u_short g_queen_anim9_script[];	/* animation 120 */
-extern SpriteFrame g_queen_anim10_frames[4];	extern u_short g_queen_anim10_script[];	/* animation 121 */
-extern SpriteFrame g_queen_anim11_frames[7];	extern u_short g_queen_anim11_script[];	/* animation 122 */
-extern SpriteFrame g_warrior_ceiling_anim2_frames[7];	extern u_short g_warrior_ceiling_anim2_script[];	/* animation 123 */
-extern SpriteFrame g_warrior_ceiling_anim3_frames[7];	extern u_short g_warrior_ceiling_anim3_script[];	/* animation 124 */
-extern SpriteFrame g_warrior_ceiling_anim0_frames[5];	extern u_short g_warrior_ceiling_anim0_script[];	/* animation 125 */
-extern SpriteFrame g_warrior_ceiling_anim1_frames[3];	extern u_short g_warrior_ceiling_anim1_script[];	/* animation 126 */
-extern SpriteFrame g_warrior_ceiling_anim4_frames[4];	extern u_short g_warrior_ceiling_anim4_script[];	/* animation 127 */
-extern SpriteFrame g_colonist_anim0_frames[1];	extern u_short g_colonist_anim0_script[];	/* animation 128 */
-extern SpriteFrame g_colonist_anim1_frames[1];	extern u_short g_colonist_anim1_script[];	/* animation 129 */
-extern SpriteFrame g_colonist_anim2_frames[1];	extern u_short g_colonist_anim2_script[];	/* animation 130 */
-extern SpriteFrame g_colonist_anim3_frames[1];	extern u_short g_colonist_anim3_script[];	/* animation 131 */
-extern SpriteFrame g_colonist_anim4_frames[1];	extern u_short g_colonist_anim4_script[];	/* animation 132 */
-extern SpriteFrame g_colonist_anim5_frames[1];	extern u_short g_colonist_anim5_script[];	/* animation 133 */
-extern SpriteFrame g_colonist_anim6_frames[1];	extern u_short g_colonist_anim6_script[];	/* animation 134 */
-extern SpriteFrame g_colonist_anim7_frames[1];	extern u_short g_colonist_anim7_script[];	/* animation 135 */
-extern SpriteFrame g_colonist_anim8_frames[1];	extern u_short g_colonist_anim8_script[];	/* animation 136 */
-extern SpriteFrame g_colonist_anim9_frames[1];	extern u_short g_colonist_anim9_script[];	/* animation 137 */
-extern SpriteFrame g_colonist_anim10_frames[2];	extern u_short g_colonist_anim10_script[];	/* animation 138 */
-extern SpriteFrame g_colonist_anim11_frames[2];	extern u_short g_colonist_anim11_script[];	/* animation 139 */
-extern SpriteFrame g_colonist_anim12_frames[2];	extern u_short g_colonist_anim12_script[];	/* animation 140 */
-extern SpriteFrame g_colonist_anim13_frames[2];	extern u_short g_colonist_anim13_script[];	/* animation 141 */
-extern SpriteFrame g_colonist_anim14_frames[2];	extern u_short g_colonist_anim14_script[];	/* animation 142 */
-extern SpriteFrame g_colonist_anim15_frames[4];	extern u_short g_colonist_anim15_script[];	/* animation 143 */
-extern SpriteFrame g_colonist_anim16_frames[4];	extern u_short g_colonist_anim16_script[];	/* animation 144 */
-extern SpriteFrame g_colonist_anim17_frames[7];	extern u_short g_colonist_anim17_script[];	/* animation 145 */
-extern SpriteFrame g_colonist_anim18_frames[1];	extern u_short g_colonist_anim18_script[];	/* animation 146 */
-extern SpriteFrame g_colonist_anim19_frames[1];	extern u_short g_colonist_anim19_script[];	/* animation 147 */
-extern SpriteFrame g_colonist_anim20_frames[1];	extern u_short g_colonist_anim20_script[];	/* animation 148 */
-extern SpriteFrame g_colonist_anim21_frames[1];	extern u_short g_colonist_anim21_script[];	/* animation 149 */
-extern SpriteFrame g_colonist_anim22_frames[1];	extern u_short g_colonist_anim22_script[];	/* animation 150 */
-extern SpriteFrame g_dog_ceiling_anim0_frames[7];	extern u_short g_dog_ceiling_anim0_script[];	/* animation 151 */
-extern SpriteFrame g_dog_ceiling_anim1_frames[7];	extern u_short g_dog_ceiling_anim1_script[];	/* animation 152 */
-extern SpriteFrame g_dog_ceiling_anim2_frames[3];	extern u_short g_dog_ceiling_anim2_script[];	/* animation 153 */
-extern SpriteFrame g_dog_ceiling_anim3_frames[4];	extern u_short g_dog_ceiling_anim3_script[];	/* animation 154 */
-extern SpriteFrame g_dog_ceiling_anim4_frames[5];	extern u_short g_dog_ceiling_anim4_script[];	/* animation 155 */
+extern spriteFrame_t g_pulseRifleAnim0Frames[1];
+extern u_short       g_pulseRifleAnim0Script[]; /* animation 0 */
+extern spriteFrame_t g_pulseRifleAnim2Frames[6];
+extern u_short       g_pulseRifleAnim2Script[]; /* animation 1 */
+extern spriteFrame_t g_pulseRifleAnim3Frames[4];
+extern u_short       g_pulseRifleAnim3Script[]; /* animation 2 */
+extern spriteFrame_t g_pulseRifleAnim1Frames[3];
+extern u_short       g_pulseRifleAnim1Script[]; /* animation 3 */
+extern spriteFrame_t g_shotgunAnim0Frames[1];
+extern u_short       g_shotgunAnim0Script[]; /* animation 4 */
+extern spriteFrame_t g_shotgunAnim1Frames[8];
+extern u_short       g_shotgunAnim1Script[]; /* animation 5 */
+extern spriteFrame_t g_pistolAnim0Frames[1];
+extern u_short       g_pistolAnim0Script[]; /* animation 6 */
+extern spriteFrame_t g_pistolAnim1Frames[3];
+extern u_short       g_pistolAnim1Script[]; /* animation 7 */
+extern spriteFrame_t g_pistolAnim2Frames[3];
+extern u_short       g_pistolAnim2Script[]; /* animation 8 */
+extern spriteFrame_t g_flamethrowerAnim0Frames[1];
+extern u_short       g_flamethrowerAnim0Script[]; /* animation 9 */
+extern spriteFrame_t g_flamethrowerAnim1Frames[1];
+extern u_short       g_flamethrowerAnim1Script[]; /* animation 10 */
+extern spriteFrame_t g_flamethrowerAnim2Frames[5];
+extern u_short       g_flamethrowerAnim2Script[]; /* animation 11 */
+extern spriteFrame_t g_smartGunAnim1Frames[4];
+extern u_short       g_smartGunAnim1Script[]; /* animation 12 */
+extern spriteFrame_t g_smartGunAnim2Frames[5];
+extern u_short       g_smartGunAnim2Script[]; /* animation 13 */
+extern spriteFrame_t g_smartGunAnim0Frames[1];
+extern u_short       g_smartGunAnim0Script[]; /* animation 14 */
+extern spriteFrame_t g_eggAnim0Frames[3];
+extern u_short       g_eggAnim0Script[]; /* animation 15 */
+extern spriteFrame_t g_eggAnim1Frames[3];
+extern u_short       g_eggAnim1Script[]; /* animation 16 */
+extern spriteFrame_t g_eggAnim2Frames[5];
+extern u_short       g_eggAnim2Script[]; /* animation 17 */
+extern spriteFrame_t g_eggAnim3Frames[6];
+extern u_short       g_eggAnim3Script[]; /* animation 18 */
+extern spriteFrame_t g_eggAnim4Frames[8];
+extern u_short       g_eggAnim4Script[]; /* animation 19 */
+extern spriteFrame_t g_eggAnim5Frames[8];
+extern u_short       g_eggAnim5Script[]; /* animation 20 */
+extern spriteFrame_t g_huggerAnim0Frames[4];
+extern u_short       g_huggerAnim0Script[]; /* animation 21 */
+extern spriteFrame_t g_huggerAnim4Frames[4];
+extern u_short       g_huggerAnim4Script[]; /* animation 22 */
+extern spriteFrame_t g_huggerAnim2Frames[4];
+extern u_short       g_huggerAnim2Script[]; /* animation 23 */
+extern spriteFrame_t g_huggerAnim1Frames[4];
+extern u_short       g_huggerAnim1Script[]; /* animation 24 */
+extern spriteFrame_t g_huggerAnim3Frames[4];
+extern u_short       g_huggerAnim3Script[]; /* animation 25 */
+extern spriteFrame_t g_huggerAnim6Frames[6];
+extern u_short       g_huggerAnim6Script[]; /* animation 26 */
+extern spriteFrame_t g_huggerAnim7Frames[8];
+extern u_short       g_huggerAnim7Script[]; /* animation 27 */
+extern spriteFrame_t g_huggerAnim5Frames[4];
+extern u_short       g_huggerAnim5Script[]; /* animation 28 */
+extern spriteFrame_t g_warriorAnim5Frames[7];
+extern u_short       g_warriorAnim5Script[]; /* animation 29 */
+extern spriteFrame_t g_warriorAnim3Frames[7];
+extern u_short       g_warriorAnim3Script[]; /* animation 30 */
+extern spriteFrame_t g_warriorAnim4Frames[7];
+extern u_short       g_warriorAnim4Script[]; /* animation 31 */
+extern spriteFrame_t g_warriorAnim7Frames[7];
+extern u_short       g_warriorAnim7Script[]; /* animation 32 */
+extern spriteFrame_t g_warriorAnim6Frames[7];
+extern u_short       g_warriorAnim6Script[]; /* animation 33 */
+extern spriteFrame_t g_warriorAnim0Frames[3];
+extern u_short       g_warriorAnim0Script[]; /* animation 34 */
+extern spriteFrame_t g_warriorAnim1Frames[3];
+extern u_short       g_warriorAnim1Script[]; /* animation 35 */
+extern spriteFrame_t g_warriorAnim2Frames[6];
+extern u_short       g_warriorAnim2Script[]; /* animation 36 */
+extern spriteFrame_t g_warriorAnim8Frames[4];
+extern u_short       g_warriorAnim8Script[]; /* animation 37 */
+extern spriteFrame_t g_warriorAnim9Frames[7];
+extern u_short       g_warriorAnim9Script[]; /* animation 38 */
+extern spriteFrame_t g_handlerAnim0Frames[7];
+extern u_short       g_handlerAnim0Script[]; /* animation 39 */
+extern spriteFrame_t g_handlerAnim1Frames[7];
+extern u_short       g_handlerAnim1Script[]; /* animation 40 */
+extern spriteFrame_t g_handlerAnim2Frames[7];
+extern u_short       g_handlerAnim2Script[]; /* animation 41 */
+extern spriteFrame_t g_handlerAnim3Frames[7];
+extern u_short       g_handlerAnim3Script[]; /* animation 42 */
+extern spriteFrame_t g_handlerAnim4Frames[7];
+extern u_short       g_handlerAnim4Script[]; /* animation 43 */
+extern spriteFrame_t g_handlerAnim5Frames[3];
+extern u_short       g_handlerAnim5Script[]; /* animation 44 */
+extern spriteFrame_t g_handlerAnim6Frames[5];
+extern u_short       g_handlerAnim6Script[]; /* animation 45 */
+extern spriteFrame_t g_handlerAnim7Frames[8];
+extern u_short       g_handlerAnim7Script[]; /* animation 46 */
+extern spriteFrame_t g_handlerAnim8Frames[3];
+extern u_short       g_handlerAnim8Script[]; /* animation 47 */
+extern spriteFrame_t g_bursterAnim0Frames[4];
+extern u_short       g_bursterAnim0Script[]; /* animation 48 */
+extern spriteFrame_t g_bursterAnim1Frames[8];
+extern u_short       g_bursterAnim1Script[]; /* animation 49 */
+extern spriteFrame_t g_bursterAnim2Frames[4];
+extern u_short       g_bursterAnim2Script[]; /* animation 50 */
+extern spriteFrame_t g_bursterAnim3Frames[4];
+extern u_short       g_bursterAnim3Script[]; /* animation 51 */
+extern spriteFrame_t g_bursterAnim4Frames[6];
+extern u_short       g_bursterAnim4Script[]; /* animation 52 */
+extern spriteFrame_t g_bursterAnim5Frames[6];
+extern u_short       g_bursterAnim5Script[]; /* animation 53 */
+extern spriteFrame_t g_bursterAnim6Frames[4];
+extern u_short       g_bursterAnim6Script[]; /* animation 54 */
+extern spriteFrame_t g_bursterAnim7Frames[4];
+extern u_short       g_bursterAnim7Script[]; /* animation 55 */
+extern spriteFrame_t g_bursterAnim8Frames[4];
+extern u_short       g_bursterAnim8Script[]; /* animation 56 */
+extern spriteFrame_t g_bursterAnim9Frames[4];
+extern u_short       g_bursterAnim9Script[]; /* animation 57 */
+extern spriteFrame_t g_bursterAnim10Frames[4];
+extern u_short       g_bursterAnim10Script[]; /* animation 58 */
+extern spriteFrame_t g_bambiAnim0Frames[6];
+extern u_short       g_bambiAnim0Script[]; /* animation 59 */
+extern spriteFrame_t g_bambiAnim1Frames[3];
+extern u_short       g_bambiAnim1Script[]; /* animation 60 */
+extern spriteFrame_t g_bambiAnim2Frames[3];
+extern u_short       g_bambiAnim2Script[]; /* animation 61 */
+extern spriteFrame_t g_bambiAnim3Frames[7];
+extern u_short       g_bambiAnim3Script[]; /* animation 62 */
+extern spriteFrame_t g_bambiAnim4Frames[7];
+extern u_short       g_bambiAnim4Script[]; /* animation 63 */
+extern spriteFrame_t g_bambiAnim5Frames[7];
+extern u_short       g_bambiAnim5Script[]; /* animation 64 */
+extern spriteFrame_t g_bambiAnim6Frames[7];
+extern u_short       g_bambiAnim6Script[]; /* animation 65 */
+extern spriteFrame_t g_bambiAnim7Frames[7];
+extern u_short       g_bambiAnim7Script[]; /* animation 66 */
+extern spriteFrame_t g_bambiAnim8Frames[6];
+extern u_short       g_bambiAnim8Script[]; /* animation 67 */
+extern spriteFrame_t g_bambiAnim9Frames[6];
+extern u_short       g_bambiAnim9Script[]; /* animation 68 */
+extern spriteFrame_t g_soldierAnim0Frames[4];
+extern u_short       g_soldierAnim0Script[]; /* animation 69 */
+extern spriteFrame_t g_soldierAnim1Frames[3];
+extern u_short       g_soldierAnim1Script[]; /* animation 70 */
+extern spriteFrame_t g_soldierAnim2Frames[5];
+extern u_short       g_soldierAnim2Script[]; /* animation 71 */
+extern spriteFrame_t g_soldierAnim3Frames[7];
+extern u_short       g_soldierAnim3Script[]; /* animation 72 */
+extern spriteFrame_t g_soldierAnim5Frames[7];
+extern u_short       g_soldierAnim5Script[]; /* animation 73 */
+extern spriteFrame_t g_soldierAnim4Frames[7];
+extern u_short       g_soldierAnim4Script[]; /* animation 74 */
+extern spriteFrame_t g_soldierAnim6Frames[7];
+extern u_short       g_soldierAnim6Script[]; /* animation 75 */
+extern spriteFrame_t g_soldierAnim7Frames[7];
+extern u_short       g_soldierAnim7Script[]; /* animation 76 */
+extern spriteFrame_t g_guardAnim0Frames[3];
+extern u_short       g_guardAnim0Script[]; /* animation 77 */
+extern spriteFrame_t g_guardAnim1Frames[5];
+extern u_short       g_guardAnim1Script[]; /* animation 78 */
+extern spriteFrame_t g_guardAnim2Frames[3];
+extern u_short       g_guardAnim2Script[]; /* animation 79 */
+extern spriteFrame_t g_guardAnim4Frames[7];
+extern u_short       g_guardAnim4Script[]; /* animation 80 */
+extern spriteFrame_t g_guardAnim3Frames[7];
+extern u_short       g_guardAnim3Script[]; /* animation 81 */
+extern spriteFrame_t g_guardAnim5Frames[7];
+extern u_short       g_guardAnim5Script[]; /* animation 82 */
+extern spriteFrame_t g_guardAnim7Frames[7];
+extern u_short       g_guardAnim7Script[]; /* animation 83 */
+extern spriteFrame_t g_guardAnim6Frames[7];
+extern u_short       g_guardAnim6Script[]; /* animation 84 */
+extern spriteFrame_t g_synthAnim0Frames[3];
+extern u_short       g_synthAnim0Script[]; /* animation 85 */
+extern spriteFrame_t g_synthAnim1Frames[2];
+extern u_short       g_synthAnim1Script[]; /* animation 86 */
+extern spriteFrame_t g_synthAnim2Frames[4];
+extern u_short       g_synthAnim2Script[]; /* animation 87 */
+extern spriteFrame_t g_synthAnim3Frames[4];
+extern u_short       g_synthAnim3Script[]; /* animation 88 */
+extern spriteFrame_t g_synthAnim4Frames[3];
+extern u_short       g_synthAnim4Script[]; /* animation 89 */
+extern spriteFrame_t g_synthAnim6Frames[7];
+extern u_short       g_synthAnim6Script[]; /* animation 90 */
+extern spriteFrame_t g_synthAnim5Frames[7];
+extern u_short       g_synthAnim5Script[]; /* animation 91 */
+extern spriteFrame_t g_synthAnim7Frames[7];
+extern u_short       g_synthAnim7Script[]; /* animation 92 */
+extern spriteFrame_t g_synthAnim8Frames[7];
+extern u_short       g_synthAnim8Script[]; /* animation 93 */
+extern spriteFrame_t g_synthAnim11Frames[7];
+extern u_short       g_synthAnim11Script[]; /* animation 94 */
+extern spriteFrame_t g_synthAnim12Frames[7];
+extern u_short       g_synthAnim12Script[]; /* animation 95 */
+extern spriteFrame_t g_synthAnim9Frames[7];
+extern u_short       g_synthAnim9Script[]; /* animation 96 */
+extern spriteFrame_t g_synthAnim10Frames[7];
+extern u_short       g_synthAnim10Script[]; /* animation 97 */
+extern spriteFrame_t g_dogAnim0Frames[3];
+extern u_short       g_dogAnim0Script[]; /* animation 98 */
+extern spriteFrame_t g_dogAnim1Frames[3];
+extern u_short       g_dogAnim1Script[]; /* animation 99 */
+extern spriteFrame_t g_dogAnim2Frames[5];
+extern u_short       g_dogAnim2Script[]; /* animation 100 */
+extern spriteFrame_t g_dogAnim3Frames[5];
+extern u_short       g_dogAnim3Script[]; /* animation 101 */
+extern spriteFrame_t g_dogAnim4Frames[7];
+extern u_short       g_dogAnim4Script[]; /* animation 102 */
+extern spriteFrame_t g_dogAnim5Frames[7];
+extern u_short       g_dogAnim5Script[]; /* animation 103 */
+extern spriteFrame_t g_dogAnim6Frames[7];
+extern u_short       g_dogAnim6Script[]; /* animation 104 */
+extern spriteFrame_t g_dogAnim7Frames[7];
+extern u_short       g_dogAnim7Script[]; /* animation 105 */
+extern spriteFrame_t g_dogAnim8Frames[7];
+extern u_short       g_dogAnim8Script[]; /* animation 106 */
+extern spriteFrame_t g_dogAnim9Frames[8];
+extern u_short       g_dogAnim9Script[]; /* animation 107 */
+extern spriteFrame_t g_dogAnim10Frames[6];
+extern u_short       g_dogAnim10Script[]; /* animation 108 */
+extern spriteFrame_t g_fingersAnim1Frames[4];
+extern u_short       g_fingersAnim1Script[]; /* animation 109 */
+extern spriteFrame_t g_fingersAnim0Frames[4];
+extern u_short       g_fingersAnim0Script[]; /* animation 110 */
+extern spriteFrame_t g_queenAnim0Frames[4];
+extern u_short       g_queenAnim0Script[]; /* animation 111 */
+extern spriteFrame_t g_queenAnim1Frames[11];
+extern u_short       g_queenAnim1Script[]; /* animation 112 */
+extern spriteFrame_t g_queenAnim2Frames[10];
+extern u_short       g_queenAnim2Script[]; /* animation 113 */
+extern spriteFrame_t g_queenAnim3Frames[6];
+extern u_short       g_queenAnim3Script[]; /* animation 114 */
+extern spriteFrame_t g_queenAnim4Frames[11];
+extern u_short       g_queenAnim4Script[]; /* animation 115 */
+extern spriteFrame_t g_queenAnim5Frames[11];
+extern u_short       g_queenAnim5Script[]; /* animation 116 */
+extern spriteFrame_t g_queenAnim6Frames[6];
+extern u_short       g_queenAnim6Script[]; /* animation 117 */
+extern spriteFrame_t g_queenAnim7Frames[6];
+extern u_short       g_queenAnim7Script[]; /* animation 118 */
+extern spriteFrame_t g_queenAnim8Frames[6];
+extern u_short       g_queenAnim8Script[]; /* animation 119 */
+extern spriteFrame_t g_queenAnim9Frames[3];
+extern u_short       g_queenAnim9Script[]; /* animation 120 */
+extern spriteFrame_t g_queenAnim10Frames[4];
+extern u_short       g_queenAnim10Script[]; /* animation 121 */
+extern spriteFrame_t g_queenAnim11Frames[7];
+extern u_short       g_queenAnim11Script[]; /* animation 122 */
+extern spriteFrame_t g_warriorCeilingAnim2Frames[7];
+extern u_short       g_warriorCeilingAnim2Script[]; /* animation 123 */
+extern spriteFrame_t g_warriorCeilingAnim3Frames[7];
+extern u_short       g_warriorCeilingAnim3Script[]; /* animation 124 */
+extern spriteFrame_t g_warriorCeilingAnim0Frames[5];
+extern u_short       g_warriorCeilingAnim0Script[]; /* animation 125 */
+extern spriteFrame_t g_warriorCeilingAnim1Frames[3];
+extern u_short       g_warriorCeilingAnim1Script[]; /* animation 126 */
+extern spriteFrame_t g_warriorCeilingAnim4Frames[4];
+extern u_short       g_warriorCeilingAnim4Script[]; /* animation 127 */
+extern spriteFrame_t g_colonistAnim0Frames[1];
+extern u_short       g_colonistAnim0Script[]; /* animation 128 */
+extern spriteFrame_t g_colonistAnim1Frames[1];
+extern u_short       g_colonistAnim1Script[]; /* animation 129 */
+extern spriteFrame_t g_colonistAnim2Frames[1];
+extern u_short       g_colonistAnim2Script[]; /* animation 130 */
+extern spriteFrame_t g_colonistAnim3Frames[1];
+extern u_short       g_colonistAnim3Script[]; /* animation 131 */
+extern spriteFrame_t g_colonistAnim4Frames[1];
+extern u_short       g_colonistAnim4Script[]; /* animation 132 */
+extern spriteFrame_t g_colonistAnim5Frames[1];
+extern u_short       g_colonistAnim5Script[]; /* animation 133 */
+extern spriteFrame_t g_colonistAnim6Frames[1];
+extern u_short       g_colonistAnim6Script[]; /* animation 134 */
+extern spriteFrame_t g_colonistAnim7Frames[1];
+extern u_short       g_colonistAnim7Script[]; /* animation 135 */
+extern spriteFrame_t g_colonistAnim8Frames[1];
+extern u_short       g_colonistAnim8Script[]; /* animation 136 */
+extern spriteFrame_t g_colonistAnim9Frames[1];
+extern u_short       g_colonistAnim9Script[]; /* animation 137 */
+extern spriteFrame_t g_colonistAnim10Frames[2];
+extern u_short       g_colonistAnim10Script[]; /* animation 138 */
+extern spriteFrame_t g_colonistAnim11Frames[2];
+extern u_short       g_colonistAnim11Script[]; /* animation 139 */
+extern spriteFrame_t g_colonistAnim12Frames[2];
+extern u_short       g_colonistAnim12Script[]; /* animation 140 */
+extern spriteFrame_t g_colonistAnim13Frames[2];
+extern u_short       g_colonistAnim13Script[]; /* animation 141 */
+extern spriteFrame_t g_colonistAnim14Frames[2];
+extern u_short       g_colonistAnim14Script[]; /* animation 142 */
+extern spriteFrame_t g_colonistAnim15Frames[4];
+extern u_short       g_colonistAnim15Script[]; /* animation 143 */
+extern spriteFrame_t g_colonistAnim16Frames[4];
+extern u_short       g_colonistAnim16Script[]; /* animation 144 */
+extern spriteFrame_t g_colonistAnim17Frames[7];
+extern u_short       g_colonistAnim17Script[]; /* animation 145 */
+extern spriteFrame_t g_colonistAnim18Frames[1];
+extern u_short       g_colonistAnim18Script[]; /* animation 146 */
+extern spriteFrame_t g_colonistAnim19Frames[1];
+extern u_short       g_colonistAnim19Script[]; /* animation 147 */
+extern spriteFrame_t g_colonistAnim20Frames[1];
+extern u_short       g_colonistAnim20Script[]; /* animation 148 */
+extern spriteFrame_t g_colonistAnim21Frames[1];
+extern u_short       g_colonistAnim21Script[]; /* animation 149 */
+extern spriteFrame_t g_colonistAnim22Frames[1];
+extern u_short       g_colonistAnim22Script[]; /* animation 150 */
+extern spriteFrame_t g_dogCeilingAnim0Frames[7];
+extern u_short       g_dogCeilingAnim0Script[]; /* animation 151 */
+extern spriteFrame_t g_dogCeilingAnim1Frames[7];
+extern u_short       g_dogCeilingAnim1Script[]; /* animation 152 */
+extern spriteFrame_t g_dogCeilingAnim2Frames[3];
+extern u_short       g_dogCeilingAnim2Script[]; /* animation 153 */
+extern spriteFrame_t g_dogCeilingAnim3Frames[4];
+extern u_short       g_dogCeilingAnim3Script[]; /* animation 154 */
+extern spriteFrame_t g_dogCeilingAnim4Frames[5];
+extern u_short       g_dogCeilingAnim4Script[]; /* animation 155 */
 
-/* Indices into an actor's animation table (Actor.animations, actor_play_animation) that
+/* Indices into an actor's animation table (actor_t.animations, Actor_PlayAnimation) that
  * the code names by number beyond the eight facing octants. names: invented, from the
  * code that plays them */
 enum {
-    COLONIST_ANIM_COCOONED = 8, /* + octant: struggling in the cocoon (colonist_task) */
-    COLONIST_ANIM_HURT = 0x10, /* + octant (actor_hurt) */
-    COLONIST_ANIM_REACH = 0x18, /* facing the player: reaches out, then waits (colonist_task) */
-    COLONIST_ANIM_BURST = 0x1a, /* the chest-burster breaks out (colonist_release_burster follows) */
-    COLONIST_ANIM_DEAD = 0x1b, /* + octant */
-    QUEEN_ANIM_HURT = 0x10, /* actor_hurt in attack phases 0 and 1 */
-    QUEEN_ANIM_KNOCKED_BACK = 0x11 /* actor_hurt from phase 3 on, with actor_knock_back */
+    COLONIST_ANIM_COCOONED = 8,    /* + octant: struggling in the cocoon (Actor_ColonistTask) */
+    COLONIST_ANIM_HURT = 0x10,     /* + octant (Actor_Hurt) */
+    COLONIST_ANIM_REACH = 0x18,    /* facing the player: reaches out, then waits (Actor_ColonistTask) */
+    COLONIST_ANIM_BURST = 0x1a,    /* the chest-burster breaks out (Actor_ColonistReleaseBurster follows) */
+    COLONIST_ANIM_DEAD = 0x1b,     /* + octant */
+    QUEEN_ANIM_HURT = 0x10,        /* Actor_Hurt in attack phases 0 and 1 */
+    QUEEN_ANIM_KNOCKED_BACK = 0x11 /* Actor_Hurt from phase 3 on, with Actor_KnockBack */
 };
 
 /* The rest of the numbered animations, per kind. Every creature table starts with
- * ACTOR_ANIM_FACING + shown octant (actor_face_view); the entries from 8 on differ by kind.
+ * ACTOR_ANIM_FACING + shown octant (Actor_FaceView); the entries from 8 on differ by kind.
  * HURT_FRONT plays when the actor is hit seen from the front (shown octants 7, 0 and 1),
- * HURT_BACK otherwise; actor_to_floor also plays one of them as the actor drops from the
+ * HURT_BACK otherwise; Actor_ToFloor also plays one of them as the actor drops from the
  * ceiling. Kinds that share a case label share a value (noted). names: invented, from the
  * code that plays them */
 enum {
     ACTOR_ANIM_FACING = 0,
-    EGG_ANIM_CLOSED = 0, /* at spawn, and when the player stays away (egg_task) */
+    EGG_ANIM_CLOSED = 0, /* at spawn, and when the player stays away (Actor_EggTask) */
     EGG_ANIM_DIE = 1,
     EGG_ANIM_OPEN = 2,
     EGG_ANIM_HURT_CLOSED = 3,
     EGG_ANIM_HURT_OPEN = 4,
     HUGGER_ANIM_DIE = 9,
-    HUGGER_ANIM_LEAP = 10, /* actor_start_attack, actor_spawn_from_object, egg_release_hugger */
-    HUGGER_ANIM_OVERLAY_LOWER = 11, /* the face-hugger overlay's two halves (hugger_overlay_start) */
+    HUGGER_ANIM_LEAP = 10,          /* Actor_StartAttack, Actor_SpawnFromObject, Actor_EggReleaseHugger */
+    HUGGER_ANIM_OVERLAY_LOWER = 11, /* the face-hugger overlay's two halves (Actor_StartHuggerOverlay) */
     HUGGER_ANIM_OVERLAY_UPPER = 12,
     BURSTER_ANIM_DIE = 11,
     BURSTER_ANIM_LEAP = 12,
-    BURSTER_ANIM_EMERGE = 13, /* colonist_release_burster */
+    BURSTER_ANIM_EMERGE = 13, /* Actor_ColonistReleaseBurster */
     BAMBI_ANIM_DIE = 11,
     DOG_ANIM_ATTACK = 11,
     DOG_ANIM_DIE = 13,
-    DOG_CEILING_ANIM_FALL = 10, /* actor_die on the ceiling (the kind changes, the table stays) */
-    WARRIOR_ANIM_HURT_FRONT = 8, /* also the chest-burster's, bambi's, the dog's and the synthetic's */
-    WARRIOR_ANIM_HURT_BACK = 9, /* the same kinds */
-    WARRIOR_ANIM_DIE = 10, /* also the soldier's */
+    DOG_CEILING_ANIM_FALL = 10,     /* Actor_Die on the ceiling (the kind changes, the table stays) */
+    WARRIOR_ANIM_HURT_FRONT = 8,    /* also the chest-burster's, bambi's, the dog's and the synthetic's */
+    WARRIOR_ANIM_HURT_BACK = 9,     /* the same kinds */
+    WARRIOR_ANIM_DIE = 10,          /* also the soldier's */
     WARRIOR_ANIM_ATTACK_CLOSE = 11, /* also the handler's attack */
-    WARRIOR_ANIM_ATTACK = 12, /* also bambi's attack */
-    WARRIOR_CEILING_ANIM_FALL = 8, /* actor_die on the ceiling */
-    GUARD_ANIM_HURT = 8, /* the guard's and soldier's; also the face-hugger's and handler's */
-    GUARD_ANIM_FIRE = 9, /* guard and soldier */
+    WARRIOR_ANIM_ATTACK = 12,       /* also bambi's attack */
+    WARRIOR_CEILING_ANIM_FALL = 8,  /* Actor_Die on the ceiling */
+    GUARD_ANIM_HURT = 8,            /* the guard's and soldier's; also the face-hugger's and handler's */
+    GUARD_ANIM_FIRE = 9,            /* guard and soldier */
     GUARD_ANIM_DIE = 10,
     SYNTH_ANIM_ATTACK = 10, /* also the dog's close attack */
     SYNTH_ANIM_DIE = 12,
     HANDLER_ANIM_DIE = 9,
     HANDLER_ANIM_GRENADE = 10, /* with ACTOR_FLAG_GRENADE */
-    QUEEN_ANIM_DORMANT = 8, /* at spawn, and when the player stays away (queen_task) */
+    QUEEN_ANIM_DORMANT = 8,    /* at spawn, and when the player stays away (Actor_QueenTask) */
     QUEEN_ANIM_WAKE = 9,
     QUEEN_ANIM_RISE = 10,
     QUEEN_ANIM_STRIKE = 11,

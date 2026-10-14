@@ -1,3 +1,4 @@
+/* player.c -- the player: movement, turning and the per-frame timers */
 #include <sys/types.h>
 #include <LIBGTE.H>
 #include <LIBGPU.H>
@@ -18,1092 +19,1350 @@
 #include <MODEL.H>
 #include <HEIGHT.H>
 #include <PARTICLE.H>
-typedef unsigned char u8;
-typedef unsigned short u16;
-typedef unsigned int u32;
-typedef signed short s16;
+#include <TYPES.H>
 
 /* Callback layout agrees with src/tasks.c and the callback stores at
  * 0x8003b7ac and 0x8003bac8. Field +0x18 is the task-list next pointer. */
 
-typedef struct EffectEntry {
-    int handle;
-    s16 flags;
-    s16 value;
-} EffectEntry;
-
-short g_mode_control = -1;
+short g_modeControl = -1;
 
 static unsigned char s_demo[] = "D E M O";
-/* where the demo caption blinks, and the g_frame_count bit that blinks it (player_tick). names: invented */
+/* where the demo caption blinks, and the g_frameCount bit that blinks it (Player_Tick). names: invented */
 #define DEMO_TEXT_X 0x84
 #define DEMO_TEXT_Y 0x2c
 #define DEMO_TEXT_BLINK 0x20
-extern EffectEntry g_sound_channels[];
-/* g_sound_channels: looping sounds the player keeps alive. names: invented */
-#define SOUND_CHANNEL_FLAMETHROWER 0 /* weapon_view_update; stopping it fades it out */
-#define SOUND_CHANNEL_VISION 1 /* stopped when the lamp or night vision runs out (player_tick) */
+extern soundChannel_t g_soundChannels[];
+/* g_soundChannels: looping sounds the player keeps alive. names: invented */
+#define SOUND_CHANNEL_FLAMETHROWER 0 /* Player_UpdateWeaponView; stopping it fades it out */
+#define SOUND_CHANNEL_VISION 1       /* stopped when the lamp or night vision runs out (Player_Tick) */
 #define SOUND_CHANNEL_COUNT 2
-#define SOUND_CHANNEL_HOLD 15 /* frames a channel plays on after its last refresh (EffectEntry.flags) */
+#define SOUND_CHANNEL_HOLD 15       /* frames a channel plays on after its last refresh (soundChannel_t.flags) */
 #define SOUND_CHANNEL_FADE_STEP 300 /* volume a stop takes off the flamethrower channel */
-/* Weapon view animation tables: entry 0 idle, 3 firing (player_fire_pulse_grenade).
+/* Weapon view animation tables: entry 0 idle, 3 firing (Player_FirePulseGrenade).
  * names: runtime evidence, analysis/runtime/globals.json (selecting each weapon stores its table) */
-static TrackEntry g_pulse_rifle_sequence[] = {
-    { g_pulse_rifle_anim0_frames, g_pulse_rifle_anim0_script }, { g_pulse_rifle_anim2_frames, g_pulse_rifle_anim2_script }, { g_pulse_rifle_anim3_frames, g_pulse_rifle_anim3_script }, { g_pulse_rifle_anim1_frames, g_pulse_rifle_anim1_script }
-};
-static TrackEntry g_shotgun_sequence[] = {
-    { g_shotgun_anim0_frames, g_shotgun_anim0_script }, { g_shotgun_anim1_frames, g_shotgun_anim1_script }
-};
-static TrackEntry g_pistol_sequence[] = {
-    { g_pistol_anim0_frames, g_pistol_anim0_script }, { g_pistol_anim1_frames, g_pistol_anim1_script }, { g_pistol_anim2_frames, g_pistol_anim2_script }
-};
-static TrackEntry g_flamethrower_sequence[] = {
-    { g_flamethrower_anim0_frames, g_flamethrower_anim0_script }, { g_flamethrower_anim1_frames, g_flamethrower_anim1_script }, { g_flamethrower_anim2_frames, g_flamethrower_anim2_script }
-};
-static TrackEntry g_smart_gun_sequence[] = {
-    { g_smart_gun_anim0_frames, g_smart_gun_anim0_script }, { g_smart_gun_anim1_frames, g_smart_gun_anim1_script }, { g_smart_gun_anim2_frames, g_smart_gun_anim2_script }
-};
-extern void player_view_bob(void);
-extern void player_move(void);
-extern void weapon_view_update(void);
-extern void player_task_fall(TASK *task);
-void player_controls(void);
-void player_fire_pulse_grenade(void);
-void player_throw_grenade(void);
-void player_fire(void);
-void player_yaw_decrease(void);
-void player_yaw_increase(void);
-void player_turn_stop(void);
-void player_accelerate(void);
-void player_accelerate_slow(void);
-void player_pitch_decrease(void);
-void player_pitch_increase(void);
-void player_pitch_recentre(void);
-void player_decelerate(void);
-void weapon_view_play(void);
-void sound_channel_stop(s16 index);
-void player_task_death(TASK *task);
-void player_task_walk(TASK *task);
+static trackEntry_t g_pulseRifleSequence[] = { { g_pulseRifleAnim0Frames, g_pulseRifleAnim0Script },
+                                               { g_pulseRifleAnim2Frames, g_pulseRifleAnim2Script },
+                                               { g_pulseRifleAnim3Frames, g_pulseRifleAnim3Script },
+                                               { g_pulseRifleAnim1Frames, g_pulseRifleAnim1Script } };
+static trackEntry_t g_shotgunSequence[] = { { g_shotgunAnim0Frames, g_shotgunAnim0Script },
+                                            { g_shotgunAnim1Frames, g_shotgunAnim1Script } };
+static trackEntry_t g_pistolSequence[] = { { g_pistolAnim0Frames, g_pistolAnim0Script },
+                                           { g_pistolAnim1Frames, g_pistolAnim1Script },
+                                           { g_pistolAnim2Frames, g_pistolAnim2Script } };
+static trackEntry_t g_flamethrowerSequence[] = { { g_flamethrowerAnim0Frames, g_flamethrowerAnim0Script },
+                                                 { g_flamethrowerAnim1Frames, g_flamethrowerAnim1Script },
+                                                 { g_flamethrowerAnim2Frames, g_flamethrowerAnim2Script } };
+static trackEntry_t g_smartGunSequence[] = { { g_smartGunAnim0Frames, g_smartGunAnim0Script },
+                                             { g_smartGunAnim1Frames, g_smartGunAnim1Script },
+                                             { g_smartGunAnim2Frames, g_smartGunAnim2Script } };
+extern void Player_ViewBob( void );
+extern void Player_Move( void );
+extern void Player_UpdateWeaponView( void );
+extern void Player_TaskFall( TASK *task );
+void Player_Controls( void );
+void Player_FirePulseGrenade( void );
+void Player_ThrowGrenade( void );
+void Player_Fire( void );
+void Player_DecreaseYaw( void );
+void Player_IncreaseYaw( void );
+void Player_TurnStop( void );
+void Player_Accelerate( void );
+void Player_AccelerateSlow( void );
+void Player_DecreasePitch( void );
+void Player_IncreasePitch( void );
+void Player_RecentrePitch( void );
+void Player_Decelerate( void );
+void Player_PlayWeaponView( void );
+void Player_StopSoundChannel( s16 index );
+void Player_TaskDeath( TASK *task );
+void Player_TaskWalk( TASK *task );
 
-static inline void approach_by_eight(short *value, short target)
+/*
+==================
+Player_ApproachByEight
+==================
+*/
+static inline void Player_ApproachByEight( short *value, short target )
 {
     short current = *value;
-    if (current < target) {
+    if ( current < target ) {
         *value = current + PLAYER_PITCH_RECENTRE_STEP;
-        if (target < *value) *value = target;
-    } else if (target < current) {
+        if ( target < *value )
+            *value = target;
+    } else if ( target < current ) {
         *value = current - PLAYER_PITCH_RECENTRE_STEP;
-        if (*value < target) *value = target;
+        if ( *value < target )
+            *value = target;
     }
 }
 
-static inline void tick(s16 *timer)
+/*
+==================
+TickTimer
+==================
+*/
+static inline void TickTimer( s16 *timer )
 {
-    if (*timer)
-        (*timer)--;
+    if ( *timer )
+        ( *timer )--;
 }
 
-static inline void tick_expire(s16 *timer)
+/*
+==================
+TickTimerExpire
+==================
+*/
+static inline void TickTimerExpire( s16 *timer )
 {
-    if (*timer) {
-        if (--*timer == 0) {
-            g_game_flags |= GAME_FLAG_LAMP_FADE_OUT;
-            sound_channel_stop(SOUND_CHANNEL_VISION);
-            sound_play(SOUND_POWER_DOWN, -1, SPU_VOLUME_MAX);
+    if ( *timer ) {
+        if ( --*timer == 0 ) {
+            g_gameFlags |= GAME_FLAG_LAMP_FADE_OUT;
+            Player_StopSoundChannel( SOUND_CHANNEL_VISION );
+            Snd_Play( SOUND_POWER_DOWN, -1, SPU_VOLUME_MAX );
         }
     }
 }
 
-static inline void raise_toward(s16 *y, s16 target)
+/*
+==================
+Player_RaiseToward
+==================
+*/
+static inline void Player_RaiseToward( s16 *y, s16 target )
 {
-    if (*y < target) {
+    if ( *y < target ) {
         *y += PLAYER_CLIMB_SPEED;
-        if (target < *y)
+        if ( target < *y )
             *y = target;
     }
 }
 
-/* name: inferred from its body, which stores g_mode_control */
-void mode_control_set(short value) { g_mode_control = value; }
-
-/* name: static evidence, analysis/runtime/functions.json */
-short mode_control_get(void) { return g_mode_control; }
-
-void sound_channel_stop(s16 index)
+/*
+==================
+Player_SetModeControl
+==================
+*/
+/* name: inferred from its body, which stores g_modeControl */
+void Player_SetModeControl( short value )
 {
-    EffectEntry *entry = &g_sound_channels[index];
-    if (entry->handle == -1) return;
-    if (index == SOUND_CHANNEL_FLAMETHROWER) {
+    g_modeControl = value;
+}
+
+/*
+==================
+Player_GetModeControl
+==================
+*/
+/* name: static evidence, analysis/runtime/functions.json */
+short Player_GetModeControl( void )
+{
+    return g_modeControl;
+}
+
+/*
+==================
+Player_StopSoundChannel
+==================
+*/
+void Player_StopSoundChannel( s16 index )
+{
+    soundChannel_t *entry = &g_soundChannels[index];
+    if ( entry->handle == -1 )
+        return;
+    if ( index == SOUND_CHANNEL_FLAMETHROWER ) {
         s16 value = entry->value - SOUND_CHANNEL_FADE_STEP;
         entry->value = value;
-        if (value > 0) {
-            sound_adjust(entry->handle, value, 0);
+        if ( value > 0 ) {
+            Snd_Adjust( entry->handle, value, 0 );
             return;
         }
     }
-    sound_stop(entry->handle);
+    Snd_Stop( entry->handle );
     entry->handle = -1;
     entry->flags = 0;
     entry->value = 0;
 }
 
-void sound_channel_play(short index, short x, short y, short value)
+/*
+==================
+Player_PlaySoundChannel
+==================
+*/
+void Player_PlaySoundChannel( short index, short x, short y, short value )
 {
-    EffectEntry *entry = &g_sound_channels[index];
-    if (entry->handle == -1)
-        entry->handle = sound_play(x, y, value);
+    soundChannel_t *entry = &g_soundChannels[index];
+    if ( entry->handle == -1 )
+        entry->handle = Snd_Play( x, y, value );
     entry->flags = SOUND_CHANNEL_HOLD;
     entry->value = value;
 }
 
-void player_yaw_decrease(void) {
-    Player *player = &g_player;
-    if (player->turn_speed < player->turn_speed_max) player->turn_speed = player->turn_speed + PLAYER_TURN_ACCELERATION;
-    if (player->turn_speed_max < player->turn_speed) player->turn_speed = player->turn_speed_max;
-    player->angles.vy = (player->angles.vy - player->turn_speed) & ANGLE_MASK;
+/*
+==================
+Player_DecreaseYaw
+==================
+*/
+void Player_DecreaseYaw( void )
+{
+    player_t *player = &g_player;
+    if ( player->turnSpeed < player->turnSpeedMax )
+        player->turnSpeed = player->turnSpeed + PLAYER_TURN_ACCELERATION;
+    if ( player->turnSpeedMax < player->turnSpeed )
+        player->turnSpeed = player->turnSpeedMax;
+    player->angles.vy = ( player->angles.vy - player->turnSpeed ) & ANGLE_MASK;
 }
 
-void player_yaw_increase(void) {
-    Player *player = &g_player;
-    if (player->turn_speed < player->turn_speed_max) player->turn_speed = player->turn_speed + PLAYER_TURN_ACCELERATION;
-    if (player->turn_speed_max < player->turn_speed) player->turn_speed = player->turn_speed_max;
-    player->angles.vy = (player->angles.vy + player->turn_speed) & ANGLE_MASK;
+/*
+==================
+Player_IncreaseYaw
+==================
+*/
+void Player_IncreaseYaw( void )
+{
+    player_t *player = &g_player;
+    if ( player->turnSpeed < player->turnSpeedMax )
+        player->turnSpeed = player->turnSpeed + PLAYER_TURN_ACCELERATION;
+    if ( player->turnSpeedMax < player->turnSpeed )
+        player->turnSpeed = player->turnSpeedMax;
+    player->angles.vy = ( player->angles.vy + player->turnSpeed ) & ANGLE_MASK;
 }
 
-void player_turn_stop(void) { g_player.turn_speed = 0; }
+/*
+==================
+Player_TurnStop
+==================
+*/
+void Player_TurnStop( void )
+{
+    g_player.turnSpeed = 0;
+}
 
-void player_accelerate(void)
+/*
+==================
+Player_Accelerate
+==================
+*/
+void Player_Accelerate( void )
 {
     SVECTOR *movement = &g_player.movement;
-    if (g_player.boots_timer == 0 && (g_player.cell->type == CELL_TYPE_SLOW || g_player.cell->type == CELL_TYPE_LIQUID_DEEP)) {
+    if ( g_player.bootsTimer == 0 && ( g_player.cell->type == CELL_TYPE_SLOW || g_player.cell->type == CELL_TYPE_LIQUID_DEEP ) ) {
         movement->vz += g_player.acceleration >> 1;
-        if (movement->vz > g_player.speed_max >> 1) movement->vz = g_player.speed_max >> 1;
+        if ( movement->vz > g_player.speedMax >> 1 )
+            movement->vz = g_player.speedMax >> 1;
     } else {
         movement->vz = movement->vz + g_player.acceleration;
-        if (movement->vz > g_player.speed_max) movement->vz = g_player.speed_max;
+        if ( movement->vz > g_player.speedMax )
+            movement->vz = g_player.speedMax;
     }
 }
 
-void player_accelerate_slow(void)
+/*
+==================
+Player_AccelerateSlow
+==================
+*/
+void Player_AccelerateSlow( void )
 {
     SVECTOR *movement = &g_player.movement;
-    if (g_player.boots_timer == 0 && (g_player.cell->type == CELL_TYPE_SLOW || g_player.cell->type == CELL_TYPE_LIQUID_DEEP)) {
+    if ( g_player.bootsTimer == 0 && ( g_player.cell->type == CELL_TYPE_SLOW || g_player.cell->type == CELL_TYPE_LIQUID_DEEP ) ) {
         movement->vz += g_player.acceleration >> 2;
-        if (movement->vz > g_player.speed_max >> 2) movement->vz = g_player.speed_max >> 2;
+        if ( movement->vz > g_player.speedMax >> 2 )
+            movement->vz = g_player.speedMax >> 2;
     } else {
         movement->vz += g_player.acceleration >> 1;
-        if (movement->vz > g_player.speed_max >> 1) movement->vz = g_player.speed_max >> 1;
+        if ( movement->vz > g_player.speedMax >> 1 )
+            movement->vz = g_player.speedMax >> 1;
     }
 }
 
-void player_pitch_decrease(void)
+/*
+==================
+Player_DecreasePitch
+==================
+*/
+void Player_DecreasePitch( void )
 {
     short *pitch = &g_player.angles.vx;
-    if (g_player.pitch_speed < g_player.pitch_speed_max) g_player.pitch_speed = g_player.pitch_speed + PLAYER_PITCH_ACCELERATION;
-    if (g_player.pitch_speed_max < g_player.pitch_speed) g_player.pitch_speed = g_player.pitch_speed_max;
-    *pitch = *pitch - g_player.pitch_speed;
-    if (*pitch < g_player.pitch_min) *pitch = g_player.pitch_min;
+    if ( g_player.pitchSpeed < g_player.pitchSpeedMax )
+        g_player.pitchSpeed = g_player.pitchSpeed + PLAYER_PITCH_ACCELERATION;
+    if ( g_player.pitchSpeedMax < g_player.pitchSpeed )
+        g_player.pitchSpeed = g_player.pitchSpeedMax;
+    *pitch = *pitch - g_player.pitchSpeed;
+    if ( *pitch < g_player.pitchMin )
+        *pitch = g_player.pitchMin;
 }
 
-void player_pitch_increase(void)
+/*
+==================
+Player_IncreasePitch
+==================
+*/
+void Player_IncreasePitch( void )
 {
     short *pitch = &g_player.angles.vx;
-    if (g_player.pitch_speed < g_player.pitch_speed_max) g_player.pitch_speed = g_player.pitch_speed + PLAYER_PITCH_ACCELERATION;
-    if (g_player.pitch_speed_max < g_player.pitch_speed) g_player.pitch_speed = g_player.pitch_speed_max;
-    *pitch = *pitch + g_player.pitch_speed;
-    if (*pitch > g_player.pitch_max) *pitch = g_player.pitch_max;
+    if ( g_player.pitchSpeed < g_player.pitchSpeedMax )
+        g_player.pitchSpeed = g_player.pitchSpeed + PLAYER_PITCH_ACCELERATION;
+    if ( g_player.pitchSpeedMax < g_player.pitchSpeed )
+        g_player.pitchSpeed = g_player.pitchSpeedMax;
+    *pitch = *pitch + g_player.pitchSpeed;
+    if ( *pitch > g_player.pitchMax )
+        *pitch = g_player.pitchMax;
 }
 
-void player_pitch_recentre(void)
+/*
+==================
+Player_RecentrePitch
+==================
+*/
+void Player_RecentrePitch( void )
 {
     short *pitch = &g_player.angles.vx;
-    g_player.pitch_speed = 0;
-    approach_by_eight(pitch, g_player.pitch_rest);
+    g_player.pitchSpeed = 0;
+    Player_ApproachByEight( pitch, g_player.pitchRest );
 }
 
-void player_decelerate(void)
+/*
+==================
+Player_Decelerate
+==================
+*/
+void Player_Decelerate( void )
 {
-    Player *player = &g_player;
-    s16 remaining = player->movement.vz;
-    s16 step;
-    if (remaining > 0) {
+    player_t *player = &g_player;
+    s16       remaining = player->movement.vz;
+    s16       step;
+    if ( remaining > 0 ) {
         step = player->deceleration;
-        if (remaining >= step)
+        if ( remaining >= step )
             player->movement.vz = remaining - step;
         else
             player->movement.vz = 0;
     }
 }
 
+/*
+==================
+Player_Fire
+
+Fires the selected weapon: with ammunition left, it raises the noise, plays the
+weapon's firing animation and sets game flag 0x400, then shoots; the flamethrower
+keeps burning while its animation runs.
+==================
+*/
 /* name: inferred from its body */
-/* Fires the selected weapon: with ammunition left, it raises the noise, plays the
- * weapon's firing animation and sets game flag 0x400, then shoots; the flamethrower
- * keeps burning while its animation runs. */
-void player_fire(void)
+void Player_Fire( void )
 {
-    switch (g_player.weapon) {
+    switch ( g_player.weapon ) {
     case WEAPON_PISTOL:
-        if (g_player.pistol_ammo != 0) {
-            g_player.noise_timer = PLAYER_NOISE_PISTOL;
-            g_player.weapon_animation = WEAPON_ANIM_FIRE;
-            weapon_view_play();
-            g_game_flags |= GAME_FLAG_FLASH;
-            pistol_fire();
+        if ( g_player.pistolAmmo != 0 ) {
+            g_player.noiseTimer = PLAYER_NOISE_PISTOL;
+            g_player.weaponAnimation = WEAPON_ANIM_FIRE;
+            Player_PlayWeaponView();
+            g_gameFlags |= GAME_FLAG_FLASH;
+            Particle_FirePistol();
         }
         break;
     case WEAPON_SHOTGUN:
-        if (g_player.shotgun_ammo != 0) {
-            g_player.noise_timer = PLAYER_NOISE_SHOTGUN;
-            g_player.weapon_animation = WEAPON_ANIM_FIRE;
-            weapon_view_play();
-            g_game_flags |= GAME_FLAG_FLASH;
-            shotgun_fire();
+        if ( g_player.shotgunAmmo != 0 ) {
+            g_player.noiseTimer = PLAYER_NOISE_SHOTGUN;
+            g_player.weaponAnimation = WEAPON_ANIM_FIRE;
+            Player_PlayWeaponView();
+            g_gameFlags |= GAME_FLAG_FLASH;
+            Particle_FireShotgun();
         }
         break;
     case WEAPON_PULSE_RIFLE:
-        if (g_player.pulse_rifle_ammo != 0) {
-            g_player.noise_timer = PLAYER_NOISE_PULSE_RIFLE;
-            g_player.weapon_animation = WEAPON_ANIM_FIRE;
-            weapon_view_play();
-            g_game_flags |= GAME_FLAG_FLASH;
-            pulse_rifle_fire();
+        if ( g_player.pulseRifleAmmo != 0 ) {
+            g_player.noiseTimer = PLAYER_NOISE_PULSE_RIFLE;
+            g_player.weaponAnimation = WEAPON_ANIM_FIRE;
+            Player_PlayWeaponView();
+            g_gameFlags |= GAME_FLAG_FLASH;
+            Particle_FirePulseRifle();
         }
         break;
     case WEAPON_FLAMETHROWER:
-        if (g_player.flamethrower_fuel != 0) {
-            if (g_player.weapon_animation == WEAPON_ANIM_IDLE) {
-                g_player.noise_timer = PLAYER_NOISE_FLAMETHROWER;
-                g_player.weapon_animation = WEAPON_ANIM_FIRE;
-                weapon_view_play();
-                g_game_flags |= GAME_FLAG_FLASH;
+        if ( g_player.flamethrowerFuel != 0 ) {
+            if ( g_player.weaponAnimation == WEAPON_ANIM_IDLE ) {
+                g_player.noiseTimer = PLAYER_NOISE_FLAMETHROWER;
+                g_player.weaponAnimation = WEAPON_ANIM_FIRE;
+                Player_PlayWeaponView();
+                g_gameFlags |= GAME_FLAG_FLASH;
             }
-            flamethrower_fire();
+            Particle_FireFlamethrower();
         }
         break;
     case WEAPON_SMART_GUN:
-        if (g_player.smart_gun_ammo != 0) {
-            g_player.noise_timer = PLAYER_NOISE_SMART_GUN;
-            g_player.weapon_animation = WEAPON_ANIM_FIRE;
-            weapon_view_play();
-            g_game_flags |= GAME_FLAG_FLASH;
-            smart_gun_fire();
+        if ( g_player.smartGunAmmo != 0 ) {
+            g_player.noiseTimer = PLAYER_NOISE_SMART_GUN;
+            g_player.weaponAnimation = WEAPON_ANIM_FIRE;
+            Player_PlayWeaponView();
+            g_gameFlags |= GAME_FLAG_FLASH;
+            Particle_FireSmartGun();
         }
         break;
     }
 }
 
+/*
+==================
+Player_FirePulseGrenade
+==================
+*/
 /* name: runtime evidence, analysis/runtime/functions.json */
-void player_fire_pulse_grenade(void) {
- if(g_player.pulse_rifle_grenades!=0) {
-  g_player.noise_timer=PLAYER_NOISE_GRENADE;
-  if(!CHEAT_IS_ACTIVE(CHEAT_FLAG_UNLIMITED_AMMO)) g_player.pulse_rifle_grenades--;
-  g_player.weapon_animation=WEAPON_ANIM_GRENADE;
-  weapon_view_play();pulse_grenade_launch();
- }
-}
-
-/* name: runtime evidence, analysis/runtime/functions.json */
-void player_throw_grenade(void)
+void Player_FirePulseGrenade( void )
 {
-    if (g_player.charge_grenades != 0) {
-        g_player.noise_timer = PLAYER_NOISE_GRENADE;
-        if (!CHEAT_IS_ACTIVE(CHEAT_FLAG_UNLIMITED_AMMO))
-            g_player.charge_grenades--;
-        grenade_throw();
-        sound_play(SOUND_GRENADE_THROW, -1, SPU_VOLUME_MAX / 2);
+    if ( g_player.pulseRifleGrenades != 0 ) {
+        g_player.noiseTimer = PLAYER_NOISE_GRENADE;
+        if ( !CHEAT_IS_ACTIVE( CHEAT_FLAG_UNLIMITED_AMMO ) )
+            g_player.pulseRifleGrenades--;
+        g_player.weaponAnimation = WEAPON_ANIM_GRENADE;
+        Player_PlayWeaponView();
+        Particle_LaunchPulseGrenade();
     }
 }
 
-u32 clip_x_to_cell(u32 fallback, u32 row, u32 x, u32 special)
+/*
+==================
+Player_ThrowGrenade
+==================
+*/
+/* name: runtime evidence, analysis/runtime/functions.json */
+void Player_ThrowGrenade( void )
 {
-    u32 adjusted;
-    MapCell *cell;
-    if ((special << 16) != 0) adjusted = (x & ~MAP_CELL_MASK) + (MAP_CELL_SIZE + PLAYER_RADIUS);
-    else adjusted = (x & ~MAP_CELL_MASK) - (PLAYER_RADIUS + 1);
-    cell = g_level_map.cells + g_level_map.width * (row >> MAP_CELL_SHIFT) + (adjusted >> MAP_CELL_SHIFT);
-    if ((cell->light & CELL_BLOCKED) != 0 || cell->marker != 0) return fallback;
+    if ( g_player.chargeGrenades != 0 ) {
+        g_player.noiseTimer = PLAYER_NOISE_GRENADE;
+        if ( !CHEAT_IS_ACTIVE( CHEAT_FLAG_UNLIMITED_AMMO ) )
+            g_player.chargeGrenades--;
+        Particle_ThrowGrenade();
+        Snd_Play( SOUND_GRENADE_THROW, -1, SPU_VOLUME_MAX / 2 );
+    }
+}
+
+/*
+==================
+Player_ClipXToCell
+==================
+*/
+u32 Player_ClipXToCell( u32 fallback, u32 row, u32 x, u32 special )
+{
+    u32        adjusted;
+    mapCell_t *cell;
+    if ( ( special << HALFWORD_SHIFT ) != 0 )
+        adjusted = ( x & ~MAP_CELL_MASK ) + ( MAP_CELL_SIZE + PLAYER_RADIUS );
+    else
+        adjusted = ( x & ~MAP_CELL_MASK ) - ( PLAYER_RADIUS + 1 );
+    cell = g_levelMap.cells + g_levelMap.width * ( row >> MAP_CELL_SHIFT ) + ( adjusted >> MAP_CELL_SHIFT );
+    if ( ( cell->light & CELL_BLOCKED ) != 0 || cell->marker != 0 )
+        return fallback;
     return adjusted;
 }
 
-/* Steps x by move->vx at z and at z -/+ 0xc8 (the player's width): a cell that is
- * blocked, too low under its ceiling or a step too high stops x at the cell edge
- * (clip_x_to_cell); each probe is pushed off the cell's diagonal walls (diagonal_clip_x).
- * move->vy is the player's height. */
+/*
+==================
+Player_MoveX
+
+Steps x by move->vx at z and at z -/+ 0xc8 (the player's width): a cell that is
+blocked, too low under its ceiling or a step too high stops x at the cell edge
+(Player_ClipXToCell); each probe is pushed off the cell's diagonal walls (DiagonalClipX).
+move->vy is the player's height.
+==================
+*/
 /* name: inferred from its body */
-u32 player_move_x(u32 x, u32 z, SVECTOR *move)
+u32 Player_MoveX( u32 x, u32 z, SVECTOR *move )
 {
-    short head;
-    short negative;
-    u32 probe;
-    u32 target;
-    u32 floor;
-    MapCell *cell;
+    short      head;
+    short      negative;
+    u32        probe;
+    u32        target;
+    u32        floor;
+    mapCell_t *cell;
 
     head = move->vy + PLAYER_HEIGHT;
-    negative = (u_short)move->vx >> 15;
+    negative = (u_short)move->vx >> HALFWORD_SIGN_SHIFT;
     target = x + move->vx;
-    if (negative)
+    if ( negative )
         probe = target - PLAYER_RADIUS;
     else
         probe = target + PLAYER_RADIUS;
 
-    floor = floor_height(probe, z);
-    cell = MAP_CELL(probe, z);
-    if (((cell->light & CELL_BLOCKED) || cell->marker != 0) && !CHEAT_IS_ACTIVE(CHEAT_FLAG_NO_CLIP))
-        return clip_x_to_cell(x, z, probe, negative);
-    if (cell->type < CELL_TYPE_WALL || (cell->type >= CELL_TYPE_DIAGONAL_FIRST && cell->type < CELL_TYPE_SLOPE)) {
-        if ((short)ceiling_height(probe, z) < head)
-            return clip_x_to_cell(x, z, probe, negative);
-        if (CHEAT_IS_ACTIVE(CHEAT_FLAG_FLOOR_SNAP))
+    floor = FloorHeight( probe, z );
+    cell = MAP_CELL( probe, z );
+    if ( ( ( cell->light & CELL_BLOCKED ) || cell->marker != 0 ) && !CHEAT_IS_ACTIVE( CHEAT_FLAG_NO_CLIP ) )
+        return Player_ClipXToCell( x, z, probe, negative );
+    if ( cell->type < CELL_TYPE_WALL || ( cell->type >= CELL_TYPE_DIAGONAL_FIRST && cell->type < CELL_TYPE_SLOPE ) ) {
+        if ( (short)CeilingHeight( probe, z ) < head )
+            return Player_ClipXToCell( x, z, probe, negative );
+        if ( CHEAT_IS_ACTIVE( CHEAT_FLAG_FLOOR_SNAP ) )
             move->vy = floor;
-        if (move->vy < (short)floor && (short)floor - move->vy > PLAYER_STEP_HEIGHT)
-            return clip_x_to_cell(x, z, probe, negative);
+        if ( move->vy < (short)floor && (short)floor - move->vy > PLAYER_STEP_HEIGHT )
+            return Player_ClipXToCell( x, z, probe, negative );
     }
-    probe = diagonal_clip_x(probe, z);
+    probe = DiagonalClipX( probe, z );
 
-    floor = floor_height(probe, z - PLAYER_RADIUS);
-    cell = MAP_CELL(probe, z - PLAYER_RADIUS);
-    if (((cell->light & CELL_BLOCKED) || cell->marker != 0) && !CHEAT_IS_ACTIVE(CHEAT_FLAG_NO_CLIP))
-        return clip_x_to_cell(x, z, probe, negative);
-    if (cell->type < CELL_TYPE_WALL || (cell->type >= CELL_TYPE_DIAGONAL_FIRST && cell->type < CELL_TYPE_SLOPE)) {
-        if ((short)ceiling_height(probe, z - PLAYER_RADIUS) < head)
-            return clip_x_to_cell(x, z, probe, negative);
-        if (CHEAT_IS_ACTIVE(CHEAT_FLAG_FLOOR_SNAP))
+    floor = FloorHeight( probe, z - PLAYER_RADIUS );
+    cell = MAP_CELL( probe, z - PLAYER_RADIUS );
+    if ( ( ( cell->light & CELL_BLOCKED ) || cell->marker != 0 ) && !CHEAT_IS_ACTIVE( CHEAT_FLAG_NO_CLIP ) )
+        return Player_ClipXToCell( x, z, probe, negative );
+    if ( cell->type < CELL_TYPE_WALL || ( cell->type >= CELL_TYPE_DIAGONAL_FIRST && cell->type < CELL_TYPE_SLOPE ) ) {
+        if ( (short)CeilingHeight( probe, z - PLAYER_RADIUS ) < head )
+            return Player_ClipXToCell( x, z, probe, negative );
+        if ( CHEAT_IS_ACTIVE( CHEAT_FLAG_FLOOR_SNAP ) )
             move->vy = floor;
-        if (move->vy < (short)floor && (short)floor - move->vy > PLAYER_STEP_HEIGHT)
-            return clip_x_to_cell(x, z, probe, negative);
+        if ( move->vy < (short)floor && (short)floor - move->vy > PLAYER_STEP_HEIGHT )
+            return Player_ClipXToCell( x, z, probe, negative );
     }
-    probe = diagonal_clip_x(probe, z - PLAYER_RADIUS);
+    probe = DiagonalClipX( probe, z - PLAYER_RADIUS );
 
-    floor = floor_height(probe, z + PLAYER_RADIUS);
-    cell = MAP_CELL(probe, z + PLAYER_RADIUS);
-    if (((cell->light & CELL_BLOCKED) || cell->marker != 0) && !CHEAT_IS_ACTIVE(CHEAT_FLAG_NO_CLIP))
-        return clip_x_to_cell(x, z, probe, negative);
-    if (cell->type < CELL_TYPE_WALL || (cell->type >= CELL_TYPE_DIAGONAL_FIRST && cell->type < CELL_TYPE_SLOPE)) {
-        if ((short)ceiling_height(probe, z + PLAYER_RADIUS) < head)
-            return clip_x_to_cell(x, z, probe, negative);
-        if (CHEAT_IS_ACTIVE(CHEAT_FLAG_FLOOR_SNAP))
+    floor = FloorHeight( probe, z + PLAYER_RADIUS );
+    cell = MAP_CELL( probe, z + PLAYER_RADIUS );
+    if ( ( ( cell->light & CELL_BLOCKED ) || cell->marker != 0 ) && !CHEAT_IS_ACTIVE( CHEAT_FLAG_NO_CLIP ) )
+        return Player_ClipXToCell( x, z, probe, negative );
+    if ( cell->type < CELL_TYPE_WALL || ( cell->type >= CELL_TYPE_DIAGONAL_FIRST && cell->type < CELL_TYPE_SLOPE ) ) {
+        if ( (short)CeilingHeight( probe, z + PLAYER_RADIUS ) < head )
+            return Player_ClipXToCell( x, z, probe, negative );
+        if ( CHEAT_IS_ACTIVE( CHEAT_FLAG_FLOOR_SNAP ) )
             move->vy = floor;
-        if (move->vy < (short)floor && (short)floor - move->vy > PLAYER_STEP_HEIGHT)
-            return clip_x_to_cell(x, z, probe, negative);
+        if ( move->vy < (short)floor && (short)floor - move->vy > PLAYER_STEP_HEIGHT )
+            return Player_ClipXToCell( x, z, probe, negative );
     }
-    probe = diagonal_clip_x(probe, z + PLAYER_RADIUS);
+    probe = DiagonalClipX( probe, z + PLAYER_RADIUS );
 
-    if (negative) {
-        if (probe < x + move->vx)
+    if ( negative ) {
+        if ( probe < x + move->vx )
             probe = x + move->vx;
     } else {
-        if (x + move->vx < probe)
+        if ( x + move->vx < probe )
             probe = x + move->vx;
     }
-    floor = (short)floor_height(probe, z);
-    if ((short)floor < move->vy && move->vy - (short)floor > PLAYER_STEP_HEIGHT) {
-        if (negative) {
-            x = (probe & ~MAP_CELL_MASK) + (MAP_CELL_SIZE - PLAYER_RADIUS);
-            if (x < probe)
+    floor = (short)FloorHeight( probe, z );
+    if ( (short)floor < move->vy && move->vy - (short)floor > PLAYER_STEP_HEIGHT ) {
+        if ( negative ) {
+            x = ( probe & ~MAP_CELL_MASK ) + ( MAP_CELL_SIZE - PLAYER_RADIUS );
+            if ( x < probe )
                 probe = x;
         } else {
-            x = (probe & ~MAP_CELL_MASK) + (PLAYER_RADIUS + 1);
-            if (probe < x)
+            x = ( probe & ~MAP_CELL_MASK ) + ( PLAYER_RADIUS + 1 );
+            if ( probe < x )
                 probe = x;
         }
     }
     return probe;
 }
 
-u32 clip_z_to_cell(u32 column, u32 fallback, u32 z, u32 special)
+/*
+==================
+Player_ClipZToCell
+==================
+*/
+u32 Player_ClipZToCell( u32 column, u32 fallback, u32 z, u32 special )
 {
-    u32 adjusted;
-    MapCell *cell;
-    if ((special << 16) != 0) adjusted = (z & ~MAP_CELL_MASK) + (MAP_CELL_SIZE + PLAYER_RADIUS);
-    else adjusted = (z & ~MAP_CELL_MASK) - (PLAYER_RADIUS + 1);
-    cell = g_level_map.cells + g_level_map.width * (adjusted >> MAP_CELL_SHIFT) + (column >> MAP_CELL_SHIFT);
-    if ((cell->light & CELL_BLOCKED) != 0 || cell->marker != 0) return fallback;
+    u32        adjusted;
+    mapCell_t *cell;
+    if ( ( special << HALFWORD_SHIFT ) != 0 )
+        adjusted = ( z & ~MAP_CELL_MASK ) + ( MAP_CELL_SIZE + PLAYER_RADIUS );
+    else
+        adjusted = ( z & ~MAP_CELL_MASK ) - ( PLAYER_RADIUS + 1 );
+    cell = g_levelMap.cells + g_levelMap.width * ( adjusted >> MAP_CELL_SHIFT ) + ( column >> MAP_CELL_SHIFT );
+    if ( ( cell->light & CELL_BLOCKED ) != 0 || cell->marker != 0 )
+        return fallback;
     return adjusted;
 }
 
-/* Steps z by move->vz at x and at x -/+ 0xc8 (the player's width): a cell that is
- * blocked, too low under its ceiling or a step too high stops z at the cell edge
- * (clip_z_to_cell); each probe is pushed off the cell's diagonal walls (diagonal_clip_z).
- * move->vy is the player's height. */
+/*
+==================
+Player_MoveZ
+
+Steps z by move->vz at x and at x -/+ 0xc8 (the player's width): a cell that is
+blocked, too low under its ceiling or a step too high stops z at the cell edge
+(Player_ClipZToCell); each probe is pushed off the cell's diagonal walls (DiagonalClipZ).
+move->vy is the player's height.
+==================
+*/
 /* name: inferred from its body */
-u32 player_move_z(u32 x, u32 z, SVECTOR *move)
+u32 Player_MoveZ( u32 x, u32 z, SVECTOR *move )
 {
-    short head;
-    short negative;
-    u32 probe;
-    u32 target;
-    u32 floor;
-    MapCell *cell;
+    short      head;
+    short      negative;
+    u32        probe;
+    u32        target;
+    u32        floor;
+    mapCell_t *cell;
 
     head = move->vy + PLAYER_HEIGHT;
-    negative = (u_short)move->vz >> 15;
+    negative = (u_short)move->vz >> HALFWORD_SIGN_SHIFT;
     target = z + move->vz;
-    if (negative)
+    if ( negative )
         probe = target - PLAYER_RADIUS;
     else
         probe = target + PLAYER_RADIUS;
 
-    floor = floor_height(x, probe);
-    cell = MAP_CELL(x, probe);
-    if (((cell->light & CELL_BLOCKED) || cell->marker != 0) && !CHEAT_IS_ACTIVE(CHEAT_FLAG_NO_CLIP))
-        return clip_z_to_cell(x, z, probe, negative);
-    if (cell->type < CELL_TYPE_WALL || (cell->type >= CELL_TYPE_DIAGONAL_FIRST && cell->type < CELL_TYPE_SLOPE)) {
-        if ((short)ceiling_height(x, probe) < head)
-            return clip_z_to_cell(x, z, probe, negative);
-        if (CHEAT_IS_ACTIVE(CHEAT_FLAG_FLOOR_SNAP))
+    floor = FloorHeight( x, probe );
+    cell = MAP_CELL( x, probe );
+    if ( ( ( cell->light & CELL_BLOCKED ) || cell->marker != 0 ) && !CHEAT_IS_ACTIVE( CHEAT_FLAG_NO_CLIP ) )
+        return Player_ClipZToCell( x, z, probe, negative );
+    if ( cell->type < CELL_TYPE_WALL || ( cell->type >= CELL_TYPE_DIAGONAL_FIRST && cell->type < CELL_TYPE_SLOPE ) ) {
+        if ( (short)CeilingHeight( x, probe ) < head )
+            return Player_ClipZToCell( x, z, probe, negative );
+        if ( CHEAT_IS_ACTIVE( CHEAT_FLAG_FLOOR_SNAP ) )
             move->vy = floor;
-        if (move->vy < (short)floor && (short)floor - move->vy > PLAYER_STEP_HEIGHT)
-            return clip_z_to_cell(x, z, probe, negative);
+        if ( move->vy < (short)floor && (short)floor - move->vy > PLAYER_STEP_HEIGHT )
+            return Player_ClipZToCell( x, z, probe, negative );
     }
-    probe = diagonal_clip_z(x, probe);
+    probe = DiagonalClipZ( x, probe );
 
-    floor = floor_height(x - PLAYER_RADIUS, probe);
-    cell = MAP_CELL(x - PLAYER_RADIUS, probe);
-    if (((cell->light & CELL_BLOCKED) || cell->marker != 0) && !CHEAT_IS_ACTIVE(CHEAT_FLAG_NO_CLIP))
-        return clip_z_to_cell(x, z, probe, negative);
-    if (cell->type < CELL_TYPE_WALL || (cell->type >= CELL_TYPE_DIAGONAL_FIRST && cell->type < CELL_TYPE_SLOPE)) {
-        if ((short)ceiling_height(x - PLAYER_RADIUS, probe) < head)
-            return clip_z_to_cell(x, z, probe, negative);
-        if (CHEAT_IS_ACTIVE(CHEAT_FLAG_FLOOR_SNAP))
+    floor = FloorHeight( x - PLAYER_RADIUS, probe );
+    cell = MAP_CELL( x - PLAYER_RADIUS, probe );
+    if ( ( ( cell->light & CELL_BLOCKED ) || cell->marker != 0 ) && !CHEAT_IS_ACTIVE( CHEAT_FLAG_NO_CLIP ) )
+        return Player_ClipZToCell( x, z, probe, negative );
+    if ( cell->type < CELL_TYPE_WALL || ( cell->type >= CELL_TYPE_DIAGONAL_FIRST && cell->type < CELL_TYPE_SLOPE ) ) {
+        if ( (short)CeilingHeight( x - PLAYER_RADIUS, probe ) < head )
+            return Player_ClipZToCell( x, z, probe, negative );
+        if ( CHEAT_IS_ACTIVE( CHEAT_FLAG_FLOOR_SNAP ) )
             move->vy = floor;
-        if (move->vy < (short)floor && (short)floor - move->vy > PLAYER_STEP_HEIGHT)
-            return clip_z_to_cell(x, z, probe, negative);
+        if ( move->vy < (short)floor && (short)floor - move->vy > PLAYER_STEP_HEIGHT )
+            return Player_ClipZToCell( x, z, probe, negative );
     }
-    probe = diagonal_clip_z(x - PLAYER_RADIUS, probe);
+    probe = DiagonalClipZ( x - PLAYER_RADIUS, probe );
 
-    floor = floor_height(x + PLAYER_RADIUS, probe);
-    cell = MAP_CELL(x + PLAYER_RADIUS, probe);
-    if (((cell->light & CELL_BLOCKED) || cell->marker != 0) && !CHEAT_IS_ACTIVE(CHEAT_FLAG_NO_CLIP))
-        return clip_z_to_cell(x, z, probe, negative);
-    if (cell->type < CELL_TYPE_WALL || (cell->type >= CELL_TYPE_DIAGONAL_FIRST && cell->type < CELL_TYPE_SLOPE)) {
-        if ((short)ceiling_height(x + PLAYER_RADIUS, probe) < head)
-            return clip_z_to_cell(x, z, probe, negative);
-        if (CHEAT_IS_ACTIVE(CHEAT_FLAG_FLOOR_SNAP))
+    floor = FloorHeight( x + PLAYER_RADIUS, probe );
+    cell = MAP_CELL( x + PLAYER_RADIUS, probe );
+    if ( ( ( cell->light & CELL_BLOCKED ) || cell->marker != 0 ) && !CHEAT_IS_ACTIVE( CHEAT_FLAG_NO_CLIP ) )
+        return Player_ClipZToCell( x, z, probe, negative );
+    if ( cell->type < CELL_TYPE_WALL || ( cell->type >= CELL_TYPE_DIAGONAL_FIRST && cell->type < CELL_TYPE_SLOPE ) ) {
+        if ( (short)CeilingHeight( x + PLAYER_RADIUS, probe ) < head )
+            return Player_ClipZToCell( x, z, probe, negative );
+        if ( CHEAT_IS_ACTIVE( CHEAT_FLAG_FLOOR_SNAP ) )
             move->vy = floor;
-        if (move->vy < (short)floor && (short)floor - move->vy > PLAYER_STEP_HEIGHT)
-            return clip_z_to_cell(x, z, probe, negative);
+        if ( move->vy < (short)floor && (short)floor - move->vy > PLAYER_STEP_HEIGHT )
+            return Player_ClipZToCell( x, z, probe, negative );
     }
-    probe = diagonal_clip_z(x + PLAYER_RADIUS, probe);
+    probe = DiagonalClipZ( x + PLAYER_RADIUS, probe );
 
-    if (negative) {
-        if (probe < z + move->vz)
+    if ( negative ) {
+        if ( probe < z + move->vz )
             probe = z + move->vz;
     } else {
-        if (z + move->vz < probe)
+        if ( z + move->vz < probe )
             probe = z + move->vz;
     }
-    floor = (short)floor_height(x, probe);
-    if ((short)floor < move->vy && move->vy - (short)floor > PLAYER_STEP_HEIGHT) {
-        if (negative) {
-            z = (probe & ~MAP_CELL_MASK) + (MAP_CELL_SIZE - PLAYER_RADIUS);
-            if (z < probe)
+    floor = (short)FloorHeight( x, probe );
+    if ( (short)floor < move->vy && move->vy - (short)floor > PLAYER_STEP_HEIGHT ) {
+        if ( negative ) {
+            z = ( probe & ~MAP_CELL_MASK ) + ( MAP_CELL_SIZE - PLAYER_RADIUS );
+            if ( z < probe )
                 probe = z;
         } else {
-            z = (probe & ~MAP_CELL_MASK) + (PLAYER_RADIUS + 1);
-            if (probe < z)
+            z = ( probe & ~MAP_CELL_MASK ) + ( PLAYER_RADIUS + 1 );
+            if ( probe < z )
                 probe = z;
         }
     }
     return probe;
 }
 
-void player_damage_health(int amount, int mode)
+/*
+==================
+Player_DamageHealth
+==================
+*/
+void Player_DamageHealth( int amount, int mode )
 {
     s16 callback = -1;
 
-    if (g_player.damage_timer == 0 && g_player.invulnerable_timer == 0) {
-        set_death_type((s16)mode);
-        if (!CHEAT_IS_ACTIVE(CHEAT_FLAG_INDESTRUCTIBLE)) {
+    if ( g_player.damageTimer == 0 && g_player.invulnerableTimer == 0 ) {
+        Menu_SetDeathType( (s16)mode );
+        if ( !CHEAT_IS_ACTIVE( CHEAT_FLAG_INDESTRUCTIBLE ) ) {
             g_player.health = g_player.health - amount;
             callback = SOUND_PLAYER_HURT;
-            if (g_player.health <= 0) {
+            if ( g_player.health <= 0 ) {
                 g_player.health = 0;
-                g_game_flags |= GAME_FLAG_PLAYER_DEAD;
+                g_gameFlags |= GAME_FLAG_PLAYER_DEAD;
             }
         }
-        if (callback != -1)
-            sound_play(callback, -1, SPU_VOLUME_MAX);
-        g_player.damage_timer = PLAYER_DAMAGE_TIME;
+        if ( callback != -1 )
+            Snd_Play( callback, -1, SPU_VOLUME_MAX );
+        g_player.damageTimer = PLAYER_DAMAGE_TIME;
     }
 }
 
-void player_damage(int amount,int mode) {
- s16 callback=-1;
- s16 remembered_mode=mode;
- if(g_player.damage_timer==0 && g_player.invulnerable_timer==0) {
-  if(g_player.armour>0 && (s16)mode==DEATH_SHOT) callback=SOUND_SHOT_IMPACT;
-  set_death_type(remembered_mode);
-  if(!CHEAT_IS_ACTIVE(CHEAT_FLAG_INDESTRUCTIBLE)) {
-   if(g_player.armour!=0) {
-    g_player.armour-=amount;
-    if(g_player.armour<=0) g_player.armour=0;
-   } else {
-    g_player.health-=amount;
-    callback=SOUND_PLAYER_HURT;
-    if(g_player.health<=0) {g_player.health=0;g_game_flags|=GAME_FLAG_PLAYER_DEAD;}
-   }
-  }
-  g_player.damage_timer=PLAYER_DAMAGE_TIME;
- }
- if(callback!=-1) sound_play(callback,-1,SPU_VOLUME_MAX);
-}
-
-/* name: runtime evidence, analysis/runtime/functions.json */
-void player_hit(int first, int second)
+/*
+==================
+Player_Damage
+==================
+*/
+void Player_Damage( int amount, int mode )
 {
-    player_damage((short)first, (short)second);
+    s16 callback = -1;
+    s16 rememberedMode = mode;
+    if ( g_player.damageTimer == 0 && g_player.invulnerableTimer == 0 ) {
+        if ( g_player.armour > 0 && (s16)mode == DEATH_SHOT )
+            callback = SOUND_SHOT_IMPACT;
+        Menu_SetDeathType( rememberedMode );
+        if ( !CHEAT_IS_ACTIVE( CHEAT_FLAG_INDESTRUCTIBLE ) ) {
+            if ( g_player.armour != 0 ) {
+                g_player.armour -= amount;
+                if ( g_player.armour <= 0 )
+                    g_player.armour = 0;
+            } else {
+                g_player.health -= amount;
+                callback = SOUND_PLAYER_HURT;
+                if ( g_player.health <= 0 ) {
+                    g_player.health = 0;
+                    g_gameFlags |= GAME_FLAG_PLAYER_DEAD;
+                }
+            }
+        }
+        g_player.damageTimer = PLAYER_DAMAGE_TIME;
+    }
+    if ( callback != -1 )
+        Snd_Play( callback, -1, SPU_VOLUME_MAX );
 }
 
+/*
+==================
+Player_Hit
+==================
+*/
 /* name: runtime evidence, analysis/runtime/functions.json */
-void player_hit_from(int x, int state, int y)
+void Player_Hit( int first, int second )
+{
+    Player_Damage( (short)first, (short)second );
+}
+
+/*
+==================
+Player_HitFrom
+==================
+*/
+/* name: runtime evidence, analysis/runtime/functions.json */
+void Player_HitFrom( int x, int state, int y )
 {
     short before = g_player.health;
 
-    player_hit((short)x, (short)y);
-    if (g_player.health != before) {
+    Player_Hit( (short)x, (short)y );
+    if ( g_player.health != before ) {
         g_player.flash = PLAYER_FLASH_HIT;
-        g_player.flash_heading = state;
+        g_player.flashHeading = state;
     }
 }
 
-void player_tick(void)
+/*
+==================
+Player_Tick
+==================
+*/
+void Player_Tick( void )
 {
-    s16 *first = &g_player.invulnerable_timer;
+    s16 *first = &g_player.invulnerableTimer;
     s16 *last;
-    tick(first);
-    tick(&g_player.damage_timer);
-    tick(&g_player.noise_timer);
-    tick(&g_player.boots_timer);
-    tick_expire(&g_player.lamp_timer);
-    last = &g_player.night_vision_timer;
-    tick_expire(last);
-    hud_draw_health();
-    hud_draw_ammo();
-    if ((g_game_flags & GAME_FLAG_DEMO) && !(g_game_flags & GAME_FLAG_FADE) && (g_frame_count & DEMO_TEXT_BLINK))
-        hud_draw_text(s_demo, DEMO_TEXT_X, DEMO_TEXT_Y, TEXT_WHITE);
+    TickTimer( first );
+    TickTimer( &g_player.damageTimer );
+    TickTimer( &g_player.noiseTimer );
+    TickTimer( &g_player.bootsTimer );
+    TickTimerExpire( &g_player.lampTimer );
+    last = &g_player.nightVisionTimer;
+    TickTimerExpire( last );
+    Hud_DrawHealth();
+    Hud_DrawAmmo();
+    if ( ( g_gameFlags & GAME_FLAG_DEMO ) && !( g_gameFlags & GAME_FLAG_FADE ) && ( g_frameCount & DEMO_TEXT_BLINK ) )
+        Pause_DrawHUDText( s_demo, DEMO_TEXT_X, DEMO_TEXT_Y, TEXT_WHITE );
 }
 
-/* name: inferred from its body */
-/* Steps the weapon view each frame: winds down the flamethrower's sound channel,
- * steps the weapon sprite (playing its sounds and returning it to the idle entry when
- * its sequence ends), places it under the view bob and draws it lit by the player's
- * cell, uploading a new frame first. */
-void weapon_view_update(void)
-{
-    Sprite *sprite;
-    SpriteUV *uv;
-    PaletteEntry *palette;
+/*
+==================
+Player_UpdateWeaponView
 
-    if (g_sound_channels[SOUND_CHANNEL_FLAMETHROWER].handle != -1) {
-        if (g_player.weapon == WEAPON_FLAMETHROWER && g_sound_channels[SOUND_CHANNEL_FLAMETHROWER].flags > 0)
-            g_sound_channels[SOUND_CHANNEL_FLAMETHROWER].flags--;
+Steps the weapon view each frame: winds down the flamethrower's sound channel,
+steps the weapon sprite (playing its sounds and returning it to the idle entry when
+its sequence ends), places it under the view bob and draws it lit by the player's
+cell, uploading a new frame first.
+==================
+*/
+/* name: inferred from its body */
+void Player_UpdateWeaponView( void )
+{
+    sprite_t       *sprite;
+    spriteUV_t     *uv;
+    paletteEntry_t *palette;
+
+    if ( g_soundChannels[SOUND_CHANNEL_FLAMETHROWER].handle != -1 ) {
+        if ( g_player.weapon == WEAPON_FLAMETHROWER && g_soundChannels[SOUND_CHANNEL_FLAMETHROWER].flags > 0 )
+            g_soundChannels[SOUND_CHANNEL_FLAMETHROWER].flags--;
         else
-            sound_channel_stop(SOUND_CHANNEL_FLAMETHROWER);
+            Player_StopSoundChannel( SOUND_CHANNEL_FLAMETHROWER );
     }
-    if (g_player.weapon_sequence == 0)
+    if ( g_player.weaponSequence == 0 )
         return;
-    sprite = &g_player.weapon_sprite;
-    sprite_step(sprite);
+    sprite = &g_player.weaponSprite;
+    StepSprite( sprite );
     uv = &sprite->uv;
-    if (g_player.weapon_sprite.flags & SPRITE_FLAG_SOUND) {
-        if (g_player.weapon_sprite.sound == SOUND_FLAMETHROWER)
-            sound_channel_play(SOUND_CHANNEL_FLAMETHROWER, SOUND_FLAMETHROWER, -1, SPU_VOLUME_MAX * 3 / 4);
+    if ( g_player.weaponSprite.flags & SPRITE_FLAG_SOUND ) {
+        if ( g_player.weaponSprite.sound == SOUND_FLAMETHROWER )
+            Player_PlaySoundChannel( SOUND_CHANNEL_FLAMETHROWER, SOUND_FLAMETHROWER, -1, SOUND_NEAR_VOLUME );
         else
-            sound_play(g_player.weapon_sprite.sound, -1, SPU_VOLUME_MAX * 3 / 4);
+            Snd_Play( g_player.weaponSprite.sound, -1, SOUND_NEAR_VOLUME );
     }
-    if (sprite->flags & SPRITE_FLAG_ENDED) {
+    if ( sprite->flags & SPRITE_FLAG_ENDED ) {
         sprite->flags &= ~SPRITE_FLAG_ENDED;
-        g_player.weapon_animation = WEAPON_ANIM_IDLE;
-        weapon_view_play();
+        g_player.weaponAnimation = WEAPON_ANIM_IDLE;
+        Player_PlayWeaponView();
     }
     sprite->screen.vx = WEAPON_VIEW_X;
-    sprite->screen.vy = g_player.weapon_lower + WEAPON_VIEW_Y - (g_player.bob >> WEAPON_VIEW_BOB_SHIFT);
-    if (g_game_flags & GAME_FLAG_FLASH)
+    sprite->screen.vy = g_player.weaponLower + WEAPON_VIEW_Y - ( g_player.bob >> WEAPON_VIEW_BOB_SHIFT );
+    if ( g_gameFlags & GAME_FLAG_FLASH )
         palette = g_palette;
     else
         palette = &g_palette[g_player.cell->palette];
-    if (sprite->slot->pixels != sprite->frame->pixels) {
-        if (sprite_frame_upload(sprite, 1) == 0)
+    if ( sprite->slot->pixels != sprite->frame->pixels ) {
+        if ( Tex_UploadSpriteFrame( sprite, 1 ) == 0 )
             return;
         uv->u3 = uv->u1 = sprite->frame->w - 1;
         uv->v3 = uv->v2 = sprite->slot->y + sprite->frame->h - 1;
         sprite->slot->pixels = sprite->frame->pixels;
-        screen_sprite_draw_semi(sprite, palette->colors);
+        DrawScreenSpriteSemi( sprite, palette->colors );
     } else
-        screen_sprite_draw_semi(sprite, palette->colors);
+        DrawScreenSpriteSemi( sprite, palette->colors );
 }
 
-void player_task_climb(TASK *task)
+/*
+==================
+Player_TaskClimb
+==================
+*/
+void Player_TaskClimb( TASK *task )
 {
     SVECTOR *position;
-    s16 previous;
-    s16 target;
-    if (g_game_flags & GAME_FLAG_PLAYER_DEAD) {
-        task->callback = player_task_death;
-        SET_VECTOR_TO_ZERO(g_player.movement);
-        player_task_death(task);
+    s16      previous;
+    s16      target;
+    if ( g_gameFlags & GAME_FLAG_PLAYER_DEAD ) {
+        task->callback = Player_TaskDeath;
+        SET_VECTOR_TO_ZERO( g_player.movement );
+        Player_TaskDeath( task );
         return;
     }
-    player_controls();
+    Player_Controls();
     target = task->state[0];
     position = &g_player.position;
-    raise_toward(&g_player.position.vy, target);
-    if (position->vy == target)
-        task->callback = player_task_walk;
+    Player_RaiseToward( &g_player.position.vy, target );
+    if ( position->vy == target )
+        task->callback = Player_TaskWalk;
     previous = position->vy;
-    player_move();
-    if (position->vy < previous) {
+    Player_Move();
+    if ( position->vy < previous ) {
         task->state[0] = position->vy;
         position->vy = previous;
-        task->callback = player_task_fall;
-    } else if (previous < position->vy) {
+        task->callback = Player_TaskFall;
+    } else if ( previous < position->vy ) {
         task->state[0] = position->vy;
         position->vy = previous;
-        task->callback = player_task_climb;
+        task->callback = Player_TaskClimb;
     }
-    player_view_bob();
-    player_tick();
-    weapon_view_update();
-    g_next_task = task->Next;
+    Player_ViewBob();
+    Player_Tick();
+    Player_UpdateWeaponView();
+    g_nextTask = task->Next;
 }
 
-void player_task_death(TASK *task)
+/*
+==================
+Player_TaskDeath
+==================
+*/
+void Player_TaskDeath( TASK *task )
 {
-    g_player.view_height -= PLAYER_DEATH_SINK_STEP;
-    if (g_player.view_height < PLAYER_DEAD_VIEW_HEIGHT) {
-        g_player.view_height = PLAYER_DEAD_VIEW_HEIGHT;
-        g_game_flags |= GAME_FLAG_DEATH_DONE;
+    g_player.viewHeight -= PLAYER_DEATH_SINK_STEP;
+    if ( g_player.viewHeight < PLAYER_DEAD_VIEW_HEIGHT ) {
+        g_player.viewHeight = PLAYER_DEAD_VIEW_HEIGHT;
+        g_gameFlags |= GAME_FLAG_DEATH_DONE;
     }
-    player_pitch_recentre();
-    player_turn_stop();
-    player_view_bob();
-    g_next_task = task->Next;
+    Player_RecentrePitch();
+    Player_TurnStop();
+    Player_ViewBob();
+    g_nextTask = task->Next;
 }
 
 /* name: invented; turns the player with left/right (each ignored while the other was
  * held last frame) */
-#define PLAYER_TURN() \
-    if ((g_pad_held & PADLleft) && !(g_pad_previous & PADLright)) \
-        player_yaw_decrease(); \
-    else if ((g_pad_held & PADLright) && !(g_pad_previous & PADLleft)) \
-        player_yaw_increase(); \
-    else \
-        player_turn_stop()
+#define PLAYER_TURN()                                                      \
+    if ( ( g_padHeld & PADLleft ) && !( g_padPrevious & PADLright ) )      \
+        Player_DecreaseYaw();                                              \
+    else if ( ( g_padHeld & PADLright ) && !( g_padPrevious & PADLleft ) ) \
+        Player_IncreaseYaw();                                              \
+    else                                                                   \
+        Player_TurnStop()
 
+/*
+==================
+Player_Controls
+
+The controls for one frame: start pauses; a weapon change lowers and raises the
+weapon view; run, strafe, look and the automatic look on slopes; turning and
+walking; firing and grenades by weapon, and reloading or changing weapon when the
+current one is empty.
+==================
+*/
 /* name: inferred from its body */
-/* The controls for one frame: start pauses; a weapon change lowers and raises the
- * weapon view; run, strafe, look and the automatic look on slopes; turning and
- * walking; firing and grenades by weapon, and reloading or changing weapon when the
- * current one is empty. */
-void player_controls(void)
+void Player_Controls( void )
 {
     short yaw;
 
-    if (g_game_flags & GAME_FLAG_RESET)
+    if ( g_gameFlags & GAME_FLAG_RESET )
         return;
     yaw = g_player.angles.vy & ANGLE_MASK;
-    if ((g_pad_pressed & PADstart) && g_player.weapon_animation == WEAPON_ANIM_IDLE) {
-        g_game_flags |= GAME_FLAG_PAUSE;
+    if ( ( g_padPressed & PADstart ) && g_player.weaponAnimation == WEAPON_ANIM_IDLE ) {
+        g_gameFlags |= GAME_FLAG_PAUSE;
         return;
     }
-    if (g_player.weapon_animation == WEAPON_ANIM_LOWER) {
-        g_player.weapon_lower += WEAPON_VIEW_LOWER_STEP;
-        if (g_player.weapon_lower > WEAPON_VIEW_LOWERED) {
-            g_player.weapon_lower = WEAPON_VIEW_LOWERED;
-            if (g_player.flags & PLAYER_CHANGE_DEFAULT) {
-                weapon_reset_default();
-                DISABLE_FLAG(PLAYER_CHANGE_DEFAULT);
-            } else if (g_player.flags & PLAYER_CHANGE_DISCARD) {
-                weapon_discard_select_next();
-                DISABLE_FLAG(PLAYER_CHANGE_DISCARD);
+    if ( g_player.weaponAnimation == WEAPON_ANIM_LOWER ) {
+        g_player.weaponLower += WEAPON_VIEW_LOWER_STEP;
+        if ( g_player.weaponLower > WEAPON_VIEW_LOWERED ) {
+            g_player.weaponLower = WEAPON_VIEW_LOWERED;
+            if ( g_player.flags & PLAYER_CHANGE_DEFAULT ) {
+                Weapon_ResetDefault();
+                DISABLE_FLAG( PLAYER_CHANGE_DEFAULT );
+            } else if ( g_player.flags & PLAYER_CHANGE_DISCARD ) {
+                Weapon_DiscardSelectNext();
+                DISABLE_FLAG( PLAYER_CHANGE_DISCARD );
             } else
-                weapon_select_next();
-            g_player.weapon_animation = WEAPON_ANIM_RAISE;
+                Weapon_SelectNext();
+            g_player.weaponAnimation = WEAPON_ANIM_RAISE;
         }
-    } else if (g_player.weapon_animation == WEAPON_ANIM_RAISE) {
-        g_player.weapon_lower -= WEAPON_VIEW_LOWER_STEP;
-        if (g_player.weapon_lower == 0)
-            g_player.weapon_animation = WEAPON_ANIM_IDLE;
-    } else if (!(g_button_look & g_pad_held) && (g_button_weapon & g_pad_pressed)
-               && g_player.weapon_animation == WEAPON_ANIM_IDLE && weapon_slot_other_owned())
-        g_player.weapon_animation = WEAPON_ANIM_LOWER;
-    if (g_button_run & g_pad_held) {
+    } else if ( g_player.weaponAnimation == WEAPON_ANIM_RAISE ) {
+        g_player.weaponLower -= WEAPON_VIEW_LOWER_STEP;
+        if ( g_player.weaponLower == 0 )
+            g_player.weaponAnimation = WEAPON_ANIM_IDLE;
+    } else if ( !( g_buttonLook & g_padHeld ) && ( g_buttonWeapon & g_padPressed )
+                && g_player.weaponAnimation == WEAPON_ANIM_IDLE && Weapon_SlotOtherOwned() )
+        g_player.weaponAnimation = WEAPON_ANIM_LOWER;
+    if ( g_buttonRun & g_padHeld ) {
         g_player.flags |= PLAYER_RUN;
-        g_player.speed_max = PLAYER_RUN_SPEED;
+        g_player.speedMax = PLAYER_RUN_SPEED;
         g_player.acceleration = PLAYER_RUN_ACCELERATION;
         g_player.deceleration = PLAYER_RUN_DECELERATION;
-        g_player.turn_speed_max = PLAYER_RUN_TURN_SPEED;
+        g_player.turnSpeedMax = PLAYER_RUN_TURN_SPEED;
     } else {
-        DISABLE_FLAG(PLAYER_RUN);
-        g_player.speed_max = PLAYER_WALK_SPEED;
+        DISABLE_FLAG( PLAYER_RUN );
+        g_player.speedMax = PLAYER_WALK_SPEED;
         g_player.acceleration = PLAYER_WALK_ACCELERATION;
         g_player.deceleration = PLAYER_WALK_DECELERATION;
-        g_player.turn_speed_max = PLAYER_WALK_TURN_SPEED;
+        g_player.turnSpeedMax = PLAYER_WALK_TURN_SPEED;
     }
-    if ((g_button_strafe_left & g_pad_held) || (g_button_strafe_right & g_pad_held))
+    if ( ( g_buttonStrafeLeft & g_padHeld ) || ( g_buttonStrafeRight & g_padHeld ) )
         g_player.flags |= PLAYER_STRAFE;
     else
-        DISABLE_FLAG(PLAYER_STRAFE);
-    if (g_button_look & g_pad_held) {
-        if (g_button_use & g_pad_held)
-            player_pitch_decrease();
-        else if (g_button_weapon & g_pad_held)
-            player_pitch_increase();
-    } else if (g_player.cell->type < CELL_TYPE_SLOPE)
-        player_pitch_recentre();
+        DISABLE_FLAG( PLAYER_STRAFE );
+    if ( g_buttonLook & g_padHeld ) {
+        if ( g_buttonUse & g_padHeld )
+            Player_DecreasePitch();
+        else if ( g_buttonWeapon & g_padHeld )
+            Player_IncreasePitch();
+    } else if ( g_player.cell->type < CELL_TYPE_SLOPE )
+        Player_RecentrePitch();
     else {
-        switch (g_player.cell->type) {
-        case CELL_TYPE_SLOPE:
-        case CELL_TYPE_SLOPE + CELL_SLOPE_BAND:
-        case CELL_TYPE_SLOPE + 2 * CELL_SLOPE_BAND:
-            if (yaw <= ANGLE_90 / 2)
-                player_pitch_decrease();
-            else if (yaw >= ANGLE_90 * 3 / 2 && yaw <= ANGLE_90 * 5 / 2)
-                player_pitch_increase();
+        switch ( g_player.cell->type ) {
+        case CELL_TYPE_SLOPE_AT( SLOPE_BAND_STEP, SLOPE_RISES_POS_Z ):
+        case CELL_TYPE_SLOPE_AT( SLOPE_BAND_RAMP, SLOPE_RISES_POS_Z ):
+        case CELL_TYPE_SLOPE_AT( SLOPE_BAND_RAMP_ALT, SLOPE_RISES_POS_Z ):
+            if ( yaw <= ANGLE_45 )
+                Player_DecreasePitch();
+            else if ( yaw >= ANGLE_135 && yaw <= ANGLE_225 )
+                Player_IncreasePitch();
             else
-                player_pitch_recentre();
+                Player_RecentrePitch();
             break;
-        case CELL_TYPE_SLOPE + 1:
-        case CELL_TYPE_SLOPE + 1 + CELL_SLOPE_BAND:
-        case CELL_TYPE_SLOPE + 1 + 2 * CELL_SLOPE_BAND:
-            if (yaw >= ANGLE_90 * 5 / 2 && yaw <= ANGLE_90 * 7 / 2)
-                player_pitch_increase();
-            else if (yaw >= ANGLE_90 / 2 && yaw <= ANGLE_90 * 3 / 2)
-                player_pitch_decrease();
+        case CELL_TYPE_SLOPE_AT( SLOPE_BAND_STEP, SLOPE_RISES_NEG_X ):
+        case CELL_TYPE_SLOPE_AT( SLOPE_BAND_RAMP, SLOPE_RISES_NEG_X ):
+        case CELL_TYPE_SLOPE_AT( SLOPE_BAND_RAMP_ALT, SLOPE_RISES_NEG_X ):
+            if ( yaw >= ANGLE_225 && yaw <= ANGLE_315 )
+                Player_IncreasePitch();
+            else if ( yaw >= ANGLE_45 && yaw <= ANGLE_135 )
+                Player_DecreasePitch();
             else
-                player_pitch_recentre();
+                Player_RecentrePitch();
             break;
-        case CELL_TYPE_SLOPE + 2:
-        case CELL_TYPE_SLOPE + 2 + CELL_SLOPE_BAND:
-        case CELL_TYPE_SLOPE + 2 + 2 * CELL_SLOPE_BAND:
-            if (yaw >= ANGLE_90 * 5 / 2 && yaw <= ANGLE_90 * 7 / 2)
-                player_pitch_decrease();
-            else if (yaw >= ANGLE_90 / 2 && yaw <= ANGLE_90 * 3 / 2)
-                player_pitch_increase();
+        case CELL_TYPE_SLOPE_AT( SLOPE_BAND_STEP, SLOPE_RISES_POS_X ):
+        case CELL_TYPE_SLOPE_AT( SLOPE_BAND_RAMP, SLOPE_RISES_POS_X ):
+        case CELL_TYPE_SLOPE_AT( SLOPE_BAND_RAMP_ALT, SLOPE_RISES_POS_X ):
+            if ( yaw >= ANGLE_225 && yaw <= ANGLE_315 )
+                Player_DecreasePitch();
+            else if ( yaw >= ANGLE_45 && yaw <= ANGLE_135 )
+                Player_IncreasePitch();
             else
-                player_pitch_recentre();
+                Player_RecentrePitch();
             break;
-        case CELL_TYPE_SLOPE + 3:
-        case CELL_TYPE_SLOPE + 3 + CELL_SLOPE_BAND:
-        case CELL_TYPE_SLOPE + 3 + 2 * CELL_SLOPE_BAND:
-            if (yaw <= ANGLE_90 / 2)
-                player_pitch_increase();
-            else if (yaw >= ANGLE_90 * 3 / 2 && yaw <= ANGLE_90 * 5 / 2)
-                player_pitch_decrease();
+        case CELL_TYPE_SLOPE_AT( SLOPE_BAND_STEP, SLOPE_RISES_NEG_Z ):
+        case CELL_TYPE_SLOPE_AT( SLOPE_BAND_RAMP, SLOPE_RISES_NEG_Z ):
+        case CELL_TYPE_SLOPE_AT( SLOPE_BAND_RAMP_ALT, SLOPE_RISES_NEG_Z ):
+            if ( yaw <= ANGLE_45 )
+                Player_IncreasePitch();
+            else if ( yaw >= ANGLE_135 && yaw <= ANGLE_225 )
+                Player_DecreasePitch();
             else
-                player_pitch_recentre();
+                Player_RecentrePitch();
             break;
         default:
-            player_pitch_recentre();
+            Player_RecentrePitch();
             break;
         }
     }
-    if (g_player.flags & PLAYER_STRAFE) {
+    if ( g_player.flags & PLAYER_STRAFE ) {
         PLAYER_TURN();
-        if ((g_pad_held & PADLup) && (g_button_strafe_left & g_pad_held)) {
-            player_accelerate_slow();
-            g_player.rotation.vy = (g_player.angles.vy - ANGLE_90 / 2) & ANGLE_MASK;
-        } else if ((g_pad_held & PADLup) && (g_button_strafe_right & g_pad_held)) {
-            player_accelerate_slow();
-            g_player.rotation.vy = (g_player.angles.vy + ANGLE_90 / 2) & ANGLE_MASK;
-        } else if ((g_pad_held & PADLdown) && (g_button_strafe_left & g_pad_held)) {
-            player_accelerate_slow();
-            g_player.rotation.vy = (g_player.angles.vy + ANGLE_90 * 5 / 2) & ANGLE_MASK;
-        } else if ((g_pad_held & PADLdown) && (g_button_strafe_right & g_pad_held)) {
-            player_accelerate_slow();
-            g_player.rotation.vy = (g_player.angles.vy + ANGLE_90 * 3 / 2) & ANGLE_MASK;
-        } else if (g_button_strafe_left & g_pad_held) {
-            player_accelerate_slow();
-            g_player.rotation.vy = (g_player.angles.vy - ANGLE_90) & ANGLE_MASK;
-        } else if (g_button_strafe_right & g_pad_held) {
-            player_accelerate_slow();
-            g_player.rotation.vy = (g_player.angles.vy + ANGLE_90) & ANGLE_MASK;
+        if ( ( g_padHeld & PADLup ) && ( g_buttonStrafeLeft & g_padHeld ) ) {
+            Player_AccelerateSlow();
+            g_player.rotation.vy = ( g_player.angles.vy - ANGLE_45 ) & ANGLE_MASK;
+        } else if ( ( g_padHeld & PADLup ) && ( g_buttonStrafeRight & g_padHeld ) ) {
+            Player_AccelerateSlow();
+            g_player.rotation.vy = ( g_player.angles.vy + ANGLE_45 ) & ANGLE_MASK;
+        } else if ( ( g_padHeld & PADLdown ) && ( g_buttonStrafeLeft & g_padHeld ) ) {
+            Player_AccelerateSlow();
+            g_player.rotation.vy = ( g_player.angles.vy + ANGLE_225 ) & ANGLE_MASK;
+        } else if ( ( g_padHeld & PADLdown ) && ( g_buttonStrafeRight & g_padHeld ) ) {
+            Player_AccelerateSlow();
+            g_player.rotation.vy = ( g_player.angles.vy + ANGLE_135 ) & ANGLE_MASK;
+        } else if ( g_buttonStrafeLeft & g_padHeld ) {
+            Player_AccelerateSlow();
+            g_player.rotation.vy = ( g_player.angles.vy - ANGLE_90 ) & ANGLE_MASK;
+        } else if ( g_buttonStrafeRight & g_padHeld ) {
+            Player_AccelerateSlow();
+            g_player.rotation.vy = ( g_player.angles.vy + ANGLE_90 ) & ANGLE_MASK;
         } else
-            player_decelerate();
+            Player_Decelerate();
     } else {
         PLAYER_TURN();
-        if (g_pad_held & PADLup) {
-            player_accelerate();
+        if ( g_padHeld & PADLup ) {
+            Player_Accelerate();
             g_player.rotation.vy = g_player.angles.vy;
-        } else if (g_pad_held & PADLdown) {
-            player_accelerate_slow();
-            g_player.rotation.vy = (g_player.angles.vy + ANGLE_180) & ANGLE_MASK;
+        } else if ( g_padHeld & PADLdown ) {
+            Player_AccelerateSlow();
+            g_player.rotation.vy = ( g_player.angles.vy + ANGLE_180 ) & ANGLE_MASK;
         } else
-            player_decelerate();
+            Player_Decelerate();
     }
-    switch (g_player.weapon) {
+    switch ( g_player.weapon ) {
     case WEAPON_PISTOL:
     case WEAPON_SHOTGUN:
-        if (g_player.weapon_animation != WEAPON_ANIM_IDLE)
+        if ( g_player.weaponAnimation != WEAPON_ANIM_IDLE )
             return;
-        if (g_button_fire & g_pad_pressed)
-            player_fire();
-        else if (g_button_grenade & g_pad_pressed)
-            player_throw_grenade();
+        if ( g_buttonFire & g_padPressed )
+            Player_Fire();
+        else if ( g_buttonGrenade & g_padPressed )
+            Player_ThrowGrenade();
         break;
     case WEAPON_FLAMETHROWER:
-        if (g_player.weapon_animation == WEAPON_ANIM_LOWER || g_player.weapon_animation == WEAPON_ANIM_RAISE)
+        if ( g_player.weaponAnimation == WEAPON_ANIM_LOWER || g_player.weaponAnimation == WEAPON_ANIM_RAISE )
             break;
-        if (g_button_fire & g_pad_held)
-            player_fire();
-        else if (g_button_grenade & g_pad_pressed)
-            player_throw_grenade();
+        if ( g_buttonFire & g_padHeld )
+            Player_Fire();
+        else if ( g_buttonGrenade & g_padPressed )
+            Player_ThrowGrenade();
         break;
     case WEAPON_SMART_GUN:
-        if (g_player.weapon_animation != WEAPON_ANIM_IDLE)
+        if ( g_player.weaponAnimation != WEAPON_ANIM_IDLE )
             return;
-        if (g_button_fire & g_pad_held)
-            player_fire();
-        else if (g_button_grenade & g_pad_pressed)
-            player_throw_grenade();
+        if ( g_buttonFire & g_padHeld )
+            Player_Fire();
+        else if ( g_buttonGrenade & g_padPressed )
+            Player_ThrowGrenade();
         break;
     case WEAPON_PULSE_RIFLE:
-        if (g_player.weapon_animation != WEAPON_ANIM_IDLE)
+        if ( g_player.weaponAnimation != WEAPON_ANIM_IDLE )
             return;
-        if (g_button_fire & g_pad_held)
-            player_fire();
-        else if (g_button_grenade & g_pad_pressed)
-            player_fire_pulse_grenade();
+        if ( g_buttonFire & g_padHeld )
+            Player_Fire();
+        else if ( g_buttonGrenade & g_padPressed )
+            Player_FirePulseGrenade();
         break;
     }
-    if (g_player.weapon_animation != WEAPON_ANIM_IDLE)
+    if ( g_player.weaponAnimation != WEAPON_ANIM_IDLE )
         return;
-    switch (g_player.weapon) {
+    switch ( g_player.weapon ) {
     case WEAPON_PISTOL:
-        if (g_player.pistol_ammo != 0)
+        if ( g_player.pistolAmmo != 0 )
             return;
-        if (g_player.pistol_clips != 0) {
-            g_player.weapon_animation = WEAPON_ANIM_RELOAD;
-            g_player.pistol_ammo = PISTOL_CLIP_ROUNDS;
-            g_player.pistol_clips--;
-            weapon_view_play();
-        } else if (!weapon_slot_other_owned()) {
-            g_player.weapon_animation = WEAPON_ANIM_RELOAD;
-            g_player.pistol_ammo = 1;
-            weapon_view_play();
+        if ( g_player.pistolClips != 0 ) {
+            g_player.weaponAnimation = WEAPON_ANIM_RELOAD;
+            g_player.pistolAmmo = PISTOL_CLIP_ROUNDS;
+            g_player.pistolClips--;
+            Player_PlayWeaponView();
+        } else if ( !Weapon_SlotOtherOwned() ) {
+            g_player.weaponAnimation = WEAPON_ANIM_RELOAD;
+            g_player.pistolAmmo = 1;
+            Player_PlayWeaponView();
         } else {
-            g_player.weapon_animation = WEAPON_ANIM_LOWER;
+            g_player.weaponAnimation = WEAPON_ANIM_LOWER;
             g_player.flags |= PLAYER_CHANGE_DISCARD;
         }
         break;
     case WEAPON_PULSE_RIFLE:
-        if (g_player.pulse_rifle_ammo != 0)
+        if ( g_player.pulseRifleAmmo != 0 )
             return;
-        if (g_player.pulse_rifle_clips != 0) {
-            g_player.weapon_animation = WEAPON_ANIM_RELOAD;
-            g_player.pulse_rifle_ammo = PULSE_RIFLE_CLIP_ROUNDS;
-            g_player.pulse_rifle_clips--;
-            weapon_view_play();
-        } else if (g_player.pulse_rifle_grenades == 0) {
-            g_player.weapon_animation = WEAPON_ANIM_LOWER;
-            if (weapon_slot_other_owned())
+        if ( g_player.pulseRifleClips != 0 ) {
+            g_player.weaponAnimation = WEAPON_ANIM_RELOAD;
+            g_player.pulseRifleAmmo = PULSE_RIFLE_CLIP_ROUNDS;
+            g_player.pulseRifleClips--;
+            Player_PlayWeaponView();
+        } else if ( g_player.pulseRifleGrenades == 0 ) {
+            g_player.weaponAnimation = WEAPON_ANIM_LOWER;
+            if ( Weapon_SlotOtherOwned() )
                 g_player.flags |= PLAYER_CHANGE_DISCARD;
-            else if (g_player.pistol_ammo == 0) {
-                g_player.pistol_ammo = 1;
+            else if ( g_player.pistolAmmo == 0 ) {
+                g_player.pistolAmmo = 1;
                 g_player.flags |= PLAYER_CHANGE_DEFAULT;
             }
         }
         break;
     case WEAPON_SMART_GUN:
-        if (g_player.smart_gun_ammo != 0)
+        if ( g_player.smartGunAmmo != 0 )
             return;
-        if (g_player.smart_gun_clips != 0) {
-            g_player.weapon_animation = WEAPON_ANIM_RELOAD;
-            g_player.smart_gun_ammo = SMART_GUN_CLIP_ROUNDS;
-            g_player.smart_gun_clips--;
-            weapon_view_play();
-        } else if (weapon_slot_other_owned()) {
-            g_player.weapon_animation = WEAPON_ANIM_LOWER;
+        if ( g_player.smartGunClips != 0 ) {
+            g_player.weaponAnimation = WEAPON_ANIM_RELOAD;
+            g_player.smartGunAmmo = SMART_GUN_CLIP_ROUNDS;
+            g_player.smartGunClips--;
+            Player_PlayWeaponView();
+        } else if ( Weapon_SlotOtherOwned() ) {
+            g_player.weaponAnimation = WEAPON_ANIM_LOWER;
             g_player.flags |= PLAYER_CHANGE_DISCARD;
         } else {
-            if (g_player.pistol_ammo == 0)
-                g_player.pistol_ammo = 1;
-            g_player.weapon_animation = WEAPON_ANIM_LOWER;
+            if ( g_player.pistolAmmo == 0 )
+                g_player.pistolAmmo = 1;
+            g_player.weaponAnimation = WEAPON_ANIM_LOWER;
             g_player.flags |= PLAYER_CHANGE_DEFAULT;
         }
         break;
     case WEAPON_SHOTGUN:
-        if (g_player.shotgun_ammo != 0)
+        if ( g_player.shotgunAmmo != 0 )
             return;
-        if (weapon_slot_other_owned()) {
-            g_player.weapon_animation = WEAPON_ANIM_LOWER;
+        if ( Weapon_SlotOtherOwned() ) {
+            g_player.weaponAnimation = WEAPON_ANIM_LOWER;
             g_player.flags |= PLAYER_CHANGE_DISCARD;
         } else {
-            if (g_player.pistol_ammo == 0)
-                g_player.pistol_ammo = 1;
-            g_player.weapon_animation = WEAPON_ANIM_LOWER;
+            if ( g_player.pistolAmmo == 0 )
+                g_player.pistolAmmo = 1;
+            g_player.weaponAnimation = WEAPON_ANIM_LOWER;
             g_player.flags |= PLAYER_CHANGE_DEFAULT;
         }
         break;
     case WEAPON_FLAMETHROWER:
-        if (g_player.flamethrower_fuel != 0)
+        if ( g_player.flamethrowerFuel != 0 )
             return;
-        if (weapon_slot_other_owned()) {
-            g_player.weapon_animation = WEAPON_ANIM_LOWER;
+        if ( Weapon_SlotOtherOwned() ) {
+            g_player.weaponAnimation = WEAPON_ANIM_LOWER;
             g_player.flags |= PLAYER_CHANGE_DISCARD;
         } else {
-            if (g_player.pistol_ammo == 0)
-                g_player.pistol_ammo = 1;
-            g_player.weapon_animation = WEAPON_ANIM_LOWER;
+            if ( g_player.pistolAmmo == 0 )
+                g_player.pistolAmmo = 1;
+            g_player.weaponAnimation = WEAPON_ANIM_LOWER;
             g_player.flags |= PLAYER_CHANGE_DEFAULT;
         }
         break;
     }
 }
 
-void player_task_walk(TASK *task)
+/*
+==================
+Player_TaskWalk
+==================
+*/
+void Player_TaskWalk( TASK *task )
 {
     s16 *y;
-    s16 previous;
-    if (g_game_flags & GAME_FLAG_PLAYER_DEAD) {
-        task->callback = player_task_death;
-        SET_VECTOR_TO_ZERO(g_player.movement);
-        player_task_death(task);
+    s16  previous;
+    if ( g_gameFlags & GAME_FLAG_PLAYER_DEAD ) {
+        task->callback = Player_TaskDeath;
+        SET_VECTOR_TO_ZERO( g_player.movement );
+        Player_TaskDeath( task );
         return;
     }
-    player_controls();
+    Player_Controls();
     y = &g_player.position.vy;
     previous = *y;
-    player_move();
-    if (*y < previous) {
+    Player_Move();
+    if ( *y < previous ) {
         task->state[0] = *y;
         *y = previous;
         task->state[1] = previous;
-        task->callback = player_task_fall;
-    } else if (previous < *y) {
+        task->callback = Player_TaskFall;
+    } else if ( previous < *y ) {
         task->state[0] = *y;
         *y = previous;
-        task->callback = player_task_climb;
+        task->callback = Player_TaskClimb;
     }
-    player_view_bob();
-    player_tick();
-    weapon_view_update();
-    g_next_task = task->Next;
+    Player_ViewBob();
+    Player_Tick();
+    Player_UpdateWeaponView();
+    g_nextTask = task->Next;
 }
 
-/* The sequence entry the weapon view plays. name: invented */
-static inline TrackEntry *weapon_entry(Player *player)
+/*
+==================
+Player_WeaponEntry
+
+The sequence entry the weapon view plays.
+==================
+*/
+/* name: invented */
+static inline trackEntry_t *Player_WeaponEntry( player_t *player )
 {
-    return &player->weapon_sequence[player->weapon_animation];
+    return &player->weaponSequence[player->weaponAnimation];
 }
 
-/* Restarts the weapon sprite on its current sequence entry. name: inferred from its body */
-void weapon_view_play(void)
-{
-    TrackEntry *entry;
-    TexturePage *slot;
-    u_short *stream;
-    u_short duration;
+/*
+==================
+Player_PlayWeaponView
 
-    if (g_player.weapon_sequence != 0) {
-        entry = weapon_entry(&g_player);
-        g_player.weapon_sprite.frames = entry->frames;
-        g_player.weapon_sprite.frame = 0;
+Restarts the weapon sprite on its current sequence entry.
+==================
+*/
+/* name: inferred from its body */
+void Player_PlayWeaponView( void )
+{
+    trackEntry_t  *entry;
+    texturePage_t *slot;
+    u_short       *stream;
+    u_short        duration;
+
+    if ( g_player.weaponSequence != 0 ) {
+        entry = Player_WeaponEntry( &g_player );
+        g_player.weaponSprite.frames = entry->frames;
+        g_player.weaponSprite.frame = 0;
         stream = entry->stream;
-        g_player.weapon_sprite.remaining = 1;
+        g_player.weaponSprite.remaining = 1;
         duration = *stream;
-        slot = g_player.weapon_sprite.slot;
+        slot = g_player.weaponSprite.slot;
         stream += 2;
-        g_player.weapon_sprite.loop = (short *)stream;
-        g_player.weapon_sprite.script = (short *)(stream - 1);
-        g_player.weapon_sprite.repeat = 0;
-        g_player.weapon_sprite.flags = 0;
-        g_player.weapon_sprite.uv.u0 = 0;
-        g_player.weapon_sprite.duration = duration;
-        g_player.weapon_sprite.uv.v0 = slot->y;
-        g_player.weapon_sprite.uv.clut = g_player.weapon_sprite.clut->clut;
-        g_player.weapon_sprite.uv.v1 = slot->y;
-        g_player.weapon_sprite.uv.tpage = slot->tpage;
-        g_player.weapon_sprite.uv.u2 = 0;
+        g_player.weaponSprite.loop = (short *)stream;
+        g_player.weaponSprite.script = (short *)( stream - 1 );
+        g_player.weaponSprite.repeat = 0;
+        g_player.weaponSprite.flags = 0;
+        g_player.weaponSprite.uv.u0 = 0;
+        g_player.weaponSprite.duration = duration;
+        g_player.weaponSprite.uv.v0 = slot->y;
+        g_player.weaponSprite.uv.clut = g_player.weaponSprite.clut->clut;
+        g_player.weaponSprite.uv.v1 = slot->y;
+        g_player.weaponSprite.uv.tpage = slot->tpage;
+        g_player.weaponSprite.uv.u2 = 0;
         slot->pixels = 0;
-        sprite_step(&g_player.weapon_sprite);
+        StepSprite( &g_player.weaponSprite );
     }
 }
 
-/* name: inferred from its body, which stores Player.weapon and sets up the weapon sprite */
-void weapon_select(int mode) {
-    g_player.weapon_animation = WEAPON_ANIM_IDLE;
-    g_player.weapon_sprite.flags = 0;
-    g_player.weapon = mode;
-    switch ((s16)mode) {
-    case WEAPON_PISTOL: g_player.weapon_sequence = g_pistol_sequence; g_player.weapon_sprite.clut = g_pistol_clut; break;
-    case WEAPON_SHOTGUN: g_player.weapon_sequence = g_shotgun_sequence; g_player.weapon_sprite.clut = g_shotgun_clut; break;
-    case WEAPON_PULSE_RIFLE: g_player.weapon_sequence = g_pulse_rifle_sequence; g_player.weapon_sprite.clut = g_pulse_rifle_clut; break;
-    case WEAPON_FLAMETHROWER: g_player.weapon_sequence = g_flamethrower_sequence; g_player.weapon_sprite.clut = g_flamethrower_clut; break;
-    case WEAPON_SMART_GUN: g_player.weapon_sequence = g_smart_gun_sequence; g_player.weapon_sprite.clut = g_smart_gun_clut; break;
-    default: g_player.weapon_sequence = 0; break;
-    }
-    weapon_view_play();
-}
-
-/* name: inferred from its body, which gives the weapon sprite the first VRAM slot and marks it used and locked */
-TexturePage *weapon_sprite_bind_slot(void)
+/*
+==================
+Player_SelectWeapon
+==================
+*/
+/* name: inferred from its body, which stores player_t.weapon and sets up the weapon sprite */
+void Player_SelectWeapon( int mode )
 {
-    Player *player = &g_player;
-    TexturePage *slot = g_page_sets[PAGE_SET_SPRITES].pages;
-    TexturePage *result;
-    player->weapon_sprite.slot = slot;
+    g_player.weaponAnimation = WEAPON_ANIM_IDLE;
+    g_player.weaponSprite.flags = 0;
+    g_player.weapon = mode;
+    switch ( (s16)mode ) {
+    case WEAPON_PISTOL:
+        g_player.weaponSequence = g_pistolSequence;
+        g_player.weaponSprite.clut = g_pistolCLUT;
+        break;
+    case WEAPON_SHOTGUN:
+        g_player.weaponSequence = g_shotgunSequence;
+        g_player.weaponSprite.clut = g_shotgunCLUT;
+        break;
+    case WEAPON_PULSE_RIFLE:
+        g_player.weaponSequence = g_pulseRifleSequence;
+        g_player.weaponSprite.clut = g_pulseRifleCLUT;
+        break;
+    case WEAPON_FLAMETHROWER:
+        g_player.weaponSequence = g_flamethrowerSequence;
+        g_player.weaponSprite.clut = g_flamethrowerCLUT;
+        break;
+    case WEAPON_SMART_GUN:
+        g_player.weaponSequence = g_smartGunSequence;
+        g_player.weaponSprite.clut = g_smartGunCLUT;
+        break;
+    default:
+        g_player.weaponSequence = 0;
+        break;
+    }
+    Player_PlayWeaponView();
+}
+
+/*
+==================
+Player_BindWeaponSpriteSlot
+==================
+*/
+/* name: inferred from its body, which gives the weapon sprite the first VRAM slot and marks it used and locked */
+texturePage_t *Player_BindWeaponSpriteSlot( void )
+{
+    player_t      *player = &g_player;
+    texturePage_t *slot = g_pageSets[PAGE_SET_SPRITES].pages;
+    texturePage_t *result;
+    player->weaponSprite.slot = slot;
     slot->users = 1;
-    result = player->weapon_sprite.slot;
+    result = player->weaponSprite.slot;
     result->reserved = 1;
     return result;
 }
 
-/* The player's first frame on a level: places the player on the level's start cell,
- * facing its start direction, resets the view, timers and tallies, selects the
- * current weapon and continues as player_task_walk. */
-void player_task_start(TASK *task)
-{
-    short i;
-    u_int x;
-    u_int z;
-    SVECTOR *v;
-    short index;
+/*
+==================
+Player_TaskStart
 
-    for (i = 0; i < SOUND_CHANNEL_COUNT; i++) {
-        g_sound_channels[i].handle = -1;
-        g_sound_channels[i].flags = 0;
-        g_sound_channels[i].value = 0;
+The player's first frame on a level: places the player on the level's start cell,
+facing its start direction, resets the view, timers and tallies, selects the
+current weapon and continues as Player_TaskWalk.
+==================
+*/
+void Player_TaskStart( TASK *task )
+{
+    short    i;
+    u_int    x;
+    u_int    z;
+    SVECTOR *v;
+    short    index;
+
+    for ( i = 0; i < SOUND_CHANNEL_COUNT; i++ ) {
+        g_soundChannels[i].handle = -1;
+        g_soundChannels[i].flags = 0;
+        g_soundChannels[i].value = 0;
     }
     v = &g_player.position;
-    v->vx = (g_level_map.start_x << MAP_CELL_SHIFT) - g_level_map.offset_x;
-    v->vz = (g_level_map.start_z << MAP_CELL_SHIFT) - g_level_map.offset_z;
-    v->vy = floor_height(v->vx + g_level_map.offset_x, v->vz + g_level_map.offset_z);
-    x = v->vx + g_level_map.offset_x;
-    z = v->vz + g_level_map.offset_z;
+    v->vx = ( g_levelMap.startX << MAP_CELL_SHIFT ) - g_levelMap.offsetX;
+    v->vz = ( g_levelMap.startZ << MAP_CELL_SHIFT ) - g_levelMap.offsetZ;
+    v->vy = FloorHeight( v->vx + g_levelMap.offsetX, v->vz + g_levelMap.offsetZ );
+    x = v->vx + g_levelMap.offsetX;
+    z = v->vz + g_levelMap.offsetZ;
     v = &g_player.angles;
-    g_player.cell = MAP_CELL(x, z);
+    g_player.cell = MAP_CELL( x, z );
     g_player.cell->marker = CELL_MARKER_PLAYER;
-    index = g_player.cell->layout_index;
-    g_player.layout_index = index;
-    flow_field_fill(&g_level_map.layout_records[index], index);
+    index = g_player.cell->layoutIndex;
+    g_player.layoutIndex = index;
+    FillFlowField( &g_levelMap.layoutRecords[index], index );
     v->vx = PLAYER_PITCH_REST;
     v->vz = ANGLE_180;
-    switch (g_level_map.start_facing) {
+    switch ( g_levelMap.startFacing ) {
     case FACING_NEG_Z:
         v->vy = ANGLE_180;
         break;
     case FACING_POS_X_NEG_Z:
-        v->vy = ANGLE_90 * 5 / 2;
+        v->vy = ANGLE_225;
         break;
     case FACING_POS_X:
         v->vy = -ANGLE_90;
         break;
     case FACING_POS_X_POS_Z:
-        v->vy = -(ANGLE_90 / 2);
+        v->vy = -ANGLE_45;
         break;
     case FACING_POS_Z:
         v->vy = 0;
         break;
     case FACING_NEG_X_POS_Z:
-        v->vy = ANGLE_90 / 2;
+        v->vy = ANGLE_45;
         break;
     case FACING_NEG_X:
         v->vy = ANGLE_90;
         break;
     case FACING_NEG_X_NEG_Z:
-        v->vy = ANGLE_90 * 3 / 2;
+        v->vy = ANGLE_135;
         break;
     }
     v = &g_player.rotation;
@@ -1111,68 +1370,74 @@ void player_task_start(TASK *task)
     v->vy = 0;
     v->vz = ANGLE_180;
     v = &g_player.movement;
-    SET_VECTOR_TO_ZERO(*v);
+    SET_VECTOR_TO_ZERO( *v );
     g_player.batteries = 0;
-    g_player.lamp_charges = 0;
-    g_player.lamp_timer = 0;
-    g_player.night_vision_charges = 0;
-    g_player.night_vision_timer = 0;
-    g_player.boots_timer = 0;
-    g_player.identity_tags = 0;
-    g_player.invulnerable_timer = 0;
-    DISABLE_FLAG(PLAYER_HAS_AUTO_MAPPER | PLAYER_HUGGER_ATTACHED | PLAYER_FOOTSTEP_ALT);
-    for (i = 0; i < PLAYER_TALLY_COUNT; i++)
+    g_player.lampCharges = 0;
+    g_player.lampTimer = 0;
+    g_player.nightVisionCharges = 0;
+    g_player.nightVisionTimer = 0;
+    g_player.bootsTimer = 0;
+    g_player.identityTags = 0;
+    g_player.invulnerableTimer = 0;
+    DISABLE_FLAG( PLAYER_HAS_AUTO_MAPPER | PLAYER_HUGGER_ATTACHED | PLAYER_FOOTSTEP_ALT );
+    for ( i = 0; i < PLAYER_TALLY_COUNT; i++ )
         g_player.tallies[i] = 0;
-    g_player.noise_timer = 0;
-    g_player.damage_timer = 0;
+    g_player.noiseTimer = 0;
+    g_player.damageTimer = 0;
     g_player.flash = 0;
-    g_player.flash_heading = 0;
-    g_player.pitch_rest = PLAYER_PITCH_REST;
-    g_player.pitch_max = PLAYER_PITCH_LIMIT;
-    g_player.pitch_min = -PLAYER_PITCH_LIMIT;
-    g_player.pitch_speed_max = PLAYER_PITCH_SPEED_MAX;
-    g_player.pitch_speed = 0;
-    g_player.speed_max = PLAYER_WALK_SPEED;
+    g_player.flashHeading = 0;
+    g_player.pitchRest = PLAYER_PITCH_REST;
+    g_player.pitchMax = PLAYER_PITCH_LIMIT;
+    g_player.pitchMin = -PLAYER_PITCH_LIMIT;
+    g_player.pitchSpeedMax = PLAYER_PITCH_SPEED_MAX;
+    g_player.pitchSpeed = 0;
+    g_player.speedMax = PLAYER_WALK_SPEED;
     g_player.acceleration = PLAYER_WALK_ACCELERATION;
     g_player.deceleration = PLAYER_WALK_DECELERATION;
-    g_player.turn_speed_max = PLAYER_WALK_TURN_SPEED;
-    g_player.turn_speed = 0;
-    g_player.view_height = PLAYER_HEIGHT;
-    g_player.shot_offset_x = 0;
+    g_player.turnSpeedMax = PLAYER_WALK_TURN_SPEED;
+    g_player.turnSpeed = 0;
+    g_player.viewHeight = PLAYER_HEIGHT;
+    g_player.shotOffsetX = 0;
     g_player.bob = 0;
     g_player.unknown_102 = 1;
-    g_player.bob_phase = 2;
-    g_player.last_trigger = 0;
-    g_player.weapon_lower = 0;
-    player_view_bob();
-    weapon_select(g_player.weapon);
-    weapon_slot_sync();
-    task->callback = player_task_walk;
-    g_next_task = task->Next;
+    g_player.bobPhase = 2;
+    g_player.lastTrigger = 0;
+    g_player.weaponLower = 0;
+    Player_ViewBob();
+    Player_SelectWeapon( g_player.weapon );
+    Weapon_SyncSlot();
+    task->callback = Player_TaskWalk;
+    g_nextTask = task->Next;
 }
 
+/*
+==================
+Player_Reset
+==================
+*/
 /* name: inferred from its body, which resets the player's state for a level (health 100) */
-void player_reset(void) {
+void Player_Reset( void )
+{
     s16 i;
-    weapon_slots_reset();
+    Weapon_ResetSlots();
     g_player.flags = 0;
     g_player.health = PLAYER_HEALTH_MAX;
     g_player.armour = 0;
-    g_player.charge_grenades = 0;
-    g_player.pistol_ammo = 0;
-    g_player.pistol_clips = 0;
-    g_player.shotgun_ammo = 0;
-    g_player.pulse_rifle_ammo = 0;
-    g_player.pulse_rifle_clips = 0;
-    g_player.pulse_rifle_grenades = 0;
-    g_player.flamethrower_fuel = 0;
-    g_player.smart_gun_ammo = 0;
-    g_player.smart_gun_clips = 0;
+    g_player.chargeGrenades = 0;
+    g_player.pistolAmmo = 0;
+    g_player.pistolClips = 0;
+    g_player.shotgunAmmo = 0;
+    g_player.pulseRifleAmmo = 0;
+    g_player.pulseRifleClips = 0;
+    g_player.pulseRifleGrenades = 0;
+    g_player.flamethrowerFuel = 0;
+    g_player.smartGunAmmo = 0;
+    g_player.smartGunClips = 0;
     g_player.weapon = WEAPON_PISTOL;
-    for (i = 0; i < SOUND_CHANNEL_COUNT; ++i) {
-        g_sound_channels[i].handle = -1;
-        g_sound_channels[i].flags = 0;
-        g_sound_channels[i].value = 0;
+    for ( i = 0; i < SOUND_CHANNEL_COUNT; ++i ) {
+        g_soundChannels[i].handle = -1;
+        g_soundChannels[i].flags = 0;
+        g_soundChannels[i].value = 0;
     }
-    player_give_pickup(PICKUP_PISTOL, PISTOL_CLIP_ROUNDS, PLAYER_START_PISTOL_CLIPS);
+    Weapon_PlayerGivePickup( PICKUP_PISTOL, PISTOL_CLIP_ROUNDS, PLAYER_START_PISTOL_CLIPS );
 }

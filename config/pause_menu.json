@@ -10,167 +10,167 @@
     ".sdata": "0x8008cd74"
   },
   "functions": {
-    "automap_build": {
+    "Pause_BuildAutomap": {
       "address": "0x8004070c",
       "size": 868
     },
-    "pause_menu_init": {
+    "Pause_Init": {
       "address": "0x80040a70",
       "size": 968
     },
-    "hud_draw_text": {
+    "Pause_DrawHUDText": {
       "address": "0x80040e38",
       "size": 164
     },
-    "draw_text_typed": {
+    "Pause_DrawTextTyped": {
       "address": "0x80040edc",
       "size": 304
     },
-    "text_word_width": {
+    "Pause_TextWordWidth": {
       "address": "0x8004100c",
       "size": 152
     },
-    "mission_text_draw_word": {
+    "Pause_DrawMissionTextWord": {
       "address": "0x800410a4",
       "size": 576
     },
-    "mission_text_draw": {
+    "Pause_DrawMissionText": {
       "address": "0x800412e4",
       "size": 416
     },
-    "draw_option_bar": {
+    "Pause_DrawOptionBar": {
       "address": "0x80041484",
       "size": 220
     },
-    "draw_map_arrow": {
+    "Pause_DrawMapArrow": {
       "address": "0x80041560",
       "size": 372
     },
-    "draw_map": {
+    "Pause_DrawMap": {
       "address": "0x800416d4",
       "size": 1024
     },
-    "draw_item_page": {
+    "Pause_DrawItemPage": {
       "address": "0x80041ad4",
       "size": 1316
     },
-    "draw_sound_options": {
+    "Pause_DrawSoundOptions": {
       "address": "0x80041ff8",
       "size": 756
     },
-    "pause_menu_draw": {
+    "Pause_Draw": {
       "address": "0x800422ec",
       "size": 1496
     },
-    "pause_menu_select": {
+    "Pause_Select": {
       "address": "0x800428c4",
       "size": 832
     },
-    "sound_options_select": {
+    "Pause_SelectSoundOptions": {
       "address": "0x80042c04",
       "size": 256
     },
-    "exit_confirm_update": {
+    "Pause_UpdateExitConfirm": {
       "address": "0x80042d04",
       "size": 176
     },
-    "swap_display_buffers": {
+    "Pause_SwapDisplayBuffers": {
       "address": "0x80042db4",
       "size": 212
     },
-    "pause_menu_run": {
+    "Pause_Run": {
       "address": "0x80042e88",
       "size": 1116
     }
   },
   "symbols": {
-    "g_unpack_buffer": "0x8008d520",
-    "g_clut_sets": "0x8006a578",
-    "g_secrets_found": "0x80096c54",
+    "g_unpackBuffer": "0x8008d520",
+    "g_clutSets": "0x8006a578",
+    "g_secretsFound": "0x80096c54",
     "LoadClut": "0x8006633c",
     "LoadImage": "0x80062a80",
-    "g_level_map": "0x80096060",
+    "g_levelMap": "0x80096060",
     "g_player": "0x80099fd4",
-    "g_view_rotation": "0x8008d468",
+    "g_viewRotation": "0x8008d468",
     "g_level": "0x8008d378",
-    "rotate_vector": "0x8001fca8",
-    "get_sound_volume": "0x80017740",
-    "get_music_volume": "0x80017750",
-    "g_pause_options": "0x800735c4",
-    "g_sound_options": "0x80073614",
-    "g_render_buffer": "0x8008d4e8",
-    "g_sprite_workspace": "0x8008d478",
-    "g_option_bar_uv": "0x80097a84",
-    "g_glyph_widths": "0x800a0fd8",
-    "g_frame_count": "0x8008d380",
-    "g_mission_text": "0x8009a124",
-    "hud_draw_glyph": "0x80037560",
-    "g_map_uv": "0x8008f618",
-    "g_object_models": "0x80096be4",
+    "Geo_RotateVector": "0x8001fca8",
+    "Menu_GetSoundVolume": "0x80017740",
+    "Menu_GetMusicVolume": "0x80017750",
+    "g_pauseOptions": "0x800735c4",
+    "g_soundOptions": "0x80073614",
+    "g_renderBuffer": "0x8008d4e8",
+    "g_spriteWorkspace": "0x8008d478",
+    "g_optionBarUV": "0x80097a84",
+    "g_glyphWidths": "0x800a0fd8",
+    "g_frameCount": "0x8008d380",
+    "g_missionText": "0x8009a124",
+    "Hud_DrawGlyph": "0x80037560",
+    "g_mapUV": "0x8008f618",
+    "g_objectModels": "0x80096be4",
     "g_translation": "0x8009c5a4",
-    "g_model_matrix": "0x8008f628",
-    "g_model_uvs": "0x8008d558",
-    "g_pickup_uvs": "0x8009b384",
-    "g_sprite_uvs": "0x80097fd4",
-    "model_draw_mid_in_cell": "0x8001fc0c",
-    "draw_number": "0x80034ae8",
+    "g_modelMatrix": "0x8008f628",
+    "g_modelUvs": "0x8008d558",
+    "g_pickupUvs": "0x8009b384",
+    "g_spriteUvs": "0x80097fd4",
+    "Model_DrawMidInCell": "0x8001fc0c",
+    "Hud_DrawNumber": "0x80034ae8",
     "PushMatrix": "0x80066c6c",
     "PopMatrix": "0x80066d0c",
     "RotMatrix": "0x800684fc",
     "SetRotMatrix": "0x8006786c",
     "TransMatrix": "0x80067724",
     "SetTransMatrix": "0x800678fc",
-    "g_game_flags": "0x8008d560",
-    "weapon_select_slot": "0x800344d4",
-    "set_sound_volume": "0x80017708",
-    "set_music_volume": "0x80017654",
-    "g_pad_pressed": "0x8008d5a8",
-    "play_menu_sound": "0x80015f2c",
-    "g_graphics_busy": "0x8008d388",
+    "g_gameFlags": "0x8008d560",
+    "Weapon_SelectSlot": "0x800344d4",
+    "Menu_SetSoundVolume": "0x80017708",
+    "Menu_SetMusicVolume": "0x80017654",
+    "g_padPressed": "0x8008d5a8",
+    "Menu_PlayMenuSound": "0x80015f2c",
+    "g_graphicsBusy": "0x8008d388",
     "g_display": "0x8008d518",
-    "g_render_workspace": "0x8008d3c8",
-    "g_display_default": "0x8008d3e0",
+    "g_renderWorkspace": "0x8008d3c8",
+    "g_displayDefault": "0x8008d3e0",
     "DrawSync": "0x80062858",
     "PutDispEnv": "0x80062f2c",
     "ClearOTagR": "0x80062cc4",
-    "g_pad_previous": "0x8008d448",
-    "g_pad_held": "0x8008d4d8",
-    "g_sound_clock": "0x8008d588",
+    "g_padPrevious": "0x8008d448",
+    "g_padHeld": "0x8008d4d8",
+    "g_soundClock": "0x8008d588",
     "PadRead": "0x80061618",
-    "music_pause": "0x8003f690",
-    "sound_mute_all": "0x8003d4d4",
-    "reset_combo_check": "0x80013928",
-    "music_poll": "0x8003f81c",
-    "sound_stop": "0x8003d52c",
-    "sound_play": "0x8003d5b4",
-    "sound_unmute_all": "0x8003d500",
-    "music_unpause": "0x8003f6dc",
+    "Music_Pause": "0x8003f690",
+    "Snd_MuteAll": "0x8003d4d4",
+    "Sys_ResetComboCheck": "0x80013928",
+    "Music_Poll": "0x8003f81c",
+    "Snd_Stop": "0x8003d52c",
+    "Snd_Play": "0x8003d5b4",
+    "Snd_UnmuteAll": "0x8003d500",
+    "Music_Unpause": "0x8003f6dc",
     "DrawOTag": "0x80062dbc",
     "AddPrim": "0x80065220",
-    "g_page_sets": "0x8006a590"
+    "g_pageSets": "0x8006a590"
   },
   "static_data": {
-    "g_pause_state": {
+    "g_pauseState": {
       "address": "0x8008d218",
       "size": 8,
       "section": ".sbss"
     },
-    "g_pause_option": {
+    "g_pauseOption": {
       "address": "0x8008d220",
       "size": 8,
       "section": ".sbss"
     },
-    "g_typed_length": {
+    "g_typedLength": {
       "address": "0x8008d228",
       "size": 8,
       "section": ".sbss"
     },
-    "g_sound_option": {
+    "g_soundOption": {
       "address": "0x8008d230",
       "size": 8,
       "section": ".sbss"
     },
-    "g_exit_confirmed": {
+    "g_exitConfirmed": {
       "address": "0x8008d238",
       "size": 8,
       "section": ".sbss"
@@ -180,27 +180,27 @@
       "size": 8,
       "section": ".sbss"
     },
-    "g_sfx_volume": {
+    "g_sfxVolume": {
       "address": "0x8008d248",
       "size": 8,
       "section": ".sbss"
     },
-    "g_cdda_volume": {
+    "g_cddaVolume": {
       "address": "0x8008d250",
       "size": 8,
       "section": ".sbss"
     },
-    "g_text_left": {
+    "g_textLeft": {
       "address": "0x8008d258",
       "size": 8,
       "section": ".sbss"
     },
-    "g_text_x": {
+    "g_textX": {
       "address": "0x8008d260",
       "size": 8,
       "section": ".sbss"
     },
-    "g_text_y": {
+    "g_textY": {
       "address": "0x8008d268",
       "size": 8,
       "section": ".sbss"
@@ -210,47 +210,47 @@
       "size": 8,
       "section": ".sbss"
     },
-    "g_text_cursor": {
+    "g_textCursor": {
       "address": "0x8008d278",
       "size": 8,
       "section": ".sbss"
     },
-    "g_text_style": {
+    "g_textStyle": {
       "address": "0x8008d280",
       "size": 8,
       "section": ".sbss"
     },
-    "g_map_center_x": {
+    "g_mapCenterX": {
       "address": "0x8008d288",
       "size": 8,
       "section": ".sbss"
     },
-    "g_map_center_z": {
+    "g_mapCenterZ": {
       "address": "0x8008d290",
       "size": 8,
       "section": ".sbss"
     },
-    "g_model_rotation": {
+    "g_modelRotation": {
       "address": "0x8008d298",
       "size": 8,
       "section": ".sbss"
     },
-    "g_ammo_model_rotation": {
+    "g_ammoModelRotation": {
       "address": "0x8008d2a0",
       "size": 8,
       "section": ".sbss"
     },
-    "g_arrow_tip": {
+    "g_arrowTip": {
       "address": "0x8008d2a8",
       "size": 8,
       "section": ".sbss"
     },
-    "g_arrow_right": {
+    "g_arrowRight": {
       "address": "0x8008d2b0",
       "size": 8,
       "section": ".sbss"
     },
-    "g_arrow_left": {
+    "g_arrowLeft": {
       "address": "0x8008d2b8",
       "size": 8,
       "section": ".sbss"

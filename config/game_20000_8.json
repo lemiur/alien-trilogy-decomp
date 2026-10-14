@@ -1,17 +1,17 @@
 {
   "gp": "0x8008cd74",
   "functions": {
-    "screen_sprite_draw_semi": {
+    "DrawScreenSpriteSemi": {
       "address": "0x80022158",
       "size": 292
     },
-    "screen_sprite_draw": {
+    "DrawScreenSprite": {
       "address": "0x8002227c",
       "size": 292
     }
   },
   "symbols": {
-    "g_sprite_workspace": "0x8008d478",
-    "g_render_buffer": "0x8008d4e8"
+    "g_spriteWorkspace": "0x8008d478",
+    "g_renderBuffer": "0x8008d4e8"
   }
 }

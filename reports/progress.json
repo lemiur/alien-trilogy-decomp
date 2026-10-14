@@ -1,5 +1,5 @@
 {
-  "generated_utc": "2026-10-10T21:40:51.925133+00:00",
+  "generated_utc": "2026-10-14T06:44:47.364299+00:00",
   "reference_sha256": "f424660920764ac70f697b5b909a42fe259a76e60acbf5b01c6ca3ee8c8f8e98",
   "payload_size": 514048,
   "primary_source": "builds/gate/provenance.json",
@@ -9,6 +9,44 @@
     "reports/runtime_latest.json",
     "reports/runtime_data.json",
     "analysis/link_plan.py"
+  ],
+  "matched_under_the_rules": 637,
+  "rules": {
+    "function_definitions": 665,
+    "byte_matched_functions": 645,
+    "functions_with_unexcused_match_findings": 0,
+    "match_pending_functions": 8,
+    "matched_under_the_rules": 637,
+    "unexcused_match_findings": 0,
+    "unexcused_match_findings_by_rule": {},
+    "failing_functions_by_rule": {},
+    "invalid_exceptions": 0,
+    "advisory_findings_by_rule": {
+      "R14": 10,
+      "R19": 197,
+      "R2-pending": 127,
+      "R31": 4,
+      "R7": 47
+    },
+    "mapped_functions_not_found": [],
+    "match_pending_without_definition": [],
+    "dead_local_exceptions": [
+      "src/frontend.c:Menu_FormatCardSlot",
+      "src/frontend.c:Menu_TitleSequenceTask",
+      "src/object_render.c:Object_LevelObjectTask",
+      "src/particle.c:Particle_DrawFlame",
+      "src/save_password.c:Password_ApplyRecord"
+    ]
+  },
+  "match_pending": [
+    "src/doors.c:Door_Blocked",
+    "src/doors.c:Door_PrepareModels",
+    "src/frontend.c:Menu_CreditsLineTask",
+    "src/frontend.c:Menu_MessageBoxType",
+    "src/lift.c:Lift_PrepareModels",
+    "src/map_objects.c:Object_PickupsTask",
+    "src/memcard.c:Card_WriteFile",
+    "src/particle.c:Particle_DrawDebris"
   ],
   "bytes": {
     "c_function": 205436,

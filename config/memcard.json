@@ -1,70 +1,70 @@
 {
   "functions": {
-    "card_init": {
+    "Card_Init": {
       "address": "0x80048184",
       "size": 264
     },
-    "card_wait_event": {
+    "Card_WaitEvent": {
       "address": "0x8004828c",
       "size": 128
     },
-    "card_status": {
+    "Card_Status": {
       "address": "0x8004830c",
       "size": 52
     },
-    "card_event_message": {
+    "Card_EventMessage": {
       "address": "0x80048340",
       "size": 24
     },
-    "card_error_message": {
+    "Card_ErrorMessage": {
       "address": "0x80048358",
       "size": 24
     },
-    "card_print_directory": {
+    "Card_PrintDirectory": {
       "address": "0x80048370",
       "size": 156
     },
-    "card_find_files": {
+    "Card_FindFiles": {
       "address": "0x8004840c",
       "size": 224
     },
-    "card_count_files": {
+    "Card_CountFiles": {
       "address": "0x800484ec",
       "size": 44
     },
-    "card_delete_file": {
+    "Card_DeleteFile": {
       "address": "0x80048518",
       "size": 80
     },
-    "card_format": {
+    "Card_Format": {
       "address": "0x80048568",
       "size": 48
     },
-    "checksum_bytes": {
+    "Card_ChecksumBytes": {
       "address": "0x80048598",
       "size": 40
     },
-    "card_block_checksums": {
+    "Card_BlockChecksums": {
       "address": "0x800485c0",
       "size": 164
     },
-    "card_find_device": {
+    "Card_FindDevice": {
       "address": "0x80048664",
       "size": 232
     },
-    "card_present_mask": {
+    "Card_PresentMask": {
       "address": "0x8004874c",
       "size": 80
     },
-    "card_write_file": {
+    "Card_WriteFile": {
       "address": "0x8004879c",
       "size": 1184
     },
-    "card_read_file": {
+    "Card_ReadFile": {
       "address": "0x80048c3c",
       "size": 444
     },
-    "card_read_header": {
+    "Card_ReadHeader": {
       "address": "0x80048df8",
       "size": 348
     }
@@ -78,28 +78,28 @@
     "OpenEvent": "0x8005d2b0",
     "ExitCriticalSection": "0x8005d2e0",
     "EnableEvent": "0x8005d0f0",
-    "g_card_event_complete": "0x8008d4b0",
-    "g_card_event_error": "0x8008d4b8",
-    "g_card_event_timeout": "0x8008d4c0",
-    "g_card_event_new_device": "0x8008d4c8",
+    "g_cardEventComplete": "0x8008d4b0",
+    "g_cardEventError": "0x8008d4b8",
+    "g_cardEventTimeout": "0x8008d4c0",
+    "g_cardEventNewDevice": "0x8008d4c8",
     "TestEvent": "0x8005d2d0",
     "strcpy": "0x800699d0",
     "strcat": "0x800697d8",
     "printf": "0x80069880",
     "firstfile": "0x8005d300",
     "nextfile": "0x8005d2a0",
-    "g_card_directory_format": "0x80012b4c",
-    "g_card_entry_format": "0x80012b60",
+    "g_cardDirectoryFormat": "0x80012b4c",
+    "g_cardEntryFormat": "0x80012b60",
     "delete": "0x8005d100",
     "open": "0x8005d2f0",
     "read": "0x8005d2c0",
     "close": "0x8005d0d0",
-    "heap_free": "0x80014e7c",
-    "sjis_to_ascii": "0x80010000",
-    "heap_alloc": "0x80014dfc",
+    "Heap_Free": "0x80014e7c",
+    "Card_SJISToASCII": "0x80010000",
+    "Heap_Alloc": "0x80014dfc",
     "format": "0x8005d110",
     "_card_info": "0x8006a528",
-    "ascii_to_sjis": "0x80010170",
+    "Card_ASCIIToSJIS": "0x80010170",
     "write": "0x8005d0e0"
   },
   "sdk_exports": {
@@ -125,17 +125,17 @@
   },
   "gp": "0x8008cd74",
   "static_data": {
-    "g_card_devices": {
+    "g_cardDevices": {
       "address": "0x80073a88",
       "size": 32,
       "section": ".data"
     },
-    "g_card_error_messages": {
+    "g_cardErrorMessages": {
       "address": "0x80073aa8",
       "size": 64,
       "section": ".data"
     },
-    "g_card_event_messages": {
+    "g_cardEventMessages": {
       "address": "0x80073ae8",
       "size": 16,
       "section": ".data"

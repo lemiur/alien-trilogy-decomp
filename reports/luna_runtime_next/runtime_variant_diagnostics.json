@@ -1,12 +1,12 @@
 {
   "executable_sha256": "f424660920764ac70f697b5b909a42fe259a76e60acbf5b01c6ca3ee8c8f8e98",
   "runtime_3_3_primary_module_results": {
-    "full_match_modules": 95,
-    "relocated_exact_modules": 47,
-    "unresolved_modules": 2
+    "full_match_modules": 96,
+    "relocated_exact_modules": 48,
+    "unresolved_modules": 0
   },
   "runtime_symbol_inventory": {
-    "module_records": 97,
+    "module_records": 98,
     "byte_exact_unrelocated_module_records": 48,
     "unique_byte_exact_unrelocated_text_bytes": 5908
   },
@@ -491,7 +491,7 @@
         "address": "0x80073afc",
         "reference_count": 1,
         "referencing_text": {
-          "S_GKS (unresolved)": [
+          "S_GKS (library_asm)": [
             "0x800590f4",
             "0x800590f4",
             1
@@ -524,7 +524,7 @@
         "address": "0x80073cf0",
         "reference_count": 14,
         "referencing_text": {
-          "S_SCA (unresolved)": [
+          "S_SCA (library_asm)": [
             "0x8005c06c",
             "0x8005c30c",
             14

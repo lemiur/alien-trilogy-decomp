@@ -1,7 +1,7 @@
 {
   "status": "pass",
-  "verifier_sha256": "8f84723e288c36167dd6574d57a7ad6eda7bede2d7a92d65bb348dd1fd36832f",
-  "registered_units": 138,
+  "verifier_sha256": "15d209d606bb57d61e9d1109dd5c88725b266ccd03846aff757d8deadc6fa4f3",
+  "registered_units": 35,
   "consistent_import_and_alias_accepted": true,
   "cases": [
     {

@@ -1,0 +1,81 @@
+# Quake III Arena C layout, 4-space indent (id uses tabs). Pinned formatter: clang-format 22.1.8.
+# ColumnLimit 0: line breaks stay where the source has them (hand-wrapped at about 120); trailing comments are long.
+# Run: clang-format -i src/*.c include/*.H   (files are LF, no BOM; `* -text` in .gitattributes)
+---
+Language: Cpp
+BasedOnStyle: LLVM
+Standard: c++03
+DisableFormat: false
+
+IndentWidth: 4
+TabWidth: 4
+UseTab: Never
+ContinuationIndentWidth: 4
+ColumnLimit: 120
+PenaltyExcessCharacter: 1
+LineEnding: LF
+
+# K&R: function braces on their own line, control and aggregate braces attached.
+BreakBeforeBraces: Linux
+IndentCaseLabels: false
+IndentGotoLabels: false
+IndentPPDirectives: None
+NamespaceIndentation: None
+
+# Quake III spacing: `if ( a ) {`, `Foo( a, b )`, `( a + b )`; casts, empty parens and brackets stay tight.
+SpaceBeforeParens: ControlStatements
+SpacesInParens: Custom
+SpacesInParensOptions:
+  InConditionalStatements: true
+  InCStyleCasts: false
+  InEmptyParentheses: false
+  Other: true
+SpacesInSquareBrackets: false
+SpacesInContainerLiterals: true
+Cpp11BracedListStyle: false
+SpaceAfterCStyleCast: false
+SpaceBeforeAssignmentOperators: true
+SpacesBeforeTrailingComments: 1
+PointerAlignment: Right
+DerivePointerAlignment: false
+
+# C89 declarations aligned in columns; assignments and macros are not aligned.
+AlignConsecutiveDeclarations:
+  Enabled: true
+  AlignFunctionDeclarations: false
+  AlignFunctionPointers: false
+  AcrossEmptyLines: false
+  AcrossComments: false
+AlignConsecutiveAssignments: None
+AlignConsecutiveMacros: None
+AlignConsecutiveBitFields: None
+AlignEscapedNewlines: Left
+AlignTrailingComments: true
+AlignOperands: Align
+AlignAfterOpenBracket: Align
+
+AllowShortIfStatementsOnASingleLine: Never
+AllowShortLoopsOnASingleLine: false
+AllowShortFunctionsOnASingleLine: None
+AllowShortCaseLabelsOnASingleLine: false
+AllowShortBlocksOnASingleLine: Never
+AllowShortEnumsOnASingleLine: false
+BreakBeforeBinaryOperators: NonAssignment
+BinPackArguments: true
+BinPackParameters: true
+BreakBeforeTernaryOperators: true
+InsertBraces: false
+RemoveBracesLLVM: false
+KeepEmptyLines:
+  AtEndOfFile: false
+  AtStartOfBlock: false
+  AtStartOfFile: false
+MaxEmptyLinesToKeep: 2
+
+# Never reorder, never rewrite comments, leave macro bodies and string literals alone.
+SortIncludes: Never
+IncludeBlocks: Preserve
+ReflowComments: Never
+BreakStringLiterals: false
+InsertNewlineAtEOF: true
+...

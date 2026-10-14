@@ -1,103 +1,103 @@
 {
   "functions": {
-    "level_object_model_fixup": {
+    "Object_FixupLevelObjectModel": {
       "address": "0x80030e84",
       "size": 244
     },
-    "level_object_models_load": {
+    "Object_LoadLevelObjectModels": {
       "address": "0x80030f78",
       "size": 460
     },
-    "explosion_damage": {
+    "Object_ExplosionDamage": {
       "address": "0x80031144",
       "size": 2168
     },
-    "level_object_tick": {
+    "Object_TickLevelObject": {
       "address": "0x800319bc",
       "size": 136
     },
-    "level_object_activate": {
+    "Object_ActivateLevelObject": {
       "address": "0x80031a44",
       "size": 248
     },
-    "level_object_mark_cells": {
+    "Object_MarkLevelObjectCells": {
       "address": "0x80031b3c",
       "size": 160
     },
-    "level_object_clear_cells": {
+    "Object_ClearLevelObjectCells": {
       "address": "0x80031bdc",
       "size": 140
     },
-    "level_objects_create": {
+    "Object_CreateLevelObjects": {
       "address": "0x80031c68",
       "size": 1420
     },
-    "level_objects_init": {
+    "Object_InitLevelObjects": {
       "address": "0x800321f4",
       "size": 52
     },
-    "level_object_draw": {
+    "Object_DrawLevelObject": {
       "address": "0x80032228",
       "size": 520
     },
-    "level_object_draw_tall": {
+    "Object_DrawLevelObjectTall": {
       "address": "0x80032430",
       "size": 448
     },
-    "level_object_draw_unscaled": {
+    "Object_DrawLevelObjectUnscaled": {
       "address": "0x800325f0",
       "size": 380
     },
-    "level_object_task": {
+    "Object_LevelObjectTask": {
       "address": "0x8003276c",
       "size": 484
     },
-    "level_object_spin_task": {
+    "Object_LevelObjectSpinTask": {
       "address": "0x80032950",
       "size": 152
     },
-    "level_object_hit_task": {
+    "Object_LevelObjectHitTask": {
       "address": "0x800329e8",
       "size": 316
     },
-    "level_object_debris_task": {
+    "Object_LevelObjectDebrisTask": {
       "address": "0x80032b24",
       "size": 244
     },
-    "block_object_explode": {
+    "Object_ExplodeBlockObject": {
       "address": "0x80032c18",
       "size": 844
     },
-    "block_object_task": {
+    "Object_BlockObjectTask": {
       "address": "0x80032f64",
       "size": 452
     },
-    "switch_panel_active_task": {
+    "Object_SwitchPanelActiveTask": {
       "address": "0x80033128",
       "size": 1064
     },
-    "switch_panel_task": {
+    "Object_SwitchPanelTask": {
       "address": "0x80033550",
       "size": 764
     }
   },
   "symbols": {
-    "g_level_objects": "0x8008d1a0",
-    "random": "0x80013a44",
-    "sound_play": "0x8003d5b4",
-    "hud_show_message": "0x80037b98",
+    "g_levelObjects": "0x8008d1a0",
+    "Sys_Random": "0x80013a44",
+    "Snd_Play": "0x8003d5b4",
+    "Hud_ShowMessage": "0x80037b98",
     "g_player": "0x80099fd4",
-    "g_level_map": "0x80096060",
-    "level_objects_create": "0x80031c68",
-    "g_visible_cell_mask": "0x8008d510",
-    "g_view_position": "0x8008d5b8",
-    "g_relative_position": "0x8008d5c8",
-    "g_view_matrix": "0x8009a2c4",
-    "g_matrix_work": "0x8009a2e4",
+    "g_levelMap": "0x80096060",
+    "Object_CreateLevelObjects": "0x80031c68",
+    "g_visibleCellMask": "0x8008d510",
+    "g_viewPosition": "0x8008d5b8",
+    "g_relativePosition": "0x8008d5c8",
+    "g_viewMatrix": "0x8009a2c4",
+    "g_matrixWork": "0x8009a2e4",
     "g_translation": "0x8009c5a4",
-    "model_draw_near_in_cell": "0x8001f410",
-    "model_draw_mid_in_cell": "0x8001fc0c",
-    "model_draw_far_in_cell": "0x8001f820",
+    "Model_DrawNearInCell": "0x8001f410",
+    "Model_DrawMidInCell": "0x8001fc0c",
+    "Model_DrawFarInCell": "0x8001f820",
     "LoadAverageShort12": "0x800679c0",
     "PushMatrix": "0x80066c6c",
     "PopMatrix": "0x80066d0c",
@@ -108,47 +108,47 @@
     "TransMatrix": "0x80067724",
     "SetTransMatrix": "0x800678fc",
     "g_level": "0x8008d378",
-    "g_model_uvs": "0x8008d558",
-    "g_panel_uvs": "0x80096dc4",
-    "g_pickup_uvs": "0x8009b384",
-    "g_sprite_uvs": "0x80097fd4",
+    "g_modelUvs": "0x8008d558",
+    "g_panelUvs": "0x80096dc4",
+    "g_pickupUvs": "0x8009b384",
+    "g_spriteUvs": "0x80097fd4",
     "ScaleMatrix": "0x80067748",
-    "floor_height": "0x80021144",
-    "g_next_task": "0x8008d4f0",
-    "level_object_drop_item": "0x800389fc",
-    "actor_spawn_from_object": "0x80029734",
-    "explosion_spawn": "0x8002485c",
-    "panel_list_walk": "0x80047160",
+    "FloorHeight": "0x80021144",
+    "g_nextTask": "0x8008d4f0",
+    "Object_LevelObjectDropItem": "0x800389fc",
+    "Actor_SpawnFromObject": "0x80029734",
+    "Particle_SpawnExplosion": "0x8002485c",
+    "Debris_WalkPanelList": "0x80047160",
     "TaskDie": "0x80015ea4",
-    "big_explosion_spawn": "0x800248f0",
-    "g_level_object_records": "0x8008d190",
-    "g_level_object_count": "0x8008d198",
-    "g_level_object_models": "0x8008f230",
+    "Particle_SpawnBigExplosion": "0x800248f0",
+    "g_levelObjectRecords": "0x8008d190",
+    "g_levelObjectCount": "0x8008d198",
+    "g_levelObjectModels": "0x8008f230",
     "TaskCreate": "0x80015e4c",
-    "wall_shatter": "0x80045e7c",
-    "command_state_add": "0x80040600",
-    "sound_play_at": "0x8003d66c",
-    "level_object_clear_cells": "0x80031bdc",
-    "load_file": "0x800151f0",
-    "parse_decimal": "0x8001c538",
-    "read_be32": "0x8001c50c",
-    "heap_alloc": "0x80014dfc",
-    "g_file_table": "0x8006a5f8",
-    "g_blast_near": "0x8008f2d8",
-    "g_blast_far": "0x8008f2f8",
-    "g_actor_pool": "0x8008d460",
-    "actor_damage": "0x8002bee4",
-    "player_hit": "0x8003b324"
+    "Debris_ShatterWall": "0x80045e7c",
+    "Command_AddState": "0x80040600",
+    "Snd_PlayAt": "0x8003d66c",
+    "Object_ClearLevelObjectCells": "0x80031bdc",
+    "Sys_LoadFile": "0x800151f0",
+    "Text_ParseDecimal": "0x8001c538",
+    "Text_ReadBigEndian32": "0x8001c50c",
+    "Heap_Alloc": "0x80014dfc",
+    "g_fileTable": "0x8006a5f8",
+    "g_blastNear": "0x8008f2d8",
+    "g_blastFar": "0x8008f2f8",
+    "g_actorPool": "0x8008d460",
+    "Actor_Damage": "0x8002bee4",
+    "Player_Hit": "0x8003b324"
   },
   "gp": "0x8008cd74",
   "sections": {},
   "static_data": {
-    "g_blast_near_offsets": {
+    "g_blastNearOffsets": {
       "address": "0x80072be0",
       "size": 32,
       "section": ".data"
     },
-    "g_blast_far_offsets": {
+    "g_blastFarOffsets": {
       "address": "0x80072c00",
       "size": 64,
       "section": ".data"

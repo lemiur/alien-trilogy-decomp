@@ -1,0 +1,40 @@
+{
+  "_doc": "Frozen fixture map for tools/test_rename.py.",
+  "_rules": {"acronyms": ["cd", "ft4"], "acronym_forms": {"nocull": "NoCull"}},
+  "functions": {
+    "doors_build": {"unit": "doors", "new": "Door_Build"},
+    "door_link": {"unit": "doors", "new": "Door_Link"},
+    "door_task_open": {"unit": "doors", "new": "Door_TaskOpen"},
+    "TaskCreate": {"unit": "tasker", "new": "TaskCreate", "keep": "lineage spelling"},
+    "f_1234a": {"unit": "doors", "new": "f_1234a", "keep": "address placeholder"},
+    "random": {"unit": "main", "new": "Sys_Random"}
+  },
+  "globals": {
+    "g_door_records": {"unit": "doors", "new": "g_doorRecords"},
+    "g_door_count": {"unit": "doors", "new": "g_doorCount", "static": true}
+  },
+  "types": {
+    "DoorRecord": {"header": "include/DOOR.H", "new": "doorRecord_t"},
+    "Door": {"header": "include/DOOR.H", "new": "door_t"},
+    "TASK": {"header": "include/TASK.H", "new": "TASK", "keep": "lineage spelling"}
+  },
+  "tags": {
+    "DoorRecord": {"header": "include/DOOR.H", "keyword": "struct", "new": "doorRecord_s"},
+    "Door": {"header": "include/DOOR.H", "keyword": "struct", "new": "door_s"}
+  },
+  "members": {
+    "DoorRecord": {"header": "include/DOOR.H", "owner_type_new": "doorRecord_t", "members": {
+      "open_height": {"new": "openHeight"},
+      "a_mode": {"new": "aMode", "ambiguous": "also an SDK struct member name"},
+      "next_door": {"new": "nextDoor"}
+    }},
+    "Door": {"header": "include/DOOR.H", "owner_type_new": "door_t", "members": {
+      "state": {"new": "state", "keep": "already lowerCamel"},
+      "record": {"new": "record", "keep": "already lowerCamel"}
+    }}
+  },
+  "enums_constants": {
+    "DOOR_MAX_COUNT": {"owner": "include/DOOR.H", "kind": "constant", "new": "DOOR_MAX_COUNT", "keep": "already UPPER_SNAKE"}
+  },
+  "macros_functionlike": {}
+}

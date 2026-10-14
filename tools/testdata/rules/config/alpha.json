@@ -1,0 +1,140 @@
+{
+  "functions": {
+    "alpha_extern_user": {
+      "address": "0x80010000",
+      "size": 4
+    },
+    "alpha_header_user": {
+      "address": "0x80010004",
+      "size": 4
+    },
+    "alpha_forward": {
+      "address": "0x80010008",
+      "size": 4
+    },
+    "alpha_offset": {
+      "address": "0x8001000c",
+      "size": 4
+    },
+    "alpha_int_step": {
+      "address": "0x80010010",
+      "size": 4
+    },
+    "alpha_relocate": {
+      "address": "0x80010014",
+      "size": 4
+    },
+    "alpha_volatile_local": {
+      "address": "0x80010018",
+      "size": 4
+    },
+    "alpha_volatile_cast": {
+      "address": "0x8001001c",
+      "size": 4
+    },
+    "alpha_vblank": {
+      "address": "0x80010020",
+      "size": 4
+    },
+    "alpha_unproven": {
+      "address": "0x80010024",
+      "size": 4
+    },
+    "alpha_dummy": {
+      "address": "0x80010028",
+      "size": 4
+    },
+    "alpha_empty_if": {
+      "address": "0x8001002c",
+      "size": 4
+    },
+    "alpha_bare_semicolon": {
+      "address": "0x80010030",
+      "size": 4
+    },
+    "alpha_do_while": {
+      "address": "0x80010034",
+      "size": 4
+    },
+    "alpha_self_assign": {
+      "address": "0x80010038",
+      "size": 4
+    },
+    "alpha_neutral": {
+      "address": "0x8001003c",
+      "size": 4
+    },
+    "alpha_asm": {
+      "address": "0x80010040",
+      "size": 4
+    },
+    "alpha_goto": {
+      "address": "0x80010044",
+      "size": 4
+    },
+    "f_80012345": {
+      "address": "0x80010048",
+      "size": 4
+    },
+    "alpha_swap": {
+      "address": "0x8001004c",
+      "size": 4
+    },
+    "alpha_knr": {
+      "address": "0x80010050",
+      "size": 4
+    },
+    "alpha_pending": {
+      "address": "0x80010054",
+      "size": 4
+    },
+    "alpha_pending_file": {
+      "address": "0x80010058",
+      "size": 4
+    },
+    "alpha_revoked": {
+      "address": "0x8001005c",
+      "size": 4
+    },
+    "alpha_excused_goto": {
+      "address": "0x80010060",
+      "size": 4
+    },
+    "alpha_bad_exception": {
+      "address": "0x80010064",
+      "size": 4
+    },
+    "alpha_json_excused": {
+      "address": "0x80010068",
+      "size": 4
+    },
+    "alpha_helper_caller": {
+      "address": "0x8001006c",
+      "size": 4
+    },
+    "alpha_dead_local": {
+      "address": "0x80010070",
+      "size": 4
+    },
+    "alpha_dead_local_header": {
+      "address": "0x80010074",
+      "size": 4
+    },
+    "alpha_dead_local_vague": {
+      "address": "0x80010078",
+      "size": 4
+    },
+    "alpha_dead_local_unruled": {
+      "address": "0x8001007c",
+      "size": 4
+    },
+    "alpha_dead_local_misplaced": {
+      "address": "0x80010080",
+      "size": 4
+    },
+    "alpha_dead_local_other": {
+      "address": "0x80010084",
+      "size": 4
+    }
+  }
+}

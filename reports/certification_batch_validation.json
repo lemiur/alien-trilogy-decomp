@@ -3,7 +3,7 @@
   "reference_sha256": "f424660920764ac70f697b5b909a42fe259a76e60acbf5b01c6ca3ee8c8f8e98",
   "duplicate_function_ownership_rejected": true,
   "registered_function_ownership_unique": true,
-  "supplemental_sdk_modules_independently_replayed": 38,
+  "supplemental_sdk_modules_independently_replayed": 40,
   "supplemental_unrelocated_matches_unique_and_aligned": true,
   "small_relocated_modules_unique_placements_replayed": [
     "S_DCB",
@@ -333,6 +333,20 @@
       "size": 32,
       "relocation_count": 1,
       "reconstructed_sha256": "76b3779c1b135c7a9b0e3f00f2f313a2cfb1d04ef35a8e52b5acbcdff9a867fa"
+    },
+    {
+      "module": "VMODE",
+      "address": "0x800616a8",
+      "size": 40,
+      "relocation_count": 6,
+      "reconstructed_sha256": "f8e79704129f1f73e1b49251d4f45271da3349ae2de9719115c03db0d0b463d2"
+    },
+    {
+      "module": "C_010",
+      "address": "0x80061310",
+      "size": 32,
+      "relocation_count": 6,
+      "reconstructed_sha256": "54db56a9a7c04d46d432bb92b41cac56dbe83a09752cc8f9025617bd681ad2b1"
     }
   ]
 }

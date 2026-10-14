@@ -1,37 +1,37 @@
 {
   "tasker": {},
   "audio_control": {
-    "g_sound_balance": {
+    "g_soundBalance": {
       "address": "0x800730ec",
       "size": 64
     },
-    "g_level_sample_banks": {
+    "g_levelSampleBanks": {
       "address": "0x8007312c",
       "size": 72
     },
-    "g_audio_flags": {
+    "g_audioFlags": {
       "address": "0x8008d004",
       "size": 2
     }
   },
   "music_control": {
-    "g_level_music_tracks": {
+    "g_levelMusicTracks": {
       "address": "0x80073174",
       "size": 72
     },
-    "g_music_flags": {
+    "g_musicFlags": {
       "address": "0x8008d00c",
       "size": 2
     },
-    "g_music_result": {
+    "g_musicResult": {
       "address": "0x8008d00e",
       "size": 2
     },
-    "g_music_callback_state": {
+    "g_musicCallbackState": {
       "address": "0x8008d010",
       "size": 2
     },
-    "g_music_timer": {
+    "g_musicTimer": {
       "address": "0x8008d012",
       "size": 2
     }
@@ -93,91 +93,91 @@
       "address": "0x80011eac",
       "size": 32
     },
-    "g_egg_animations": {
+    "g_eggAnimations": {
       "address": "0x800725c8",
       "size": 48
     },
-    "g_hugger_animations": {
+    "g_huggerAnimations": {
       "address": "0x800725f8",
       "size": 104
     },
-    "g_alien_animations": {
+    "g_alienAnimations": {
       "address": "0x80072660",
       "size": 104
     },
-    "g_alien_ceiling_animations": {
+    "g_alienCeilingAnimations": {
       "address": "0x800726c8",
       "size": 88
     },
-    "g_dog_ceiling_animations": {
+    "g_dogCeilingAnimations": {
       "address": "0x80072720",
       "size": 88
     },
-    "g_handler_animations": {
+    "g_handlerAnimations": {
       "address": "0x80072778",
       "size": 96
     },
-    "g_burster_animations": {
+    "g_bursterAnimations": {
       "address": "0x800727d8",
       "size": 112
     },
-    "g_bambi_animations": {
+    "g_bambiAnimations": {
       "address": "0x80072848",
       "size": 104
     },
-    "g_soldier_animations": {
+    "g_soldierAnimations": {
       "address": "0x800728b0",
       "size": 88
     },
-    "g_guard_animations": {
+    "g_guardAnimations": {
       "address": "0x80072908",
       "size": 88
     },
-    "g_synth_animations": {
+    "g_synthAnimations": {
       "address": "0x80072960",
       "size": 104
     },
-    "g_dog_animations": {
+    "g_dogAnimations": {
       "address": "0x800729c8",
       "size": 112
     },
-    "g_queen_animations": {
+    "g_queenAnimations": {
       "address": "0x80072a38",
       "size": 144
     },
-    "g_colonist_animations": {
+    "g_colonistAnimations": {
       "address": "0x80072ac8",
       "size": 280
     }
   },
   "lift": {
-    "s_lift_activated": {
+    "s_liftActivated": {
       "address": "0x8008d008",
       "size": 4
     }
   },
   "movie": {
-    "g_frame_width": {
+    "g_frameWidth": {
       "address": "0x8008d040",
       "size": 4
     },
-    "g_frame_height": {
+    "g_frameHeight": {
       "address": "0x8008d044",
       "size": 4
     },
-    "g_end_frame_ready": {
+    "g_endFrameReady": {
       "address": "0x8008d048",
       "size": 4
     },
-    "g_movie_start_time": {
+    "g_movieStartTime": {
       "address": "0x8008d04c",
       "size": 4
     },
-    "g_movie_sectors": {
+    "g_movieSectors": {
       "address": "0x8008d050",
       "size": 4
     },
-    "g_movie_frame": {
+    "g_movieFrame": {
       "address": "0x8008d054",
       "size": 4
     },
@@ -185,11 +185,11 @@
       "address": "0x8008d058",
       "size": 2
     },
-    "g_movie_vsyncs": {
+    "g_movieVsyncs": {
       "address": "0x8008d05c",
       "size": 4
     },
-    "g_movie_records": {
+    "g_movieRecords": {
       "address": "0x80073668",
       "size": 720
     }
@@ -213,21 +213,21 @@
       "address": "0x80012a18",
       "size": 20
     },
-    "g_card_save_name": {
+    "g_cardSaveName": {
       "address": "0x80012a44",
       "size": 20
     },
-    "g_password_alphabet": {
+    "g_passwordAlphabet": {
       "address": "0x800739c8",
       "size": 32
     }
   },
   "pause_menu": {
-    "g_pause_options": {
+    "g_pauseOptions": {
       "address": "0x800735c4",
       "size": 80
     },
-    "g_sound_options": {
+    "g_soundOptions": {
       "address": "0x80073614",
       "size": 24
     },
@@ -361,11 +361,11 @@
     }
   },
   "audio": {
-    "g_play_serial": {
+    "g_playSerial": {
       "address": "0x8008d03c",
       "size": 2
     },
-    "g_sample_priority_list": {
+    "g_samplePriorityList": {
       "address": "0x8007362c",
       "size": 60
     },
@@ -385,55 +385,55 @@
     }
   },
   "debris": {
-    "g_panel_grid_xy": {
+    "g_panelGridXY": {
       "address": "0x80073938",
       "size": 72
     },
-    "g_panel_grid_yz": {
+    "g_panelGridYz": {
       "address": "0x80073980",
       "size": 72
     }
   },
   "hud": {
-    "g_message_task": {
+    "g_messageTask": {
       "address": "0x8008cfcc",
       "size": 4
     },
-    "g_message_count": {
+    "g_messageCount": {
       "address": "0x8008cfd0",
       "size": 2
     },
-    "g_tracker_frame": {
+    "g_trackerFrame": {
       "address": "0x8008cfd2",
       "size": 2
     },
-    "g_tracker_delay": {
+    "g_trackerDelay": {
       "address": "0x8008cfd4",
       "size": 2
     },
-    "g_tracker_pause": {
+    "g_trackerPause": {
       "address": "0x8008cfd6",
       "size": 2
     },
-    "g_tracker_rotation": {
+    "g_trackerRotation": {
       "address": "0x8008cfd8",
       "size": 8
     },
-    "g_message_lines": {
+    "g_messageLines": {
       "address": "0x80072c40",
       "size": 48
     },
-    "g_glyphs_high": {
+    "g_glyphsHigh": {
       "address": "0x80072c70",
       "size": 392
     },
-    "g_extra_health_heights": {
+    "g_extraHealthHeights": {
       "address": "0x80072df8",
       "size": 20
     }
   },
   "player": {
-    "g_mode_control": {
+    "g_modeControl": {
       "address": "0x8008cff8",
       "size": 2
     },
@@ -457,23 +457,23 @@
       "address": "0x80012470",
       "size": 20
     },
-    "g_pulse_rifle_sequence": {
+    "g_pulseRifleSequence": {
       "address": "0x80073074",
       "size": 32
     },
-    "g_shotgun_sequence": {
+    "g_shotgunSequence": {
       "address": "0x80073094",
       "size": 16
     },
-    "g_pistol_sequence": {
+    "g_pistolSequence": {
       "address": "0x800730a4",
       "size": 24
     },
-    "g_flamethrower_sequence": {
+    "g_flamethrowerSequence": {
       "address": "0x800730bc",
       "size": 24
     },
-    "g_smart_gun_sequence": {
+    "g_smartGunSequence": {
       "address": "0x800730d4",
       "size": 24
     },
@@ -483,191 +483,191 @@
     }
   },
   "frontend": {
-    "g_mode_table": {
+    "g_modeTable": {
       "address": "0x8006be9c",
       "size": 16
     },
-    "g_sound_mode_choices": {
+    "g_soundModeChoices": {
       "address": "0x8006c1c0",
       "size": 16
     },
-    "g_boolean_choices": {
+    "g_booleanChoices": {
       "address": "0x8006c1d0",
       "size": 8
     },
-    "g_difficulty_choices": {
+    "g_difficultyChoices": {
       "address": "0x8006c1d8",
       "size": 12
     },
-    "g_track_names": {
+    "g_trackNames": {
       "address": "0x8006c1e4",
       "size": 52
     },
-    "g_track_numbers": {
+    "g_trackNumbers": {
       "address": "0x8006c218",
       "size": 26
     },
-    "g_movie_names": {
+    "g_movieNames": {
       "address": "0x8006c234",
       "size": 52
     },
-    "g_card_choices": {
+    "g_cardChoices": {
       "address": "0x8006c268",
       "size": 12
     },
-    "g_video_choices": {
+    "g_videoChoices": {
       "address": "0x8006c274",
       "size": 8
     },
-    "g_menu_cursors": {
+    "g_menuCursors": {
       "address": "0x8006c27c",
       "size": 12
     },
-    "g_password_key_characters": {
+    "g_passwordKeyCharacters": {
       "address": "0x8006c288",
       "size": 36
     },
-    "g_options_menu": {
+    "g_optionsMenu": {
       "address": "0x8006c2ac",
       "size": 280
     },
-    "g_cheats_menu": {
+    "g_cheatsMenu": {
       "address": "0x8006c3c4",
       "size": 168
     },
-    "g_main_menu": {
+    "g_mainMenu": {
       "address": "0x8006c46c",
       "size": 84
     },
-    "g_password_menu": {
+    "g_passwordMenu": {
       "address": "0x8006c4c0",
       "size": 112
     },
-    "g_control_method_menu": {
+    "g_controlMethodMenu": {
       "address": "0x8006c530",
       "size": 84
     },
-    "g_password_prompt_menu": {
+    "g_passwordPromptMenu": {
       "address": "0x8006c584",
       "size": 56
     },
-    "g_save_card_menu": {
+    "g_saveCardMenu": {
       "address": "0x8006c5bc",
       "size": 168
     },
-    "g_load_card_menu": {
+    "g_loadCardMenu": {
       "address": "0x8006c664",
       "size": 168
     },
-    "g_card_format_menu": {
+    "g_cardFormatMenu": {
       "address": "0x8006c70c",
       "size": 112
     },
-    "g_card_delete_menu": {
+    "g_cardDeleteMenu": {
       "address": "0x8006c77c",
       "size": 140
     },
-    "g_card_delete_file_menu": {
+    "g_cardDeleteFileMenu": {
       "address": "0x8006c808",
       "size": 112
     },
-    "g_card_overwrite_menu": {
+    "g_cardOverwriteMenu": {
       "address": "0x8006c878",
       "size": 112
     },
-    "g_card_load_menu": {
+    "g_cardLoadMenu": {
       "address": "0x8006c8e8",
       "size": 168
     },
-    "g_card_save_menu": {
+    "g_cardSaveMenu": {
       "address": "0x8006c990",
       "size": 168
     },
-    "g_menu_sound_request": {
+    "g_menuSoundRequest": {
       "address": "0x8006ca38",
       "size": 20
     },
-    "g_render_task": {
+    "g_renderTask": {
       "address": "0x8008cdb8",
       "size": 4
     },
-    "g_highlight_color": {
+    "g_highlightColor": {
       "address": "0x8008cdbc",
       "size": 4
     },
-    "g_text_color": {
+    "g_textColor": {
       "address": "0x8008cdc0",
       "size": 4
     },
-    "g_disabled_text_color": {
+    "g_disabledTextColor": {
       "address": "0x8008cdc4",
       "size": 4
     },
-    "g_disabled_highlight_color": {
+    "g_disabledHighlightColor": {
       "address": "0x8008cdc8",
       "size": 4
     },
-    "g_message_color": {
+    "g_messageColor": {
       "address": "0x8008cdcc",
       "size": 4
     },
-    "g_start_level": {
+    "g_startLevel": {
       "address": "0x8008cdd0",
       "size": 2
     },
-    "g_card_status": {
+    "g_cardStatus": {
       "address": "0x8008cdd2",
       "size": 2
     },
-    "g_card_status_previous": {
+    "g_cardStatusPrevious": {
       "address": "0x8008cdd4",
       "size": 2
     },
-    "g_card_file_index": {
+    "g_cardFileIndex": {
       "address": "0x8008cdd6",
       "size": 2
     },
-    "g_menu_screen": {
+    "g_menuScreen": {
       "address": "0x8008cdd8",
       "size": 4
     },
-    "g_menu_screen_previous": {
+    "g_menuScreenPrevious": {
       "address": "0x8008cddc",
       "size": 4
     },
-    "g_menu_next_state": {
+    "g_menuNextState": {
       "address": "0x8008cde0",
       "size": 4
     },
-    "g_menu_return_state": {
+    "g_menuReturnState": {
       "address": "0x8008cde4",
       "size": 4
     },
-    "g_card_menu_saving": {
+    "g_cardMenuSaving": {
       "address": "0x8008cde8",
       "size": 2
     },
-    "g_title_intro_state": {
+    "g_titleIntroState": {
       "address": "0x8008cdea",
       "size": 2
     },
-    "g_menu_idle_frames": {
+    "g_menuIdleFrames": {
       "address": "0x8008cdec",
       "size": 2
     },
-    "g_demo_index": {
+    "g_demoIndex": {
       "address": "0x8008cdee",
       "size": 1
     },
-    "g_menu_music_started": {
+    "g_menuMusicStarted": {
       "address": "0x8008cdf0",
       "size": 2
     },
-    "g_menu_message_task": {
+    "g_menuMessageTask": {
       "address": "0x8008ced4",
       "size": 4
     },
-    "g_card_files": {
+    "g_cardFiles": {
       "address": "0x8008ced8",
       "size": 4
     },
@@ -675,35 +675,35 @@
       "address": "0x8008cedc",
       "size": 4
     },
-    "g_card_headers": {
+    "g_cardHeaders": {
       "address": "0x8008cee0",
       "size": 4
     },
-    "g_card_file_count": {
+    "g_cardFileCount": {
       "address": "0x8008cee4",
       "size": 2
     },
-    "g_label_delete_file": {
+    "g_labelDeleteFile": {
       "address": "0x8008cee8",
       "size": 4
     },
-    "g_label_load_file": {
+    "g_labelLoadFile": {
       "address": "0x8008ceec",
       "size": 4
     },
-    "g_label_exit": {
+    "g_labelExit": {
       "address": "0x8008cef8",
       "size": 4
     },
-    "g_label_unreadable_file": {
+    "g_labelUnreadableFile": {
       "address": "0x8008cefc",
       "size": 4
     },
-    "g_password_length": {
+    "g_passwordLength": {
       "address": "0x8008cf00",
       "size": 2
     },
-    "g_sound_mode": {
+    "g_soundMode": {
       "address": "0x8008cf02",
       "size": 2
     },
@@ -715,73 +715,73 @@
       "address": "0x8008cf7e",
       "size": 2
     },
-    "s_no_message": {
+    "s_noMessage": {
       "address": "0x8006be04",
       "size": 11
     },
-    "s_loading_data": {
+    "s_loadingData": {
       "address": "0x8006be10",
       "size": 17
     },
-    "s_press_to_continue": {
+    "s_pressToContinue": {
       "address": "0x8006be24",
       "size": 31
     },
-    "g_mission_brief_header": {
+    "g_missionBriefHeader": {
       "address": "0x8006be44",
       "size": 54
     },
-    "g_message_box": {
+    "g_messageBox": {
       "address": "0x8006be7c",
       "size": 32
     },
-    "g_message_box_colours": {
+    "g_messageBoxColours": {
       "address": "0x8006beac",
       "size": 20
     },
-    "g_message_box_shadow_colours": {
+    "g_messageBoxShadowColours": {
       "address": "0x8006bec0",
       "size": 20
     },
-    "g_texture_records": {
+    "g_textureRecords": {
       "address": "0x8006bf10",
       "size": 192
     },
-    "g_palette_records": {
+    "g_paletteRecords": {
       "address": "0x8006bfd0",
       "size": 128
     },
-    "g_demo_levels": {
+    "g_demoLevels": {
       "address": "0x8006c050",
       "size": 14
     },
-    "g_level_target_classes": {
+    "g_levelTargetClasses": {
       "address": "0x8006c084",
       "size": 175
     },
-    "g_level_names": {
+    "g_levelNames": {
       "address": "0x8006c134",
       "size": 140
     },
-    "g_name_table": {
+    "g_nameTable": {
       "address": "0x8006ca4c",
       "size": 110
     },
-    "g_controller_layout_sprites": {
+    "g_controllerLayoutSprites": {
       "address": "0x8006cabc",
       "size": 8
     },
-    "g_percentage_bar_widths": {
+    "g_percentageBarWidths": {
       "address": "0x8006cac4",
       "size": 22
     }
   },
   "main": {
-    "s_heap_overflow": {
+    "s_heapOverflow": {
       "address": "0x800101e0",
       "size": 16
     },
-    "s_error_title": {
+    "s_errorTitle": {
       "address": "0x800101f0",
       "size": 20
     },
@@ -789,15 +789,15 @@
       "address": "0x8008cd74",
       "size": 2
     },
-    "g_button_use": {
+    "g_buttonUse": {
       "address": "0x8008cd84",
       "size": 2
     },
-    "g_button_weapon": {
+    "g_buttonWeapon": {
       "address": "0x8008cd86",
       "size": 2
     },
-    "g_button_fire": {
+    "g_buttonFire": {
       "address": "0x8008cd88",
       "size": 2
     },
@@ -817,43 +817,43 @@
       "address": "0x8008cd90",
       "size": 2
     },
-    "g_button_strafe_right": {
+    "g_buttonStrafeRight": {
       "address": "0x8008cd92",
       "size": 2
     },
-    "g_button_run": {
+    "g_buttonRun": {
       "address": "0x8008cd94",
       "size": 2
     },
-    "g_button_strafe_left": {
+    "g_buttonStrafeLeft": {
       "address": "0x8008cd96",
       "size": 2
     },
-    "g_button_look": {
+    "g_buttonLook": {
       "address": "0x8008cd98",
       "size": 2
     },
-    "g_button_grenade": {
+    "g_buttonGrenade": {
       "address": "0x8008cd9a",
       "size": 2
     },
-    "g_action_index": {
+    "g_actionIndex": {
       "address": "0x8008cda4",
       "size": 2
     },
-    "g_cheat_flags": {
+    "g_cheatFlags": {
       "address": "0x8008cda8",
       "size": 4
     },
-    "g_reset_hold_start": {
+    "g_resetHoldStart": {
       "address": "0x8008cdac",
       "size": 4
     },
-    "g_heap_snapshot_current": {
+    "g_heapSnapshotCurrent": {
       "address": "0x8008cdb0",
       "size": 2
     },
-    "s_error_format": {
+    "s_errorFormat": {
       "address": "0x8008cdb4",
       "size": 4
     },
@@ -861,135 +861,135 @@
       "address": "0x8008cd78",
       "size": 4
     },
-    "g_8cd7c": {
+    "g_dpadButtons": {
       "address": "0x8008cd7c",
       "size": 8
     },
-    "g_zero_vector": {
+    "g_zeroVector": {
       "address": "0x8008cd9c",
       "size": 8
     },
-    "g_clut_sets": {
+    "g_clutSets": {
       "address": "0x8006a578",
       "size": 24
     },
-    "g_page_sets": {
+    "g_pageSets": {
       "address": "0x8006a590",
       "size": 80
     },
-    "s_13a1c": {
+    "s_randomSeed": {
       "address": "0x8006a5e0",
       "size": 24
     },
-    "g_file_table": {
+    "g_fileTable": {
       "address": "0x8006a5f8",
       "size": 6156
     }
   },
   "sprites": {
-    "g_sprite_warn": {
+    "g_spriteWarn": {
       "address": "0x80011998",
       "size": 36
     },
-    "g_menu_resource_ids": {
+    "g_menuResourceIds": {
       "address": "0x8006d2c0",
       "size": 72
     },
-    "g_sprite_list_count": {
+    "g_spriteListCount": {
       "address": "0x8008cf84",
       "size": 2
     },
-    "g_sprite_resources": {
+    "g_spriteResources": {
       "address": "0x8006d1d0",
       "size": 240
     },
-    "g_pulse_rifle_set": {
+    "g_pulseRifleSet": {
       "address": "0x8006ccf0",
       "size": 32
     },
-    "g_shotgun_set": {
+    "g_shotgunSet": {
       "address": "0x8006cd10",
       "size": 16
     },
-    "g_pistol_set": {
+    "g_pistolSet": {
       "address": "0x8006cd20",
       "size": 24
     },
-    "g_smart_gun_set": {
+    "g_smartGunSet": {
       "address": "0x8006cd38",
       "size": 24
     },
-    "g_flamethrower_set": {
+    "g_flamethrowerSet": {
       "address": "0x8006cd50",
       "size": 24
     },
-    "g_hugger_set": {
+    "g_huggerSet": {
       "address": "0x8006cd68",
       "size": 64
     },
-    "g_fingers_set": {
+    "g_fingersSet": {
       "address": "0x8006cda8",
       "size": 16
     },
-    "g_dog_set": {
+    "g_dogSet": {
       "address": "0x8006cdb8",
       "size": 88
     },
-    "g_dog_ceiling_set": {
+    "g_dogCeilingSet": {
       "address": "0x8006ce10",
       "size": 40
     },
-    "g_warrior_set": {
+    "g_warriorSet": {
       "address": "0x8006ce38",
       "size": 80
     },
-    "g_warrior_ceiling_set": {
+    "g_warriorCeilingSet": {
       "address": "0x8006ce88",
       "size": 40
     },
-    "g_egg_set": {
+    "g_eggSet": {
       "address": "0x8006ceb0",
       "size": 48
     },
-    "g_handler_set": {
+    "g_handlerSet": {
       "address": "0x8006cee0",
       "size": 72
     },
-    "g_synth_set": {
+    "g_synthSet": {
       "address": "0x8006cf28",
       "size": 104
     },
-    "g_guard_set": {
+    "g_guardSet": {
       "address": "0x8006cf90",
       "size": 64
     },
-    "g_soldier_set": {
+    "g_soldierSet": {
       "address": "0x8006cfd0",
       "size": 64
     },
-    "g_burster_set": {
+    "g_bursterSet": {
       "address": "0x8006d010",
       "size": 88
     },
-    "g_bambi_set": {
+    "g_bambiSet": {
       "address": "0x8006d068",
       "size": 80
     },
-    "g_queen_set": {
+    "g_queenSet": {
       "address": "0x8006d0b8",
       "size": 96
     },
-    "g_colonist_set": {
+    "g_colonistSet": {
       "address": "0x8006d118",
       "size": 184
     }
   },
   "doors": {
-    "s_door_activated": {
+    "s_doorActivated": {
       "address": "0x800119ec",
       "size": 16
     },
-    "s_door_powered_up": {
+    "s_doorPoweredUp": {
       "address": "0x800119fc",
       "size": 16
     },
@@ -997,207 +997,207 @@
       "address": "0x80011a0c",
       "size": 48
     },
-    "g_door_rotation_0": {
+    "g_doorRotation0": {
       "address": "0x8008cfac",
       "size": 8
     },
-    "g_door_rotation_2": {
+    "g_doorRotation2": {
       "address": "0x8008cfb4",
       "size": 8
     },
-    "g_door_rotation_4": {
+    "g_doorRotation4": {
       "address": "0x8008cfbc",
       "size": 8
     },
-    "g_door_rotation_6": {
+    "g_doorRotation6": {
       "address": "0x8008cfc4",
       "size": 8
     }
   },
   "effects": {
-    "g_explosion_frames": {
+    "g_explosionFrames": {
       "address": "0x800731bc",
       "size": 172
     },
-    "g_big_explosion_frames": {
+    "g_bigExplosionFrames": {
       "address": "0x80073268",
       "size": 172
     },
-    "g_effect_frames_73314": {
+    "g_effectFrames73314": {
       "address": "0x80073314",
       "size": 172
     },
-    "g_acid_splash_frames": {
+    "g_acidSplashFrames": {
       "address": "0x800733c0",
       "size": 172
     },
-    "g_blood_splash_frames": {
+    "g_bloodSplashFrames": {
       "address": "0x8007346c",
       "size": 172
     },
-    "g_synth_splash_frames": {
+    "g_synthSplashFrames": {
       "address": "0x80073518",
       "size": 172
     }
   },
   "memcard": {
-    "g_card_directory_format": {
+    "g_cardDirectoryFormat": {
       "address": "0x80012b4c",
       "size": 20
     },
-    "g_card_entry_format": {
+    "g_cardEntryFormat": {
       "address": "0x80012b60",
       "size": 24
     },
-    "g_card_devices": {
+    "g_cardDevices": {
       "address": "0x80073a88",
       "size": 32
     },
-    "g_card_error_messages": {
+    "g_cardErrorMessages": {
       "address": "0x80073aa8",
       "size": 64
     },
-    "g_card_event_messages": {
+    "g_cardEventMessages": {
       "address": "0x80073ae8",
       "size": 16
     },
-    "g_card_icon": {
+    "g_cardIcon": {
       "address": "0x800739e8",
       "size": 128
     },
-    "g_card_clut": {
+    "g_cardCLUT": {
       "address": "0x80073a68",
       "size": 32
     }
   },
   "texture_upload": {
-    "g_unpack_hblanks": {
+    "g_unpackHblanks": {
       "address": "0x8008cfa8",
       "size": 2
     }
   },
   "model_draw": {
-    "g_spad_grid": {
+    "g_spadGrid": {
       "address": "0x8008cf88",
       "size": 4
     },
-    "g_spad_sxy": {
+    "g_spadSxy": {
       "address": "0x8008cf8c",
       "size": 4
     },
-    "g_spad_sz": {
+    "g_spadSz": {
       "address": "0x8008cf90",
       "size": 4
     },
-    "g_spad_flag": {
+    "g_spadFlag": {
       "address": "0x8008cf94",
       "size": 4
     },
-    "g_spad_p": {
+    "g_spadP": {
       "address": "0x8008cf98",
       "size": 4
     },
-    "g_near_draw_table": {
+    "g_nearDrawTable": {
       "address": "0x8006d308",
       "size": 140
     },
-    "g_far_draw_table": {
+    "g_farDrawTable": {
       "address": "0x8006d394",
       "size": 140
     },
-    "g_mid_draw_table": {
+    "g_midDrawTable": {
       "address": "0x8006d420",
       "size": 140
     }
   },
   "geometry": {
-    "g_atan_table": {
+    "g_atanTable": {
       "address": "0x8006d4ac",
       "size": 1480
     },
-    "g_sine_table": {
+    "g_sineTable": {
       "address": "0x8006da74",
       "size": 8192
     }
   },
   "game_20000_3": {
-    "g_level_map_files": {
+    "g_levelMapFiles": {
       "address": "0x800722d0",
       "size": 70
     },
-    "g_view_rays": {
+    "g_viewRays": {
       "address": "0x8006fa74",
       "size": 9306
     },
-    "g_view_ray_buckets": {
+    "g_viewRayBuckets": {
       "address": "0x80071ed0",
       "size": 1024
     },
-    "g_view_cells_buckets": {
+    "g_viewCellsBuckets": {
       "address": "0x8008cf9c",
       "size": 4
     },
-    "g_view_cells_rays": {
+    "g_viewCellsRays": {
       "address": "0x8008cfa0",
       "size": 4
     },
-    "g_view_cells_level": {
+    "g_viewCellsLevel": {
       "address": "0x8008cfa4",
       "size": 4
     }
   },
   "object_render": {
-    "g_blast_near_offsets": {
+    "g_blastNearOffsets": {
       "address": "0x80072be0",
       "size": 32
     },
-    "g_blast_far_offsets": {
+    "g_blastFarOffsets": {
       "address": "0x80072c00",
       "size": 64
     }
   },
   "particle": {
-    "g_steam_lengths": {
+    "g_steamLengths": {
       "address": "0x80072338",
       "size": 128
     },
-    "g_steam_widths": {
+    "g_steamWidths": {
       "address": "0x800723b8",
       "size": 128
     },
-    "g_steam_frames": {
+    "g_steamFrames": {
       "address": "0x80072438",
       "size": 72
     },
-    "g_fire_lengths": {
+    "g_fireLengths": {
       "address": "0x80072480",
       "size": 128
     },
-    "g_fire_widths": {
+    "g_fireWidths": {
       "address": "0x80072500",
       "size": 128
     },
-    "g_fire_frames": {
+    "g_fireFrames": {
       "address": "0x80072580",
       "size": 72
     }
   },
   "text": {
-    "g_extended_glyphs": {
+    "g_extendedGlyphs": {
       "address": "0x8006cadc",
       "size": 392
     }
   },
   "map_objects": {
-    "g_map_object_scales": {
+    "g_mapObjectScales": {
       "address": "0x80072e0c",
       "size": 448
     },
-    "g_pickup_messages": {
+    "g_pickupMessages": {
       "address": "0x80072fcc",
       "size": 112
     },
-    "g_object_heights": {
+    "g_objectHeights": {
       "address": "0x8007303c",
       "size": 56
     }

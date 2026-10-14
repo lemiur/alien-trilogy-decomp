@@ -1,18 +1,18 @@
 {
   "gp": "0x8008cd74",
   "functions": {
-    "draw_visible_cells": {"address": "0x8005533c", "size": 1452}
+    "Model_DrawVisibleCells": {"address": "0x8005533c", "size": 1452}
   },
   "symbols": {
-    "g_view_cells_level": "0x8008cfa4",
-    "g_view_cells_buckets": "0x8008cf9c",
-    "g_view_cells_rays": "0x8008cfa0",
-    "g_player_cell_x": "0x8008d5d0",
-    "g_player_cell_z": "0x8008d5d8",
-    "g_visible_cell_mask": "0x8008d510",
-    "g_view_rotation": "0x8008d468",
-    "model_draw_near": "0x8001f37c",
-    "model_draw_mid": "0x8001fb78",
-    "model_draw_far": "0x8001f78c"
+    "g_viewCellsLevel": "0x8008cfa4",
+    "g_viewCellsBuckets": "0x8008cf9c",
+    "g_viewCellsRays": "0x8008cfa0",
+    "g_playerCellX": "0x8008d5d0",
+    "g_playerCellZ": "0x8008d5d8",
+    "g_visibleCellMask": "0x8008d510",
+    "g_viewRotation": "0x8008d468",
+    "Model_DrawNear": "0x8001f37c",
+    "Model_DrawMid": "0x8001fb78",
+    "Model_DrawFar": "0x8001f78c"
   }
 }

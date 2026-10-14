@@ -1,0 +1,44 @@
+{
+  "exceptions": [
+    {
+      "unit": "alpha",
+      "function": "alpha_json_excused",
+      "rule": "goto only where needed",
+      "rules_id": "R14",
+      "deviation": "goto out",
+      "reason": "fixture"
+    },
+    {
+      "unit": "alpha",
+      "function": "alpha_revoked",
+      "rule": "no fake locals",
+      "rules_id": "R17",
+      "status": "match_pending",
+      "deviation": "int frame[2]",
+      "reason": "fixture"
+    },
+    {
+      "unit": "alpha",
+      "function": "alpha_offset",
+      "rule": "typed members",
+      "rules_id": "R4",
+      "deviation": "byte offset",
+      "reason": "fixture: invalid, R4 is [match]"
+    },
+    {
+      "unit": "alpha",
+      "function": "alpha_dead_local_misplaced",
+      "rule": "no fake code",
+      "rules_id": "R17-dead-local",
+      "deviation": "Point spare",
+      "reason": "fixture: a record alone excuses nothing"
+    }
+  ],
+  "volatile_allow": [
+    {
+      "file": "include/ALPHA.H",
+      "name": "g_vblank_count",
+      "evidence": "fixture IRQ counter"
+    }
+  ]
+}

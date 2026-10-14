@@ -5,7 +5,10 @@
     3. analysis/runtime_symbols.py, runtime_relocations.py, runtime_data.py
                                 Sony Runtime Library 3.3 certification
     4. analysis/link_plan.py    range union and uncovered gaps; writes reports/link_plan.json
-    5. tools/progress.py        counts from the gate record, cross-checks steps 2-4;
+    5. tools/rules.py --report-only --match-only
+                                rule check: [match] findings and matched under the rules
+                                (never fails the chain; progress.py repeats the count)
+    6. tools/progress.py        counts from the gate record, cross-checks steps 2-4;
                                 writes reports/progress.json and PROGRESS.md
 
 The gate runs first because it refuses a dirty tree and step 3 rewrites tracked evidence
@@ -29,7 +32,8 @@ def steps(jobs, skip_gate):
     out = [] if skip_gate else [["tools/gate.py", "--jobs", str(jobs)]]
     out += [["tools/verify.py", "--jobs", str(jobs)],
             ["analysis/runtime_symbols.py"], ["analysis/runtime_relocations.py"],
-            ["analysis/runtime_data.py"], ["analysis/link_plan.py"], ["tools/progress.py"]]
+            ["analysis/runtime_data.py"], ["analysis/link_plan.py"],
+            ["tools/rules.py", "--report-only", "--match-only"], ["tools/progress.py"]]
     return out
 
 

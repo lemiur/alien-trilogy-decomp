@@ -15,8 +15,8 @@
     "TaskDispatch": {"address": "0x80015ee4", "size": 72}
   },
   "symbols": {
-    "g_next_task": "0x8008d4f0",
-    "heap_alloc": "0x80014dfc"
+    "g_nextTask": "0x8008d4f0",
+    "Heap_Alloc": "0x80014dfc"
   },
   "static_data": {
     "TaskMEM": {"address": "0x8008d088", "size": 8, "section": ".sbss"},

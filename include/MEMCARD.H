@@ -35,47 +35,80 @@ enum {
     CARD_EVENT_NEW_CARD
 };
 
-/* card_present_mask bits; the front end shows 1 as "Left", 2 as "Right" (names invented) */
+/* Card_PresentMask bits; the front end shows 1 as "Left", 2 as "Right" (names invented) */
 #define CARD_PRESENT_PORT0 0x1
 #define CARD_PRESENT_PORT1 0x2
-#define CARD_PRESENT_BOTH (CARD_PRESENT_PORT0 | CARD_PRESENT_PORT1)
+#define CARD_PRESENT_BOTH ( CARD_PRESENT_PORT0 | CARD_PRESENT_PORT1 )
+
+/* Save header parts, as the PS1 card file format lays them out: a 64-byte Shift-JIS title,
+ * a 16-colour CLUT of 16-bit entries, 16x16 4-bit icon frames (at most three), and the
+ * reserved bytes between the title and the CLUT. names invented */
+#define CARD_TITLE_SIZE 64
+#define CARD_CLUT_SIZE 32
+#define CARD_ICON_SIZE 128
+#define CARD_ICON_FRAMES_MAX 3
+#define CARD_HEADER_RESERVED_SIZE 28
 
 /* The 0x200-byte header of a save file: title, icon CLUT and up to three icon frames. */
-typedef struct CardTitle { unsigned char text[64]; } CardTitle;
-typedef struct CardClut { unsigned char colors[32]; } CardClut;
-typedef struct CardIcon { unsigned char pixels[128]; } CardIcon;
-typedef struct CardHeader {
+typedef struct cardTitle_s {
+    unsigned char text[CARD_TITLE_SIZE];
+} cardTitle_t;
+typedef struct cardClut_s {
+    unsigned char colors[CARD_CLUT_SIZE];
+} cardClut_t;
+typedef struct cardIcon_s {
+    unsigned char pixels[CARD_ICON_SIZE];
+} cardIcon_t;
+typedef struct cardHeader_s {
     unsigned char magic[2];
-    unsigned char icon_flag;
+    unsigned char iconFlag;
     unsigned char blocks;
-    CardTitle title;
-    unsigned char reserved[28];
-    CardClut clut;
-    CardIcon icons[3];
-} CardHeader;
+    cardTitle_t   title;
+    unsigned char reserved[CARD_HEADER_RESERVED_SIZE];
+    cardClut_t    clut;
+    cardIcon_t    icons[CARD_ICON_FRAMES_MAX];
+} cardHeader_t;
 
-/* CardHeader.icon_flag: the PsyQ icon display flag, 0x11..0x13 for one to three icon frames (invented name) */
+/* cardHeader_t.iconFlag: the PsyQ icon display flag, 0x11..0x13 for one to three icon frames (invented name) */
 #define CARD_ICON_FLAG_ONE_FRAME 0x11
 /* open() on a card: O_CREAT | (blocks << CARD_OPEN_BLOCKS_SHIFT) creates a file of that many 8 KB blocks (LIBAPI) */
 #define CARD_OPEN_BLOCKS_SHIFT 16
 
-/* Directory entries and save headers the front end reads from a card (start_menu_tasks,
- * read_card_directory). name invented */
+/* Directory entries and save headers the front end reads from a card (Menu_StartMenuTasks,
+ * Menu_ReadCardDirectory). name invented */
 #define CARD_DIRECTORY_SIZE 16
 
-extern void card_init(void);
-extern short card_find_files(struct DIRENTRY *entries, const char *pattern, short port, short *blocks);
-extern short card_count_files(struct DIRENTRY *entries, const char *pattern, int port);
-extern void card_format(short port);
-extern short card_present_mask(void);
-extern int card_read_header(const char *name, CardHeader *header, short port);
-extern unsigned char checksum_bytes(const unsigned char *bytes, int length);
+/* The card device name buffer ("bu00:"). name invented */
+#define CARD_PREFIX_SIZE 8
+/* The checksum block after the header: its length word and one sum per data block. name invented */
+#define CARD_CHECKSUM_HEADER_SIZE 0x100
+
+/* A card device: its name prefix ("bu00:"), BIOS channel and port selector. */
+typedef struct cardDevice_s {
+    char  prefix[CARD_PREFIX_SIZE];
+    int   channel;
+    short selector;
+    short reserved;
+} cardDevice_t;
+/* The checksum block after a save file's header: its length word and one sum per data block. */
+typedef struct cardChecksums_s {
+    int           length;
+    unsigned char sums[CARD_CHECKSUM_HEADER_SIZE - sizeof( int )];
+} cardChecksums_t;
+
+extern void Card_Init( void );
+extern short Card_FindFiles( struct DIRENTRY *entries, const char *pattern, short port, short *blocks );
+extern short Card_CountFiles( struct DIRENTRY *entries, const char *pattern, int port );
+extern void Card_Format( short port );
+extern short Card_PresentMask( void );
+extern int Card_ReadHeader( const char *name, cardHeader_t *header, short port );
+extern unsigned char Card_ChecksumBytes( const unsigned char *bytes, int length );
 
 /* Reads a checksummed card file into destination; port 0 or 1, or any ready card. */
-extern int card_read_file(const char *name, void *destination, short port);
+extern int Card_ReadFile( const char *name, void *destination, short port );
 /* Deletes a card file (name inferred from the LIBAPI delete call). */
-extern void card_delete_file(const char *name, int port);
+extern void Card_DeleteFile( const char *name, int port );
 /* name: inferred from the save code retrying it on CARD_NOT_WRITE_* results */
-extern int card_write_file(const char *name, void *source, int size, int port);
+extern int Card_WriteFile( const char *name, void *source, int size, short port );
 
 #endif

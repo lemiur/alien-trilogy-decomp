@@ -1,0 +1,16 @@
+{
+  "functions": {
+    "beta_value": {
+      "address": "0x80010000",
+      "size": 4
+    },
+    "beta_shared": {
+      "address": "0x80010004",
+      "size": 4
+    },
+    "beta_clean": {
+      "address": "0x80010008",
+      "size": 4
+    }
+  }
+}

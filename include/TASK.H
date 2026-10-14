@@ -14,19 +14,19 @@
 #define MAXTASKS 256
 
 /* TaskCreate priorities of the level tasks: TaskDispatch runs lower values first. names: invented, after the tasks' callbacks */
-enum TaskPriority {
+enum taskPriority_t {
     TASK_PRIORITY_LIGHTS = 0,
-    TASK_PRIORITY_MENU_FADE = 5,    /* front end: menu_fade_task, highlight_pulse_task */
+    TASK_PRIORITY_MENU_FADE = 5, /* front end: Menu_FadeTask, Menu_HighlightPulseTask */
     TASK_PRIORITY_PLAYER = 10,
-    TASK_PRIORITY_MENU = 10,        /* front end: the menu, title, message and credits tasks */
+    TASK_PRIORITY_MENU = 10, /* front end: the menu, title, message and credits tasks */
     TASK_PRIORITY_VIEW = 20,
-    TASK_PRIORITY_DOORS = 25,       /* doors and lifts */
+    TASK_PRIORITY_DOORS = 25, /* doors and lifts */
     TASK_PRIORITY_PICKUPS = 30,
-    TASK_PRIORITY_OBJECTS = 35,     /* level objects and switch panels */
+    TASK_PRIORITY_OBJECTS = 35, /* level objects and switch panels */
     TASK_PRIORITY_PARTICLES = 40,
-    TASK_PRIORITY_ACTORS = 50,      /* actors, jets, explosions and splashes */
+    TASK_PRIORITY_ACTORS = 50, /* actors, jets, explosions and splashes */
     TASK_PRIORITY_ACTORS_DRAW = 60,
-    TASK_PRIORITY_OVERLAY = 100,    /* the HUD message task and the menu display */
+    TASK_PRIORITY_OVERLAY = 100, /* the HUD message task and the menu display */
     TASK_PRIORITY_COMMANDS = 150,
     TASK_PRIORITY_COUNTDOWN = 195,
     TASK_PRIORITY_DISPLAY = 200
@@ -38,20 +38,20 @@ enum TaskPriority {
 typedef struct TASK TASK;
 struct TASK {
     int Priority;
-    void (*callback)(TASK *); /* name: invented */
+    void ( *callback )( TASK * );         /* name: invented */
     unsigned int state[TASK_STATE_WORDS]; /* name: invented */
-    TASK *Next;
-    TASK *Prev;
+    TASK        *Next;
+    TASK        *Prev;
 };
 
 /* name: inferred from use: TaskDispatch continues with it; a task sets it to its successor.
  * TaskerInit clears it where Tasker.c clears TaskCrnt, but it holds the next TASK, not the current one. */
-extern TASK *g_next_task;
+extern TASK *g_nextTask;
 
-extern TASK *TaskCreate(int priority, void (*callback)(TASK *));
-extern void TaskDie(TASK *task);
-extern void TaskDispatch(void);
-extern void TaskerInit(void);
-extern void TaskerAlloc(void);
+extern TASK *TaskCreate( int priority, void ( *callback )( TASK * ) );
+extern void TaskDie( TASK *task );
+extern void TaskDispatch( void );
+extern void TaskerInit( void );
+extern void TaskerAlloc( void );
 
 #endif

@@ -4,6 +4,8 @@ Counted by `tools/progress.py` from the per-byte record of a green `tools/gate.p
 
 Payload: 514,048 bytes. Compiler: GCC 2.5.7, ASPSX 2.34, `-O2 -G8`; Sony Runtime Library 3.3.
 
+**Matched under the rules: 637 of 645 byte-matched game C functions.** MATCH-PENDING: 8; with unexcused [match] findings: 0. Counted by `tools/rules.py` (AGENTS.md, "Project profile"): a byte-matched function counts only when it is not MATCH-PENDING and passes every [match] rule.
+
 | Category | Count | Bytes | Payload |
 |---|---:|---:|---:|
 | Game C functions | 645 functions | 205,436 | 39.96% |

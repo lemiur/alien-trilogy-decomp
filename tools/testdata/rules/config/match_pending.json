@@ -1,0 +1,10 @@
+{
+  "match_pending": [
+    {
+      "unit": "alpha",
+      "function": "alpha_pending_file",
+      "rule": "R17",
+      "reason": "fixture"
+    }
+  ]
+}

@@ -24,38 +24,38 @@
       "address": "0x80044d84",
       "size": 164
     },
-    "movie_end_callback": {
+    "Movie_EndCallback": {
       "address": "0x80044e28",
       "size": 20
     },
-    "movie_play_record": {
+    "Movie_PlayRecord": {
       "address": "0x80044e3c",
       "size": 840
     },
-    "movie_show_frame": {
+    "Movie_ShowFrame": {
       "address": "0x80045184",
       "size": 440
     },
-    "movie_play": {
+    "Movie_Play": {
       "address": "0x8004533c",
       "size": 264
     }
   },
   "symbols": {
-    "g_movie_decode": "0x8009cae8",
-    "g_movie_finished": "0x8008d4a8",
-    "g_stream_bytes": "0x8008d328",
-    "g_movie_end_frame": "0x8008d5c0",
-    "g_frame_width": "0x8008d040",
-    "g_frame_height": "0x8008d044",
-    "g_end_frame_ready": "0x8008d048",
-    "g_movie_start_time": "0x8008d04c",
-    "g_movie_sectors": "0x8008d050",
-    "g_movie_frame": "0x8008d054",
+    "g_movieDecode": "0x8009cae8",
+    "g_movieFinished": "0x8008d4a8",
+    "g_streamBytes": "0x8008d328",
+    "g_movieEndFrame": "0x8008d5c0",
+    "g_frameWidth": "0x8008d040",
+    "g_frameHeight": "0x8008d044",
+    "g_endFrameReady": "0x8008d048",
+    "g_movieStartTime": "0x8008d04c",
+    "g_movieSectors": "0x8008d050",
+    "g_movieFrame": "0x8008d054",
     "g_8d058": "0x8008d058",
-    "g_movie_vsyncs": "0x8008d05c",
-    "g_movie_disp": "0x8008f648",
-    "g_movie_draw": "0x8008f660",
+    "g_movieVsyncs": "0x8008d05c",
+    "g_movieDisp": "0x8008f648",
+    "g_movieDraw": "0x8008f660",
     "VSync": "0x800621d4",
     "PadRead": "0x80061618",
     "SetDefDispEnv": "0x80066434",
@@ -63,12 +63,12 @@
     "PutDispEnv": "0x80062f2c",
     "PutDrawEnv": "0x80062e30",
     "SetDispMask": "0x800627bc",
-    "g_file_table": "0x8006a5f8",
-    "g_frame_count": "0x8008d380",
-    "heap_mark": "0x80014ecc",
-    "heap_release": "0x80014f88",
-    "g_first_slice": "0x8008d480",
-    "g_9a120": "0x8009a120",
+    "g_fileTable": "0x8006a5f8",
+    "g_frameCount": "0x8008d380",
+    "Heap_Mark": "0x80014ecc",
+    "Heap_Release": "0x80014f88",
+    "g_firstSlice": "0x8008d480",
+    "StCdIntrFlag": "0x8009a120",
     "StCdInterrupt": "0x800607b0",
     "LoadImage": "0x80062a80",
     "DecDCTout": "0x800688bc",
@@ -80,16 +80,16 @@
     "DecDCToutCallback": "0x80068940",
     "StSetRing": "0x80061330",
     "StSetStream": "0x8005fad8",
-    "g_movie_loc": "0x8008d500",
+    "g_movieLoc": "0x8008d500",
     "CdRead2": "0x8005fa64",
     "CdControl": "0x8005d4b0",
-    "g_movie_file": "0x8009b36c",
-    "movie_display_setup": "0x80044428",
+    "g_movieFile": "0x8009b36c",
+    "Movie_SetupDisplay": "0x80044428",
     "CdDataCallback": "0x8005d840",
     "CdReadyCallback": "0x8005d480",
     "CdControlB": "0x8005d6d4",
     "CdSearchFile": "0x8005fb60",
-    "heap_alloc": "0x80014dfc",
+    "Heap_Alloc": "0x80014dfc",
     "DecDCTin": "0x80068840"
   },
   "sections": {
@@ -105,7 +105,7 @@
       "size": 8,
       "section": ".sbss"
     },
-    "g_movie_records": {
+    "g_movieRecords": {
       "address": "0x80073668",
       "size": 720,
       "section": ".data"

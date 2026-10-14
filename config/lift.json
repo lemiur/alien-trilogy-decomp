@@ -9,78 +9,78 @@
     ".sdata": "0x8008cd74"
   },
   "functions": {
-    "lift_model_faces_fixup": {
+    "Lift_FixupModelFaces": {
       "address": "0x8003e4c0",
       "size": 208
     },
-    "lift_models_prepare": {
+    "Lift_PrepareModels": {
       "address": "0x8003e590",
       "size": 176
     },
-    "lifts_alloc": {
+    "Lift_Alloc": {
       "address": "0x8003e640",
       "size": 40
     },
-    "lift_records_prepare": {
+    "Lift_PrepareRecords": {
       "address": "0x8003e668",
       "size": 156
     },
-    "lift_records_init": {
+    "Lift_InitRecords": {
       "address": "0x8003e704",
       "size": 48
     },
-    "lift_trigger": {
+    "Lift_Trigger": {
       "address": "0x8003e9f0",
       "size": 104
     },
-    "lift_trigger_last": {
+    "Lift_TriggerLast": {
       "address": "0x8003ea58",
       "size": 116
     },
-    "lift_set_height": {
+    "Lift_SetHeight": {
       "address": "0x8003eacc",
       "size": 140
     },
-    "lift_task_delay": {
+    "Lift_TaskDelay": {
       "address": "0x8003eb58",
       "size": 188
     },
-    "lift_task_lower": {
+    "Lift_TaskLower": {
       "address": "0x8003ec14",
       "size": 304
     },
-    "lift_task_raise": {
+    "Lift_TaskRaise": {
       "address": "0x8003ed44",
       "size": 296
     },
-    "lift_task_wait": {
+    "Lift_TaskWait": {
       "address": "0x8003ee6c",
       "size": 256
     },
-    "lift_measure_model": {
+    "Lift_MeasureModel": {
       "address": "0x8003ef6c",
       "size": 408
     },
-    "lifts_create": {
+    "Lift_Create": {
       "address": "0x8003f104",
       "size": 560
     },
-    "lifts_spawn": {
+    "Lift_Spawn": {
       "address": "0x8003f334",
       "size": 44
     }
   },
   "symbols": {
-    "g_lift_model_count": "0x8008d598",
-    "g_lift_models": "0x800a18d8",
-    "g_next_task": "0x8008d4f0",
-    "sound_play_at": "0x8003d66c",
-    "lift_draw": "0x8003e734",
-    "s_lift_activated": "0x8008d008",
-    "hud_show_message": "0x80037b98",
-    "heap_alloc": "0x80014dfc",
-    "lifts_create": "0x8003f104",
-    "g_level_map": "0x80096060",
+    "g_liftModelCount": "0x8008d598",
+    "g_liftModels": "0x800a18d8",
+    "g_nextTask": "0x8008d4f0",
+    "Snd_PlayAt": "0x8003d66c",
+    "Lift_Draw": "0x8003e734",
+    "s_liftActivated": "0x8008d008",
+    "Hud_ShowMessage": "0x80037b98",
+    "Heap_Alloc": "0x80014dfc",
+    "Lift_Create": "0x8003f104",
+    "g_levelMap": "0x80096060",
     "g_player": "0x80099fd4",
     "TaskCreate": "0x80015e4c"
   },
@@ -90,12 +90,12 @@
       "size": 8,
       "section": ".sbss"
     },
-    "g_lift_records": {
+    "g_liftRecords": {
       "address": "0x8008d1f0",
       "size": 8,
       "section": ".sbss"
     },
-    "g_lift_record_count": {
+    "g_liftRecordCount": {
       "address": "0x8008d1f8",
       "size": 8,
       "section": ".sbss"

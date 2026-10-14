@@ -6,30 +6,42 @@
 #define HUD_H
 
 /* fills the HUD font's glyph width tables from its UVs (main.c, at level start) */
-extern void font_init_widths(void);
+extern void Hud_InitFontWidths( void );
 
 /* draws value (0..999) as three HUD font digits at x, y, red when alert is set */
-extern void hud_draw_digits(short x, short y, int value, short alert);
+extern void Hud_DrawDigits( short x, short y, int value, short alert );
 
 /* the ammunition panel and item indicators */
-extern void hud_draw_ammo(void);
+extern void Hud_DrawAmmo( void );
 
-/* the usage bars of the debug display (g_cheat_flags & CHEAT_FLAG_DEBUG) */
-extern void hud_draw_usage_bars(void);
+/* the usage bars of the debug display (g_cheatFlags & CHEAT_FLAG_DEBUG) */
+extern void Hud_DrawUsageBars( void );
 
 /* the health panel */
-extern void hud_draw_health(void);
+extern void Hud_DrawHealth( void );
+
+/* draws value (clamped to 0..999) as three HUD font digits at x, y in rgb */
+extern void Hud_DrawNumber( short x, short y, int value, u_char *rgb );
 
 /* draws one HUD font glyph; returns the next x */
-extern short hud_draw_glyph(u_short ch, short x, short y, u_char *rgb);
+extern short Hud_DrawGlyph( u_short ch, short x, short y, u_char *rgb );
 
 /* draws one font glyph immediately over a drop shadow; returns the next x */
-extern short draw_glyph_now(u_short ch, short x, short y, u_char *rgb, u_char *shadow);
+extern short Hud_DrawGlyphNow( u_short ch, short x, short y, u_char *rgb, u_char *shadow );
 
 /* shows a message line on the HUD */
-extern void hud_show_message(const char *message);
+extern void Hud_ShowMessage( const char *message );
 
 /* clears every message line and the message task */
-extern void hud_messages_reset(void);
+extern void Hud_ResetMessages( void );
+
+/* One on-screen message line (g_messageLines, Hud_MessageLineActive): position, text length, the characters typed so far. names: invented */
+typedef struct messageLine_s {
+    short       x;
+    short       y;
+    short       length;
+    short       progress;
+    const char *text;
+} messageLine_t;
 
 #endif

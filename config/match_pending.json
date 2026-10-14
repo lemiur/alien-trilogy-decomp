@@ -1,0 +1,53 @@
+{
+  "_doc": "MATCH-PENDING functions recorded before their /* MATCH-PENDING: <rule>, <reason> */ markers are in src/. tools/rules.py treats each entry like the marker: the function is byte-matched but not matched under the rules. Remove an entry when its marker lands in src/ or the function is fixed.",
+  "match_pending": [
+    {
+      "unit": "frontend",
+      "function": "Menu_CreditsLineTask",
+      "rule": "R17",
+      "reason": "(shade << 16) >> 14 after the (unsigned short) fade value; natural spellings fold to andi 0xffff + sll 2 (or cross-jump into the * 12 path); permuter found only this split or do/while(0) wrappers"
+    },
+    {
+      "unit": "frontend",
+      "function": "Menu_MessageBoxType",
+      "rule": "R17",
+      "reason": "NEXT_DIGIT do { } while (0) macro used at '$' only (the other three reads open-coded): retail's '$' addresses position/x off the &g_messageBox.text register, which only a loop construct gives; macro at all four sites is 32 bytes short, a plain read 16 bytes long"
+    },
+    {
+      "unit": "particle",
+      "function": "Particle_DrawDebris",
+      "rule": "R17",
+      "reason": "unused 8-byte local for retail's untouched 0x28(sp) slot after scale; no sibling, callee or lineage source evidences its type, so R17-dead-local does not apply"
+    },
+    {
+      "unit": "memcard",
+      "function": "Card_WriteFile",
+      "rule": "R17",
+      "reason": "parameter copies int size = length and void *source = data only steer registers; direct parameters schedule the a1/a2 moves before the port sign extension (4 words); permuter randomizer found nothing better"
+    },
+    {
+      "unit": "map_objects",
+      "function": "Object_PickupsTask",
+      "rule": "R17",
+      "reason": "goto loop entered at its test; every while/for/do spelling (while, for with increment, for (;;) with break, if + do-while, != 0 tests, (object = next) in the condition) gets jump pass 1's duplicated top test (beqz instead of retail's j, 1 insn) or grows; permuter (20 min, 2163 iterations, from the while base) found no state below that 1-insn diff"
+    },
+    {
+      "unit": "doors",
+      "function": "Door_Blocked",
+      "rule": "R4",
+      "reason": "neighbour cells reached by byte-stride casts; every typed spelling (a - w/a + w, a[-w]/a[w], &a[w], int/short/u_int/u_short w, negated w, an inline neighbour helper, an inline marker accessor) emits addu (w<<4, a) or changes size where retail adds (a, stride): retail added an integer byte stride"
+    },
+    {
+      "unit": "doors",
+      "function": "Door_PrepareModels",
+      "rule": "R4",
+      "reason": "header fields walked through a u8 cursor stepped by member sizes and read via *(int *)p; block->rowCount/block->rows change the function size"
+    },
+    {
+      "unit": "lift",
+      "function": "Lift_PrepareModels",
+      "rule": "R4",
+      "reason": "header fields walked through an int cursor stepped by member sizes and read via *p; block->rowCount/block->rows change the function size"
+    }
+  ]
+}

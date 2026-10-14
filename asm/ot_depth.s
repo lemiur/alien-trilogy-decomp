@@ -16,7 +16,7 @@
 	.set	noreorder	/* every delay slot below is written out by hand */
 
 /*
- * ot_index_tri - ordering-table index of a triangle
+ * Model_OTIndexTri - ordering-table index of a triangle
  *
  * Purpose:     return max(SZ1, SZ2, SZ3) >> OT_SHIFT, the OT entry of the farthest of
  *              the three vertices of the last RTPT (RotTransPers3 and its variants push
@@ -25,12 +25,12 @@
  * Outputs:     v0 = OT index (largest z / 32).
  * Clobbers:    v0, v1, t1, t2. Preserves every other CPU register; touches no memory.
  * Scratchpad:  none.
- * Callers:     draw_far_ft3_abe (0x8001f5f0) and draw_mid_ft3_abe (0x8001f9dc), both C, after RotTransPers3:
- *              "ot = &g_render_buffer->ot[ot_index_tri()]".
+ * Callers:     Model_DrawFarFT3ABE (0x8001f5f0) and Model_DrawMidFT3ABE (0x8001f9dc), both C, after RotTransPers3:
+ *              "ot = &g_renderBuffer->ot[Model_OTIndexTri()]".
  * Callees:     none.
  */
-	.globl	ot_index_tri
-ot_index_tri:
+	.globl	Model_OTIndexTri
+Model_OTIndexTri:
 	mfc2	v0, C2_SZ1		/* v0 = z of vertex 0 */
 	mfc2	t1, C2_SZ2		/* t1 = z of vertex 1 */
 	mfc2	t2, C2_SZ3		/* t2 = z of vertex 2 */
@@ -52,7 +52,7 @@ $tri_have_max:
 	sra	v0, v0, OT_SHIFT	/* delay slot (real work): return z / 32 */
 
 /*
- * ot_index_quad - ordering-table index of a quad
+ * Model_OTIndexQuad - ordering-table index of a quad
  *
  * Purpose:     return max(SZ0, SZ1, SZ2, SZ3) >> OT_SHIFT, the OT entry of the farthest
  *              of the four vertices of a quad transformed as RTPT + RTPS (RotTransPers4:
@@ -64,8 +64,8 @@ $tri_have_max:
  * Callers:     none found: no jal, jump or pointer to 0x80048f8c exists in the executable.
  * Callees:     none.
  */
-	.globl	ot_index_quad
-ot_index_quad:
+	.globl	Model_OTIndexQuad
+Model_OTIndexQuad:
 	mfc2	v0, C2_SZ0		/* v0 = z of vertex 0 */
 	mfc2	t1, C2_SZ1		/* t1 = z of vertex 1 */
 	mfc2	t2, C2_SZ2		/* t2 = z of vertex 2 */

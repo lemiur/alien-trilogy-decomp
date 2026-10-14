@@ -1,53 +1,53 @@
 {
   "functions": {
-    "panel_pool_alloc": {
+    "Debris_PanelPoolAlloc": {
       "address": "0x80045444",
       "size": 72
     },
-    "panel_pool_init": {
+    "Debris_InitPanelPool": {
       "address": "0x8004548c",
       "size": 120
     },
-    "panel_claim": {
+    "Debris_ClaimPanel": {
       "address": "0x80045504",
       "size": 88
     },
-    "panel_free": {
+    "Debris_FreePanel": {
       "address": "0x8004555c",
       "size": 28
     },
-    "panel_spawn": {
+    "Debris_SpawnPanel": {
       "address": "0x80045578",
       "size": 2308
     },
-    "wall_shatter": {
+    "Debris_ShatterWall": {
       "address": "0x80045e7c",
       "size": 1564
     },
-    "shard_split": {
+    "Debris_SplitShard": {
       "address": "0x80046498",
       "size": 3272
     },
-    "panel_list_walk": {
+    "Debris_WalkPanelList": {
       "address": "0x80047160",
       "size": 112
     }
   },
   "symbols": {
-    "particle_alloc": "0x80024790",
-    "particle_free": "0x800246ac",
-    "particle_link": "0x800247bc",
-    "g_sprite_uvs": "0x80097fd4",
+    "Particle_Alloc": "0x80024790",
+    "Particle_Free": "0x800246ac",
+    "Particle_Link": "0x800247bc",
+    "g_spriteUvs": "0x80097fd4",
     "g_level": "0x8008d378",
-    "random": "0x80013a44",
+    "Sys_Random": "0x80013a44",
     "g_player": "0x80099fd4",
-    "g_panel_grid_xy": "0x80073938",
-    "g_panel_grid_yz": "0x80073980",
-    "g_debris_uvs": "0x8008d4e0",
-    "heap_alloc": "0x80014dfc",
+    "g_panelGridXY": "0x80073938",
+    "g_panelGridYz": "0x80073980",
+    "g_debrisUvs": "0x8008d4e0",
+    "Heap_Alloc": "0x80014dfc",
     "LoadAverageShort12": "0x800679c0",
-    "g_panel_uvs": "0x80096dc4",
-    "g_pickup_uvs": "0x8009b384"
+    "g_panelUvs": "0x80096dc4",
+    "g_pickupUvs": "0x8009b384"
   },
   "sections": {
     ".data": "0x80073938",
@@ -55,7 +55,7 @@
   },
   "gp": "0x8008cd74",
   "static_data": {
-    "g_panel_vertices": {
+    "g_panelVertices": {
       "address": "0x8008d2c8",
       "size": 8,
       "section": ".sbss"
@@ -65,27 +65,27 @@
       "size": 8,
       "section": ".sbss"
     },
-    "g_split_top": {
+    "g_splitTop": {
       "address": "0x8008d2d8",
       "size": 8,
       "section": ".sbss"
     },
-    "g_split_left": {
+    "g_splitLeft": {
       "address": "0x8008d2e0",
       "size": 8,
       "section": ".sbss"
     },
-    "g_split_centre": {
+    "g_splitCentre": {
       "address": "0x8008d2e8",
       "size": 8,
       "section": ".sbss"
     },
-    "g_split_right": {
+    "g_splitRight": {
       "address": "0x8008d2f0",
       "size": 8,
       "section": ".sbss"
     },
-    "g_split_bottom": {
+    "g_splitBottom": {
       "address": "0x8008d2f8",
       "size": 8,
       "section": ".sbss"

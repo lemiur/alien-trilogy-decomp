@@ -38,7 +38,7 @@ L_test: move  v0,sN
         addiu sN,sN,-1
 ```
 
-A variant is a test that loads memory (level_map_file_load). There the top keeps its own loads and jumps into the
+A variant is a test that loads memory (LoadLevelMapFile). There the top keeps its own loads and jumps into the
 middle of the bottom test.
 
 **Mechanism.**
@@ -69,10 +69,10 @@ middle of the bottom test.
 
 Two further conditions decide whether the top copy merges:
 
-- **The copies must begin the same way.** In sprite_resource_load, `count` must come from the `s16` prototype of
+- **The copies must begin the same way.** In Sprite_LoadResource, `count` must come from the `s16` prototype of
   `f_1c538`. The prototype adds an `sll/sra` into `count`, so the copied test starts with `move v0,s1`
   like the bottom one. Unprototyped, the copy tests `v0` directly and stays at the top.
-- **CSE can make the top copy differ.** In level_map_file_load, `p = file->buffer + 12;` lets CSE reuse the buffer
+- **CSE can make the top copy differ.** In LoadLevelMapFile, `p = file->buffer + 12;` lets CSE reuse the buffer
   load in the copied test, and only the tail merges. The two-statement form
   `p = file->buffer; p += 12;` overwrites `p`, which drops CSE's memory equivalence. The copy then
   reloads `buffer`, as retail does.
@@ -89,8 +89,8 @@ wrong width:
 - `u_short` where retail has no `andi`;
 - signed `count-- > 0` (gives `bgtz`).
 
-**Related scheduling rule (level_map_file_load).** `A.SCH` shows sched 1 hoisting `p += 4` above the
-`read_be32` call. This is consistent with `sched.c` tying only pseudos that cross no call to the last
+**Related scheduling rule (LoadLevelMapFile).** `A.SCH` shows sched 1 hoisting `p += 4` above the
+`Text_ReadBigEndian32` call. This is consistent with `sched.c` tying only pseudos that cross no call to the last
 call, and `p` crosses calls. To keep
 `p += 4` after a call, as retail does, place it after the code that follows the call:
 `length = f(p); if (length & 1) length++; p += 4;`. Reorg then fills the `beqz` delay slot from the
@@ -101,11 +101,11 @@ join point.
 
 | function | result |
 |---|---|
-| blood_spray | match (348 bytes) |
-| impact_spray (sibling of blood_spray, reconstructed) | match (364 bytes) |
+| Particle_BloodSpray | match (348 bytes) |
+| Particle_ImpactSpray (sibling of Particle_BloodSpray, reconstructed) | match (364 bytes) |
 | f_379ac | match (492 bytes) |
-| level_map_file_load | match (560 bytes) |
-| sprite_resource_load | chunk loop matches; the CLUT loops still swap the pointer and counter registers (register/schedule residue), and the build is 480 bytes against 484 |
+| LoadLevelMapFile | match (560 bytes) |
+| Sprite_LoadResource | chunk loop matches; the CLUT loops still swap the pointer and counter registers (register/schedule residue), and the build is 480 bytes against 484 |
 
 ## Pattern B: frame space the body never uses
 
@@ -126,7 +126,7 @@ join point.
 The frame size is therefore an output of RTL shape, not of the declared locals. Observed producers:
 
 - `short x = <lh>; ... (int)x ...` with `x` also used in HImode arithmetic. Combine folds
-  `lh; sll; sra` into an `lh` plus a copy and strands the `sll` temporary (format_card_slot pseudo 84, f_16634
+  `lh; sll; sra` into an `lh` plus a copy and strands the `sll` temporary (Menu_FormatCardSlot pseudo 84, f_16634
   pseudo 81).
 - `while (n--)` on a parameter or copy: the folded `n != -1` test is rewritten to `a0 == 0` and the
   `-1` constant pseudo is stranded (8 bytes in `void f(int n) { while (n--) h(g()); }`).
@@ -146,11 +146,11 @@ created; compare the counts before choosing a lever.
 
 **Recipe status.** No spelling closes the two drafts yet:
 
-- **format_card_slot** (retail 16 vars, ours 8): 384 combinations of `short`/`char`/`int` types, comparison
+- **Menu_FormatCardSlot** (retail 16 vars, ours 8): 384 combinations of `short`/`char`/`int` types, comparison
   forms, digit expressions and argument casts all stay at 8 bytes. An `int level` changes the code.
-- **title_sequence_task** (retail 16 vars, ours 0): the four `status == 2` sites coincide with 16 bytes. Tried:
+- **Menu_TitleSequenceTask** (retail 16 vars, ours 0): the four `status == 2` sites coincide with 16 bytes. Tried:
   `int`/`long`/`u_short` status, assignment inside the `if`, block-scoped status per case, an
-  unprototyped or `int`-returning `movie_play`, and reversed operands. None leaves stranded pseudos with
+  unprototyped or `int`-returning `Movie_Play`, and reversed operands. None leaves stranded pseudos with
   identical code.
 - **f_16634** (game_10000_4_number_label) has the opposite sign: ours has one stranded pseudo (from the
   `value = entry->value` sign extension) that retail lacks. That pseudo sits second in global
@@ -159,13 +159,13 @@ created; compare the counts before choosing a lever.
 An unused 8- or 16-byte local reproduces these frames, but it is padding unless a real purpose is
 proven; never land one.
 
-### Aggregate locals reserve frame space at declaration (level_object_task)
+### Aggregate locals reserve frame space at declaration (Object_LevelObjectTask)
 
 A second source of unused frame space is any aggregate local (`VECTOR`, `RECT`, an array). The
 aggregate gets its stack slot when its declaration is expanded, and that slot stays in the frame even
 when no instruction uses it.
 
-level_object_task (0x8003276c) builds byte-identical, 0x40 frame included, with any of these spellings:
+Object_LevelObjectTask (0x8003276c) builds byte-identical, 0x40 frame included, with any of these spellings:
 
 - an unused function-scope `VECTOR scale;`, the current rule exception;
 - the f_32430 scaling block kept under a constant-false condition;
@@ -174,10 +174,10 @@ level_object_task (0x8003276c) builds byte-identical, 0x40 frame included, with 
 Sharing the render body with f_32430 through an inline helper that takes a `scaled` flag does not
 work. The helper's `VECTOR` is reserved in the caller's frame, but the inline changes register
 allocation: 3 saved registers against retail's 4, and a 0x38 frame. The dead-temporary mechanism above
-does not apply here, because level_object_task has no stranded pseudo. So no spelling is better evidenced than
+does not apply here, because Object_LevelObjectTask has no stranded pseudo. So no spelling is better evidenced than
 the existing exception; a constant-false block is "fake code" unless a real build switch is evidenced.
 
-## Pattern C: a switch whose case tree survives arm merging (actor_fire_bullet)
+## Pattern C: a switch whose case tree survives arm merging (Particle_ActorFireBullet)
 
 **Retail signature.** Cases 11 and 12 are tested as `beq ==12`, then `slti <13`, then `bne !=11`,
 and all three branch to one arm.
@@ -196,9 +196,9 @@ and all three branch to one arm.
 keep case 12 as a separate, identical arm. Writing `case 12: case 13: default:` together collapses the
 tree again. Neither an `enum`-typed switch index nor a cost table changes the shape.
 
-**Proven on:** actor_fire_bullet, `verify.py` match (412 bytes).
+**Proven on:** Particle_ActorFireBullet, `verify.py` match (412 bytes).
 
-**Related, reassociation.** Two more fixes were needed for the actor_fire_bullet match:
+**Related, reassociation.** Two more fixes were needed for the Particle_ActorFireBullet match:
 
 - **Aim pitch.** `fold` reassociates `a - C - b` into `a - (b + C)`. A narrowing cast on the inner
   difference, `(short)(position->vy - 0x280) - camera.vy`, stops the reassociation (the value is
@@ -246,7 +246,7 @@ unextended.
 of an inline helper's `short` parameters would be shared, for a helper called once per option.
 
 **Status: closed in `pause_menu` without a second assignment to `x`.** Retail's spelling passes
-the colour as a ternary in each call (`hud_draw_text(label, x, y, value ? 0xc8 : 0x40)`) instead of
+the colour as a ternary in each call (`Pause_DrawHUDText(label, x, y, value ? 0xc8 : 0x40)`) instead of
 through a `color` variable, and draws the volume bars with an `if (i == 0 && ...) ... else if
 (i == 1 && ...)` chain. With that shape `x` keeps one assignment (`short x = 0xa2`) and the build
 still reproduces the hoisted `sll`/`sra` and the 7 saved registers, so the two-sets condition
@@ -277,22 +277,22 @@ the order this way points at a macro in the original. It is evidence of where a 
 not of its name or interface; a bare `do { } while (0)` in source is an artefact. Record the
 exact state and spell it as a macro only when the wrapped statements make a coherent operation.
 
-**More closures with the same lever:** lights_init (lights_init: `COPY_RGB` on the palette colours
+**More closures with the same lever:** Light_Init (Light_Init: `COPY_RGB` on the palette colours
 only; the light-record copies stay open-coded, plus `light++` before `source++` in the for
-increment), f_39440 (pickups_task: `MAP_OBJECT_REMOVE` around unlink and free puts the object
+increment), f_39440 (Object_PickupsTask: `MAP_OBJECT_REMOVE` around unlink and free puts the object
 pointer in s1 above the sound id).
 
 **Side effect on addressing (f_198f8).** Statements after a `do { } while (0)` can address a
 global's fields through a register already holding a nearby address of the same symbol (CSE's
-related-value use): in message_box_type the '$' case reads `x` and `position` at -0x1c/-0x12 from
+related-value use): in Menu_MessageBoxType the '$' case reads `x` and `position` at -0x1c/-0x12 from
 the `&text` register only when the digit read (`c = *text++; c -= '0';`) is wrapped, and only in
 that case. Look for this when retail uses `reg-offset` where the build uses `lui`/`%lo`.
 
 ## Pattern G: one variable for two results (f_23fa8)
 
 When two values with disjoint lifetimes swap registers, check whether the original reused one
-variable for both. particle_hit_floor_or_ceiling keeps `floor_height` and later
-`ceiling_height` in a single `height` local; with separate `floor`/`ceiling` locals the floor
+variable for both. Particle_HitFloorOrCeiling keeps `FloorHeight` and later
+`CeilingHeight` in a single `height` local; with separate `floor`/`ceiling` locals the floor
 copy is scheduled after the marker load and the clearance register swaps (decomp-permuter lead,
 exact with plain C).
 
@@ -312,17 +312,17 @@ that keeps the sequences different, or reorders where the arms sit, keeps them a
   falls through and which sequences are compared, so the same arms written with `default` first
   can merge differently.
 - **A store per arm.** When arms end in the same tail but differ in one value, put the store of
-  that value inside each arm rather than after the switch (particle's line draw in particles_task:
+  that value inside each arm rather than after the switch (particle's line draw in Particle_Task:
   `setRGB0(line, ...)` in every `case` with the identical `end` computation, `default` last).
 - **A value in its own variable.** Give an arm's operands their own locals instead of folding
-  them into a shared expression (draw_translucent_panels: `int x0 = 256, x1 = 320, y0 = 0,
+  them into a shared expression (Menu_DrawTranslucentPanels: `int x0 = 256, x1 = 320, y0 = 0,
   y1 = 240;` in the two-panel arm, `int x0 = panel * 256, ...` in the other).
 - **`+` instead of `|` on a narrow value.** `short_value | 8` is shortened by the front end and
   computed on the short register, so every arm uses the same register; `short_value + 8` is
   computed on the sign-extended copy, which CSE reuses where a comparison of the same value
   already made one (`move v1,a1` before `bne v1,...`). The arms then differ (`ori a1,v1,8`
   against `ori a1,a1,8`; combine still emits `ori` because the low bits are known clear) and
-  stay apart. colonist_task (src/actor.c): `actor_play_animation(actor, direction + 8)`, like its
+  stay apart. Actor_ColonistTask (src/actor.c): `Actor_PlayAnimation(actor, direction + 8)`, like its
   `direction + 0x1b`.
 
 ## Pattern I: duplicated constant arms make GCC hoist the constant
@@ -338,8 +338,8 @@ there is a single use and the constant stays an immediate.
 `case 2: ... case 10: face->selector = 1; break; default: face->selector = 1; break;`.
 Merging them into `case 10: default:` is one instruction shorter and no longer matches.
 
-**Proven on:** door_model_faces_fixup (src/doors.c), A/B in `verify.py`; the unmatched
-level_object_model_fixup (src/object_render.c), same family.
+**Proven on:** Door_FixupModelFaces (src/doors.c), A/B in `verify.py`; the unmatched
+Object_FixupLevelObjectModel (src/object_render.c), same family.
 
 ## Pattern J: a macro, not an inline, keeps a constant folded into an index
 
@@ -364,7 +364,7 @@ the build emits `offset - 0x100` and subtracts it.
 signed `int` expression into `a - (b - C)`. With `x` unsigned the arithmetic is unsigned and the
 order of the source is kept.
 
-**Recipe.** Declare the grid coordinates `u_int` (lifts_create: `u_int x = record->x;` after
+**Recipe.** Declare the grid coordinates `u_int` (Lift_Create: `u_int x = record->x;` after
 Lift's position became an `SVECTOR`). The same expression stored to a `u_short` member matched
 with `int` locals, so a type change of the destination can expose this.
 
@@ -387,8 +387,8 @@ is the `int` one, so the statement order matters too.
 (`SINE(a)` / `COSINE(a)` in `src/geometry.c`), and put a use that needs the sign-extended value
 first.
 
-**Proven on:** rotation_matrix, f_20584 and f_2076c (src/geometry.c; +3 slots each, one per
-angle). rotation_matrix_inverse reads `-rotation->vx`: the negation is an `int` use from the
+**Proven on:** Geo_RotationMatrix, f_20584 and f_2076c (src/geometry.c; +3 slots each, one per
+angle). Geo_RotationMatrixInverse reads `-rotation->vx`: the negation is an `int` use from the
 start, nothing is stranded, and its frame is 8 bytes per slot smaller, as in retail.
 
 **Related, unsigned shifts.** A product stored as `x >> 12` into a `short` shows as `srl` in retail
@@ -400,25 +400,25 @@ unsigned conversion belongs to the stored expressions only: `(u_long)(cy * cz) >
 
 Each was found by sweeping one spelling at a time against `diff.py`; none adds code.
 
-- **Read a global pointer at each use, not through a local copy.** draw_near_ft3_nocull/draw_near_ft3_abe/draw_near_ft3 reread
-  `g_spad_sxy` in every emission block; a block-local `sxy = g_spad_sxy;` copy moves the pointer
-  and the OT mask into other registers (57 words to 9 in draw_near_ft3_nocull).
+- **Read a global pointer at each use, not through a local copy.** Model_DrawNearFT3NoCull/Model_DrawNearFT3ABE/Model_DrawNearFT3 reread
+  `g_spadSxy` in every emission block; a block-local `sxy = g_spadSxy;` copy moves the pointer
+  and the OT mask into other registers (57 words to 9 in Model_DrawNearFT3NoCull).
 - **An assignment inside the expression fixes load order.** `d = poly->ft3.u1 - (u0 = poly->ft3.u0);`
   loads u1 before u0 the way retail does; `u0 = ...; d = ... - u0;` loads them the other way and
   swaps the temporaries.
 - **Block-scoped temporaries per repeated computation.** The two UV-midpoint computations each in
   their own `{ short d, ad; ... }` match where shared `du`/`dv`/`ad` locals tie registers across
   them.
-- **Statement order inside if/else arms decides cross-jumping and scheduling.** sprite_frame_upload/boss_sprite_frame_upload:
-  only the uncompressed arm ends with its own `g_upload_queue_tail = upload; return -1;` (the
+- **Statement order inside if/else arms decides cross-jumping and scheduling.** Tex_UploadSpriteFrame/Tex_UploadBossSpriteFrame:
+  only the uncompressed arm ends with its own `g_uploadQueueTail = upload; return -1;` (the
   compressed arm falls to the shared copy), and the arms store their fields in different orders
-  (`g_upload_free = upload->next;` before `rect.h` in one arm, after it in the other). With
+  (`g_uploadFree = upload->next;` before `rect.h` in one arm, after it in the other). With
   identical arms GCC cross-jumps the queue-head stores and the sizes differ.
-- **Statement order of independent loads decides list scheduling.** rotation_matrix_inverse
-  matches only with `cy` computed before `cz`; rotation_matrix accepts any order with each angle's
+- **Statement order of independent loads decides list scheduling.** Geo_RotationMatrixInverse
+  matches only with `cy` computed before `cz`; Geo_RotationMatrix accepts any order with each angle's
   cosine before its sine (pattern L).
 
-## Pattern N: a once-set temporary is glued to its consumer (lift_measure_model)
+## Pattern N: a once-set temporary is glued to its consumer (Lift_MeasureModel)
 
 - Retail: `lbu w; lbu d; lw; lhu; lhu; sll w; sll d; addu; addu; sh; addu; addu`, both shifts before
   the first add. Ours (`width * 0x100u` inline, or `u_int width = lift->width << 8;`): each
@@ -432,13 +432,13 @@ Each was found by sweeping one spelling at a time against `diff.py`; none adds c
 - Lever: a second assignment to the same variable: `width = lift->width; depth = lift->depth;
   width <<= 8; depth <<= 8;` (u_int locals; the statement order among the leading loads does
   not matter). `width *= 0x100` does not work: the multiply is not folded into a plain ashift.
-- Proven: lift_measure_model (src/lift.c), 408 B, verify.py.
+- Proven: Lift_MeasureModel (src/lift.c), 408 B, verify.py.
 
 ## Pattern O: a constant object pointer makes member accesses absolute; direct spellings share a base register
 
 Retail: in one function some members of a global object (`g_player`) are read through a base register
 (`la t1, g_player+8` then `lhu (t1)`, `lhu -8(t1)`, `lhu 0xf4(t1)`) while the rest are absolute `lui`/`lhu`
-pairs, and a null-checked pointer member is reloaded after the check (weapon_view_play).
+pairs, and a null-checked pointer member is reloaded after the check (Player_PlayWeaponView).
 
 Mechanism (RTL `-ds`): a direct `g_player.member` spelling goes through `memory_address`, which puts the
 constant address in a pseudo; the first such pseudo in a CSE block becomes a related-value base and later
@@ -449,9 +449,9 @@ CSE knows to be constant (an inline function's parameter substituted with `&g_pl
 and not identified with the direct spelling's `(mem (reg))` (hence the reload). The local pointer itself
 becomes the oldest base, so prefer the inline parameter when retail keeps another member's address as the
 base. cse2 (`-frerun-cse-after-loop`) folds `delta(base)` back to the absolute address when the base's set
-is in the same block, which is why map_objects_spawn (a loop, set hoisted) keeps `2(s0)` for
-`g_level_map.offset_z` and player_move's draft does not.
+is in the same block, which is why Object_Spawn (a loop, set hoisted) keeps `2(s0)` for
+`g_levelMap.offsetZ` and Player_Move's draft does not.
 
-Proven: weapon_view_play (`entry = weapon_entry(&g_player)` for the indexed read, `g_player.weapon_sequence`
-direct for the null check); player_yaw_decrease, player_yaw_increase, player_decelerate and
-weapon_sprite_bind_slot (`Player *player = &g_player;`, every member absolute and reloaded). Leads: player_view_bob (bob half absolute, pitch/position.vx/view_height direct).
+Proven: Player_PlayWeaponView (`entry = Player_WeaponEntry(&g_player)` for the indexed read, `g_player.weaponSequence`
+direct for the null check); Player_DecreaseYaw, Player_IncreaseYaw, Player_Decelerate and
+Player_BindWeaponSpriteSlot (`Player *player = &g_player;`, every member absolute and reloaded). Leads: Player_ViewBob (bob half absolute, pitch/position.vx/viewHeight direct).

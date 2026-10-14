@@ -1,102 +1,102 @@
 {
   "functions": {
-    "audio_find_bank": {
+    "Snd_FindBank": {
       "address": "0x8003cfd8",
       "size": 92
     },
-    "audio_load_bank": {
+    "Snd_LoadBank": {
       "address": "0x8003d034",
       "size": 252
     },
-    "audio_free_bank": {
+    "Snd_FreeBank": {
       "address": "0x8003d130",
       "size": 356
     },
-    "audio_select_level_bank": {
+    "Snd_SelectLevelBank": {
       "address": "0x8003d294",
       "size": 132
     },
-    "audio_init": {
+    "Snd_Init": {
       "address": "0x8003d318",
       "size": 300
     },
-    "audio_enable": {
+    "Snd_Enable": {
       "address": "0x8003d444",
       "size": 24
     },
-    "audio_disable": {
+    "Snd_Disable": {
       "address": "0x8003d45c",
       "size": 24
     },
-    "sound_stop_all": {
+    "Snd_StopAll": {
       "address": "0x8003d474",
       "size": 44
     },
-    "sound_play_request": {
+    "Snd_PlayRequest": {
       "address": "0x8003d4a0",
       "size": 52
     },
-    "sound_mute_all": {
+    "Snd_MuteAll": {
       "address": "0x8003d4d4",
       "size": 44
     },
-    "sound_unmute_all": {
+    "Snd_UnmuteAll": {
       "address": "0x8003d500",
       "size": 44
     },
-    "sound_stop": {
+    "Snd_Stop": {
       "address": "0x8003d52c",
       "size": 68
     },
-    "sound_adjust": {
+    "Snd_Adjust": {
       "address": "0x8003d570",
       "size": 68
     },
-    "sound_play": {
+    "Snd_Play": {
       "address": "0x8003d5b4",
       "size": 120
     },
-    "sound_set_volume": {
+    "Snd_SetVolume": {
       "address": "0x8003d62c",
       "size": 64
     },
-    "sound_play_at": {
+    "Snd_PlayAt": {
       "address": "0x8003d66c",
       "size": 384
     },
-    "sound_play_at_position": {
+    "Snd_PlayAtPosition": {
       "address": "0x8003d7ec",
       "size": 40
     },
-    "sound_play_at_xz": {
+    "Snd_PlayAtXZ": {
       "address": "0x8003d814",
       "size": 76
     }
   },
   "symbols": {
-    "voice_set_volume": "0x80043a40",
-    "voices_stop_all": "0x80044224",
-    "voice_stop": "0x80043d50",
-    "voice_play": "0x8004334c",
-    "g_sfx_level": "0x8008d540",
-    "voices_restore": "0x80043968",
-    "voices_mute": "0x8004392c",
-    "g_audio_flags": "0x8008d004",
-    "g_audio_banks": "0x80096b58",
-    "g_file_table": "0x8006a5f8",
-    "load_file": "0x800151f0",
-    "sample_bank_load": "0x80043ecc",
-    "heap_free": "0x80014e7c",
-    "sample_priorities_init": "0x800442d0",
-    "sample_bank_free": "0x80044118",
-    "g_sound_request": "0x8008f370",
-    "g_audio_mix": "0x8009d270",
-    "spu_init": "0x80044138",
-    "voices_reset": "0x8004330c",
-    "spu_set_master_volume": "0x800438e0",
-    "g_level_sample_banks": "0x8007312c",
+    "Snd_VoiceSetVolume": "0x80043a40",
+    "Snd_StopAllVoices": "0x80044224",
+    "Snd_StopVoice": "0x80043d50",
+    "Snd_PlayVoice": "0x8004334c",
+    "g_sfxLevel": "0x8008d540",
+    "Snd_RestoreVoices": "0x80043968",
+    "Snd_MuteVoices": "0x8004392c",
+    "g_audioFlags": "0x8008d004",
+    "g_audioBanks": "0x80096b58",
+    "g_fileTable": "0x8006a5f8",
+    "Sys_LoadFile": "0x800151f0",
+    "Snd_LoadSampleBank": "0x80043ecc",
+    "Heap_Free": "0x80014e7c",
+    "Snd_InitSamplePriorities": "0x800442d0",
+    "Snd_FreeSampleBank": "0x80044118",
+    "g_soundRequest": "0x8008f370",
+    "g_audioMix": "0x8009d270",
+    "Snd_InitSPU": "0x80044138",
+    "Snd_ResetVoices": "0x8004330c",
+    "Snd_SPUSetMasterVolume": "0x800438e0",
+    "g_levelSampleBanks": "0x8007312c",
     "g_player": "0x80099fd4",
-    "point_heading_xz": "0x8001fea0"
+    "Geo_PointHeadingXZ": "0x8001fea0"
   },
   "gp": "0x8008cd74",
   "sections": {
@@ -106,7 +106,7 @@
     ".sdata": "0x8008cd74"
   },
   "static_data": {
-    "g_sound_balance": {
+    "g_soundBalance": {
       "address": "0x800730ec",
       "size": 64,
       "section": ".data"

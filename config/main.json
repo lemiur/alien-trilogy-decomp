@@ -7,79 +7,79 @@
     ".sdata": "0x8008cd74"
   },
   "functions": {
-    "set_button_layout": {
+    "Sys_SetButtonLayout": {
       "address": "0x8001380c",
       "size": 284
     },
-    "reset_combo_check": {
+    "Sys_ResetComboCheck": {
       "address": "0x80013928",
       "size": 172
     },
-    "random_seed": {
+    "Sys_RandomSeed": {
       "address": "0x800139d4",
       "size": 72
     },
-    "random_init": {
+    "Sys_InitRandom": {
       "address": "0x80013a1c",
       "size": 40
     },
-    "random": {
+    "Sys_Random": {
       "address": "0x80013a44",
       "size": 140
     },
-    "menu_display_task": {
+    "Sys_MenuDisplayTask": {
       "address": "0x80013ad0",
       "size": 236
     },
-    "boss_backdrop_draw": {
+    "Sys_DrawBossBackdrop": {
       "address": "0x80013bbc",
       "size": 416
     },
-    "game_display_task": {
+    "Sys_GameDisplayTask": {
       "address": "0x80013d5c",
       "size": 324
     },
-    "vram_slots_release": {
+    "Sys_ReleaseVRAMSlots": {
       "address": "0x80013ea0",
       "size": 144
     },
-    "vram_slots_clear_users": {
+    "Sys_VRAMSlotsClearUsers": {
       "address": "0x80013f30",
       "size": 148
     },
-    "level_unload": {
+    "Sys_UnloadLevel": {
       "address": "0x80013fc4",
       "size": 60
     },
-    "level_load": {
+    "Sys_LoadLevel": {
       "address": "0x80014000",
       "size": 360
     },
-    "vram_slots_reserve": {
+    "Sys_ReserveVRAMSlots": {
       "address": "0x80014168",
       "size": 140
     },
-    "level_start": {
+    "Sys_StartLevel": {
       "address": "0x800141f4",
       "size": 516
     },
-    "read_demo_input": {
+    "Demo_ReadInput": {
       "address": "0x800143f8",
       "size": 68
     },
-    "level_play": {
+    "Sys_PlayLevel": {
       "address": "0x8001443c",
       "size": 952
     },
-    "pad_poll": {
+    "Sys_PollPad": {
       "address": "0x800147f4",
       "size": 308
     },
-    "pad_reset": {
+    "Sys_ResetPad": {
       "address": "0x80014928",
       "size": 32
     },
-    "frontend_run": {
+    "Sys_RunFrontend": {
       "address": "0x80014948",
       "size": 112
     },
@@ -87,113 +87,113 @@
       "address": "0x800149b8",
       "size": 892
     },
-    "init_heap": {
+    "Heap_Init": {
       "address": "0x80014d34",
       "size": 200
     },
-    "heap_alloc": {
+    "Heap_Alloc": {
       "address": "0x80014dfc",
       "size": 128
     },
-    "heap_free": {
+    "Heap_Free": {
       "address": "0x80014e7c",
       "size": 80
     },
-    "heap_mark": {
+    "Heap_Mark": {
       "address": "0x80014ecc",
       "size": 188
     },
-    "heap_release": {
+    "Heap_Release": {
       "address": "0x80014f88",
       "size": 192
     },
-    "fatal_error": {
+    "Sys_FatalError": {
       "address": "0x80015048",
       "size": 252
     },
-    "cd_read_callback": {
+    "Sys_CDReadCallback": {
       "address": "0x80015144",
       "size": 40
     },
-    "init_cd": {
+    "Sys_InitCD": {
       "address": "0x8001516c",
       "size": 132
     },
-    "load_file": {
+    "Sys_LoadFile": {
       "address": "0x800151f0",
       "size": 172
     },
-    "load_file_start": {
+    "Sys_LoadFileStart": {
       "address": "0x8001529c",
       "size": 136
     },
-    "cd_seek_file": {
+    "Sys_CDSeekFile": {
       "address": "0x80015324",
       "size": 60
     },
-    "init_texture_pages": {
+    "Sys_InitTexturePages": {
       "address": "0x80015360",
       "size": 400
     },
-    "clear_vram": {
+    "Sys_ClearVRAM": {
       "address": "0x800154f0",
       "size": 116
     },
-    "find_free_texture_page": {
+    "Sys_FindFreeTexturePage": {
       "address": "0x80015564",
       "size": 72
     },
-    "vblank_handler": {
+    "Sys_VBlankHandler": {
       "address": "0x800155ac",
       "size": 140
     },
-    "set_display_mode": {
+    "Sys_SetDisplayMode": {
       "address": "0x80015638",
       "size": 60
     },
-    "install_vblank_handler": {
+    "Sys_InstallVBlankHandler": {
       "address": "0x80015674",
       "size": 136
     },
-    "init_clut_rows": {
+    "Sys_InitCLUTRows": {
       "address": "0x800156fc",
       "size": 212
     },
-    "upload_clut_row": {
+    "Sys_UploadCLUTRow": {
       "address": "0x800157d0",
       "size": 68
     },
-    "find_free_clut_row": {
+    "Sys_FindFreeCLUTRow": {
       "address": "0x80015814",
       "size": 76
     },
-    "init_display_buffers": {
+    "Sys_InitDisplayBuffers": {
       "address": "0x80015860",
       "size": 596
     },
-    "setup_double_buffer": {
+    "Sys_SetupDoubleBuffer": {
       "address": "0x80015ab4",
       "size": 508
     }
   },
   "symbols": {
-    "g_button_use": "0x8008cd84",
-    "g_button_weapon": "0x8008cd86",
-    "g_button_fire": "0x8008cd88",
-    "g_button_strafe_right": "0x8008cd92",
-    "g_button_run": "0x8008cd94",
-    "g_button_strafe_left": "0x8008cd96",
-    "g_button_look": "0x8008cd98",
-    "g_button_grenade": "0x8008cd9a",
+    "g_buttonUse": "0x8008cd84",
+    "g_buttonWeapon": "0x8008cd86",
+    "g_buttonFire": "0x8008cd88",
+    "g_buttonStrafeRight": "0x8008cd92",
+    "g_buttonRun": "0x8008cd94",
+    "g_buttonStrafeLeft": "0x8008cd96",
+    "g_buttonLook": "0x8008cd98",
+    "g_buttonGrenade": "0x8008cd9a",
     "g_8cd8a": "0x8008cd8a",
     "g_8cd8c": "0x8008cd8c",
     "g_8cd8e": "0x8008cd8e",
     "g_8cd90": "0x8008cd90",
-    "g_frame_count": "0x8008d380",
-    "g_game_flags": "0x8008d560",
-    "g_cheat_flags": "0x8008cda8",
-    "g_clut_sets": "0x8006a578",
-    "g_page_sets": "0x8006a590",
+    "g_frameCount": "0x8008d380",
+    "g_gameFlags": "0x8008d560",
+    "g_cheatFlags": "0x8008cda8",
+    "g_clutSets": "0x8006a578",
+    "g_pageSets": "0x8006a590",
     "__main": "0x800588bc",
     "ResetGraph": "0x800623b8",
     "SetGraphDebug": "0x80062628",
@@ -203,118 +203,118 @@
     "SetGeomScreen": "0x80067310",
     "SetVideoMode": "0x800616a8",
     "PadInit": "0x800615b8",
-    "card_init": "0x80048184",
-    "music_enable": "0x8003f7bc",
-    "audio_enable": "0x8003d444",
-    "music_init": "0x8003f470",
+    "Card_Init": "0x80048184",
+    "Music_Enable": "0x8003f7bc",
+    "Snd_Enable": "0x8003d444",
+    "Music_Init": "0x8003f470",
     "TaskerAlloc": "0x80015d28",
-    "particle_pool_alloc": "0x80024768",
-    "panel_pool_alloc": "0x80045444",
-    "actor_pool_alloc": "0x8002889c",
-    "upload_pool_alloc": "0x800218a4",
-    "lifts_alloc": "0x8003e640",
-    "pickup_models_load": "0x80038100",
-    "level_object_models_load": "0x80030f78",
-    "doors_alloc": "0x80023550",
-    "menu_textures_reserve": "0x8001c588",
-    "player_reset": "0x8003cee4",
-    "sprite_sets_load": "0x8001cc84",
-    "font_init_widths": "0x80034598",
-    "password_store_level": "0x800479f0",
-    "show_loading_screen": "0x8001b290",
-    "show_continue_prompt": "0x8001b340",
-    "sound_stop_all": "0x8003d474",
+    "Particle_PoolAlloc": "0x80024768",
+    "Debris_PanelPoolAlloc": "0x80045444",
+    "Actor_PoolAlloc": "0x8002889c",
+    "Tex_UploadPoolAlloc": "0x800218a4",
+    "Lift_Alloc": "0x8003e640",
+    "Object_LoadPickupModels": "0x80038100",
+    "Object_LoadLevelObjectModels": "0x80030f78",
+    "Door_Alloc": "0x80023550",
+    "Sprite_ReserveMenuTextures": "0x8001c588",
+    "Player_Reset": "0x8003cee4",
+    "Sprite_LoadSets": "0x8001cc84",
+    "Hud_InitFontWidths": "0x80034598",
+    "Password_StoreLevel": "0x800479f0",
+    "Menu_ShowLoadingScreen": "0x8001b290",
+    "Menu_ShowContinuePrompt": "0x8001b340",
+    "Snd_StopAll": "0x8003d474",
     "TaskerInit": "0x80015cc8",
-    "play_death_movie": "0x8001bb64",
-    "password_restore": "0x80047a1c",
-    "level_complete": "0x8001b7e8",
-    "play_story_movie": "0x8001ba18",
-    "g_file_table": "0x8006a5f8",
+    "Menu_PlayDeathMovie": "0x8001bb64",
+    "Password_Restore": "0x80047a1c",
+    "Menu_LevelComplete": "0x8001b7e8",
+    "Menu_PlayStoryMovie": "0x8001ba18",
+    "g_fileTable": "0x8006a5f8",
     "g_tab": "0x8008d458",
-    "g_level_map": "0x80096060",
-    "unpack_buffers_alloc": "0x80021e88",
-    "audio_init": "0x8003d318",
-    "panel_sprites_load_alternate": "0x8001cd04",
-    "audio_select_level_bank": "0x8003d294",
-    "level_panel_sprites_load": "0x8001cc34",
-    "message_box_advance": "0x80019db4",
-    "level_map_file_load": "0x80020be4",
-    "level_parse_map": "0x80020e14",
-    "door_models_prepare": "0x80023478",
-    "lift_models_prepare": "0x8003e590",
-    "level_sprites_load": "0x8001d114",
-    "g_random_state": "0x8008d5f8",
+    "g_levelMap": "0x80096060",
+    "AllocUnpackBuffers": "0x80021e88",
+    "Snd_Init": "0x8003d318",
+    "Sprite_LoadPanelSpritesAlternate": "0x8001cd04",
+    "Snd_SelectLevelBank": "0x8003d294",
+    "Sprite_LoadLevelPanelSprites": "0x8001cc34",
+    "Menu_AdvanceMessageBox": "0x80019db4",
+    "LoadLevelMapFile": "0x80020be4",
+    "Sys_LevelParseMap": "0x80020e14",
+    "Door_PrepareModels": "0x80023478",
+    "Lift_PrepareModels": "0x8003e590",
+    "Sprite_LoadLevelSprites": "0x8001d114",
+    "g_randomState": "0x8008d5f8",
     "g_level": "0x8008d378",
-    "g_pad_repeat": "0x8008d580",
-    "g_pad_repeat_clock": "0x8008d4d0",
-    "g_pad_hold_frames": "0x8008d590",
-    "g_heap_next": "0x8008d410",
-    "g_heap_used": "0x8008d3c0",
-    "g_heap_free": "0x8008d390",
-    "g_action_index": "0x8008cda4",
-    "audio_free_bank": "0x8003d130",
-    "g_boss_level": "0x8008d578",
-    "g_fade_depth": "0x8008d470",
+    "g_padRepeat": "0x8008d580",
+    "g_padRepeatClock": "0x8008d4d0",
+    "g_padHoldFrames": "0x8008d590",
+    "g_heapNext": "0x8008d410",
+    "g_heapUsed": "0x8008d3c0",
+    "g_heapFree": "0x8008d390",
+    "g_actionIndex": "0x8008cda4",
+    "Snd_FreeBank": "0x8003d130",
+    "g_bossLevel": "0x8008d578",
+    "g_fadeDepth": "0x8008d470",
     "DpqColor": "0x80066fdc",
-    "upload_queue_flush": "0x8002194c",
-    "g_graphics_busy": "0x8008d388",
+    "Tex_FlushUploadQueue": "0x8002194c",
+    "g_graphicsBusy": "0x8008d388",
     "g_display": "0x8008d518",
-    "g_render_buffer": "0x8008d4e8",
-    "g_render_workspace": "0x8008d3c8",
-    "g_display_default": "0x8008d3e0",
-    "g_sprite_workspace": "0x8008d478",
+    "g_renderBuffer": "0x8008d4e8",
+    "g_renderWorkspace": "0x8008d3c8",
+    "g_displayDefault": "0x8008d3e0",
+    "g_spriteWorkspace": "0x8008d478",
     "DrawSync": "0x80062858",
     "PutDispEnv": "0x80062f2c",
     "DrawOTag": "0x80062dbc",
     "ClearOTagR": "0x80062cc4",
     "AddPrim": "0x80065220",
-    "g_next_task": "0x8008d4f0",
-    "start_title_sequence": "0x8001b18c",
+    "g_nextTask": "0x8008d4f0",
+    "Menu_StartTitleSequence": "0x8001b18c",
     "TaskDispatch": "0x80015ee4",
     "SetBlockFill": "0x800654f8",
     "DrawPrim": "0x80062d5c",
     "SetRCnt": "0x8005d120",
     "StartRCnt": "0x8005d1f4",
-    "weapon_sprite_bind_slot": "0x8003cae4",
-    "level_cells_reset": "0x800216a4",
-    "upload_queue_reset": "0x800218cc",
-    "hud_messages_reset": "0x80037c78",
-    "particle_pool_init": "0x800246c4",
-    "panel_pool_init": "0x8004548c",
-    "flow_field_clear": "0x800214dc",
-    "actor_pool_init": "0x8002881c",
-    "lights_load": "0x80023800",
-    "level_triggers_load": "0x8003d8dc",
-    "lifts_spawn": "0x8003f334",
-    "doors_init": "0x80023580",
-    "map_objects_init": "0x800384ec",
-    "level_objects_init": "0x800321f4",
-    "actors_init": "0x80029a3c",
-    "command_sequencer_start": "0x800405c0",
-    "countdown_start": "0x80037f08",
+    "Player_BindWeaponSpriteSlot": "0x8003cae4",
+    "ResetLevelCells": "0x800216a4",
+    "Tex_ResetUploadQueue": "0x800218cc",
+    "Hud_ResetMessages": "0x80037c78",
+    "Particle_InitPool": "0x800246c4",
+    "Debris_InitPanelPool": "0x8004548c",
+    "ClearFlowField": "0x800214dc",
+    "Actor_InitPool": "0x8002881c",
+    "Light_Load": "0x80023800",
+    "Trigger_LoadLevelTriggers": "0x8003d8dc",
+    "Lift_Spawn": "0x8003f334",
+    "Door_Init": "0x80023580",
+    "Object_Init": "0x800384ec",
+    "Object_InitLevelObjects": "0x800321f4",
+    "Actor_Init": "0x80029a3c",
+    "Command_StartSequencer": "0x800405c0",
+    "Timer_Start": "0x80037f08",
     "TaskCreate": "0x80015e4c",
-    "g_view_position": "0x8008d5b8",
-    "g_view_pitch": "0x8008d5f0",
-    "g_view_rotation": "0x8008d468",
-    "lights_task": "0x80023890",
-    "player_task_start": "0x8003cb0c",
-    "view_render_task": "0x80020980",
-    "particles_task": "0x80027a18",
-    "actors_draw_task": "0x8002ab48",
-    "command_sequencer_task": "0x80040650",
-    "pickups_task": "0x80039440",
-    "g_display_mode": "0x8008d3b8",
-    "g_sound_clock": "0x8008d588",
-    "g_pad_pressed": "0x8008d5a8",
-    "g_pad_held": "0x8008d4d8",
-    "g_pad_previous": "0x8008d448",
+    "g_viewPosition": "0x8008d5b8",
+    "g_viewPitch": "0x8008d5f0",
+    "g_viewRotation": "0x8008d468",
+    "Sys_LightsTask": "0x80023890",
+    "Player_TaskStart": "0x8003cb0c",
+    "ViewRenderTask": "0x80020980",
+    "Particle_Task": "0x80027a18",
+    "Actor_DrawTask": "0x8002ab48",
+    "Command_SequencerTask": "0x80040650",
+    "Object_PickupsTask": "0x80039440",
+    "g_displayMode": "0x8008d3b8",
+    "g_soundClock": "0x8008d588",
+    "g_padPressed": "0x8008d5a8",
+    "g_padHeld": "0x8008d4d8",
+    "g_padPrevious": "0x8008d448",
     "PadRead": "0x80061618",
-    "g_heap_snapshots": "0x8009b30c",
-    "g_heap_size": "0x8008d400",
-    "g_heap_allocation": "0x8008d548",
-    "g_heap_snapshot_current": "0x8008cdb0",
+    "g_heapSnapshots": "0x8009b30c",
+    "g_heapSize": "0x8008d400",
+    "g_heapAllocation": "0x8008d548",
+    "g_heapSnapshotCurrent": "0x8008cdb0",
     "malloc": "0x80069748",
-    "g_cd_read_count": "0x8008d508",
+    "g_cdReadCount": "0x8008d508",
     "SetDefDrawEnv": "0x800663a4",
     "SetDefDispEnv": "0x80066434",
     "PutDrawEnv": "0x80062e30",
@@ -329,9 +329,9 @@
     "CdRead": "0x8005d8a4",
     "CdReadSync": "0x8005d884",
     "CdSearchFile": "0x8005fb60",
-    "g_display_buffers": "0x8008d5e8",
-    "g_draw_env_a": "0x8009cb28",
-    "g_draw_env_b": "0x8009cb88",
+    "g_displayBuffers": "0x8008d5e8",
+    "g_drawEnvA": "0x8009cb28",
+    "g_drawEnvB": "0x8009cb88",
     "SetDrawEnv": "0x80063540",
     "SetFarColor": "0x80067264",
     "SetFogNear": "0x800684a0",
@@ -341,23 +341,23 @@
     "OpenEvent": "0x8005d2b0",
     "EnableEvent": "0x8005d0f0",
     "GetClut": "0x800650c0",
-    "get_difficulty": "0x80017760",
-    "set_difficulty": "0x80017770",
-    "music_play_level": "0x8003f728",
-    "music_poll": "0x8003f81c",
-    "pause_menu_run": "0x80042e88",
+    "Menu_GetDifficulty": "0x80017760",
+    "Menu_SetDifficulty": "0x80017770",
+    "Music_PlayLevel": "0x8003f728",
+    "Music_Poll": "0x8003f81c",
+    "Pause_Run": "0x80042e88",
     "LoadImage": "0x80062a80",
     "ResetCallback": "0x800616d0",
     "CdInit": "0x8005f94c",
     "CdSetDebug": "0x8005d3a0",
     "CdReadCallback": "0x8005d498",
-    "s_heap_overflow": "0x800101e0",
-    "s_error_title": "0x800101f0",
-    "s_error_format": "0x8008cdb4",
-    "message_box_type": "0x800198f8"
+    "s_heapOverflow": "0x800101e0",
+    "s_errorTitle": "0x800101f0",
+    "s_errorFormat": "0x8008cdb4",
+    "Menu_MessageBoxType": "0x800198f8"
   },
   "static_data": {
-    "s_13a1c": {
+    "s_randomSeed": {
       "address": "0x8006a5e0",
       "size": 24,
       "section": ".data"

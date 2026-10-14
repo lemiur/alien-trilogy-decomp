@@ -1,5 +1,5 @@
-/* Movie playback, from the lineage of Sony's STR samples
- * (SAMPLE/MOVIE/ANIM/MAIN.C: strInit, strCallback, strNext, strNextVlc, strSync). */
+/* movie.c -- movie playback, from the lineage of Sony's STR samples (SAMPLE/MOVIE/ANIM/MAIN.C:
+ * strInit, strCallback, strNext, strNextVlc, strSync) */
 #include <sys/types.h>
 #include <LIBGTE.H>
 #include <LIBGPU.H>
@@ -18,8 +18,8 @@
  * CdlModeStream adds CdlModeSize1. name invented */
 #define MOVIE_MODE_STREAM 0x100
 /* name: invented, after the sample's VLC buffers (u_long vlcbuf0[320/2*256]) */
-#define VLC_BUFF_SIZE (320 / 2 * 256)
-#define bound(val, n) ((((val) - 1) / (n) + 1) * (n))
+#define VLC_BUFF_SIZE ( 320 / 2 * 256 )
+#define bound( val, n ) ( ( ( ( val ) - 1 ) / ( n ) + 1 ) * ( n ) )
 /* An MDEC macroblock is 16 by 16 pixels; at 24 bits per pixel its 16 pixels span 24 VRAM
  * halfwords, three for each pair of pixels. names invented */
 #define MACROBLOCK_SIZE 16
@@ -27,7 +27,7 @@
 #define RGB24_PAIR_HALFWORDS 3
 /* A raw (mode 2) CD sector in bytes. name invented */
 #define CD_RAW_SECTOR_SIZE 2352
-/* MovieDecode.end_scale is in eighths of the stream's frames. name invented */
+/* movieDecode_t.endScale is in eighths of the stream's frames. name invented */
 #define MOVIE_END_SCALE_ONE 8
 /* CdControlB's parameter buffer. name invented */
 #define CD_PARAM_SIZE 4
@@ -36,381 +36,399 @@
 #define MOVIE_IMAGE_ROW_BYTES 64
 /* Ticks before a skippable record lets Start or X skip it. name invented */
 #define MOVIE_SKIP_DELAY 300
-/* DecDCTin mode bit set from MovieStreamRecord.decode_flag (bit 0 is 24-bit output). name invented */
+/* DecDCTin mode bit set from movieStreamRecord_t.decodeFlag (bit 0 is 24-bit output). name invented */
 #define DCT_MODE_DECODE_FLAG 2
 
-/* The sample's DECENV: double VLC buffers, one image buffer, the ring
- * buffer, double transfer rectangles and the slice decoded per DecDCTout. */
-typedef struct MovieDecode {
-    u_long *vlcbuf[2];
-    u_short *imgbuf;
-    u_long *ringbuf;
-    int vlcid;
-    RECT rect[2];
-    int rectid;
-    RECT slice;
-    int isdone;
-    /* Invented names for the playback parameters that follow the sample's fields. */
-    short param_34;
-    short rgb24;
-    short y_offset;
-    short end_scale;
-    short end_offset;
-    short skippable;
-} MovieDecode;
-
-
-typedef struct MovieStreamRecord MovieStreamRecord;
-struct MovieStreamRecord {
-    RECT rect[2];
-    short y_offset;
-    short file;
-    const char *name;
-    u_long start_frame;
-    u_long end_frame;
-    short mode;
-    short decode_flag;
-    short end_scale;
-    short end_offset;
-    short skippable;
-    unsigned char reserved_2a[2];
-    short (*update)(); /* movie_show_frame; movie_play_record passes (&g_movie_decode, 0, 0) */
-};
-
 /* name: inferred from the sample's DECENV "dec" */
-extern MovieDecode g_movie_decode;
-short movie_show_frame(MovieDecode *dec);
+extern movieDecode_t g_movieDecode;
+short Movie_ShowFrame( movieDecode_t *dec );
 
-/* name: inferred from the stream records movie_play plays by index */
-static MovieStreamRecord g_movie_records[] = {
-    { { { 0, 0, 480, 240 }, { 480, 0, 480, 240 } }, 16, FILE_PROBE_STR, 0, 0, 1071, -1, 0, 8, 0, -1, { 0, 0 }, movie_show_frame },
-    { { { 0, 0, 480, 240 }, { 480, 0, 480, 240 } }, 40, FILE_INTRO_STR, 0, 0, 13500, -1, 0, 7, 0, -1, { 0, 0 }, movie_show_frame },
-    { { { 0, 0, 480, 240 }, { 480, 0, 480, 240 } }, 40, FILE_DEATH1_STR, 0, 0, 710, -1, 0, 7, 0, -1, { 0, 0 }, movie_show_frame },
-    { { { 0, 0, 480, 240 }, { 480, 0, 480, 240 } }, 40, FILE_DEATH2_STR, 0, 0, 1010, -1, 0, 7, 0, -1, { 0, 0 }, movie_show_frame },
-    { { { 0, 0, 480, 240 }, { 480, 0, 480, 240 } }, 40, FILE_DEATH3_STR, 0, 0, 670, -1, 0, 7, 0, -1, { 0, 0 }, movie_show_frame },
-    { { { 0, 0, 480, 240 }, { 480, 0, 480, 240 } }, 40, FILE_DEATH4_STR, 0, 0, 430, -1, 0, 7, 0, -1, { 0, 0 }, movie_show_frame },
-    { { { 0, 0, 480, 240 }, { 480, 0, 480, 240 } }, 40, FILE_DEATH5_STR, 0, 0, 770, -1, 0, 7, 0, -1, { 0, 0 }, movie_show_frame },
-    { { { 0, 0, 480, 240 }, { 480, 0, 480, 240 } }, 40, FILE_DEATH6_STR, 0, 0, 720, -1, 0, 7, 0, -1, { 0, 0 }, movie_show_frame },
-    { { { 0, 0, 480, 240 }, { 480, 0, 480, 240 } }, 16, FILE_ACCLAIM_STR, 0, 0, 1910, -1, 0, 7, 0, -1, { 0, 0 }, movie_show_frame },
-    { { { 0, 0, 480, 240 }, { 480, 0, 480, 240 } }, 16, FILE_LEGAL_STR, 0, 0, 1900, -1, 0, 7, 0, -1, { 0, 0 }, movie_show_frame },
-    { { { 0, 0, 480, 240 }, { 0, 240, 480, 240 } }, 40, FILE_S1_2_STR, 0, 0, 6500, -1, 0, 7, 0, -1, { 0, 0 }, movie_show_frame },
-    { { { 0, 0, 480, 240 }, { 0, 240, 480, 240 } }, 40, FILE_S2_3_STR, 0, 0, 8700, -1, 0, 7, 0, -1, { 0, 0 }, movie_show_frame },
-    { { { 0, 0, 480, 240 }, { 0, 240, 480, 240 } }, 40, FILE_GAMEOVER_STR, 0, 0, 9319, -1, 0, 7, 0, -1, { 0, 0 }, movie_show_frame },
-    { { { 0, 0, 480, 240 }, { 480, 0, 480, 240 } }, 0, FILE_FOX_STR, 0, 0, 1410, -1, 0, 7, 0, -1, { 0, 0 }, movie_show_frame },
-    { { { 0, 0, 480, 240 }, { 480, 0, 480, 240 } }, 0, FILE_FOX_STR, 0, 0, 1410, -1, 0, 7, 0, -1, { 0, 0 }, movie_show_frame }
+/* name: inferred from the stream records Movie_Play plays by index */
+static movieStreamRecord_t g_movieRecords[] = {
+    { { { 0, 0, 480, 240 }, { 480, 0, 480, 240 } }, 16, FILE_PROBE_STR, 0, 0, 1071, -1, 0, 8, 0, -1, { 0, 0 }, Movie_ShowFrame },
+    { { { 0, 0, 480, 240 }, { 480, 0, 480, 240 } }, 40, FILE_INTRO_STR, 0, 0, 13500, -1, 0, 7, 0, -1, { 0, 0 }, Movie_ShowFrame },
+    { { { 0, 0, 480, 240 }, { 480, 0, 480, 240 } }, 40, FILE_DEATH1_STR, 0, 0, 710, -1, 0, 7, 0, -1, { 0, 0 }, Movie_ShowFrame },
+    { { { 0, 0, 480, 240 }, { 480, 0, 480, 240 } }, 40, FILE_DEATH2_STR, 0, 0, 1010, -1, 0, 7, 0, -1, { 0, 0 }, Movie_ShowFrame },
+    { { { 0, 0, 480, 240 }, { 480, 0, 480, 240 } }, 40, FILE_DEATH3_STR, 0, 0, 670, -1, 0, 7, 0, -1, { 0, 0 }, Movie_ShowFrame },
+    { { { 0, 0, 480, 240 }, { 480, 0, 480, 240 } }, 40, FILE_DEATH4_STR, 0, 0, 430, -1, 0, 7, 0, -1, { 0, 0 }, Movie_ShowFrame },
+    { { { 0, 0, 480, 240 }, { 480, 0, 480, 240 } }, 40, FILE_DEATH5_STR, 0, 0, 770, -1, 0, 7, 0, -1, { 0, 0 }, Movie_ShowFrame },
+    { { { 0, 0, 480, 240 }, { 480, 0, 480, 240 } }, 40, FILE_DEATH6_STR, 0, 0, 720, -1, 0, 7, 0, -1, { 0, 0 }, Movie_ShowFrame },
+    { { { 0, 0, 480, 240 }, { 480, 0, 480, 240 } }, 16, FILE_ACCLAIM_STR, 0, 0, 1910, -1, 0, 7, 0, -1, { 0, 0 }, Movie_ShowFrame },
+    { { { 0, 0, 480, 240 }, { 480, 0, 480, 240 } }, 16, FILE_LEGAL_STR, 0, 0, 1900, -1, 0, 7, 0, -1, { 0, 0 }, Movie_ShowFrame },
+    { { { 0, 0, 480, 240 }, { 0, 240, 480, 240 } }, 40, FILE_S1_2_STR, 0, 0, 6500, -1, 0, 7, 0, -1, { 0, 0 }, Movie_ShowFrame },
+    { { { 0, 0, 480, 240 }, { 0, 240, 480, 240 } }, 40, FILE_S2_3_STR, 0, 0, 8700, -1, 0, 7, 0, -1, { 0, 0 }, Movie_ShowFrame },
+    { { { 0, 0, 480, 240 }, { 0, 240, 480, 240 } }, 40, FILE_GAMEOVER_STR, 0, 0, 9319, -1, 0, 7, 0, -1, { 0, 0 }, Movie_ShowFrame },
+    { { { 0, 0, 480, 240 }, { 480, 0, 480, 240 } }, 0, FILE_FOX_STR, 0, 0, 1410, -1, 0, 7, 0, -1, { 0, 0 }, Movie_ShowFrame },
+    { { { 0, 0, 480, 240 }, { 480, 0, 480, 240 } }, 0, FILE_FOX_STR, 0, 0, 1410, -1, 0, 7, 0, -1, { 0, 0 }, Movie_ShowFrame }
 };
-/* names: inferred from SetDefDispEnv/SetDefDrawEnv in movie_show_frame */
-extern DISPENV g_movie_disp;
-extern DRAWENV g_movie_draw;
+/* names: inferred from SetDefDispEnv/SetDefDrawEnv in Movie_ShowFrame */
+extern DISPENV g_movieDisp;
+extern DRAWENV g_movieDraw;
 /* Set once the stream reaches its end frame; -1 from the stream's end callback.
  * name: inferred from that */
-extern int g_movie_finished;
+extern int g_movieFinished;
 /* name: inferred from strCallback, which narrows the first slice of a frame by it */
-extern int g_first_slice;
-extern int g_9a120; /* StCdIntrFlag */
+extern int g_firstSlice;
+/* LIBCD streaming global (asm/lib/libcd_c_011.s, Runtime 3.3 COMMON); LIBCD.H does not declare it. */
+extern int StCdIntrFlag;
 /* name: inferred from its division by the 2352-byte raw sector size */
-extern int g_stream_bytes;
-/* name: inferred from strNext, which sets g_movie_finished at this frame */
-extern int g_movie_end_frame;
+extern int g_streamBytes;
+/* name: inferred from strNext, which sets g_movieFinished at this frame */
+extern int g_movieEndFrame;
 /* names: inferred from strNext, which copies the sector header's width and height */
-int g_frame_width = 0;
-int g_frame_height = 0;
-/* name: inferred from strNext computing g_movie_end_frame once while it is 0 */
-int g_end_frame_ready = 0;
-/* name: inferred from movie_show_frame, which allows skipping 300 ticks after it */
-int g_movie_start_time = 0;
+int g_frameWidth = 0;
+int g_frameHeight = 0;
+/* name: inferred from strNext computing g_movieEndFrame once while it is 0 */
+int g_endFrameReady = 0;
+/* name: inferred from Movie_ShowFrame, which allows skipping 300 ticks after it */
+int g_movieStartTime = 0;
 /* name: inferred from strNext, which divides it by the sectors per frame */
-int g_movie_sectors = 0;
+int g_movieSectors = 0;
 /* name: inferred from the sector header's frameCount, stored per frame */
-int g_movie_frame = 0;
+int g_movieFrame = 0;
+/* identity-TODO: Movie_Play stores 0; no jal, pointer word, lui/lo pair or $gp operand in retail reaches it other than that store. */
 short g_8d058 = -1;
-/* name: inferred from its increment per VSync in movie_show_frame */
-int g_movie_vsyncs = 0;
+/* name: inferred from its increment per VSync in Movie_ShowFrame */
+int g_movieVsyncs = 0;
 /* Runtime 3.3 LIBPRESS.H omits this LIBPRESS export. */
-extern void DecDCToutCallback(void (*func)());
-/* name: inferred from movie_play, which plays a record through it */
-extern short movie_play_record(MovieStreamRecord *record);
+extern void DecDCToutCallback( void ( *func )() );
+/* name: inferred from Movie_Play, which plays a record through it */
+extern short Movie_PlayRecord( movieStreamRecord_t *record );
 
 /* Seek target of the movie stream. name: inferred from the CdlSeekL in strKickCD */
-extern CdlLOC g_movie_loc;
+extern CdlLOC g_movieLoc;
 
 /* name: inferred from CdSearchFile, which fills it with the record's stream file */
-extern CdlFILE g_movie_file;
-extern void movie_display_setup(const MovieStreamRecord *record);
+extern CdlFILE g_movieFile;
+extern void Movie_SetupDisplay( const movieStreamRecord_t *record );
 
+/*
+==================
+strKickCD
+==================
+*/
 /* name: from the lineage sample (strKickCD), which seeks and starts streaming */
-void strKickCD(void)
+void strKickCD( void )
 {
-    while (CdControl(CdlSeekL, (u_char *)&g_movie_loc, 0) == 0)
+    while ( CdControl( CdlSeekL, (u_char *)&g_movieLoc, 0 ) == 0 )
         ;
-    while (CdRead2(MOVIE_MODE_STREAM | CdlModeSpeed | CdlModeRT) == 0)
+    while ( CdRead2( MOVIE_MODE_STREAM | CdlModeSpeed | CdlModeRT ) == 0 )
         ;
 }
 
+/*
+==================
+strInit
+==================
+*/
 /* name: from the lineage sample (strInit) */
-void strInit(const MovieStreamRecord *record, void (*decode_callback)(),
-             int (*stream_callback)())
+void strInit( const movieStreamRecord_t *record, void ( *decodeCallback )(), int ( *streamCallback )() )
 {
-    DecDCTReset(0);
-    g_movie_finished = 0;
-    DecDCToutCallback(decode_callback);
-    StSetRing(g_movie_decode.ringbuf, RING_SIZE);
-    StSetStream(record->mode, record->start_frame, record->end_frame,
-                0, stream_callback);
+    DecDCTReset( 0 );
+    g_movieFinished = 0;
+    DecDCToutCallback( decodeCallback );
+    StSetRing( g_movieDecode.ringbuf, RING_SIZE );
+    StSetStream( record->mode, record->startFrame, record->endFrame, 0, streamCallback );
     strKickCD();
 }
 
+/*
+==================
+strCallback
+==================
+*/
 /* name: from the lineage sample (strCallback) */
-void strCallback(void)
+void strCallback( void )
 {
     int mod;
 
-    if (g_movie_decode.rgb24 && g_9a120) {
+    if ( g_movieDecode.rgb24 && StCdIntrFlag ) {
         StCdInterrupt();
-        g_9a120 = 0;
+        StCdIntrFlag = 0;
     }
-    g_movie_decode.slice.y += g_movie_decode.y_offset;
-    LoadImage(&g_movie_decode.slice, (u_long *)g_movie_decode.imgbuf);
-    g_movie_decode.slice.y -= g_movie_decode.y_offset;
-    if (g_movie_decode.rgb24)
-        mod = g_movie_decode.rect[g_movie_decode.rectid].w % MACROBLOCK_WIDTH_RGB24;
+    g_movieDecode.slice.y += g_movieDecode.yOffset;
+    LoadImage( &g_movieDecode.slice, (u_long *)g_movieDecode.imgbuf );
+    g_movieDecode.slice.y -= g_movieDecode.yOffset;
+    if ( g_movieDecode.rgb24 )
+        mod = g_movieDecode.rect[g_movieDecode.rectid].w % MACROBLOCK_WIDTH_RGB24;
     else
-        mod = g_movie_decode.rect[g_movie_decode.rectid].w % MACROBLOCK_SIZE;
-    if (g_first_slice && mod) {
-        if (g_movie_decode.rgb24)
-            g_movie_decode.slice.x += mod * RGB24_PAIR_HALFWORDS / 2;
+        mod = g_movieDecode.rect[g_movieDecode.rectid].w % MACROBLOCK_SIZE;
+    if ( g_firstSlice && mod ) {
+        if ( g_movieDecode.rgb24 )
+            g_movieDecode.slice.x += mod * RGB24_PAIR_HALFWORDS / 2;
         else
-            g_movie_decode.slice.x += mod;
-        g_first_slice = 0;
+            g_movieDecode.slice.x += mod;
+        g_firstSlice = 0;
     } else {
-        if (g_movie_decode.rgb24)
-            g_movie_decode.slice.x += MACROBLOCK_WIDTH_RGB24;
+        if ( g_movieDecode.rgb24 )
+            g_movieDecode.slice.x += MACROBLOCK_WIDTH_RGB24;
         else
-            g_movie_decode.slice.x += MACROBLOCK_SIZE;
+            g_movieDecode.slice.x += MACROBLOCK_SIZE;
     }
-    if (g_movie_decode.slice.x < g_movie_decode.rect[g_movie_decode.rectid].x + g_movie_decode.rect[g_movie_decode.rectid].w) {
-        if (g_movie_decode.rgb24)
-            DecDCTout((u_long *)g_movie_decode.imgbuf, bound(g_movie_decode.slice.w, MACROBLOCK_WIDTH_RGB24) * bound(g_movie_decode.slice.h, MACROBLOCK_SIZE) / 2);
+    if ( g_movieDecode.slice.x < g_movieDecode.rect[g_movieDecode.rectid].x + g_movieDecode.rect[g_movieDecode.rectid].w ) {
+        if ( g_movieDecode.rgb24 )
+            DecDCTout( (u_long *)g_movieDecode.imgbuf, bound( g_movieDecode.slice.w, MACROBLOCK_WIDTH_RGB24 )
+                                                           * bound( g_movieDecode.slice.h, MACROBLOCK_SIZE ) / 2 );
         else
-            DecDCTout((u_long *)g_movie_decode.imgbuf, bound(g_movie_decode.slice.w, MACROBLOCK_SIZE) * bound(g_movie_decode.slice.h, MACROBLOCK_SIZE) / 2);
+            DecDCTout( (u_long *)g_movieDecode.imgbuf, bound( g_movieDecode.slice.w, MACROBLOCK_SIZE )
+                                                           * bound( g_movieDecode.slice.h, MACROBLOCK_SIZE ) / 2 );
     } else {
-        g_movie_decode.isdone = 1;
-        g_first_slice = 1;
-        g_movie_decode.rectid = g_movie_decode.rectid ? 0 : 1;
-        g_movie_decode.slice.x = g_movie_decode.rect[g_movie_decode.rectid].x;
-        g_movie_decode.slice.y = g_movie_decode.rect[g_movie_decode.rectid].y;
+        g_movieDecode.isdone = 1;
+        g_firstSlice = 1;
+        g_movieDecode.rectid = g_movieDecode.rectid ? 0 : 1;
+        g_movieDecode.slice.x = g_movieDecode.rect[g_movieDecode.rectid].x;
+        g_movieDecode.slice.y = g_movieDecode.rect[g_movieDecode.rectid].y;
     }
 }
 
+/*
+==================
+strNext
+==================
+*/
 /* name: from the lineage sample (strNext) */
-u_long *strNext(void)
+u_long *strNext( void )
 {
-    RECT rect;
-    u_long *addr;
+    RECT      rect;
+    u_long   *addr;
     StHEADER *sector;
-    int cnt = WAIT_TIME;
+    int       cnt = WAIT_TIME;
 
-    while (StGetNext(&addr, (u_long **)&sector)) {
-        if (--cnt == 0)
+    while ( StGetNext( &addr, (u_long **)&sector ) ) {
+        if ( --cnt == 0 )
             return 0;
     }
-    if (addr[0] != sector->dummy1 || addr[1] != sector->dummy2) {
-        StFreeRing(addr);
+    if ( addr[0] != sector->dummy1 || addr[1] != sector->dummy2 ) {
+        StFreeRing( addr );
         return 0;
     }
-    if (g_end_frame_ready == 0) {
-        g_movie_end_frame = g_stream_bytes / CD_RAW_SECTOR_SIZE;
-        g_movie_end_frame = g_movie_sectors;
-        g_movie_end_frame = g_movie_end_frame / sector->nSectors;
-        g_movie_end_frame = g_movie_decode.end_scale * g_movie_end_frame / MOVIE_END_SCALE_ONE;
-        g_end_frame_ready = 1;
-        g_movie_end_frame = g_movie_decode.end_offset + g_movie_end_frame;
+    if ( g_endFrameReady == 0 ) {
+        g_movieEndFrame = g_streamBytes / CD_RAW_SECTOR_SIZE;
+        g_movieEndFrame = g_movieSectors;
+        g_movieEndFrame = g_movieEndFrame / sector->nSectors;
+        g_movieEndFrame = g_movieDecode.endScale * g_movieEndFrame / MOVIE_END_SCALE_ONE;
+        g_endFrameReady = 1;
+        g_movieEndFrame = g_movieDecode.endOffset + g_movieEndFrame;
     }
-    g_movie_frame = sector->frameCount;
-    if (sector->frameCount >= g_movie_end_frame)
-        g_movie_finished = 1;
-    if (g_frame_width != sector->width || g_frame_height != sector->height) {
-        g_frame_width = sector->width;
-        g_frame_height = sector->height;
+    g_movieFrame = sector->frameCount;
+    if ( sector->frameCount >= g_movieEndFrame )
+        g_movieFinished = 1;
+    if ( g_frameWidth != sector->width || g_frameHeight != sector->height ) {
+        g_frameWidth = sector->width;
+        g_frameHeight = sector->height;
         rect.x = 0;
         rect.y = 0;
-        rect.w = g_frame_width;
-        rect.h = g_frame_height;
-        ClearImage(&rect, 0, 0, 0);
+        rect.w = g_frameWidth;
+        rect.h = g_frameHeight;
+        ClearImage( &rect, 0, 0, 0 );
     }
-    if (g_movie_decode.rgb24)
-        g_movie_decode.rect[0].w = g_movie_decode.rect[1].w = g_frame_width * RGB24_PAIR_HALFWORDS / 2;
+    if ( g_movieDecode.rgb24 )
+        g_movieDecode.rect[0].w = g_movieDecode.rect[1].w = g_frameWidth * RGB24_PAIR_HALFWORDS / 2;
     else
-        g_movie_decode.rect[0].w = g_movie_decode.rect[1].w = g_frame_width;
-    g_movie_decode.rect[0].h = g_movie_decode.rect[1].h = g_frame_height;
-    g_movie_decode.slice.h = g_frame_height;
+        g_movieDecode.rect[0].w = g_movieDecode.rect[1].w = g_frameWidth;
+    g_movieDecode.rect[0].h = g_movieDecode.rect[1].h = g_frameHeight;
+    g_movieDecode.slice.h = g_frameHeight;
     return addr;
 }
 
+/*
+==================
+strNextVlc
+==================
+*/
 /* name: from the lineage sample (strNextVlc) */
-int strNextVlc(void)
+int strNextVlc( void )
 {
     u_long *next;
-    int count = WAIT_TIME;
+    int     count = WAIT_TIME;
 
-    while ((next = strNext()) == 0) {
-        if (--count == 0)
+    while ( ( next = strNext() ) == 0 ) {
+        if ( --count == 0 )
             return -1;
     }
-    g_movie_decode.vlcid ^= 1;
-    DecDCTvlc(next, g_movie_decode.vlcbuf[g_movie_decode.vlcid]);
-    StFreeRing(next);
+    g_movieDecode.vlcid ^= 1;
+    DecDCTvlc( next, g_movieDecode.vlcbuf[g_movieDecode.vlcid] );
+    StFreeRing( next );
     return 0;
 }
 
+/*
+==================
+strSync
+==================
+*/
 /* name: from the lineage sample (strSync) */
-void strSync(void)
+void strSync( void )
 {
     volatile u_long cnt = WAIT_TIME;
 
-    while (g_movie_decode.isdone == 0) {
-        if (--cnt == 0) {
-            g_movie_decode.isdone = 1;
-            g_movie_decode.rectid = g_movie_decode.rectid ? 0 : 1;
-            g_movie_decode.slice.x = g_movie_decode.rect[g_movie_decode.rectid].x;
-            g_movie_decode.slice.y = g_movie_decode.rect[g_movie_decode.rectid].y;
+    while ( g_movieDecode.isdone == 0 ) {
+        if ( --cnt == 0 ) {
+            g_movieDecode.isdone = 1;
+            g_movieDecode.rectid = g_movieDecode.rectid ? 0 : 1;
+            g_movieDecode.slice.x = g_movieDecode.rect[g_movieDecode.rectid].x;
+            g_movieDecode.slice.y = g_movieDecode.rect[g_movieDecode.rectid].y;
         }
     }
-    g_movie_decode.isdone = 0;
+    g_movieDecode.isdone = 0;
 }
 
-/* name: inferred from it ending playback through g_movie_finished */
-int movie_end_callback(void)
+/*
+==================
+Movie_EndCallback
+==================
+*/
+/* name: inferred from it ending playback through g_movieFinished */
+int Movie_EndCallback( void )
 {
-    g_movie_finished = -1;
+    g_movieFinished = -1;
     return 0;
 }
 
-/* Plays one stream record: finds the file, allocates the ring, image and VLC
- * buffers, then decodes frames until the stream ends or update says stop. */
-short movie_play_record(MovieStreamRecord *record)
+/*
+==================
+Movie_PlayRecord
+
+Plays one stream record: finds the file, allocates the ring, image and VLC
+buffers, then decodes frames until the stream ends or update says stop.
+==================
+*/
+short Movie_PlayRecord( movieStreamRecord_t *record )
 {
     u_char param[CD_PARAM_SIZE];
-    short i;
-    int mode;
-    short result;
+    short  i;
+    int    mode;
+    short  result;
 
-    g_first_slice = 1;
-    g_end_frame_ready = 0;
-    if (CdSearchFile(&g_movie_file, (char *)record->name) == 0)
+    g_firstSlice = 1;
+    g_endFrameReady = 0;
+    if ( CdSearchFile( &g_movieFile, (char *)record->name ) == 0 )
         return MOVIE_NOT_FOUND;
-    g_movie_loc.minute = g_movie_file.pos.minute;
-    g_movie_loc.second = g_movie_file.pos.second;
-    g_movie_loc.sector = g_movie_file.pos.sector;
-    g_stream_bytes = g_movie_file.size;
-    g_movie_decode.ringbuf = heap_alloc(RING_SIZE * SECTOR_SIZE * sizeof(u_long));
-    if (g_movie_decode.ringbuf == 0)
+    g_movieLoc.minute = g_movieFile.pos.minute;
+    g_movieLoc.second = g_movieFile.pos.second;
+    g_movieLoc.sector = g_movieFile.pos.sector;
+    g_streamBytes = g_movieFile.size;
+    g_movieDecode.ringbuf = Heap_Alloc( RING_SIZE * SECTOR_SIZE * sizeof( u_long ) );
+    if ( g_movieDecode.ringbuf == 0 )
         return MOVIE_NO_MEMORY;
-    if (record->mode)
-        g_movie_decode.imgbuf = heap_alloc(record->rect[0].h * MOVIE_IMAGE_ROW_BYTES_RGB24);
+    if ( record->mode )
+        g_movieDecode.imgbuf = Heap_Alloc( record->rect[0].h * MOVIE_IMAGE_ROW_BYTES_RGB24 );
     else
-        g_movie_decode.imgbuf = heap_alloc(record->rect[0].h * MOVIE_IMAGE_ROW_BYTES);
-    if (g_movie_decode.imgbuf == 0)
+        g_movieDecode.imgbuf = Heap_Alloc( record->rect[0].h * MOVIE_IMAGE_ROW_BYTES );
+    if ( g_movieDecode.imgbuf == 0 )
         return MOVIE_NO_MEMORY;
-    for (i = 0; i < 2; i++) {
-        g_movie_decode.vlcbuf[i] = heap_alloc(VLC_BUFF_SIZE * sizeof(u_long));
-        if (g_movie_decode.vlcbuf[i] == 0)
+    for ( i = 0; i < 2; i++ ) {
+        g_movieDecode.vlcbuf[i] = Heap_Alloc( VLC_BUFF_SIZE * sizeof( u_long ) );
+        if ( g_movieDecode.vlcbuf[i] == 0 )
             return MOVIE_NO_MEMORY;
     }
-    g_movie_frame = 0;
-    movie_display_setup(record);
+    g_movieFrame = 0;
+    Movie_SetupDisplay( record );
     {
         int m = record->mode != 0;
 
-        if (record->decode_flag)
+        if ( record->decodeFlag )
             m |= DCT_MODE_DECODE_FLAG;
         mode = m;
     }
-    strInit(record, strCallback, movie_end_callback);
+    strInit( record, strCallback, Movie_EndCallback );
     strNextVlc();
     result = 0;
-    while (g_movie_finished == 0 && result == 0) {
-        DecDCTin(g_movie_decode.vlcbuf[g_movie_decode.vlcid], mode);
-        if (g_movie_decode.rgb24)
-            DecDCTout((u_long *)g_movie_decode.imgbuf, bound(g_movie_decode.slice.w, MACROBLOCK_WIDTH_RGB24) * bound(g_movie_decode.slice.h, MACROBLOCK_SIZE) / 2);
+    while ( g_movieFinished == 0 && result == 0 ) {
+        DecDCTin( g_movieDecode.vlcbuf[g_movieDecode.vlcid], mode );
+        if ( g_movieDecode.rgb24 )
+            DecDCTout( (u_long *)g_movieDecode.imgbuf, bound( g_movieDecode.slice.w, MACROBLOCK_WIDTH_RGB24 )
+                                                           * bound( g_movieDecode.slice.h, MACROBLOCK_SIZE ) / 2 );
         else
-            DecDCTout((u_long *)g_movie_decode.imgbuf, bound(g_movie_decode.slice.w, MACROBLOCK_SIZE) * bound(g_movie_decode.slice.h, MACROBLOCK_SIZE) / 2);
+            DecDCTout( (u_long *)g_movieDecode.imgbuf, bound( g_movieDecode.slice.w, MACROBLOCK_SIZE )
+                                                           * bound( g_movieDecode.slice.h, MACROBLOCK_SIZE ) / 2 );
         strNextVlc();
         strSync();
-        result = record->update(&g_movie_decode, 0, 0);
-        g_movie_decode.param_34 = 0;
+        result = record->update( &g_movieDecode, 0, 0 );
+        g_movieDecode.param_34 = 0;
     }
     param[0] = CdlModeSpeed;
-    CdControlB(CdlSetmode, param, 0);
-    DecDCToutCallback(0);
-    CdDataCallback(0);
-    CdReadyCallback(0);
-    CdControlB(CdlPause, 0, 0);
+    CdControlB( CdlSetmode, param, 0 );
+    DecDCToutCallback( 0 );
+    CdDataCallback( 0 );
+    CdReadyCallback( 0 );
+    CdControlB( CdlPause, 0, 0 );
     return result;
 }
 
-/* Waits a VSync, lets Start or X skip, and shows the finished frame buffer.
- * name: inferred from that */
-short movie_show_frame(MovieDecode *dec)
+/*
+==================
+Movie_ShowFrame
+
+Waits a VSync, lets Start or X skip, and shows the finished frame buffer.
+==================
+*/
+/* name: inferred from that */
+short Movie_ShowFrame( movieDecode_t *dec )
 {
     static unsigned short pad;
-    int id;
+    int                   id;
 
-    VSync(0);
-    g_movie_vsyncs++;
-    if (g_frame_count - g_movie_start_time > MOVIE_SKIP_DELAY || dec->skippable == 0) {
-        pad = PadRead(0);
-        if (pad & PADstart || pad & PADRdown) {
-            if (dec->skippable)
+    VSync( 0 );
+    g_movieVsyncs++;
+    if ( g_frameCount - g_movieStartTime > MOVIE_SKIP_DELAY || dec->skippable == 0 ) {
+        pad = PadRead( 0 );
+        if ( pad & PADstart || pad & PADRdown ) {
+            if ( dec->skippable )
                 return MOVIE_SKIPPED;
             return MOVIE_ABORTED;
         }
     }
     id = dec->rectid ? 0 : 1;
-    SetDefDispEnv(&g_movie_disp, dec->rect[id].x, dec->rect[id].y, dec->rect[id].w, dec->rect[id].h);
-    SetDefDrawEnv(&g_movie_draw, dec->rect[id].x, dec->rect[id].y, dec->rect[id].w, dec->rect[id].h);
-    g_movie_draw.ofs[0] = 0;
-    g_movie_draw.ofs[1] = 0;
-    g_movie_draw.clip.x = 0;
-    g_movie_draw.clip.y = 0;
-    g_movie_draw.clip.h = VRAM_HEIGHT;
-    g_movie_draw.clip.w = VRAM_WIDTH;
-    if (dec->rgb24) {
-        g_movie_disp.isrgb24 = 1;
-        g_movie_disp.disp.w = g_movie_disp.disp.w * 2 / RGB24_PAIR_HALFWORDS;
+    SetDefDispEnv( &g_movieDisp, dec->rect[id].x, dec->rect[id].y, dec->rect[id].w, dec->rect[id].h );
+    SetDefDrawEnv( &g_movieDraw, dec->rect[id].x, dec->rect[id].y, dec->rect[id].w, dec->rect[id].h );
+    g_movieDraw.ofs[0] = 0;
+    g_movieDraw.ofs[1] = 0;
+    g_movieDraw.clip.x = 0;
+    g_movieDraw.clip.y = 0;
+    g_movieDraw.clip.h = VRAM_HEIGHT;
+    g_movieDraw.clip.w = VRAM_WIDTH;
+    if ( dec->rgb24 ) {
+        g_movieDisp.isrgb24 = 1;
+        g_movieDisp.disp.w = g_movieDisp.disp.w * 2 / RGB24_PAIR_HALFWORDS;
     }
-    PutDispEnv(&g_movie_disp);
-    PutDrawEnv(&g_movie_draw);
-    SetDispMask(1);
+    PutDispEnv( &g_movieDisp );
+    PutDrawEnv( &g_movieDraw );
+    SetDispMask( 1 );
     return 0;
 }
 
+/*
+==================
+Movie_Play
+==================
+*/
 /* name: inferred from its body, which plays a movie by index between heap marks */
-short movie_play(short index)
+short Movie_Play( short index )
 {
-    MovieStreamRecord *record = &g_movie_records[index];
-    short slot;
-    short result;
+    movieStreamRecord_t *record = &g_movieRecords[index];
+    short                slot;
+    short                result;
 
-    switch (index) {
+    switch ( index ) {
     case MOVIE_PROBE:
     case MOVIE_ACCLAIM:
     case MOVIE_LEGAL:
     case MOVIE_FOX_TITLE:
-        if (record->skippable) {
-            g_movie_start_time = g_frame_count;
+        if ( record->skippable ) {
+            g_movieStartTime = g_frameCount;
             break;
         }
     default:
-        g_movie_start_time = g_frame_count - MOVIE_SKIP_DELAY;
+        g_movieStartTime = g_frameCount - MOVIE_SKIP_DELAY;
         break;
     }
-    slot = heap_mark();
-    record->name = g_file_table[record->file].name;
+    slot = Heap_Mark();
+    record->name = g_fileTable[record->file].name;
     g_8d058 = 0;
-    g_movie_sectors = record->end_frame;
-    result = movie_play_record(record);
-    heap_release(slot);
+    g_movieSectors = record->endFrame;
+    result = Movie_PlayRecord( record );
+    Heap_Release( slot );
     record->skippable = 0;
     return result;
 }

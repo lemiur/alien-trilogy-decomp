@@ -4,155 +4,155 @@
     ".sdata": "0x8008cd74"
   },
   "functions": {
-    "play_menu_sound": {
+    "Menu_PlayMenuSound": {
       "address": "0x80015f2c",
       "size": 52
     },
-    "format_label": {
+    "Menu_FormatLabel": {
       "address": "0x80015f60",
       "size": 36
     },
-    "poll_card_status": {
+    "Menu_PollCardStatus": {
       "address": "0x80015f84",
       "size": 448
     },
-    "selected_card_port": {
+    "Menu_SelectedCardPort": {
       "address": "0x80016144",
       "size": 92
     },
-    "format_card_slot_heading": {
+    "Menu_FormatCardSlotHeading": {
       "address": "0x800161a0",
       "size": 164
     },
-    "decode_cheat_code": {
+    "Menu_DecodeCheatCode": {
       "address": "0x80016244",
       "size": 100
     },
-    "check_password": {
+    "Menu_CheckPassword": {
       "address": "0x800162a8",
       "size": 408
     },
-    "format_decimal": {
+    "Menu_FormatDecimal": {
       "address": "0x80016440",
       "size": 500
     },
-    "format_value_label": {
+    "Menu_FormatValueLabel": {
       "address": "0x80016634",
       "size": 584
     },
-    "draw_exit_label": {
+    "Menu_DrawExitLabel": {
       "address": "0x8001687c",
       "size": 84
     },
-    "format_card_file_name": {
+    "Menu_FormatCardFileName": {
       "address": "0x800168d0",
       "size": 64
     },
-    "format_volume_bar": {
+    "Menu_FormatVolumeBar": {
       "address": "0x80016910",
       "size": 132
     },
-    "format_choice": {
+    "Menu_FormatChoice": {
       "address": "0x80016994",
       "size": 116
     },
-    "draw_controller_picture": {
+    "Menu_DrawControllerPicture": {
       "address": "0x80016a08",
       "size": 280
     },
-    "format_card_choice": {
+    "Menu_FormatCardChoice": {
       "address": "0x80016b20",
       "size": 76
     },
-    "draw_password_entry": {
+    "Menu_DrawPasswordEntry": {
       "address": "0x80016b6c",
       "size": 56
     },
-    "draw_percentage_bar": {
+    "Menu_DrawPercentageBar": {
       "address": "0x80016ba4",
       "size": 1212
     },
-    "update_mission_assessment": {
+    "Menu_UpdateMissionAssessment": {
       "address": "0x80017060",
       "size": 748
     },
-    "menu_back_to_next_state": {
+    "Menu_BackToNextState": {
       "address": "0x8001734c",
       "size": 24
     },
-    "menu_back": {
+    "Menu_Back": {
       "address": "0x80017364",
       "size": 24
     },
-    "open_options_menu": {
+    "Menu_OpenOptionsMenu": {
       "address": "0x8001737c",
       "size": 56
     },
-    "open_main_menu": {
+    "Menu_OpenMainMenu": {
       "address": "0x800173b4",
       "size": 24
     },
-    "start_card_save": {
+    "Menu_StartCardSave": {
       "address": "0x800173cc",
       "size": 16
     },
-    "start_card_load": {
+    "Menu_StartCardLoad": {
       "address": "0x800173dc",
       "size": 16
     },
-    "start_card_delete": {
+    "Menu_StartCardDelete": {
       "address": "0x800173ec",
       "size": 16
     },
-    "open_card_format_menu": {
+    "Menu_OpenCardFormatMenu": {
       "address": "0x800173fc",
       "size": 20
     },
-    "select_card_file": {
+    "Menu_SelectCardFile": {
       "address": "0x80017410",
       "size": 36
     },
-    "select_card_save_slot": {
+    "Menu_SelectCardSaveSlot": {
       "address": "0x80017434",
       "size": 104
     },
-    "open_cheats_menu": {
+    "Menu_OpenCheatsMenu": {
       "address": "0x8001749c",
       "size": 24
     },
-    "open_password_entry": {
+    "Menu_OpenPasswordEntry": {
       "address": "0x800174b4",
       "size": 16
     },
-    "open_card_menu": {
+    "Menu_OpenCardMenu": {
       "address": "0x800174c4",
       "size": 44
     },
-    "open_control_method_menu": {
+    "Menu_OpenControlMethodMenu": {
       "address": "0x800174f0",
       "size": 24
     },
-    "select_video_mode": {
+    "Menu_SelectVideoMode": {
       "address": "0x80017508",
       "size": 64
     },
-    "start_game": {
+    "Menu_StartGame": {
       "address": "0x80017548",
       "size": 120
     },
-    "start_new_game": {
+    "Menu_StartNewGame": {
       "address": "0x800175c0",
       "size": 44
     },
-    "continue_game": {
+    "Menu_ContinueGame": {
       "address": "0x800175ec",
       "size": 16
     },
-    "select_music_volume": {
+    "Menu_SelectMusicVolume": {
       "address": "0x800175fc",
       "size": 8
     },
-    "select_sound_volume": {
+    "Menu_SelectSoundVolume": {
       "address": "0x80017604",
       "size": 8
     },
@@ -160,323 +160,323 @@
       "address": "0x8001760c",
       "size": 24
     },
-    "change_music_volume": {
+    "Menu_ChangeMusicVolume": {
       "address": "0x80017624",
       "size": 48
     },
-    "set_music_volume": {
+    "Menu_SetMusicVolume": {
       "address": "0x80017654",
       "size": 56
     },
-    "update_card_choice": {
+    "Menu_UpdateCardChoice": {
       "address": "0x8001768c",
       "size": 76
     },
-    "change_sound_volume": {
+    "Menu_ChangeSoundVolume": {
       "address": "0x800176d8",
       "size": 48
     },
-    "set_sound_volume": {
+    "Menu_SetSoundVolume": {
       "address": "0x80017708",
       "size": 56
     },
-    "get_sound_volume": {
+    "Menu_GetSoundVolume": {
       "address": "0x80017740",
       "size": 16
     },
-    "get_music_volume": {
+    "Menu_GetMusicVolume": {
       "address": "0x80017750",
       "size": 16
     },
-    "get_difficulty": {
+    "Menu_GetDifficulty": {
       "address": "0x80017760",
       "size": 16
     },
-    "set_difficulty": {
+    "Menu_SetDifficulty": {
       "address": "0x80017770",
       "size": 16
     },
-    "get_control_method": {
+    "Menu_GetControlMethod": {
       "address": "0x80017780",
       "size": 16
     },
-    "options_set_control_method": {
+    "Menu_OptionsSetControlMethod": {
       "address": "0x80017790",
       "size": 44
     },
-    "set_sound_mode": {
+    "Menu_SetSoundMode": {
       "address": "0x800177bc",
       "size": 196
     },
-    "change_sound_mode": {
+    "Menu_ChangeSoundMode": {
       "address": "0x80017880",
       "size": 36
     },
-    "play_selected_movie": {
+    "Menu_PlaySelectedMovie": {
       "address": "0x800178a4",
       "size": 48
     },
-    "blank_screen": {
+    "Menu_BlankScreen": {
       "address": "0x800178d4",
       "size": 152
     },
-    "clear_display_area": {
+    "Menu_ClearDisplayArea": {
       "address": "0x8001796c",
       "size": 228
     },
-    "open_credits": {
+    "Menu_OpenCredits": {
       "address": "0x80017a50",
       "size": 40
     },
-    "format_selected_card": {
+    "Menu_FormatSelectedCard": {
       "address": "0x80017a78",
       "size": 96
     },
-    "delete_selected_card_file": {
+    "Menu_DeleteSelectedCardFile": {
       "address": "0x80017ad8",
       "size": 88
     },
-    "menu_message_task": {
+    "Menu_MessageTask": {
       "address": "0x80017b30",
       "size": 124
     },
-    "menu_message_close": {
+    "Menu_CloseMessage": {
       "address": "0x80017bac",
       "size": 32
     },
-    "show_message": {
+    "Menu_ShowMessage": {
       "address": "0x80017bcc",
       "size": 104
     },
-    "load_card_slot": {
+    "Menu_LoadCardSlot": {
       "address": "0x80017c34",
       "size": 188
     },
-    "format_card_slot_0": {
+    "Menu_FormatCardSlot0": {
       "address": "0x80017e0c",
       "size": 52
     },
-    "format_card_slot_1": {
+    "Menu_FormatCardSlot1": {
       "address": "0x80017e40",
       "size": 52
     },
-    "format_card_slot_2": {
+    "Menu_FormatCardSlot2": {
       "address": "0x80017e74",
       "size": 52
     },
-    "format_card_slot_3": {
+    "Menu_FormatCardSlot3": {
       "address": "0x80017ea8",
       "size": 52
     },
-    "format_selected_card_slot": {
+    "Menu_FormatSelectedCardSlot": {
       "address": "0x80017edc",
       "size": 52
     },
-    "load_card_slot_0": {
+    "Menu_LoadCardSlot0": {
       "address": "0x80017f10",
       "size": 32
     },
-    "load_card_slot_1": {
+    "Menu_LoadCardSlot1": {
       "address": "0x80017f30",
       "size": 32
     },
-    "load_card_slot_2": {
+    "Menu_LoadCardSlot2": {
       "address": "0x80017f50",
       "size": 32
     },
-    "load_card_slot_3": {
+    "Menu_LoadCardSlot3": {
       "address": "0x80017f70",
       "size": 32
     },
-    "scan_card_slots": {
+    "Menu_ScanCardSlots": {
       "address": "0x80017f90",
       "size": 268
     },
-    "save_card_slot": {
+    "Menu_SaveCardSlot": {
       "address": "0x8001809c",
       "size": 216
     },
-    "confirm_overwrite": {
+    "Menu_ConfirmOverwrite": {
       "address": "0x80018174",
       "size": 48
     },
-    "run_menu": {
+    "Menu_RunMenu": {
       "address": "0x800181a4",
       "size": 1332
     },
-    "clear_password": {
+    "Menu_ClearPassword": {
       "address": "0x800186d8",
       "size": 76
     },
-    "draw_password_text": {
+    "Menu_DrawPasswordText": {
       "address": "0x80018724",
       "size": 252
     },
-    "draw_password_keyboard": {
+    "Menu_DrawPasswordKeyboard": {
       "address": "0x80018820",
       "size": 716
     },
-    "password_keyboard_column": {
+    "Menu_PasswordKeyboardColumn": {
       "address": "0x80018aec",
       "size": 64
     },
-    "password_keyboard_input": {
+    "Menu_PasswordKeyboardInput": {
       "address": "0x80018b2c",
       "size": 860
     },
-    "read_card_directory": {
+    "Menu_ReadCardDirectory": {
       "address": "0x80018e88",
       "size": 428
     },
-    "menu_task": {
+    "Menu_Task": {
       "address": "0x80019034",
       "size": 1992
     },
-    "load_mission_text": {
+    "Menu_LoadMissionText": {
       "address": "0x800197fc",
       "size": 252
     },
-    "message_box_type": {
+    "Menu_MessageBoxType": {
       "address": "0x800198f8",
       "size": 1212
     },
-    "message_box_advance": {
+    "Menu_AdvanceMessageBox": {
       "address": "0x80019db4",
       "size": 28
     },
-    "open_message_box": {
+    "Menu_OpenMessageBox": {
       "address": "0x80019dd0",
       "size": 892
     },
-    "wait_message_box": {
+    "Menu_WaitMessageBox": {
       "address": "0x8001a14c",
       "size": 64
     },
-    "show_message_box": {
+    "Menu_ShowMessageBox": {
       "address": "0x8001a18c",
       "size": 156
     },
-    "load_mdec_picture": {
+    "Menu_LoadMDECPicture": {
       "address": "0x8001a228",
       "size": 420
     },
-    "load_sprite_textures": {
+    "Menu_LoadSpriteTextures": {
       "address": "0x8001a3cc",
       "size": 276
     },
-    "draw_translucent_panels": {
+    "Menu_DrawTranslucentPanels": {
       "address": "0x8001a4e0",
       "size": 436
     },
-    "draw_picture_panels": {
+    "Menu_DrawPicturePanels": {
       "address": "0x8001a694",
       "size": 468
     },
-    "draw_picture": {
+    "Menu_DrawPicture": {
       "address": "0x8001a868",
       "size": 440
     },
-    "fade_step": {
+    "Menu_StepFade": {
       "address": "0x8001aa20",
       "size": 240
     },
-    "title_picture_task": {
+    "Menu_TitlePictureTask": {
       "address": "0x8001ab10",
       "size": 248
     },
-    "menu_fade_task": {
+    "Menu_FadeTask": {
       "address": "0x8001ac08",
       "size": 164
     },
-    "clear_screens": {
+    "Menu_ClearScreens": {
       "address": "0x8001acac",
       "size": 188
     },
-    "highlight_pulse_task": {
+    "Menu_HighlightPulseTask": {
       "address": "0x8001ad68",
       "size": 156
     },
-    "clear_vram_area": {
+    "Menu_ClearVRAMArea": {
       "address": "0x8001ae04",
       "size": 144
     },
-    "title_sequence_task": {
+    "Menu_TitleSequenceTask": {
       "address": "0x8001ae94",
       "size": 576
     },
-    "start_menu_tasks": {
+    "Menu_StartMenuTasks": {
       "address": "0x8001b0d4",
       "size": 184
     },
-    "start_title_sequence": {
+    "Menu_StartTitleSequence": {
       "address": "0x8001b18c",
       "size": 116
     },
-    "start_results_menu": {
+    "Menu_StartResultsMenu": {
       "address": "0x8001b200",
       "size": 144
     },
-    "show_loading_screen": {
+    "Menu_ShowLoadingScreen": {
       "address": "0x8001b290",
       "size": 176
     },
-    "show_continue_prompt": {
+    "Menu_ShowContinuePrompt": {
       "address": "0x8001b340",
       "size": 60
     },
-    "percentage": {
+    "Menu_Percentage": {
       "address": "0x8001b37c",
       "size": 140
     },
-    "compute_level_results": {
+    "Menu_ComputeLevelResults": {
       "address": "0x8001b408",
       "size": 540
     },
-    "mode_in_table": {
+    "Menu_ModeInTable": {
       "address": "0x8001b624",
       "size": 80
     },
-    "f_1b674": {
+    "Menu_IsPilotsChambersLevel": {
       "address": "0x8001b674",
       "size": 80
     },
-    "build_result_colors": {
+    "Menu_BuildResultColors": {
       "address": "0x8001b6c4",
       "size": 292
     },
-    "level_complete": {
+    "Menu_LevelComplete": {
       "address": "0x8001b7e8",
       "size": 560
     },
-    "play_story_movie": {
+    "Menu_PlayStoryMovie": {
       "address": "0x8001ba18",
       "size": 332
     },
-    "play_death_movie": {
+    "Menu_PlayDeathMovie": {
       "address": "0x8001bb64",
       "size": 352
     },
-    "set_death_type": {
+    "Menu_SetDeathType": {
       "address": "0x8001bcc4",
       "size": 16
     },
-    "credits_line_task": {
+    "Menu_CreditsLineTask": {
       "address": "0x8001bcd4",
       "size": 204
     },
-    "credits_task": {
+    "Menu_CreditsTask": {
       "address": "0x8001bda0",
       "size": 244
     },
-    "format_card_slot": {
+    "Menu_FormatCardSlot": {
       "address": "0x80017cf0",
       "size": 284
     },
-    "load_text_file": {
+    "Menu_LoadTextFile": {
       "address": "0x8001be94",
       "size": 176
     },
-    "credits_start": {
+    "Menu_StartCredits": {
       "address": "0x8001bf44",
       "size": 92
     }
@@ -499,53 +499,53 @@
     "SetVideoMode": "0x800616a8",
     "VSync": "0x800621d4",
     "atoi": "0x80069b0c",
-    "set_button_layout": "0x8001380c",
-    "menu_display_task": "0x80013ad0",
-    "pad_poll": "0x800147f4",
-    "pad_reset": "0x80014928",
-    "heap_alloc": "0x80014dfc",
-    "heap_mark": "0x80014ecc",
-    "heap_release": "0x80014f88",
-    "load_file": "0x800151f0",
-    "cd_seek_file": "0x80015324",
-    "set_display_mode": "0x80015638",
+    "Sys_SetButtonLayout": "0x8001380c",
+    "Sys_MenuDisplayTask": "0x80013ad0",
+    "Sys_PollPad": "0x800147f4",
+    "Sys_ResetPad": "0x80014928",
+    "Heap_Alloc": "0x80014dfc",
+    "Heap_Mark": "0x80014ecc",
+    "Heap_Release": "0x80014f88",
+    "Sys_LoadFile": "0x800151f0",
+    "Sys_CDSeekFile": "0x80015324",
+    "Sys_SetDisplayMode": "0x80015638",
     "TaskerInit": "0x80015cc8",
     "TaskCreate": "0x80015e4c",
     "TaskDie": "0x80015ea4",
     "TaskDispatch": "0x80015ee4",
-    "format_card_slot": "0x80017cf0",
-    "title_sequence_task": "0x8001ae94",
-    "draw_text": "0x8001c1b0",
-    "draw_text_multiline": "0x8001c25c",
-    "text_width": "0x8001c308",
-    "draw_text_centered": "0x8001c3bc",
-    "sprite_file_load": "0x8001c7c0",
-    "draw_glyph_now": "0x800376d8",
-    "mode_control_set": "0x800396fc",
-    "audio_load_bank": "0x8003d034",
-    "audio_init": "0x8003d318",
-    "audio_enable": "0x8003d444",
-    "audio_disable": "0x8003d45c",
-    "sound_play": "0x8003d5b4",
-    "sound_set_volume": "0x8003d62c",
-    "music_play_track": "0x8003f514",
-    "music_disable": "0x8003f7a4",
-    "music_enable": "0x8003f7bc",
-    "music_set_volume": "0x8003f7d4",
-    "music_poll": "0x8003f81c",
-    "movie_play": "0x8004533c",
-    "password_store_level": "0x800479f0",
-    "password_decode": "0x80047a4c",
-    "save_to_card": "0x80047d5c",
-    "load_from_card": "0x80047ef4",
-    "password_set_full_record": "0x80047fb4",
-    "save_slot_levels": "0x80048080",
-    "card_find_files": "0x8004840c",
-    "card_count_files": "0x800484ec",
-    "card_delete_file": "0x80048518",
-    "card_format": "0x80048568",
-    "card_present_mask": "0x8004874c",
-    "card_read_header": "0x80048df8",
+    "Menu_FormatCardSlot": "0x80017cf0",
+    "Menu_TitleSequenceTask": "0x8001ae94",
+    "Text_DrawText": "0x8001c1b0",
+    "Text_DrawTextMultiline": "0x8001c25c",
+    "Text_Width": "0x8001c308",
+    "Text_DrawTextCentered": "0x8001c3bc",
+    "Sprite_LoadFile": "0x8001c7c0",
+    "Hud_DrawGlyphNow": "0x800376d8",
+    "Player_SetModeControl": "0x800396fc",
+    "Snd_LoadBank": "0x8003d034",
+    "Snd_Init": "0x8003d318",
+    "Snd_Enable": "0x8003d444",
+    "Snd_Disable": "0x8003d45c",
+    "Snd_Play": "0x8003d5b4",
+    "Snd_SetVolume": "0x8003d62c",
+    "Music_PlayTrack": "0x8003f514",
+    "Music_Disable": "0x8003f7a4",
+    "Music_Enable": "0x8003f7bc",
+    "Music_SetVolume": "0x8003f7d4",
+    "Music_Poll": "0x8003f81c",
+    "Movie_Play": "0x8004533c",
+    "Password_StoreLevel": "0x800479f0",
+    "Password_Decode": "0x80047a4c",
+    "Password_SaveToCard": "0x80047d5c",
+    "Password_LoadFromCard": "0x80047ef4",
+    "Password_SetFullRecord": "0x80047fb4",
+    "Password_SaveSlotLevels": "0x80048080",
+    "Card_FindFiles": "0x8004840c",
+    "Card_CountFiles": "0x800484ec",
+    "Card_DeleteFile": "0x80048518",
+    "Card_Format": "0x80048568",
+    "Card_PresentMask": "0x8004874c",
+    "Card_ReadHeader": "0x80048df8",
     "SetDispMask": "0x800627bc",
     "DrawSync": "0x80062858",
     "ClearImage": "0x800629ec",
@@ -554,44 +554,44 @@
     "PutDispEnv": "0x80062f2c",
     "SetDefDrawEnv": "0x800663a4",
     "SetDefDispEnv": "0x80066434",
-    "g_file_table": "0x8006a5f8",
+    "g_fileTable": "0x8006a5f8",
     "g_6c07c": "0x8006c07c",
-    "g_cheat_flags": "0x8008cda8",
-    "g_menu_entry_color": "0x8008d0a0",
-    "g_death_type": "0x8008d0a8",
-    "g_message_box_save_rect": "0x8008d338",
-    "g_pad_held": "0x8008d4d8",
-    "g_pad_repeat": "0x8008d580",
-    "g_pad_pressed": "0x8008d5a8",
-    "g_level_result": "0x8008d5b0",
-    "g_icon_uvs": "0x8008d610",
-    "g_card_slot_levels": "0x8008d790",
-    "g_menu_glyph_uvs": "0x80096118",
-    "g_secrets_found": "0x80096c54",
-    "g_mission_text": "0x8009a124",
-    "g_next_task": "0x8008d4f0",
-    "g_card_block_names": "0x8009d68c",
-    "g_password_text": "0x800a0f6c",
-    "g_game_flags": "0x8008d560",
+    "g_cheatFlags": "0x8008cda8",
+    "g_menuEntryColor": "0x8008d0a0",
+    "g_deathType": "0x8008d0a8",
+    "g_messageBoxSaveRect": "0x8008d338",
+    "g_padHeld": "0x8008d4d8",
+    "g_padRepeat": "0x8008d580",
+    "g_padPressed": "0x8008d5a8",
+    "g_levelResult": "0x8008d5b0",
+    "g_iconUvs": "0x8008d610",
+    "g_cardSlotLevels": "0x8008d790",
+    "g_menuGlyphUvs": "0x80096118",
+    "g_secretsFound": "0x80096c54",
+    "g_missionText": "0x8009a124",
+    "g_nextTask": "0x8008d4f0",
+    "g_cardBlockNames": "0x8009d68c",
+    "g_passwordText": "0x800a0f6c",
+    "g_gameFlags": "0x8008d560",
     "g_level": "0x8008d378",
-    "g_level_names": "0x8006c134",
+    "g_levelNames": "0x8006c134",
     "g_player": "0x80099fd4",
-    "g_render_buffer": "0x8008d4e8",
-    "g_level_map": "0x80096060",
-    "g_sprite_uvs": "0x80097fd4",
-    "g_sprite_workspace": "0x8008d478",
+    "g_renderBuffer": "0x8008d4e8",
+    "g_levelMap": "0x80096060",
+    "g_spriteUvs": "0x80097fd4",
+    "g_spriteWorkspace": "0x8008d478",
     "strcat": "0x800697d8",
     "strcpy": "0x800699d0",
     "strlen": "0x8006993c",
     "strncmp": "0x80069a14",
     "strncpy": "0x80069a94",
-    "g_options_menu": "0x8006c2ac",
-    "g_control_method_menu": "0x8006c530",
-    "level_unload": "0x80013fc4",
-    "setup_double_buffer": "0x80015ab4",
-    "font_load": "0x8001c440",
-    "g_menu_sound_request": "0x8006ca38",
-    "sound_play_request": "0x8003d4a0"
+    "g_optionsMenu": "0x8006c2ac",
+    "g_controlMethodMenu": "0x8006c530",
+    "Sys_UnloadLevel": "0x80013fc4",
+    "Sys_SetupDoubleBuffer": "0x80015ab4",
+    "Text_LoadFont": "0x8001c440",
+    "g_menuSoundRequest": "0x8006ca38",
+    "Snd_PlayRequest": "0x8003d4a0"
   },
   "static_data": {
     "blink.36": {
@@ -604,72 +604,72 @@
       "size": 2,
       "section": ".sdata"
     },
-    "s_no_message": {
+    "s_noMessage": {
       "address": "0x8006be04",
       "size": 11,
       "section": ".data"
     },
-    "s_loading_data": {
+    "s_loadingData": {
       "address": "0x8006be10",
       "size": 17,
       "section": ".data"
     },
-    "s_press_to_continue": {
+    "s_pressToContinue": {
       "address": "0x8006be24",
       "size": 31,
       "section": ".data"
     },
-    "g_mission_brief_header": {
+    "g_missionBriefHeader": {
       "address": "0x8006be44",
       "size": 54,
       "section": ".data"
     },
-    "g_message_box": {
+    "g_messageBox": {
       "address": "0x8006be7c",
       "size": 32,
       "section": ".data"
     },
-    "g_message_box_colours": {
+    "g_messageBoxColours": {
       "address": "0x8006beac",
       "size": 20,
       "section": ".data"
     },
-    "g_message_box_shadow_colours": {
+    "g_messageBoxShadowColours": {
       "address": "0x8006bec0",
       "size": 20,
       "section": ".data"
     },
-    "g_texture_records": {
+    "g_textureRecords": {
       "address": "0x8006bf10",
       "size": 192,
       "section": ".data"
     },
-    "g_palette_records": {
+    "g_paletteRecords": {
       "address": "0x8006bfd0",
       "size": 128,
       "section": ".data"
     },
-    "g_demo_levels": {
+    "g_demoLevels": {
       "address": "0x8006c050",
       "size": 14,
       "section": ".data"
     },
-    "g_level_target_classes": {
+    "g_levelTargetClasses": {
       "address": "0x8006c084",
       "size": 175,
       "section": ".data"
     },
-    "g_name_table": {
+    "g_nameTable": {
       "address": "0x8006ca4c",
       "size": 110,
       "section": ".data"
     },
-    "g_controller_layout_sprites": {
+    "g_controllerLayoutSprites": {
       "address": "0x8006cabc",
       "size": 8,
       "section": ".data"
     },
-    "g_percentage_bar_widths": {
+    "g_percentageBarWidths": {
       "address": "0x8006cac4",
       "size": 22,
       "section": ".data"

@@ -1,35 +1,35 @@
 {
   "gp": "0x8008cd74",
   "functions": {
-    "rotate_vector": {
+    "Geo_RotateVector": {
       "address": "0x8001fca8",
       "size": 112
     },
-    "rotate_vector_offset": {
+    "Geo_RotateVectorOffset": {
       "address": "0x8001fd18",
       "size": 148
     },
-    "view_transform_setup": {
+    "Geo_SetupViewTransform": {
       "address": "0x8001fdac",
       "size": 244
     },
-    "point_heading_xz": {
+    "Geo_PointHeadingXZ": {
       "address": "0x8001fea0",
       "size": 424
     },
-    "point_distance_xz": {
+    "Geo_PointDistanceXZ": {
       "address": "0x80020048",
       "size": 176
     },
-    "aim_rotation": {
+    "Geo_AimRotation": {
       "address": "0x800200f8",
       "size": 128
     },
-    "rotation_matrix": {
+    "Geo_RotationMatrix": {
       "address": "0x80020178",
       "size": 512
     },
-    "rotation_matrix_inverse": {
+    "Geo_RotationMatrixInverse": {
       "address": "0x80020378",
       "size": 524
     },
@@ -44,20 +44,20 @@
   },
   "symbols": {
     "ApplyMatrix": "0x80067678",
-    "g_matrix_work": "0x8009a2e4",
+    "g_matrixWork": "0x8009a2e4",
     "MulMatrix2": "0x8006756c",
     "TransMatrix": "0x80067724",
     "SetRotMatrix": "0x8006786c",
     "SetTransMatrix": "0x800678fc",
-    "g_view_rotation": "0x8008d468",
-    "g_view_pitch": "0x8008d5f0",
-    "g_relative_position": "0x8008d5c8",
-    "g_view_matrix": "0x8009a2c4",
+    "g_viewRotation": "0x8008d468",
+    "g_viewPitch": "0x8008d5f0",
+    "g_relativePosition": "0x8008d5c8",
+    "g_viewMatrix": "0x8009a2c4",
     "g_translation": "0x8009c5a4",
-    "g_view_position": "0x8008d5b8",
-    "g_atan_table": "0x8006d4ac",
+    "g_viewPosition": "0x8008d5b8",
+    "g_atanTable": "0x8006d4ac",
     "SquareRoot0": "0x80067340",
-    "g_zero_vector": "0x8008cd9c",
-    "g_sine_table": "0x8006da74"
+    "g_zeroVector": "0x8008cd9c",
+    "g_sineTable": "0x8006da74"
   }
 }

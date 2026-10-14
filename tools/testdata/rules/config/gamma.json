@@ -1,0 +1,72 @@
+{
+  "functions": {
+    "gamma_member_size_cursor": {
+      "address": "0x80020000",
+      "size": 4
+    },
+    "gamma_member_size_plain": {
+      "address": "0x80020004",
+      "size": 4
+    },
+    "gamma_member_size_assign": {
+      "address": "0x80020008",
+      "size": 4
+    },
+    "gamma_offsetof_step": {
+      "address": "0x8002000c",
+      "size": 4
+    },
+    "gamma_null_base_offset": {
+      "address": "0x80020010",
+      "size": 4
+    },
+    "gamma_cast_step": {
+      "address": "0x80020014",
+      "size": 4
+    },
+    "gamma_int_cursor": {
+      "address": "0x80020018",
+      "size": 4
+    },
+    "gamma_deref_short": {
+      "address": "0x8002001c",
+      "size": 4
+    },
+    "gamma_deref_parenthesised": {
+      "address": "0x80020020",
+      "size": 4
+    },
+    "gamma_member_through_cast": {
+      "address": "0x80020024",
+      "size": 4
+    },
+    "gamma_index_through_cast": {
+      "address": "0x80020028",
+      "size": 4
+    },
+    "gamma_local_cursor": {
+      "address": "0x8002002c",
+      "size": 4
+    },
+    "gamma_typed": {
+      "address": "0x80020030",
+      "size": 4
+    },
+    "gamma_plain_steps": {
+      "address": "0x80020034",
+      "size": 4
+    },
+    "gamma_word_copy": {
+      "address": "0x80020038",
+      "size": 4
+    },
+    "gamma_register": {
+      "address": "0x8002003c",
+      "size": 4
+    },
+    "gamma_file_buffer": {
+      "address": "0x80020040",
+      "size": 4
+    }
+  }
+}

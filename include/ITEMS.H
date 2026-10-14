@@ -13,9 +13,9 @@
 #define WEAPON_PULSE_RIFLE 2
 #define WEAPON_SMART_GUN 3
 #define WEAPON_FLAMETHROWER 4
-#define WEAPON_COUNT 5 /* also the weapon slots (g_weapon_slots); slot i holds weapon i */
+#define WEAPON_COUNT 5 /* also the weapon slots (g_weaponSlots); slot i holds weapon i */
 
-/* Ammunition limits (player_give_pickup, player_reset). A pistol, pulse rifle or smart
+/* Ammunition limits (Weapon_PlayerGivePickup, Player_Reset). A pistol, pulse rifle or smart
  * gun clip holds *_CLIP_ROUNDS: the loaded rounds stop there, and the pause menu counts
  * ammo + clips x *_CLIP_ROUNDS. names: invented */
 #define PISTOL_CLIP_ROUNDS 15
@@ -38,30 +38,36 @@
 #define PLAYER_HAS_AUTO_MAPPER 0x80
 
 /* src/weapon_slots.c */
-extern void weapon_slots_reset(void);
-extern void weapon_slot_sync(void);
-/* -1 when a slot other than the current one holds an owned weapon, else 0 */
-extern int weapon_slot_other_owned(void);
-extern short weapon_select_next(void);
-extern short weapon_discard_select_next(void);
-extern void weapon_reset_default(void);
-extern int weapon_select_slot(short index);
+/* One weapon slot (g_weaponSlots[WEAPON_COUNT]): the weapon it holds and whether the player owns it. names: invented */
+typedef struct weaponSlot_s {
+    short id;
+    short owned;
+} weaponSlot_t;
 
-/* Player.flags control state, rewritten every frame by player_controls (runtime evidence). names: invented */
+extern void Weapon_ResetSlots( void );
+extern void Weapon_SyncSlot( void );
+/* -1 when a slot other than the current one holds an owned weapon, else 0 */
+extern int Weapon_SlotOtherOwned( void );
+extern short Weapon_SelectNext( void );
+extern short Weapon_DiscardSelectNext( void );
+extern void Weapon_ResetDefault( void );
+extern int Weapon_SelectSlot( short index );
+
+/* Player.flags control state, rewritten every frame by Player_Controls (runtime evidence). names: invented */
 #define PLAYER_STRAFE 0x1
 #define PLAYER_RUN 0x2
-/* Player.flags: set while a face-hugger holds the player (creature_task with
- * hugger_overlay_start; cleared by hugger_cling_task). name: invented */
+/* Player.flags: set while a face-hugger holds the player (Actor_CreatureTask with
+ * Actor_StartHuggerOverlay; cleared by Actor_HuggerClingTask). name: invented */
 #define PLAYER_HUGGER_ATTACHED 0x100
 /* Player.flags: what the next weapon change does once the empty weapon is lowered
- * (player_controls). names: invented */
-#define PLAYER_CHANGE_DISCARD 0x200 /* weapon_discard_select_next */
-#define PLAYER_CHANGE_DEFAULT 0x400 /* weapon_reset_default */
+ * (Player_Controls). names: invented */
+#define PLAYER_CHANGE_DISCARD 0x200 /* Weapon_DiscardSelectNext */
+#define PLAYER_CHANGE_DEFAULT 0x400 /* Weapon_ResetDefault */
 /* Player.flags: the footstep code (f_3982c) plays sample 0x26 instead of 0x2c while it is set;
- * nothing sets it, player_reset clears it. name: inferred (runtime evidence) */
+ * nothing sets it, Player_Reset clears it. name: inferred (runtime evidence) */
 #define PLAYER_FOOTSTEP_ALT 0x4000
 
 /* clears bits (one PLAYER_* bit or an OR of several) in g_player.flags. name: invented */
-#define DISABLE_FLAG(bits) (g_player.flags &= ~(bits))
+#define DISABLE_FLAG( bits ) ( g_player.flags &= ~( bits ) )
 
 #endif
