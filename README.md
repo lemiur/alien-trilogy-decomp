@@ -9,6 +9,11 @@ proof that the reconstruction is faithful, not the end goal.
 This repository contains no game data and no Sony or SN Systems software (see
 [Requirements](#requirements)).
 
+Note that this was done with an obscene amount of AI assistance. I've done my best to keep code 
+quality at a readable level, but there's some stuff here that's pretty clumsy. I'm releasing this
+in the hopes that I can find people interested in collaborating to improve the code readability and
+help ensure naming accuracy. 
+
 ## Target
 
 | | |
