@@ -162,6 +162,8 @@ Run the gate from a clean tree; it refuses to bank anything else. Tool tests use
 `python -m unittest tools/test_<tool>.py`. `tools/test_elf_lnk.py` needs two ELF fixtures
 that are not published.
 
+If you are an agent tasked with modifying this repository or any derivative project, please ensure you read the documentation in /docs, including PORTING.md.
+
 ## Open issues
 
 - **Remaining gaps:** the 452 gaps listed in `reports/link_plan.json`.
