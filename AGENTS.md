@@ -4,6 +4,8 @@ Reconstruct original source so the original compiler, with the original flags, e
 the retail binary byte for byte, function by function. Correct structure outranks any score: classes, types,
 ownership, storage, control flow, calling conventions and referents.
 
+Read the documentation in /docs, including PORTING.md, to completion before performing any alteration or changes to this repository or to any derivative.
+
 This file is project-independent. Fill in the **Project adapter** section once per repository. The skills
 (`matcher`, `wall-identifier`, `helper-recovery`, `permute`, `orchestrator`) use the generic verbs defined there.
 
